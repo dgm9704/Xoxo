@@ -1,219 +1,254 @@
 ﻿namespace Xoxo
 {
-	using System;
-	using System.Collections.Generic;
-	using System.Xml;
-	using System.Xml.Serialization;
-	using System.IO;
-	using System.Linq;
-	using System.Collections.ObjectModel;
-	using System.Text;
+    using System;
+    using System.Collections.Generic;
+    using System.Xml;
+    using System.Xml.Serialization;
+    using System.IO;
+    using System.Linq;
+    using System.Collections.ObjectModel;
+    using System.Text;
 
-	[Serializable]
-	[XmlRoot(ElementName = "xbrl", Namespace = "http://www.xbrl.org/2003/instance")]
-	public class Xbrl : IEquatable<Xbrl>
-	{
-		[XmlIgnore]		
-		public XmlNamespaceManager Namespaces { get; set; }
+    [Serializable]
+    [XmlRoot(ElementName = "xbrl", Namespace = "http://www.xbrl.org/2003/instance")]
+    public class Xbrl : IEquatable<Xbrl>
+    {
+        [XmlNamespaceDeclarations]
+        public XmlSerializerNamespaces xmlns;
 
-		[XmlIgnore]
-		public Entity Entity { get; set; }
+        [XmlIgnore]		
+        public XmlNamespaceManager Namespaces { get; set; }
 
-		[XmlIgnore]
-		public Period Period { get; set; }
+        [XmlIgnore]
+        public Entity Entity { get; set; }
 
-		[XmlIgnore]
-		public string TaxonomyVersion { get; set; }
+        [XmlIgnore]
+        public Period Period { get; set; }
 
-		[XmlIgnore]
-		public string FactNamespace { get; private set ; }
+        [XmlIgnore]
+        public string TaxonomyVersion { get; set; }
 
-		[XmlIgnore]
-		public string DimensionNamespace { get; private set; }
+        [XmlIgnore]
+        public string FactNamespace { get; private set ; }
 
-		[XmlIgnore]
-		public string TypedDomainNamespace { get; private set; }
+        [XmlIgnore]
+        public string DimensionNamespace { get; private set; }
 
-		[XmlElement("schemaRef", Namespace = "http://www.xbrl.org/2003/linkbase")]
-		public SchemaReference SchemaReference { get; set; }
+        [XmlIgnore]
+        public string TypedDomainNamespace { get; private set; }
 
-		[XmlIgnore]
-		public UnitCollection Units { get; set; }
+        [XmlElement("schemaRef", Namespace = "http://www.xbrl.org/2003/linkbase")]
+        public SchemaReference SchemaReference { get; set; }
 
-		[XmlElement("unit", Namespace = "http://www.xbrl.org/2003/instance")]
-		public UnitCollection UsedUnit { get { return Units.UsedUnits(); } set { throw new NotImplementedException(); } }
+        [XmlIgnore]
+        public UnitCollection Units { get; set; }
 
-		[XmlArray("fIndicators", Namespace = "http://www.eurofiling.info/xbrl/ext/filing-indicators")]
-		[XmlArrayItem("filingIndicator", Namespace = "http://www.eurofiling.info/xbrl/ext/filing-indicators")]
-		public FilingIndicatorCollection FilingIndicators { get; set; }
+        [XmlElement("unit", Namespace = "http://www.xbrl.org/2003/instance")]
+        public UnitCollection UsedUnit { get { return Units.UsedUnits(); } set { throw new NotImplementedException(); } }
 
-		[XmlElement("context", Namespace = "http://www.xbrl.org/2003/instance")]
-		public ContextCollection Contexts { get; set; }
+        [XmlArray("fIndicators", Namespace = "http://www.eurofiling.info/xbrl/ext/filing-indicators")]
+        [XmlArrayItem("filingIndicator", Namespace = "http://www.eurofiling.info/xbrl/ext/filing-indicators")]
+        public FilingIndicatorCollection FilingIndicators { get; set; }
 
-		[XmlIgnore]
-		public FactCollection Facts { get; set; }
+        [XmlElement("context", Namespace = "http://www.xbrl.org/2003/instance")]
+        public ContextCollection Contexts { get; set; }
 
-		[XmlAnyElement]
-		public XmlElement[] FactItems
-		{
-			get
-			{
-				var elements = new List<XmlElement>();
-				foreach (var item in Facts)
-				{
-					elements.Add(item.ToXmlElement());
-				}
-				return elements.ToArray();
-			}
-			set
-			{ 
-				foreach (var element in value)
-				{
-					this.Facts.Add(Fact.FromXmlElement(element));
-				}
-			}
-		}
+        [XmlIgnore]
+        public FactCollection Facts { get; set; }
 
-		[XmlIgnore]
-		public bool CheckUnitExists	{ get; set; }
+        [XmlAnyElement]
+        public XmlElement[] FactItems
+        {
+            get
+            {
+                var elements = new List<XmlElement>();
+                foreach (var item in Facts)
+                {
+                    elements.Add(item.ToXmlElement());
+                }
+                return elements.ToArray();
+            }
+            set
+            { 
+                foreach (var element in value)
+                {
+                    this.Facts.Add(Fact.FromXmlElement(element));
+                }
+            }
+        }
 
-		[XmlIgnore]
-		public bool CheckExplicitMemberDomainExists	{ get; set; }
+        [XmlIgnore]
+        public bool CheckUnitExists	{ get; set; }
 
-		public void SetDimensionNamespace(string prefix, string namespaceUri)
-		{
-			this.Namespaces.AddNamespace(prefix, namespaceUri);
-			this.DimensionNamespace = namespaceUri;
-		}
+        [XmlIgnore]
+        public bool CheckExplicitMemberDomainExists	{ get; set; }
 
-		public void SetMetricNamespace(string prefix, string namespaceUri)
-		{
-			this.Namespaces.AddNamespace(prefix, namespaceUri);
-			this.FactNamespace = namespaceUri;
-		}
+        public void SetDimensionNamespace(string prefix, string namespaceUri)
+        {
+            this.Namespaces.AddNamespace(prefix, namespaceUri);
+            this.DimensionNamespace = namespaceUri;
+        }
 
-		public void SetTypedDomainNamespace(string prefix, string namespaceUri)
-		{
-			this.Namespaces.AddNamespace(prefix, namespaceUri);
-			this.TypedDomainNamespace = namespaceUri;
-		}
+        public void SetMetricNamespace(string prefix, string namespaceUri)
+        {
+            this.Namespaces.AddNamespace(prefix, namespaceUri);
+            this.FactNamespace = namespaceUri;
+        }
 
-		public void AddDomainNamespace(string prefix, string namespaceUri)
-		{
-			this.Namespaces.AddNamespace(prefix, namespaceUri);
-		}
+        public void SetTypedDomainNamespace(string prefix, string namespaceUri)
+        {
+            this.Namespaces.AddNamespace(prefix, namespaceUri);
+            this.TypedDomainNamespace = namespaceUri;
+        }
 
-		public Context GetContext(Scenario scenario)
-		{
-			Context context = null;
+        public void AddDomainNamespace(string prefix, string namespaceUri)
+        {
+            this.Namespaces.AddNamespace(prefix, namespaceUri);
+        }
 
-			if (scenario == null)
-			{
-				context = this.Contexts.FirstOrDefault(c => c.Scenario == null);
-			}
-			else
-			{
-				context = this.Contexts.FirstOrDefault(c => scenario.Equals(c.Scenario));
-			}
+        public Context GetContext(Scenario scenario)
+        {
+            Context context = null;
+
+            if (scenario == null)
+            {
+                context = this.Contexts.FirstOrDefault(c => c.Scenario == null);
+            }
+            else
+            {
+                context = this.Contexts.FirstOrDefault(c => scenario.Equals(c.Scenario));
+            }
 			 
-			if (context == null)
-			{
-				context = new Context(scenario);
-				Contexts.Add(context);
-			}
+            if (context == null)
+            {
+                context = new Context(scenario);
+                Contexts.Add(context);
+            }
 
-			return context;
-		}
+            return context;
+        }
 
-		private void AddDefaultNamespaces()
-		{
-			Namespaces.AddNamespace("xbrli", "http://www.xbrl.org/2003/instance");
-			Namespaces.AddNamespace("link", "http://www.xbrl.org/2003/linkbase");
-			Namespaces.AddNamespace("xlink", "http://www.w3.org/1999/xlink");
-			Namespaces.AddNamespace("iso4217", "http://www.xbrl.org/2003/iso4217");
-			Namespaces.AddNamespace("find", "http://www.eurofiling.info/xbrl/ext/filing-indicators");
-			Namespaces.AddNamespace("xbrldi", "http://xbrl.org/2006/xbrldi");
-		}
+        private void AddDefaultNamespaces()
+        {
+            Namespaces.AddNamespace("xbrli", "http://www.xbrl.org/2003/instance");
+            Namespaces.AddNamespace("link", "http://www.xbrl.org/2003/linkbase");
+            Namespaces.AddNamespace("xlink", "http://www.w3.org/1999/xlink");
+            Namespaces.AddNamespace("iso4217", "http://www.xbrl.org/2003/iso4217");
+            Namespaces.AddNamespace("find", "http://www.eurofiling.info/xbrl/ext/filing-indicators");
+            Namespaces.AddNamespace("xbrldi", "http://xbrl.org/2006/xbrldi");
+        }
 
-		public void RemoveUnusedObjects()
-		{
-			var used = Units.UsedUnits();
-			this.Units.Clear();
-			this.Units.AddRange(used);
-		}
+        public void RemoveUnusedObjects()
+        {
+            var used = Units.UsedUnits();
+            this.Units.Clear();
+            this.Units.AddRange(used);
+        }
 
-		public Xbrl()
-		{
-			this.Namespaces = new XmlNamespaceManager(new NameTable());
-			AddDefaultNamespaces();
-			this.SchemaReference = new SchemaReference();
-			this.FilingIndicators = new FilingIndicatorCollection(this);
-			this.Units = new UnitCollection(this); 
-			this.Contexts = new ContextCollection(this);
-			this.Facts = new FactCollection(this);
-		}
+        public Xbrl()
+        {
+            this.Namespaces = new XmlNamespaceManager(new NameTable());
+            AddDefaultNamespaces();
+            this.SchemaReference = new SchemaReference();
+            this.FilingIndicators = new FilingIndicatorCollection(this);
+            this.Units = new UnitCollection(this); 
+            this.Contexts = new ContextCollection(this);
+            this.Facts = new FactCollection(this);
+        }
 
-		#region IEquatable implementation
+        #region IEquatable implementation
 
-		public bool Equals(Xbrl other)
-		{
-			var result = false;
+        public bool Equals(Xbrl other)
+        {
+            var result = false;
 
-			if (this.SchemaReference.Equals(other.SchemaReference))
-			{
-				if (this.Units.Equals(other.Units))
-				{
-					if (this.FilingIndicators.Equals(other.FilingIndicators))
-					{
-						if (this.Contexts.Equals(other.Contexts))
-						{
-							if (this.Facts.Equals(other.Facts))
-							{
-								result = true;
-							}
-						}
-					}
-				}
-			}
-			return result;
-		}
+            if (this.SchemaReference.Equals(other.SchemaReference))
+            {
+                if (this.Units.Equals(other.Units))
+                {
+                    if (this.FilingIndicators.Equals(other.FilingIndicators))
+                    {
+                        if (this.Contexts.Equals(other.Contexts))
+                        {
+                            if (this.Facts.Equals(other.Facts))
+                            {
+                                result = true;
+                            }
+                        }
+                    }
+                }
+            }
+            return result;
+        }
 
-		#endregion
+        #endregion
+
+        private void RebuildNamespacesAfterRead()
+        {
+            var namespaces = new XmlNamespaceManager(new NameTable());
+            foreach (var item in this.xmlns.ToArray())
+            {
+                namespaces.AddNamespace(item.Name, item.Namespace);
+            }
+
+            var contextsWithMembers = this.Contexts.Where(c => c.Scenario != null);
+            var contextWithTypedMembers = contextsWithMembers.FirstOrDefault(c => c.Scenario.TypedMembers != null && c.Scenario.TypedMembers.Count != 0);
+            if (contextWithTypedMembers != null)
+            {
+                var member = contextWithTypedMembers.Scenario.TypedMembers[0];
+                this.TypedDomainNamespace = member.Domain.Namespace;
+                this.DimensionNamespace = member.Dimension.Namespace;
+            }
+
+            if (string.IsNullOrEmpty(this.DimensionNamespace))
+            {
+                var contextWithExplicitMembers = contextsWithMembers.FirstOrDefault(c => c.Scenario.ExplicitMembers != null && c.Scenario.ExplicitMembers.Count != 0);
+                if (contextWithExplicitMembers != null)
+                {
+                    var member = contextWithExplicitMembers.Scenario.ExplicitMembers[0];
+                    this.DimensionNamespace = member.Dimension.Namespace;
+                }
+            }
 
 
-		private static XmlSerializer Serializer = new XmlSerializer(typeof(Xbrl));
 
-		public static Xbrl FromFile(string path)
-		{
-			Xbrl xbrl = null;
+            this.Namespaces = namespaces;
+        }
 
-			using (var inputfile = new FileStream(path, FileMode.Open))
-			{
-				xbrl = (Xbrl)Serializer.Deserialize(inputfile);
-			}
-			return xbrl;
-		}
 
-		public void ToFile(string path)
-		{
+        private static XmlSerializer Serializer = new XmlSerializer(typeof(Xbrl));
 
-			var xmlns = this.Namespaces.ToXmlSerializerNamespaces();
+        public static Xbrl FromFile(string path)
+        {
+            Xbrl xbrl = null;
 
-			var settings = new XmlWriterSettings
-			{
-				Indent = true,
-				NamespaceHandling = NamespaceHandling.OmitDuplicates,
-				Encoding = UTF8Encoding.UTF8
-			};
-			using (var writer = XmlWriter.Create(path, settings))
-			{
-				if (!string.IsNullOrEmpty(this.TaxonomyVersion))
-				{
-					writer.WriteProcessingInstruction("taxonomy-version", this.TaxonomyVersion);
-				}
+            using (var inputStream = new FileStream(path, FileMode.Open))
+            {
+                xbrl = (Xbrl)Serializer.Deserialize(inputStream);
+                xbrl.RebuildNamespacesAfterRead();
+            }
+            return xbrl;
+        }
 
-				Serializer.Serialize(writer, this, xmlns);
-			}
-		}
-	}
+        public void ToFile(string path)
+        {
+            var xmlns = this.Namespaces.ToXmlSerializerNamespaces();
+        
+            var settings = new XmlWriterSettings
+            {
+                Indent = true,
+                NamespaceHandling = NamespaceHandling.OmitDuplicates,
+                Encoding = UTF8Encoding.UTF8
+            };
+            using (var writer = XmlWriter.Create(path, settings))
+            {
+                if (!string.IsNullOrEmpty(this.TaxonomyVersion))
+                {
+                    writer.WriteProcessingInstruction("taxonomy-version", this.TaxonomyVersion);
+                }
+        
+                Serializer.Serialize(writer, this, xmlns);
+            }
+        }
+    }
 }
