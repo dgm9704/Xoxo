@@ -59,7 +59,7 @@
 			get
 			{
 				var elements = new List<XmlElement>();
-				foreach(var item in Facts)
+				foreach (var item in Facts)
 				{
 					elements.Add(item.ToXmlElement());
 				}
@@ -67,7 +67,7 @@
 			}
 			set
 			{ 
-				foreach(var element in value)
+				foreach (var element in value)
 				{
 					this.Facts.Add(Fact.FromXmlElement(element));
 				}
@@ -107,7 +107,7 @@
 		{
 			Context context = null;
 
-			if(scenario == null)
+			if (scenario == null)
 			{
 				context = this.Contexts.FirstOrDefault(c => c.Scenario == null);
 			}
@@ -116,7 +116,7 @@
 				context = this.Contexts.FirstOrDefault(c => scenario.Equals(c.Scenario));
 			}
 			 
-			if(context == null)
+			if (context == null)
 			{
 				context = new Context(scenario);
 				Contexts.Add(context);
@@ -159,15 +159,15 @@
 		{
 			var result = false;
 
-			if(this.SchemaReference.Equals(other.SchemaReference))
+			if (this.SchemaReference.Equals(other.SchemaReference))
 			{
-				if(this.Units.Equals(other.Units))
+				if (this.Units.Equals(other.Units))
 				{
-					if(this.FilingIndicators.Equals(other.FilingIndicators))
+					if (this.FilingIndicators.Equals(other.FilingIndicators))
 					{
-						if(this.Contexts.Equals(other.Contexts))
+						if (this.Contexts.Equals(other.Contexts))
 						{
-							if(this.Facts.Equals(other.Facts))
+							if (this.Facts.Equals(other.Facts))
 							{
 								result = true;
 							}
@@ -187,7 +187,7 @@
 		{
 			Xbrl xbrl = null;
 
-			using(var inputfile = new FileStream(path, FileMode.Open))
+			using (var inputfile = new FileStream(path, FileMode.Open))
 			{
 				xbrl = (Xbrl)Serializer.Deserialize(inputfile);
 			}
@@ -199,14 +199,19 @@
 
 			var xmlns = this.Namespaces.ToXmlSerializerNamespaces();
 
-			var settings = new XmlWriterSettings {
+			var settings = new XmlWriterSettings
+			{
 				Indent = true,
 				NamespaceHandling = NamespaceHandling.OmitDuplicates,
 				Encoding = UTF8Encoding.UTF8
 			};
-			using(var writer = XmlWriter.Create(path, settings))
+			using (var writer = XmlWriter.Create(path, settings))
 			{
-				writer.WriteProcessingInstruction("taxonomy-version", this.TaxonomyVersion);
+				if (!string.IsNullOrEmpty(this.TaxonomyVersion))
+				{
+					writer.WriteProcessingInstruction("taxonomy-version", this.TaxonomyVersion);
+				}
+
 				Serializer.Serialize(writer, this, xmlns);
 			}
 		}
