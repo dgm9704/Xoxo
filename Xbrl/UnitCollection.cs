@@ -1,3 +1,5 @@
+using System.Linq;
+
 namespace Xoxo
 {
 	using System.Xml.Schema;
@@ -25,6 +27,21 @@ namespace Xoxo
 		public void Add(string id, string measure)
 		{
 			base.Add(new Unit(id, measure));
+		}
+
+		public Collection<Unit> UsedUnits()
+		{
+			var result = new Collection<Unit>();
+			foreach(var unit in this)
+			{
+				var fact = this.Instance.Facts.FirstOrDefault(f => f.Unit == unit.Id);
+				if(fact != null)
+				{
+					result.Add(unit);
+				}
+			}
+
+			return result;
 		}
 
 		#region IEquatable implementation
