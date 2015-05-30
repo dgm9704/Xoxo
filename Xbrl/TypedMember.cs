@@ -9,10 +9,10 @@ namespace Xoxo
 	public class TypedMember : IXmlSerializable, IEquatable<TypedMember>, IComparable<TypedMember>
 	{
 		[XmlIgnore]
-		public string Dimension { get; set; }
+		public XmlQualifiedName Dimension { get; set; }
 
 		[XmlIgnore]
-		public string Domain { get; set; }
+		public XmlQualifiedName Domain { get; set; }
 
 		[XmlIgnore]
 		public string Value { get; set; }
@@ -22,7 +22,7 @@ namespace Xoxo
 	
 		}
 
-		public TypedMember(string dimension, string domain, string value) : this()
+		public TypedMember(XmlQualifiedName dimension, XmlQualifiedName domain, string value) : this()
 		{
 			this.Dimension = dimension;
 			this.Domain = domain;
@@ -39,9 +39,13 @@ namespace Xoxo
 		public void ReadXml(XmlReader reader)
 		{
 			reader.MoveToContent();
-			this.Dimension = reader.GetAttribute("dimension");
+			var dim = reader.GetAttribute("dimension");
+			var idx = dim.IndexOf(':');
+			var prefix = dim.Substring(0, idx);
+			var dimNs = reader.LookupNamespace(prefix);
+			this.Dimension = new XmlQualifiedName(dim, dimNs);
 			reader.ReadStartElement();
-			this.Domain = reader.Name;
+			this.Domain = new XmlQualifiedName(reader.Name, reader.NamespaceURI);
 			this.Value = reader.ReadElementString();
 			reader.ReadEndElement();
 
@@ -49,8 +53,8 @@ namespace Xoxo
 
 		public void WriteXml(XmlWriter writer)
 		{
-			writer.WriteAttributeString("dimension", this.Dimension);
-			writer.WriteElementString(this.Domain, this.Value);
+			writer.WriteAttributeString("dimension", this.Dimension.Name);
+			writer.WriteElementString(this.Domain.Name, this.Value);
 		}
 
 		public override int GetHashCode()
@@ -77,10 +81,10 @@ namespace Xoxo
 
 		public int CompareTo(TypedMember other)
 		{
-			var result = this.Dimension.CompareTo(other.Dimension);
+			int result = this.Dimension.Name.CompareTo(other.Dimension.Name);
 			if(result == 0)
 			{
-				result = this.Domain.CompareTo(other.Domain);
+				result = this.Domain.Name.CompareTo(other.Domain.Name);
 			}
 			if(result == 0)
 			{

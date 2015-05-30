@@ -1,26 +1,32 @@
-﻿//using System.Xml.Serialization;
-//using System.Xml;
-//
-//namespace XbrlTests
-//{
-//	public class Foo
-//	{
-//		//		[XmlAnyElement]
-//		//		public XmlProcessingInstruction ProcessingInstruction { get; set; }
-//
-//		[XmlElement]
-//		public string Name
-//		{
-//			get;
-//			set;
-//		}
-//
-//		public Foo()
-//		{
-//			var doc = new XmlDocument();
-//			//this.ProcessingInstruction = doc.CreateProcessingInstruction("taxonomy-version", "1.5.2.c");
-//
-//		}
-//	}
-//}
-//
+﻿using System.Xml.Serialization;
+using System.Xml;
+
+namespace XbrlTests
+{
+	public class Foo
+	{
+		[XmlNamespaceDeclarations]
+		public XmlSerializerNamespaces Namespaces;
+
+		[XmlElement]
+		public string Name
+		{
+			get;
+			set;
+		}
+
+		[XmlElement]
+		public XmlQualifiedName QName;
+
+		public Foo()
+		{
+			var Namespaces = new XmlSerializerNamespaces();
+			Namespaces.Add("prefix", "http://www.xbrl.org/2003/instance");
+			Namespaces.Add("xsi", "http://www.w3.org/2001/XMLSchema-instance");
+			Namespaces.Add("xsd", "http://www.w3.org/2001/XMLSchema");
+
+			QName = new XmlQualifiedName("foo", "http://www.xbrl.org/2003/instance");
+		}
+	}
+}
+

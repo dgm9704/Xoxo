@@ -44,6 +44,7 @@
     <ProjectReference Include="..\Xbrl\Xbrl.csproj">
       <Project>{DDD6F5C5-745B-4154-AEA5-98106851CAA9}</Project>
       <Name>Xbrl</Name>
+      <Private>False</Private>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
@@ -53,13 +54,13 @@
     <Folder Include="data\" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="data\reference.xbrl">
-      <DeployService-Deploy>True</DeployService-Deploy>
-      <DeployService-UseProjectRelativePath>True</DeployService-UseProjectRelativePath>
-      <DeployService-HasPathReferences>True</DeployService-HasPathReferences>
+    <Content Include="data\ars.xbrl">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="data\ars.xbrl">
+    <Content Include="data\reference.xbrl.xml">
+      <DeployService-Deploy>True</DeployService-Deploy>
+      <DeployService-HasPathReferences>True</DeployService-HasPathReferences>
+      <DeployService-UseProjectRelativePath>True</DeployService-UseProjectRelativePath>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>

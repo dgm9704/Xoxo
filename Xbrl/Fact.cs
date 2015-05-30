@@ -21,7 +21,7 @@ namespace Xoxo
 		public string Context{ get; set; }
 
 		[XmlIgnore]
-		public string Metric { get; set; }
+		public XmlQualifiedName Metric { get; set; }
 
 		[XmlIgnore]
 		public string Value { get; set; }
@@ -33,24 +33,18 @@ namespace Xoxo
 		{
 		}
 
-		public Fact(Context context, string metric, string unit, string decimals, string value) : this()
+		public Fact(Context context, string metric, string unit, string decimals, string value, string namespaceUri, string prefix)
 		{
-			this.Metric = metric;
+			this.Metric = new XmlQualifiedName(prefix + ":" + metric, namespaceUri);
 			this.Unit = unit;
 			this.Decimals = decimals;
 			this.Context = context.Id;
 			this.Value = value;
 		}
 
-		public Fact(Context context, string metric, string unit, string decimals, string value, string namespaceUri)
-			: this(context, metric, unit, decimals, value)
-		{
-			this.NamespaceUri = namespaceUri;
-		}
-
 		internal XmlElement ToXmlElement()
 		{
-			var element = doc.CreateElement(this.Metric, this.NamespaceUri);
+			var element = doc.CreateElement(this.Metric.Name, this.Metric.Namespace);
 			element.SetAttribute("unitRef", this.Unit);
 			element.SetAttribute("decimals", this.Decimals);
 			element.SetAttribute("contextRef", this.Context);
@@ -61,8 +55,7 @@ namespace Xoxo
 		internal static Fact FromXmlElement(XmlElement element)
 		{
 			var fact = new Fact();
-			fact.Metric = element.Name;
-			fact.NamespaceUri = element.NamespaceURI;
+			fact.Metric = new XmlQualifiedName(element.Name, element.NamespaceURI);
 			fact.Unit = element.GetAttribute("unitRef");
 			fact.Decimals = element.GetAttribute("decimals");
 			fact.Context = element.GetAttribute("contextRef");

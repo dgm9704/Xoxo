@@ -9,19 +9,20 @@ namespace Xoxo
 	using System.Xml.Serialization;
 	using System.Collections.ObjectModel;
 
-	public class UnitCollection : Collection<Unit>, IEquatable<UnitCollection>
+	public class UnitCollection : List<Unit>, IEquatable<UnitCollection>
 	{
-		private XbrlInstance Instance;
+		private Xbrl Instance;
 
 		public UnitCollection()
 		{
-			this.Add("uEUR", "iso4217:EUR");
-			this.Add("uPURE", "xbrli:pure"); 
+
 		}
 
-		public UnitCollection(XbrlInstance instance) : this()
+		public UnitCollection(Xbrl instance) : this()
 		{
 			this.Instance = instance;
+			this.Add("uEUR", "iso4217:EUR");
+			this.Add("uPURE", "xbrli:pure"); 
 		}
 
 		public void Add(string id, string measure)
@@ -29,9 +30,9 @@ namespace Xoxo
 			base.Add(new Unit(id, measure));
 		}
 
-		public Collection<Unit> UsedUnits()
+		public UnitCollection UsedUnits()
 		{
-			var result = new Collection<Unit>();
+			var result = new UnitCollection();
 			foreach(var unit in this)
 			{
 				var fact = this.Instance.Facts.FirstOrDefault(f => f.Unit == unit.Id);
@@ -48,24 +49,7 @@ namespace Xoxo
 
 		public bool Equals(UnitCollection other)
 		{
-			var result = true;
-
-			if(this.Count != other.Count)
-			{
-				result = false;
-			}
-			else
-			{
-				for(int i = 0; i < this.Count; i++)
-				{
-					if(!this[i].Equals(other[i]))
-					{
-						result = false;
-						break;
-					}
-				}
-			}
-
+			var result = this.SequenceEqual(other);
 			return result;
 		}
 

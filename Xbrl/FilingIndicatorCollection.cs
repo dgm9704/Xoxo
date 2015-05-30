@@ -1,21 +1,19 @@
-using System.Xml.Schema;
-using System.Xml;
-using System.Collections.Generic;
-using System;
-using System.Xml.Serialization;
-using System.Collections.ObjectModel;
-
 namespace Xoxo
 {
-
+	using System.Xml.Schema;
+	using System.Xml;
+	using System.Collections.Generic;
+	using System;
+	using System.Xml.Serialization;
+	using System.Collections.ObjectModel;
 
 	public class FilingIndicatorCollection : Collection<FilingIndicator> , IEquatable<FilingIndicatorCollection>
 	{
-		private XbrlInstance Instance;
+		//private XbrlInstance Instance;
 
-		public FilingIndicatorCollection(XbrlInstance instance)
+		public FilingIndicatorCollection(Xbrl instance)
 		{
-			this.Instance = instance;
+			//this.Instance = instance;
 		}
 
 		public FilingIndicator Add(Context context, string value)

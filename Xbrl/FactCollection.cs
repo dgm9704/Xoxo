@@ -5,23 +5,31 @@ namespace Xoxo
 	using System.Xml;
 	using System.Xml.Schema;
 	using System.Xml.Serialization;
+	using System.Linq;
 
 	public class FactCollection : Collection<Fact> , IEquatable<FactCollection>
 	{
-		private XbrlInstance Instance;
+		private Xbrl Instance;
 
-		public FactCollection(XbrlInstance instance)
+		public FactCollection(Xbrl instance)
 		{
 			this.Instance = instance;
 		}
 
 		public Fact Add(Context context, string metric, string unit, string decimals, string value)
 		{
-			if(!metric.StartsWith(Instance.FactPrefix))
+			var ns = this.Instance.FactNamespace;
+			var prefix = this.Instance.Namespaces.LookupPrefix(ns);
+
+			if(this.Instance.CheckUnitExists)
 			{
-				metric = Instance.FactPrefix + ":" + metric;
+				if(!this.Instance.Units.Exists(u => u.Id == unit))
+				{
+					throw new InvalidOperationException(string.Format("Referenced unit '{0}' does not exist", unit));
+				}
 			}
-			var fact = new Fact(context, metric, unit, decimals, value, Instance.FactNamespace);
+
+			var fact = new Fact(context, metric, unit, decimals, value, ns, prefix);
 			base.Add(fact);
 			return fact;
 		}
@@ -35,26 +43,8 @@ namespace Xoxo
 		#region IEquatable implementation
 
 		public bool Equals(FactCollection other)
-		{
-			var result = true;
-
-			if(this.Count != other.Count)
-			{
-				result = false;
-			}
-			else
-			{
-				for(int i = 0; i < this.Count; i++)
-				{
-					if(!this[i].Equals(other[i]))
-					{
-						result = false;
-						break;
-					}
-				}
-			}
-
-			return result;
+		{ 
+			return this.SequenceEqual(other);
 		}
 
 		#endregion

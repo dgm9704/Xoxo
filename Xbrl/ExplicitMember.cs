@@ -1,3 +1,5 @@
+using System.Xml;
+
 namespace Xoxo
 {
 	using System;
@@ -9,17 +11,17 @@ namespace Xoxo
 	public class ExplicitMember : IEquatable<ExplicitMember>, IComparable<ExplicitMember>
 	{
 		[XmlAttribute("dimension", Namespace = "http://xbrl.org/2006/xbrldi")]
-		public string Dimension { get; set; }
+		public XmlQualifiedName Dimension { get; set; }
 
 		[XmlText]
-		public string Value { get; set; }
+		public XmlQualifiedName Value { get; set; }
 
 		public ExplicitMember()
 		{
 
 		}
 
-		public ExplicitMember(string dimension, string value) : this()
+		public ExplicitMember(XmlQualifiedName dimension, XmlQualifiedName value) : this()
 		{
 			this.Dimension = dimension;
 			this.Value = value;
@@ -45,10 +47,10 @@ namespace Xoxo
 
 		public int CompareTo(ExplicitMember other)
 		{
-			int result = this.Dimension.CompareTo(other.Dimension);
+			int result = this.Dimension.Name.CompareTo(other.Dimension.Name);
 			if(result == 0)
 			{
-				result = this.Value.CompareTo(other.Value);
+				result = this.Value.Name.CompareTo(other.Value.Name);
 			}
 			return result;
 		}

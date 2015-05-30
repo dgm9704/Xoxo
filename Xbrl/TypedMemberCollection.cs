@@ -1,3 +1,5 @@
+using System.Xml;
+
 namespace Xoxo
 {
 	using System;
@@ -8,25 +10,30 @@ namespace Xoxo
 	public class TypedMemberCollection : Collection<TypedMember>, IEquatable<TypedMemberCollection>
 	{
 
-		private XbrlInstance instance;
+		private Xbrl instance;
 
 		[XmlIgnore]
-		public XbrlInstance Instance
+		public Xbrl Instance
 		{
 			get { return instance; }
 			set
 			{
 				instance = value;
+				var dimNs = instance.DimensionNamespace;
+				var dimPrefix = instance.Namespaces.LookupPrefix(dimNs);
+				var domNs = instance.TypedDomainNamespace;
+				var domprefix = instance.Namespaces.LookupPrefix(domNs);
+
 				foreach(var item in Items)
 				{
-					if(!item.Dimension.StartsWith(instance.DimensionPrefix))
+					if(item.Dimension.Namespace != instance.DimensionNamespace)
 					{
-						item.Dimension = Instance.DimensionPrefix + ":" + item.Dimension;
+						item.Dimension = new XmlQualifiedName(dimPrefix + ":" + item.Dimension.Name, dimNs);
 					}
 
-					if(!item.Domain.StartsWith(instance.TypedDomainPrefix))
+					if(item.Domain.Namespace != instance.TypedDomainNamespace)
 					{
-						item.Domain = Instance.TypedDomainPrefix + ":" + item.Domain;
+						item.Domain = new XmlQualifiedName(domprefix + ":" + item.Domain.Name, domNs);
 					}
 				}
 			}
@@ -37,14 +44,28 @@ namespace Xoxo
 			
 		}
 
-		public TypedMemberCollection(XbrlInstance instance) : this()
+		public TypedMemberCollection(Xbrl instance) : this()
 		{
 			this.Instance = instance;
 		}
 
 		public TypedMember Add(string dimension, string domain, string value)
 		{
-			var typedMember = new TypedMember(dimension, domain, value);
+
+			XmlQualifiedName dim;
+			XmlQualifiedName dom;
+			if(this.Instance != null)
+			{
+				dim = new XmlQualifiedName(dimension, this.Instance.DimensionNamespace);
+				dom = new XmlQualifiedName(domain, this.Instance.TypedDomainNamespace);
+			}
+			else
+			{
+				dim = new XmlQualifiedName(dimension);
+				dom = new XmlQualifiedName(domain);
+			}
+
+			var typedMember = new TypedMember(dim, dom, value);
 			base.Add(typedMember);
 			return typedMember;
 		}

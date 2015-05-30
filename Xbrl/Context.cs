@@ -57,12 +57,31 @@ namespace Xoxo
 
 		public bool Equals(Context other)
 		{
-			return (this.Entity == null || this.Entity.Equals(other.Entity))
-			&& (this.Period == null || this.Period.Equals(other.Period))
-			&& this.Scenario.Equals(other.Scenario);
+			var result = false;
+			if((this.Entity == null && other.Entity == null) || this.Entity.Equals(other.Entity))
+			{
+				if((this.Period == null && other.Period == null) || this.Period.Equals(other.Period))
+				{
+					if((this.Scenario == null && other.Scenario == null) || this.Scenario.Equals(other.Scenario))
+					{
+						result = true;
+					}
+				}
+			}
+			return result;
 		}
 
 		#endregion
+
+		public ExplicitMember AddExplicitMember(string dimension, string value)
+		{
+			return this.Scenario.ExplicitMembers.Add(dimension, value);
+		}
+
+		public TypedMember AddTypedMember(string dimension, string domain, string value)
+		{
+			return this.Scenario.TypedMembers.Add(dimension, domain, value);
+		}
 	}
 
 }

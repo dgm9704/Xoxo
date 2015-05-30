@@ -8,7 +8,7 @@ namespace Xoxo
 	{
 		private IFormatProvider ic = CultureInfo.InvariantCulture;
 
-		private XbrlInstance Instance;
+		private Xbrl Instance;
 
 		public string IdFormat { get; set; }
 
@@ -17,30 +17,44 @@ namespace Xoxo
 			this.IdFormat = "A{0}";
 		}
 
-		public ContextCollection(XbrlInstance instance) : this()
+		public ContextCollection(Xbrl instance) : this()
 		{
 			this.Instance = instance;
 		}
 
 		public new Context Add(Context context)
 		{
-			context.Entity = Instance.Entity;
-			context.Period = Instance.Period;
-
-			var exists = false;
-			foreach(var oldContext in this)
+			if(context.Entity == null)
 			{
-				if(context.Equals(oldContext))
-				{
-					exists = true;
-					context = oldContext;
-					break;
-				}
+				context.Entity = Instance.Entity;
 			}
 
-			if(!exists)
+			if(context.Period == null)
 			{
-				context.Id = NextId();
+				context.Period = Instance.Period;
+			}
+
+			if(string.IsNullOrEmpty(context.Id))
+			{
+				var exists = false;
+				foreach(var oldContext in this)
+				{
+					if(context.Equals(oldContext))
+					{
+						exists = true;
+						context = oldContext;
+						break;
+					}
+				}
+
+				if(!exists)
+				{
+					context.Id = NextId();
+					base.Add(context);
+				}
+			}
+			else
+			{
 				base.Add(context);
 			}
 
@@ -53,20 +67,20 @@ namespace Xoxo
 			string id;
 			do
 			{
-				id = string.Format(ic, this.IdFormat, ++counter);
+				id = string.Format(ic, this.IdFormat, counter++);
 			}
 			while(this.Contains(id));
 
 			return id;
 		}
 
-		public Context Add()
-		{
-			var id = NextId();
-			var context = new Context(id);
-			this.Add(context);
-			return context;
-		}
+		//		public Context Add()
+		//		{
+		//			var id = NextId();
+		//			var context = new Context(id);
+		//			this.Add(context);
+		//			return context;
+		//		}
 
 		protected override string GetKeyForItem(Context item)
 		{
@@ -76,7 +90,7 @@ namespace Xoxo
 		#region IEquatable implementation
 
 		public bool Equals(ContextCollection other)
-		{
+		{ 
 			var result = true;
 
 			if(this.Count != other.Count)

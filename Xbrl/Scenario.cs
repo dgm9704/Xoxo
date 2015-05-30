@@ -8,10 +8,10 @@ namespace Xoxo
 	[XmlRoot(ElementName = "scenario", Namespace = "http://www.xbrl.org/2003/instance")]
 	public class Scenario : IEquatable<Scenario>
 	{
-		private XbrlInstance instance;
+		private Xbrl instance;
 
 		[XmlIgnore]
-		public XbrlInstance Instance
+		public Xbrl Instance
 		{
 			get { return instance; }
 			set
@@ -34,7 +34,7 @@ namespace Xoxo
 			this.TypedMembers = new TypedMemberCollection();
 		}
 
-		public Scenario(XbrlInstance instance)
+		public Scenario(Xbrl instance)
 		{
 			this.ExplicitMembers = new ExplicitMemberCollection(instance);
 			this.TypedMembers = new TypedMemberCollection(instance);
@@ -50,7 +50,16 @@ namespace Xoxo
 		}
 
 		#endregion
+
+		public ExplicitMember AddExplicitMember(string dimension, string value)
+		{
+			return this.ExplicitMembers.Add(dimension, value);
+		}
+
+		public TypedMember AddTypedMember(string dimension, string domain, string value)
+		{
+			return this.TypedMembers.Add(dimension, domain, value);
+		}
+
 	}
-
-
 }
