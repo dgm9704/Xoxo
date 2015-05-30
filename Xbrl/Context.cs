@@ -21,14 +21,36 @@ namespace Xoxo
 		[XmlElement("scenario", Namespace = "http://www.xbrl.org/2003/instance")]
 		public Scenario Scenario { get; set; }
 
+		public bool ShouldSerializeScenario()
+		{
+			return Scenario != null &&
+			((Scenario.ExplicitMembers != null && Scenario.ExplicitMembers.Count != 0)
+			|| (Scenario.TypedMembers != null && Scenario.TypedMembers.Count != 0));
+		}
+
+		public bool ScenarioSpecified
+		{
+			get
+			{
+				return Scenario != null &&
+				((Scenario.ExplicitMembers != null && Scenario.ExplicitMembers.Count != 0)
+				|| (Scenario.TypedMembers != null && Scenario.TypedMembers.Count != 0));
+			}
+		}
+
 		public Context()
 		{
-			this.Scenario = new Scenario();
+			//this.Scenario = new Scenario();
 		}
 
 		public Context(string id) : this()
 		{
 			this.Id = id;
+		}
+
+		public Context(Scenario scenario)
+		{
+			this.Scenario = scenario;
 		}
 
 		#region IEquatable implementation

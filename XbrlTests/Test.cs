@@ -1,7 +1,9 @@
 ﻿namespace XbrlTests
 {
 	using System;
+	using System.Collections.ObjectModel;
 	using System.IO;
+	using System.Xml;
 	using System.Xml.Serialization;
 	using NUnit.Framework;
 	using Xoxo;
@@ -9,38 +11,39 @@
 	[TestFixture]
 	public class Test
 	{
+		//		[Test]
+		//		public void Foo()
+		//		{
+		//			string e = "bar";
+		//			var x = new XmlQualifiedName(e);
+		//			if(string.IsNullOrEmpty(x.Namespace))
+		//			{
+		//				x.
+		//			}
+		//
+		//		}
+
 		[Test]
 		public void WriteReferenceInstance()
 		{
-			var xbrl = new XbrlInstance();
+			var instance = XbrlHelper.CreateInstance(Framework.SolvencyII, Module.AnnualSolo);
 
-			xbrl.ContextEntity = new Entity("http://standards.iso.org/iso/17442", "1234567890ABCDEFGHIJ");
-			xbrl.ContextPeriod = new Period(new DateTime(2014, 12, 31));
-			xbrl.SchemaReference = new SchemaReference("simple", "http://eiopa.europa.eu/eu/xbrl/s2md/fws/solvency/solvency2/2014-12-23/mod/ars.xsd");
-			xbrl.FactNamespace = "http://eiopa.europa.eu/xbrl/s2md/dict/met";
+			instance.Entity = new Entity("http://standards.iso.org/iso/17442", "1234567890ABCDEFGHIJ");
+			instance.Period = new Period(2014, 12, 31);
 
-			var context = xbrl.Contexts.Add();
-			xbrl.FilingIndicators.Add(context.Id, "S.01.01.01");
-			xbrl.FilingIndicators.Add(context.Id, "S.02.02.01");
+			instance.AddFilingIndicator("S.01.01.01");
+			instance.AddFilingIndicator("S.02.02.01");
 
-			context = new Context();
+			var scenario = new Scenario();
 
-			context.Scenario.ExplicitMembers.Add("eba_dim:CS", "s2c_CS:x26");
-			context.Scenario.TypedMembers.Add("eba_dim:CE", "s2c_typ:ID", "abc");
+			scenario.AddExplicitMember("eba_dim:CS", "s2c_CS:x26");
+			scenario.AddTypedMember("eba_dim:CE", "s2c_typ:ID", "abc");
 
-			var id = xbrl.Contexts.Add(context);
+			instance.AddFact(scenario, "pi545", "uPURE", "4", "0.2547");
+			instance.AddFact(scenario, "mi363", "uEUR", "-3", "45345");
 
-			xbrl.Facts.Add("s2md_met:pi545", "uPURE", "4", id, "0.2547");
-			xbrl.Facts.Add("s2md_met:mi363", "uEUR", "-3", id, "45345");
-
-			var newContext = new Context();
-
-			newContext.Scenario.ExplicitMembers.Add("eba_dim:CS", "s2c_CS:x26");
-			newContext.Scenario.TypedMembers.Add("eba_dim:CE", "s2c_typ:ID", "abc");
-
-			id = xbrl.Contexts.Add(context);
 			var path = @"output.xbrl";
-			xbrl.ToFile(path);
+			instance.ToFile(path);
 		}
 
 		[Test]

@@ -7,9 +7,18 @@ namespace Xoxo
 
 	public class TypedMemberCollection : Collection<TypedMember>, IEquatable<TypedMemberCollection>
 	{
-		public void Add(string dimension, string domain, string value)
+		private XbrlInstance Instance;
+
+		public TypedMemberCollection(XbrlInstance instance)
 		{
-			base.Add(new TypedMember(dimension, domain, value));
+			this.Instance = instance;
+		}
+
+		public TypedMember Add(string dimension, string domain, string value)
+		{
+			var typedMember = new TypedMember(dimension, domain, value);
+			base.Add(typedMember);
+			return typedMember;
 		}
 
 		#region IEquatable implementation

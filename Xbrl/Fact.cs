@@ -33,16 +33,17 @@ namespace Xoxo
 		{
 		}
 
-		public Fact(string metric, string unit, string decimals, string context, string value) : this()
+		public Fact(Context context, string metric, string unit, string decimals, string value) : this()
 		{
 			this.Metric = metric;
 			this.Unit = unit;
 			this.Decimals = decimals;
-			this.Context = context;
+			this.Context = context.Id;
 			this.Value = value;
 		}
 
-		public Fact(string metric, string unit, string decimals, string context, string value, string namespaceUri) : this(metric, unit, decimals, context, value)
+		public Fact(Context context, string metric, string unit, string decimals, string value, string namespaceUri)
+			: this(context, metric, unit, decimals, value)
 		{
 			this.NamespaceUri = namespaceUri;
 		}

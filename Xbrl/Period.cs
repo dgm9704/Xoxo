@@ -21,6 +21,11 @@ namespace Xoxo
 			this.Instant = instant;
 		}
 
+		public Period(int year, int month, int day) : this()
+		{
+			this.Instant = new DateTime(year, month, day);
+		}
+
 		#region IEquatable implementation
 
 		public bool Equals(Period other)

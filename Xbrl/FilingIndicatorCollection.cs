@@ -1,11 +1,13 @@
+using System.Xml.Schema;
+using System.Xml;
+using System.Collections.Generic;
+using System;
+using System.Xml.Serialization;
+using System.Collections.ObjectModel;
+
 namespace Xoxo
 {
-	using System.Xml.Schema;
-	using System.Xml;
-	using System.Collections.Generic;
-	using System;
-	using System.Xml.Serialization;
-	using System.Collections.ObjectModel;
+
 
 	public class FilingIndicatorCollection : Collection<FilingIndicator> , IEquatable<FilingIndicatorCollection>
 	{
@@ -16,9 +18,11 @@ namespace Xoxo
 			this.Instance = instance;
 		}
 
-		public void Add(string contextId, string value)
+		public FilingIndicator Add(Context context, string value)
 		{
-			base.Add(new FilingIndicator(contextId, value));
+			var filingIndicator = new FilingIndicator(context, value);
+			base.Add(filingIndicator);
+			return filingIndicator;
 		}
 
 		#region IEquatable implementation

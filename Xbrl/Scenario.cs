@@ -16,8 +16,8 @@ namespace Xoxo
 
 		public Scenario()
 		{
-			this.ExplicitMembers = new ExplicitMemberCollection();
-			this.TypedMembers = new TypedMemberCollection();
+			this.ExplicitMembers = new ExplicitMemberCollection(this.Instance);
+			this.TypedMembers = new TypedMemberCollection(this.Instance);
 		}
 
 
@@ -25,7 +25,8 @@ namespace Xoxo
 
 		public bool Equals(Scenario other)
 		{
-			return this.ExplicitMembers.Equals(other.ExplicitMembers)
+			return other != null
+			&& this.ExplicitMembers.Equals(other.ExplicitMembers)
 			&& this.TypedMembers.Equals(other.TypedMembers);
 		}
 

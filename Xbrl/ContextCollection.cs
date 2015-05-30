@@ -22,10 +22,10 @@ namespace Xoxo
 			this.Instance = instance;
 		}
 
-		public new string Add(Context context)
+		public new Context Add(Context context)
 		{
-			context.Entity = Instance.ContextEntity;
-			context.Period = Instance.ContextPeriod;
+			context.Entity = Instance.Entity;
+			context.Period = Instance.Period;
 
 			var exists = false;
 			foreach(var oldContext in this)
@@ -44,7 +44,7 @@ namespace Xoxo
 				base.Add(context);
 			}
 
-			return context.Id;
+			return context;
 		}
 
 		public string NextId()

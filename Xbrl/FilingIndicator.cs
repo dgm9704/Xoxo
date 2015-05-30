@@ -18,9 +18,9 @@ namespace Xoxo
 		{
 		}
 
-		public FilingIndicator(string contextId, string value) : this()
+		public FilingIndicator(Context context, string value) : this()
 		{
-			this.ContextId = contextId;
+			this.ContextId = context.Id;
 			this.Value = value;
 		}
 

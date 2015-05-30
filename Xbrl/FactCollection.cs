@@ -15,9 +15,21 @@ namespace Xoxo
 			this.Instance = instance;
 		}
 
-		public void Add(string metric, string unit, string decimals, string context, string value)
+		public Fact Add(Context context, string metric, string unit, string decimals, string value)
 		{
-			base.Add(new Fact(metric, unit, decimals, context, value, Instance.FactNamespace));
+			if(!metric.StartsWith(Instance.FactPrefix))
+			{
+				metric = Instance.FactPrefix + ":" + metric;
+			}
+			var fact = new Fact(context, metric, unit, decimals, value, Instance.FactNamespace);
+			base.Add(fact);
+			return fact;
+		}
+
+		public Fact Add(Scenario scenario, string metric, string unit, string decimals, string value)
+		{
+			var context = Instance.GetContext(scenario);
+			return Add(context, metric, unit, decimals, value);
 		}
 
 		#region IEquatable implementation
