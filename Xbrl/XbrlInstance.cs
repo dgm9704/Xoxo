@@ -33,14 +33,29 @@
 		[XmlIgnore]
 		public string TaxonomyVersion { get; set; }
 
+		private XmlDocument doc = new XmlDocument();
+		private XmlProcessingInstruction processingInstruction;
+
+		[XmlAnyElement]
+		public XmlProcessingInstruction[] ProcessingInstruction
+		{
+			get
+			{
+				var result = new List<XmlProcessingInstruction>();
+				if(processingInstruction == null)
+				{
+					processingInstruction = doc.CreateProcessingInstruction("taxonomy-version", this.TaxonomyVersion);
+				}
+				result.Add(processingInstruction);
+				return result.ToArray();
+			}
+		}
+
 		[XmlElement("schemaRef", Namespace = "http://www.xbrl.org/2003/linkbase")]
 		public SchemaReference SchemaReference { get; set; }
 
-		[XmlIgnore]
-		public UnitCollection Units { get; set; }
-
 		[XmlElement("unit", Namespace = "http://www.xbrl.org/2003/instance")]
-		public Collection<Unit> UsedUnit { get { return Units.UsedUnits(); } set { throw new NotImplementedException(); } }
+		public UnitCollection Units { get; set; }
 
 		[XmlArray("fIndicators", Namespace = "http://www.eurofiling.info/xbrl/ext/filing-indicators")]
 		[XmlArrayItem("filingIndicator", Namespace = "http://www.eurofiling.info/xbrl/ext/filing-indicators")]
@@ -150,11 +165,9 @@
 		public void ToFile(string path)
 		{
 			var xmlns = new XmlSerializerNamespaces(this.Namespaces.ToArray());
-			var settings = new XmlWriterSettings{ Indent = true, NamespaceHandling = NamespaceHandling.OmitDuplicates };
-			using(var writer = XmlWriter.Create(path, settings))
+			using(var outputFile = new FileStream(path, FileMode.Create))
 			{
-				writer.WriteProcessingInstruction("taxonomy-version", this.TaxonomyVersion);
-				Serializer.Serialize(writer, this, xmlns);
+				Serializer.Serialize(outputFile, this, xmlns);
 			}
 		}
 
