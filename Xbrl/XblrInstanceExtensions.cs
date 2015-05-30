@@ -28,6 +28,13 @@ namespace Xoxo
 
 		public static Fact AddFact(this XbrlInstance instance, Scenario scenario, string metric, string unit, string decimals, string value)
 		{
+			scenario.Instance = instance;
+
+			if(!metric.StartsWith(instance.FactPrefix))
+			{
+				metric = instance.FactPrefix + ":" + metric;
+			}
+
 			return instance.Facts.Add(scenario, metric, unit, decimals, value);
 		}
 	}

@@ -9,16 +9,37 @@ namespace Xoxo
 
 	public class ExplicitMemberCollection : Collection<ExplicitMember>, IEquatable<ExplicitMemberCollection>
 	{
-		private XbrlInstance Instance;
+		private XbrlInstance instance;
 
-		public ExplicitMemberCollection(XbrlInstance instance)
+		[XmlIgnore]
+		public XbrlInstance Instance
+		{
+			get { return instance; }
+			set
+			{
+				instance = value;
+				foreach(var item in Items)
+				{
+					if(!item.Dimension.StartsWith(instance.DimensionPrefix))
+					{
+						item.Dimension = Instance.DimensionPrefix + ":" + item.Dimension;
+					}
+				}
+			}
+		}
+
+		public ExplicitMemberCollection()
+		{
+		}
+
+		public ExplicitMemberCollection(XbrlInstance instance) : this()
 		{
 			this.Instance = instance;
 		}
 
 		public ExplicitMember Add(string dimension, string value)
 		{
-			if(!dimension.StartsWith(Instance.DimensionPrefix))
+			if(this.Instance != null && !dimension.StartsWith(this.Instance.DimensionPrefix))
 			{
 				dimension = Instance.DimensionPrefix + ":" + dimension;
 			}

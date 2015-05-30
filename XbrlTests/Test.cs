@@ -11,22 +11,10 @@
 	[TestFixture]
 	public class Test
 	{
-		//		[Test]
-		//		public void Foo()
-		//		{
-		//			string e = "bar";
-		//			var x = new XmlQualifiedName(e);
-		//			if(string.IsNullOrEmpty(x.Namespace))
-		//			{
-		//				x.
-		//			}
-		//
-		//		}
-
 		[Test]
 		public void WriteReferenceInstance()
 		{
-			var instance = XbrlHelper.CreateInstance(Framework.SolvencyII, Module.AnnualSolo);
+			var instance = XbrlInstance.Create(Framework.SolvencyII, Module.AnnualSolo);
 
 			instance.Entity = new Entity("http://standards.iso.org/iso/17442", "1234567890ABCDEFGHIJ");
 			instance.Period = new Period(2014, 12, 31);
@@ -36,8 +24,8 @@
 
 			var scenario = new Scenario();
 
-			scenario.AddExplicitMember("eba_dim:CS", "s2c_CS:x26");
-			scenario.AddTypedMember("eba_dim:CE", "s2c_typ:ID", "abc");
+			scenario.AddExplicitMember("CS", "s2c_CS:x26");
+			scenario.AddTypedMember("CE", "ID", "abc");
 
 			instance.AddFact(scenario, "pi545", "uPURE", "4", "0.2547");
 			instance.AddFact(scenario, "mi363", "uEUR", "-3", "45345");
