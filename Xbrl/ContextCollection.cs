@@ -1,118 +1,110 @@
 namespace Xoxo
 {
-	using System;
-	using System.Collections.ObjectModel;
-	using System.Globalization;
+    using System.Collections.ObjectModel;
+    using System;
+    using System.Globalization;
 
-	public class ContextCollection : KeyedCollection<string, Context>, IEquatable<ContextCollection>
-	{
-		private IFormatProvider ic = CultureInfo.InvariantCulture;
+    public class ContextCollection : KeyedCollection<string, Context>, IEquatable<ContextCollection>
+    {
+        private IFormatProvider ic = CultureInfo.InvariantCulture;
 
-		private Xbrl Instance;
+        private Xbrl Instance;
 
-		public string IdFormat { get; set; }
+        public string IdFormat { get; set; }
 
-		public ContextCollection()
-		{
-			this.IdFormat = "A{0}";
-		}
+        public ContextCollection()
+        {
+            this.IdFormat = "A{0}";
+        }
 
-		public ContextCollection(Xbrl instance) : this()
-		{
-			this.Instance = instance;
-		}
+        public ContextCollection(Xbrl instance)
+            : this()
+        {
+            this.Instance = instance;
+        }
 
-		public new Context Add(Context context)
-		{
-			if(context.Entity == null)
-			{
-				context.Entity = Instance.Entity;
-			}
+        public new Context Add(Context context)
+        {
+            if (context.Entity == null)
+            {
+                context.Entity = Instance.Entity;
+            }
 
-			if(context.Period == null)
-			{
-				context.Period = Instance.Period;
-			}
+            if (context.Period == null)
+            {
+                context.Period = Instance.Period;
+            }
 
-			if(string.IsNullOrEmpty(context.Id))
-			{
-				var exists = false;
-				foreach(var oldContext in this)
-				{
-					if(context.Equals(oldContext))
-					{
-						exists = true;
-						context = oldContext;
-						break;
-					}
-				}
+            if (string.IsNullOrEmpty(context.Id))
+            {
+                var exists = false;
+                foreach (var oldContext in this)
+                {
+                    if (context.Equals(oldContext))
+                    {
+                        exists = true;
+                        context = oldContext;
+                        break;
+                    }
+                }
 
-				if(!exists)
-				{
-					context.Id = NextId();
-					base.Add(context);
-				}
-			}
-			else
-			{
-				base.Add(context);
-			}
+                if (!exists)
+                {
+                    context.Id = NextId();
+                    base.Add(context);
+                }
+            }
+            else
+            {
+                base.Add(context);
+            }
 
-			return context;
-		}
+            return context;
+        }
 
-		public string NextId()
-		{
-			var counter = this.Count;
-			string id;
-			do
-			{
-				id = string.Format(ic, this.IdFormat, counter++);
-			}
-			while(this.Contains(id));
+        public string NextId()
+        {
+            var counter = this.Count;
+            string id;
+            do
+            {
+                id = string.Format(ic, this.IdFormat, counter++);
+            }
+            while(this.Contains(id));
 
-			return id;
-		}
+            return id;
+        }
 
-		//		public Context Add()
-		//		{
-		//			var id = NextId();
-		//			var context = new Context(id);
-		//			this.Add(context);
-		//			return context;
-		//		}
+        protected override string GetKeyForItem(Context item)
+        {
+            return item.Id;
+        }
 
-		protected override string GetKeyForItem(Context item)
-		{
-			return item.Id;
-		}
+        #region IEquatable implementation
 
-		#region IEquatable implementation
+        public bool Equals(ContextCollection other)
+        { 
+            var result = true;
 
-		public bool Equals(ContextCollection other)
-		{ 
-			var result = true;
+            if (this.Count != other.Count)
+            {
+                result = false;
+            }
+            else
+            {
+                for (int i = 0; i < this.Count; i++)
+                {
+                    if (!this[i].Equals(other[i]))
+                    {
+                        result = false;
+                        break;
+                    }
+                }
+            }
 
-			if(this.Count != other.Count)
-			{
-				result = false;
-			}
-			else
-			{
-				for(int i = 0; i < this.Count; i++)
-				{
-					if(!this[i].Equals(other[i]))
-					{
-						result = false;
-						break;
-					}
-				}
-			}
+            return result;
+        }
 
-			return result;
-		}
-
-		#endregion
-	}
-
+        #endregion
+    }
 }

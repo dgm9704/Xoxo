@@ -2,13 +2,11 @@ namespace Xoxo
 {
     using System;
     using System.Xml.Serialization;
-    using System.Collections.ObjectModel;
 
     [Serializable]
     [XmlRoot(ElementName = "context", Namespace = "http://www.xbrl.org/2003/instance")]
     public class Context : IEquatable<Context>
     {
-
         [XmlAttribute("id", Namespace = "http://www.xbrl.org/2003/instance")]
         public string Id { get; set; }
 
@@ -40,7 +38,6 @@ namespace Xoxo
 
         public Context()
         {
-            //this.Scenario = new Scenario();
         }
 
         public Context(string id)
@@ -84,5 +81,4 @@ namespace Xoxo
             return this.Scenario.TypedMembers.Add(dimension, domain, value);
         }
     }
-
 }
