@@ -1,9 +1,9 @@
-﻿namespace XbrlTests
+﻿namespace Diwen.Xbrl.Tests
 {
     using System;
     using System.IO;
+    using Diwen.Xbrl;
     using NUnit.Framework;
-    using Xoxo;
 
     [TestFixture]
     public class Test

@@ -1,4 +1,4 @@
-﻿namespace Xoxo
+﻿namespace Diwen.Xbrl
 {
 	using System.Xml.Serialization;
 	using System.Xml;

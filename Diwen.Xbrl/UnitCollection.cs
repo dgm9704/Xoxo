@@ -1,4 +1,4 @@
-namespace Xoxo
+namespace Diwen.Xbrl
 {
     using System.Collections.Generic;
     using System;
