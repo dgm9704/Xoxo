@@ -18,7 +18,7 @@ namespace Diwen.Xbrl
 
         public TypedMember()
         {
-	
+
         }
 
         public TypedMember(XmlQualifiedName dimension, XmlQualifiedName domain, string value)
@@ -38,6 +38,10 @@ namespace Diwen.Xbrl
 
         public void ReadXml(XmlReader reader)
         {
+            if (reader == null)
+            {
+                throw new ArgumentNullException("reader");
+            }
             reader.MoveToContent();
             var dim = reader.GetAttribute("dimension");
             var idx = dim.IndexOf(':');
@@ -53,8 +57,20 @@ namespace Diwen.Xbrl
 
         public void WriteXml(XmlWriter writer)
         {
+            if (writer == null)
+            {
+                throw new ArgumentNullException("writer");
+            }
             writer.WriteAttributeString("dimension", this.Dimension.Name);
-            writer.WriteElementString(this.Domain.Name, this.Value);
+
+            // This is needed for vanilla .NET
+            var idx = this.Domain.Name.IndexOf(':');
+            var prefix = this.Domain.Name.Substring(0, idx);
+            var localName = this.Domain.Name.Substring(idx + 1);
+            writer.WriteElementString(prefix, localName, this.Domain.Namespace, this.Value);
+
+            // Mono happily takes the prefixed name
+            // writer.WriteElementString(this.Domain.Name, this.Value);
         }
 
         public override int GetHashCode()
@@ -70,7 +86,8 @@ namespace Diwen.Xbrl
 
         public bool Equals(TypedMember other)
         {
-            return this.Dimension == other.Dimension
+            return other != null
+            && this.Dimension == other.Dimension
             && this.Domain == other.Domain
             && this.Value == other.Value;
         }
@@ -81,18 +98,79 @@ namespace Diwen.Xbrl
 
         public int CompareTo(TypedMember other)
         {
-            int result = this.Dimension.Name.CompareTo(other.Dimension.Name);
-            if (result == 0)
+            int result = 0;
+            if (other == null)
             {
-                result = this.Domain.Name.CompareTo(other.Domain.Name);
+                result = -1;
             }
-            if (result == 0)
+            else
             {
-                result = this.Value.CompareTo(other.Value);
+                result = string.Compare(this.Dimension.Name, other.Dimension.Name, StringComparison.OrdinalIgnoreCase);
+                if (result == 0)
+                {
+                    result = string.Compare(this.Domain.Name, other.Domain.Name, StringComparison.OrdinalIgnoreCase);
+                }
+                if (result == 0)
+                {
+                    result = string.Compare(this.Value, other.Value, StringComparison.OrdinalIgnoreCase);
+                }
             }
             return result;
         }
 
         #endregion
+
+        public static bool operator ==(TypedMember left, TypedMember right)
+        {
+            // If both are null, or both are same instance, return true.
+            if (object.ReferenceEquals(left, right))
+            {
+                return true;
+            }
+
+            // If one is null, but not both, return false.
+            if (((object)left == null) || ((object)right == null))
+            {
+                return false;
+            }
+
+            // Return true if the fields match:
+            return left.Equals(right);
+        }
+
+        public static bool operator !=(TypedMember left, TypedMember right)
+        {
+            // If one is null, but not both, return true.
+            if (((object)left == null) || ((object)right == null))
+            {
+                return true;
+            }
+            return !left.Equals(right);
+        }
+
+        public override bool Equals(object obj)
+        {
+            return this.Equals(obj as TypedMember);
+        }
+
+        public static bool operator >(TypedMember left, TypedMember right)
+        {
+            // If both are null, or both are same instance, return false.
+            if (object.ReferenceEquals(left, right))
+            {
+                return false;
+            }
+            return left != null && left.CompareTo(right) > 0;
+        }
+
+        public static bool operator <(TypedMember left, TypedMember right)
+        {
+            // If both are null, or both are same instance, return false.
+            if (object.ReferenceEquals(left, right))
+            {
+                return false;
+            }
+            return right != null && right.CompareTo(left) > 0;
+        }
     }
 }

@@ -56,13 +56,16 @@ namespace Diwen.Xbrl
         public bool Equals(Context other)
         {
             var result = false;
-            if ((this.Entity == null && other.Entity == null) || this.Entity.Equals(other.Entity))
+            if (other != null)
             {
-                if ((this.Period == null && other.Period == null) || this.Period.Equals(other.Period))
+                if ((this.Entity == null && other.Entity == null) || this.Entity.Equals(other.Entity))
                 {
-                    if ((this.Scenario == null && other.Scenario == null) || this.Scenario.Equals(other.Scenario))
+                    if ((this.Period == null && other.Period == null) || this.Period.Equals(other.Period))
                     {
-                        result = true;
+                        if ((this.Scenario == null && other.Scenario == null) || this.Scenario.Equals(other.Scenario))
+                        {
+                            result = true;
+                        }
                     }
                 }
             }

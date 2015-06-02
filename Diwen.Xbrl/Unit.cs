@@ -15,7 +15,7 @@ namespace Diwen.Xbrl
 
         public Unit()
         {
-			
+
         }
 
         public Unit(string id, string measure)
@@ -29,7 +29,8 @@ namespace Diwen.Xbrl
 
         public bool Equals(Unit other)
         {
-            return this.Id.Equals(other.Id)
+            return other != null
+            && this.Id.Equals(other.Id)
             && this.Measure.Equals(other.Measure);
         }
 

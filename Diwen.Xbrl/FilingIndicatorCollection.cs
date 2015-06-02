@@ -1,12 +1,12 @@
 namespace Diwen.Xbrl
 {
-    using System.Collections.ObjectModel;
     using System;
+    using System.Collections.ObjectModel;
 
-    public class FilingIndicatorCollection : Collection<FilingIndicator> , IEquatable<FilingIndicatorCollection>
+    public class FilingIndicatorCollection : Collection<FilingIndicator>, IEquatable<FilingIndicatorCollection>
     {
 
-        public FilingIndicatorCollection(Xbrl instance)
+        public FilingIndicatorCollection(Instance instance)
         {
         }
 
@@ -23,18 +23,25 @@ namespace Diwen.Xbrl
         {
             var result = true;
 
-            if (this.Count != other.Count)
+            if (other == null)
             {
                 result = false;
             }
             else
             {
-                for (int i = 0; i < this.Count; i++)
+                if (this.Count != other.Count)
                 {
-                    if (!this[i].Equals(other[i]))
+                    result = false;
+                }
+                else
+                {
+                    for (int i = 0; i < this.Count; i++)
                     {
-                        result = false;
-                        break;
+                        if (!this[i].Equals(other[i]))
+                        {
+                            result = false;
+                            break;
+                        }
                     }
                 }
             }

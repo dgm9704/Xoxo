@@ -1,22 +1,26 @@
 namespace Diwen.Xbrl
 {
-    using System.Collections.ObjectModel;
     using System;
-    using System.Xml.Serialization;
-    using System.Xml;
+    using System.Collections.ObjectModel;
     using System.Linq;
+    using System.Xml;
+    using System.Xml.Serialization;
 
     public class TypedMemberCollection : Collection<TypedMember>, IEquatable<TypedMemberCollection>
     {
 
-        private Xbrl instance;
+        private Instance instance;
 
         [XmlIgnore]
-        public Xbrl Instance
+        public Instance Instance
         {
             get { return instance; }
             set
             {
+                if (value == null)
+                {
+                    throw new ArgumentNullException("value");
+                }
                 instance = value;
                 var dimNs = instance.DimensionNamespace;
                 var dimPrefix = instance.Namespaces.LookupPrefix(dimNs);
@@ -40,10 +44,10 @@ namespace Diwen.Xbrl
 
         public TypedMemberCollection()
         {
-			
+
         }
 
-        public TypedMemberCollection(Xbrl instance)
+        public TypedMemberCollection(Instance instance)
             : this()
         {
             this.Instance = instance;

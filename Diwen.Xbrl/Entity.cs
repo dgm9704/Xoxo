@@ -23,7 +23,7 @@ namespace Diwen.Xbrl
 
         public bool Equals(Entity other)
         {
-            return this.Identifier.Equals(other.Identifier);
+            return other != null && this.Identifier.Equals(other.Identifier);
         }
 
         #endregion

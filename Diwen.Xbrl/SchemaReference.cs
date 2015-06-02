@@ -28,8 +28,9 @@ namespace Diwen.Xbrl
 
         public bool Equals(SchemaReference other)
         {
-            return this.Type.Equals(other.Type)
-            && this.Value.Equals(other.Value);
+            return other != null
+                && this.Type.Equals(other.Type)
+                && this.Value.Equals(other.Value);
         }
 
         #endregion

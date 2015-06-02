@@ -12,7 +12,7 @@ namespace Diwen.Xbrl
 
         public Period()
         {
-			
+
         }
 
         public Period(DateTime instant)
@@ -31,7 +31,7 @@ namespace Diwen.Xbrl
 
         public bool Equals(Period other)
         {
-            return this.Instant.Equals(other.Instant);
+            return other != null && this.Instant.Equals(other.Instant);
         }
 
         #endregion

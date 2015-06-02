@@ -7,10 +7,10 @@ namespace Diwen.Xbrl
     [XmlRoot(ElementName = "scenario", Namespace = "http://www.xbrl.org/2003/instance")]
     public class Scenario : IEquatable<Scenario>
     {
-        private Xbrl instance;
+        private Instance instance;
 
         [XmlIgnore]
-        public Xbrl Instance
+        public Instance Instance
         {
             get { return instance; }
             set
@@ -33,7 +33,7 @@ namespace Diwen.Xbrl
             this.TypedMembers = new TypedMemberCollection();
         }
 
-        public Scenario(Xbrl instance)
+        public Scenario(Instance instance)
         {
             this.ExplicitMembers = new ExplicitMemberCollection(instance);
             this.TypedMembers = new TypedMemberCollection(instance);

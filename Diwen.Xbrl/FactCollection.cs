@@ -1,14 +1,16 @@
 namespace Diwen.Xbrl
 {
-    using System.Collections.ObjectModel;
     using System;
+    using System.Collections.ObjectModel;
+    using System.Globalization;
     using System.Linq;
 
-    public class FactCollection : Collection<Fact> , IEquatable<FactCollection>
+    public class FactCollection : Collection<Fact>, IEquatable<FactCollection>
     {
-        private Xbrl Instance;
+        private Instance Instance;
+        private static IFormatProvider ic = CultureInfo.InvariantCulture;
 
-        public FactCollection(Xbrl instance)
+        public FactCollection(Instance instance)
         {
             this.Instance = instance;
         }
@@ -22,7 +24,7 @@ namespace Diwen.Xbrl
             {
                 if (!this.Instance.Units.Exists(u => u.Id == unit))
                 {
-                    throw new InvalidOperationException(string.Format("Referenced unit '{0}' does not exist", unit));
+                    throw new InvalidOperationException(string.Format(ic, "Referenced unit '{0}' does not exist", unit));
                 }
             }
 
@@ -40,7 +42,7 @@ namespace Diwen.Xbrl
         #region IEquatable implementation
 
         public bool Equals(FactCollection other)
-        { 
+        {
             return this.SequenceEqual(other);
         }
 

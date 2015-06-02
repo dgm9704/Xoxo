@@ -6,14 +6,14 @@ namespace Diwen.Xbrl
 
     public class UnitCollection : List<Unit>, IEquatable<UnitCollection>
     {
-        private Xbrl Instance;
+        private Instance Instance;
 
         public UnitCollection()
         {
 
         }
 
-        public UnitCollection(Xbrl instance)
+        public UnitCollection(Instance instance)
             : this()
         {
             this.Instance = instance;

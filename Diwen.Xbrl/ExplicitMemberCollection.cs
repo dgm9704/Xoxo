@@ -2,16 +2,18 @@ namespace Diwen.Xbrl
 {
     using System;
     using System.Collections.ObjectModel;
+    using System.Globalization;
     using System.Linq;
     using System.Xml;
     using System.Xml.Serialization;
 
     public class ExplicitMemberCollection : Collection<ExplicitMember>, IEquatable<ExplicitMemberCollection>
     {
-        private Xbrl instance;
+        private Instance instance;
+        private IFormatProvider ic = CultureInfo.InvariantCulture;
 
         [XmlIgnore]
-        public Xbrl Instance
+        public Instance Instance
         {
             get { return instance; }
             set
@@ -40,7 +42,7 @@ namespace Diwen.Xbrl
                         }
                         else if (this.Instance.CheckExplicitMemberDomainExists)
                         {
-                            throw new InvalidOperationException(string.Format("No namespace declared for domain '{0}'", valPrefix));
+                            throw new InvalidOperationException(string.Format(ic, "No namespace declared for domain '{0}'", valPrefix));
                         }
                     }
                 }
@@ -51,14 +53,25 @@ namespace Diwen.Xbrl
         {
         }
 
-        public ExplicitMemberCollection(Xbrl instance)
+        public ExplicitMemberCollection(Instance instance)
             : this()
         {
             this.Instance = instance;
         }
 
+
         public ExplicitMember Add(string dimension, string value)
         {
+            if (string.IsNullOrEmpty(dimension))
+            {
+                throw new ArgumentOutOfRangeException("dimension");
+            }
+
+            if (string.IsNullOrEmpty(value))
+            {
+                throw new ArgumentOutOfRangeException("value");
+            }
+
             XmlQualifiedName dim;
             XmlQualifiedName val;
 
@@ -71,7 +84,7 @@ namespace Diwen.Xbrl
                 {
                     if (string.IsNullOrEmpty(valNs))
                     {
-                        throw new InvalidOperationException(string.Format("No namespace declared for domain '{0}'", valPrefix));
+                        throw new InvalidOperationException(string.Format(ic, "No namespace declared for domain '{0}'", valPrefix));
                     }
                 }
 

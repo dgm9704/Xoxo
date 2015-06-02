@@ -1,17 +1,17 @@
 ﻿namespace Diwen.Xbrl.Tests
 {
-    using System;
-    using System.IO;
     using Diwen.Xbrl;
     using NUnit.Framework;
+    using System;
+    using System.IO;
 
     [TestFixture]
     public class Test
     {
-        static Xbrl CreateSolvencyInstance()
+        static Instance CreateSolvencyInstance()
         {
             // Sets default namespaces and units PURE, EUR
-            var instance = new Xbrl();
+            var instance = new Instance();
 
             // Enable some runtime checks
             // When fact is added, checks that the referenced unit exists in the instance
@@ -99,7 +99,7 @@
         }
 
         [Test]
-        public void WriteSolvencyInstance()
+        public static void WriteSolvencyInstance()
         {
             var instance = CreateSolvencyInstance();
             // Write the instace to a file
@@ -108,23 +108,23 @@
         }
 
         [Test]
-        public void ReadSolvencyReferenceInstance()
+        public static void ReadSolvencyReferenceInstance()
         {
             var path = Path.Combine("data", "reference.xbrl.xml");
-            var referenceInstance = Xbrl.FromFile(path);
+            var referenceInstance = Instance.FromFile(path);
             Assert.IsNotNull(referenceInstance);
         }
 
         [Test]
-        public void CompareSolvencyReferenceInstance()
+        public static void CompareSolvencyReferenceInstance()
         {
-            var instance = CreateSolvencyInstance(); 
+            var instance = CreateSolvencyInstance();
 
             // They aren't automatically removed until serialization so do it before comparisons
             instance.RemoveUnusedObjects();
 
             var referencePath = Path.Combine("data", "reference.xbrl.xml");
-            var referenceInstance = Xbrl.FromFile(referencePath);
+            var referenceInstance = Instance.FromFile(referencePath);
 
             // Instances are functionally equivalent:
             // They have the same number of contexts and scenarios of the contexts match member-by-member
@@ -137,7 +137,7 @@
             var tempFile = @"temp.xbrl";
             instance.ToFile(tempFile);
 
-            var newInstance = Xbrl.FromFile(tempFile);
+            var newInstance = Instance.FromFile(tempFile);
 
             Assert.AreEqual(newInstance, instance);
 
@@ -149,15 +149,15 @@
         }
 
         [Test]
-        public void RoundtripCompareExampleInstanceArs()
+        public static void RoundtripCompareExampleInstanceArs()
         {
             var inputPath = Path.Combine("data", "ars.xbrl");
 
-            var firstRead = Xbrl.FromFile(inputPath);
+            var firstRead = Instance.FromFile(inputPath);
             var outputPath = @"output.ars.xbrl";
             firstRead.ToFile(outputPath);
 
-            var secondRead = Xbrl.FromFile(outputPath);
+            var secondRead = Instance.FromFile(outputPath);
 
             Assert.AreEqual(firstRead, secondRead);
         }

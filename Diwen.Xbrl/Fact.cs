@@ -15,7 +15,7 @@ namespace Diwen.Xbrl
         public string Decimals { get; set; }
 
         [XmlIgnore]
-        public string Context{ get; set; }
+        public string Context { get; set; }
 
         [XmlIgnore]
         public XmlQualifiedName Metric { get; set; }
@@ -32,6 +32,11 @@ namespace Diwen.Xbrl
 
         public Fact(Context context, string metric, string unit, string decimals, string value, string namespaceUri, string prefix)
         {
+            if (context == null)
+            {
+                throw new ArgumentNullException("context");
+            }
+
             this.Metric = new XmlQualifiedName(prefix + ":" + metric, namespaceUri);
             this.Unit = unit;
             this.Decimals = decimals;
@@ -64,10 +69,11 @@ namespace Diwen.Xbrl
 
         public bool Equals(Fact other)
         {
-            return this.Metric.Equals(other.Metric)
-            && this.Value.Equals(other.Value)
-            && this.Decimals.Equals(other.Decimals)
-            && this.Unit.Equals(other.Unit);
+            return other != null
+                && this.Metric.Equals(other.Metric)
+                && this.Value.Equals(other.Value)
+                && this.Decimals.Equals(other.Decimals)
+                && this.Unit.Equals(other.Unit);
         }
 
         #endregion

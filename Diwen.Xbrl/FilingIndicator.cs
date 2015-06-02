@@ -20,6 +20,11 @@ namespace Diwen.Xbrl
         public FilingIndicator(Context context, string value)
             : this()
         {
+            if (context == null)
+            {
+                throw new ArgumentNullException("context");
+            }
+
             this.ContextId = context.Id;
             this.Value = value;
         }
@@ -28,7 +33,7 @@ namespace Diwen.Xbrl
 
         public bool Equals(FilingIndicator other)
         {
-            return this.Value.Equals(other.Value);
+            return other != null && this.Value.Equals(other.Value);
         }
 
         #endregion
