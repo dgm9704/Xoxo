@@ -1,13 +1,13 @@
 namespace Diwen.Xbrl
 {
     using System;
-    using System.Collections.ObjectModel;
+    using System.Collections.Generic;
     using System.Globalization;
     using System.Linq;
     using System.Xml;
     using System.Xml.Serialization;
 
-    public class ExplicitMemberCollection : Collection<ExplicitMember>, IEquatable<ExplicitMemberCollection>
+    public class ExplicitMemberCollection : SortedSet<ExplicitMember>, IEquatable<ExplicitMemberCollection>
     {
         private Instance instance;
         private IFormatProvider ic = CultureInfo.InvariantCulture;
@@ -19,7 +19,7 @@ namespace Diwen.Xbrl
             set
             {
                 instance = value;
-                foreach (var item in Items)
+                foreach (var item in this)
                 {
                     if (item.Dimension.Namespace != Instance.DimensionNamespace)
                     {
@@ -102,7 +102,6 @@ namespace Diwen.Xbrl
             return explicitMember;
         }
 
-
         #region IEquatable implementation
 
         public bool Equals(ExplicitMemberCollection other)
@@ -111,5 +110,24 @@ namespace Diwen.Xbrl
         }
 
         #endregion
+
+        public object this[int idx]
+        {
+            get { return null; }
+            set { ; }
+        }
+
+        public void Add(object obj)
+        {
+            if (obj != null)
+            {
+                var nodes = obj as XmlNode[];
+                {
+                    var dimension = nodes[0].Value;
+                    var value = nodes[1].Value;
+                    this.Add(dimension, value);
+                }
+            }
+        }
     }
 }

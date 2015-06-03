@@ -62,7 +62,7 @@ namespace Diwen.Xbrl
                 {
                     if ((this.Period == null && other.Period == null) || this.Period.Equals(other.Period))
                     {
-                        if ((this.Scenario == null && other.Scenario == null) || this.Scenario.Equals(other.Scenario))
+                        if ((this.Scenario == null && other.Scenario == null) || (this.Scenario != null && this.Scenario.Equals(other.Scenario)))
                         {
                             result = true;
                         }

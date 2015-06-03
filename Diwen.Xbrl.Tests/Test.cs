@@ -161,6 +161,26 @@
 
             Assert.AreEqual(firstRead, secondRead);
         }
+
+        [Test]
+        public static void CompareDimensionOrder()
+        {
+            var first = new Scenario();
+            first.AddExplicitMember("AA", "foo:bar");
+            first.AddExplicitMember("BB", "bar:foo");
+            first.AddTypedMember("CC", "CA", "aa");
+            first.AddTypedMember("DD", "DA", "bb");
+
+
+            var second = new Scenario();
+
+            second.AddExplicitMember("BB", "bar:foo");
+            second.AddExplicitMember("AA", "foo:bar");
+            second.AddTypedMember("DD", "DA", "bb");
+            second.AddTypedMember("CC", "CA", "aa");
+
+            Assert.AreEqual(first, second);
+        }
     }
 }
 

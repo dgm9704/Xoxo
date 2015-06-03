@@ -1,12 +1,12 @@
 namespace Diwen.Xbrl
 {
     using System;
-    using System.Collections.ObjectModel;
+    using System.Collections.Generic;
     using System.Linq;
     using System.Xml;
     using System.Xml.Serialization;
 
-    public class TypedMemberCollection : Collection<TypedMember>, IEquatable<TypedMemberCollection>
+    public class TypedMemberCollection : SortedSet<TypedMember>, IEquatable<TypedMemberCollection>
     {
 
         private Instance instance;
@@ -27,7 +27,7 @@ namespace Diwen.Xbrl
                 var domNs = instance.TypedDomainNamespace;
                 var domprefix = instance.Namespaces.LookupPrefix(domNs);
 
-                foreach (var item in Items)
+                foreach (var item in this)
                 {
                     if (item.Dimension.Namespace != instance.DimensionNamespace)
                     {
@@ -82,5 +82,26 @@ namespace Diwen.Xbrl
         }
 
         #endregion
+
+        public object this[int idx]
+        {
+            get { return null; }
+            set { ; }
+        }
+
+        public void Add(object obj)
+        {
+            if (obj != null)
+            {
+                var nodes = obj as XmlNode[];
+                {
+                    var dimension = nodes[0].Value;
+                    var domain = nodes[1].Name;
+                    var value = nodes[1].InnerText;
+                    this.Add(dimension, domain, value);
+                }
+            }
+        }
+
     }
 }

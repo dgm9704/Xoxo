@@ -201,9 +201,23 @@
             var contextWithTypedMembers = contextsWithMembers.FirstOrDefault(c => c.Scenario.TypedMembers != null && c.Scenario.TypedMembers.Count != 0);
             if (contextWithTypedMembers != null)
             {
-                var member = contextWithTypedMembers.Scenario.TypedMembers[0];
-                this.TypedDomainNamespace = member.Domain.Namespace;
-                this.DimensionNamespace = member.Dimension.Namespace;
+                var member = contextWithTypedMembers.Scenario.TypedMembers.First();
+
+                var typedDomainNs = member.Domain.Namespace;
+                if (string.IsNullOrEmpty(typedDomainNs))
+                {
+                    typedDomainNs = namespaces.LookupNamespace(member.Domain.Name.Substring(0, member.Domain.Name.IndexOf(':')));
+                }
+
+                this.TypedDomainNamespace = typedDomainNs;
+
+                var dimensionNs = member.Dimension.Namespace;
+                if (string.IsNullOrEmpty(dimensionNs))
+                {
+                    dimensionNs = namespaces.LookupNamespace(member.Dimension.Name.Substring(0, member.Dimension.Name.IndexOf(':')));
+                }
+
+                this.DimensionNamespace = dimensionNs;
             }
 
             if (string.IsNullOrEmpty(this.DimensionNamespace))
@@ -211,12 +225,47 @@
                 var contextWithExplicitMembers = contextsWithMembers.FirstOrDefault(c => c.Scenario.ExplicitMembers != null && c.Scenario.ExplicitMembers.Count != 0);
                 if (contextWithExplicitMembers != null)
                 {
-                    var member = contextWithExplicitMembers.Scenario.ExplicitMembers[0];
-                    this.DimensionNamespace = member.Dimension.Namespace;
+                    var member = contextWithExplicitMembers.Scenario.ExplicitMembers.First();
+                    var dimensionNs = member.Dimension.Namespace;
+                    if (string.IsNullOrEmpty(dimensionNs))
+                    {
+                        dimensionNs = namespaces.LookupNamespace(member.Dimension.Name.Substring(0, member.Dimension.Name.IndexOf(':')));
+                    }
+
+                    this.DimensionNamespace = dimensionNs;
                 }
             }
 
+            foreach (var context in contextsWithMembers)
+            {
+                foreach (var m in context.Scenario.ExplicitMembers)
+                {
+                    if (string.IsNullOrEmpty(m.Dimension.Namespace))
+                    {
+                        m.Dimension = new XmlQualifiedName(m.Dimension.Name, this.DimensionNamespace);
+                    }
 
+                    if (string.IsNullOrEmpty(m.Value.Namespace))
+                    {
+                        var ns = namespaces.LookupNamespace(m.Value.Name.Substring(0, m.Value.Name.IndexOf(':')));
+                        var localname = m.Value.Name.Substring(m.Value.Name.IndexOf(':') + 1);
+                        m.Value = new XmlQualifiedName(localname, ns);
+                    }
+                }
+
+                foreach (var m in context.Scenario.TypedMembers)
+                {
+                    if (string.IsNullOrEmpty(m.Dimension.Namespace))
+                    {
+                        m.Dimension = new XmlQualifiedName(m.Dimension.Name, this.DimensionNamespace);
+                    }
+
+                    if (string.IsNullOrEmpty(m.Domain.Namespace))
+                    {
+                        m.Domain = new XmlQualifiedName(m.Domain.Name, this.TypedDomainNamespace);
+                    }
+                }
+            }
 
             this.Namespaces = namespaces;
         }

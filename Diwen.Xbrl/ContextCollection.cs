@@ -109,12 +109,20 @@ namespace Diwen.Xbrl
                 {
                     for (int i = 0; i < this.Count; i++)
                     {
-                        if (!this[i].Equals(other[i]))
+                        if (!other.Contains(this[i]))
                         {
                             result = false;
                             break;
                         }
                     }
+                    //for (int i = 0; i < this.Count; i++)
+                    //{
+                    //    if (!this[i].Equals(other[i]))
+                    //    {
+                    //        result = false;
+                    //        break;
+                    //    }
+                    //}
                 }
             }
             return result;
