@@ -70,10 +70,10 @@ namespace Diwen.Xbrl
         public bool Equals(Fact other)
         {
             return other != null
-                && this.Metric.Equals(other.Metric)
-                && this.Value.Equals(other.Value)
-                && this.Decimals.Equals(other.Decimals)
-                && this.Unit.Equals(other.Unit);
+            && this.Metric.Equals(other.Metric)
+            && this.Value.Equals(other.Value)
+            && this.Decimals.Equals(other.Decimals)
+            && this.Unit.Equals(other.Unit);
         }
 
         #endregion

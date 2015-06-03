@@ -7,7 +7,7 @@ namespace Diwen.Xbrl
     using System.Xml;
     using System.Xml.Serialization;
 
-    public class ExplicitMemberCollection : SortedSet<ExplicitMember>, IEquatable<ExplicitMemberCollection>
+    public class ExplicitMemberCollection : List<ExplicitMember>, IEquatable<ExplicitMemberCollection>
     {
         private Instance instance;
         private IFormatProvider ic = CultureInfo.InvariantCulture;
@@ -23,26 +23,24 @@ namespace Diwen.Xbrl
                 {
                     if (item.Dimension.Namespace != Instance.DimensionNamespace)
                     {
-                        item.Dimension = new XmlQualifiedName(item.Dimension.Name, Instance.DimensionNamespace);
+                        var dimensionNs = instance.DimensionNamespace;
+                        item.Dimension = new XmlQualifiedName(item.Dimension.LocalName(), dimensionNs);
                     }
 
                     if (string.IsNullOrEmpty(item.Value.Namespace))
                     {
-                        string val = item.Value.Name;
-                        string valPrefix = val.Substring(0, val.IndexOf(':'));
-                        string valNs = this.Instance.Namespaces.LookupNamespace(valPrefix);
+                        string valNs = this.Instance.Namespaces.LookupNamespace(item.Value.Prefix());
 
                         if (!string.IsNullOrEmpty(valNs))
                         {
                             if (item.Value.Namespace != valNs)
                             {
-                                val = val.Substring(val.IndexOf(':') + 1);
-                                item.Value = new XmlQualifiedName(val, valNs);
+                                item.Value = new XmlQualifiedName(item.Value.LocalName(), valNs);
                             }
                         }
                         else if (this.Instance.CheckExplicitMemberDomainExists)
                         {
-                            throw new InvalidOperationException(string.Format(ic, "No namespace declared for domain '{0}'", valPrefix));
+                            throw new InvalidOperationException(string.Format(ic, "No namespace declared for domain '{0}'", item.Value.Prefix()));
                         }
                     }
                 }
@@ -106,28 +104,9 @@ namespace Diwen.Xbrl
 
         public bool Equals(ExplicitMemberCollection other)
         {
-            return this.SequenceEqual(other);
+            return this.SmartCompare(other);
         }
 
         #endregion
-
-        public object this[int idx]
-        {
-            get { return null; }
-            set { ; }
-        }
-
-        public void Add(object obj)
-        {
-            if (obj != null)
-            {
-                var nodes = obj as XmlNode[];
-                {
-                    var dimension = nodes[0].Value;
-                    var value = nodes[1].Value;
-                    this.Add(dimension, value);
-                }
-            }
-        }
     }
 }

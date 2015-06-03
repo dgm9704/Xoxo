@@ -62,15 +62,7 @@ namespace Diwen.Xbrl
                 throw new ArgumentNullException("writer");
             }
             writer.WriteAttributeString("dimension", this.Dimension.Name);
-
-            // This is needed for vanilla .NET
-            var idx = this.Domain.Name.IndexOf(':');
-            var prefix = this.Domain.Name.Substring(0, idx);
-            var localName = this.Domain.Name.Substring(idx + 1);
-            writer.WriteElementString(prefix, localName, this.Domain.Namespace, this.Value);
-
-            // Mono happily takes the prefixed name
-            // writer.WriteElementString(this.Domain.Name, this.Value);
+            writer.WriteElementString(this.Domain.Prefix(), this.Domain.LocalName(), this.Domain.Namespace, this.Value);
         }
 
         public override int GetHashCode()

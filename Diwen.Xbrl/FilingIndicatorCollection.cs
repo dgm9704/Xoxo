@@ -21,35 +21,9 @@ namespace Diwen.Xbrl
 
         public bool Equals(FilingIndicatorCollection other)
         {
-            var result = true;
-
-            if (other == null)
-            {
-                result = false;
-            }
-            else
-            {
-                if (this.Count != other.Count)
-                {
-                    result = false;
-                }
-                else
-                {
-                    for (int i = 0; i < this.Count; i++)
-                    {
-                        if (!this[i].Equals(other[i]))
-                        {
-                            result = false;
-                            break;
-                        }
-                    }
-                }
-            }
-
-            return result;
+            return this.SmartCompare(other);
         }
 
         #endregion
     }
-
 }

@@ -35,9 +35,20 @@ namespace Diwen.Xbrl
 
         public bool Equals(ExplicitMember other)
         {
-            return other != null
-                && this.Dimension == other.Dimension
-                && this.Value == other.Value;
+            var result = false;
+            if (other != null)
+            {
+                if (this.Dimension == other.Dimension)
+                {
+                    if (this.Value == other.Value)
+                    {
+                        result = true;
+                    }
+                }
+
+            }
+
+            return result;
         }
 
         #endregion

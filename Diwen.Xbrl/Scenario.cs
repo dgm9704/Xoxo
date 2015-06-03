@@ -43,9 +43,19 @@ namespace Diwen.Xbrl
 
         public bool Equals(Scenario other)
         {
-            return other != null
-            && this.ExplicitMembers.Equals(other.ExplicitMembers)
-            && this.TypedMembers.Equals(other.TypedMembers);
+            var result = false;
+            if (other != null)
+            {
+                if (this.ExplicitMembers.Equals(other.ExplicitMembers))
+                {
+                    if (this.TypedMembers.Equals(other.TypedMembers))
+                    {
+                        result = true;
+                    }
+                }
+            }
+
+            return result;
         }
 
         #endregion
@@ -59,6 +69,5 @@ namespace Diwen.Xbrl
         {
             return this.TypedMembers.Add(dimension, domain, value);
         }
-
     }
 }

@@ -45,8 +45,7 @@ namespace Diwen.Xbrl
 
         public bool Equals(UnitCollection other)
         {
-            var result = this.SequenceEqual(other);
-            return result;
+            return this.SmartCompare(other);
         }
 
         #endregion

@@ -1,3 +1,6 @@
+using System.Collections.Generic;
+using System.Collections;
+
 namespace Diwen.Xbrl
 {
     using System;
@@ -94,38 +97,7 @@ namespace Diwen.Xbrl
 
         public bool Equals(ContextCollection other)
         {
-            var result = true;
-            if (other == null)
-            {
-                result = false;
-            }
-            else
-            {
-                if (this.Count != other.Count)
-                {
-                    result = false;
-                }
-                else
-                {
-                    for (int i = 0; i < this.Count; i++)
-                    {
-                        if (!other.Contains(this[i]))
-                        {
-                            result = false;
-                            break;
-                        }
-                    }
-                    //for (int i = 0; i < this.Count; i++)
-                    //{
-                    //    if (!this[i].Equals(other[i]))
-                    //    {
-                    //        result = false;
-                    //        break;
-                    //    }
-                    //}
-                }
-            }
-            return result;
+            return this.SmartCompare(other);
         }
 
         #endregion

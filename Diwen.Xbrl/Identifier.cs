@@ -28,8 +28,8 @@ namespace Diwen.Xbrl
         public bool Equals(Identifier other)
         {
             return other != null
-                && this.Scheme.Equals(other.Scheme)
-                && this.Value.Equals(other.Value);
+            && this.Scheme.Equals(other.Scheme)
+            && this.Value.Equals(other.Value);
         }
 
         #endregion

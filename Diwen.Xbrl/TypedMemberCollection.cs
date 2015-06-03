@@ -6,9 +6,8 @@ namespace Diwen.Xbrl
     using System.Xml;
     using System.Xml.Serialization;
 
-    public class TypedMemberCollection : SortedSet<TypedMember>, IEquatable<TypedMemberCollection>
+    public class TypedMemberCollection : List<TypedMember>, IEquatable<TypedMemberCollection>
     {
-
         private Instance instance;
 
         [XmlIgnore]
@@ -78,30 +77,9 @@ namespace Diwen.Xbrl
 
         public bool Equals(TypedMemberCollection other)
         {
-            return this.SequenceEqual(other);
+            return this.SmartCompare(other);
         }
 
         #endregion
-
-        public object this[int idx]
-        {
-            get { return null; }
-            set { ; }
-        }
-
-        public void Add(object obj)
-        {
-            if (obj != null)
-            {
-                var nodes = obj as XmlNode[];
-                {
-                    var dimension = nodes[0].Value;
-                    var domain = nodes[1].Name;
-                    var value = nodes[1].InnerText;
-                    this.Add(dimension, domain, value);
-                }
-            }
-        }
-
     }
 }

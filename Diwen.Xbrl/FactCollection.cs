@@ -43,7 +43,7 @@ namespace Diwen.Xbrl
 
         public bool Equals(FactCollection other)
         {
-            return this.SequenceEqual(other);
+            return this.SmartCompare(other);
         }
 
         #endregion
