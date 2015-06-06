@@ -1,49 +1,49 @@
 ﻿namespace Diwen.Xbrl
 {
-    using System;
-    using System.Xml;
+	using System;
+	using System.Xml;
 
-    public static class XmlQualifiedNameExtensions
-    {
-        public static string LocalName(this XmlQualifiedName value)
-        {
-            if (value == null)
-            {
-                throw new ArgumentNullException("value");
-            }
+	public static class XmlQualifiedNameExtensions
+	{
+		public static string LocalName(this XmlQualifiedName value)
+		{
+			if(value == null)
+			{
+				throw new ArgumentNullException("value");
+			}
 
-            var result = string.Empty;
+			var result = string.Empty;
 
-            string name = value.Name;
-            if (!string.IsNullOrEmpty(name))
-            {
-                result = name.Substring(name.IndexOf(':') + 1);
-            }
+			string name = value.Name;
+			if(!string.IsNullOrEmpty(name))
+			{
+				result = name.Substring(name.IndexOf(':') + 1);
+			}
 
-            return result;
-        }
+			return result;
+		}
 
-        public static string Prefix(this XmlQualifiedName value)
-        {
-            if (value == null)
-            {
-                throw new ArgumentNullException("value");
-            }
+		public static string Prefix(this XmlQualifiedName value)
+		{
+			if(value == null)
+			{
+				throw new ArgumentNullException("value");
+			}
 
-            var result = string.Empty;
+			var result = string.Empty;
 
-            string name = value.Name;
-            if (!string.IsNullOrEmpty(name))
-            {
-                var idx = name.IndexOf(':');
-                if (idx != -1)
-                {
-                    result = name.Substring(0, idx);
-                }
-            }
+			string name = value.Name;
+			if(!string.IsNullOrEmpty(name))
+			{
+				var idx = name.IndexOf(':');
+				if(idx != -1)
+				{
+					result = name.Substring(0, idx);
+				}
+			}
 
-            return result;
-        }
-    }
+			return result;
+		}
+	}
 }
 

@@ -1,29 +1,30 @@
 namespace Diwen.Xbrl
 {
-    using System;
-    using System.Collections.ObjectModel;
+	using System;
+	using System.Collections.Generic;
+	using System.Collections.ObjectModel;
 
-    public class FilingIndicatorCollection : Collection<FilingIndicator>, IEquatable<FilingIndicatorCollection>
-    {
+	public class FilingIndicatorCollection : Collection<FilingIndicator>, IEquatable<IList<FilingIndicator>>
+	{
 
-        public FilingIndicatorCollection(Instance instance)
-        {
-        }
+		//		public FilingIndicatorCollection(Instance instance)
+		//		{
+		//		}
 
-        public FilingIndicator Add(Context context, string value)
-        {
-            var filingIndicator = new FilingIndicator(context, value);
-            base.Add(filingIndicator);
-            return filingIndicator;
-        }
+		public FilingIndicator Add(Context context, string value)
+		{
+			var filingIndicator = new FilingIndicator(context, value);
+			base.Add(filingIndicator);
+			return filingIndicator;
+		}
 
-        #region IEquatable implementation
+		#region IEquatable implementation
 
-        public bool Equals(FilingIndicatorCollection other)
-        {
-            return this.SmartCompare(other);
-        }
+		public bool Equals(IList<FilingIndicator> other)
+		{
+			return this.SmartCompare(other);
+		}
 
-        #endregion
-    }
+		#endregion
+	}
 }
