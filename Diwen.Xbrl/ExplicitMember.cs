@@ -53,6 +53,18 @@ namespace Diwen.Xbrl
 
 		#endregion
 
+		public override bool Equals(object obj)
+		{
+			if(obj is ExplicitMember)
+			{
+				return this.Equals((obj as ExplicitMember));
+			}
+			else
+			{
+				return base.Equals(obj);
+			}
+		}
+
 		#region IComparable implementation
 
 		public int CompareTo(ExplicitMember other)
@@ -114,11 +126,6 @@ namespace Diwen.Xbrl
 			}
 
 			return result;
-		}
-
-		public override bool Equals(object obj)
-		{
-			return this.Equals(obj as ExplicitMember);
 		}
 
 		public static bool operator >(ExplicitMember left, ExplicitMember right)

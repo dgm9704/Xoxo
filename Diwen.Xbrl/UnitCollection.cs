@@ -1,10 +1,11 @@
 namespace Diwen.Xbrl
 {
 	using System.Collections.Generic;
+	using System.Collections.ObjectModel;
 	using System;
 	using System.Linq;
 
-	public class UnitCollection : List<Unit>, IEquatable<IList<Unit>>
+	public class UnitCollection : Collection<Unit>, IEquatable<IList<Unit>>
 	{
 		private Instance Instance;
 

@@ -34,6 +34,23 @@ namespace Diwen.Xbrl
 			&& this.Measure.Equals(other.Measure, StringComparison.Ordinal);
 		}
 
+		public override bool Equals(object obj)
+		{
+			if(obj is Unit)
+			{
+				return this.Equals((obj as Unit));
+			}
+			else
+			{
+				return base.Equals(obj);
+			}
+		}
+
+		public override int GetHashCode()
+		{
+			return this.Id.GetHashCode() ^ this.Measure.GetHashCode();
+		}
+
 		#endregion
 	}
 

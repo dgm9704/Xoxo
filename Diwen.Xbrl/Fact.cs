@@ -84,5 +84,25 @@ namespace Diwen.Xbrl
 		}
 
 		#endregion
+
+		public override bool Equals(object obj)
+		{
+			if(obj is Fact)
+			{
+				return this.Equals((obj as Fact));
+			}
+			else
+			{
+				return base.Equals(obj);
+			}
+		}
+
+		public override int GetHashCode()
+		{
+			return this.Metric.GetHashCode()
+			^ this.Value.GetHashCode()
+			^ this.Decimals.GetHashCode()
+			^ this.Unit.GetHashCode();
+		}
 	}
 }

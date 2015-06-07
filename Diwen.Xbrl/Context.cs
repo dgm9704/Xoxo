@@ -68,6 +68,38 @@ namespace Diwen.Xbrl
 
 		#endregion
 
+		public override bool Equals(object obj)
+		{
+			if(obj is Context)
+			{
+				return this.Equals((obj as Context));
+			}
+			else
+			{
+				return base.Equals(obj);
+			}
+		}
+
+		public override int GetHashCode()
+		{
+			var result = 0;
+			if(this.Entity != null)
+			{
+				result ^= this.Entity.GetHashCode();
+			}
+
+			if(this.Period != null)
+			{
+				result ^= this.Period.GetHashCode();
+			}
+
+			if(this.Scenario != null)
+			{
+				result ^= this.Scenario.GetHashCode();
+			}
+			return result;
+		}
+
 		public ExplicitMember AddExplicitMember(string dimension, string value)
 		{
 			return this.Scenario.ExplicitMembers.Add(dimension, value);

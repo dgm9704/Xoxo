@@ -37,6 +37,23 @@ namespace Diwen.Xbrl
 		}
 
 		#endregion
+
+		public override bool Equals(object obj)
+		{
+			if(obj is FilingIndicator)
+			{
+				return this.Equals((obj as FilingIndicator));
+			}
+			else
+			{
+				return base.Equals(obj);
+			}
+		}
+
+		public override int GetHashCode()
+		{
+			return this.Value.GetHashCode();
+		}
 	}
 
 }

@@ -87,6 +87,18 @@ namespace Diwen.Xbrl
 
 		#endregion
 
+		public override bool Equals(object obj)
+		{
+			if(obj is TypedMember)
+			{
+				return this.Equals((obj as TypedMember));
+			}
+			else
+			{
+				return base.Equals(obj);
+			}
+		}
+
 		#region IComparable implementation
 
 		public int CompareTo(TypedMember other)
@@ -139,11 +151,6 @@ namespace Diwen.Xbrl
 				return true;
 			}
 			return !left.Equals(right);
-		}
-
-		public override bool Equals(object obj)
-		{
-			return this.Equals(obj as TypedMember);
 		}
 
 		public static bool operator >(TypedMember left, TypedMember right)

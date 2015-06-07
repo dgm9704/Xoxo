@@ -60,6 +60,23 @@ namespace Diwen.Xbrl
 
 		#endregion
 
+		public override bool Equals(object obj)
+		{
+			if(obj is Scenario)
+			{
+				return this.Equals((obj as Scenario));
+			}
+			else
+			{
+				return base.Equals(obj);
+			}
+		}
+
+		public override int GetHashCode()
+		{
+			return (this.TypedMembers.Count * 1000) ^ this.ExplicitMembers.Count;
+		}
+
 		public ExplicitMember AddExplicitMember(string dimension, string value)
 		{
 			return this.ExplicitMembers.Add(dimension, value);

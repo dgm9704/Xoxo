@@ -2,12 +2,13 @@ namespace Diwen.Xbrl
 {
 	using System;
 	using System.Collections.Generic;
+	using System.Collections.ObjectModel;
 	using System.Globalization;
 	using System.Linq;
 	using System.Xml;
 	using System.Xml.Serialization;
 
-	public class ExplicitMemberCollection : List<ExplicitMember>, IEquatable<IList<ExplicitMember>>
+	public class ExplicitMemberCollection : Collection<ExplicitMember>, IEquatable<IList<ExplicitMember>>
 	{
 		private Instance instanceField;
 		private IFormatProvider ic = CultureInfo.InvariantCulture;

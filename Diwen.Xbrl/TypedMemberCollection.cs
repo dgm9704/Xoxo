@@ -2,11 +2,12 @@ namespace Diwen.Xbrl
 {
 	using System;
 	using System.Collections.Generic;
+	using System.Collections.ObjectModel;
 	using System.Linq;
 	using System.Xml;
 	using System.Xml.Serialization;
 
-	public class TypedMemberCollection : List<TypedMember>, IEquatable<IList<TypedMember>>
+	public class TypedMemberCollection : Collection<TypedMember>, IEquatable<IList<TypedMember>>
 	{
 		private Instance instanceField;
 

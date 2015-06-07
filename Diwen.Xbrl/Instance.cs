@@ -185,7 +185,10 @@
 		{
 			var used = Units.UsedUnits();
 			this.Units.Clear();
-			this.Units.AddRange(used);
+			foreach(var unit in used)
+			{
+				this.Units.Add(unit);
+			}
 		}
 
 		public Instance()
@@ -227,7 +230,28 @@
 			return result;
 		}
 
+		public override int GetHashCode()
+		{
+			return this.SchemaReference.GetHashCode()
+			^ this.Units.GetHashCode()
+			^ this.FilingIndicators.GetHashCode()
+			^ this.Contexts.GetHashCode()
+			^ this.Facts.GetHashCode();
+		}
+
 		#endregion
+
+		public override bool Equals(object obj)
+		{
+			if(obj is Instance)
+			{
+				return this.Equals((obj as Instance));
+			}
+			else
+			{
+				return base.Equals(obj);
+			}
+		}
 
 		private void RebuildNamespacesAfterRead()
 		{

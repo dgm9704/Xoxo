@@ -23,7 +23,7 @@ namespace Diwen.Xbrl
 
 			if(this.Instance.CheckUnitExists)
 			{
-				if(!this.Instance.Units.Exists(u => u.Id == unit))
+				if(this.Instance.Units.FirstOrDefault(u => u.Id == unit) == null)
 				{
 					throw new InvalidOperationException(string.Format(ic, "Referenced unit '{0}' does not exist", unit));
 				}
