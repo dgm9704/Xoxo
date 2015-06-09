@@ -84,12 +84,12 @@ namespace Diwen.Xbrl
 
 		protected override string GetKeyForItem(Context item)
 		{
-			if(item == null)
+			string key = null;
+			if(item != null)
 			{
-				throw new ArgumentNullException("item");
+				key = item.Id;
 			}
-
-			return item.Id;
+			return key;
 		}
 
 		#region IEquatable implementation
@@ -100,5 +100,16 @@ namespace Diwen.Xbrl
 		}
 
 		#endregion
+
+		public void AddRange(IEnumerable<Context> values)
+		{
+			if(values != null)
+			{
+				foreach(var item in values)
+				{
+					this.Add(item);
+				}
+			}
+		}
 	}
 }

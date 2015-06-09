@@ -62,9 +62,10 @@ namespace Diwen.Xbrl
 
 		public override bool Equals(object obj)
 		{
-			if(obj is Scenario)
+			var other = obj as Scenario;
+			if(other != null)
 			{
-				return this.Equals((obj as Scenario));
+				return this.Equals(other);
 			}
 			else
 			{

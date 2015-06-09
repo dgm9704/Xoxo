@@ -75,6 +75,19 @@ namespace Diwen.Xbrl
 
 		#endregion
 
+		public override bool Equals(object obj)
+		{
+			var other = obj as TypedMember;
+			if(other != null)
+			{
+				return this.Equals(other);
+			}
+			else
+			{
+				return base.Equals(obj);
+			}
+		}
+
 		#region IEquatable implementation
 
 		public bool Equals(TypedMember other)
@@ -86,18 +99,6 @@ namespace Diwen.Xbrl
 		}
 
 		#endregion
-
-		public override bool Equals(object obj)
-		{
-			if(obj is TypedMember)
-			{
-				return this.Equals((obj as TypedMember));
-			}
-			else
-			{
-				return base.Equals(obj);
-			}
-		}
 
 		#region IComparable implementation
 

@@ -33,23 +33,24 @@ namespace Diwen.Xbrl
 			&& this.Value.Equals(other.Value, StringComparison.Ordinal);
 		}
 
-		public override bool Equals(object obj)
-		{
-			if(obj is SchemaReference)
-			{
-				return this.Equals((obj as SchemaReference));
-			}
-			else
-			{
-				return base.Equals(obj);
-			}
-		}
-
 		public override int GetHashCode()
 		{
 			return this.Type.GetHashCode() ^ this.Value.GetHashCode();
 		}
 
 		#endregion
+
+		public override bool Equals(object obj)
+		{
+			var other = obj as SchemaReference;
+			if(other != null)
+			{
+				return this.Equals(other);
+			}
+			else
+			{
+				return base.Equals(obj);
+			}
+		}
 	}
 }

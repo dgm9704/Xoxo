@@ -55,9 +55,10 @@ namespace Diwen.Xbrl
 
 		public override bool Equals(object obj)
 		{
-			if(obj is ExplicitMember)
+			var other = obj as ExplicitMember;
+			if(other != null)
 			{
-				return this.Equals((obj as ExplicitMember));
+				return this.Equals(other);
 			}
 			else
 			{

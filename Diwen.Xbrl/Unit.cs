@@ -34,11 +34,19 @@ namespace Diwen.Xbrl
 			&& this.Measure.Equals(other.Measure, StringComparison.Ordinal);
 		}
 
+		public override int GetHashCode()
+		{
+			return this.Id.GetHashCode() ^ this.Measure.GetHashCode();
+		}
+
+		#endregion
+
 		public override bool Equals(object obj)
 		{
-			if(obj is Unit)
+			var other = obj as Unit;
+			if(other != null)
 			{
-				return this.Equals((obj as Unit));
+				return this.Equals(other);
 			}
 			else
 			{
@@ -46,12 +54,6 @@ namespace Diwen.Xbrl
 			}
 		}
 
-		public override int GetHashCode()
-		{
-			return this.Id.GetHashCode() ^ this.Measure.GetHashCode();
-		}
-
-		#endregion
 	}
 
 }

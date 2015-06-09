@@ -32,23 +32,24 @@ namespace Diwen.Xbrl
 			&& this.Value.Equals(other.Value, StringComparison.Ordinal);
 		}
 
-		public override bool Equals(object obj)
-		{
-			if(obj is Identifier)
-			{
-				return this.Equals((obj as Identifier));
-			}
-			else
-			{
-				return base.Equals(obj);
-			}
-		}
-
 		public override int GetHashCode()
 		{
 			return this.Scheme.GetHashCode() ^ this.Value.GetHashCode();
 		}
 
 		#endregion
+
+		public override bool Equals(object obj)
+		{
+			var other = obj as Identifier;
+			if(other != null)
+			{
+				return this.Equals(other);
+			}
+			else
+			{
+				return base.Equals(obj);
+			}
+		}
 	}
 }

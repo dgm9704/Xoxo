@@ -40,9 +40,10 @@ namespace Diwen.Xbrl
 
 		public override bool Equals(object obj)
 		{
-			if(obj is FilingIndicator)
+			var other = obj as FilingIndicator;
+			if(other != null)
 			{
-				return this.Equals((obj as FilingIndicator));
+				return this.Equals(other);
 			}
 			else
 			{

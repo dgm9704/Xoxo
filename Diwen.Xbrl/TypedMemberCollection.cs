@@ -44,7 +44,6 @@ namespace Diwen.Xbrl
 
 		public TypedMemberCollection()
 		{
-
 		}
 
 		public TypedMemberCollection(Instance instance)

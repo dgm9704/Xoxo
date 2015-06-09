@@ -1,4 +1,6 @@
-﻿namespace Diwen.Xbrl.Tests
+﻿using System.Diagnostics;
+
+namespace Diwen.Xbrl.Tests
 {
 	using Diwen.Xbrl;
 	using NUnit.Framework;
@@ -110,7 +112,7 @@
 		[Test]
 		public static void ReadSolvencyReferenceInstance()
 		{
-			var path = Path.Combine("data", "reference.xbrl.xml");
+			var path = Path.Combine("data", "reference.xbrl");
 			var referenceInstance = Instance.FromFile(path);
 			Assert.IsNotNull(referenceInstance);
 		}
@@ -123,7 +125,7 @@
 			// They aren't automatically removed until serialization so do it before comparisons
 			instance.RemoveUnusedObjects();
 
-			var referencePath = Path.Combine("data", "reference.xbrl.xml");
+			var referencePath = Path.Combine("data", "reference.xbrl");
 			var referenceInstance = Instance.FromFile(referencePath);
 
 			// Instances are functionally equivalent:
@@ -151,15 +153,31 @@
 		[Test]
 		public static void RoundtripCompareExampleInstanceArs()
 		{
+			var sw = new Stopwatch();
+
 			var inputPath = Path.Combine("data", "ars.xbrl");
 
+			sw.Start();
 			var firstRead = Instance.FromFile(inputPath);
+			sw.Stop();
+			Console.WriteLine("Read took {0}", sw.Elapsed);
+
 			var outputPath = @"output.ars.xbrl";
+
+			sw.Restart();
 			firstRead.ToFile(outputPath);
+			sw.Stop();
+			Console.WriteLine("Write took {0}", sw.Elapsed);
 
+			sw.Restart();
 			var secondRead = Instance.FromFile(outputPath);
+			sw.Stop();
+			Console.WriteLine("Read took {0}", sw.Elapsed);
 
+			sw.Restart();
 			Assert.IsTrue(firstRead.Equals(secondRead));
+			sw.Stop();
+			Console.WriteLine("Comparison took {0}", sw.Elapsed);
 		}
 
 		[Test]
@@ -180,6 +198,19 @@
 			second.AddTypedMember("CC", "CA", "aa");
 
 			Assert.IsTrue(first.Equals(second));
+		}
+
+		[Test]
+		public static void CollapseDuplicateContexts()
+		{
+			var inputPath = Path.Combine("data", "duplicate_context.xbrl");
+			var instance = Instance.FromFile(inputPath);
+
+			Assert.IsTrue(instance.Contexts.Count == 2);
+
+			instance.CollapseDuplicateContexts();
+
+			Assert.IsTrue(instance.Contexts.Count == 1);
 		}
 	}
 }

@@ -8,7 +8,7 @@
     <RootNamespace>Diwen.Xbrl</RootNamespace>
     <AssemblyName>Diwen.Xbrl</AssemblyName>
     <Description>Library for reading, writing and comparing XBRL files</Description>
-    <ReleaseVersion>0.7</ReleaseVersion>
+    <ReleaseVersion>0.8</ReleaseVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -20,6 +20,12 @@
     <WarningLevel>4</WarningLevel>
     <ConsolePause>false</ConsolePause>
     <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+    <CustomCommands>
+      <CustomCommands>
+        <Command type="Custom" name="gendarme!" command="gendarme --severity all --quiet --html ${TargetFile}.gendarme.html ${TargetFile}" workingdir="${TargetDir}" />
+      </CustomCommands>
+    </CustomCommands>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>full</DebugType>

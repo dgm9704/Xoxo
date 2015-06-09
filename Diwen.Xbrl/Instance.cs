@@ -191,6 +191,34 @@
 			}
 		}
 
+
+		public void CollapseDuplicateContexts()
+		{
+			var found = false;
+			for(int i = 0; i < this.Contexts.Count; i++)
+			{
+				var left = this.Contexts[i];
+				for(int j = i + 1; j < this.Contexts.Count; j++)
+				{
+					var right = this.Contexts[j];
+					if(left.Equals(right))
+					{
+						found = true;
+						foreach(var fact in this.Facts.Where(f=>f.Context == right.Id))
+						{
+							fact.Context = left.Id;
+						}
+						this.Contexts[j] = null;
+					}
+				}
+			}
+			if(found)
+			{
+				Context nullContext = null;
+				this.Contexts.Remove(nullContext);
+			}
+		}
+
 		public Instance()
 		{
 			this.Namespaces = new XmlNamespaceManager(new NameTable());
@@ -243,9 +271,10 @@
 
 		public override bool Equals(object obj)
 		{
-			if(obj is Instance)
+			var other = obj as Instance;
+			if(other != null)
 			{
-				return this.Equals((obj as Instance));
+				return this.Equals(other);
 			}
 			else
 			{
@@ -370,9 +399,10 @@
 		{
 			Instance xbrl = null;
 
-			using(var inputStream = new FileStream(path, FileMode.Open, FileAccess.Read))
+			//using(var stream = new MemoryStream(File.ReadAllBytes(path)))
+			using(var stream = new FileStream(path, FileMode.Open, FileAccess.Read))
 			{
-				xbrl = (Instance)Serializer.Deserialize(inputStream);
+				xbrl = (Instance)Serializer.Deserialize(stream);
 				xbrl.RebuildNamespacesAfterRead();
 			}
 			return xbrl;

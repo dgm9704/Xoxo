@@ -70,9 +70,10 @@ namespace Diwen.Xbrl
 
 		public override bool Equals(object obj)
 		{
-			if(obj is Context)
+			var other = obj as Context;
+			if(other != null)
 			{
-				return this.Equals((obj as Context));
+				return this.Equals(other);
 			}
 			else
 			{

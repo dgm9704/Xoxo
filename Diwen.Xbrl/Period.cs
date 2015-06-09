@@ -34,23 +34,24 @@ namespace Diwen.Xbrl
 			return other != null && this.Instant.Equals(other.Instant);
 		}
 
-		public override bool Equals(object obj)
-		{
-			if(obj is Period)
-			{
-				return this.Equals((obj as Period));
-			}
-			else
-			{
-				return base.Equals(obj);
-			}
-		}
-
 		public override int GetHashCode()
 		{
 			return this.Instant.GetHashCode();
 		}
 
 		#endregion
+
+		public override bool Equals(object obj)
+		{
+			var other = obj as Period;
+			if(other != null)
+			{
+				return this.Equals(other);
+			}
+			else
+			{
+				return base.Equals(obj);
+			}
+		}
 	}
 }

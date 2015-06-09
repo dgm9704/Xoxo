@@ -87,9 +87,10 @@ namespace Diwen.Xbrl
 
 		public override bool Equals(object obj)
 		{
-			if(obj is Fact)
+			var other = obj as Fact;
+			if(other != null)
 			{
-				return this.Equals((obj as Fact));
+				return this.Equals(other);
 			}
 			else
 			{
