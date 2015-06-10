@@ -47,6 +47,8 @@ namespace Diwen.Xbrl.Tests
 
 			// Any units that aren't used will be excluded during serialization
 			// So it's safe to add extra units if needed
+			instance.Units.Add("uEUR", "iso4217:EUR");
+			instance.Units.Add("uPURE", "xbrli:pure"); 
 			instance.Units.Add("uFOO", "foo:bar");
 
 			// Add filing indicators
@@ -122,11 +124,12 @@ namespace Diwen.Xbrl.Tests
 		{
 			var instance = CreateSolvencyInstance();
 
-			// They aren't automatically removed until serialization so do it before comparisons
+			// unless done when loading, duplicate objects 
+			// aren't automatically removed until serialization so do it before comparisons
 			instance.RemoveUnusedObjects();
 
 			var referencePath = Path.Combine("data", "reference.xbrl");
-			var referenceInstance = Instance.FromFile(referencePath);
+			var referenceInstance = Instance.FromFile(referencePath, true);
 
 			// Instances are functionally equivalent:
 			// They have the same number of contexts and scenarios of the contexts match member-by-member
@@ -139,7 +142,7 @@ namespace Diwen.Xbrl.Tests
 			var tempFile = @"temp.xbrl";
 			instance.ToFile(tempFile);
 
-			var newInstance = Instance.FromFile(tempFile);
+			var newInstance = Instance.FromFile(tempFile, true);
 
 			Assert.IsTrue(newInstance.Equals(instance));
 

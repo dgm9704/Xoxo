@@ -5,7 +5,7 @@
 
 	public static class ListExtensions
 	{
-		public static bool SmartCompare<T>(this IList<T> left, IList<T> right)
+		public static bool ContentCompare<T>(this IList<T> left, IList<T> right)
 		{
 			var result = true;
 		

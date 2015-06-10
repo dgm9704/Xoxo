@@ -105,7 +105,7 @@ namespace Diwen.Xbrl
 
 		public bool Equals(IList<ExplicitMember> other)
 		{
-			return this.SmartCompare(other);
+			return this.ContentCompare(other);
 		}
 
 		#endregion

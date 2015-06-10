@@ -24,6 +24,19 @@ namespace Diwen.Xbrl
 			this.Value = value;
 		}
 
+		public override bool Equals(object obj)
+		{
+			var other = obj as SchemaReference;
+			if(other != null)
+			{
+				return this.Equals(other);
+			}
+			else
+			{
+				return base.Equals(obj);
+			}
+		}
+
 		#region IEquatable implementation
 
 		public bool Equals(SchemaReference other)
@@ -40,17 +53,5 @@ namespace Diwen.Xbrl
 
 		#endregion
 
-		public override bool Equals(object obj)
-		{
-			var other = obj as SchemaReference;
-			if(other != null)
-			{
-				return this.Equals(other);
-			}
-			else
-			{
-				return base.Equals(obj);
-			}
-		}
 	}
 }

@@ -72,19 +72,6 @@ namespace Diwen.Xbrl
 			return fact;
 		}
 
-		#region IEquatable implementation
-
-		public bool Equals(Fact other)
-		{
-			return other != null
-			&& this.Metric.Equals(other.Metric)
-			&& this.Value.Equals(other.Value, StringComparison.Ordinal)
-			&& this.Decimals.Equals(other.Decimals, StringComparison.Ordinal)
-			&& this.Unit.Equals(other.Unit, StringComparison.Ordinal);
-		}
-
-		#endregion
-
 		public override bool Equals(object obj)
 		{
 			var other = obj as Fact;
@@ -105,5 +92,18 @@ namespace Diwen.Xbrl
 			^ this.Decimals.GetHashCode()
 			^ this.Unit.GetHashCode();
 		}
+
+		#region IEquatable implementation
+
+		public bool Equals(Fact other)
+		{
+			return other != null
+			&& this.Metric.Equals(other.Metric)
+			&& this.Value.Equals(other.Value, StringComparison.Ordinal)
+			&& this.Decimals.Equals(other.Decimals, StringComparison.Ordinal)
+			&& this.Unit.Equals(other.Unit, StringComparison.Ordinal);
+		}
+
+		#endregion
 	}
 }

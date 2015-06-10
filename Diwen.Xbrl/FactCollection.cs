@@ -44,10 +44,9 @@ namespace Diwen.Xbrl
 
 		public bool Equals(IList<Fact> other)
 		{
-			return this.SmartCompare(other);
+			return this.ContentCompare(other);
 		}
 
 		#endregion
 	}
-
 }

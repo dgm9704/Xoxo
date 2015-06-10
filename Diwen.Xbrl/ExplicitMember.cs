@@ -31,28 +31,6 @@ namespace Diwen.Xbrl
 			^ this.Value.GetHashCode();
 		}
 
-		#region IEquatable implementation
-
-		public bool Equals(ExplicitMember other)
-		{
-			var result = false;
-			if(other != null)
-			{
-				if(this.Dimension == other.Dimension)
-				{
-					if(this.Value == other.Value)
-					{
-						result = true;
-					}
-				}
-
-			}
-
-			return result;
-		}
-
-		#endregion
-
 		public override bool Equals(object obj)
 		{
 			var other = obj as ExplicitMember;
@@ -66,28 +44,12 @@ namespace Diwen.Xbrl
 			}
 		}
 
-		#region IComparable implementation
-
-		public int CompareTo(ExplicitMember other)
+		public int Compare(ExplicitMember other)
 		{
-			int result = 0;
-			if(other == null)
-			{
-				result = 1;
-			}
-			else
-			{
-				result = string.Compare(this.Dimension.Name, other.Dimension.Name, StringComparison.OrdinalIgnoreCase);
-				if(result == 0)
-				{
-					result = string.Compare(this.Value.Name, other.Value.Name, StringComparison.OrdinalIgnoreCase);
-				}
-			}
-
-			return result;
+			return this.CompareTo(other);
 		}
 
-		#endregion
+		#region operator overloads
 
 		public static bool operator ==(ExplicitMember left, ExplicitMember right)
 		{
@@ -151,9 +113,51 @@ namespace Diwen.Xbrl
 			return right > left;
 		}
 
-		public int Compare(ExplicitMember other)
+		#endregion
+
+		#region IEquatable implementation
+
+		public bool Equals(ExplicitMember other)
 		{
-			return this.CompareTo(other);
+			var result = false;
+			if(other != null)
+			{
+				if(this.Dimension == other.Dimension)
+				{
+					if(this.Value == other.Value)
+					{
+						result = true;
+					}
+				}
+
+			}
+
+			return result;
 		}
+
+		#endregion
+
+		#region IComparable implementation
+
+		public int CompareTo(ExplicitMember other)
+		{
+			int result = 0;
+			if(other == null)
+			{
+				result = 1;
+			}
+			else
+			{
+				result = string.Compare(this.Dimension.Name, other.Dimension.Name, StringComparison.OrdinalIgnoreCase);
+				if(result == 0)
+				{
+					result = string.Compare(this.Value.Name, other.Value.Name, StringComparison.OrdinalIgnoreCase);
+				}
+			}
+
+			return result;
+		}
+
+		#endregion
 	}
 }

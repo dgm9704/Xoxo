@@ -27,6 +27,19 @@ namespace Diwen.Xbrl
 			this.Instant = new DateTime(year, month, day);
 		}
 
+		public override bool Equals(object obj)
+		{
+			var other = obj as Period;
+			if(other != null)
+			{
+				return this.Equals(other);
+			}
+			else
+			{
+				return base.Equals(obj);
+			}
+		}
+
 		#region IEquatable implementation
 
 		public bool Equals(Period other)
@@ -40,18 +53,5 @@ namespace Diwen.Xbrl
 		}
 
 		#endregion
-
-		public override bool Equals(object obj)
-		{
-			var other = obj as Period;
-			if(other != null)
-			{
-				return this.Equals(other);
-			}
-			else
-			{
-				return base.Equals(obj);
-			}
-		}
 	}
 }

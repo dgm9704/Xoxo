@@ -18,8 +18,6 @@ namespace Diwen.Xbrl
 			: this()
 		{
 			this.Instance = instance;
-			this.Add("uEUR", "iso4217:EUR");
-			this.Add("uPURE", "xbrli:pure"); 
 		}
 
 		public void Add(string id, string measure)
@@ -46,7 +44,7 @@ namespace Diwen.Xbrl
 
 		public bool Equals(IList<Unit> other)
 		{
-			return this.SmartCompare(other);
+			return this.ContentCompare(other);
 		}
 
 		#endregion

@@ -8,7 +8,7 @@ namespace Diwen.Xbrl
 
 	public class ContextCollection : KeyedCollection<string, Context>, IEquatable<IList<Context>>
 	{
-		private IFormatProvider ic = CultureInfo.InvariantCulture;
+		private static IFormatProvider ic = CultureInfo.InvariantCulture;
 
 		private Instance Instance;
 
@@ -82,6 +82,17 @@ namespace Diwen.Xbrl
 			return id;
 		}
 
+		public void AddRange(IEnumerable<Context> values)
+		{
+			if(values != null)
+			{
+				foreach(var item in values)
+				{
+					this.Add(item);
+				}
+			}
+		}
+
 		protected override string GetKeyForItem(Context item)
 		{
 			string key = null;
@@ -96,20 +107,9 @@ namespace Diwen.Xbrl
 
 		public bool Equals(IList<Context> other)
 		{
-			return this.SmartCompare(other);
+			return this.ContentCompare(other);
 		}
 
 		#endregion
-
-		public void AddRange(IEnumerable<Context> values)
-		{
-			if(values != null)
-			{
-				foreach(var item in values)
-				{
-					this.Add(item);
-				}
-			}
-		}
 	}
 }

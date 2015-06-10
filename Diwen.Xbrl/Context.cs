@@ -19,22 +19,22 @@ namespace Diwen.Xbrl
 		[XmlElement("scenario", Namespace = "http://www.xbrl.org/2003/instance")]
 		public Scenario Scenario { get; set; }
 
-		public bool ShouldSerializeScenario()
-		{
-			return Scenario != null &&
-			((Scenario.ExplicitMembers != null && Scenario.ExplicitMembers.Count != 0)
-			|| (Scenario.TypedMembers != null && Scenario.TypedMembers.Count != 0));
-		}
+		//		public bool ShouldSerializeScenario()
+		//		{
+		//			return Scenario != null &&
+		//			((Scenario.ExplicitMembers != null && Scenario.ExplicitMembers.Count != 0)
+		//			|| (Scenario.TypedMembers != null && Scenario.TypedMembers.Count != 0));
+		//		}
 
-		public bool ScenarioSpecified
-		{
-			get
-			{
-				return Scenario != null &&
-				((Scenario.ExplicitMembers != null && Scenario.ExplicitMembers.Count != 0)
-				|| (Scenario.TypedMembers != null && Scenario.TypedMembers.Count != 0));
-			}
-		}
+		//		public bool ScenarioSpecified
+		//		{
+		//			get
+		//			{
+		//				return Scenario != null &&
+		//				((Scenario.ExplicitMembers != null && Scenario.ExplicitMembers.Count != 0)
+		//				|| (Scenario.TypedMembers != null && Scenario.TypedMembers.Count != 0));
+		//			}
+		//		}
 
 		public Context()
 		{
@@ -45,28 +45,15 @@ namespace Diwen.Xbrl
 			this.Scenario = scenario;
 		}
 
-		#region IEquatable implementation
-
-		public bool Equals(Context other)
+		public ExplicitMember AddExplicitMember(string dimension, string value)
 		{
-			var result = false;
-			if(other != null)
-			{
-				if((this.Entity == null && other.Entity == null) || this.Entity.Equals(other.Entity))
-				{
-					if((this.Period == null && other.Period == null) || this.Period.Equals(other.Period))
-					{
-						if((this.Scenario == null && other.Scenario == null) || (this.Scenario != null && this.Scenario.Equals(other.Scenario)))
-						{
-							result = true;
-						}
-					}
-				}
-			}
-			return result;
+			return this.Scenario.ExplicitMembers.Add(dimension, value);
 		}
 
-		#endregion
+		public TypedMember AddTypedMember(string dimension, string domain, string value)
+		{
+			return this.Scenario.TypedMembers.Add(dimension, domain, value);
+		}
 
 		public override bool Equals(object obj)
 		{
@@ -101,14 +88,27 @@ namespace Diwen.Xbrl
 			return result;
 		}
 
-		public ExplicitMember AddExplicitMember(string dimension, string value)
+		#region IEquatable implementation
+
+		public bool Equals(Context other)
 		{
-			return this.Scenario.ExplicitMembers.Add(dimension, value);
+			var result = false;
+			if(other != null)
+			{
+				if((this.Entity == null && other.Entity == null) || this.Entity.Equals(other.Entity))
+				{
+					if((this.Period == null && other.Period == null) || this.Period.Equals(other.Period))
+					{
+						if((this.Scenario == null && other.Scenario == null) || (this.Scenario != null && this.Scenario.Equals(other.Scenario)))
+						{
+							result = true;
+						}
+					}
+				}
+			}
+			return result;
 		}
 
-		public TypedMember AddTypedMember(string dimension, string domain, string value)
-		{
-			return this.Scenario.TypedMembers.Add(dimension, domain, value);
-		}
+		#endregion
 	}
 }

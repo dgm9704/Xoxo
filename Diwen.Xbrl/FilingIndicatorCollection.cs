@@ -6,11 +6,6 @@ namespace Diwen.Xbrl
 
 	public class FilingIndicatorCollection : Collection<FilingIndicator>, IEquatable<IList<FilingIndicator>>
 	{
-
-		//		public FilingIndicatorCollection(Instance instance)
-		//		{
-		//		}
-
 		public FilingIndicator Add(Context context, string value)
 		{
 			var filingIndicator = new FilingIndicator(context, value);
@@ -22,7 +17,7 @@ namespace Diwen.Xbrl
 
 		public bool Equals(IList<FilingIndicator> other)
 		{
-			return this.SmartCompare(other);
+			return this.ContentCompare(other);
 		}
 
 		#endregion

@@ -25,6 +25,19 @@ namespace Diwen.Xbrl
 			this.Measure = measure;
 		}
 
+		public override bool Equals(object obj)
+		{
+			var other = obj as Unit;
+			if(other != null)
+			{
+				return this.Equals(other);
+			}
+			else
+			{
+				return base.Equals(obj);
+			}
+		}
+
 		#region IEquatable implementation
 
 		public bool Equals(Unit other)
@@ -40,20 +53,5 @@ namespace Diwen.Xbrl
 		}
 
 		#endregion
-
-		public override bool Equals(object obj)
-		{
-			var other = obj as Unit;
-			if(other != null)
-			{
-				return this.Equals(other);
-			}
-			else
-			{
-				return base.Equals(obj);
-			}
-		}
-
 	}
-
 }

@@ -8,7 +8,7 @@ namespace Diwen.Xbrl
 	public class FilingIndicator : IEquatable<FilingIndicator>
 	{
 		[XmlAttribute("contextRef")]
-		public string ContextId { get; set; }
+		public string Context { get; set; }
 
 		[XmlText]
 		public string Value { get; set; }
@@ -25,18 +25,9 @@ namespace Diwen.Xbrl
 				throw new ArgumentNullException("context");
 			}
 
-			this.ContextId = context.Id;
+			this.Context = context.Id;
 			this.Value = value;
 		}
-
-		#region IEquatable implementation
-
-		public bool Equals(FilingIndicator other)
-		{
-			return other != null && this.Value.Equals(other.Value, StringComparison.Ordinal);
-		}
-
-		#endregion
 
 		public override bool Equals(object obj)
 		{
@@ -55,6 +46,14 @@ namespace Diwen.Xbrl
 		{
 			return this.Value.GetHashCode();
 		}
-	}
 
+		#region IEquatable implementation
+
+		public bool Equals(FilingIndicator other)
+		{
+			return other != null && this.Value.Equals(other.Value, StringComparison.Ordinal);
+		}
+
+		#endregion
+	}
 }

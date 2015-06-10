@@ -39,27 +39,6 @@ namespace Diwen.Xbrl
 			this.TypedMembers = new TypedMemberCollection(instance);
 		}
 
-		#region IEquatable implementation
-
-		public bool Equals(Scenario other)
-		{
-			var result = false;
-			if(other != null)
-			{
-				if(this.ExplicitMembers.Equals(other.ExplicitMembers))
-				{
-					if(this.TypedMembers.Equals(other.TypedMembers))
-					{
-						result = true;
-					}
-				}
-			}
-
-			return result;
-		}
-
-		#endregion
-
 		public override bool Equals(object obj)
 		{
 			var other = obj as Scenario;
@@ -87,5 +66,26 @@ namespace Diwen.Xbrl
 		{
 			return this.TypedMembers.Add(dimension, domain, value);
 		}
+
+		#region IEquatable implementation
+
+		public bool Equals(Scenario other)
+		{
+			var result = false;
+			if(other != null)
+			{
+				if(this.ExplicitMembers.Equals(other.ExplicitMembers))
+				{
+					if(this.TypedMembers.Equals(other.TypedMembers))
+					{
+						result = true;
+					}
+				}
+			}
+
+			return result;
+		}
+
+		#endregion
 	}
 }

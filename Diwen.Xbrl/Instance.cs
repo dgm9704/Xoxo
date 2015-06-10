@@ -39,11 +39,8 @@
 		[XmlElement("schemaRef", Namespace = "http://www.xbrl.org/2003/linkbase")]
 		public SchemaReference SchemaReference { get; set; }
 
-		[XmlIgnore]
-		public UnitCollection Units { get; private set; }
-
 		[XmlElement("unit", Namespace = "http://www.xbrl.org/2003/instance")]
-		public UnitCollection UsedUnits { get { return Units.UsedUnits(); } private set { } }
+		public UnitCollection Units { get; private set; }
 
 		[XmlArray("fIndicators", Namespace = "http://www.eurofiling.info/xbrl/ext/filing-indicators")]
 		[XmlArrayItem("filingIndicator", Namespace = "http://www.eurofiling.info/xbrl/ext/filing-indicators")]
@@ -181,14 +178,28 @@
 			Namespaces.AddNamespace("xbrldi", "http://xbrl.org/2006/xbrldi");
 		}
 
+		public void RemoveUnusedUnits()
+		{
+			var used = this.Facts.Select(f => f.Unit).Distinct();
+
+			for(int i = 0; i < this.Units.Count; i++)
+			{
+				var u = this.Units[i];
+				if(!used.Contains(u.Id))
+				{
+					this.Units[i] = null;
+				}
+			}
+
+			Unit nullUnit = null;
+			this.Units.Remove(nullUnit);
+		
+		}
+
 		public void RemoveUnusedObjects()
 		{
-			var used = Units.UsedUnits();
-			this.Units.Clear();
-			foreach(var unit in used)
-			{
-				this.Units.Add(unit);
-			}
+			RemoveUnusedUnits();
+			RemoveUnusedContexts();
 		}
 
 
@@ -208,15 +219,31 @@
 						{
 							fact.Context = left.Id;
 						}
-						this.Contexts[j] = null;
 					}
 				}
 			}
 			if(found)
 			{
-				Context nullContext = null;
-				this.Contexts.Remove(nullContext);
+				this.RemoveUnusedContexts();
 			}
+		}
+
+		public void RemoveUnusedContexts()
+		{
+			var used = this.Facts.Select(f => f.Context).Concat(this.FilingIndicators.Select(f => f.Context)).Distinct();
+
+
+			for(int i = 0; i < this.Contexts.Count; i++)
+			{
+				var c = this.Contexts[i];
+				if(!used.Contains(c.Id))
+				{
+					this.Contexts[i] = null;
+				}
+			}
+
+			Context nullContext = null;
+			this.Contexts.Remove(nullContext);
 		}
 
 		public Instance()
@@ -395,36 +422,52 @@
 
 		private static XmlSerializer Serializer = new XmlSerializer(typeof(Instance));
 
-		public static Instance FromFile(string path)
+		private static Instance FromStream(Stream stream)
+		{
+			return (Instance)Serializer.Deserialize(stream);
+		}
+
+		public static Instance FromFile(string path, bool removeUnusedObjects = false)
 		{
 			Instance xbrl = null;
 
-			//using(var stream = new MemoryStream(File.ReadAllBytes(path)))
 			using(var stream = new FileStream(path, FileMode.Open, FileAccess.Read))
 			{
-				xbrl = (Instance)Serializer.Deserialize(stream);
-				xbrl.RebuildNamespacesAfterRead();
+				xbrl = Instance.FromStream(stream);
 			}
+
+			if(removeUnusedObjects)
+			{
+				xbrl.RemoveUnusedObjects();
+			}
+
+			xbrl.RebuildNamespacesAfterRead();
+
 			return xbrl;
+		}
+
+		private void ToXmlWriter(XmlWriter writer)
+		{
+			var ns = this.Namespaces.ToXmlSerializerNamespaces();
+
+			if(!string.IsNullOrEmpty(this.TaxonomyVersion))
+			{
+				writer.WriteProcessingInstruction("taxonomy-version", this.TaxonomyVersion);
+			}
+			Serializer.Serialize(writer, this, ns);
 		}
 
 		public void ToFile(string path)
 		{
-			var ns = this.Namespaces.ToXmlSerializerNamespaces();
-
 			var settings = new XmlWriterSettings {
 				Indent = true,
 				NamespaceHandling = NamespaceHandling.OmitDuplicates,
 				Encoding = UTF8Encoding.UTF8
 			};
+
 			using(var writer = XmlWriter.Create(path, settings))
 			{
-				if(!string.IsNullOrEmpty(this.TaxonomyVersion))
-				{
-					writer.WriteProcessingInstruction("taxonomy-version", this.TaxonomyVersion);
-				}
-
-				Serializer.Serialize(writer, this, ns);
+				ToXmlWriter(writer);
 			}
 		}
 
