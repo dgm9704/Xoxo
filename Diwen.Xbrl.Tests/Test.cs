@@ -215,6 +215,31 @@ namespace Diwen.Xbrl.Tests
 
 			Assert.IsTrue(instance.Contexts.Count == 1);
 		}
+
+		[Test]
+		public static void ReadExampleInstanceFPInd()
+		{
+			var inputPath = Path.Combine("data", "fp_ind_new_correct.xbrl");
+			var first = Instance.FromFile(inputPath);
+			Assert.AreEqual(7051, first.Contexts.Count);
+			Assert.AreEqual(7091, first.Facts.Count);
+
+			Instance second = null;
+			using(var stream = new MemoryStream())
+			{
+				first.ToStream(stream);
+				stream.Seek(0, SeekOrigin.Begin);
+				second = Instance.FromStream(stream);
+			}
+
+			Assert.AreEqual(first, second);
+		}
+
+		[Test]
+		public static void WriteToXmlDocument()
+		{
+			var xmlDoc = CreateSolvencyInstance().ToXmlDocument();
+		}
 	}
 }
 

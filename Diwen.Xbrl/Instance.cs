@@ -420,57 +420,6 @@
 			}
 		}
 
-		private static XmlSerializer Serializer = new XmlSerializer(typeof(Instance));
-
-		private static Instance FromStream(Stream stream)
-		{
-			return (Instance)Serializer.Deserialize(stream);
-		}
-
-		public static Instance FromFile(string path, bool removeUnusedObjects = false)
-		{
-			Instance xbrl = null;
-
-			using(var stream = new FileStream(path, FileMode.Open, FileAccess.Read))
-			{
-				xbrl = Instance.FromStream(stream);
-			}
-
-			if(removeUnusedObjects)
-			{
-				xbrl.RemoveUnusedObjects();
-			}
-
-			xbrl.RebuildNamespacesAfterRead();
-
-			return xbrl;
-		}
-
-		private void ToXmlWriter(XmlWriter writer)
-		{
-			var ns = this.Namespaces.ToXmlSerializerNamespaces();
-
-			if(!string.IsNullOrEmpty(this.TaxonomyVersion))
-			{
-				writer.WriteProcessingInstruction("taxonomy-version", this.TaxonomyVersion);
-			}
-			Serializer.Serialize(writer, this, ns);
-		}
-
-		public void ToFile(string path)
-		{
-			var settings = new XmlWriterSettings {
-				Indent = true,
-				NamespaceHandling = NamespaceHandling.OmitDuplicates,
-				Encoding = UTF8Encoding.UTF8
-			};
-
-			using(var writer = XmlWriter.Create(path, settings))
-			{
-				ToXmlWriter(writer);
-			}
-		}
-
 		public FilingIndicator AddFilingIndicator(string value)
 		{
 			var context = this.GetContext(null);
@@ -496,5 +445,79 @@
 			scenario.Instance = this;
 			return this.Facts.Add(scenario, metric, unit, decimals, value);
 		}
+
+		#region serialization
+
+		private static XmlSerializer Serializer = new XmlSerializer(typeof(Instance));
+
+		private static XmlWriterSettings XmlWriterSettings = new XmlWriterSettings {
+			Indent = true,
+			NamespaceHandling = NamespaceHandling.OmitDuplicates,
+			Encoding = UTF8Encoding.UTF8
+		};
+
+		public static Instance FromStream(Stream stream)
+		{
+			return (Instance)Serializer.Deserialize(stream);
+		}
+
+		public void ToStream(Stream stream)
+		{
+			using(var writer = XmlWriter.Create(stream, XmlWriterSettings))
+			{
+				ToXmlWriter(writer);
+			}
+		}
+
+		public static Instance FromFile(string path, bool removeUnusedObjects = false)
+		{
+			Instance xbrl = null;
+
+			using(var stream = new FileStream(path, FileMode.Open, FileAccess.Read))
+			{
+				xbrl = Instance.FromStream(stream);
+			}
+
+			if(removeUnusedObjects)
+			{
+				xbrl.RemoveUnusedObjects();
+			}
+
+			xbrl.RebuildNamespacesAfterRead();
+
+			return xbrl;
+		}
+
+		public void ToFile(string path)
+		{
+			using(var writer = XmlWriter.Create(path, XmlWriterSettings))
+			{
+				ToXmlWriter(writer);
+			}
+		}
+
+		private void ToXmlWriter(XmlWriter writer)
+		{
+			var ns = this.Namespaces.ToXmlSerializerNamespaces();
+
+			if(!string.IsNullOrEmpty(this.TaxonomyVersion))
+			{
+				writer.WriteProcessingInstruction("taxonomy-version", this.TaxonomyVersion);
+			}
+			Serializer.Serialize(writer, this, ns);
+		}
+
+		public XmlDocument ToXmlDocument()
+		{
+			var document = new XmlDocument();
+			var nav = document.CreateNavigator();
+			using(var writer = nav.AppendChild())
+			{
+				ToXmlWriter(writer);
+			}
+			return document;
+		}
+
+		#endregion
 	}
 }

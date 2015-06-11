@@ -8,7 +8,7 @@
     <RootNamespace>Diwen.Xbrl</RootNamespace>
     <AssemblyName>Diwen.Xbrl</AssemblyName>
     <Description>Library for reading, writing and comparing XBRL files</Description>
-    <ReleaseVersion>0.8</ReleaseVersion>
+    <ReleaseVersion>0.9</ReleaseVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -26,6 +26,11 @@
       </CustomCommands>
     </CustomCommands>
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+    <EnvironmentVariables>
+      <EnvironmentVariables>
+        <Variable name="MONO_XMLSERIALIZER_THS" value="0" />
+      </EnvironmentVariables>
+    </EnvironmentVariables>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>full</DebugType>
