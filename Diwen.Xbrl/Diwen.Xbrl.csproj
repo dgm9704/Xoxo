@@ -23,6 +23,7 @@
     <CustomCommands>
       <CustomCommands>
         <Command type="Custom" name="gendarme!" command="gendarme --severity all --quiet --html ${TargetFile}.gendarme.html ${TargetFile}" workingdir="${TargetDir}" />
+        <Command type="AfterBuild" command="sgen ${TargetFile}" workingdir="" />
       </CustomCommands>
     </CustomCommands>
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>

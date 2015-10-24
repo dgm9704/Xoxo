@@ -24,6 +24,11 @@
         <Variable name="MONO_XMLSERIALIZER_THS" value="0" />
       </EnvironmentVariables>
     </EnvironmentVariables>
+    <CustomCommands>
+      <CustomCommands>
+        <Command type="AfterBuild" command="sgen bin/Debug/Diwen.Xbrl.dll" />
+      </CustomCommands>
+    </CustomCommands>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>full</DebugType>
