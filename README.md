@@ -1,4 +1,5 @@
 # Xoxo
+Container for the Diwen.Xbrl library and any related stuff
 ## Diwen.Xbrl
 A .NET library for reading, writing and comparing XBRL documents (instances)
 ### NuGet 
