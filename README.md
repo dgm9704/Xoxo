@@ -6,5 +6,5 @@ A .NET library for reading, writing and comparing XBRL documents (instances)
 License: http://www.gnu.org/licenses/gpl.txt
 ### NuGet 
 https://www.nuget.org/packages/Diwen.Xbrl/
-## Diwen.Xbrl.Test
+## Diwen.Xbrl.Tests
 Tests for exercising Diwen.Xbrl code, also serving as documentation
