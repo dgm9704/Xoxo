@@ -128,7 +128,18 @@ namespace Diwen.Xbrl
 				throw new ArgumentNullException("writer");
 			}
 			writer.WriteAttributeString("dimension", this.Dimension.Name);
-			writer.WriteElementString(this.Domain.Prefix(), this.Domain.LocalName(), this.Domain.Namespace, this.Value);
+
+			if(!string.IsNullOrEmpty(this.Value))
+			{
+				writer.WriteElementString(this.Domain.Prefix(), this.Domain.LocalName(), this.Domain.Namespace, this.Value);
+			}
+			else
+			{
+				writer.WriteStartElement(this.Domain.Prefix(), this.Domain.LocalName(), this.Domain.Namespace);
+				writer.WriteAttributeString("xsi", "nil", XmlSchema.InstanceNamespace, "true");
+				writer.WriteEndElement();
+			}
+
 		}
 
 		public override int GetHashCode()

@@ -170,6 +170,7 @@
 
 		private void AddDefaultNamespaces()
 		{
+			Namespaces.AddNamespace("xsi", "http://www.w3.org/2001/XMLSchema-instance");
 			Namespaces.AddNamespace("xbrli", "http://www.xbrl.org/2003/instance");
 			Namespaces.AddNamespace("link", "http://www.xbrl.org/2003/linkbase");
 			Namespaces.AddNamespace("xlink", "http://www.w3.org/1999/xlink");
@@ -180,7 +181,7 @@
 
 		public void RemoveUnusedUnits()
 		{
-			var used = this.Facts.Select(f => f.Unit).Distinct();
+			var used = this.Facts.Where(f => !string.IsNullOrEmpty(f.Unit)).Select(f => f.Unit).Distinct();
 
 			for(int i = 0; i < this.Units.Count; i++)
 			{
@@ -201,7 +202,6 @@
 			RemoveUnusedUnits();
 			RemoveUnusedContexts();
 		}
-
 
 		public void CollapseDuplicateContexts()
 		{
@@ -510,6 +510,8 @@
 		public XmlDocument ToXmlDocument()
 		{
 			var document = new XmlDocument();
+			var declaration = document.CreateXmlDeclaration("1.0", "UTF-8", null);
+			document.AppendChild(declaration);
 			var nav = document.CreateNavigator();
 			using(var writer = nav.AppendChild())
 			{

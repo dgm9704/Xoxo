@@ -236,6 +236,22 @@ namespace Diwen.Xbrl.Tests
 		}
 
 		[Test]
+		public static void WriteEmptyTypedMember()
+		{
+			var instance = CreateSolvencyInstance();
+			instance.CheckExplicitMemberDomainExists = true;
+			instance.CheckUnitExists = true;
+
+			var scenario = new Scenario();
+			scenario.AddTypedMember("CE", "ID", null);
+			instance.AddFact(scenario, "mi1234", null, null, "123");
+			instance.RemoveUnusedObjects();
+			instance.ToFile(@"typedmembernil.xbrl.xml");
+
+		}
+
+
+		[Test]
 		public static void WriteToXmlDocument()
 		{
 			var xmlDoc = CreateSolvencyInstance().ToXmlDocument();

@@ -21,11 +21,14 @@ namespace Diwen.Xbrl
 			var ns = this.Instance.FactNamespace;
 			var prefix = this.Instance.Namespaces.LookupPrefix(ns);
 
-			if(this.Instance.CheckUnitExists)
+			if(!string.IsNullOrEmpty(unit))
 			{
-				if(this.Instance.Units.FirstOrDefault(u => u.Id == unit) == null)
+				if(this.Instance.CheckUnitExists)
 				{
-					throw new InvalidOperationException(string.Format(ic, "Referenced unit '{0}' does not exist", unit));
+					if(this.Instance.Units.FirstOrDefault(u => u.Id == unit) == null)
+					{
+						throw new InvalidOperationException(string.Format(ic, "Referenced unit '{0}' does not exist", unit));
+					}
 				}
 			}
 

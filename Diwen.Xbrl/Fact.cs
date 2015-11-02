@@ -54,9 +54,18 @@ namespace Diwen.Xbrl
 		internal XmlElement ToXmlElement()
 		{
 			var element = doc.CreateElement(this.Metric.Name, this.Metric.Namespace);
-			element.SetAttribute("unitRef", this.Unit);
-			element.SetAttribute("decimals", this.Decimals);
+
 			element.SetAttribute("contextRef", this.Context);
+
+			if(!string.IsNullOrEmpty(this.Unit))
+			{
+				element.SetAttribute("unitRef", this.Unit);
+			}
+			if(!string.IsNullOrEmpty(this.Decimals))
+			{
+				element.SetAttribute("decimals", this.Decimals);
+			}
+
 			element.InnerText = this.Value;
 			return element;
 		}
