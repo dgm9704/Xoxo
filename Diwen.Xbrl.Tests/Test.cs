@@ -106,6 +106,7 @@ namespace Diwen.Xbrl.Tests
 		public static void WriteSolvencyInstance()
 		{
 			var instance = CreateSolvencyInstance();
+			instance.AddDomainNamespace("s2c_XX", "http://eiopa.europa.eu/xbrl/s2c/dict/dom/XX");
 			// Write the instace to a file
 			var path = @"output.xbrl.xml";
 			instance.ToFile(path);
@@ -247,14 +248,13 @@ namespace Diwen.Xbrl.Tests
 			instance.AddFact(scenario, "mi1234", null, null, "123");
 			instance.RemoveUnusedObjects();
 			instance.ToFile(@"typedmembernil.xbrl.xml");
-
 		}
-
 
 		[Test]
 		public static void WriteToXmlDocument()
 		{
 			var xmlDoc = CreateSolvencyInstance().ToXmlDocument();
+			xmlDoc.Save("xbrl2doc.xml");
 		}
 	}
 }

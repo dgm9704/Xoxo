@@ -4,6 +4,7 @@
 	using System.Collections.Generic;
 	using System.IO;
 	using System.Linq;
+	using System.Reflection;
 	using System.Text;
 	using System.Xml;
 	using System.Xml.Serialization;
@@ -12,6 +13,20 @@
 	[XmlRoot(ElementName = "xbrl", Namespace = "http://www.xbrl.org/2003/instance")]
 	public class Instance : IEquatable<Instance>
 	{
+		private static AssemblyName assembly = Assembly.GetExecutingAssembly().GetName();
+		private static Version version = assembly.Version;
+		private static string id = assembly.Name;
+
+		internal static Dictionary<string,string> DefaultNamespaces = new Dictionary<string,string> {
+			{ "xsi", "http://www.w3.org/2001/XMLSchema-instance" },
+			{ "xbrli", "http://www.xbrl.org/2003/instance" },
+			{ "link", "http://www.xbrl.org/2003/linkbase" },
+			{ "xlink", "http://www.w3.org/1999/xlink" },
+			{ "iso4217", "http://www.xbrl.org/2003/iso4217" },
+			{ "find", "http://www.eurofiling.info/xbrl/ext/filing-indicators" },
+			{ "xbrldi", "http://xbrl.org/2006/xbrldi" },
+		};
+
 		[XmlNamespaceDeclarations]
 		public XmlSerializerNamespaces XmlSerializerNamespaces{ get; set; }
 
@@ -170,13 +185,10 @@
 
 		private void AddDefaultNamespaces()
 		{
-			Namespaces.AddNamespace("xsi", "http://www.w3.org/2001/XMLSchema-instance");
-			Namespaces.AddNamespace("xbrli", "http://www.xbrl.org/2003/instance");
-			Namespaces.AddNamespace("link", "http://www.xbrl.org/2003/linkbase");
-			Namespaces.AddNamespace("xlink", "http://www.w3.org/1999/xlink");
-			Namespaces.AddNamespace("iso4217", "http://www.xbrl.org/2003/iso4217");
-			Namespaces.AddNamespace("find", "http://www.eurofiling.info/xbrl/ext/filing-indicators");
-			Namespaces.AddNamespace("xbrldi", "http://xbrl.org/2006/xbrldi");
+			foreach(var item in DefaultNamespaces)
+			{
+				Namespaces.AddNamespace(item.Key, item.Value);
+			}
 		}
 
 		public void RemoveUnusedUnits()
@@ -446,6 +458,14 @@
 			return this.Facts.Add(scenario, metric, unit, decimals, value);
 		}
 
+		internal List<string> GetUsedDomainNamespaces()
+		{
+			var used = new List<string>();
+			var contexts = this.Contexts.Where(c => c.Scenario != null);
+			used.AddRange(contexts.SelectMany(c => c.Scenario.ExplicitMembers).Select(e => e.Value.Namespace).Distinct());
+			return used;
+		}
+
 		#region serialization
 
 		private static XmlSerializer Serializer = new XmlSerializer(typeof(Instance));
@@ -498,7 +518,11 @@
 
 		private void ToXmlWriter(XmlWriter writer)
 		{
-			var ns = this.Namespaces.ToXmlSerializerNamespaces();
+			var ns = this.ToXmlSerializerNamespaces();
+
+			var info = string.Format("id='{0}' version='{1}' creationdate='{2:yyyy-MM-ddTHH:mm:ss:ffzzz}", id, version, DateTime.Now);
+
+			writer.WriteProcessingInstruction("instance-generator", info);
 
 			if(!string.IsNullOrEmpty(this.TaxonomyVersion))
 			{
