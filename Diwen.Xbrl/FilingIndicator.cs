@@ -1,6 +1,7 @@
 namespace Diwen.Xbrl
 {
 	using System;
+	using System.Xml.Schema;
 	using System.Xml.Serialization;
 
 	[Serializable]
@@ -10,15 +11,23 @@ namespace Diwen.Xbrl
 		[XmlAttribute("contextRef")]
 		public string Context { get; set; }
 
+		[XmlAttribute(AttributeName = "filed", Form = XmlSchemaForm.Qualified,
+			Namespace = "http://www.eurofiling.info/xbrl/ext/filing-indicators")]
+		public bool Filed { get; set; }
+
 		[XmlText]
 		public string Value { get; set; }
 
 		public FilingIndicator()
 		{
+			this.Filed = true;
 		}
 
-		public FilingIndicator(Context context, string value)
-			: this()
+		public FilingIndicator(Context context, string value) : this(context, value, true)
+		{
+		}
+
+		public FilingIndicator(Context context, string value, bool filed) : this()
 		{
 			if(context == null)
 			{
@@ -27,6 +36,7 @@ namespace Diwen.Xbrl
 
 			this.Context = context.Id;
 			this.Value = value;
+			this.Filed = filed;
 		}
 
 		public override bool Equals(object obj)
@@ -44,14 +54,16 @@ namespace Diwen.Xbrl
 
 		public override int GetHashCode()
 		{
-			return this.Value.GetHashCode();
+			return this.Value.GetHashCode() ^ this.Filed.GetHashCode();
 		}
 
 		#region IEquatable implementation
 
 		public bool Equals(FilingIndicator other)
 		{
-			return other != null && this.Value.Equals(other.Value, StringComparison.Ordinal);
+			return other != null
+			&& this.Filed == other.Filed
+			&& this.Value.Equals(other.Value, StringComparison.Ordinal);
 		}
 
 		#endregion
