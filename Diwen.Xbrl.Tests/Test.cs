@@ -17,7 +17,7 @@ namespace Diwen.Xbrl.Tests
 
 			// Enable some runtime checks
 			// When fact is added, checks that the referenced unit exists in the instance
-			instance.CheckUnitExists = true;
+		
 			// When an explicit member is added, check that the namespace for the domain has been set
 			instance.CheckExplicitMemberDomainExists = true;
 
@@ -241,7 +241,6 @@ namespace Diwen.Xbrl.Tests
 		{
 			var instance = CreateSolvencyInstance();
 			instance.CheckExplicitMemberDomainExists = true;
-			instance.CheckUnitExists = true;
 
 			var scenario = new Scenario();
 			scenario.AddTypedMember("CE", "ID", null);

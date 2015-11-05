@@ -9,13 +9,13 @@ namespace Diwen.Xbrl
 		private static XmlDocument doc = new XmlDocument();
 
 		[XmlIgnore]
-		public string Unit { get; set; }
+		public Unit Unit { get; set; }
 
 		[XmlIgnore]
 		public string Decimals { get; set; }
 
 		[XmlIgnore]
-		public string Context { get; set; }
+		public Context Context { get; set; }
 
 		[XmlIgnore]
 		public XmlQualifiedName Metric { get; set; }
@@ -23,16 +23,19 @@ namespace Diwen.Xbrl
 		[XmlIgnore]
 		public string Value { get; set; }
 
+		internal string ContextRef;
+		internal string UnitRef;
+
 		public Fact()
 		{
 		}
 
-		public Fact(Context context, string metric, string unit, string decimals, string value, string namespaceUri, string prefix)
+		public Fact(Context context, string metric, Unit unit, string decimals, string value, string namespaceUri, string prefix)
 			: this(context, metric, unit, decimals, value, new Uri(namespaceUri), prefix)
 		{
 		}
 
-		public Fact(Context context, string metric, string unit, string decimals, string value, Uri namespaceUri, string prefix)
+		public Fact(Context context, string metric, Unit unit, string decimals, string value, Uri namespaceUri, string prefix)
 		{
 			if(context == null)
 			{
@@ -47,7 +50,7 @@ namespace Diwen.Xbrl
 			this.Metric = new XmlQualifiedName(prefix + ":" + metric, namespaceUri.ToString());
 			this.Unit = unit;
 			this.Decimals = decimals;
-			this.Context = context.Id;
+			this.Context = context;
 			this.Value = value;
 		}
 
@@ -55,11 +58,14 @@ namespace Diwen.Xbrl
 		{
 			var element = doc.CreateElement(this.Metric.Name, this.Metric.Namespace);
 
-			element.SetAttribute("contextRef", this.Context);
-
-			if(!string.IsNullOrEmpty(this.Unit))
+			if(this.Context != null)
 			{
-				element.SetAttribute("unitRef", this.Unit);
+				element.SetAttribute("contextRef", this.Context.Id);
+			}
+
+			if(this.Unit != null)
+			{
+				element.SetAttribute("unitRef", this.Unit.Id);
 			}
 			if(!string.IsNullOrEmpty(this.Decimals))
 			{
@@ -74,9 +80,10 @@ namespace Diwen.Xbrl
 		{
 			var fact = new Fact();
 			fact.Metric = new XmlQualifiedName(element.Name, element.NamespaceURI);
-			fact.Unit = element.GetAttribute("unitRef");
+
+			fact.UnitRef = element.GetAttribute("unitRef");
 			fact.Decimals = element.GetAttribute("decimals");
-			fact.Context = element.GetAttribute("contextRef");
+			fact.ContextRef = element.GetAttribute("contextRef");
 			fact.Value = element.InnerText;
 			return fact;
 		}
@@ -98,19 +105,24 @@ namespace Diwen.Xbrl
 		{
 			return this.Metric.GetHashCode()
 			^ this.Value.GetHashCode()
-			^ this.Decimals.GetHashCode()
-			^ this.Unit.GetHashCode();
+			^ this.Decimals.GetHashCode();
 		}
 
 		#region IEquatable implementation
 
 		public bool Equals(Fact other)
 		{
-			return other != null
-			&& this.Metric.Equals(other.Metric)
-			&& this.Value.Equals(other.Value, StringComparison.Ordinal)
-			&& this.Decimals.Equals(other.Decimals, StringComparison.Ordinal)
-			&& this.Unit.Equals(other.Unit, StringComparison.Ordinal);
+			var result = other != null
+			             && this.Metric.Equals(other.Metric)
+			             && this.Value.Equals(other.Value, StringComparison.Ordinal)
+			             && this.Decimals.Equals(other.Decimals, StringComparison.Ordinal);
+			if(result)
+			{
+				result = this.UnitRef.Equals(other.UnitRef, StringComparison.Ordinal)
+				|| this.Unit.Equals(other.Unit);
+			}
+
+			return result;
 		}
 
 		#endregion

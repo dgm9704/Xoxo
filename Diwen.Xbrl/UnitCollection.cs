@@ -5,7 +5,7 @@ namespace Diwen.Xbrl
 	using System;
 	using System.Linq;
 
-	public class UnitCollection : Collection<Unit>, IEquatable<IList<Unit>>
+	public class UnitCollection : KeyedCollection<string, Unit>, IEquatable<IList<Unit>>
 	{
 		private Instance Instance;
 
@@ -30,7 +30,7 @@ namespace Diwen.Xbrl
 			var result = new UnitCollection();
 			foreach(var unit in this)
 			{
-				var fact = this.Instance.Facts.FirstOrDefault(f => f.Unit == unit.Id);
+				var fact = this.Instance.Facts.FirstOrDefault(f => f.Unit == unit);
 				if(fact != null)
 				{
 					result.Add(unit);
@@ -39,6 +39,17 @@ namespace Diwen.Xbrl
 
 			return result;
 		}
+
+		protected override string GetKeyForItem(Unit item)
+		{
+			string key = null;
+			if(item != null)
+			{
+				key = item.Id;
+			}
+			return key;
+		}
+
 
 		#region IEquatable implementation
 

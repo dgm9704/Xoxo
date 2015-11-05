@@ -1,6 +1,7 @@
 ﻿namespace Diwen.Xbrl
 {
 	using System;
+	using System.Globalization;
 	using System.Collections.Generic;
 	using System.IO;
 	using System.Linq;
@@ -13,6 +14,7 @@
 	[XmlRoot(ElementName = "xbrl", Namespace = "http://www.xbrl.org/2003/instance")]
 	public class Instance : IEquatable<Instance>
 	{
+		private static IFormatProvider ic = CultureInfo.InvariantCulture;
 		private static AssemblyName assembly = Assembly.GetExecutingAssembly().GetName();
 		private static Version version = assembly.Version;
 		private static string id = assembly.Name;
@@ -91,9 +93,6 @@
 				}
 			}
 		}
-
-		[XmlIgnore]
-		public bool CheckUnitExists { get; set; }
 
 		[XmlIgnore]
 		public bool CheckExplicitMemberDomainExists { get; set; }
@@ -193,7 +192,7 @@
 
 		public void RemoveUnusedUnits()
 		{
-			var used = this.Facts.Where(f => !string.IsNullOrEmpty(f.Unit)).Select(f => f.Unit).Distinct();
+			var used = this.Facts.Where(f => f.Unit != null).Select(f => f.Unit.Id).Distinct();
 
 			for(int i = 0; i < this.Units.Count; i++)
 			{
@@ -227,9 +226,9 @@
 					if(left.Equals(right))
 					{
 						found = true;
-						foreach(var fact in this.Facts.Where(f=>f.Context == right.Id))
+						foreach(var fact in this.Facts.Where(f=>f.Context.Id == right.Id))
 						{
-							fact.Context = left.Id;
+							fact.ContextRef = left.Id;
 						}
 					}
 				}
@@ -242,7 +241,7 @@
 
 		public void RemoveUnusedContexts()
 		{
-			var used = this.Facts.Select(f => f.Context).Concat(this.FilingIndicators.Select(f => f.Context)).Distinct();
+			var used = this.Facts.Select(f => f.ContextRef).Concat(this.FilingIndicators.Select(f => f.Context)).Distinct();
 
 
 			for(int i = 0; i < this.Contexts.Count; i++)
@@ -255,7 +254,9 @@
 			}
 
 			Context nullContext = null;
-			this.Contexts.Remove(nullContext);
+			while(this.Contexts.Remove(nullContext))
+			{
+			}
 		}
 
 		public Instance()
@@ -338,6 +339,39 @@
 			UpdateContextNamespaces(namespaces, contextsWithMembers);
 
 			this.Namespaces = namespaces;
+		}
+
+		private void SetContextReferences()
+		{
+			foreach(var fact in this.Facts)
+			{
+				if(fact.Context == null)
+				{
+					if(!string.IsNullOrEmpty(fact.ContextRef))
+					{
+						fact.Context = this.Contexts[fact.ContextRef];
+					}
+				}
+			}
+		}
+
+		private void SetUnitReferences()
+		{
+			foreach(var fact in this.Facts)
+			{
+				if(fact.Unit == null)
+				{
+					var unitRef = fact.UnitRef;
+					if(!string.IsNullOrEmpty(unitRef))
+					{
+						if(!this.Units.Contains(unitRef))
+						{
+							throw new InvalidOperationException(string.Format(ic, "Referenced unit '{0}' does not exist", unitRef));
+						}
+						fact.Unit = this.Units[unitRef];
+					}
+				}
+			}
 		}
 
 		private void UpdateContextNamespaces(IXmlNamespaceResolver namespaces, IEnumerable<Context> contextsWithMembers)
@@ -461,7 +495,7 @@
 		internal List<string> GetUsedDomainNamespaces()
 		{
 			var used = new List<string>();
-			var contexts = this.Contexts.Where(c => c.Scenario != null);
+			var contexts = this.Contexts.Where(c => c != null && c.Scenario != null && c.Scenario.ExplicitMembers != null).ToList();
 			used.AddRange(contexts.SelectMany(c => c.Scenario.ExplicitMembers).Select(e => e.Value.Namespace).Distinct());
 			return used;
 		}
@@ -476,9 +510,21 @@
 			Encoding = UTF8Encoding.UTF8
 		};
 
-		public static Instance FromStream(Stream stream)
+		public static Instance FromStream(Stream stream, bool removeUnusedObjects = false)
 		{
-			return (Instance)Serializer.Deserialize(stream);
+			var xbrl = (Instance)Serializer.Deserialize(stream);
+
+			xbrl.SetContextReferences();
+			xbrl.SetUnitReferences();
+
+			if(removeUnusedObjects)
+			{
+				xbrl.RemoveUnusedObjects();
+			}
+
+			xbrl.RebuildNamespacesAfterRead();
+
+			return xbrl;
 		}
 
 		public void ToStream(Stream stream)
@@ -495,15 +541,8 @@
 
 			using(var stream = new FileStream(path, FileMode.Open, FileAccess.Read))
 			{
-				xbrl = Instance.FromStream(stream);
+				xbrl = Instance.FromStream(stream, removeUnusedObjects);
 			}
-
-			if(removeUnusedObjects)
-			{
-				xbrl.RemoveUnusedObjects();
-			}
-
-			xbrl.RebuildNamespacesAfterRead();
 
 			return xbrl;
 		}

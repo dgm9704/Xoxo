@@ -16,20 +16,19 @@ namespace Diwen.Xbrl
 			this.Instance = instance;
 		}
 
-		public Fact Add(Context context, string metric, string unit, string decimals, string value)
+		public Fact Add(Context context, string metric, string unitRef, string decimals, string value)
 		{
 			var ns = this.Instance.FactNamespace;
 			var prefix = this.Instance.Namespaces.LookupPrefix(ns);
 
-			if(!string.IsNullOrEmpty(unit))
+			Unit unit = null;
+			if(!string.IsNullOrEmpty(unitRef))
 			{
-				if(this.Instance.CheckUnitExists)
+				if(!this.Instance.Units.Contains(unitRef))
 				{
-					if(this.Instance.Units.FirstOrDefault(u => u.Id == unit) == null)
-					{
-						throw new InvalidOperationException(string.Format(ic, "Referenced unit '{0}' does not exist", unit));
-					}
+					throw new InvalidOperationException(string.Format(ic, "Referenced unit '{0}' does not exist", unitRef));
 				}
+				unit = this.Instance.Units[unitRef];
 			}
 
 			var fact = new Fact(context, metric, unit, decimals, value, ns, prefix);
