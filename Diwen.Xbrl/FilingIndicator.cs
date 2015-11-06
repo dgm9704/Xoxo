@@ -1,71 +1,83 @@
 namespace Diwen.Xbrl
 {
-	using System;
-	using System.Xml.Schema;
-	using System.Xml.Serialization;
+    using System;
+    using System.Diagnostics;
+    using System.Xml.Schema;
+    using System.Xml.Serialization;
 
-	[Serializable]
-	[XmlRoot("filingIndicator", Namespace = "http://www.eurofiling.info/xbrl/ext/filing-indicators")]
-	public class FilingIndicator : IEquatable<FilingIndicator>
-	{
-		[XmlAttribute("contextRef")]
-		public string Context { get; set; }
+    [DebuggerDisplay("{Value} : {Filed}")]
+    [Serializable]
+    [XmlRoot("filingIndicator", Namespace = "http://www.eurofiling.info/xbrl/ext/filing-indicators")]
+    public class FilingIndicator : IEquatable<FilingIndicator>
+    {
+        [XmlAttribute("contextRef")]
+        public string ContextRef { get; set; }
 
-		[XmlAttribute(AttributeName = "filed", Form = XmlSchemaForm.Qualified,
-			Namespace = "http://www.eurofiling.info/xbrl/ext/filing-indicators")]
-		public bool Filed { get; set; }
+        [XmlAttribute(AttributeName = "filed", Form = XmlSchemaForm.Qualified,
+            Namespace = "http://www.eurofiling.info/xbrl/ext/filing-indicators")]
+        public bool Filed { get; set; }
 
-		[XmlText]
-		public string Value { get; set; }
+        [XmlText]
+        public string Value { get; set; }
 
-		public FilingIndicator()
-		{
-			this.Filed = true;
-		}
+        private Context context;
+        [XmlIgnore]
+        public Context Context
+        {
+            get { return context; }
+            set { context = value; ContextRef = context.Id; }
+        }
 
-		public FilingIndicator(Context context, string value) : this(context, value, true)
-		{
-		}
+        public FilingIndicator()
+        {
+            this.Filed = true;
+        }
 
-		public FilingIndicator(Context context, string value, bool filed) : this()
-		{
-			if(context == null)
-			{
-				throw new ArgumentNullException("context");
-			}
+        public FilingIndicator(Context context, string value)
+            : this(context, value, true)
+        {
+        }
 
-			this.Context = context.Id;
-			this.Value = value;
-			this.Filed = filed;
-		}
+        public FilingIndicator(Context context, string value, bool filed)
+            : this()
+        {
+            if (context == null)
+            {
+                throw new ArgumentNullException("context");
+            }
 
-		public override bool Equals(object obj)
-		{
-			var other = obj as FilingIndicator;
-			if(other != null)
-			{
-				return this.Equals(other);
-			}
-			else
-			{
-				return base.Equals(obj);
-			}
-		}
+            this.Context = context;
+            this.Value = value;
+            this.Filed = filed;
+        }
 
-		public override int GetHashCode()
-		{
-			return this.Value.GetHashCode() ^ this.Filed.GetHashCode();
-		}
+        public override bool Equals(object obj)
+        {
+            var other = obj as FilingIndicator;
+            if (other != null)
+            {
+                return this.Equals(other);
+            }
+            else
+            {
+                return base.Equals(obj);
+            }
+        }
 
-		#region IEquatable implementation
+        public override int GetHashCode()
+        {
+            return this.Value.GetHashCode() ^ this.Filed.GetHashCode();
+        }
 
-		public bool Equals(FilingIndicator other)
-		{
-			return other != null
-			&& this.Filed == other.Filed
-			&& this.Value.Equals(other.Value, StringComparison.Ordinal);
-		}
+        #region IEquatable implementation
 
-		#endregion
-	}
+        public bool Equals(FilingIndicator other)
+        {
+            return other != null
+            && this.Filed == other.Filed
+            && this.Value.Equals(other.Value, StringComparison.Ordinal);
+        }
+
+        #endregion
+    }
 }
