@@ -540,14 +540,30 @@
             xbrl.SetContextReferences();
             xbrl.SetUnitReferences();
 
+
             if (removeUnusedObjects)
             {
                 xbrl.RemoveUnusedObjects();
             }
 
             xbrl.RebuildNamespacesAfterRead();
-
+            xbrl.SetInstanceReferences();
             return xbrl;
+        }
+
+        private void SetInstanceReferences()
+        {
+            foreach (var context in this.Contexts)
+            {
+                var s = context.Scenario;
+                if (s != null)
+                {
+                    if (s.Instance == null)
+                    {
+                        s.Instance = this;
+                    }
+                }
+            }
         }
 
         public void ToStream(Stream stream)
