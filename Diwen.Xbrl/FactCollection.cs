@@ -1,53 +1,74 @@
+//
+//  This file is part of Diwen.xbrl.
+//
+//  Author:
+//       John Nordberg <john.nordberg@gmail.com>
+//
+//  Copyright (c) 2015 John Nordberg
+//
+//  This program is free software: you can redistribute it and/or modify
+//  it under the terms of the GNU General Public License as published by
+//  the Free Software Foundation, either version 3 of the License, or
+//  (at your option) any later version.
+//
+//  This program is distributed in the hope that it will be useful,
+//  but WITHOUT ANY WARRANTY; without even the implied warranty of
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+//  GNU General Public License for more details.
+//
+//  You should have received a copy of the GNU General Public License
+//  along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
 namespace Diwen.Xbrl
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Collections.ObjectModel;
-    using System.Globalization;
+	using System;
+	using System.Collections.Generic;
+	using System.Collections.ObjectModel;
+	using System.Globalization;
 
-    public class FactCollection : Collection<Fact>, IEquatable<IList<Fact>>
-    {
-        private Instance Instance;
-        private static IFormatProvider ic = CultureInfo.InvariantCulture;
+	public class FactCollection : Collection<Fact>, IEquatable<IList<Fact>>
+	{
+		private Instance Instance;
+		private static IFormatProvider ic = CultureInfo.InvariantCulture;
 
-        public FactCollection(Instance instance)
-        {
-            this.Instance = instance;
-        }
+		public FactCollection(Instance instance)
+		{
+			this.Instance = instance;
+		}
 
-        public Fact Add(Context context, string metric, string unitRef, string decimals, string value)
-        {
-            var ns = this.Instance.FactNamespace;
-            var prefix = this.Instance.Namespaces.LookupPrefix(ns);
+		public Fact Add(Context context, string metric, string unitRef, string decimals, string value)
+		{
+			var ns = this.Instance.FactNamespace;
+			var prefix = this.Instance.Namespaces.LookupPrefix(ns);
 
-            Unit unit = null;
-            if (!string.IsNullOrEmpty(unitRef))
-            {
-                if (!this.Instance.Units.Contains(unitRef))
-                {
-                    throw new KeyNotFoundException(string.Format(ic, "Referenced unit '{0}' does not exist", unitRef));
-                }
-                unit = this.Instance.Units[unitRef];
-            }
+			Unit unit = null;
+			if(!string.IsNullOrEmpty(unitRef))
+			{
+				if(!this.Instance.Units.Contains(unitRef))
+				{
+					throw new KeyNotFoundException(string.Format(ic, "Referenced unit '{0}' does not exist", unitRef));
+				}
+				unit = this.Instance.Units[unitRef];
+			}
 
-            var fact = new Fact(context, metric, unit, decimals, value, ns, prefix);
-            base.Add(fact);
-            return fact;
-        }
+			var fact = new Fact(context, metric, unit, decimals, value, ns, prefix);
+			base.Add(fact);
+			return fact;
+		}
 
-        public Fact Add(Scenario scenario, string metric, string unitRef, string decimals, string value)
-        {
-            var context = Instance.GetContext(scenario);
-            return Add(context, metric, unitRef, decimals, value);
-        }
+		public Fact Add(Scenario scenario, string metric, string unitRef, string decimals, string value)
+		{
+			var context = Instance.GetContext(scenario);
+			return Add(context, metric, unitRef, decimals, value);
+		}
 
-        #region IEquatable implementation
+		#region IEquatable implementation
 
-        public bool Equals(IList<Fact> other)
-        {
-            return this.ContentCompare(other);
-        }
+		public bool Equals(IList<Fact> other)
+		{
+			return this.ContentCompare(other);
+		}
 
-        #endregion
-    }
+		#endregion
+	}
 }
