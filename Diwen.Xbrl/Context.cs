@@ -42,6 +42,17 @@ namespace Diwen.Xbrl
 		[XmlElement("scenario", Namespace = "http://www.xbrl.org/2003/instance")]
 		public Scenario Scenario { get; set; }
 
+		public bool ShouldSerializeScenario()
+		{
+			var result = false;
+			if(this.Scenario != null)
+			{
+				result = (this.Scenario.ExplicitMembers != null && this.Scenario.ExplicitMembers.Count != 0)
+				|| (this.Scenario.TypedMembers != null && this.Scenario.TypedMembers.Count != 0);
+			}
+			return result;
+		}
+
 		public Context()
 		{
 		}

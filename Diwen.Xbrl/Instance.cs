@@ -514,13 +514,23 @@ namespace Diwen.Xbrl
 
 		public FilingIndicator AddFilingIndicator(string value)
 		{
-			var context = this.GetContext(null);
-			return AddFilingIndicator(context, value);
+			return AddFilingIndicator(value, true);
 		}
 
 		public FilingIndicator AddFilingIndicator(Context context, string value)
 		{
-			return this.FilingIndicators.Add(context, value);
+			return AddFilingIndicator(context, value, true);
+		}
+
+		public FilingIndicator AddFilingIndicator(string value, bool filed)
+		{
+			var context = this.GetContext(null);
+			return AddFilingIndicator(context, value, filed);
+		}
+
+		public FilingIndicator AddFilingIndicator(Context context, string value, bool filed)
+		{
+			return this.FilingIndicators.Add(context, value, filed);
 		}
 
 		public Fact AddFact(Context context, string metric, string unitRef, string decimals, string value)
@@ -530,11 +540,15 @@ namespace Diwen.Xbrl
 
 		public Fact AddFact(Scenario scenario, string metric, string unitRef, string decimals, string value)
 		{
-			if(scenario == null)
+			if(scenario != null)
 			{
-				throw new ArgumentNullException("scenario");
+				scenario.Instance = this;
+
+				if(scenario.ExplicitMembers.Count == 0 && scenario.TypedMembers.Count == 0)
+				{
+					scenario = null;
+				}
 			}
-			scenario.Instance = this;
 			return this.Facts.Add(scenario, metric, unitRef, decimals, value);
 		}
 

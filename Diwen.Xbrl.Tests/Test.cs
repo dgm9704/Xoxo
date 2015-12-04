@@ -255,6 +255,54 @@
 			var xmlDoc = CreateSolvencyInstance().ToXmlDocument();
 			xmlDoc.Save("xbrl2doc.xml");
 		}
+
+		[Test]
+		public static void NoMembers()
+		{
+			var instance = new Instance();
+			instance.SchemaReference = new SchemaReference("simple", "http://eiopa.europa.eu/eu/xbrl/s2md/fws/solvency/solvency2/2014-12-23/mod/ars.xsd");
+			instance.TaxonomyVersion = "1.5.2.c";
+			instance.SetMetricNamespace("s2md_met", "http://eiopa.europa.eu/xbrl/s2md/dict/met");
+			instance.SetDimensionNamespace("s2c_dim", "http://eiopa.europa.eu/xbrl/s2c/dict/dim");
+			instance.SetTypedDomainNamespace("s2c_typ", "http://eiopa.europa.eu/xbrl/s2c/dict/typ");
+			instance.Entity = new Entity("http://standards.iso.org/iso/17442", "00000000000000000098");
+			instance.Period = new Period(2015, 12, 31);
+
+			Scenario nullScenario = null;
+			instance.AddFact(nullScenario, "foo0", null, null, "alice");
+
+			//Context nullContext = null;
+			//instance.AddFact(nullContext, "foo1", null, null, "bob"); // Sorry bob
+
+			var contextWithNullScenario = new Context();
+			instance.AddFact(contextWithNullScenario, "foo2", null, null, "carol");
+
+			var contextWithNoMembers = new Context();
+			contextWithNoMembers.Scenario = new Scenario();
+			instance.AddFact(contextWithNoMembers, "foo3", null, null, "dave");
+
+			var scenarioWithNoMembers = new Scenario();
+			instance.AddFact(scenarioWithNoMembers, "foo4", null, null, "erin");
+
+			Assert.AreEqual(1, instance.Contexts.Count);
+			Assert.AreEqual(4, instance.Facts.Count);
+		}
+
+		[Test]
+		public static void FiledOrNot()
+		{
+			var instance = new Instance();
+			instance.SchemaReference = new SchemaReference("simple", "http://eiopa.europa.eu/eu/xbrl/s2md/fws/solvency/solvency2/2014-12-23/mod/ars.xsd");
+			instance.TaxonomyVersion = "1.5.2.c";
+			instance.SetMetricNamespace("s2md_met", "http://eiopa.europa.eu/xbrl/s2md/dict/met");
+			instance.SetDimensionNamespace("s2c_dim", "http://eiopa.europa.eu/xbrl/s2c/dict/dim");
+			instance.SetTypedDomainNamespace("s2c_typ", "http://eiopa.europa.eu/xbrl/s2c/dict/typ");
+			instance.Entity = new Entity("http://standards.iso.org/iso/17442", "00000000000000000098");
+			instance.Period = new Period(2015, 12, 31);
+
+			instance.AddFilingIndicator("foo", true);
+			instance.AddFilingIndicator("bar", false);
+		}
 	}
 }
 

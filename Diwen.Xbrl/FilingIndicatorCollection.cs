@@ -29,7 +29,12 @@ namespace Diwen.Xbrl
 	{
 		public FilingIndicator Add(Context context, string value)
 		{
-			var filingIndicator = new FilingIndicator(context, value);
+			return Add(context, value, true);
+		}
+
+		public FilingIndicator Add(Context context, string value, bool filed)
+		{
+			var filingIndicator = new FilingIndicator(context, value, filed);
 			base.Add(filingIndicator);
 			return filingIndicator;
 		}
