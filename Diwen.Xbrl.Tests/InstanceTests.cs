@@ -8,7 +8,7 @@
 	using System.IO;
 
 	[TestFixture]
-	public class Test
+	public class InstanceTests
 	{
 		static Instance CreateSolvencyInstance()
 		{
