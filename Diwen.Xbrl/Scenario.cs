@@ -21,6 +21,8 @@
 
 namespace Diwen.Xbrl
 {
+	using System.Linq;
+	using System.Collections.Generic;
 	using System;
 	using System.Xml.Serialization;
 
@@ -58,6 +60,22 @@ namespace Diwen.Xbrl
 		{
 			this.ExplicitMembers = new ExplicitMemberCollection(instance);
 			this.TypedMembers = new TypedMemberCollection(instance);
+		}
+
+		public override string ToString()
+		{
+			var members = new List<string>();
+			if(this.ExplicitMembers != null)
+			{
+				members.AddRange(this.ExplicitMembers.Select(m => m.ToString()));
+			}
+			if(this.TypedMembers != null)
+			{
+				members.AddRange(this.TypedMembers.Select(m => m.ToString()));
+			}
+
+			members.Sort();
+			return string.Join(", ", members);
 		}
 
 		public override bool Equals(object obj)

@@ -51,6 +51,11 @@ namespace Diwen.Xbrl
 		{
 		}
 
+		public override string ToString()
+		{
+			return string.Format("Metric={0}, Value={1}, Unit={2}, Decimals={3}, Context={4}: {5}", Metric.LocalName(), Value, Unit.Measure, Decimals, ContextRef, Context.Scenario);
+		}
+
 		public Fact(Context context, string metric, Unit unit, string decimals, string value, string namespaceUri, string prefix)
 			: this(context, metric, unit, decimals, value, new Uri(namespaceUri), prefix)
 		{

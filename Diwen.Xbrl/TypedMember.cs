@@ -52,6 +52,11 @@ namespace Diwen.Xbrl
 			this.Value = value;
 		}
 
+		public override string ToString()
+		{
+			return string.Format("{0}={1}", Dimension.LocalName(), Value);
+		}
+
 		public override bool Equals(object obj)
 		{
 			var other = obj as TypedMember;

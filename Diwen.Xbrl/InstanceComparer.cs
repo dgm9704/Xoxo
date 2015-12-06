@@ -1,5 +1,5 @@
 ﻿//
-//  This file is part of Diwen.xbrl.
+//  This file is part of Diwen.Xbrl.
 //
 //  Author:
 //       John Nordberg <john.nordberg@gmail.com>
@@ -18,31 +18,44 @@
 //
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
-using System.Collections.ObjectModel;
+
 
 namespace Diwen.Xbrl
 {
 	using System;
 	using System.Collections.Generic;
+	using System.Collections.ObjectModel;
+	using System.Linq;
 
 	public static class InstanceComparer
 	{
-		public static InstanceCompareReport Report(Instance a, Instance b)
+		public static ComparisonReport Report(Instance a, Instance b)
 		{
-			var result = true;
+			return Report(a, b, ComparisonTypes.All);
+		}
+
+		public static ComparisonReport Report(Instance a, Instance b, ComparisonTypes comparisonTypes)
+		{
 			var messages = new List<string>();
 
-			foreach(var check in SimpleCheckMethods)
+			foreach(var comparison in ComparisonMethods.Where(c=> comparisonTypes.HasFlag(c.Key)))
 			{
-				if(!check.Value(a, b))
-				{
-					result = false;
-					messages.Add(check.Key);
-				}
+				messages.AddRange(comparison.Value(a, b));
 			}
 
-			return new InstanceCompareReport(result, messages);
+			return new ComparisonReport(!messages.Any(), messages);
 		}
+
+		private delegate List<string> ComparisonMethod(Instance a, Instance b);
+
+		private static Dictionary<ComparisonTypes, ComparisonMethod> ComparisonMethods
+		= new Dictionary<ComparisonTypes, ComparisonMethod> {
+			{ ComparisonTypes.Basic, BasicComparison },
+			{ ComparisonTypes.Contexts, ContextComparison },
+			{ ComparisonTypes.Facts, FactComparison },
+		};
+
+		#region SimpleChecks
 
 		private delegate bool SimpleCheckMethod(Instance a, Instance b);
 
@@ -59,6 +72,20 @@ namespace Diwen.Xbrl
 			{ "Different Entity", CheckEntity },
 			{ "Different Period", CheckPeriod },
 		};
+
+
+		private static List<string> BasicComparison(Instance a, Instance b)
+		{
+			var result = new List<string>();
+			foreach(var check in SimpleCheckMethods)
+			{
+				if(!check.Value(a, b))
+				{
+					result.Add(check.Key);
+				}
+			}
+			return result;
+		}
 
 		private static bool CheckNullInstances(Instance a, Instance b)
 		{
@@ -169,6 +196,54 @@ namespace Diwen.Xbrl
 
 			return periodA.Equals(periodB);
 		}
+
+		#endregion
+
+		#region DetailedChecks
+
+		private static List<string> ContextComparison(Instance a, Instance b)
+		{
+			var differences = new List<string>();
+
+			var notInB = a.Contexts.ContentCompareReport(b.Contexts);
+			var notInA = b.Contexts.ContentCompareReport(a.Contexts);
+
+			foreach(var item in notInB)
+			{
+				differences.Add("(a) " + item.Id + ":" + item.Scenario.ToString());
+			}
+
+			foreach(var item in notInA)
+			{
+				differences.Add("(b) " + item.Id + ":" + item.Scenario.ToString());
+			} 
+
+			return differences;
+		}
+
+		private static List<string> FactComparison(Instance a, Instance b)
+		{
+			var differences = new List<string>();
+
+			var notInB = a.Facts.ContentCompareReport(b.Facts);
+			var notInA = b.Facts.ContentCompareReport(a.Facts);
+
+			foreach(var item in notInB)
+			{
+				var difference = "(a) " + item.ToString();
+				differences.Add(difference);
+			}
+
+			foreach(var item in notInA)
+			{
+				var difference = "(b) " + item.ToString();
+				differences.Add(difference);
+			}
+
+			return differences;
+		}
+
+		#endregion
 	}
 }
 

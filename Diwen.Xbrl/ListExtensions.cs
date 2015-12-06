@@ -71,6 +71,37 @@ namespace Diwen.Xbrl
 			}
 			return result;
 		}
+
+		internal static List<T> ContentCompareReport<T>(this IList<T> left, IList<T> right)
+		{
+			var result = new List<T>();
+
+			if(left != null && right != null)
+			{
+				var leftCount = left.Count;
+				var rightCount = right.Count;
+
+				// try to match each item from left to right
+				var list = new LinkedList<T>(right);
+				for(int i = 0; i < leftCount; i++)
+				{
+					var candidate = left[i];
+					var match = list.Find(candidate);
+					if(match == null)
+					{
+						result.Add(candidate);
+						break;
+					}
+					else
+					{
+						// if match found, remove from right to minimize unnecessary comparisons
+						list.Remove(match);
+					}
+				}
+			}
+
+			return result;
+		}
 	}
 }
 

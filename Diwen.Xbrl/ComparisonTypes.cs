@@ -22,26 +22,15 @@
 namespace Diwen.Xbrl
 {
 	using System;
-	using System.Collections.Generic;
-	using System.Collections.ObjectModel;
 
-	public class InstanceCompareReport
+	[Flags]
+	public enum ComparisonTypes
 	{
-		public bool Result
-		{
-			get;
-		}
-
-		public ReadOnlyCollection<string> Messages
-		{
-			get;
-		}
-
-		internal InstanceCompareReport(bool result, IList<string> messages)
-		{
-			this.Result = result;
-			this.Messages = new ReadOnlyCollection<string>(messages);
-		}
+		None = 0,
+		Basic = 1,
+		Contexts = 2,
+		Facts = 4,
+		All = Basic | Contexts | Facts
 	}
 }
 
