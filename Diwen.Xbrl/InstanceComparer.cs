@@ -93,8 +93,18 @@ namespace Diwen.Xbrl
 		}
 
 		private static bool CheckTaxonomyVersion(Instance a, Instance b)
-		{
-			return a.TaxonomyVersion.Equals(b.TaxonomyVersion);
+		{ 
+			var result = false;
+			
+			if(a.TaxonomyVersion != null && b.TaxonomyVersion != null)
+			{
+				result = a.TaxonomyVersion.Equals(b.TaxonomyVersion);				
+			}
+			else if(a.TaxonomyVersion == null && b.TaxonomyVersion == null)
+			{
+				result = true;
+			}
+			return result;
 		}
 
 		private static bool CheckSchemaReference(Instance a, Instance b)
@@ -203,44 +213,47 @@ namespace Diwen.Xbrl
 
 		private static List<string> ContextComparison(Instance a, Instance b)
 		{
-			var differences = new List<string>();
+			var messages = new List<string>();
+			var differences = a.Contexts.ContentCompareReport(b.Contexts);
 
-			var notInB = a.Contexts.ContentCompareReport(b.Contexts);
-			var notInA = b.Contexts.ContentCompareReport(a.Contexts);
+			var notInB = differences.Item1;
+			var notInA = differences.Item2;
 
 			foreach(var item in notInB)
 			{
-				differences.Add("(a) " + item.Id + ":" + item.Scenario.ToString());
+				messages.Add("(a) " + item.Id + ":" + item.Scenario.ToString());
 			}
 
 			foreach(var item in notInA)
 			{
-				differences.Add("(b) " + item.Id + ":" + item.Scenario.ToString());
+				messages.Add("(b) " + item.Id + ":" + item.Scenario.ToString());
 			} 
 
-			return differences;
+			return messages;
 		}
 
 		private static List<string> FactComparison(Instance a, Instance b)
 		{
-			var differences = new List<string>();
+			var messages = new List<string>();
 
-			var notInB = a.Facts.ContentCompareReport(b.Facts);
-			var notInA = b.Facts.ContentCompareReport(a.Facts);
+			var differences = a.Facts.ContentCompareReport(b.Facts);
+
+			var notInB = differences.Item1;
+			var notInA = differences.Item2;
 
 			foreach(var item in notInB)
 			{
 				var difference = "(a) " + item.ToString();
-				differences.Add(difference);
+				messages.Add(difference);
 			}
 
 			foreach(var item in notInA)
 			{
 				var difference = "(b) " + item.ToString();
-				differences.Add(difference);
+				messages.Add(difference);
 			}
 
-			return differences;
+			return messages;
 		}
 
 		#endregion

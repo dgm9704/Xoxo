@@ -36,12 +36,49 @@ namespace Diwen.Xbrl.Tests
 			var path = Path.Combine("data", "reference.xbrl");
 			var firstInstance = Instance.FromFile(path);
 			var secondInstance = Instance.FromFile(path);
-			var report = InstanceComparer.Report(firstInstance, secondInstance);
+			var report = InstanceComparer.Report(firstInstance, secondInstance, ComparisonTypes.All);
 			Console.WriteLine(string.Join(Environment.NewLine, report.Messages));
 			// comparison should find the instances equivalent
 			Assert.IsTrue(report.Result);
 			// there should be no differences reported
 			CollectionAssert.IsEmpty(report.Messages);
+		}
+
+		[Test]
+		public static void CompareBasicNullValues()
+		{
+			// load same instance twice and compare
+			var path = Path.Combine("data", "reference.xbrl");
+			var firstInstance = Instance.FromFile(path);
+			var secondInstance = Instance.FromFile(path);
+
+			secondInstance.TaxonomyVersion = null;
+			secondInstance.SchemaReference = null;
+		
+			var report = InstanceComparer.Report(firstInstance, secondInstance, ComparisonTypes.Basic);
+			// comparison should find the instances different and not throw
+			Console.WriteLine(string.Join(Environment.NewLine, report.Messages));
+			Assert.IsFalse(report.Result);
+			CollectionAssert.IsNotEmpty(report.Messages);
+		}
+
+		[Test]
+		public static void CompareSimilarFacts()
+		{
+			// load same instance twice and compare
+			var path = Path.Combine("data", "reference.xbrl");
+			var firstInstance = Instance.FromFile(path);
+			var secondInstance = Instance.FromFile(path);
+
+			secondInstance.Facts[0].Value = "0";
+			secondInstance.Facts[1].Value = "0";
+
+			var report = InstanceComparer.Report(firstInstance, secondInstance, ComparisonTypes.Facts);
+			// comparison should find the instances different and not throw
+			Console.WriteLine(string.Join(Environment.NewLine, report.Messages));
+			Assert.IsFalse(report.Result);
+			CollectionAssert.IsNotEmpty(report.Messages);
+			Assert.AreEqual(4, report.Messages.Count);
 		}
 
 		[Test]

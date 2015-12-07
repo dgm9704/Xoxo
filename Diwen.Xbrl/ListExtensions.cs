@@ -72,35 +72,36 @@ namespace Diwen.Xbrl
 			return result;
 		}
 
-		internal static List<T> ContentCompareReport<T>(this IList<T> left, IList<T> right)
+		internal static Tuple<List<T>, List<T>> ContentCompareReport<T>(this IList<T> left, IList<T> right)
 		{
-			var result = new List<T>();
-
+			var notInB = new List<T>();
+			var notInATmp = new LinkedList<T>();
 			if(left != null && right != null)
 			{
 				var leftCount = left.Count;
 				var rightCount = right.Count;
 
 				// try to match each item from left to right
-				var list = new LinkedList<T>(right);
+				notInATmp = new LinkedList<T>(right);
 				for(int i = 0; i < leftCount; i++)
 				{
 					var candidate = left[i];
-					var match = list.Find(candidate);
+					var match = notInATmp.Find(candidate);
 					if(match == null)
 					{
-						result.Add(candidate);
-						break;
+						notInB.Add(candidate);
 					}
 					else
 					{
 						// if match found, remove from right to minimize unnecessary comparisons
-						list.Remove(match);
+						notInATmp.Remove(match);
 					}
 				}
 			}
 
-			return result;
+			var notInA = new List<T>(notInATmp);
+			return new Tuple<List<T>, List<T>>(notInB, notInA);
+
 		}
 	}
 }
