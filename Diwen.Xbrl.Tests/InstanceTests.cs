@@ -303,6 +303,32 @@
 			instance.AddFilingIndicator("foo", true);
 			instance.AddFilingIndicator("bar", false);
 		}
+
+		[Test]
+		public static void EnumeratedFactValueNamespace()
+		{
+			// Create a minimal test instance
+			var instance = new Instance();
+			instance.SchemaReference = new SchemaReference("simple", "http://eiopa.europa.eu/eu/xbrl/s2md/fws/solvency/solvency2/2014-12-23/mod/ars.xsd");
+			instance.TaxonomyVersion = "1.5.2.c";
+			instance.SetMetricNamespace("s2md_met", "http://eiopa.europa.eu/xbrl/s2md/dict/met");
+			instance.Entity = new Entity("http://standards.iso.org/iso/17442", "00000000000000000098");
+			instance.Period = new Period(2015, 12, 31);
+
+			// add a fact with enumerated value 
+			instance.AddFact((Scenario)null, "ei1643", null, null, "s2c_CN:x1");
+
+			// add the namespace for the domain
+			instance.AddDomainNamespace("s2c_CN", "http://eiopa.europa.eu/xbrl/s2c/dict/dom/CN");
+
+			// write the instance to file and read it back
+			var file = "EnumeratedFactValueNamespace.xbrl";
+			instance.ToFile(file);
+			instance = Instance.FromFile(file);
+
+			// instance should still contain the namespace for the domain
+			Assert.AreEqual("http://eiopa.europa.eu/xbrl/s2c/dict/dom/CN", instance.Namespaces.LookupNamespace("s2c_CN"));
+		}
 	}
 }
 

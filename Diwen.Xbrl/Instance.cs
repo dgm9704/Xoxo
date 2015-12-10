@@ -557,6 +557,19 @@ namespace Diwen.Xbrl
 			var used = new List<string>();
 			var contexts = this.Contexts.Where(c => c != null && c.Scenario != null && c.Scenario.ExplicitMembers != null).ToList();
 			used.AddRange(contexts.SelectMany(c => c.Scenario.ExplicitMembers).Select(e => e.Value.Namespace).Distinct());
+
+			var factNamespaces = new HashSet<string>();
+			var facts = this.Facts.Where(f => !string.IsNullOrEmpty(f.Value) && f.Value.Contains(":"));
+			foreach(var fact in facts)
+			{
+				var prefix = fact.Value.Split(':')[0];
+				var ns = this.Namespaces.LookupNamespace(prefix);
+				if(ns != null)
+				{
+					factNamespaces.Add(ns);
+				}
+			}
+			used.AddRange(factNamespaces);
 			return used;
 		}
 
