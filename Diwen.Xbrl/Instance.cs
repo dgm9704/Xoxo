@@ -81,14 +81,14 @@ namespace Diwen.Xbrl
 		public SchemaReference SchemaReference { get; set; }
 
 		[XmlElement("unit", Namespace = "http://www.xbrl.org/2003/instance")]
-		public UnitCollection Units { get; private set; }
+		public UnitCollection Units { get; set; }
 
 		[XmlArray("fIndicators", Namespace = "http://www.eurofiling.info/xbrl/ext/filing-indicators")]
 		[XmlArrayItem("filingIndicator", Namespace = "http://www.eurofiling.info/xbrl/ext/filing-indicators")]
-		public FilingIndicatorCollection FilingIndicators { get; private set; }
+		public FilingIndicatorCollection FilingIndicators { get; set; }
 
 		[XmlElement("context", Namespace = "http://www.xbrl.org/2003/instance")]
-		public ContextCollection Contexts { get; private set; }
+		public ContextCollection Contexts { get; set; }
 
 		[XmlIgnore]
 		public FactCollection Facts { get; private set; }
