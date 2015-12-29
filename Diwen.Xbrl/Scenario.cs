@@ -45,10 +45,10 @@ namespace Diwen.Xbrl
 		}
 
 		[XmlElement("explicitMember", Namespace = "http://xbrl.org/2006/xbrldi")]
-		public ExplicitMemberCollection ExplicitMembers { get; private set; }
+		public ExplicitMemberCollection ExplicitMembers { get; set; }
 
 		[XmlElement("typedMember", Namespace = "http://xbrl.org/2006/xbrldi")]
-		public TypedMemberCollection TypedMembers { get; private set; }
+		public TypedMemberCollection TypedMembers { get; set; }
 
 		public Scenario()
 		{
