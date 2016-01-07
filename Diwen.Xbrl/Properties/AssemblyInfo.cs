@@ -48,6 +48,6 @@ using System.Runtime.InteropServices;
 //      Minor Version
 //      Build Number
 //      Revision
-[assembly: AssemblyVersion("0.25.0.0")]
-[assembly: AssemblyFileVersion("0.25.0.0")]
+[assembly: AssemblyVersion("0.26.0.0")]
+[assembly: AssemblyFileVersion("0.26.0.0")]
 [assembly: CLSCompliant(true)]

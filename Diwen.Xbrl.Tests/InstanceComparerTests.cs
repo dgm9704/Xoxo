@@ -45,6 +45,28 @@ namespace Diwen.Xbrl.Tests
 		}
 
 		[Test]
+		public static void ComparisonReportContainsContextWithNullScenario()
+		{
+			// load same instance twice
+			var path = Path.Combine("data", "reference.xbrl");
+			var firstInstance = Instance.FromFile(path);
+			var secondInstance = Instance.FromFile(path);
+
+			// modify other one so they produce differences to report 
+			foreach(var context in secondInstance.Contexts)
+			{
+				context.Entity.Identifier.Value = "00000000000000000098";
+			}
+
+			var report = InstanceComparer.Report(firstInstance, secondInstance, ComparisonTypes.All);
+			Console.WriteLine(string.Join(Environment.NewLine, report.Messages));
+			// comparison should find the instances different and not crash
+			Assert.IsFalse(report.Result);
+			// there should be some differences reported
+			CollectionAssert.IsNotEmpty(report.Messages);
+		}
+
+		[Test]
 		public static void CompareBasicNullValues()
 		{
 			// load same instance twice and compare

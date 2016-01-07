@@ -221,12 +221,12 @@ namespace Diwen.Xbrl
 
 			foreach(var item in notInB)
 			{
-				messages.Add("(a) " + item.Id + ":" + item.Scenario.ToString());
+				messages.Add("(a) " + item.Id + ":" + (item.Scenario != null ? item.Scenario.ToString() : ""));
 			}
 
 			foreach(var item in notInA)
 			{
-				messages.Add("(b) " + item.Id + ":" + item.Scenario.ToString());
+				messages.Add("(b) " + item.Id + ":" + (item.Scenario != null ? item.Scenario.ToString() : ""));
 			} 
 
 			return messages;
