@@ -329,6 +329,22 @@
 			// instance should still contain the namespace for the domain
 			Assert.AreEqual("http://eiopa.europa.eu/xbrl/s2c/dict/dom/CN", instance.Namespaces.LookupNamespace("s2c_CN"));
 		}
+
+		[Test]
+		public static void ReadAndWriteComments()
+		{
+			// read a test instance with a comment
+			var inputPath = Path.Combine("data", "comments.xbrl");
+			var xbrl = Instance.FromFile(inputPath);
+			Assert.IsTrue(xbrl.Comments.Contains("foo"));
+
+			// add a new comment
+			xbrl.Comments.Add("bar");
+			var outputPath = Path.Combine("data", "morecomments.xbrl");
+			xbrl.ToFile(outputPath);
+			xbrl = Instance.FromFile(outputPath);
+			Assert.IsTrue(xbrl.Comments.Contains("bar"));
+		}
 	}
 }
 

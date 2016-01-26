@@ -18,6 +18,7 @@
 //
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
+using System.Collections.ObjectModel;
 
 namespace Diwen.Xbrl
 {
@@ -117,6 +118,9 @@ namespace Diwen.Xbrl
 				}
 			}
 		}
+
+		[XmlIgnore]
+		public Collection<string> Comments { get; private set; }
 
 		[XmlIgnore]
 		public bool CheckExplicitMemberDomainExists { get; set; }
@@ -293,6 +297,7 @@ namespace Diwen.Xbrl
 			this.Units = new UnitCollection(this);
 			this.Contexts = new ContextCollection(this);
 			this.Facts = new FactCollection(this);
+			this.Comments = new Collection<string>();
 		}
 
 		#region IEquatable implementation
@@ -653,6 +658,8 @@ namespace Diwen.Xbrl
 				xbrl.InstanceGenerator = instanceGenerator;
 			}
 
+			xbrl.Comments = new Collection<string>(comments);
+
 			return xbrl;
 		}
 
@@ -711,6 +718,12 @@ namespace Diwen.Xbrl
 			{
 				writer.WriteProcessingInstruction("taxonomy-version", this.TaxonomyVersion);
 			}
+
+			foreach(var item in Comments)
+			{
+				writer.WriteComment(item);
+			}
+
 			Serializer.Serialize(writer, this, ns);
 		}
 
