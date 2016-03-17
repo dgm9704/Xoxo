@@ -23,8 +23,7 @@
     <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
     <CustomCommands>
       <CustomCommands>
-        <Command type="Custom" name="gendarme!" command="gendarme --severity all --quiet --html ${TargetFile}.gendarme.html ${TargetFile}" workingdir="${TargetDir}" />
-        <Command type="AfterBuild" command="sgen ${TargetFile}" workingdir="" />
+        <Command type="AfterBuild" command="sgen /force ${TargetFile}" workingdir="" />
       </CustomCommands>
     </CustomCommands>
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
@@ -40,6 +39,7 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <ConsolePause>false</ConsolePause>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />

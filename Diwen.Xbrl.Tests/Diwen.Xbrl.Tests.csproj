@@ -26,7 +26,7 @@
     </EnvironmentVariables>
     <CustomCommands>
       <CustomCommands>
-        <Command type="AfterBuild" command="sgen bin/Debug/Diwen.Xbrl.dll" />
+        <Command type="AfterBuild" command="sgen /force bin/Debug/Diwen.Xbrl.dll" />
       </CustomCommands>
     </CustomCommands>
   </PropertyGroup>
@@ -43,6 +43,7 @@
     <Reference Include="System.Xml" />
     <Reference Include="nunit.framework">
       <HintPath>..\packages\NUnit.3.0.1\lib\net40\nunit.framework.dll</HintPath>
+      <Package>nunit</Package>
     </Reference>
   </ItemGroup>
   <ItemGroup>

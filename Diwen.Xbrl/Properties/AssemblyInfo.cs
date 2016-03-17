@@ -30,7 +30,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("John Nordberg")]
 [assembly: AssemblyProduct("Diwen.Xbrl")]
-[assembly: AssemblyCopyright("John Nordberg 2015")]
+[assembly: AssemblyCopyright("John Nordberg 2015-2016")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
@@ -48,6 +48,6 @@ using System.Runtime.InteropServices;
 //      Minor Version
 //      Build Number
 //      Revision
-[assembly: AssemblyVersion("0.29.0.0")]
-[assembly: AssemblyFileVersion("0.29.0.0")]
+[assembly: AssemblyVersion("0.30.0.0")]
+[assembly: AssemblyFileVersion("0.30.0.0")]
 [assembly: CLSCompliant(true)]
