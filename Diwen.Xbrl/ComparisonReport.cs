@@ -21,27 +21,26 @@
 
 namespace Diwen.Xbrl
 {
-	using System;
-	using System.Collections.Generic;
-	using System.Collections.ObjectModel;
+    using System.Collections.Generic;
+    using System.Collections.ObjectModel;
 
-	public class ComparisonReport
-	{
-		public bool Result
-		{
-			get;
-		}
+    public class ComparisonReport
+    {
+        public bool Result
+        {
+            get;
+        }
 
-		public ReadOnlyCollection<string> Messages
-		{
-			get;
-		}
+        public ReadOnlyCollection<string> Messages
+        {
+            get;
+        }
 
-		internal ComparisonReport(bool result, IList<string> messages)
-		{
-			this.Result = result;
-			this.Messages = new ReadOnlyCollection<string>(messages);
-		}
-	}
+        internal ComparisonReport(bool result, IList<string> messages)
+        {
+            Result = result;
+            Messages = new ReadOnlyCollection<string>(messages);
+        }
+    }
 }
 

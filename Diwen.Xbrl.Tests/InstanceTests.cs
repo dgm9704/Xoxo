@@ -8,7 +8,7 @@
     using System.IO;
 
     [TestFixture]
-    public class InstanceTests
+    public static class InstanceTests
     {
         static Instance CreateSolvencyInstance()
         {
@@ -108,7 +108,7 @@
             var instance = CreateSolvencyInstance();
             instance.AddDomainNamespace("s2c_XX", "http://eiopa.europa.eu/xbrl/s2c/dict/dom/XX");
             // Write the instace to a file
-            var path = @"output.xbrl.xml";
+            const string path = @"output.xbrl.xml";
             instance.ToFile(path);
         }
 
@@ -140,7 +140,7 @@
             // Some things are NOT checked, eg. taxonomy version, context names
             //Assert.AreEqual(instance, referenceInstance);
 
-            var tempFile = @"temp.xbrl";
+            const string tempFile = @"temp.xbrl";
             instance.ToFile(tempFile);
 
             var newInstance = Instance.FromFile(tempFile, true);
@@ -166,7 +166,7 @@
             sw.Stop();
             Console.WriteLine("Read took {0}", sw.Elapsed);
 
-            var outputPath = @"output.ars.xbrl";
+            const string outputPath = @"output.ars.xbrl";
 
             sw.Restart();
             firstRead.ToFile(outputPath);
@@ -225,7 +225,7 @@
             Assert.AreEqual(7051, first.Contexts.Count);
             Assert.AreEqual(7091, first.Facts.Count);
 
-            Instance second = null;
+            Instance second;
             using(var stream = new MemoryStream())
             {
                 first.ToStream(stream);
@@ -336,7 +336,7 @@
             instance.AddDomainNamespace("s2c_CN", "http://eiopa.europa.eu/xbrl/s2c/dict/dom/CN");
 
             // write the instance to file and read it back
-            var file = "EnumeratedFactValueNamespace.xbrl";
+            const string file = "EnumeratedFactValueNamespace.xbrl";
             instance.ToFile(file);
             instance = Instance.FromFile(file);
 

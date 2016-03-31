@@ -21,56 +21,49 @@
 
 namespace Diwen.Xbrl
 {
-	using System;
-	using System.Xml.Serialization;
+    using System;
+    using System.Xml.Serialization;
 
-	[Serializable]
-	public class Identifier : IEquatable<Identifier>
-	{
-		[XmlAttribute("scheme", Namespace = "http://www.xbrl.org/2003/instance")]
-		public string Scheme { get; set; }
+    [Serializable]
+    public class Identifier : IEquatable<Identifier>
+    {
+        [XmlAttribute("scheme", Namespace = "http://www.xbrl.org/2003/instance")]
+        public string Scheme { get; set; }
 
-		[XmlText]
-		public string Value { get; set; }
+        [XmlText]
+        public string Value { get; set; }
 
-		public Identifier()
-		{
-		}
+        public Identifier()
+        {
+        }
 
-		public Identifier(string scheme, string value)
-			: this()
-		{
-			this.Scheme = scheme;
-			this.Value = value;
-		}
+        public Identifier(string scheme, string value)
+            : this()
+        {
+            Scheme = scheme;
+            Value = value;
+        }
 
-		#region IEquatable implementation
+        #region IEquatable implementation
 
-		public bool Equals(Identifier other)
-		{
-			return other != null
-			&& this.Scheme.Equals(other.Scheme, StringComparison.Ordinal)
-			&& this.Value.Equals(other.Value, StringComparison.Ordinal);
-		}
+        public bool Equals(Identifier other)
+        {
+            return other != null
+            && Scheme.Equals(other.Scheme, StringComparison.Ordinal)
+            && Value.Equals(other.Value, StringComparison.Ordinal);
+        }
 
-		public override int GetHashCode()
-		{
-			return this.Scheme.GetHashCode() ^ this.Value.GetHashCode();
-		}
+        public override int GetHashCode()
+        {
+            return Scheme.GetHashCode() ^ Value.GetHashCode();
+        }
 
-		#endregion
+        #endregion
 
-		public override bool Equals(object obj)
-		{
-			var other = obj as Identifier;
-			if(other != null)
-			{
-				return this.Equals(other);
-			}
-			else
-			{
-				return base.Equals(obj);
-			}
-		}
-	}
+        public override bool Equals(object obj)
+        {
+            var other = obj as Identifier;
+            return other != null && Equals(other);
+        }
+    }
 }

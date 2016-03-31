@@ -21,110 +21,100 @@
 
 namespace Diwen.Xbrl
 {
-	using System.Linq;
-	using System.Collections.Generic;
-	using System;
-	using System.Xml.Serialization;
+    using System.Linq;
+    using System.Collections.Generic;
+    using System;
+    using System.Xml.Serialization;
 
-	[Serializable]
-	[XmlRoot(ElementName = "scenario", Namespace = "http://www.xbrl.org/2003/instance")]
-	public class Scenario : IEquatable<Scenario>
-	{
-		private Instance instanceField;
+    [Serializable]
+    [XmlRoot(ElementName = "scenario", Namespace = "http://www.xbrl.org/2003/instance")]
+    public class Scenario : IEquatable<Scenario>
+    {
+        Instance instanceField;
 
-		[XmlIgnore]
-		public Instance Instance
-		{
-			get { return this.instanceField; }
-			set
-			{
-				this.instanceField = value;
-				this.ExplicitMembers.Instance = value;
-				this.TypedMembers.Instance = value;
-			}
-		}
+        [XmlIgnore]
+        public Instance Instance
+        {
+            get { return instanceField; }
+            set
+            {
+                instanceField = value;
+                ExplicitMembers.Instance = value;
+                TypedMembers.Instance = value;
+            }
+        }
 
-		[XmlElement("explicitMember", Namespace = "http://xbrl.org/2006/xbrldi")]
-		public ExplicitMemberCollection ExplicitMembers { get; set; }
+        [XmlElement("explicitMember", Namespace = "http://xbrl.org/2006/xbrldi")]
+        public ExplicitMemberCollection ExplicitMembers { get; set; }
 
-		[XmlElement("typedMember", Namespace = "http://xbrl.org/2006/xbrldi")]
-		public TypedMemberCollection TypedMembers { get; set; }
+        [XmlElement("typedMember", Namespace = "http://xbrl.org/2006/xbrldi")]
+        public TypedMemberCollection TypedMembers { get; set; }
 
-		public Scenario()
-		{
-			this.ExplicitMembers = new ExplicitMemberCollection();
-			this.TypedMembers = new TypedMemberCollection();
-		}
+        public Scenario()
+        {
+            ExplicitMembers = new ExplicitMemberCollection();
+            TypedMembers = new TypedMemberCollection();
+        }
 
-		public Scenario(Instance instance)
-		{
-			this.ExplicitMembers = new ExplicitMemberCollection(instance);
-			this.TypedMembers = new TypedMemberCollection(instance);
-		}
+        public Scenario(Instance instance)
+        {
+            ExplicitMembers = new ExplicitMemberCollection(instance);
+            TypedMembers = new TypedMemberCollection(instance);
+        }
 
-		public override string ToString()
-		{
-			var members = new List<string>();
-			if(this.ExplicitMembers != null)
-			{
-				members.AddRange(this.ExplicitMembers.Select(m => m.ToString()));
-			}
-			if(this.TypedMembers != null)
-			{
-				members.AddRange(this.TypedMembers.Select(m => m.ToString()));
-			}
+        public override string ToString()
+        {
+            var members = new List<string>();
+            if(ExplicitMembers != null)
+            {
+                members.AddRange(ExplicitMembers.Select(m => m.ToString()));
+            }
+            if(TypedMembers != null)
+            {
+                members.AddRange(TypedMembers.Select(m => m.ToString()));
+            }
 
-			members.Sort();
-			return string.Join(", ", members);
-		}
+            members.Sort();
+            return string.Join(", ", members);
+        }
 
-		public override bool Equals(object obj)
-		{
-			var other = obj as Scenario;
-			if(other != null)
-			{
-				return this.Equals(other);
-			}
-			else
-			{
-				return base.Equals(obj);
-			}
-		}
+        public override bool Equals(object obj)
+        {
+            var other = obj as Scenario;
+            return other != null && Equals(other);
+        }
 
-		public override int GetHashCode()
-		{
-			return (this.TypedMembers.Count * 1000) ^ this.ExplicitMembers.Count;
-		}
+        public override int GetHashCode()
+        {
+            return (TypedMembers.Count * 1000) ^ ExplicitMembers.Count;
+        }
 
-		public ExplicitMember AddExplicitMember(string dimension, string value)
-		{
-			return this.ExplicitMembers.Add(dimension, value);
-		}
+        public ExplicitMember AddExplicitMember(string dimension, string value)
+        {
+            return ExplicitMembers.Add(dimension, value);
+        }
 
-		public TypedMember AddTypedMember(string dimension, string domain, string value)
-		{
-			return this.TypedMembers.Add(dimension, domain, value);
-		}
+        public TypedMember AddTypedMember(string dimension, string domain, string value)
+        {
+            return TypedMembers.Add(dimension, domain, value);
+        }
 
-		#region IEquatable implementation
+        #region IEquatable implementation
 
-		public bool Equals(Scenario other)
-		{
-			var result = false;
-			if(other != null)
-			{
-				if(this.ExplicitMembers.Equals(other.ExplicitMembers))
-				{
-					if(this.TypedMembers.Equals(other.TypedMembers))
-					{
-						result = true;
-					}
-				}
-			}
+        public bool Equals(Scenario other)
+        {
+            var result = false;
+            if(other != null)
+            {
+                if(ExplicitMembers.Equals(other.ExplicitMembers))
+                {
+                    result |= TypedMembers.Equals(other.TypedMembers);
+                }
+            }
 
-			return result;
-		}
+            return result;
+        }
 
-		#endregion
-	}
+        #endregion
+    }
 }

@@ -18,23 +18,20 @@
 //
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
-using System;
 
 namespace Diwen.Xbrl.Tests
 {
-	using System.Xml;
-	using System;
-	using NUnit.Framework;
-	using System.IO;
+    using System;
+    using NUnit.Framework;
 
-	[TestFixture]
-	public class FactTests
-	{
-		[Test]
-		public static void FactWithNullPropertiesToString()
-		{
-			var fact = new Fact();
-			var foo = fact.ToString();
-		}
-	}
+    [TestFixture]
+    public static class FactTests
+    {
+        [Test]
+        public static void FactWithNullPropertiesToString()
+        {
+            var fact = new Fact();
+            Console.WriteLine(fact);
+        }
+    }
 }

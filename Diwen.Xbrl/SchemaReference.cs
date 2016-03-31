@@ -21,58 +21,51 @@
 
 namespace Diwen.Xbrl
 {
-	using System;
-	using System.Xml.Serialization;
+    using System;
+    using System.Xml.Serialization;
 
-	[Serializable]
-	[XmlRoot(ElementName = "schemaRef", Namespace = "http://www.xbrl.org/2003/linkbase")]
-	public class SchemaReference : IEquatable<SchemaReference>
-	{
-		[XmlAttribute("type", Namespace = "http://www.w3.org/1999/xlink")]
-		public string Type { get; set; }
+    [Serializable]
+    [XmlRoot(ElementName = "schemaRef", Namespace = "http://www.xbrl.org/2003/linkbase")]
+    public class SchemaReference : IEquatable<SchemaReference>
+    {
+        [XmlAttribute("type", Namespace = "http://www.w3.org/1999/xlink")]
+        public string Type { get; set; }
 
-		[XmlAttribute("href", Namespace = "http://www.w3.org/1999/xlink")]
-		public string Value { get; set; }
+        [XmlAttribute("href", Namespace = "http://www.w3.org/1999/xlink")]
+        public string Value { get; set; }
 
-		public SchemaReference()
-		{
-		}
+        public SchemaReference()
+        {
+        }
 
-		public SchemaReference(string type, string value)
-			: this()
-		{
-			this.Type = type;
-			this.Value = value;
-		}
+        public SchemaReference(string type, string value)
+            : this()
+        {
+            Type = type;
+            Value = value;
+        }
 
-		public override bool Equals(object obj)
-		{
-			var other = obj as SchemaReference;
-			if(other != null)
-			{
-				return this.Equals(other);
-			}
-			else
-			{
-				return base.Equals(obj);
-			}
-		}
+        public override bool Equals(object obj)
+        {
+            var other = obj as SchemaReference;
+            return other != null && Equals(other);
+        }
 
-		#region IEquatable implementation
+        #region IEquatable implementation
 
-		public bool Equals(SchemaReference other)
-		{
-			return other != null
-			&& this.Type.Equals(other.Type, StringComparison.Ordinal)
-			&& this.Value.Equals(other.Value, StringComparison.Ordinal);
-		}
+        public bool Equals(SchemaReference other)
+        {
+            return other != null
+            && Type.Equals(other.Type, StringComparison.Ordinal)
+            && Value.Equals(other.Value, StringComparison.Ordinal);
+        }
 
-		public override int GetHashCode()
-		{
-			return this.Type.GetHashCode() ^ this.Value.GetHashCode();
-		}
+        public override int GetHashCode()
+        {
+            return Type.GetHashCode() ^ Value.GetHashCode();
+        }
 
-		#endregion
+        #endregion
 
-	}
+    }
 }
