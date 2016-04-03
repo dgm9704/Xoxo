@@ -63,6 +63,11 @@ namespace Diwen.Xbrl
             return other != null && Equals(other);
         }
 
+        public override int GetHashCode()
+        {
+            return Value != null ? Value.GetHashCode() : 0;
+        }
+
         #region operator overloads
 
         public static bool operator ==(TypedMember left, TypedMember right)
@@ -160,13 +165,6 @@ namespace Diwen.Xbrl
                 writer.WriteEndElement();
             }
 
-        }
-
-        public override int GetHashCode()
-        {
-            return Dimension.GetHashCode()
-            ^ Domain.GetHashCode()
-            ^ Value.GetHashCode();
         }
 
         #endregion

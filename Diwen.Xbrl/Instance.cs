@@ -333,8 +333,9 @@ namespace Diwen.Xbrl
             return SchemaReference.GetHashCode()
             ^ Units.GetHashCode()
             ^ FilingIndicators.GetHashCode()
-            ^ Contexts.GetHashCode()
-            ^ Facts.GetHashCode();
+            ^ (TaxonomyVersion != null ? TaxonomyVersion.GetHashCode() : 0);
+//            ^ Contexts.GetHashCode()
+//            ^ Facts.GetHashCode();
         }
 
         #endregion

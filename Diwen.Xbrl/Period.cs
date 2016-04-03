@@ -63,7 +63,7 @@ namespace Diwen.Xbrl
 
         public override int GetHashCode()
         {
-            return Instant.GetHashCode();
+            return Instant.Date.GetHashCode();
         }
 
         #endregion

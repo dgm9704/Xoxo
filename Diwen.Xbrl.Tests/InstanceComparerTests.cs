@@ -174,6 +174,18 @@ namespace Diwen.Xbrl.Tests
             // one context is different, report should reflect this once per instance
             Assert.AreEqual(2, report.Messages.Count);
         }
+
+        [Test]
+        public static void CompareReportTest()
+        {
+            // load same instance twice
+            var path = Path.Combine("data", "reference.xbrl");
+            var firstInstance = Instance.FromFile(path);
+            var secondInstance = Instance.FromFile(path);
+            var report = InstanceComparer.Report(firstInstance, secondInstance, ComparisonTypes.Contexts);
+            Console.WriteLine(string.Join(Environment.NewLine, report.Messages));
+            Assert.IsTrue(report.Result);
+        }
     }
 }
 

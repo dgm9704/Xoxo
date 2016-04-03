@@ -85,7 +85,7 @@ namespace Diwen.Xbrl
 
         public override int GetHashCode()
         {
-            return Value.GetHashCode() ^ Filed.GetHashCode();
+            return Value.GetHashCode();
         }
 
         #region IEquatable implementation

@@ -86,7 +86,16 @@ namespace Diwen.Xbrl
 
         public override int GetHashCode()
         {
-            return (TypedMembers.Count * 1000) ^ ExplicitMembers.Count;
+            int hashCode = 0;
+            foreach(var m in TypedMembers)
+            {
+                hashCode = 31 * hashCode + m.GetHashCode();
+            }
+            foreach(var m in ExplicitMembers)
+            {
+                hashCode = 31 * hashCode + m.GetHashCode();
+            }
+            return hashCode;
         }
 
         public ExplicitMember AddExplicitMember(string dimension, string value)

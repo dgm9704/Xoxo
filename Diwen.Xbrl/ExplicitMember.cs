@@ -66,8 +66,7 @@ namespace Diwen.Xbrl
 
         public override int GetHashCode()
         {
-            return Dimension.GetHashCode()
-            ^ Value.GetHashCode();
+            return Value != null ? Value.GetHashCode() : 0;
         }
 
         public override bool Equals(object obj)

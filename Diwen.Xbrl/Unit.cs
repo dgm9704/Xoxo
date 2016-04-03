@@ -64,7 +64,7 @@ namespace Diwen.Xbrl
 
         public override int GetHashCode()
         {
-            return Measure.GetHashCode();
+            return Measure != null ? Measure.GetHashCode() : 0;
         }
 
         #endregion

@@ -131,9 +131,7 @@ namespace Diwen.Xbrl
 
         public override int GetHashCode()
         {
-            return Metric.GetHashCode()
-            ^ Value.GetHashCode()
-            ^ Decimals.GetHashCode();
+            return Metric.GetHashCode();
         }
 
         #region IEquatable implementation

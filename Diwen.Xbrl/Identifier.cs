@@ -55,7 +55,7 @@ namespace Diwen.Xbrl
 
         public override int GetHashCode()
         {
-            return Scheme.GetHashCode() ^ Value.GetHashCode();
+            return Value != null ? Value.GetHashCode() : 0;
         }
 
         #endregion

@@ -71,6 +71,15 @@ namespace Diwen.Xbrl
             return key;
         }
 
+        public override int GetHashCode()
+        {
+            int hashCode = 0;
+            foreach(var u in this)
+            {
+                hashCode = 31 * hashCode + u.GetHashCode();
+            }
+            return hashCode;
+        }
 
         #region IEquatable implementation
 
