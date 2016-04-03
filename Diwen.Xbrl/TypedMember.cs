@@ -22,12 +22,15 @@
 namespace Diwen.Xbrl
 {
     using System;
+    using System.Globalization;
     using System.Xml;
     using System.Xml.Schema;
     using System.Xml.Serialization;
 
     public class TypedMember : IXmlSerializable, IEquatable<TypedMember>, IComparable<TypedMember>
     {
+        static IFormatProvider ic = CultureInfo.InvariantCulture;
+
         internal Instance Instance { get; set; }
 
         [XmlIgnore]
@@ -54,7 +57,7 @@ namespace Diwen.Xbrl
 
         public override string ToString()
         {
-            return string.Format("{0}={1}", Dimension.LocalName(), Value);
+            return string.Format(ic, "{0}={1}", Dimension.LocalName(), Value);
         }
 
         public override bool Equals(object obj)

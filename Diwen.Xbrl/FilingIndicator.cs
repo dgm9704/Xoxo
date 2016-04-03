@@ -41,16 +41,16 @@ namespace Diwen.Xbrl
         [XmlText]
         public string Value { get; set; }
 
-        Context context;
+        Context contextField;
 
         [XmlIgnore]
         public Context Context
         {
-            get { return context; }
+            get { return contextField; }
             set
             {
-                context = value;
-                ContextRef = context.Id;
+                contextField = value;
+                ContextRef = contextField.Id;
             }
         }
 

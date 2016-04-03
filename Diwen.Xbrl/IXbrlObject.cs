@@ -1,5 +1,5 @@
-﻿//
-//  This file is part of Diwen.xbrl.
+//
+//  This file is part of Diwen.Xbrl.
 //
 //  Author:
 //       John Nordberg <john.nordberg@gmail.com>
@@ -21,15 +21,10 @@
 
 namespace Diwen.Xbrl
 {
-    using System;
 
-    [Flags, Serializable]
-    public enum ComparisonTypes
+    interface IXbrlObject
     {
-        Basic = 1,
-        Contexts = 2,
-        Facts = 4,
-        All = Basic | Contexts | Facts
+        string Id { get; set; }
     }
-}
 
+}

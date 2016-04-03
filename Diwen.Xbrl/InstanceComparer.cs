@@ -18,6 +18,7 @@
 //
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
+using System.Collections.ObjectModel;
 
 namespace Diwen.Xbrl
 {
@@ -44,10 +45,8 @@ namespace Diwen.Xbrl
             return new ComparisonReport(!messages.Any(), messages);
         }
 
-        private delegate List<string> ComparisonMethod(Instance a, Instance b);
-
-        static Dictionary<ComparisonTypes, ComparisonMethod> ComparisonMethods
-		= new Dictionary<ComparisonTypes, ComparisonMethod> {
+        static Dictionary<ComparisonTypes, Func<Instance, Instance, List<string>>> ComparisonMethods
+        = new Dictionary<ComparisonTypes, Func<Instance, Instance, List<string>>> {
             { ComparisonTypes.Basic, BasicComparison },
             { ComparisonTypes.Contexts, ContextComparison },
             { ComparisonTypes.Facts, FactComparison },
@@ -55,10 +54,8 @@ namespace Diwen.Xbrl
 
         #region SimpleChecks
 
-        private delegate bool SimpleCheckMethod(Instance a, Instance b);
-
-        static Dictionary<string, SimpleCheckMethod> SimpleCheckMethods 
-		= new Dictionary<string, SimpleCheckMethod> {
+        static Dictionary<string, Func<Instance, Instance, bool>> SimpleCheckMethods 
+        = new Dictionary<string, Func<Instance, Instance, bool>> {
             { "At least one the instances is null", CheckNullInstances },
             { "Different TaxonomyVersion", CheckTaxonomyVersion },
             { "Different SchemaReference", CheckSchemaReference },
@@ -96,7 +93,7 @@ namespace Diwen.Xbrl
 			
             if(a.TaxonomyVersion != null && b.TaxonomyVersion != null)
             {
-                result = a.TaxonomyVersion.Equals(b.TaxonomyVersion);				
+                result = a.TaxonomyVersion.Equals(b.TaxonomyVersion, StringComparison.Ordinal);				
             }
             else
             {
@@ -120,48 +117,36 @@ namespace Diwen.Xbrl
             return a.FilingIndicators.Equals(b.FilingIndicators);
         }
 
-        static bool CheckContextCount(Instance a, Instance b)
+        static bool CheckCount<T>(ICollection<T> a, ICollection<T> b)
         {
             bool result;
 
-            if(a.Contexts == null ^ b.Contexts == null)
+            if(a == null ^ b == null)
             {
                 result = false;
             }
             else
             {
-                if(a.Contexts == null && b.Contexts == null)
+                if(a == null && b == null)
                 {
                     result = true;
                 }
                 else
                 {
-                    result = a.Contexts.Count == b.Contexts.Count;
+                    result = a.Count == b.Count;
                 }
             }
             return result;
         }
 
+        static bool CheckContextCount(Instance a, Instance b)
+        {
+            return CheckCount(a.Contexts, b.Contexts);
+        }
+
         static bool CheckFactCount(Instance a, Instance b)
         {
-            bool result;
-
-            if(a.Facts == null ^ b.Facts == null)
-            {
-                result = false;
-            }
-            else
-            {
-                if(a.Facts == null && b.Facts == null)
-                {
-                    result = true;
-                }
-                else
-                {
-                    result = a.Facts.Count == b.Facts.Count;
-                }
-            }
-            return result;
+            return CheckCount(a.Facts, b.Facts);
         }
 
         static bool CheckDomainNamespaces(Instance a, Instance b)
@@ -219,12 +204,12 @@ namespace Diwen.Xbrl
 
             foreach(var item in notInB)
             {
-                messages.Add("(a) " + item.Id + ":" + (item.Scenario != null ? item.Scenario.ToString() : ""));
+                messages.Add("(a) " + item.Id + ":" + (item.Scenario != null ? item.Scenario.ToString() : String.Empty));
             }
 
             foreach(var item in notInA)
             {
-                messages.Add("(b) " + item.Id + ":" + (item.Scenario != null ? item.Scenario.ToString() : ""));
+                messages.Add("(b) " + item.Id + ":" + (item.Scenario != null ? item.Scenario.ToString() : String.Empty));
             } 
 
             return messages;

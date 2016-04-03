@@ -39,7 +39,7 @@ namespace Diwen.Xbrl
             {
                 if(value == null)
                 {
-                    throw new ArgumentNullException("value");
+                    throw new ArgumentNullException();
                 }
                 instanceField = value;
                 var dimNs = instanceField.DimensionNamespace;

@@ -71,6 +71,12 @@ namespace Diwen.Xbrl
             return key;
         }
 
+        public override bool Equals(object obj)
+        {
+            var other = obj as UnitCollection;
+            return other != null && Equals(other);
+        }
+
         public override int GetHashCode()
         {
             int hashCode = 0;

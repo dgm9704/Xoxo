@@ -27,72 +27,72 @@ namespace Diwen.Xbrl
     public static class ListExtensions
     {
 
-        public static bool ContentCompareEx<T>(this IList<T> left, IList<T> right)
-        {
-            var result = true;
+        //        public static bool ContentCompareEx<T>(this IList<T> left, IList<T> right)
+        //        {
+        //            var result = true;
+        //
+        //            // if both are null then consider equal
+        //            if(left != null && right != null)
+        //            {
+        //                // if just one is null then not equal
+        //                if(left == null ^ right == null)
+        //                {
+        //                    result = false;
+        //                }
+        //                else
+        //                {
+        //                    var leftCount = left.Count;
+        //                    var rightCount = right.Count;
+        //
+        //                    // if different number of items then not equal
+        //                    if(leftCount != rightCount)
+        //                    {
+        //                        result = false;
+        //                    }
+        //                    else
+        //                    {
+        //                        // try to match each item from left to right
+        //                        var list = new HashSet<T>(right);
+        //                        for(int i = 0; i < leftCount; i++)
+        //                        {
+        //                            if(!list.Remove(left[i]))
+        //                            {
+        //                                result = false;
+        //                                break;
+        //                            }
+        //                        }
+        //                    }
+        //                }
+        //            }
+        //            return result;
+        //        }
 
-            // if both are null then consider equal
-            if(left != null && right != null)
-            {
-                // if just one is null then not equal
-                if(left == null ^ right == null)
-                {
-                    result = false;
-                }
-                else
-                {
-                    var leftCount = left.Count;
-                    var rightCount = right.Count;
-
-                    // if different number of items then not equal
-                    if(leftCount != rightCount)
-                    {
-                        result = false;
-                    }
-                    else
-                    {
-                        // try to match each item from left to right
-                        var list = new HashSet<T>(right);
-                        for(int i = 0; i < leftCount; i++)
-                        {
-                            if(!list.Remove(left[i]))
-                            {
-                                result = false;
-                                break; 
-                            }
-                        }
-                    }
-                }
-            }
-            return result;
-        }
-
-        internal static Tuple<List<T>, List<T>> ContentCompareReportEx<T>(this IList<T> left, IList<T> right)
-        {
-            var notInB = new List<T>();
-            var notInATmp = new HashSet<T>();
-            if(left != null && right != null)
-            {
-                var leftCount = left.Count;
-                var rightCount = right.Count;
-
-                // try to match each item from left to right
-                notInATmp = new HashSet<T>(right);
-                for(int i = 0; i < leftCount; i++)
-                {
-                    var candidate = left[i];
-
-                    if(!notInATmp.Remove(candidate))
-                    {
-                        notInB.Add(candidate);
-                    }
-                }
-            }
-
-            var notInA = new List<T>(notInATmp);
-            return new Tuple<List<T>, List<T>>(notInB, notInA);
-
-        }
+        //        internal static Tuple<List<T>, List<T>> ContentCompareReportEx<T>(this IList<T> left, IList<T> right)
+        //        {
+        //            var notInB = new List<T>();
+        //            var notInATmp = new HashSet<T>();
+        //            if(left != null && right != null)
+        //            {
+        //                var leftCount = left.Count;
+        //                var rightCount = right.Count;
+        //
+        //                // try to match each item from left to right
+        //                notInATmp = new HashSet<T>(right);
+        //                for(int i = 0; i < leftCount; i++)
+        //                {
+        //                    var candidate = left[i];
+        //
+        //                    if(!notInATmp.Remove(candidate))
+        //                    {
+        //                        notInB.Add(candidate);
+        //                    }
+        //                }
+        //            }
+        //
+        //            var notInA = new List<T>(notInATmp);
+        //            return new Tuple<List<T>, List<T>>(notInB, notInA);
+        //
+        //        }
 
         public static bool ContentCompare<T>(this IList<T> left, IList<T> right)
         {
@@ -171,6 +171,23 @@ namespace Diwen.Xbrl
             return new Tuple<List<T>, List<T>>(notInB, notInA);
 
         }
+
+        internal static void RemoveUnusedItems<T>(this IList<T> items, ICollection<string> usedIds) where T:class, IXbrlObject
+        {
+            for(int i = 0; i < items.Count; i++)
+            {
+                var c = items[i];
+                if(!usedIds.Contains(c.Id))
+                {
+                    items[i] = null;
+                }
+            }
+
+            T nullValue = null;
+            while(items.Remove(nullValue))
+            {
+            }
+        }
+
     }
 }
-

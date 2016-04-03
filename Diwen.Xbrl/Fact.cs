@@ -22,11 +22,14 @@
 namespace Diwen.Xbrl
 {
     using System;
+    using System.Globalization;
     using System.Xml;
     using System.Xml.Serialization;
 
     public class Fact : IEquatable<Fact>
     {
+        static IFormatProvider ic = CultureInfo.InvariantCulture;
+
         static XmlDocument doc = new XmlDocument();
 
         [XmlIgnore]
@@ -61,7 +64,7 @@ namespace Diwen.Xbrl
                 scenario = Context.Scenario.ToString();
             }
 
-            return string.Format("Metric={0}, Value={1}, Unit={2}, Decimals={3}, Context={4}: {5}", 
+            return string.Format(ic, "Metric={0}, Value={1}, Unit={2}, Decimals={3}, Context={4}: {5}", 
                 metric, Value, measure, Decimals, ContextRef, scenario);
         }
 

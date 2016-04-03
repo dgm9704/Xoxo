@@ -28,7 +28,7 @@ namespace Diwen.Xbrl
     [DebuggerDisplay("{Id}")]
     [Serializable]
     [XmlRoot(ElementName = "unit", Namespace = "http://www.xbrl.org/2003/instance")]
-    public class Unit : IEquatable<Unit>
+    public class Unit : IEquatable<Unit>, IXbrlObject
     {
         [XmlAttribute("id")]
         public string Id { get; set; }

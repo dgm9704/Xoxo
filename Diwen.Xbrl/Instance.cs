@@ -110,7 +110,7 @@ namespace Diwen.Xbrl
             {
                 if(value == null)
                 {
-                    throw new ArgumentNullException("value");
+                    throw new ArgumentNullException();
                 }
                 foreach(var element in value)
                 {
@@ -215,25 +215,13 @@ namespace Diwen.Xbrl
 
         public void RemoveUnusedUnits()
         {
-            var used = Facts.
+            var usedIds = Facts.
                 Where(f => f.Unit != null).
                 Select(f => f.Unit.Id).
                 Distinct().
                 ToList();
 
-            for(int i = 0; i < Units.Count; i++)
-            {
-                var u = Units[i];
-                if(!used.Contains(u.Id))
-                {
-                    Units[i] = null;
-                }
-            }
-
-            Unit nullUnit = null;
-            while(Units.Remove(nullUnit))
-            {
-            }
+            Units.RemoveUnusedItems(usedIds);
         }
 
         public void RemoveUnusedObjects()
@@ -269,26 +257,14 @@ namespace Diwen.Xbrl
 
         public void RemoveUnusedContexts()
         {
-            var used = Facts.
+            var usedIds = Facts.
                 Where(f => f.Context != null).
                 Select(f => f.Context.Id).
                 Concat(FilingIndicators.Select(f => f.ContextRef)).
                 Distinct().
                 ToList();
 
-            for(int i = 0; i < Contexts.Count; i++)
-            {
-                var c = Contexts[i];
-                if(!used.Contains(c.Id))
-                {
-                    Contexts[i] = null;
-                }
-            }
-
-            Context nullContext = null;
-            while(Contexts.Remove(nullContext))
-            {
-            }
+            Contexts.RemoveUnusedItems(usedIds);
         }
 
         public Instance()
@@ -332,10 +308,7 @@ namespace Diwen.Xbrl
         {
             return SchemaReference.GetHashCode()
             ^ Units.GetHashCode()
-            ^ FilingIndicators.GetHashCode()
-            ^ (TaxonomyVersion != null ? TaxonomyVersion.GetHashCode() : 0);
-//            ^ Contexts.GetHashCode()
-//            ^ Facts.GetHashCode();
+            ^ FilingIndicators.GetHashCode();
         }
 
         #endregion
@@ -588,43 +561,46 @@ namespace Diwen.Xbrl
             settings.IgnoreWhitespace = true;
             settings.IgnoreProcessingInstructions = false;
             settings.IgnoreComments = false;
-            var reader = XmlReader.Create(stream, settings);
-            var content = false;
             string taxonomyVersion = null;
             string instanceGenerator = null;
             var comments = new List<string>();
 
-            do
+            using(var reader = XmlReader.Create(stream, settings))
             {
-                reader.Read();
-                switch(reader.NodeType)
+                var content = false;
+                do
                 {
-                case XmlNodeType.XmlDeclaration:
-					// skip
-                    break;
-                case XmlNodeType.ProcessingInstruction:
+                    reader.Read();
 
-                    switch(reader.Name)
+                    switch(reader.NodeType)
                     {
-                    case "taxonomy-version":
-                        taxonomyVersion = reader.Value;
+                    case XmlNodeType.XmlDeclaration:
+					// skip
                         break;
-                    case "instance-generator":
-                        instanceGenerator = reader.Value;
+                    case XmlNodeType.ProcessingInstruction:
+                        string value = reader.Value;
+                        switch(reader.Name)
+                        {
+                        case "taxonomy-version":
+                            taxonomyVersion = value;
+                            break;
+                        case "instance-generator":
+                            instanceGenerator = value;
+                            break;
+                        }
+
+                        break;
+                    case XmlNodeType.Comment:
+                        comments.Add(reader.Value);
+                        break;
+                    default:
+					// go read the actual document
+                        content = true;
                         break;
                     }
-
-                    break;
-                case XmlNodeType.Comment:
-                    comments.Add(reader.Value);
-                    break;
-                default:
-					// go read the actual document
-                    content = true;
-                    break;
                 }
+                while (!content);
             }
-            while (!content);
 
             stream.Position = 0;
 
@@ -701,7 +677,7 @@ namespace Diwen.Xbrl
         {
             var ns = this.ToXmlSerializerNamespaces();
 
-            var info = string.Format("id='{0}' version='{1}' creationdate='{2:yyyy-MM-ddTHH:mm:ss:ffzzz}", id, version, DateTime.Now);
+            var info = string.Format(ic, "id='{0}' version='{1}' creationdate='{2:yyyy-MM-ddTHH:mm:ss:ffzzz}", id, version, DateTime.Now);
 
             writer.WriteProcessingInstruction("instance-generator", info);
 
