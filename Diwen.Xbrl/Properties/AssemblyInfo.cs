@@ -4,7 +4,7 @@
 //  Author:
 //       John Nordberg <john.nordberg@gmail.com>
 //
-//  Copyright (c) 2015 John Nordberg
+//  Copyright (c) 2015-2016 John Nordberg
 //
 //  This program is free software: you can redistribute it and/or modify
 //  it under the terms of the GNU General Public License as published by
@@ -48,6 +48,6 @@ using System.Runtime.InteropServices;
 //      Minor Version
 //      Build Number
 //      Revision
-[assembly: AssemblyVersion("0.30.3.0")]
-[assembly: AssemblyFileVersion("0.30.3.0")]
+[assembly: AssemblyVersion("0.31.0.0")]
+[assembly: AssemblyFileVersion("0.31.0.0")]
 [assembly: CLSCompliant(true)]

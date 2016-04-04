@@ -677,7 +677,7 @@ namespace Diwen.Xbrl
         {
             var ns = this.ToXmlSerializerNamespaces();
 
-            var info = string.Format(ic, "id='{0}' version='{1}' creationdate='{2:yyyy-MM-ddTHH:mm:ss:ffzzz}", id, version, DateTime.Now);
+            var info = string.Format(ic, "id='{0}' version='{1}' creationdate='{2:yyyy-MM-ddTHH:mm:ss:ffzzz}'", id, version, DateTime.Now);
 
             writer.WriteProcessingInstruction("instance-generator", info);
 
