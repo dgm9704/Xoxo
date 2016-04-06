@@ -18,6 +18,7 @@
 //
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
+using System.Linq;
 
 namespace Diwen.Xbrl
 {
@@ -42,11 +43,24 @@ namespace Diwen.Xbrl
                 result.Add(item.Key, item.Value);
             }
 
-            var foo = new List<string> {
-                instance.FactNamespace,
-                instance.DimensionNamespace,
-                instance.TypedDomainNamespace
-            };
+            var foo = new List<string>();
+
+            if(instance.Facts.Any())
+            {
+                foo.Add(instance.FactNamespace);
+            }
+
+            var scenarios = instance.Contexts.Where(c => c.Scenario != null).Select(c => c.Scenario).ToList();
+
+            if(scenarios.Any(s => s.TypedMembers.Any()))
+            {
+                foo.Add(instance.DimensionNamespace);
+                foo.Add(instance.TypedDomainNamespace);
+            }
+            else if(scenarios.Any(s => s.ExplicitMembers.Any()))
+            {
+                foo.Add(instance.DimensionNamespace);
+            }
 
             foreach(var item in foo)
             {

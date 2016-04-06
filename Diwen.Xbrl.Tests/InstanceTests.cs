@@ -359,6 +359,16 @@
             xbrl = Instance.FromFile(outputPath);
             Assert.IsTrue(xbrl.Comments.Contains("bar"));
         }
+
+        [Test]
+        public static void NoExtraNamespaces()
+        {
+            var instance = Instance.FromFile(Path.Combine("data", "comments.xbrl"));
+            instance.SetDimensionNamespace("s2c_dim", "http://eiopa.europa.eu/xbrl/s2c/dict/dim");
+            instance.SetTypedDomainNamespace("s2c_typ", "http://eiopa.europa.eu/xbrl/s2c/dict/typ");
+            instance.ToFile("ns.out");
+        }
+
     }
 }
 
