@@ -249,7 +249,6 @@
             Assert.Less(sw.ElapsedMilliseconds, 2000, "Cleanup takes too long!");
         }
 
-
         [Test]
         public static void WriteEmptyTypedMember()
         {
@@ -369,6 +368,14 @@
             instance.ToFile("ns.out");
         }
 
+        [Test]
+        public static void EmptyInstance()
+        {
+            // should load ok
+            var instance = Instance.FromFile(Path.Combine("data", "empty_instance.xbrl"));
+            Assert.IsNotNull(instance);
+            instance.ToFile("empty_instance_out.xbrl");
+        }
     }
 }
 

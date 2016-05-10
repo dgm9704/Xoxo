@@ -4,7 +4,7 @@
 //  Author:
 //       John Nordberg <john.nordberg@gmail.com>
 //
-//  Copyright (c) 2015 John Nordberg
+//  Copyright (c) 2015-2016 John Nordberg
 //
 //  This program is free software: you can redistribute it and/or modify
 //  it under the terms of the GNU General Public License as published by
@@ -88,6 +88,12 @@ namespace Diwen.Xbrl
         [XmlArrayItem("filingIndicator", Namespace = "http://www.eurofiling.info/xbrl/ext/filing-indicators")]
         public FilingIndicatorCollection FilingIndicators { get; set; }
 
+        [XmlIgnore]
+        public bool FilingIndicatorsSpecified
+        {
+            get { return FilingIndicators != null && FilingIndicators.Any(); }
+        }
+
         [XmlElement("context", Namespace = "http://www.xbrl.org/2003/instance")]
         public ContextCollection Contexts { get; set; }
 
@@ -108,13 +114,12 @@ namespace Diwen.Xbrl
             }
             set
             {
-                if(value == null)
+                if(value != null)
                 {
-                    throw new ArgumentNullException();
-                }
-                foreach(var element in value)
-                {
-                    Facts.Add(Fact.FromXmlElement(element));
+                    foreach(var element in value)
+                    {
+                        Facts.Add(Fact.FromXmlElement(element));
+                    } 
                 }
             }
         }

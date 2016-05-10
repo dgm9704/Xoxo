@@ -10,7 +10,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("John Nordberg")]
 [assembly: AssemblyProduct("Diwen.Xbrl.Tests")]
-[assembly: AssemblyCopyright("")]
+[assembly: AssemblyCopyright("2015-2016")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
