@@ -162,15 +162,15 @@ namespace Diwen.Xbrl
             Entity entityB = null;
             if(a.Contexts != null && a.Contexts.Count != 0)
             {
-                entityA = a.Contexts[0].Entity;
+                entityA = a.Contexts.First().Entity;
 
                 if(b.Contexts != null && b.Contexts.Count != 0)
                 {
-                    entityB = b.Contexts[0].Entity;
+                    entityB = b.Contexts.First().Entity;
                 }
             }
 
-            return entityA.Equals(entityB);
+            return (entityA == null && entityB == null) || (entityA != null && entityA.Equals(entityB));
         }
 
         static bool CheckPeriod(Instance a, Instance b)
@@ -179,15 +179,15 @@ namespace Diwen.Xbrl
             Period periodB = null;
             if(a.Contexts != null && a.Contexts.Count != 0)
             {
-                periodA = a.Contexts[0].Period;
+                periodA = a.Contexts.First().Period;
 
                 if(b.Contexts != null && b.Contexts.Count != 0)
                 {
-                    periodB = b.Contexts[0].Period;
+                    periodB = b.Contexts.First().Period;
                 }
             }
 
-            return periodA.Equals(periodB);
+            return (periodA == null && periodB == null) || (periodA != null && periodA.Equals(periodB));
         }
 
         #endregion

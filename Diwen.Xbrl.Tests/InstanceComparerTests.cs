@@ -186,6 +186,19 @@ namespace Diwen.Xbrl.Tests
             Console.WriteLine(string.Join(Environment.NewLine, report.Messages));
             Assert.IsTrue(report.Result);
         }
+
+        [Test]
+        public static void CompareEntityWithNoEntity()
+        {
+            var first = Instance.FromFile(Path.Combine("data", "empty_instance.xbrl"));
+            var second = Instance.FromFile(Path.Combine("data", "empty_instance.xbrl"));
+
+            second.Entity = new Entity("LEI", "00000000000000000098");
+            second.Period = new Period(2016, 05, 31);
+            second.AddFilingIndicator("foo", false);
+            // should not throw 
+            Assert.IsNotNull(InstanceComparer.Report(first, second, ComparisonTypes.All));
+        }
     }
 }
 
