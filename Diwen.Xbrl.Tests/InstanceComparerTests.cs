@@ -18,6 +18,7 @@
 //
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
+using System.Collections.Generic;
 
 namespace Diwen.Xbrl.Tests
 {
@@ -198,6 +199,25 @@ namespace Diwen.Xbrl.Tests
             second.AddFilingIndicator("foo", false);
             // should not throw 
             Assert.IsNotNull(InstanceComparer.Report(first, second, ComparisonTypes.All));
+        }
+
+        [Test] 
+        public static void CompareDifferentEntityAndPeriodOnly()
+        {
+            var path = Path.Combine("data", "reference.xbrl");
+            var path2 = Path.Combine("data", "reference2.xbrl");
+            var firstInstance = Instance.FromFile(path);
+            var secondInstance = Instance.FromFile(path2);
+
+            var report = InstanceComparer.Report(firstInstance, secondInstance, ComparisonTypes.All);
+            Console.WriteLine(string.Join(Environment.NewLine, report.Messages));
+            Assert.IsFalse(report.Result);
+            string[] expectedMessages = {
+                "Different Entity",
+                "Different Period"
+            };
+            // Does NOT report the differences for each context
+            CollectionAssert.AreEquivalent(expectedMessages, report.Messages);
         }
     }
 }

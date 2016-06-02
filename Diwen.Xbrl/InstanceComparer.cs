@@ -48,9 +48,10 @@ namespace Diwen.Xbrl
         static Dictionary<ComparisonTypes, Func<Instance, Instance, List<string>>> ComparisonMethods
         = new Dictionary<ComparisonTypes, Func<Instance, Instance, List<string>>> {
             { ComparisonTypes.Basic, BasicComparison },
-            { ComparisonTypes.Contexts, ContextComparison },
+            { ComparisonTypes.Contexts, ScenarioComparison },
             { ComparisonTypes.Facts, FactComparison },
         };
+        //{ ComparisonTypes.Contexts, ContextComparison },
 
         #region SimpleChecks
 
@@ -210,6 +211,40 @@ namespace Diwen.Xbrl
             foreach(var item in notInA)
             {
                 messages.Add("(b) " + item.Id + ":" + (item.Scenario != null ? item.Scenario.ToString() : String.Empty));
+            } 
+
+            return messages;
+        }
+
+        static List<string> ScenarioComparison(Instance a, Instance b)
+        {
+            var messages = new List<string>();
+
+            var aList = new List<Scenario>();
+            foreach(var c in a.Contexts)
+            {
+                aList.Add(c.Scenario);
+            }
+
+            var bList = new List<Scenario>();
+            foreach(var c in b.Contexts)
+            {
+                bList.Add(c.Scenario);
+            }
+
+            var differences = aList.ContentCompareReport(bList);
+
+            var notInB = differences.Item1;
+            var notInA = differences.Item2;
+
+            foreach(var item in notInB)
+            {
+                messages.Add(string.Format("(a) {0}", item));
+            }
+
+            foreach(var item in notInA)
+            {
+                messages.Add(string.Format("(b) {0}", item));
             } 
 
             return messages;
