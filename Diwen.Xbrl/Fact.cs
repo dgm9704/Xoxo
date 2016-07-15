@@ -147,10 +147,10 @@ namespace Diwen.Xbrl
                          && Decimals.Equals(other.Decimals, StringComparison.Ordinal);
             if(result)
             {
-                result = (Unit == null && other.Unit == null)
-                || Unit.Equals(other.Unit);
+                result = Unit == null 
+                    ? other.Unit == null
+                    : Unit.Equals(other.Unit);
             }
-
             return result;
         }
 

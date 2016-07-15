@@ -219,6 +219,22 @@ namespace Diwen.Xbrl.Tests
             // Does NOT report the differences for each context
             CollectionAssert.AreEquivalent(expectedMessages, report.Messages);
         }
+
+        [Test] 
+        public static void CompareFactWithMissingUnit()
+        {
+            var path = Path.Combine("data", "reference.xbrl");
+            var firstInstance = Instance.FromFile(path);
+            var secondInstance = Instance.FromFile(path);
+
+            // comparing this should not throw
+            secondInstance.Facts[0].Unit = null;
+
+            var report = InstanceComparer.Report(firstInstance, secondInstance, ComparisonTypes.All);
+            Console.WriteLine(string.Join(Environment.NewLine, report.Messages));
+            Assert.IsFalse(report.Result);
+            Assert.AreEqual(2, report.Messages.Count);
+        }
     }
 }
 
