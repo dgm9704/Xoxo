@@ -51,7 +51,6 @@ namespace Diwen.Xbrl
             { ComparisonTypes.Contexts, ScenarioComparison },
             { ComparisonTypes.Facts, FactComparison },
         };
-        //{ ComparisonTypes.Contexts, ContextComparison },
 
         #region SimpleChecks
 

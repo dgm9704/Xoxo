@@ -18,34 +18,66 @@
 //
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
+using System.Linq;
 
 namespace Diwen.Xbrl
 {
-	using System;
-	using System.Collections.Generic;
-	using System.Collections.ObjectModel;
+    using System;
+    using System.Collections.Generic;
+    using System.Collections.ObjectModel;
 
-	public class FilingIndicatorCollection : Collection<FilingIndicator>, IEquatable<IList<FilingIndicator>>
-	{
-		public FilingIndicator Add(Context context, string value)
-		{
-			return Add(context, value, true);
-		}
+    public class FilingIndicatorCollection : Collection<FilingIndicator>, IEquatable<IList<FilingIndicator>>
+    {
+        public FilingIndicator Add(Context context, string value)
+        {
+            return Add(context, value, true);
+        }
 
-		public FilingIndicator Add(Context context, string value, bool filed)
-		{
-			var filingIndicator = new FilingIndicator(context, value, filed);
-			base.Add(filingIndicator);
-			return filingIndicator;
-		}
+        public FilingIndicator Add(Context context, string value, bool filed)
+        {
+            var filingIndicator = new FilingIndicator(context, value, filed);
+            base.Add(filingIndicator);
+            return filingIndicator;
+        }
 
-		#region IEquatable implementation
+        #region IEquatable implementation
 
-		public bool Equals(IList<FilingIndicator> other)
-		{
-			return this.ContentCompare(other);
-		}
+        public bool Equals(IList<FilingIndicator> other)
+        {
+            bool result;
 
-		#endregion
-	}
+
+            if(this == null && other == null)
+            {
+                // if both are null then consider equal
+                result = true;
+            }
+            else if(this == null ^ other == null)
+            {
+                // if just one is null then not equal
+                result = false;
+            }
+            else
+            {
+
+                result = this.
+                    Where(i => i.Filed).
+                    ToList().
+                    ContentCompare(other.
+                        Where(i => i.Filed).
+                        ToList());
+//                result = this.
+//                    Where(i => i.Filed).
+//                    ToList().
+//                    TrueForAll(other.Contains)
+//                && other.
+//                    Where(i => i.Filed).
+//                    ToList().
+//                    TrueForAll(this.Contains);
+            }
+            return result;
+        }
+
+        #endregion
+    }
 }

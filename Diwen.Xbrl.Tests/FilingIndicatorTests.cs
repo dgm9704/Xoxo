@@ -59,6 +59,41 @@ namespace Diwen.Xbrl.Tests
             b.Add(ctx, "A.00.01");
             Assert.AreEqual(a, b);
         }
+
+        [Test]
+        public void FilingIndicatorCollectionsMatchFunctionally()
+        {
+            var c0 = new Context();
+            var a = new FilingIndicatorCollection();
+            a.Add(c0, "A", true);
+            a.Add(c0, "B", true);
+            a.Add(c0, "C", false);
+
+            var c1 = new Context();
+            var b = new FilingIndicatorCollection();
+            b.Add(c1, "B");
+            b.Add(c1, "A");
+
+            Assert.IsTrue(a.Equals(b));
+        }
+
+        [Test]
+        public void FilingIndicatorCollectionsDoNotMatchFunctionally()
+        {
+            var c0 = new Context();
+            var a = new FilingIndicatorCollection();
+            a.Add(c0, "A", true);
+            a.Add(c0, "B", true);
+            a.Add(c0, "C", false);
+
+            var c1 = new Context();
+            var b = new FilingIndicatorCollection();
+            b.Add(c1, "A");
+            b.Add(c1, "B");
+            b.Add(c1, "C");
+
+            Assert.IsFalse(a.Equals(b));
+        }
     }
 }
 
