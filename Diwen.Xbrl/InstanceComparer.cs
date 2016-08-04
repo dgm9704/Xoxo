@@ -220,6 +220,7 @@ namespace Diwen.Xbrl
             var messages = new List<string>();
 
             var aList = new List<Scenario>();
+
             foreach(var c in a.Contexts)
             {
                 aList.Add(c.Scenario);
@@ -236,16 +237,41 @@ namespace Diwen.Xbrl
             var notInB = differences.Item1;
             var notInA = differences.Item2;
 
-            foreach(var item in notInB)
+            if(notInB.Any())
             {
-                messages.Add(string.Format("(a) {0}", item));
+                // not until we're sure that there won't be duplicates
+                // var aLookup = a.Contexts.ToDictionary(c => c.Scenario != null ? c.Scenario.ToString() : "", c => c.Id);
+                var aLookup = new Dictionary<string, string>();
+                foreach(var c in a.Contexts)
+                {
+                    string key = c.Scenario != null ? c.Scenario.ToString() : "";
+                    aLookup[key] = c.Id;
+                }
+
+                foreach(var item in notInB)
+                {
+                    var contextId = aLookup[item.ToString()];
+                    messages.Add(string.Format("(a) {0}: {1}", contextId, item));
+                }
             }
 
-            foreach(var item in notInA)
+            if(notInA.Any())
             {
-                messages.Add(string.Format("(b) {0}", item));
-            } 
+                // not until we're sure that there won't be duplicates
+                // var bLookup = b.Contexts.ToDictionary(c => c.Scenario != null ? c.Scenario.ToString() : "", c => c.Id);
+                var bLookup = new Dictionary<string, string>();
+                foreach(var c in b.Contexts)
+                {
+                    string key = c.Scenario != null ? c.Scenario.ToString() : "";
+                    bLookup[key] = c.Id;
+                }
 
+                foreach(var item in notInA)
+                {
+                    var contextId = bLookup[item.ToString()];
+                    messages.Add(string.Format("(b) {0}: {1}", contextId, item));
+                }
+            }
             return messages;
         }
 
