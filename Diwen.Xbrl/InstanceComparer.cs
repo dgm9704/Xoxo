@@ -250,7 +250,8 @@ namespace Diwen.Xbrl
 
                 foreach(var item in notInB)
                 {
-                    var contextId = aLookup[item.ToString()];
+                    var key = item != null ? item.ToString() : "";
+                    var contextId = aLookup[key];
                     messages.Add(string.Format("(a) {0}: {1}", contextId, item));
                 }
             }
@@ -268,7 +269,8 @@ namespace Diwen.Xbrl
 
                 foreach(var item in notInA)
                 {
-                    var contextId = bLookup[item.ToString()];
+                    var key = item != null ? item.ToString() : "";
+                    var contextId = bLookup[key];
                     messages.Add(string.Format("(b) {0}: {1}", contextId, item));
                 }
             }
