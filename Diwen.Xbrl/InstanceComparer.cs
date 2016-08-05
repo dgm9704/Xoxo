@@ -18,20 +18,43 @@
 //
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
-using System.Collections.ObjectModel;
+
 
 namespace Diwen.Xbrl
 {
     using System;
     using System.Collections.Generic;
+    using System.IO;
     using System.Linq;
 
     public static class InstanceComparer
     {
+
+        public static ComparisonReport Report(string a, string b)
+        {
+            return Report(Instance.FromFile(a), Instance.FromFile(b), ComparisonTypes.All);
+        }
+
+        public static ComparisonReport Report(string a, string b, ComparisonTypes comparisonTypes)
+        {
+            return Report(Instance.FromFile(a), Instance.FromFile(b), comparisonTypes);
+        }
+
+        public static ComparisonReport Report(Stream a, Stream b)
+        {
+            return Report(Instance.FromStream(a), Instance.FromStream(b), ComparisonTypes.All);
+        }
+
+        public static ComparisonReport Report(Stream a, Stream b, ComparisonTypes comparisonTypes)
+        {
+            return Report(Instance.FromStream(a), Instance.FromStream(b), comparisonTypes);
+        }
+
         public static ComparisonReport Report(Instance a, Instance b)
         {
             return Report(a, b, ComparisonTypes.All);
         }
+
 
         public static ComparisonReport Report(Instance a, Instance b, ComparisonTypes comparisonTypes)
         {
