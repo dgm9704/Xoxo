@@ -22,7 +22,6 @@
 namespace Diwen.Xbrl.Tests
 {
     using NUnit.Framework;
-    using System;
 
     [TestFixture]
     public class FilingIndicatorTests
