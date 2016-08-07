@@ -531,23 +531,25 @@ namespace Diwen.Xbrl
 
         internal List<string> GetUsedDomainNamespaces()
         {
-            var used = new List<string>();
+            var namespaces = new HashSet<string>();
             var contexts = Contexts.Where(c => c != null && c.Scenario != null && c.Scenario.ExplicitMembers != null).ToList();
-            used.AddRange(contexts.SelectMany(c => c.Scenario.ExplicitMembers).Select(e => e.Value.Namespace).Distinct());
 
-            var factNamespaces = new HashSet<string>();
-            var facts = Facts.Where(f => !string.IsNullOrEmpty(f.Value) && f.Value.Contains(":"));
-            foreach(var fact in facts)
+            foreach(var value in contexts.SelectMany(c => c.Scenario.ExplicitMembers).Select(e => e.Value.Namespace))
+            {
+                namespaces.Add(value);
+            }
+
+            foreach(var fact in Facts.Where(f => !string.IsNullOrEmpty(f.Value) && f.Value.Contains(":")))
             {
                 var prefix = fact.Value.Split(':')[0];
                 var ns = Namespaces.LookupNamespace(prefix);
                 if(ns != null)
                 {
-                    factNamespaces.Add(ns);
+                    namespaces.Add(ns);
                 }
             }
-            used.AddRange(factNamespaces);
-            return used;
+
+            return namespaces.ToList();
         }
 
         #region serialization

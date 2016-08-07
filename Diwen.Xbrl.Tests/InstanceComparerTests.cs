@@ -128,6 +128,17 @@ namespace Diwen.Xbrl.Tests
         }
 
         [Test]
+        public static void CompareDomainNamespacesOfTotallyDifferentInstances()
+        {
+            var firstPath = Path.Combine("data", "reference.xbrl");
+            var secondPath = Path.Combine("data", "ars.xbrl");
+            var report = InstanceComparer.Report(firstPath, secondPath, ComparisonTypes.DomainNamespaces);
+            Console.WriteLine(string.Join(Environment.NewLine, report.Messages));
+            Assert.IsFalse(report.Result);
+            CollectionAssert.IsNotEmpty(report.Messages);
+        }
+
+        [Test]
         public static void CompareInstancesTypedMemberDifferent()
         {
             // load same instance twice

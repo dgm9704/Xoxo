@@ -29,7 +29,8 @@ namespace Diwen.Xbrl
         Basic = 1,
         Contexts = 2,
         Facts = 4,
-        All = Basic | Contexts | Facts
+        DomainNamespaces = 8,
+        All = Basic | Contexts | Facts | DomainNamespaces
     }
 }
 

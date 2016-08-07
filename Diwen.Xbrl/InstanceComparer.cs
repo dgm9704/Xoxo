@@ -72,6 +72,7 @@ namespace Diwen.Xbrl
             { ComparisonTypes.Basic, BasicComparison },
             { ComparisonTypes.Contexts, ScenarioComparison },
             { ComparisonTypes.Facts, FactComparison },
+            { ComparisonTypes.DomainNamespaces, DomainNamespaceComparison },
         };
 
         #region SimpleChecks
@@ -89,7 +90,6 @@ namespace Diwen.Xbrl
             { "Different Entity", CheckEntity },
             { "Different Period", CheckPeriod },
         };
-
 
         static List<string> BasicComparison(Instance a, Instance b)
         {
@@ -301,26 +301,21 @@ namespace Diwen.Xbrl
 
         static List<string> FactComparison(Instance a, Instance b)
         {
-            var messages = new List<string>();
-
             var differences = a.Facts.ContentCompareReport(b.Facts);
 
-            var notInB = differences.Item1;
-            var notInA = differences.Item2;
+            return differences.Item1.Select(item => "(a) " + item).
+                Concat(differences.Item2.Select(item => "(b) " + item)).
+                ToList();
+        }
 
-            foreach(var item in notInB)
-            {
-                var difference = "(a) " + item;
-                messages.Add(difference);
-            }
-
-            foreach(var item in notInA)
-            {
-                var difference = "(b) " + item;
-                messages.Add(difference);
-            }
-
-            return messages;
+        static List<string> DomainNamespaceComparison(Instance a, Instance b)
+        {
+            var differences = a.GetUsedDomainNamespaces().
+                ContentCompareReport(b.GetUsedDomainNamespaces());
+            
+            return differences.Item1.Select(item => "(a) " + item).
+                Concat(differences.Item2.Select(item => "(b) " + item)).
+                OrderBy(m => m).ToList();
         }
 
         #endregion
