@@ -556,33 +556,35 @@ namespace Diwen.Xbrl
 
         static XmlSerializer Serializer = new XmlSerializer(typeof(Instance));
 
+        static XmlReaderSettings XmlReaderSettings = new XmlReaderSettings {
+            IgnoreWhitespace = true,
+            IgnoreProcessingInstructions = false,
+            IgnoreComments = false, 
+            XmlResolver = null, 
+            ValidationType = ValidationType.None
+        };
+
         static XmlWriterSettings XmlWriterSettings = new XmlWriterSettings {
             Indent = true,
             NamespaceHandling = NamespaceHandling.OmitDuplicates,
             Encoding = Encoding.UTF8
         };
 
-        public static Instance FromStream(Stream stream, bool removeUnusedObjects = false)
+        static InstanceInfo GetInstanceInfo(Stream stream)
         {
-            var settings = new XmlReaderSettings();
-            settings.IgnoreWhitespace = true;
-            settings.IgnoreProcessingInstructions = false;
-            settings.IgnoreComments = false;
             string taxonomyVersion = null;
             string instanceGenerator = null;
             var comments = new List<string>();
-
-            using(var reader = XmlReader.Create(stream, settings))
+            using(var reader = XmlReader.Create(stream, XmlReaderSettings))
             {
                 var content = false;
                 do
                 {
                     reader.Read();
-
                     switch(reader.NodeType)
                     {
                     case XmlNodeType.XmlDeclaration:
-					// skip
+                        // skip
                         break;
                     case XmlNodeType.ProcessingInstruction:
                         string value = reader.Value;
@@ -595,24 +597,53 @@ namespace Diwen.Xbrl
                             instanceGenerator = value;
                             break;
                         }
-
                         break;
                     case XmlNodeType.Comment:
                         comments.Add(reader.Value);
                         break;
                     default:
-					// go read the actual document
+                        // go read the actual document
                         content = true;
                         break;
                     }
                 }
-                while (!content);
+                while(!content);
             }
+            return new InstanceInfo(taxonomyVersion, instanceGenerator, comments);
+        }
+
+        static void SetInstanceInfo(Instance xbrl, InstanceInfo info)
+        {
+            if(!string.IsNullOrEmpty(info.TaxonomyVersion))
+            {
+                xbrl.TaxonomyVersion = info.TaxonomyVersion;
+            }
+            if(!string.IsNullOrEmpty(info.InstanceGenerator))
+            {
+                xbrl.InstanceGenerator = info.InstanceGenerator;
+            }
+            xbrl.Comments = new Collection<string>(info.Comments);
+        }
+
+        public static Instance FromStream(Stream stream, bool removeUnusedObjects = false)
+        {
+            stream.Position = 0;
+
+            var info = GetInstanceInfo(stream);
 
             stream.Position = 0;
 
             var xbrl = (Instance)Serializer.Deserialize(stream);
 
+            CleanupAfterDeserialization(xbrl, removeUnusedObjects);
+
+            SetInstanceInfo(xbrl, info);
+
+            return xbrl;
+        }
+
+        static void CleanupAfterDeserialization(Instance xbrl, bool removeUnusedObjects)
+        {
             xbrl.SetContextReferences();
             xbrl.SetUnitReferences();
             if(removeUnusedObjects)
@@ -621,20 +652,6 @@ namespace Diwen.Xbrl
             }
             xbrl.RebuildNamespacesAfterRead();
             xbrl.SetInstanceReferences();
-
-            if(!string.IsNullOrEmpty(taxonomyVersion))
-            {
-                xbrl.TaxonomyVersion = taxonomyVersion;
-            }
-
-            if(!string.IsNullOrEmpty(instanceGenerator))
-            {
-                xbrl.InstanceGenerator = instanceGenerator;
-            }
-
-            xbrl.Comments = new Collection<string>(comments);
-
-            return xbrl;
         }
 
         void SetInstanceReferences()
@@ -650,6 +667,51 @@ namespace Diwen.Xbrl
                     }
                 }
             }
+        }
+
+        XmlSerializerNamespaces GetXmlSerializerNamespaces()
+        {
+            var usedDomains = GetUsedDomainNamespaces();
+
+            var result = new XmlSerializerNamespaces();
+            foreach(var item in Instance.DefaultNamespaces)
+            {
+                result.Add(item.Key, item.Value);
+            }
+
+            var foo = new List<string>();
+
+            if(Facts.Any())
+            {
+                foo.Add(FactNamespace);
+            }
+
+            var scenarios = Contexts.Where(c => c.Scenario != null).Select(c => c.Scenario).ToList();
+
+            if(scenarios.Any(s => s.TypedMembers.Any()))
+            {
+                foo.Add(DimensionNamespace);
+                foo.Add(TypedDomainNamespace);
+            }
+            else if(scenarios.Any(s => s.ExplicitMembers.Any()))
+            {
+                foo.Add(DimensionNamespace);
+            }
+
+            foreach(var item in foo)
+            {
+                if(!string.IsNullOrEmpty(item))
+                {
+                    var prefix = Namespaces.LookupPrefix(item);
+                    result.Add(prefix, item);
+                }
+            }
+
+            foreach(var item in usedDomains)
+            {
+                result.Add(Namespaces.LookupPrefix(item), item);
+            }
+            return result;
         }
 
         public void ToStream(Stream stream)
@@ -682,7 +744,7 @@ namespace Diwen.Xbrl
 
         void ToXmlWriter(XmlWriter writer)
         {
-            var ns = this.ToXmlSerializerNamespaces();
+            var ns = GetXmlSerializerNamespaces();
 
             var info = string.Format(ic, "id=\"{0}\" version=\"{1}\" creationdate=\"{2:yyyy-MM-ddTHH:mm:ss:ffzzz}\"", id, version, DateTime.Now);
 

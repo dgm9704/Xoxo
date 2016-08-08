@@ -121,7 +121,7 @@ namespace Diwen.Xbrl.Tests
         {
             var firstPath = Path.Combine("data", "reference.xbrl");
             var secondPath = Path.Combine("data", "ars.xbrl");
-            var report = InstanceComparer.Report(firstPath, secondPath, ComparisonTypes.Basic);
+            var report = InstanceComparer.Report(firstPath, secondPath, ComparisonTypes.All);
             Console.WriteLine(string.Join(Environment.NewLine, report.Messages));
             Assert.IsFalse(report.Result);
             CollectionAssert.IsNotEmpty(report.Messages);

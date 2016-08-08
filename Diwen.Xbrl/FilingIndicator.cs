@@ -23,6 +23,7 @@ namespace Diwen.Xbrl
 {
     using System;
     using System.Diagnostics;
+    using System.Globalization;
     using System.Xml.Schema;
     using System.Xml.Serialization;
 
@@ -31,6 +32,8 @@ namespace Diwen.Xbrl
     [XmlRoot("filingIndicator", Namespace = "http://www.eurofiling.info/xbrl/ext/filing-indicators")]
     public class FilingIndicator : IEquatable<FilingIndicator>
     {
+        static IFormatProvider ic = CultureInfo.InvariantCulture;
+
         [XmlAttribute("contextRef")]
         public string ContextRef { get; set; }
 
@@ -86,6 +89,11 @@ namespace Diwen.Xbrl
         public override int GetHashCode()
         {
             return Value.GetHashCode();
+        }
+
+        public override string ToString()
+        {
+            return string.Format(ic, "Value={0}, Filed={1}, Context={2}", Value, Filed, ContextRef);
         }
 
         #region IEquatable implementation

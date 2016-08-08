@@ -4,7 +4,7 @@
 //  Author:
 //       John Nordberg <john.nordberg@gmail.com>
 //
-//  Copyright (c) 2015-2016 John Nordberg
+//  Copyright (c) 2016 John Nordberg
 //
 //  This program is free software: you can redistribute it and/or modify
 //  it under the terms of the GNU General Public License as published by
@@ -21,20 +21,22 @@
 
 namespace Diwen.Xbrl
 {
-    using System;
+    using System.Collections.Generic;
 
-    [Flags, Serializable]
-    public enum ComparisonTypes
+    struct InstanceInfo
     {
-        None = 0,
-        Basic = 1,
-        Contexts = 2,
-        Facts = 4,
-        DomainNamespaces = 8,
-        Units = 16,
-        Entity = 32,
-        FilingIndicators = 64,
-        All = Basic | Contexts | Facts | DomainNamespaces | Units | Entity | FilingIndicators
+        public string TaxonomyVersion { get; }
+
+        public string InstanceGenerator { get; }
+
+        public List<string> Comments { get ; }
+
+        public InstanceInfo(string taxonomyVersion, string instanceGenerator, List<string> comments)
+        {
+            TaxonomyVersion = taxonomyVersion;
+            InstanceGenerator = instanceGenerator;
+            Comments = comments;
+        }
     }
 }
 

@@ -23,11 +23,13 @@ namespace Diwen.Xbrl
 {
     using System;
     using System.Collections.Generic;
+    using System.Globalization;
     using System.IO;
     using System.Linq;
 
     public static class InstanceComparer
     {
+        static IFormatProvider ic = CultureInfo.InvariantCulture;
 
         public static ComparisonReport Report(string a, string b)
         {
@@ -54,7 +56,6 @@ namespace Diwen.Xbrl
             return Report(a, b, ComparisonTypes.All);
         }
 
-
         public static ComparisonReport Report(Instance a, Instance b, ComparisonTypes comparisonTypes)
         {
             var messages = new List<string>();
@@ -67,12 +68,15 @@ namespace Diwen.Xbrl
             return new ComparisonReport(!messages.Any(), messages);
         }
 
-        static Dictionary<ComparisonTypes, Func<Instance, Instance, List<string>>> ComparisonMethods
-        = new Dictionary<ComparisonTypes, Func<Instance, Instance, List<string>>> {
+        static Dictionary<ComparisonTypes, Func<Instance, Instance, IEnumerable<string>>> ComparisonMethods
+        = new Dictionary<ComparisonTypes, Func<Instance, Instance, IEnumerable<string>>> {
             { ComparisonTypes.Basic, BasicComparison },
             { ComparisonTypes.Contexts, ScenarioComparison },
             { ComparisonTypes.Facts, FactComparison },
             { ComparisonTypes.DomainNamespaces, DomainNamespaceComparison },
+            { ComparisonTypes.Units, UnitComparison },
+            { ComparisonTypes.Entity, EntityComparison },
+            { ComparisonTypes.FilingIndicators, FilingIndicatorComparison },
         };
 
         #region SimpleChecks
@@ -91,17 +95,11 @@ namespace Diwen.Xbrl
             { "Different Period", CheckPeriod },
         };
 
-        static List<string> BasicComparison(Instance a, Instance b)
+        static IEnumerable<string> BasicComparison(Instance a, Instance b)
         {
-            var result = new List<string>();
-            foreach(var check in SimpleCheckMethods)
-            {
-                if(!check.Value(a, b))
-                {
-                    result.Add(check.Key);
-                }
-            }
-            return result;
+            return SimpleCheckMethods.
+                Where(check => !check.Value(a, b)).
+                Select(check => check.Key);
         }
 
         static bool CheckNullInstances(object a, object b)
@@ -216,39 +214,25 @@ namespace Diwen.Xbrl
 
         #region DetailedChecks
 
-        static List<string> ContextComparison(Instance a, Instance b)
+        static IEnumerable<string> ContextComparison(Instance a, Instance b)
         {
-            var messages = new List<string>();
             var differences = a.Contexts.ContentCompareReport(b.Contexts);
-
-            var notInB = differences.Item1;
-            var notInA = differences.Item2;
-
-            foreach(var item in notInB)
-            {
-                messages.Add("(a) " + item.Id + ":" + (item.Scenario != null ? item.Scenario.ToString() : String.Empty));
-            }
-
-            foreach(var item in notInA)
-            {
-                messages.Add("(b) " + item.Id + ":" + (item.Scenario != null ? item.Scenario.ToString() : String.Empty));
-            } 
-
+            var messages = new List<string>(differences.Item1.Count + differences.Item2.Count);
+            messages.AddRange(differences.Item1.Select(item => "(a) " + item.Id + ":" + (item.Scenario != null ? item.Scenario.ToString() : String.Empty)));
+            messages.AddRange(differences.Item2.Select(item => "(b) " + item.Id + ":" + (item.Scenario != null ? item.Scenario.ToString() : String.Empty)));
             return messages;
         }
 
-        static List<string> ScenarioComparison(Instance a, Instance b)
+        static IEnumerable<string> ScenarioComparison(Instance a, Instance b)
         {
-            var messages = new List<string>();
-
-            var aList = new List<Scenario>();
+            var aList = new List<Scenario>(a.Contexts.Count);
 
             foreach(var c in a.Contexts)
             {
                 aList.Add(c.Scenario);
             }
 
-            var bList = new List<Scenario>();
+            var bList = new List<Scenario>(b.Contexts.Count);
             foreach(var c in b.Contexts)
             {
                 bList.Add(c.Scenario);
@@ -258,6 +242,8 @@ namespace Diwen.Xbrl
 
             var notInB = differences.Item1;
             var notInA = differences.Item2;
+
+            var messages = new List<string>(notInB.Count + notInA.Count);
 
             if(notInB.Any())
             {
@@ -299,23 +285,59 @@ namespace Diwen.Xbrl
             return messages;
         }
 
-        static List<string> FactComparison(Instance a, Instance b)
+        static IEnumerable<string> FactComparison(Instance a, Instance b)
         {
+            
             var differences = a.Facts.ContentCompareReport(b.Facts);
-
-            return differences.Item1.Select(item => "(a) " + item).
-                Concat(differences.Item2.Select(item => "(b) " + item)).
-                ToList();
+            var result = new List<string>(differences.Item1.Count + differences.Item2.Count);
+            result.AddRange(differences.Item1.Select(item => string.Format(ic, "(a) {0} ({1})", item, item.Context.Scenario)));
+            result.AddRange(differences.Item2.Select(item => string.Format(ic, "(b) {0} ({1})", item, item.Context.Scenario)));
+            return result;
         }
 
-        static List<string> DomainNamespaceComparison(Instance a, Instance b)
+        static IEnumerable<string> DomainNamespaceComparison(Instance a, Instance b)
         {
             var differences = a.GetUsedDomainNamespaces().
                 ContentCompareReport(b.GetUsedDomainNamespaces());
-            
+
+            var result = new List<string>(differences.Item1.Count + differences.Item2.Count);
+            result.AddRange(differences.Item1.Select(item => "(a) " + item));
+            result.AddRange(differences.Item2.Select(item => "(b) " + item));
+            return result;
+        }
+
+        static IEnumerable<string> UnitComparison(Instance a, Instance b)
+        {
+            var differences = a.Units.
+                ContentCompareReport(b.Units);
+
             return differences.Item1.Select(item => "(a) " + item).
                 Concat(differences.Item2.Select(item => "(b) " + item)).
-                OrderBy(m => m).ToList();
+                OrderBy(m => m);
+        }
+
+        static IEnumerable<string> EntityComparison(Instance a, Instance b)
+        {
+            var aEntity = new List<Entity>();
+            aEntity.Add(a.Entity);
+            var bEntity = new List<Entity>();
+            bEntity.Add(b.Entity);
+            var differences = aEntity.
+                ContentCompareReport(bEntity);
+
+            return differences.Item1.Select(item => "(a) " + item).
+                Concat(differences.Item2.Select(item => "(b) " + item));
+        }
+
+        static IEnumerable<string> FilingIndicatorComparison(Instance a, Instance b)
+        {
+            var differences = a.FilingIndicators.Where(fi => fi.Filed).ToList().
+                ContentCompareReport(b.FilingIndicators.Where(fi => fi.Filed).ToList());
+
+            var result = new List<string>(differences.Item1.Count + differences.Item2.Count);
+            result.AddRange(differences.Item1.Select(item => "(a) " + item));
+            result.AddRange(differences.Item2.Select(item => "(b) " + item));
+            return result;
         }
 
         #endregion

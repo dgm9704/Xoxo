@@ -46,7 +46,6 @@ namespace Diwen.Xbrl
         {
             bool result;
 
-
             if(this == null && other == null)
             {
                 // if both are null then consider equal
@@ -66,14 +65,6 @@ namespace Diwen.Xbrl
                     ContentCompare(other.
                         Where(i => i.Filed).
                         ToList());
-//                result = this.
-//                    Where(i => i.Filed).
-//                    ToList().
-//                    TrueForAll(other.Contains)
-//                && other.
-//                    Where(i => i.Filed).
-//                    ToList().
-//                    TrueForAll(this.Contains);
             }
             return result;
         }
