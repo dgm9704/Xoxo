@@ -58,13 +58,10 @@ namespace Diwen.Xbrl
 
         public static ComparisonReport Report(Instance a, Instance b, ComparisonTypes comparisonTypes)
         {
-            var messages = new List<string>();
-
-            foreach(var comparison in ComparisonMethods.Where(c=> comparisonTypes.HasFlag(c.Key)))
-            {
-                messages.AddRange(comparison.Value(a, b));
-            }
-
+            var messages = ComparisonMethods.
+                            Where(c => comparisonTypes.HasFlag(c.Key)).
+                            SelectMany(c => c.Value(a, b)).
+                            ToList();
             return new ComparisonReport(!messages.Any(), messages);
         }
 
@@ -76,6 +73,9 @@ namespace Diwen.Xbrl
             { ComparisonTypes.DomainNamespaces, DomainNamespaceComparison },
             { ComparisonTypes.Units, UnitComparison },
             { ComparisonTypes.Entity, EntityComparison },
+            { ComparisonTypes.Period, PeriodComparison },
+            { ComparisonTypes.TaxonomyVersion, TaxonomyVersionComparison },
+            { ComparisonTypes.SchemaReference, SchemaReferenceComparison },
             { ComparisonTypes.FilingIndicators, FilingIndicatorComparison },
         };
 
@@ -109,17 +109,9 @@ namespace Diwen.Xbrl
 
         static bool CheckTaxonomyVersion(Instance a, Instance b)
         { 
-            var result = false;
-			
-            if(a.TaxonomyVersion != null && b.TaxonomyVersion != null)
-            {
-                result = a.TaxonomyVersion.Equals(b.TaxonomyVersion, StringComparison.Ordinal);				
-            }
-            else
-            {
-                result |= a.TaxonomyVersion == null && b.TaxonomyVersion == null;
-            }
-            return result;
+            return a.TaxonomyVersion != null && b.TaxonomyVersion != null
+                ? a.TaxonomyVersion.Equals(b.TaxonomyVersion, StringComparison.Ordinal)
+                : a.TaxonomyVersion == null && b.TaxonomyVersion == null;
         }
 
         static bool CheckSchemaReference(Instance a, Instance b)
@@ -139,24 +131,9 @@ namespace Diwen.Xbrl
 
         static bool CheckCount<T>(ICollection<T> a, ICollection<T> b)
         {
-            bool result;
-
-            if(a == null ^ b == null)
-            {
-                result = false;
-            }
-            else
-            {
-                if(a == null && b == null)
-                {
-                    result = true;
-                }
-                else
-                {
-                    result = a.Count == b.Count;
-                }
-            }
-            return result;
+            return a != null && b != null 
+                ? a.Count == b.Count 
+                : a == null && b == null;
         }
 
         static bool CheckContextCount(Instance a, Instance b)
@@ -171,9 +148,8 @@ namespace Diwen.Xbrl
 
         static bool CheckDomainNamespaces(Instance a, Instance b)
         {
-            var aused = a.GetUsedDomainNamespaces();
-            var bused = b.GetUsedDomainNamespaces();
-            return aused.ContentCompare(bused);
+            return a.GetUsedDomainNamespaces().
+                ContentCompare(b.GetUsedDomainNamespaces());
         }
 
         static bool CheckEntity(Instance a, Instance b)
@@ -190,7 +166,8 @@ namespace Diwen.Xbrl
                 }
             }
 
-            return (entityA == null && entityB == null) || (entityA != null && entityA.Equals(entityB));
+            return (entityA == null && entityB == null)
+            || (entityA != null && entityA.Equals(entityB));
         }
 
         static bool CheckPeriod(Instance a, Instance b)
@@ -207,7 +184,8 @@ namespace Diwen.Xbrl
                 }
             }
 
-            return (periodA == null && periodB == null) || (periodA != null && periodA.Equals(periodB));
+            return (periodA == null && periodB == null)
+            || (periodA != null && periodA.Equals(periodB));
         }
 
         #endregion
@@ -287,7 +265,6 @@ namespace Diwen.Xbrl
 
         static IEnumerable<string> FactComparison(Instance a, Instance b)
         {
-            
             var differences = a.Facts.ContentCompareReport(b.Facts);
             var result = new List<string>(differences.Item1.Count + differences.Item2.Count);
             result.AddRange(differences.Item1.Select(item => string.Format(ic, "(a) {0} ({1})", item, item.Context.Scenario)));
@@ -318,16 +295,75 @@ namespace Diwen.Xbrl
 
         static IEnumerable<string> EntityComparison(Instance a, Instance b)
         {
-            var aEntity = new List<Entity>();
-            aEntity.Add(a.Entity);
-            var bEntity = new List<Entity>();
-            bEntity.Add(b.Entity);
-            var differences = aEntity.
-                ContentCompareReport(bEntity);
+            var aList = new List<Entity>();
+            var bList = new List<Entity>();
+
+            if(a.Contexts != null && a.Contexts.Count != 0)
+            {
+                aList.Add(a.Contexts.First().Entity);
+            }
+
+            if(b.Contexts != null && b.Contexts.Count != 0)
+            {
+                bList.Add(b.Contexts.First().Entity);
+            }
+
+            var differences = aList.ContentCompareReport(bList);
 
             return differences.Item1.Select(item => "(a) " + item).
-                Concat(differences.Item2.Select(item => "(b) " + item));
+            Concat(differences.Item2.Select(item => "(b) " + item));   
+
         }
+
+        static IEnumerable<string> PeriodComparison(Instance a, Instance b)
+        {
+            var aList = new List<Period>();
+            var bList = new List<Period>();
+
+            if(a.Contexts != null && a.Contexts.Count != 0)
+            {
+                aList.Add(a.Contexts.First().Period);
+            }
+
+            if(b.Contexts != null && b.Contexts.Count != 0)
+            {
+                bList.Add(b.Contexts.First().Period);
+            }
+
+            var differences = aList.ContentCompareReport(bList);
+
+            return differences.Item1.Select(item => "(a) " + item).
+                Concat(differences.Item2.Select(item => "(b) " + item));   
+        }
+
+        static IEnumerable<string> TaxonomyVersionComparison(Instance a, Instance b)
+        {
+            var aList = new List<string>();
+            var bList = new List<string>();
+
+            aList.Add(a.TaxonomyVersion);
+            bList.Add(b.TaxonomyVersion);
+
+            var differences = aList.ContentCompareReport(bList);
+
+            return differences.Item1.Select(item => "(a) taxonomy-version: " + item).
+                Concat(differences.Item2.Select(item => "(b) taxonomy-version: " + item));   
+        }
+
+        static IEnumerable<string> SchemaReferenceComparison(Instance a, Instance b)
+        {
+            var aList = new List<SchemaReference>();
+            var bList = new List<SchemaReference>();
+
+            aList.Add(a.SchemaReference);
+            bList.Add(b.SchemaReference);
+
+            var differences = aList.ContentCompareReport(bList);
+
+            return differences.Item1.Select(item => "(a) " + item).
+                Concat(differences.Item2.Select(item => "(b) " + item));   
+        }
+
 
         static IEnumerable<string> FilingIndicatorComparison(Instance a, Instance b)
         {

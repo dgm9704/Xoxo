@@ -27,14 +27,17 @@ namespace Diwen.Xbrl
     public enum ComparisonTypes
     {
         None = 0,
-        Basic = 1,
-        Contexts = 2,
-        Facts = 4,
-        DomainNamespaces = 8,
-        Units = 16,
-        Entity = 32,
-        FilingIndicators = 64,
-        All = Basic | Contexts | Facts | DomainNamespaces | Units | Entity | FilingIndicators
+        Basic = 1 << 0,
+        Contexts = 1 << 1,
+        Facts = 1 << 2,
+        DomainNamespaces = 1 << 3,
+        Units = 1 << 4,
+        Entity = 1 << 5,
+        Period = 1 << 6,
+        FilingIndicators = 1 << 7,
+        TaxonomyVersion = 1 << 8,
+        SchemaReference = 1 << 9,
+        All = 0xFFFFFFF
     }
 }
 

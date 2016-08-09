@@ -22,12 +22,15 @@
 namespace Diwen.Xbrl
 {
     using System;
+    using System.Globalization;
     using System.Xml.Serialization;
 
     [Serializable]
     [XmlRoot(ElementName = "period", Namespace = "http://www.xbrl.org/2003/instance")]
     public class Period : IEquatable<Period>
     {
+        static IFormatProvider ic = CultureInfo.InvariantCulture;
+
         [XmlElement(ElementName = "instant", DataType = "date", Namespace = "http://www.xbrl.org/2003/instance")]
         public DateTime Instant { get; set; }
 
@@ -52,6 +55,11 @@ namespace Diwen.Xbrl
         {
             var other = obj as Period;
             return other != null && Equals(other);
+        }
+
+        public override string ToString()
+        {
+            return string.Format(ic, "Instant={0:yyyy-MM-dd}", Instant);
         }
 
         #region IEquatable implementation

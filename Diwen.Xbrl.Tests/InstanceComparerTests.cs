@@ -231,7 +231,11 @@ namespace Diwen.Xbrl.Tests
             Assert.IsFalse(report.Result);
             string[] expectedMessages = {
                 "Different Entity",
-                "Different Period"
+                "Different Period",
+                "(a) Identifier=http://standards.iso.org/iso/17442:1234567890ABCDEFGHIJ", 
+                "(b) Identifier=http://standards.iso.org/iso/17442:00000000000000000098", 
+                "(a) Instant=2014-12-31", 
+                "(b) Instant=2015-12-31",
             };
             // Does NOT report the differences for each context
             CollectionAssert.AreEquivalent(expectedMessages, report.Messages);

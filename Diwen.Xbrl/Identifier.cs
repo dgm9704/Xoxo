@@ -44,6 +44,11 @@ namespace Diwen.Xbrl
             Value = value;
         }
 
+        public override string ToString()
+        {
+            return string.Join(":", Scheme, Value);
+        }
+
         #region IEquatable implementation
 
         public bool Equals(Identifier other)

@@ -51,6 +51,11 @@ namespace Diwen.Xbrl
             return other != null && Equals(other);
         }
 
+        public override string ToString()
+        {
+            return string.Format("SchemaReference: Type={0}, Value={1}", Type, Value);
+        }
+
         #region IEquatable implementation
 
         public bool Equals(SchemaReference other)

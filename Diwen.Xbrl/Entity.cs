@@ -40,6 +40,11 @@ namespace Diwen.Xbrl
             Identifier = new Identifier(identifierScheme, identifierValue);
         }
 
+        public override string ToString()
+        {
+            return string.Format("Identifier={0}", Identifier);
+        }
+
         #region IEquatable implementation
 
         public bool Equals(Entity other)
