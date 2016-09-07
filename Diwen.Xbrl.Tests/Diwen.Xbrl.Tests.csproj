@@ -52,6 +52,7 @@
     <Compile Include="FactTests.cs" />
     <Compile Include="FilingIndicatorTests.cs" />
     <Compile Include="ExternalTests.cs" />
+    <Compile Include="SBRInstanceTests.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup />
@@ -84,6 +85,12 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="data\reference2.xbrl">
+      <DeployService-Deploy>True</DeployService-Deploy>
+      <DeployService-HasPathReferences>True</DeployService-HasPathReferences>
+      <DeployService-UseProjectRelativePath>True</DeployService-UseProjectRelativePath>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\sbr_reference.xbrl">
       <DeployService-Deploy>True</DeployService-Deploy>
       <DeployService-HasPathReferences>True</DeployService-HasPathReferences>
       <DeployService-UseProjectRelativePath>True</DeployService-UseProjectRelativePath>
