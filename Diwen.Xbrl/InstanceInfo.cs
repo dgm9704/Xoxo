@@ -25,13 +25,14 @@ namespace Diwen.Xbrl
 
     struct InstanceInfo
     {
-        public string TaxonomyVersion { get; }
+        public string TaxonomyVersion { get; private set; }
 
-        public string InstanceGenerator { get; }
+        public string InstanceGenerator { get; private set; }
 
-        public List<string> Comments { get ; }
+        public List<string> Comments { get; private set; }
 
         public InstanceInfo(string taxonomyVersion, string instanceGenerator, List<string> comments)
+            : this()
         {
             TaxonomyVersion = taxonomyVersion;
             InstanceGenerator = instanceGenerator;
