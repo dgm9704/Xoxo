@@ -22,6 +22,7 @@
 namespace Diwen.Xbrl
 {
     using System;
+    using System.Collections.Generic;
     using System.Globalization;
     using System.Xml;
     using System.Xml.Serialization;
@@ -47,11 +48,39 @@ namespace Diwen.Xbrl
         [XmlIgnore]
         public string Value { get; set; }
 
+        [XmlIgnore]
+        public FactCollection Facts { get; private set; }
+
+        [XmlAnyElement]
+        public XmlElement[] FactItems
+        {
+            get
+            {
+                var elements = new List<XmlElement>();
+                foreach(var item in Facts)
+                {
+                    elements.Add(item.ToXmlElement());
+                }
+                return elements.ToArray();
+            }
+            set
+            {
+                if(value != null)
+                {
+                    foreach(var element in value)
+                    {
+                        Facts.Add(Fact.FromXmlElement(element));
+                    }
+                }
+            }
+        }
+
         internal string ContextRef;
         internal string UnitRef;
 
         public Fact()
         {
+            Facts = new FactCollection(null);
         }
 
         public override string ToString()
@@ -85,6 +114,7 @@ namespace Diwen.Xbrl
                 throw new ArgumentNullException("namespaceUri");
             }
 
+            Facts = new FactCollection(null);
             Metric = new XmlQualifiedName(prefix + ":" + metric, namespaceUri.ToString());
             Unit = unit;
             Decimals = decimals;
@@ -92,25 +122,70 @@ namespace Diwen.Xbrl
             Value = value;
         }
 
+        public Fact AddFact(Context context, string metric, string unitRef, string decimals, string value)
+        {
+            return Facts.Add(context, metric, unitRef, decimals, value);
+        }
+
+        public Fact AddFact(Scenario scenario, string metric, string unitRef, string decimals, string value)
+        {
+            if(scenario != null)
+            {
+                Facts.Instance = scenario.Instance;
+
+                if(scenario.ExplicitMembers.Count == 0 && scenario.TypedMembers.Count == 0)
+                {
+                    scenario = null;
+                }
+            }
+            return Facts.Add(scenario, metric, unitRef, decimals, value);
+        }
+
+        public Fact AddFact(Segment segment, string metric, string unitRef, string decimals, string value)
+        {
+            if(segment != null)
+            {
+                Facts.Instance = segment.Instance;
+
+                if(segment.ExplicitMembers.Count == 0 && segment.TypedMembers.Count == 0)
+                {
+                    segment = null;
+                }
+            }
+
+            return Facts.Add(segment, metric, unitRef, decimals, value);
+        }
+
         internal XmlElement ToXmlElement()
         {
             var element = doc.CreateElement(Metric.Name, Metric.Namespace);
 
-            if(Context != null)
+            if(Facts.Count > 0)
             {
-                element.SetAttribute("contextRef", Context.Id);
+                var elements = new List<XmlElement>();
+                foreach(var item in Facts)
+                {
+                    element.AppendChild(item.ToXmlElement());
+                }
             }
+            else
+            {
+                if(Context != null)
+                {
+                    element.SetAttribute("contextRef", Context.Id);
+                }
 
-            if(Unit != null)
-            {
-                element.SetAttribute("unitRef", Unit.Id);
-            }
-            if(!string.IsNullOrEmpty(Decimals))
-            {
-                element.SetAttribute("decimals", Decimals);
-            }
+                if(Unit != null)
+                {
+                    element.SetAttribute("unitRef", Unit.Id);
+                }
+                if(!string.IsNullOrEmpty(Decimals))
+                {
+                    element.SetAttribute("decimals", Decimals);
+                }
 
-            element.InnerText = Value;
+                element.InnerText = Value;
+            }
             return element;
         }
 
@@ -119,17 +194,34 @@ namespace Diwen.Xbrl
             var fact = new Fact();
             fact.Metric = new XmlQualifiedName(element.Name, element.NamespaceURI);
 
-            fact.UnitRef = element.GetAttribute("unitRef");
-            fact.Decimals = element.GetAttribute("decimals");
-            fact.ContextRef = element.GetAttribute("contextRef");
-            fact.Value = element.InnerText;
+            if(element.InnerXml == element.InnerText)
+            {
+                fact.UnitRef = element.GetAttribute("unitRef");
+                fact.Decimals = element.GetAttribute("decimals");
+                fact.ContextRef = element.GetAttribute("contextRef");
+                fact.Value = element.InnerText;
+            }
+            else
+            {
+                fact.UnitRef = "";
+                fact.Decimals = "";
+                fact.ContextRef = "";
+                fact.Value = "";
+            }
             return fact;
         }
 
         public override bool Equals(object obj)
         {
+            var result = false;
             var other = obj as Fact;
-            return other != null && Equals(other);
+            if(other != null && Equals(other))
+                result |= Facts.Equals(other.Facts);
+            if(!result)
+            {
+                Console.WriteLine("Schema references different");
+            }
+            return result;
         }
 
         public override int GetHashCode()

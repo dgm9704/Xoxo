@@ -103,6 +103,7 @@ namespace Diwen.Xbrl
                 string dimNs = Instance.DimensionNamespace;
                 string valPrefix = value.Substring(0, value.IndexOf(':'));
                 string valNs = Instance.Namespaces.LookupNamespace(valPrefix);
+                value = value.Substring(value.IndexOf(':') + 1);
                 if(Instance.CheckExplicitMemberDomainExists)
                 {
                     if(string.IsNullOrEmpty(valNs))

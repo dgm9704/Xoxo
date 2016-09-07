@@ -28,7 +28,7 @@ namespace Diwen.Xbrl
 
     public class FactCollection : Collection<Fact>, IEquatable<IList<Fact>>
     {
-        Instance Instance;
+        public Instance Instance;
         static IFormatProvider ic = CultureInfo.InvariantCulture;
 
         public FactCollection(Instance instance)
@@ -40,6 +40,15 @@ namespace Diwen.Xbrl
         {
             var ns = Instance.FactNamespace;
             var prefix = Instance.Namespaces.LookupPrefix(ns);
+            if(prefix == null && metric.Contains(":"))
+            {
+                prefix = metric.Substring(0, metric.IndexOf(':'));
+                metric = metric.Substring(metric.IndexOf(':') + 1);
+            }
+            if(ns == null)
+            {
+                ns = Instance.Namespaces.LookupNamespace(prefix);
+            }
 
             Unit unit = null;
             if(!string.IsNullOrEmpty(unitRef))
@@ -59,6 +68,12 @@ namespace Diwen.Xbrl
         public Fact Add(Scenario scenario, string metric, string unitRef, string decimals, string value)
         {
             var context = Instance.GetContext(scenario);
+            return Add(context, metric, unitRef, decimals, value);
+        }
+
+        public Fact Add(Segment segment, string metric, string unitRef, string decimals, string value)
+        {
+            var context = Instance.GetContext(segment);
             return Add(context, metric, unitRef, decimals, value);
         }
 

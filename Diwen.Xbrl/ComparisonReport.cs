@@ -29,11 +29,13 @@ namespace Diwen.Xbrl
         public bool Result
         {
             get;
+            private set;
         }
 
         public ReadOnlyCollection<string> Messages
         {
             get;
+            private set;
         }
 
         internal ComparisonReport(bool result, IList<string> messages)
