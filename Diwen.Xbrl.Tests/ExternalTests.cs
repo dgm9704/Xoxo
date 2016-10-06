@@ -31,12 +31,14 @@ namespace Diwen.Xbrl.Tests
     public static class ExternalTests
     {
         [Test]
+        [Ignore("bad performance")]
         public static void EBA()
         {
             CheckFolderResults(TestFolder("eba"));
         }
 
         [Test]
+        [Ignore("bad performance")]
         public static void EIOPA()
         {
             CheckFolderResults(TestFolder("eiopa"));

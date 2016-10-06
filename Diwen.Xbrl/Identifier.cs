@@ -60,7 +60,8 @@ namespace Diwen.Xbrl
 
         public override int GetHashCode()
         {
-            return Value != null ? Value.GetHashCode() : 0;
+            return Scheme == null ? 0 : Scheme.GetHashCode()
+            + Value == null ? 0 : Value.GetHashCode();
         }
 
         #endregion

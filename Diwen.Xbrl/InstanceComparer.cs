@@ -295,23 +295,23 @@ namespace Diwen.Xbrl
 
         static IEnumerable<string> EntityComparison(Instance a, Instance b)
         {
-            var aList = new List<Entity>();
-            var bList = new List<Entity>();
+            var aList = new List<Identifier>();
+            var bList = new List<Identifier>();
 
             if(a.Contexts != null && a.Contexts.Count != 0)
             {
-                aList.Add(a.Contexts.First().Entity);
+                aList.Add(a.Contexts.First().Entity.Identifier);
             }
 
             if(b.Contexts != null && b.Contexts.Count != 0)
             {
-                bList.Add(b.Contexts.First().Entity);
+                bList.Add(b.Contexts.First().Entity.Identifier);
             }
 
             var differences = aList.ContentCompareReport(bList);
 
-            return differences.Item1.Select(item => "(a) " + item).
-            Concat(differences.Item2.Select(item => "(b) " + item));   
+            return differences.Item1.Select(item => "(a) Identifier=" + item).
+            Concat(differences.Item2.Select(item => "(b) Identifier=" + item));   
 
         }
 

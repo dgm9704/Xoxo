@@ -184,16 +184,17 @@ namespace Diwen.Xbrl.Tests
             var path = Path.Combine("data", "ars.xbrl");
             var firstInstance = Instance.FromFile(path);
             var secondInstance = Instance.FromFile(path);
-            // change second only slightly and compare
+            // change one fact in both instances
             // original is 0
-            secondInstance.Facts[33099].Value = "0.0";
+            firstInstance.Facts[33099].Value = "FOOBAR";
+            secondInstance.Facts[33099].Value = "DEADBEEF";
             var report = InstanceComparer.Report(firstInstance, secondInstance, ComparisonTypes.Facts);
             Console.WriteLine(string.Join(Environment.NewLine, report.Messages));
             // not the same anymore
             Assert.IsFalse(report.Result);
             // should contain some differences
             CollectionAssert.IsNotEmpty(report.Messages);
-            // one context is different, report should reflect this once per instance
+            // one fact is different, report should reflect this once per instance
             Assert.AreEqual(2, report.Messages.Count);
         }
 
