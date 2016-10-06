@@ -10,7 +10,10 @@ NUnit for testing, tests work also with MSTest
 ## Diwen.Xbrl
 A .NET library for reading, writing and comparing XBRL documents (instances), extended to support Australian SBR message structures
 
-License: http://www.gnu.org/licenses/gpl.txt
+License: 
+http://www.gnu.org/licenses/gpl.txt
+http://www.gnu.org/licenses/lgpl.txt
+
 ### NuGet 
 https://www.nuget.org/packages/Diwen.Xbrl/
 ## Diwen.Xbrl.Tests
