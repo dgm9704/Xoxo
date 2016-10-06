@@ -162,7 +162,7 @@ namespace Diwen.Xbrl
 
             if(Facts.Count > 0)
             {
-                var elements = new List<XmlElement>();
+                //var elements = new List<XmlElement>();
                 foreach(var item in Facts)
                 {
                     element.AppendChild(item.ToXmlElement());

@@ -36,6 +36,7 @@ namespace Diwen.Xbrl
 
         [XmlElement(ElementName = "startDate", DataType = "date", Namespace = "http://www.xbrl.org/2003/instance")]
         public DateTime StartDate { get; set; }
+
         [XmlElement(ElementName = "endDate", DataType = "date", Namespace = "http://www.xbrl.org/2003/instance")]
         public DateTime EndDate { get; set; }
 
@@ -72,17 +73,17 @@ namespace Diwen.Xbrl
 
         public bool ShouldSerializeInstant()
         {
-            return Instant != null && Instant != DateTime.MinValue;
+            return Instant != DateTime.MinValue;
         }
 
         public bool ShouldSerializeStartDate()
         {
-            return StartDate != null && StartDate != DateTime.MinValue;
+            return StartDate != DateTime.MinValue;
         }
 
         public bool ShouldSerializeEndDate()
         {
-            return EndDate != null && EndDate != DateTime.MinValue;
+            return EndDate != DateTime.MinValue;
         }
 
         public override bool Equals(object obj)
