@@ -2,16 +2,20 @@
 Container for the Diwen.Xbrl library and any related stuff
 
 ### Environment
-I use MonoDevelop (+Gendarme) on Xubuntu, but works just as well with VisualStudio 2012
+I use MonoDevelop (+Gendarme) on Xubuntu, but should work just as well with VisualStudio
 
 ### Dependencies
 NUnit for testing, tests work also with MSTest
 
 ## Diwen.Xbrl
-A .NET library for reading, writing and comparing XBRL documents (instances), extended to support Australian SBR message structures
+A .NET library for reading, writing and comparing XBRL documents (instances)
+Supports:
+- EBA and EIOPA ITS reporting (eg Solvency II, COREP, FINREP, AE, FP, SBP)
+- Australian SBR message structures
 
 License: 
 http://www.gnu.org/licenses/gpl.txt
+
 http://www.gnu.org/licenses/lgpl.txt
 
 ### NuGet 
