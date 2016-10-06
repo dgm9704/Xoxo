@@ -7,16 +7,16 @@
 //  Copyright (c) 2016 Asro Ltd
 //
 //  This program is free software: you can redistribute it and/or modify
-//  it under the terms of the GNU General Public License as published by
+//  it under the terms of the GNU Lesser General Public License as published by
 //  the Free Software Foundation, either version 3 of the License, or
 //  (at your option) any later version.
 //
 //  This program is distributed in the hope that it will be useful,
 //  but WITHOUT ANY WARRANTY; without even the implied warranty of
 //  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-//  GNU General Public License for more details.
+//  GNU Lesser General Public License for more details.
 //
-//  You should have received a copy of the GNU General Public License
+//  You should have received a copy of the GNU Lesser General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 namespace Diwen.Xbrl
@@ -65,11 +65,11 @@ namespace Diwen.Xbrl
         public override string ToString()
         {
             var members = new List<string>();
-            if (ExplicitMembers != null)
+            if(ExplicitMembers != null)
             {
                 members.AddRange(ExplicitMembers.Select(m => m.ToString()));
             }
-            if (TypedMembers != null)
+            if(TypedMembers != null)
             {
                 members.AddRange(TypedMembers.Select(m => m.ToString()));
             }
@@ -87,11 +87,11 @@ namespace Diwen.Xbrl
         public override int GetHashCode()
         {
             int hashCode = 0;
-            foreach (var m in TypedMembers)
+            foreach(var m in TypedMembers)
             {
                 hashCode = 31 * hashCode + m.GetHashCode();
             }
-            foreach (var m in ExplicitMembers)
+            foreach(var m in ExplicitMembers)
             {
                 hashCode = 31 * hashCode + m.GetHashCode();
             }
@@ -113,9 +113,9 @@ namespace Diwen.Xbrl
         public bool Equals(Segment other)
         {
             var result = false;
-            if (other != null)
+            if(other != null)
             {
-                if (ExplicitMembers.Equals(other.ExplicitMembers))
+                if(ExplicitMembers.Equals(other.ExplicitMembers))
                 {
                     result |= TypedMembers.Equals(other.TypedMembers);
                 }

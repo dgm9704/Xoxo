@@ -1,14 +1,12 @@
-﻿namespace Diwen.Sbr.Tests
+﻿namespace Diwen.Xbrl.Tests
 {
     using Diwen.Xbrl;
     using NUnit.Framework;
     using System;
-    using System.Collections.Generic;
-    using System.Diagnostics;
     using System.IO;
 
     [TestFixture]
-    public static class InstanceTests
+    public static class SBRInstanceTests
     {
         static Instance CreatePaymentSummaryInstance()
         {
@@ -96,7 +94,7 @@
             rp_segment.AddExplicitMember("ReportPartyTypeDimension", "RprtPyType.02.05:ReportingParty");
 
             // set context id
-            var context = instance.GetContext((Segment)rp_segment);
+            var context = instance.GetContext(rp_segment);
             context.Id = "RP";
 
             var node = instance.AddFact(rp_segment, "orgname1.02.00:OrganisationNameDetails", "", "", "");
