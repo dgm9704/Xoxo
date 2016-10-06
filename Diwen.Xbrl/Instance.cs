@@ -57,8 +57,18 @@ namespace Diwen.Xbrl
         [XmlIgnore]
         public XmlNamespaceManager Namespaces { get; set; }
 
+        Entity entityField;
+
         [XmlIgnore]
-        public Entity Entity { get; set; }
+        public Entity Entity
+        {
+            get { return entityField; }
+            set
+            {
+                entityField = value;
+                entityField.Instance = this;
+            }
+        }
 
         [XmlIgnore]
         public Period Period { get; set; }
@@ -114,12 +124,23 @@ namespace Diwen.Xbrl
             }
             set
             {
-                if(value != null)
+                GetElementTree(Facts, value);
+            }
+        }
+
+        internal void GetElementTree(FactCollection Facts, XmlElement[] value)
+        {
+            if(value != null)
+            {
+                foreach(var element in value)
                 {
-                    foreach(var element in value)
+                    var fact = Fact.FromXmlElement(element);
+                    Facts.Add(fact);
+
+                    if(element.InnerXml != element.InnerText)
                     {
-                        Facts.Add(Fact.FromXmlElement(element));
-                    } 
+                        GetElementTree(fact.Facts, element.ChildNodes.Cast<XmlElement>().ToArray<XmlElement>());
+                    }
                 }
             }
         }
@@ -210,6 +231,23 @@ namespace Diwen.Xbrl
             return context;
         }
 
+        public Context GetContext(Segment segment)
+        {
+            Context context;
+
+            context = segment == null
+                ? Contexts.FirstOrDefault(c => c.Entity.Segment == null)
+                : Contexts.FirstOrDefault(c => segment.Equals(c.Entity.Segment));
+
+            if(context == null)
+            {
+                context = new Context(Entity, segment);
+                Contexts.Add(context);
+            }
+
+            return context;
+        }
+
         void AddDefaultNamespaces()
         {
             foreach(var item in DefaultNamespaces)
@@ -220,13 +258,32 @@ namespace Diwen.Xbrl
 
         public void RemoveUnusedUnits()
         {
-            var usedIds = Facts.
-                Where(f => f.Unit != null).
-                Select(f => f.Unit.Id).
-                Distinct().
-                ToList();
-
+            var usedIds = new HashSet<string>();
+            GetUsedUnits(Facts, usedIds); 
             Units.RemoveUnusedItems(usedIds);
+        }
+
+        internal void GetUsedUnits(FactCollection Facts, HashSet<string> usedIds)
+        {
+            var facts = Facts.Where(f => f.Unit != null || f.UnitRef != "" || f.Facts.Count > 0);
+            foreach(var fact in facts)
+            {
+                if(fact.Facts.Count == 0)
+                {
+                    if(fact.Unit == null)
+                    {
+                        usedIds.Add(fact.UnitRef);
+                    }
+                    else
+                    {
+                        usedIds.Add(fact.Unit.Id);
+                    }
+                }
+                else
+                {
+                    GetUsedUnits(fact.Facts, usedIds);
+                }
+            }
         }
 
         public void RemoveUnusedObjects()
@@ -262,14 +319,34 @@ namespace Diwen.Xbrl
 
         public void RemoveUnusedContexts()
         {
-            var usedIds = Facts.
+            var usedIds = new HashSet<string>();
+            var contextIds = Facts.
                 Where(f => f.Context != null).
                 Select(f => f.Context.Id).
                 Concat(FilingIndicators.Select(f => f.ContextRef)).
                 Distinct().
                 ToList();
+            usedIds.UnionWith(contextIds);
+
+            GetUsedContexts(Facts, usedIds);
 
             Contexts.RemoveUnusedItems(usedIds);
+        }
+
+        internal void GetUsedContexts(FactCollection Facts, HashSet<string> usedIds)
+        {
+            var facts = Facts.Where(f => f.Context != null || f.Facts.Count > 0);
+            foreach(var fact in facts)
+            {
+                if(fact.Facts.Count == 0)
+                {
+                    usedIds.Add(fact.Context.Id);
+                }
+                else
+                {
+                    GetUsedContexts(fact.Facts, usedIds);
+                }
+            }
         }
 
         public Instance()
@@ -343,7 +420,7 @@ namespace Diwen.Xbrl
             Namespaces = namespaces;
         }
 
-        void SetContextReferences()
+        void SetContextReferences(FactCollection Facts)
         {
             foreach(var filingIndicator in FilingIndicators)
             {
@@ -375,10 +452,14 @@ namespace Diwen.Xbrl
                         fact.Context = Contexts[contextRef];
                     }
                 }
+                if(fact.Facts.Count > 0)
+                {
+                    SetContextReferences(fact.Facts);
+                }
             }
         }
 
-        void SetUnitReferences()
+        void SetUnitReferences(FactCollection Facts)
         {
             foreach(var fact in Facts)
             {
@@ -393,6 +474,10 @@ namespace Diwen.Xbrl
                         }
                         fact.Unit = Units[unitRef];
                     }
+                }
+                if(fact.Facts.Count > 0)
+                {
+                    SetUnitReferences(fact.Facts);
                 }
             }
         }
@@ -501,7 +586,7 @@ namespace Diwen.Xbrl
 
         public FilingIndicator AddFilingIndicator(string value, bool filed)
         {
-            var context = GetContext(null);
+            var context = GetContext((Scenario)null);
             return AddFilingIndicator(context, value, filed);
         }
 
@@ -529,27 +614,62 @@ namespace Diwen.Xbrl
             return Facts.Add(scenario, metric, unitRef, decimals, value);
         }
 
+        public Fact AddFact(Segment segment, string metric, string unitRef, string decimals, string value)
+        {
+            if(segment != null)
+            {
+                segment.Instance = this;
+
+                if(segment.ExplicitMembers.Count == 0 && segment.TypedMembers.Count == 0)
+                {
+                    segment = null;
+                }
+            }
+            Facts.Instance = this;
+            return Facts.Add(segment, metric, unitRef, decimals, value);
+        }
+
         internal List<string> GetUsedDomainNamespaces()
         {
-            var namespaces = new HashSet<string>();
+            var used = new List<string>();
             var contexts = Contexts.Where(c => c != null && c.Scenario != null && c.Scenario.ExplicitMembers != null).ToList();
-
             foreach(var value in contexts.SelectMany(c => c.Scenario.ExplicitMembers).Select(e => e.Value.Namespace))
             {
-                namespaces.Add(value);
+                used.Add(value);
             }
+            GetUsedFactDomainNamespaces(used, Facts);
+            return used;
+        }
 
-            foreach(var fact in Facts.Where(f => !string.IsNullOrEmpty(f.Value) && f.Value.Contains(":")))
+        internal void GetUsedFactDomainNamespaces(List<string> used, FactCollection Facts)
+        {
+            var factNamespaces = new HashSet<string>();
+
+            foreach(var fact in Facts.Where(f => !string.IsNullOrEmpty(f.Value) || f.Facts.Count > 0))
             {
-                var prefix = fact.Value.Split(':')[0];
-                var ns = Namespaces.LookupNamespace(prefix);
-                if(ns != null)
+                if(fact.Value.Contains(':'))
                 {
-                    namespaces.Add(ns);
+                    var prefix = fact.Value.Split(':')[0];
+                    var ns = Namespaces.LookupNamespace(prefix);
+                    if(ns != null)
+                    {
+                        factNamespaces.Add(ns);
+                    }
+                }
+                else
+                {
+                    var prefix = fact.Metric.Name.Split(':')[0];
+                    var ns = Namespaces.LookupNamespace(prefix);
+                    if(ns != null)
+                    {
+                        factNamespaces.Add(ns);
+                    }
+
+                    GetUsedFactDomainNamespaces(used, fact.Facts);
                 }
             }
 
-            return namespaces.ToList();
+            used.AddRange(factNamespaces);
         }
 
         #region serialization
@@ -644,8 +764,8 @@ namespace Diwen.Xbrl
 
         static void CleanupAfterDeserialization(Instance xbrl, bool removeUnusedObjects)
         {
-            xbrl.SetContextReferences();
-            xbrl.SetUnitReferences();
+            xbrl.SetContextReferences(xbrl.Facts);
+            xbrl.SetUnitReferences(xbrl.Facts);
             if(removeUnusedObjects)
             {
                 xbrl.RemoveUnusedObjects();
@@ -664,6 +784,17 @@ namespace Diwen.Xbrl
                     if(s.Instance == null)
                     {
                         s.Instance = this;
+                    }
+                }
+            }
+            if(Entity != null)
+            {
+                var seg = Entity.Segment;
+                if(seg != null)
+                {
+                    if(seg.Instance == null)
+                    {
+                        seg.Instance = this;
                     }
                 }
             }
@@ -694,6 +825,18 @@ namespace Diwen.Xbrl
                 foo.Add(TypedDomainNamespace);
             }
             else if(scenarios.Any(s => s.ExplicitMembers.Any()))
+            {
+                foo.Add(DimensionNamespace);
+            }
+
+            var segments = Contexts.Where(c => c.Entity.Segment != null).Select(c => c.Entity.Segment).ToList();
+
+            if(segments.Any(s => s.TypedMembers.Any()))
+            {
+                foo.Add(DimensionNamespace);
+                foo.Add(TypedDomainNamespace);
+            }
+            else if(segments.Any(s => s.ExplicitMembers.Any()))
             {
                 foo.Add(DimensionNamespace);
             }

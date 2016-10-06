@@ -27,17 +27,49 @@ namespace Diwen.Xbrl
     [Serializable]
     public class Entity : IEquatable<Entity>
     {
+        Instance instanceField;
+
+        [XmlIgnore]
+        public Instance Instance
+        {
+            get { return instanceField; }
+            set
+            {
+                instanceField = value;
+                Segment.Instance = value;
+            }
+        }
+
         [XmlElement("identifier", Namespace = "http://www.xbrl.org/2003/instance")]
         public Identifier Identifier { get; set; }
 
+        [XmlElement("segment", Namespace = "http://www.xbrl.org/2003/instance")]
+        public Segment Segment { get; set; }
+
+        public bool ShouldSerializeSegment()
+        {
+            var result = false;
+            if(Segment != null)
+            {
+                result = (Segment.ExplicitMembers != null && Segment.ExplicitMembers.Count != 0);
+            }
+            return result;
+        }
+
         public Entity()
         {
+            Segment = new Segment();
         }
 
         public Entity(string identifierScheme, string identifierValue)
             : this()
         {
             Identifier = new Identifier(identifierScheme, identifierValue);
+        }
+
+        public ExplicitMember AddExplicitMember(string dimension, string value)
+        {
+            return Segment.ExplicitMembers.Add(dimension, value);
         }
 
         public override string ToString()
@@ -49,7 +81,15 @@ namespace Diwen.Xbrl
 
         public bool Equals(Entity other)
         {
-            return other != null && Identifier.Equals(other.Identifier);
+            var result = false;
+            if(other != null)
+            {
+                if(Identifier.Equals(other.Identifier))
+                {
+                    result |= (Segment == null && other.Segment == null) || (Segment != null && Segment.Equals(other.Segment));
+                }
+            }
+            return result;
         }
 
         #endregion

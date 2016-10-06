@@ -34,6 +34,11 @@ namespace Diwen.Xbrl
         [XmlElement(ElementName = "instant", DataType = "date", Namespace = "http://www.xbrl.org/2003/instance")]
         public DateTime Instant { get; set; }
 
+        [XmlElement(ElementName = "startDate", DataType = "date", Namespace = "http://www.xbrl.org/2003/instance")]
+        public DateTime StartDate { get; set; }
+        [XmlElement(ElementName = "endDate", DataType = "date", Namespace = "http://www.xbrl.org/2003/instance")]
+        public DateTime EndDate { get; set; }
+
         public Period()
         {
 
@@ -49,6 +54,35 @@ namespace Diwen.Xbrl
             : this()
         {
             Instant = new DateTime(year, month, day);
+        }
+
+        public Period(DateTime startDate, DateTime endDate)
+            : this()
+        {
+            StartDate = startDate;
+            EndDate = endDate;
+        }
+
+        public Period(int startYear, int startMonth, int startDay, int endYear, int endMonth, int endDay)
+            : this()
+        {
+            StartDate = new DateTime(startYear, startMonth, startDay);
+            EndDate = new DateTime(endYear, endMonth, endDay);
+        }
+
+        public bool ShouldSerializeInstant()
+        {
+            return Instant != null && Instant != DateTime.MinValue;
+        }
+
+        public bool ShouldSerializeStartDate()
+        {
+            return StartDate != null && StartDate != DateTime.MinValue;
+        }
+
+        public bool ShouldSerializeEndDate()
+        {
+            return EndDate != null && EndDate != DateTime.MinValue;
         }
 
         public override bool Equals(object obj)

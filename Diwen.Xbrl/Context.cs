@@ -62,6 +62,11 @@ namespace Diwen.Xbrl
             Scenario = scenario;
         }
 
+        public Context(Entity entity, Segment segment)
+        {
+            entity.Segment = segment;
+        }
+
         public ExplicitMember AddExplicitMember(string dimension, string value)
         {
             return Scenario.ExplicitMembers.Add(dimension, value);
