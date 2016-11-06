@@ -44,6 +44,12 @@ namespace Diwen.Xbrl.Tests
             CheckFolderResults(TestFolder("eiopa"));
         }
 
+        [Test]
+        public static void Fi_Sbr()
+        {
+            CheckFolderResults(TestFolder("fi-sbr"));
+        }
+
         static void CheckFolderResults(Dictionary<string, ComparisonReport> reports)
         {
             Assert.IsTrue(
