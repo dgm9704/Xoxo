@@ -53,6 +53,7 @@
     <Compile Include="ExternalTests.cs" />
     <Compile Include="SBRInstanceTests.cs" />
     <Compile Include="InstanceTests.cs" />
+    <Compile Include="ScenarioTests.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup />
@@ -95,6 +96,12 @@
       <DeployService-HasPathReferences>True</DeployService-HasPathReferences>
       <DeployService-UseProjectRelativePath>True</DeployService-UseProjectRelativePath>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\memberorder0.xbrl">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\memberorder1.xbrl">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
   <ItemGroup>

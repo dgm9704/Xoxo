@@ -87,11 +87,11 @@ namespace Diwen.Xbrl
         public override int GetHashCode()
         {
             int hashCode = 0;
-            foreach(var m in TypedMembers)
+            foreach(var m in TypedMembers.OrderBy(m => m.Dimension.LocalName()))
             {
                 hashCode = 31 * hashCode + m.GetHashCode();
             }
-            foreach(var m in ExplicitMembers)
+            foreach(var m in ExplicitMembers.OrderBy(m=> m.Dimension.LocalName()))
             {
                 hashCode = 31 * hashCode + m.GetHashCode();
             }

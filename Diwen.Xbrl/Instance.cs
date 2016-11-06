@@ -111,7 +111,7 @@ namespace Diwen.Xbrl
         public FactCollection Facts { get; private set; }
 
         [XmlAnyElement]
-        public XmlElement[] FactItems
+        public XmlElement [] FactItems
         {
             get
             {
@@ -218,8 +218,8 @@ namespace Diwen.Xbrl
         {
             Context context;
 
-            context = scenario == null 
-                ? Contexts.FirstOrDefault(c => c.Scenario == null) 
+            context = scenario == null
+                ? Contexts.FirstOrDefault(c => c.Scenario == null)
                 : Contexts.FirstOrDefault(c => scenario.Equals(c.Scenario));
 
             if(context == null)
@@ -259,7 +259,7 @@ namespace Diwen.Xbrl
         public void RemoveUnusedUnits()
         {
             var usedIds = new HashSet<string>();
-            GetUsedUnits(Facts, usedIds); 
+            GetUsedUnits(Facts, usedIds);
             Units.RemoveUnusedItems(usedIds);
         }
 
@@ -304,7 +304,7 @@ namespace Diwen.Xbrl
                     if(left.Equals(right))
                     {
                         found = true;
-                        foreach(var fact in Facts.Where(f => f.Context.Id == right.Id))
+                        foreach(var fact in Facts.Where (f => f.Context.Id == right.Id))
                         {
                             fact.Context = left;
                         }
@@ -404,7 +404,7 @@ namespace Diwen.Xbrl
         void RebuildNamespacesAfterRead()
         {
             var namespaces = new XmlNamespaceManager(new NameTable());
-            foreach(var item in XmlSerializerNamespaces.ToArray())
+            foreach(var item in XmlSerializerNamespaces.ToArray ())
             {
                 namespaces.AddNamespace(item.Name, item.Namespace);
             }
@@ -633,7 +633,7 @@ namespace Diwen.Xbrl
         {
             var used = new List<string>();
             var contexts = Contexts.Where(c => c != null && c.Scenario != null && c.Scenario.ExplicitMembers != null).ToList();
-            foreach(var value in contexts.SelectMany(c => c.Scenario.ExplicitMembers).Select(e => e.Value.Namespace))
+            foreach(var value in contexts.SelectMany (c => c.Scenario.ExplicitMembers).Select (e => e.Value.Namespace))
             {
                 used.Add(value);
             }
@@ -645,7 +645,7 @@ namespace Diwen.Xbrl
         {
             var factNamespaces = new HashSet<string>();
 
-            foreach(var fact in Facts.Where(f => !string.IsNullOrEmpty(f.Value) || f.Facts.Count > 0))
+            foreach(var fact in Facts.Where (f => !string.IsNullOrEmpty (f.Value) || f.Facts.Count > 0))
             {
                 if(fact.Value.Contains(':'))
                 {
@@ -679,8 +679,8 @@ namespace Diwen.Xbrl
         static XmlReaderSettings XmlReaderSettings = new XmlReaderSettings {
             IgnoreWhitespace = true,
             IgnoreProcessingInstructions = false,
-            IgnoreComments = false, 
-            XmlResolver = null, 
+            IgnoreComments = false,
+            XmlResolver = null,
             ValidationType = ValidationType.None
         };
 
@@ -727,7 +727,7 @@ namespace Diwen.Xbrl
                         break;
                     }
                 }
-                while(!content);
+                while (!content);
             }
             return new InstanceInfo(taxonomyVersion, instanceGenerator, comments);
         }
@@ -743,23 +743,6 @@ namespace Diwen.Xbrl
                 xbrl.InstanceGenerator = info.InstanceGenerator;
             }
             xbrl.Comments = new Collection<string>(info.Comments);
-        }
-
-        public static Instance FromStream(Stream stream, bool removeUnusedObjects = false)
-        {
-            stream.Position = 0;
-
-            var info = GetInstanceInfo(stream);
-
-            stream.Position = 0;
-
-            var xbrl = (Instance)Serializer.Deserialize(stream);
-
-            CleanupAfterDeserialization(xbrl, removeUnusedObjects);
-
-            SetInstanceInfo(xbrl, info);
-
-            return xbrl;
         }
 
         static void CleanupAfterDeserialization(Instance xbrl, bool removeUnusedObjects)
@@ -857,6 +840,28 @@ namespace Diwen.Xbrl
             return result;
         }
 
+        public static Instance FromStream(Stream stream)
+        {
+            return FromStream(stream, false);
+        }
+
+        public static Instance FromStream(Stream stream, bool removeUnusedObjects)
+        {
+            stream.Position = 0;
+
+            var info = GetInstanceInfo(stream);
+
+            stream.Position = 0;
+
+            var xbrl = (Instance)Serializer.Deserialize(stream);
+
+            CleanupAfterDeserialization(xbrl, removeUnusedObjects);
+
+            SetInstanceInfo(xbrl, info);
+
+            return xbrl;
+        }
+
         public void ToStream(Stream stream)
         {
             using(var writer = XmlWriter.Create(stream, XmlWriterSettings))
@@ -918,6 +923,27 @@ namespace Diwen.Xbrl
             }
             return document;
         }
+
+        public static Instance FromXml(string content)
+        {
+            using(var stream = new MemoryStream())
+            using(var writer = new StreamWriter(stream))
+            {
+                writer.Write(content);
+                writer.Flush();
+
+                stream.Position = 0;
+
+                return Instance.FromStream(stream);
+            }
+
+        }
+
+        public string ToXml()
+        {
+            return ToXmlDocument().OuterXml;
+        }
+
 
         #endregion
     }

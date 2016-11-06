@@ -83,9 +83,6 @@ namespace Diwen.Xbrl.Tests
             scenario.AddExplicitMember("CS", "s2c_CS:x26");
             scenario.AddTypedMember("CE", "ID", "abc");
 
-
-
-
             // Metrics can also be given with or without namespace
             // Metric names, values or decimals are NOT validated
             // Unit is NOT checked to exist
@@ -397,6 +394,18 @@ namespace Diwen.Xbrl.Tests
             Assert.IsNotNull(instance);
             instance.ToFile("empty_instance_out.xbrl");
         }
+
+        [Test]
+        public static void InstanceFromString()
+        {
+            var input = File.ReadAllText(Path.Combine("data", "comments.xbrl"));
+            var instance = Instance.FromXml(input);
+            var output = instance.ToXml();
+
+            // Most probably wont't match due to differences in casing or apostrophe vs. quotation etc.
+            // // Assert.AreEqual(input, output);
+        }
+
     }
 }
 

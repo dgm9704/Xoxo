@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xbrli:xbrl 
+	xmlns:link="http://www.xbrl.org/2003/linkbase" 
+	xmlns:xlink="http://www.w3.org/1999/xlink" 
+	xmlns:xbrldi="http://xbrl.org/2006/xbrldi" 
+	xmlns:foo_AB="http://example.com/dom/AB"
+	xmlns:foo_CD="http://example.com/dom/CD" 
+	xmlns:foo_dim="http://example.com/dim" 
+	xmlns:foo_met="http://example.com/met" 
+	xmlns:xbrli="http://www.xbrl.org/2003/instance">
+  <link:schemaRef xlink:type="simple" xlink:href="http://example.com/module.xsd" />
+  <xbrli:unit id="uPURE">
+    <xbrli:measure>xbrli:pure</xbrli:measure>
+  </xbrli:unit>
+  <xbrli:context id="A0">
+    <xbrli:entity>
+      <xbrli:identifier scheme="LEI">00000000000000000098</xbrli:identifier>
+    </xbrli:entity>
+    <xbrli:period>
+      <xbrli:instant>2014-12-31</xbrli:instant>
+    </xbrli:period>
+    <xbrli:scenario>
+    	<xbrldi:explicitMember dimension="foo_dim:AA">foo_AB:x1</xbrldi:explicitMember>
+	    <xbrldi:explicitMember dimension="foo_dim:CC">foo_CD:x0</xbrldi:explicitMember>
+    </xbrli:scenario>
+  </xbrli:context>
+  <foo_met:bar unitRef="uPURE" decimals="4" contextRef="A0">0.2547</foo_met:bar>
+</xbrli:xbrl>
