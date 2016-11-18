@@ -21,90 +21,90 @@
 
 namespace Diwen.Xbrl
 {
-    using System;
-    using System.Diagnostics;
-    using System.Globalization;
-    using System.Xml.Schema;
-    using System.Xml.Serialization;
+	using System;
+	using System.Diagnostics;
+	using System.Globalization;
+	using System.Xml.Schema;
+	using System.Xml.Serialization;
 
-    [DebuggerDisplay("{Value} : {Filed}")]
-    [Serializable]
-    [XmlRoot("filingIndicator", Namespace = "http://www.eurofiling.info/xbrl/ext/filing-indicators")]
-    public class FilingIndicator : IEquatable<FilingIndicator>
-    {
-        static IFormatProvider ic = CultureInfo.InvariantCulture;
+	[DebuggerDisplay("{Value} : {Filed}")]
+	[Serializable]
+	[XmlRoot("filingIndicator", Namespace = "http://www.eurofiling.info/xbrl/ext/filing-indicators")]
+	public class FilingIndicator : IEquatable<FilingIndicator>
+	{
+		static IFormatProvider ic = CultureInfo.InvariantCulture;
 
-        [XmlAttribute("contextRef")]
-        public string ContextRef { get; set; }
+		[XmlAttribute("contextRef")]
+		public string ContextRef { get; set; }
 
-        [XmlAttribute(AttributeName = "filed", Form = XmlSchemaForm.Qualified,
-            Namespace = "http://www.eurofiling.info/xbrl/ext/filing-indicators")]
-        public bool Filed { get; set; }
+		[XmlAttribute(AttributeName = "filed", Form = XmlSchemaForm.Qualified,
+			Namespace = "http://www.eurofiling.info/xbrl/ext/filing-indicators")]
+		public bool Filed { get; set; }
 
-        [XmlText]
-        public string Value { get; set; }
+		[XmlText]
+		public string Value { get; set; }
 
-        Context contextField;
+		Context contextField;
 
-        [XmlIgnore]
-        public Context Context
-        {
-            get { return contextField; }
-            set
-            {
-                contextField = value;
-                ContextRef = contextField.Id;
-            }
-        }
+		[XmlIgnore]
+		public Context Context
+		{
+			get { return contextField; }
+			set
+			{
+				contextField = value;
+				ContextRef = contextField.Id;
+			}
+		}
 
-        public FilingIndicator()
-        {
-            Filed = true;
-        }
+		public FilingIndicator()
+		{
+			Filed = true;
+		}
 
-        public FilingIndicator(Context context, string value)
-            : this(context, value, true)
-        {
-        }
+		public FilingIndicator(Context context, string value)
+			: this(context, value, true)
+		{
+		}
 
-        public FilingIndicator(Context context, string value, bool filed)
-            : this()
-        {
-            if(context == null)
-            {
-                throw new ArgumentNullException("context");
-            }
+		public FilingIndicator(Context context, string value, bool filed)
+			: this()
+		{
+			if (context == null)
+			{
+				throw new ArgumentNullException(nameof(context));
+			}
 
-            Context = context;
-            Value = value;
-            Filed = filed;
-        }
+			Context = context;
+			Value = value;
+			Filed = filed;
+		}
 
-        public override bool Equals(object obj)
-        {
-            var other = obj as FilingIndicator;
-            return other != null && Equals(other);
-        }
+		public override bool Equals(object obj)
+		{
+			var other = obj as FilingIndicator;
+			return other != null && Equals(other);
+		}
 
-        public override int GetHashCode()
-        {
-            return Value.GetHashCode();
-        }
+		public override int GetHashCode()
+		{
+			return Value.GetHashCode();
+		}
 
-        public override string ToString()
-        {
-            return string.Format(ic, "Value={0}, Filed={1}, Context={2}", Value, Filed, ContextRef);
-        }
+		public override string ToString()
+		{
+			return string.Format(ic, "Value={0}, Filed={1}, Context={2}", Value, Filed, ContextRef);
+		}
 
-        #region IEquatable implementation
+		#region IEquatable implementation
 
-        public bool Equals(FilingIndicator other)
-        {
-            return other != null
-            && Filed == other.Filed
-            && Value.Equals(other.Value, StringComparison.Ordinal);
-        }
+		public bool Equals(FilingIndicator other)
+		{
+			return other != null
+			&& Filed == other.Filed
+			&& Value.Equals(other.Value, StringComparison.Ordinal);
+		}
 
-        #endregion
-    }
+		#endregion
+	}
 }

@@ -21,54 +21,54 @@
 
 namespace Diwen.Xbrl
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Collections.ObjectModel;
-    using System.Linq;
+	using System;
+	using System.Collections.Generic;
+	using System.Collections.ObjectModel;
+	using System.Linq;
 
-    public class FilingIndicatorCollection : Collection<FilingIndicator>, IEquatable<IList<FilingIndicator>>
-    {
-        public FilingIndicator Add(Context context, string value)
-        {
-            return Add(context, value, true);
-        }
+	public class FilingIndicatorCollection : Collection<FilingIndicator>, IEquatable<IList<FilingIndicator>>
+	{
+		public FilingIndicator Add(Context context, string value)
+		{
+			return Add(context, value, true);
+		}
 
-        public FilingIndicator Add(Context context, string value, bool filed)
-        {
-            var filingIndicator = new FilingIndicator(context, value, filed);
-            base.Add(filingIndicator);
-            return filingIndicator;
-        }
+		public FilingIndicator Add(Context context, string value, bool filed)
+		{
+			var filingIndicator = new FilingIndicator(context, value, filed);
+			Add(filingIndicator);
+			return filingIndicator;
+		}
 
-        #region IEquatable implementation
+		#region IEquatable implementation
 
-        public bool Equals(IList<FilingIndicator> other)
-        {
-            bool result;
+		public bool Equals(IList<FilingIndicator> other)
+		{
+			bool result;
 
-            if(this == null && other == null)
-            {
-                // if both are null then consider equal
-                result = true;
-            }
-            else if(this == null ^ other == null)
-            {
-                // if just one is null then not equal
-                result = false;
-            }
-            else
-            {
+			if (this == null && other == null)
+			{
+				// if both are null then consider equal
+				result = true;
+			}
+			else if (this == null ^ other == null)
+			{
+				// if just one is null then not equal
+				result = false;
+			}
+			else
+			{
 
-                result = this.
-                    Where(i => i.Filed).
-                    ToList().
-                    ContentCompare(other.
-                        Where(i => i.Filed).
-                        ToList());
-            }
-            return result;
-        }
+				result = this.
+					Where(i => i.Filed).
+					ToList().
+					ContentCompare(other.
+						Where(i => i.Filed).
+						ToList());
+			}
+			return result;
+		}
 
-        #endregion
-    }
+		#endregion
+	}
 }

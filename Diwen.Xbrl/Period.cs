@@ -21,94 +21,94 @@
 
 namespace Diwen.Xbrl
 {
-    using System;
-    using System.Globalization;
-    using System.Xml.Serialization;
+	using System;
+	using System.Globalization;
+	using System.Xml.Serialization;
 
-    [Serializable]
-    [XmlRoot(ElementName = "period", Namespace = "http://www.xbrl.org/2003/instance")]
-    public class Period : IEquatable<Period>
-    {
-        static IFormatProvider ic = CultureInfo.InvariantCulture;
+	[Serializable]
+	[XmlRoot(ElementName = "period", Namespace = "http://www.xbrl.org/2003/instance")]
+	public class Period : IEquatable<Period>
+	{
+		static IFormatProvider ic = CultureInfo.InvariantCulture;
 
-        [XmlElement(ElementName = "instant", DataType = "date", Namespace = "http://www.xbrl.org/2003/instance")]
-        public DateTime Instant { get; set; }
+		[XmlElement(ElementName = "instant", DataType = "date", Namespace = "http://www.xbrl.org/2003/instance")]
+		public DateTime Instant { get; set; }
 
-        [XmlElement(ElementName = "startDate", DataType = "date", Namespace = "http://www.xbrl.org/2003/instance")]
-        public DateTime StartDate { get; set; }
+		[XmlElement(ElementName = "startDate", DataType = "date", Namespace = "http://www.xbrl.org/2003/instance")]
+		public DateTime StartDate { get; set; }
 
-        [XmlElement(ElementName = "endDate", DataType = "date", Namespace = "http://www.xbrl.org/2003/instance")]
-        public DateTime EndDate { get; set; }
+		[XmlElement(ElementName = "endDate", DataType = "date", Namespace = "http://www.xbrl.org/2003/instance")]
+		public DateTime EndDate { get; set; }
 
-        public Period()
-        {
+		public Period()
+		{
 
-        }
+		}
 
-        public Period(DateTime instant)
-            : this()
-        {
-            Instant = instant;
-        }
+		public Period(DateTime instant)
+			: this()
+		{
+			Instant = instant;
+		}
 
-        public Period(int year, int month, int day)
-            : this()
-        {
-            Instant = new DateTime(year, month, day);
-        }
+		public Period(int year, int month, int day)
+			: this()
+		{
+			Instant = new DateTime(year, month, day);
+		}
 
-        public Period(DateTime startDate, DateTime endDate)
-            : this()
-        {
-            StartDate = startDate;
-            EndDate = endDate;
-        }
+		public Period(DateTime startDate, DateTime endDate)
+			: this()
+		{
+			StartDate = startDate;
+			EndDate = endDate;
+		}
 
-        public Period(int startYear, int startMonth, int startDay, int endYear, int endMonth, int endDay)
-            : this()
-        {
-            StartDate = new DateTime(startYear, startMonth, startDay);
-            EndDate = new DateTime(endYear, endMonth, endDay);
-        }
+		public Period(int startYear, int startMonth, int startDay, int endYear, int endMonth, int endDay)
+			: this()
+		{
+			StartDate = new DateTime(startYear, startMonth, startDay);
+			EndDate = new DateTime(endYear, endMonth, endDay);
+		}
 
-        public bool ShouldSerializeInstant()
-        {
-            return Instant != DateTime.MinValue;
-        }
+		public bool ShouldSerializeInstant()
+		{
+			return Instant != DateTime.MinValue;
+		}
 
-        public bool ShouldSerializeStartDate()
-        {
-            return StartDate != DateTime.MinValue;
-        }
+		public bool ShouldSerializeStartDate()
+		{
+			return StartDate != DateTime.MinValue;
+		}
 
-        public bool ShouldSerializeEndDate()
-        {
-            return EndDate != DateTime.MinValue;
-        }
+		public bool ShouldSerializeEndDate()
+		{
+			return EndDate != DateTime.MinValue;
+		}
 
-        public override bool Equals(object obj)
-        {
-            var other = obj as Period;
-            return other != null && Equals(other);
-        }
+		public override bool Equals(object obj)
+		{
+			var other = obj as Period;
+			return other != null && Equals(other);
+		}
 
-        public override string ToString()
-        {
-            return string.Format(ic, "Instant={0:yyyy-MM-dd}", Instant);
-        }
+		public override string ToString()
+		{
+			return string.Format(ic, "Instant={0:yyyy-MM-dd}", Instant);
+		}
 
-        #region IEquatable implementation
+		#region IEquatable implementation
 
-        public bool Equals(Period other)
-        {
-            return other != null && Instant.Equals(other.Instant);
-        }
+		public bool Equals(Period other)
+		{
+			return other != null && Instant.Equals(other.Instant);
+		}
 
-        public override int GetHashCode()
-        {
-            return Instant.Date.GetHashCode();
-        }
+		public override int GetHashCode()
+		{
+			return Instant.Date.GetHashCode();
+		}
 
-        #endregion
-    }
+		#endregion
+	}
 }

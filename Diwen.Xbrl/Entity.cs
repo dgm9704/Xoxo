@@ -21,77 +21,77 @@
 
 namespace Diwen.Xbrl
 {
-    using System;
-    using System.Xml.Serialization;
+	using System;
+	using System.Xml.Serialization;
 
-    [Serializable]
-    public class Entity : IEquatable<Entity>
-    {
-        Instance instanceField;
+	[Serializable]
+	public class Entity : IEquatable<Entity>
+	{
+		Instance instanceField;
 
-        [XmlIgnore]
-        public Instance Instance
-        {
-            get { return instanceField; }
-            set
-            {
-                instanceField = value;
-                Segment.Instance = value;
-            }
-        }
+		[XmlIgnore]
+		public Instance Instance
+		{
+			get { return instanceField; }
+			set
+			{
+				instanceField = value;
+				Segment.Instance = value;
+			}
+		}
 
-        [XmlElement("identifier", Namespace = "http://www.xbrl.org/2003/instance")]
-        public Identifier Identifier { get; set; }
+		[XmlElement("identifier", Namespace = "http://www.xbrl.org/2003/instance")]
+		public Identifier Identifier { get; set; }
 
-        [XmlElement("segment", Namespace = "http://www.xbrl.org/2003/instance")]
-        public Segment Segment { get; set; }
+		[XmlElement("segment", Namespace = "http://www.xbrl.org/2003/instance")]
+		public Segment Segment { get; set; }
 
-        public bool ShouldSerializeSegment()
-        {
-            var result = false;
-            if(Segment != null)
-            {
-                result = (Segment.ExplicitMembers != null && Segment.ExplicitMembers.Count != 0);
-            }
-            return result;
-        }
+		public bool ShouldSerializeSegment()
+		{
+			var result = false;
+			if (Segment != null)
+			{
+				result = (Segment.ExplicitMembers != null && Segment.ExplicitMembers.Count != 0);
+			}
+			return result;
+		}
 
-        public Entity()
-        {
-            Segment = new Segment();
-        }
+		public Entity()
+		{
+			Segment = new Segment();
+		}
 
-        public Entity(string identifierScheme, string identifierValue)
-            : this()
-        {
-            Identifier = new Identifier(identifierScheme, identifierValue);
-        }
+		public Entity(string identifierScheme, string identifierValue)
+			: this()
+		{
+			Identifier = new Identifier(identifierScheme, identifierValue);
+		}
 
-        public ExplicitMember AddExplicitMember(string dimension, string value)
-        {
-            return Segment.ExplicitMembers.Add(dimension, value);
-        }
+		public ExplicitMember AddExplicitMember(string dimension, string value)
+		{
+			return Segment.ExplicitMembers.Add(dimension, value);
+		}
 
-        public override string ToString()
-        {
-            return string.Format("Identifier={0}", Identifier);
-        }
+		public override string ToString()
+		{
+			return string.Format("Identifier={0}", Identifier);
+		}
 
-        #region IEquatable implementation
+		#region IEquatable implementation
 
-        public bool Equals(Entity other)
-        {
-            var result = false;
-            if(other != null)
-            {
-                if(Identifier.Equals(other.Identifier))
-                {
-                    result |= (Segment == null && other.Segment == null) || (Segment != null && Segment.Equals(other.Segment));
-                }
-            }
-            return result;
-        }
+		public bool Equals(Entity other)
+		{
+			var result = false;
+			if (other != null)
+			{
+				if (Identifier.Equals(other.Identifier))
+				{
+					result |= (Segment == null && other.Segment == null) || (Segment != null && Segment.Equals(other.Segment));
+				}
+			}
+			return result;
+		}
 
-        #endregion
-    }
+		#endregion
+	}
 }

@@ -22,179 +22,179 @@
 namespace Diwen.Xbrl
 {
 
-    using System.Globalization;
-    using System;
-    using System.Xml;
-    using System.Xml.Serialization;
+	using System.Globalization;
+	using System;
+	using System.Xml;
+	using System.Xml.Serialization;
 
-    [Serializable]
-    [XmlRoot(ElementName = "explicitMember", Namespace = "http://xbrl.org/2006/xbrldi")]
-    public class ExplicitMember : IEquatable<ExplicitMember>, IComparable<ExplicitMember>
-    {
-        static IFormatProvider ic = CultureInfo.InvariantCulture;
+	[Serializable]
+	[XmlRoot(ElementName = "explicitMember", Namespace = "http://xbrl.org/2006/xbrldi")]
+	public class ExplicitMember : IEquatable<ExplicitMember>, IComparable<ExplicitMember>
+	{
+		static IFormatProvider ic = CultureInfo.InvariantCulture;
 
-        internal Instance Instance { get; set; }
+		internal Instance Instance { get; set; }
 
-        [XmlAttribute("dimension", Namespace = "http://xbrl.org/2006/xbrldi")]
-        public XmlQualifiedName Dimension { get; set; }
+		[XmlAttribute("dimension", Namespace = "http://xbrl.org/2006/xbrldi")]
+		public XmlQualifiedName Dimension { get; set; }
 
-        [XmlText]
-        public XmlQualifiedName Value { get; set; }
+		[XmlText]
+		public XmlQualifiedName Value { get; set; }
 
-        public ExplicitMember()
-        {
-        }
+		public ExplicitMember()
+		{
+		}
 
-        public ExplicitMember(XmlQualifiedName dimension, XmlQualifiedName value)
-            : this()
-        {
-            Dimension = dimension;
-            Value = value;
-        }
+		public ExplicitMember(XmlQualifiedName dimension, XmlQualifiedName value)
+			: this()
+		{
+			Dimension = dimension;
+			Value = value;
+		}
 
-        public string MemberCode
-        {
-            get
-            {
-                var prefix = Value.Prefix();
-                var localname = Value.LocalName();
+		public string MemberCode
+		{
+			get
+			{
+				var prefix = Value.Prefix();
+				var localname = Value.LocalName();
 
-                if(string.IsNullOrEmpty(prefix))
-                {
-                    prefix = Instance.Namespaces.LookupPrefix(Value.Namespace);
-                }
+				if (string.IsNullOrEmpty(prefix))
+				{
+					prefix = Instance.Namespaces.LookupPrefix(Value.Namespace);
+				}
 
-                return string.Join(":", prefix, localname);
-            }
-        }
+				return string.Join(":", prefix, localname);
+			}
+		}
 
-        public override int GetHashCode()
-        {
-            return Value != null ? Value.GetHashCode() : 0;
-        }
+		public override int GetHashCode()
+		{
+			return Value != null ? Value.GetHashCode() : 0;
+		}
 
-        public override bool Equals(object obj)
-        {
-            var other = obj as ExplicitMember;
-            return other != null && Equals(other);
-        }
+		public override bool Equals(object obj)
+		{
+			var other = obj as ExplicitMember;
+			return other != null && Equals(other);
+		}
 
-        public override string ToString()
-        {
-            return string.Format(ic, "{0}={1}", Dimension.LocalName(), MemberCode);
-        }
+		public override string ToString()
+		{
+			return string.Format(ic, "{0}={1}", Dimension.LocalName(), MemberCode);
+		}
 
-        public int Compare(ExplicitMember other)
-        {
-            return CompareTo(other);
-        }
+		public int Compare(ExplicitMember other)
+		{
+			return CompareTo(other);
+		}
 
-        #region operator overloads
+		#region operator overloads
 
-        public static bool operator ==(ExplicitMember left, ExplicitMember right)
-        {
-            bool result;
+		public static bool operator ==(ExplicitMember left, ExplicitMember right)
+		{
+			bool result;
 
-            // If both are null, or both are same instance, return true.
-            if(object.ReferenceEquals(left, right))
-            {
-                result = true;
-            }
-            // If one is null, but not both, return false.
-            else if(((object)left == null) || ((object)right == null))
-            {
-                result = false;
-            }
-            else
-            {
-                // Return true if the fields match:
-                result = left.Equals(right);
-            }
+			// If both are null, or both are same instance, return true.
+			if (ReferenceEquals(left, right))
+			{
+				result = true;
+			}
+			// If one is null, but not both, return false.
+			else if (((object)left == null) || ((object)right == null))
+			{
+				result = false;
+			}
+			else
+			{
+				// Return true if the fields match:
+				result = left.Equals(right);
+			}
 
-            return result;
-        }
+			return result;
+		}
 
-        public static bool operator !=(ExplicitMember left, ExplicitMember right)
-        {
-            bool result;
+		public static bool operator !=(ExplicitMember left, ExplicitMember right)
+		{
+			bool result;
 
-            // If one is null, but not both, return true.
-            if(((object)left == null) || ((object)right == null))
-            {
-                result = true;
-            }
-            else
-            {
-                result = !left.Equals(right);
-            }
+			// If one is null, but not both, return true.
+			if (((object)left == null) || ((object)right == null))
+			{
+				result = true;
+			}
+			else
+			{
+				result = !left.Equals(right);
+			}
 
-            return result;
-        }
+			return result;
+		}
 
-        public static bool operator >(ExplicitMember left, ExplicitMember right)
-        {
-            bool result;
+		public static bool operator >(ExplicitMember left, ExplicitMember right)
+		{
+			bool result;
 
-            // If both are null, or both are same instance, return false.
-            if(object.ReferenceEquals(left, right))
-            {
-                result = false;
-            }
-            else
-            {
-                result = left != null && left.CompareTo(right) > 0;
-            }
+			// If both are null, or both are same instance, return false.
+			if (ReferenceEquals(left, right))
+			{
+				result = false;
+			}
+			else
+			{
+				result = left != null && left.CompareTo(right) > 0;
+			}
 
-            return result;
-        }
+			return result;
+		}
 
-        public static bool operator <(ExplicitMember left, ExplicitMember right)
-        {
-            return right > left;
-        }
+		public static bool operator <(ExplicitMember left, ExplicitMember right)
+		{
+			return right > left;
+		}
 
-        #endregion
+		#endregion
 
-        #region IEquatable implementation
+		#region IEquatable implementation
 
-        public bool Equals(ExplicitMember other)
-        {
-            var result = false;
-            if(other != null)
-            {
-                if(Dimension == other.Dimension)
-                {
-                    result |= Value == other.Value;
-                }
+		public bool Equals(ExplicitMember other)
+		{
+			var result = false;
+			if (other != null)
+			{
+				if (Dimension == other.Dimension)
+				{
+					result |= Value == other.Value;
+				}
 
-            }
+			}
 
-            return result;
-        }
+			return result;
+		}
 
-        #endregion
+		#endregion
 
-        #region IComparable implementation
+		#region IComparable implementation
 
-        public int CompareTo(ExplicitMember other)
-        {
-            int result;
-            if(other == null)
-            {
-                result = 1;
-            }
-            else
-            {
-                result = string.Compare(Dimension.Name, other.Dimension.Name, StringComparison.OrdinalIgnoreCase);
-                if(result == 0)
-                {
-                    result = string.Compare(Value.Name, other.Value.Name, StringComparison.OrdinalIgnoreCase);
-                }
-            }
+		public int CompareTo(ExplicitMember other)
+		{
+			int result;
+			if (other == null)
+			{
+				result = 1;
+			}
+			else
+			{
+				result = string.Compare(Dimension.Name, other.Dimension.Name, StringComparison.OrdinalIgnoreCase);
+				if (result == 0)
+				{
+					result = string.Compare(Value.Name, other.Value.Name, StringComparison.OrdinalIgnoreCase);
+				}
+			}
 
-            return result;
-        }
+			return result;
+		}
 
-        #endregion
-    }
+		#endregion
+	}
 }

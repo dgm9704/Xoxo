@@ -22,25 +22,24 @@
 namespace Diwen.Xbrl.Tests
 {
     using System;
-    using System.Linq;
     using System.IO;
-    using Diwen.Xbrl;
     using NUnit.Framework;
+    using Xbrl;
 
     [TestFixture]
     public static class ScenarioTests
     {
         [Test]
-        public static void CompareScenarioMemberOrderDifferent()
+        public static void CompareScenarioMemberOrderDifferent ()
         {
-            var left = Instance.FromFile(Path.Combine("data", "memberorder0.xbrl"));
-            var right = Instance.FromFile(Path.Combine("data", "memberorder1.xbrl"));
+            var left = Instance.FromFile (Path.Combine ("data", "memberorder0.xbrl"));
+            var right = Instance.FromFile (Path.Combine ("data", "memberorder1.xbrl"));
 
-            Assert.AreEqual(left, right);
+            Assert.AreEqual (left, right);
 
-            var report = InstanceComparer.Report(left, right);
+            var report = InstanceComparer.Report (left, right);
 
-            Assert.IsTrue(report.Result, string.Join(Environment.NewLine, report.Messages));
+            Assert.IsTrue (report.Result, string.Join (Environment.NewLine, report.Messages));
 
         }
     }

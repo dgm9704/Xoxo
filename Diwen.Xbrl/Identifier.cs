@@ -21,55 +21,55 @@
 
 namespace Diwen.Xbrl
 {
-    using System;
-    using System.Xml.Serialization;
+	using System;
+	using System.Xml.Serialization;
 
-    [Serializable]
-    public class Identifier : IEquatable<Identifier>
-    {
-        [XmlAttribute("scheme", Namespace = "http://www.xbrl.org/2003/instance")]
-        public string Scheme { get; set; }
+	[Serializable]
+	public class Identifier : IEquatable<Identifier>
+	{
+		[XmlAttribute("scheme", Namespace = "http://www.xbrl.org/2003/instance")]
+		public string Scheme { get; set; }
 
-        [XmlText]
-        public string Value { get; set; }
+		[XmlText]
+		public string Value { get; set; }
 
-        public Identifier()
-        {
-        }
+		public Identifier()
+		{
+		}
 
-        public Identifier(string scheme, string value)
-            : this()
-        {
-            Scheme = scheme;
-            Value = value;
-        }
+		public Identifier(string scheme, string value)
+			: this()
+		{
+			Scheme = scheme;
+			Value = value;
+		}
 
-        public override string ToString()
-        {
-            return string.Join(":", Scheme, Value);
-        }
+		public override string ToString()
+		{
+			return string.Join(":", Scheme, Value);
+		}
 
-        #region IEquatable implementation
+		#region IEquatable implementation
 
-        public bool Equals(Identifier other)
-        {
-            return other != null
-            && Scheme.Equals(other.Scheme, StringComparison.Ordinal)
-            && Value.Equals(other.Value, StringComparison.Ordinal);
-        }
+		public bool Equals(Identifier other)
+		{
+			return other != null
+			&& Scheme.Equals(other.Scheme, StringComparison.Ordinal)
+			&& Value.Equals(other.Value, StringComparison.Ordinal);
+		}
 
-        public override int GetHashCode()
-        {
-            return Scheme == null ? 0 : Scheme.GetHashCode()
-            + Value == null ? 0 : Value.GetHashCode();
-        }
+		public override int GetHashCode()
+		{
+			return Scheme == null ? 0 : Scheme.GetHashCode()
+			+ Value == null ? 0 : Value.GetHashCode();
+		}
 
-        #endregion
+		#endregion
 
-        public override bool Equals(object obj)
-        {
-            var other = obj as Identifier;
-            return other != null && Equals(other);
-        }
-    }
+		public override bool Equals(object obj)
+		{
+			var other = obj as Identifier;
+			return other != null && Equals(other);
+		}
+	}
 }

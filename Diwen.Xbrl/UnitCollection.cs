@@ -21,79 +21,79 @@
 
 namespace Diwen.Xbrl
 {
-    using System.Collections.Generic;
-    using System.Collections.ObjectModel;
-    using System;
-    using System.Linq;
+	using System.Collections.Generic;
+	using System.Collections.ObjectModel;
+	using System;
+	using System.Linq;
 
-    public class UnitCollection : KeyedCollection<string, Unit>, IEquatable<IList<Unit>>
-    {
-        Instance Instance;
+	public class UnitCollection : KeyedCollection<string, Unit>, IEquatable<IList<Unit>>
+	{
+		Instance Instance;
 
-        public UnitCollection()
-        {
+		public UnitCollection()
+		{
 
-        }
+		}
 
-        public UnitCollection(Instance instance)
-            : this()
-        {
-            Instance = instance;
-        }
+		public UnitCollection(Instance instance)
+			: this()
+		{
+			Instance = instance;
+		}
 
-        public void Add(string id, string measure)
-        {
-            base.Add(new Unit(id, measure));
-        }
+		public void Add(string id, string measure)
+		{
+			Add(new Unit(id, measure));
+		}
 
-        public UnitCollection UsedUnits()
-        {
-            var result = new UnitCollection();
-            foreach(var unit in this)
-            {
-                var fact = Instance.Facts.FirstOrDefault(f => f.Unit == unit);
-                if(fact != null)
-                {
-                    result.Add(unit);
-                }
-            }
+		public UnitCollection UsedUnits()
+		{
+			var result = new UnitCollection();
+			foreach (var unit in this)
+			{
+				var fact = Instance.Facts.FirstOrDefault(f => f.Unit == unit);
+				if (fact != null)
+				{
+					result.Add(unit);
+				}
+			}
 
-            return result;
-        }
+			return result;
+		}
 
-        protected override string GetKeyForItem(Unit item)
-        {
-            string key = null;
-            if(item != null)
-            {
-                key = item.Id;
-            }
-            return key;
-        }
+		protected override string GetKeyForItem(Unit item)
+		{
+			string key = null;
+			if (item != null)
+			{
+				key = item.Id;
+			}
+			return key;
+		}
 
-        public override bool Equals(object obj)
-        {
-            var other = obj as UnitCollection;
-            return other != null && Equals(other);
-        }
+		public override bool Equals(object obj)
+		{
+			var other = obj as UnitCollection;
+			return other != null && Equals(other);
+		}
 
-        public override int GetHashCode()
-        {
-            int hashCode = 0;
-            foreach(var u in this)
-            {
-                hashCode = 31 * hashCode + u.GetHashCode();
-            }
-            return hashCode;
-        }
+		public override int GetHashCode()
+		{
+			int hashCode = 0;
+			foreach (var u in this)
+			{
+				hashCode = 31 * hashCode + u.GetHashCode();
+			}
+			return hashCode;
+		}
 
-        #region IEquatable implementation
+		#region IEquatable implementation
 
-        public bool Equals(IList<Unit> other)
-        {
-            return this.ContentCompare(other);
-        }
+		public bool Equals(IList<Unit> other)
+		{
+			return this.ContentCompare(other);
+		}
 
-        #endregion
-    }
+		#endregion
+	}
 }

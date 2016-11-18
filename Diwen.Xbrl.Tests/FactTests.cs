@@ -28,10 +28,10 @@ namespace Diwen.Xbrl.Tests
     public static class FactTests
     {
         [Test]
-        public static void FactWithNullPropertiesToString()
+        public static void FactWithNullPropertiesToString ()
         {
-            var fact = new Fact();
-            Console.WriteLine(fact);
+            var fact = new Fact ();
+            Console.WriteLine (fact);
         }
     }
 }

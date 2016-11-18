@@ -22,9 +22,9 @@
 namespace Diwen.Xbrl
 {
 
-    interface IXbrlObject
-    {
-        string Id { get; set; }
-    }
+	interface IXbrlObject
+	{
+		string Id { get; set; }
+	}
 
 }

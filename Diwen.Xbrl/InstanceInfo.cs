@@ -21,23 +21,23 @@
 
 namespace Diwen.Xbrl
 {
-    using System.Collections.Generic;
+	using System.Collections.Generic;
 
-    struct InstanceInfo
-    {
-        public string TaxonomyVersion { get; private set; }
+	struct InstanceInfo
+	{
+		public string TaxonomyVersion { get; private set; }
 
-        public string InstanceGenerator { get; private set; }
+		public string InstanceGenerator { get; private set; }
 
-        public List<string> Comments { get; private set; }
+		public List<string> Comments { get; private set; }
 
-        public InstanceInfo(string taxonomyVersion, string instanceGenerator, List<string> comments)
-            : this()
-        {
-            TaxonomyVersion = taxonomyVersion;
-            InstanceGenerator = instanceGenerator;
-            Comments = comments;
-        }
-    }
+		public InstanceInfo(string taxonomyVersion, string instanceGenerator, List<string> comments)
+			: this()
+		{
+			TaxonomyVersion = taxonomyVersion;
+			InstanceGenerator = instanceGenerator;
+			Comments = comments;
+		}
+	}
 }
 

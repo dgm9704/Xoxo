@@ -21,23 +21,23 @@
 
 namespace Diwen.Xbrl
 {
-    using System;
+	using System;
 
-    [Flags, Serializable]
-    public enum ComparisonTypes
-    {
-        None = 0,
-        Basic = 1 << 0,
-        Contexts = 1 << 1,
-        Facts = 1 << 2,
-        DomainNamespaces = 1 << 3,
-        Units = 1 << 4,
-        Entity = 1 << 5,
-        Period = 1 << 6,
-        FilingIndicators = 1 << 7,
-        TaxonomyVersion = 1 << 8,
-        SchemaReference = 1 << 9,
-        All = 0xFFFFFFF
-    }
+	[Flags, Serializable]
+	public enum ComparisonTypes
+	{
+		None = 0,
+		Basic = 1 << 0,
+		Contexts = 1 << 1,
+		Facts = 1 << 2,
+		DomainNamespaces = 1 << 3,
+		Units = 1 << 4,
+		Entity = 1 << 5,
+		Period = 1 << 6,
+		FilingIndicators = 1 << 7,
+		TaxonomyVersion = 1 << 8,
+		SchemaReference = 1 << 9,
+		All = 0xFFFFFFF
+	}
 }
 

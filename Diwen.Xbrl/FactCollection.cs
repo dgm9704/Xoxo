@@ -21,69 +21,69 @@
 
 namespace Diwen.Xbrl
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Collections.ObjectModel;
-    using System.Globalization;
+	using System;
+	using System.Collections.Generic;
+	using System.Collections.ObjectModel;
+	using System.Globalization;
 
-    public class FactCollection : Collection<Fact>, IEquatable<IList<Fact>>
-    {
-        public Instance Instance;
-        static IFormatProvider ic = CultureInfo.InvariantCulture;
+	public class FactCollection : Collection<Fact>, IEquatable<IList<Fact>>
+	{
+		public Instance Instance;
+		static IFormatProvider ic = CultureInfo.InvariantCulture;
 
-        public FactCollection(Instance instance)
-        {
-            Instance = instance;
-        }
+		public FactCollection(Instance instance)
+		{
+			Instance = instance;
+		}
 
-        public Fact Add(Context context, string metric, string unitRef, string decimals, string value)
-        {
-            var ns = Instance.FactNamespace;
-            var prefix = Instance.Namespaces.LookupPrefix(ns);
-            if(prefix == null && metric.Contains(":"))
-            {
-                prefix = metric.Substring(0, metric.IndexOf(':'));
-                metric = metric.Substring(metric.IndexOf(':') + 1);
-            }
-            if(ns == null)
-            {
-                ns = Instance.Namespaces.LookupNamespace(prefix);
-            }
+		public Fact Add(Context context, string metric, string unitRef, string decimals, string value)
+		{
+			var ns = Instance.FactNamespace;
+			var prefix = Instance.Namespaces.LookupPrefix(ns);
+			if (prefix == null && metric.Contains(":"))
+			{
+				prefix = metric.Substring(0, metric.IndexOf(':'));
+				metric = metric.Substring(metric.IndexOf(':') + 1);
+			}
+			if (ns == null)
+			{
+				ns = Instance.Namespaces.LookupNamespace(prefix);
+			}
 
-            Unit unit = null;
-            if(!string.IsNullOrEmpty(unitRef))
-            {
-                if(!Instance.Units.Contains(unitRef))
-                {
-                    throw new KeyNotFoundException(string.Format(ic, "Referenced unit '{0}' does not exist", unitRef));
-                }
-                unit = Instance.Units[unitRef];
-            }
+			Unit unit = null;
+			if (!string.IsNullOrEmpty(unitRef))
+			{
+				if (!Instance.Units.Contains(unitRef))
+				{
+					throw new KeyNotFoundException(string.Format(ic, "Referenced unit '{0}' does not exist", unitRef));
+				}
+				unit = Instance.Units[unitRef];
+			}
 
-            var fact = new Fact(context, metric, unit, decimals, value, ns, prefix);
-            base.Add(fact);
-            return fact;
-        }
+			var fact = new Fact(context, metric, unit, decimals, value, ns, prefix);
+			Add(fact);
+			return fact;
+		}
 
-        public Fact Add(Scenario scenario, string metric, string unitRef, string decimals, string value)
-        {
-            var context = Instance.GetContext(scenario);
-            return Add(context, metric, unitRef, decimals, value);
-        }
+		public Fact Add(Scenario scenario, string metric, string unitRef, string decimals, string value)
+		{
+			var context = Instance.GetContext(scenario);
+			return Add(context, metric, unitRef, decimals, value);
+		}
 
-        public Fact Add(Segment segment, string metric, string unitRef, string decimals, string value)
-        {
-            var context = Instance.GetContext(segment);
-            return Add(context, metric, unitRef, decimals, value);
-        }
+		public Fact Add(Segment segment, string metric, string unitRef, string decimals, string value)
+		{
+			var context = Instance.GetContext(segment);
+			return Add(context, metric, unitRef, decimals, value);
+		}
 
-        #region IEquatable implementation
+		#region IEquatable implementation
 
-        public bool Equals(IList<Fact> other)
-        {
-            return this.ContentCompare(other);
-        }
+		public bool Equals(IList<Fact> other)
+		{
+			return this.ContentCompare(other);
+		}
 
-        #endregion
-    }
+		#endregion
+	}
 }

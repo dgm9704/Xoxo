@@ -30,232 +30,231 @@ namespace Diwen.Xbrl.Tests
     public static class InstanceComparerTests
     {
         [Test]
-        public static void CompareInstanceToItself()
+        public static void CompareInstanceToItself ()
         {
             // load same instance twice and compare
-            var path = Path.Combine("data", "reference.xbrl");
-            var firstInstance = Instance.FromFile(path);
-            var secondInstance = Instance.FromFile(path);
-            var report = InstanceComparer.Report(firstInstance, secondInstance);
-            Console.WriteLine(string.Join(Environment.NewLine, report.Messages));
+            var path = Path.Combine ("data", "reference.xbrl");
+            var firstInstance = Instance.FromFile (path);
+            var secondInstance = Instance.FromFile (path);
+            var report = InstanceComparer.Report (firstInstance, secondInstance);
+            Console.WriteLine (string.Join (Environment.NewLine, report.Messages));
             // comparison should find the instances equivalent
-            Assert.IsTrue(report.Result);
+            Assert.IsTrue (report.Result);
             // there should be no differences reported
-            CollectionAssert.IsEmpty(report.Messages);
+            CollectionAssert.IsEmpty (report.Messages);
         }
 
         [Test]
-        public static void CompareInstanceToItselfWithPath()
+        public static void CompareInstanceToItselfWithPath ()
         {
             // load same instance twice and compare
-            var path = Path.Combine("data", "reference.xbrl");
-            var report = InstanceComparer.Report(path, path);
-            Console.WriteLine(string.Join(Environment.NewLine, report.Messages));
+            var path = Path.Combine ("data", "reference.xbrl");
+            var report = InstanceComparer.Report (path, path);
+            Console.WriteLine (string.Join (Environment.NewLine, report.Messages));
             // comparison should find the instances equivalent
-            Assert.IsTrue(report.Result);
+            Assert.IsTrue (report.Result);
             // there should be no differences reported
-            CollectionAssert.IsEmpty(report.Messages);
+            CollectionAssert.IsEmpty (report.Messages);
         }
 
         [Test]
-        public static void ComparisonReportContainsContextWithNullScenario()
+        public static void ComparisonReportContainsContextWithNullScenario ()
         {
             // load same instance twice
-            var path = Path.Combine("data", "reference.xbrl");
-            var firstInstance = Instance.FromFile(path);
-            var secondInstance = Instance.FromFile(path);
+            var path = Path.Combine ("data", "reference.xbrl");
+            var firstInstance = Instance.FromFile (path);
+            var secondInstance = Instance.FromFile (path);
 
             // modify other one so they produce differences to report 
-            foreach(var context in secondInstance.Contexts)
-            {
+            foreach (var context in secondInstance.Contexts) {
                 context.Entity.Identifier.Value = "00000000000000000098";
             }
 
-            var report = InstanceComparer.Report(firstInstance, secondInstance);
-            Console.WriteLine(string.Join(Environment.NewLine, report.Messages));
+            var report = InstanceComparer.Report (firstInstance, secondInstance);
+            Console.WriteLine (string.Join (Environment.NewLine, report.Messages));
             // comparison should find the instances different and not crash
-            Assert.IsFalse(report.Result);
+            Assert.IsFalse (report.Result);
             // there should be some differences reported
-            CollectionAssert.IsNotEmpty(report.Messages);
+            CollectionAssert.IsNotEmpty (report.Messages);
         }
 
         [Test]
-        public static void CompareBasicNullValues()
+        public static void CompareBasicNullValues ()
         {
             // load same instance twice and compare
-            var path = Path.Combine("data", "reference.xbrl");
-            var firstInstance = Instance.FromFile(path);
-            var secondInstance = Instance.FromFile(path);
+            var path = Path.Combine ("data", "reference.xbrl");
+            var firstInstance = Instance.FromFile (path);
+            var secondInstance = Instance.FromFile (path);
 
             secondInstance.TaxonomyVersion = null;
             secondInstance.SchemaReference = null;
-		
-            var report = InstanceComparer.Report(firstInstance, secondInstance, ComparisonTypes.Basic);
+
+            var report = InstanceComparer.Report (firstInstance, secondInstance, ComparisonTypes.Basic);
             // comparison should find the instances different and not throw
-            Console.WriteLine(string.Join(Environment.NewLine, report.Messages));
-            Assert.IsFalse(report.Result);
-            CollectionAssert.IsNotEmpty(report.Messages);
+            Console.WriteLine (string.Join (Environment.NewLine, report.Messages));
+            Assert.IsFalse (report.Result);
+            CollectionAssert.IsNotEmpty (report.Messages);
         }
 
         [Test]
-        public static void CompareSimilarFacts()
+        public static void CompareSimilarFacts ()
         {
             // load same instance twice and compare
-            var path = Path.Combine("data", "reference.xbrl");
-            var firstInstance = Instance.FromFile(path);
-            var secondInstance = Instance.FromFile(path);
+            var path = Path.Combine ("data", "reference.xbrl");
+            var firstInstance = Instance.FromFile (path);
+            var secondInstance = Instance.FromFile (path);
 
-            secondInstance.Facts[0].Value = "0";
-            secondInstance.Facts[1].Value = "0";
+            secondInstance.Facts [0].Value = "0";
+            secondInstance.Facts [1].Value = "0";
 
-            var report = InstanceComparer.Report(firstInstance, secondInstance, ComparisonTypes.Facts);
+            var report = InstanceComparer.Report (firstInstance, secondInstance, ComparisonTypes.Facts);
             // comparison should find the instances different and not throw
-            Console.WriteLine(string.Join(Environment.NewLine, report.Messages));
-            Assert.IsFalse(report.Result);
-            CollectionAssert.IsNotEmpty(report.Messages);
-            Assert.AreEqual(4, report.Messages.Count);
+            Console.WriteLine (string.Join (Environment.NewLine, report.Messages));
+            Assert.IsFalse (report.Result);
+            CollectionAssert.IsNotEmpty (report.Messages);
+            Assert.AreEqual (4, report.Messages.Count);
         }
 
         [Test]
-        public static void CompareTotallyDifferentInstances()
+        public static void CompareTotallyDifferentInstances ()
         {
-            var firstPath = Path.Combine("data", "reference.xbrl");
-            var secondPath = Path.Combine("data", "ars.xbrl");
-            var report = InstanceComparer.Report(firstPath, secondPath, ComparisonTypes.All);
-            Console.WriteLine(string.Join(Environment.NewLine, report.Messages));
-            Assert.IsFalse(report.Result);
-            CollectionAssert.IsNotEmpty(report.Messages);
+            var firstPath = Path.Combine ("data", "reference.xbrl");
+            var secondPath = Path.Combine ("data", "ars.xbrl");
+            var report = InstanceComparer.Report (firstPath, secondPath, ComparisonTypes.All);
+            Console.WriteLine (string.Join (Environment.NewLine, report.Messages));
+            Assert.IsFalse (report.Result);
+            CollectionAssert.IsNotEmpty (report.Messages);
         }
 
         [Test]
-        public static void CompareDomainNamespacesOfTotallyDifferentInstances()
+        public static void CompareDomainNamespacesOfTotallyDifferentInstances ()
         {
-            var firstPath = Path.Combine("data", "reference.xbrl");
-            var secondPath = Path.Combine("data", "ars.xbrl");
-            var report = InstanceComparer.Report(firstPath, secondPath, ComparisonTypes.DomainNamespaces);
-            Console.WriteLine(string.Join(Environment.NewLine, report.Messages));
-            Assert.IsFalse(report.Result);
-            CollectionAssert.IsNotEmpty(report.Messages);
+            var firstPath = Path.Combine ("data", "reference.xbrl");
+            var secondPath = Path.Combine ("data", "ars.xbrl");
+            var report = InstanceComparer.Report (firstPath, secondPath, ComparisonTypes.DomainNamespaces);
+            Console.WriteLine (string.Join (Environment.NewLine, report.Messages));
+            Assert.IsFalse (report.Result);
+            CollectionAssert.IsNotEmpty (report.Messages);
         }
 
         [Test]
-        public static void CompareInstancesTypedMemberDifferent()
+        public static void CompareInstancesTypedMemberDifferent ()
         {
             // load same instance twice
-            var path = Path.Combine("data", "reference.xbrl");
-            var firstInstance = Instance.FromFile(path);
-            var secondInstance = Instance.FromFile(path);
+            var path = Path.Combine ("data", "reference.xbrl");
+            var firstInstance = Instance.FromFile (path);
+            var secondInstance = Instance.FromFile (path);
             // change second only slightly and compare
-            secondInstance.Contexts[1].Scenario.TypedMembers[0].Value = "abcd";
-            var report = InstanceComparer.Report(firstInstance, secondInstance);
-            Console.WriteLine(string.Join(Environment.NewLine, report.Messages));
+            secondInstance.Contexts [1].Scenario.TypedMembers [0].Value = "abcd";
+            var report = InstanceComparer.Report (firstInstance, secondInstance);
+            Console.WriteLine (string.Join (Environment.NewLine, report.Messages));
             // not the same anymore
-            Assert.IsFalse(report.Result);
+            Assert.IsFalse (report.Result);
             // should contain some differences
-            CollectionAssert.IsNotEmpty(report.Messages);
+            CollectionAssert.IsNotEmpty (report.Messages);
             // one context is different, report should reflect this once per instance
-            Assert.AreEqual(2, report.Messages.Count);
+            Assert.AreEqual (2, report.Messages.Count);
         }
 
         [Test]
-        public static void CompareLargeInstanceMinorDifferenceInContext()
+        public static void CompareLargeInstanceMinorDifferenceInContext ()
         {
             // load same instance twice
-            var path = Path.Combine("data", "ars.xbrl");
-            var firstInstance = Instance.FromFile(path);
-            var secondInstance = Instance.FromFile(path);
+            var path = Path.Combine ("data", "ars.xbrl");
+            var firstInstance = Instance.FromFile (path);
+            var secondInstance = Instance.FromFile (path);
             // change second only slightly and compare
             // original is s2c_VM:x5
-            secondInstance.Contexts["CI22070"].Scenario.ExplicitMembers[5].Value = new XmlQualifiedName("s2c_VM:x6");
-            var report = InstanceComparer.Report(firstInstance, secondInstance, ComparisonTypes.Contexts);
-            Console.WriteLine(string.Join(Environment.NewLine, report.Messages));
+            secondInstance.Contexts ["CI22070"].Scenario.ExplicitMembers [5].Value = new XmlQualifiedName ("s2c_VM:x6");
+            var report = InstanceComparer.Report (firstInstance, secondInstance, ComparisonTypes.Contexts);
+            Console.WriteLine (string.Join (Environment.NewLine, report.Messages));
             // not the same anymore
-            Assert.IsFalse(report.Result);
+            Assert.IsFalse (report.Result);
             // should contain some differences
-            CollectionAssert.IsNotEmpty(report.Messages);
+            CollectionAssert.IsNotEmpty (report.Messages);
             // one context is different, report should reflect this once per instance
-            Assert.AreEqual(2, report.Messages.Count);
+            Assert.AreEqual (2, report.Messages.Count);
         }
 
         [Test]
-        public static void CompareLargeInstanceMinorDifferenceInFact()
+        public static void CompareLargeInstanceMinorDifferenceInFact ()
         {
             // load same instance twice
-            var path = Path.Combine("data", "ars.xbrl");
-            var firstInstance = Instance.FromFile(path);
-            var secondInstance = Instance.FromFile(path);
+            var path = Path.Combine ("data", "ars.xbrl");
+            var firstInstance = Instance.FromFile (path);
+            var secondInstance = Instance.FromFile (path);
             // change one fact in both instances
             // original is 0
-            firstInstance.Facts[33099].Value = "FOOBAR";
-            secondInstance.Facts[33099].Value = "DEADBEEF";
-            var report = InstanceComparer.Report(firstInstance, secondInstance, ComparisonTypes.Facts);
-            Console.WriteLine(string.Join(Environment.NewLine, report.Messages));
+            firstInstance.Facts [33099].Value = "FOOBAR";
+            secondInstance.Facts [33099].Value = "DEADBEEF";
+            var report = InstanceComparer.Report (firstInstance, secondInstance, ComparisonTypes.Facts);
+            Console.WriteLine (string.Join (Environment.NewLine, report.Messages));
             // not the same anymore
-            Assert.IsFalse(report.Result);
+            Assert.IsFalse (report.Result);
             // should contain some differences
-            CollectionAssert.IsNotEmpty(report.Messages);
+            CollectionAssert.IsNotEmpty (report.Messages);
             // one fact is different, report should reflect this once per instance
-            Assert.AreEqual(2, report.Messages.Count);
+            Assert.AreEqual (2, report.Messages.Count);
         }
 
         [Test]
-        public static void CompareReportTest()
+        public static void CompareReportTest ()
         {
             // load same instance twice
-            var path = Path.Combine("data", "reference.xbrl");
-            var report = InstanceComparer.Report(path, path, ComparisonTypes.Contexts);
-            Console.WriteLine(string.Join(Environment.NewLine, report.Messages));
-            Assert.IsTrue(report.Result);
+            var path = Path.Combine ("data", "reference.xbrl");
+            var report = InstanceComparer.Report (path, path, ComparisonTypes.Contexts);
+            Console.WriteLine (string.Join (Environment.NewLine, report.Messages));
+            Assert.IsTrue (report.Result);
         }
 
         [Test]
-        public static void CompareEntityWithNoEntity()
+        public static void CompareEntityWithNoEntity ()
         {
-            var first = Instance.FromFile(Path.Combine("data", "empty_instance.xbrl"));
-            var second = Instance.FromFile(Path.Combine("data", "empty_instance.xbrl"));
+            var first = Instance.FromFile (Path.Combine ("data", "empty_instance.xbrl"));
+            var second = Instance.FromFile (Path.Combine ("data", "empty_instance.xbrl"));
 
-            second.Entity = new Entity("LEI", "00000000000000000098");
-            second.Period = new Period(2016, 05, 31);
-            second.AddFilingIndicator("foo", false);
+            second.Entity = new Entity ("LEI", "00000000000000000098");
+            second.Period = new Period (2016, 05, 31);
+            second.AddFilingIndicator ("foo", false);
             // should not throw 
-            Assert.IsNotNull(InstanceComparer.Report(first, second));
+            Assert.IsNotNull (InstanceComparer.Report (first, second));
         }
 
-        [Test] 
-        public static void CompareDifferentEntityAndPeriodOnly()
+        [Test]
+        public static void CompareDifferentEntityAndPeriodOnly ()
         {
-            var path = Path.Combine("data", "reference.xbrl");
-            var path2 = Path.Combine("data", "reference2.xbrl");
+            var path = Path.Combine ("data", "reference.xbrl");
+            var path2 = Path.Combine ("data", "reference2.xbrl");
 
-            var report = InstanceComparer.Report(path, path2);
-            Console.WriteLine(string.Join(Environment.NewLine, report.Messages));
-            Assert.IsFalse(report.Result);
-            string[] expectedMessages = {
+            var report = InstanceComparer.Report (path, path2);
+            Console.WriteLine (string.Join (Environment.NewLine, report.Messages));
+            Assert.IsFalse (report.Result);
+            string [] expectedMessages = {
                 "Different Entity",
                 "Different Period",
-                "(a) Identifier=http://standards.iso.org/iso/17442:1234567890ABCDEFGHIJ", 
-                "(b) Identifier=http://standards.iso.org/iso/17442:00000000000000000098", 
-                "(a) Instant=2014-12-31", 
-                "(b) Instant=2015-12-31",
+                "(a) Identifier=http://standards.iso.org/iso/17442:1234567890ABCDEFGHIJ",
+                "(b) Identifier=http://standards.iso.org/iso/17442:00000000000000000098",
+                "(a) Instant=2014-12-31",
+                "(b) Instant=2015-12-31"
             };
             // Does NOT report the differences for each context
-            CollectionAssert.AreEquivalent(expectedMessages, report.Messages);
+            CollectionAssert.AreEquivalent (expectedMessages, report.Messages);
         }
 
-        [Test] 
-        public static void CompareFactWithMissingUnit()
+        [Test]
+        public static void CompareFactWithMissingUnit ()
         {
-            var path = Path.Combine("data", "reference.xbrl");
-            var firstInstance = Instance.FromFile(path);
-            var secondInstance = Instance.FromFile(path);
+            var path = Path.Combine ("data", "reference.xbrl");
+            var firstInstance = Instance.FromFile (path);
+            var secondInstance = Instance.FromFile (path);
 
             // comparing this should not throw
-            secondInstance.Facts[0].Unit = null;
+            secondInstance.Facts [0].Unit = null;
 
-            var report = InstanceComparer.Report(firstInstance, secondInstance);
-            Console.WriteLine(string.Join(Environment.NewLine, report.Messages));
-            Assert.IsFalse(report.Result);
-            Assert.AreEqual(2, report.Messages.Count);
+            var report = InstanceComparer.Report (firstInstance, secondInstance);
+            Console.WriteLine (string.Join (Environment.NewLine, report.Messages));
+            Assert.IsFalse (report.Result);
+            Assert.AreEqual (2, report.Messages.Count);
         }
     }
 }

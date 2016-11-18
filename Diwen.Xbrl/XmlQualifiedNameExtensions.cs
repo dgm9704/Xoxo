@@ -28,15 +28,15 @@ namespace Diwen.Xbrl
 	{
 		public static string LocalName(this XmlQualifiedName value)
 		{
-			if(value == null)
+			if (value == null)
 			{
-				throw new ArgumentNullException("value");
+				throw new ArgumentNullException(nameof(value));
 			}
 
 			var result = string.Empty;
 
 			string name = value.Name;
-			if(!string.IsNullOrEmpty(name))
+			if (!string.IsNullOrEmpty(name))
 			{
 				result = name.Substring(name.IndexOf(':') + 1);
 			}
@@ -46,18 +46,18 @@ namespace Diwen.Xbrl
 
 		public static string Prefix(this XmlQualifiedName value)
 		{
-			if(value == null)
+			if (value == null)
 			{
-				throw new ArgumentNullException("value");
+				throw new ArgumentNullException(nameof(value));
 			}
 
 			var result = string.Empty;
 
 			string name = value.Name;
-			if(!string.IsNullOrEmpty(name))
+			if (!string.IsNullOrEmpty(name))
 			{
 				var idx = name.IndexOf(':');
-				if(idx != -1)
+				if (idx != -1)
 				{
 					result = name.Substring(0, idx);
 				}
