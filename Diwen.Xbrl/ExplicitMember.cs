@@ -182,10 +182,10 @@ namespace Diwen.Xbrl
 			}
 			else
 			{
-				result = string.Compare(Dimension.Name, other.Dimension.Name, StringComparison.OrdinalIgnoreCase);
+				result = string.Compare(Dimension.Name, other.Dimension.Name, StringComparison.Ordinal);
 				if (result == 0)
 				{
-					result = string.Compare(Value.Name, other.Value.Name, StringComparison.OrdinalIgnoreCase);
+					result = string.Compare(Value.Name, other.Value.Name, StringComparison.Ordinal);
 				}
 			}
 

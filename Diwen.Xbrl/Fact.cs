@@ -180,23 +180,27 @@ namespace Diwen.Xbrl
 
 		internal static Fact FromXmlElement(XmlElement element)
 		{
+
+			var unitRef = string.Empty;
+			var decimals = string.Empty;
+			var contextRef = string.Empty;
+			var value = string.Empty;
+
+			if (!element.ChildNodes.OfType<XmlElement>().Any())
+			{
+				unitRef = element.GetAttribute("unitRef");
+				decimals = element.GetAttribute("decimals");
+				contextRef = element.GetAttribute("contextRef");
+				value = element.InnerText;
+			}
+
 			var fact = new Fact();
 			fact.Metric = new XmlQualifiedName(element.Name, element.NamespaceURI);
+			fact.UnitRef = unitRef;
+			fact.Decimals = decimals;
+			fact.ContextRef = contextRef;
+			fact.Value = value;
 
-			if (element.InnerXml == element.InnerText)
-			{
-				fact.UnitRef = element.GetAttribute("unitRef");
-				fact.Decimals = element.GetAttribute("decimals");
-				fact.ContextRef = element.GetAttribute("contextRef");
-				fact.Value = element.InnerText;
-			}
-			else
-			{
-				fact.UnitRef = "";
-				fact.Decimals = "";
-				fact.ContextRef = "";
-				fact.Value = "";
-			}
 			return fact;
 		}
 

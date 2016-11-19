@@ -134,7 +134,7 @@ namespace Diwen.Xbrl
 					var fact = Fact.FromXmlElement(element);
 					facts.Add(fact);
 
-					if (element.InnerXml != element.InnerText)
+					if (element.ChildNodes.OfType<XmlElement>().Any())
 					{
 						GetElementTree(fact.Facts, element.ChildNodes.Cast<XmlElement>().ToArray());
 					}
