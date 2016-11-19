@@ -126,14 +126,14 @@ namespace Diwen.Xbrl.Tests
 			var instance = CreateSolvencyInstance();
 			instance.AddDomainNamespace("s2c_XX", "http://eiopa.europa.eu/xbrl/s2c/dict/dom/XX");
 			// Write the instace to a file
-			const string path = @"output.xbrl.xml";
+			string path = Path.Combine(TestContext.CurrentContext.TestDirectory, "output.xbrl.xml");
 			instance.ToFile(path);
 		}
 
 		[Test]
 		public static void ReadSolvencyReferenceInstance()
 		{
-			var path = Path.Combine("data", "reference.xbrl");
+			var path = Path.Combine(TestContext.CurrentContext.TestDirectory, "data", "reference.xbrl");
 			var referenceInstance = Instance.FromFile(path);
 			Assert.IsNotNull(referenceInstance);
 		}
@@ -147,7 +147,7 @@ namespace Diwen.Xbrl.Tests
 			// aren't automatically removed until serialization so do it before comparisons
 			instance.RemoveUnusedObjects();
 
-			var referencePath = Path.Combine("data", "reference.xbrl");
+			var referencePath = Path.Combine(TestContext.CurrentContext.TestDirectory, "data", "reference.xbrl");
 			var referenceInstance = Instance.FromFile(referencePath, true);
 
 			// Instances are functionally equivalent:
@@ -158,7 +158,7 @@ namespace Diwen.Xbrl.Tests
 			// Some things are NOT checked, eg. taxonomy version, context names
 			//Assert.AreEqual(instance, referenceInstance);
 
-			const string tempFile = @"temp.xbrl";
+			string tempFile = Path.Combine(TestContext.CurrentContext.TestDirectory, "temp.xbrl");
 			instance.ToFile(tempFile);
 
 			var newInstance = Instance.FromFile(tempFile, true);
@@ -177,14 +177,14 @@ namespace Diwen.Xbrl.Tests
 		{
 			var sw = new Stopwatch();
 
-			var inputPath = Path.Combine("data", "ars.xbrl");
+			var inputPath = Path.Combine(TestContext.CurrentContext.TestDirectory, "data", "ars.xbrl");
 
 			sw.Start();
 			var firstRead = Instance.FromFile(inputPath);
 			sw.Stop();
 			Console.WriteLine("Read took {0}", sw.Elapsed);
 
-			const string outputPath = @"output.ars.xbrl";
+			string outputPath = Path.Combine(TestContext.CurrentContext.TestDirectory, "output.ars.xbrl");
 
 			sw.Restart();
 			firstRead.ToFile(outputPath);
@@ -225,7 +225,7 @@ namespace Diwen.Xbrl.Tests
 		[Test]
 		public static void CollapseDuplicateContexts()
 		{
-			var inputPath = Path.Combine("data", "duplicate_context.xbrl");
+			var inputPath = Path.Combine(TestContext.CurrentContext.TestDirectory, "data", "duplicate_context.xbrl");
 			var instance = Instance.FromFile(inputPath);
 
 			Assert.IsTrue(instance.Contexts.Count == 2);
@@ -238,7 +238,7 @@ namespace Diwen.Xbrl.Tests
 		[Test]
 		public static void ReadExampleInstanceFPInd()
 		{
-			var inputPath = Path.Combine("data", "fp_ind_new_correct.xbrl");
+			var inputPath = Path.Combine(TestContext.CurrentContext.TestDirectory, "data", "fp_ind_new_correct.xbrl");
 			var first = Instance.FromFile(inputPath);
 			Assert.AreEqual(7051, first.Contexts.Count);
 			Assert.AreEqual(7091, first.Facts.Count);
@@ -257,7 +257,7 @@ namespace Diwen.Xbrl.Tests
 		[Test]
 		public static void RemoveUnusedObjectsPerformance()
 		{
-			var inputPath = Path.Combine("data", "fp_ind_new_correct.xbrl");
+			var inputPath = Path.Combine(TestContext.CurrentContext.TestDirectory, "data", "fp_ind_new_correct.xbrl");
 			var xi = Instance.FromFile(inputPath);
 
 			var sw = new Stopwatch();
@@ -277,14 +277,14 @@ namespace Diwen.Xbrl.Tests
 			scenario.AddTypedMember("CE", "ID", null);
 			instance.AddFact(scenario, "mi1234", null, null, "123");
 			instance.RemoveUnusedObjects();
-			instance.ToFile(@"typedmembernil.xbrl.xml");
+			instance.ToFile(Path.Combine(TestContext.CurrentContext.TestDirectory, "typedmembernil.xbrl.xml"));
 		}
 
 		[Test]
 		public static void WriteToXmlDocument()
 		{
 			var xmlDoc = CreateSolvencyInstance().ToXmlDocument();
-			xmlDoc.Save("xbrl2doc.xml");
+			xmlDoc.Save(Path.Combine(TestContext.CurrentContext.TestDirectory, "xbrl2doc.xml"));
 		}
 
 		[Test]
@@ -365,13 +365,13 @@ namespace Diwen.Xbrl.Tests
 		public static void ReadAndWriteComments()
 		{
 			// read a test instance with a comment
-			var inputPath = Path.Combine("data", "comments.xbrl");
+			var inputPath = Path.Combine(TestContext.CurrentContext.TestDirectory, "data", "comments.xbrl");
 			var xbrl = Instance.FromFile(inputPath);
 			Assert.IsTrue(xbrl.Comments.Contains("foo"));
 
 			// add a new comment
 			xbrl.Comments.Add("bar");
-			var outputPath = Path.Combine("data", "morecomments.xbrl");
+			var outputPath = Path.Combine(TestContext.CurrentContext.TestDirectory, "data", "morecomments.xbrl");
 			xbrl.ToFile(outputPath);
 			xbrl = Instance.FromFile(outputPath);
 			Assert.IsTrue(xbrl.Comments.Contains("bar"));
@@ -380,25 +380,25 @@ namespace Diwen.Xbrl.Tests
 		[Test]
 		public static void NoExtraNamespaces()
 		{
-			var instance = Instance.FromFile(Path.Combine("data", "comments.xbrl"));
+			var instance = Instance.FromFile(Path.Combine(TestContext.CurrentContext.TestDirectory, "data", "comments.xbrl"));
 			instance.SetDimensionNamespace("s2c_dim", "http://eiopa.europa.eu/xbrl/s2c/dict/dim");
 			instance.SetTypedDomainNamespace("s2c_typ", "http://eiopa.europa.eu/xbrl/s2c/dict/typ");
-			instance.ToFile("ns.out");
+			instance.ToFile(Path.Combine(TestContext.CurrentContext.TestDirectory, "ns.out"));
 		}
 
 		[Test]
 		public static void EmptyInstance()
 		{
 			// should load ok
-			var instance = Instance.FromFile(Path.Combine("data", "empty_instance.xbrl"));
+			var instance = Instance.FromFile(Path.Combine(TestContext.CurrentContext.TestDirectory, "data", "empty_instance.xbrl"));
 			Assert.IsNotNull(instance);
-			instance.ToFile("empty_instance_out.xbrl");
+			instance.ToFile(Path.Combine(TestContext.CurrentContext.TestDirectory, "empty_instance_out.xbrl"));
 		}
 
 		[Test]
 		public static void InstanceFromString()
 		{
-			var input = File.ReadAllText(Path.Combine("data", "comments.xbrl"));
+			var input = File.ReadAllText(Path.Combine(TestContext.CurrentContext.TestDirectory, "data", "comments.xbrl"));
 			var instance = Instance.FromXml(input);
 			var output = instance.ToXml();
 			Assert.IsNotEmpty(output);

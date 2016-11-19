@@ -204,7 +204,7 @@
 			var instance = CreatePaymentSummaryInstance();
 
 			// Write the instace to a file
-			const string path = @"output.sbr.xml";
+			string path = Path.Combine(TestContext.CurrentContext.TestDirectory, "output.sbr.xml");
 			instance.ToFile(path);
 		}
 
@@ -217,7 +217,7 @@
 			// aren't automatically removed until serialization so do it before comparisons
 			instance.RemoveUnusedObjects();
 
-			var referencePath = Path.Combine("data", "sbr_reference.xbrl");
+			var referencePath = Path.Combine(TestContext.CurrentContext.TestDirectory, "data", "sbr_reference.xbrl");
 			var referenceInstance = Instance.FromFile(referencePath, true);
 
 			// Instances are functionally equivalent:
@@ -228,7 +228,7 @@
 			// Some things are NOT checked, eg. taxonomy version, context names
 			//Assert.AreEqual(instance, referenceInstance);
 
-			const string tempFile = @"temp.xbrl";
+			string tempFile = Path.Combine(TestContext.CurrentContext.TestDirectory, "sbr_temp.xbrl");
 			instance.ToFile(tempFile);
 
 			var newInstance = Instance.FromFile(tempFile, true);

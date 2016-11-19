@@ -23,7 +23,6 @@ namespace Diwen.Xbrl
 {
 	using System;
 	using System.Diagnostics;
-	using System.Globalization;
 	using System.Xml.Schema;
 	using System.Xml.Serialization;
 
