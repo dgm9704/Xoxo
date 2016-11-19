@@ -81,11 +81,13 @@ namespace Diwen.Xbrl
 			Facts = new FactCollection(null);
 		}
 
-		public override string ToString()
+		public Fact(string name, string namespaceURI, string unitRef, string decimals, string contextRef, string value) : this()
 		{
-			var metric = Metric != null ? Metric.LocalName() : string.Empty;
-			var measure = Unit != null ? Unit.Measure : string.Empty;
-			return $"Metric={metric}, Value={Value}, Unit={measure}, Decimals={Decimals}, Context={ContextRef}";
+			Metric = new XmlQualifiedName(name, namespaceURI);
+			UnitRef = unitRef ?? "";
+			Decimals = decimals ?? "";
+			ContextRef = contextRef ?? "";
+			Value = value ?? "";
 		}
 
 		public Fact(Context context, string metric, Unit unit, string decimals, string value, string namespaceUri, string prefix)
@@ -93,7 +95,7 @@ namespace Diwen.Xbrl
 		{
 		}
 
-		public Fact(Context context, string metric, Unit unit, string decimals, string value, Uri namespaceUri, string prefix)
+		public Fact(Context context, string metric, Unit unit, string decimals, string value, Uri namespaceUri, string prefix) : this()
 		{
 			if (context == null)
 			{
@@ -105,7 +107,6 @@ namespace Diwen.Xbrl
 				throw new ArgumentNullException(nameof(namespaceUri));
 			}
 
-			Facts = new FactCollection(null);
 			Metric = new XmlQualifiedName($"{prefix}:{metric}", namespaceUri.ToString());
 			Unit = unit;
 			Decimals = decimals;
@@ -145,6 +146,13 @@ namespace Diwen.Xbrl
 			}
 
 			return Facts.Add(segment, metric, unitRef, decimals, value);
+		}
+
+		public override string ToString()
+		{
+			var metric = Metric != null ? Metric.LocalName() : string.Empty;
+			var measure = Unit != null ? Unit.Measure : string.Empty;
+			return $"Metric={metric}, Value={Value}, Unit={measure}, Decimals={Decimals}, Context={ContextRef}";
 		}
 
 		internal XmlElement ToXmlElement()
@@ -194,14 +202,7 @@ namespace Diwen.Xbrl
 				value = element.InnerText;
 			}
 
-			var fact = new Fact();
-			fact.Metric = new XmlQualifiedName(element.Name, element.NamespaceURI);
-			fact.UnitRef = unitRef;
-			fact.Decimals = decimals;
-			fact.ContextRef = contextRef;
-			fact.Value = value;
-
-			return fact;
+			return new Fact(element.Name, element.NamespaceURI, unitRef, decimals, contextRef, value);
 		}
 
 		public override bool Equals(object obj)

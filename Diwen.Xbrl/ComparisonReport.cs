@@ -26,17 +26,9 @@ namespace Diwen.Xbrl
 
 	public class ComparisonReport
 	{
-		public bool Result
-		{
-			get;
-			private set;
-		}
+		public bool Result { get; }
 
-		public ReadOnlyCollection<string> Messages
-		{
-			get;
-			private set;
-		}
+		public ReadOnlyCollection<string> Messages { get; }
 
 		internal ComparisonReport(bool result, IList<string> messages)
 		{
