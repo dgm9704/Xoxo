@@ -130,7 +130,7 @@ namespace Diwen.Xbrl
 			{
 				Facts.Instance = segment.Instance;
 
-				if (!segment.ExplicitMembers.Any() && !segment.TypedMembers.Any())
+				if (!segment.HasMembers)
 				{
 					segment = null;
 				}

@@ -153,11 +153,11 @@ namespace Diwen.Xbrl
 		{
 			Entity entityA = null;
 			Entity entityB = null;
-			if (a.Contexts != null && a.Contexts.Count != 0)
+			if (a.Contexts != null && a.Contexts.Any())
 			{
 				entityA = a.Contexts.First().Entity;
 
-				if (b.Contexts != null && b.Contexts.Count != 0)
+				if (b.Contexts != null && b.Contexts.Any())
 				{
 					entityB = b.Contexts.First().Entity;
 				}
@@ -171,11 +171,11 @@ namespace Diwen.Xbrl
 		{
 			Period periodA = null;
 			Period periodB = null;
-			if (a.Contexts != null && a.Contexts.Count != 0)
+			if (a.Contexts != null && a.Contexts.Any())
 			{
 				periodA = a.Contexts.First().Period;
 
-				if (b.Contexts != null && b.Contexts.Count != 0)
+				if (b.Contexts != null && b.Contexts.Any())
 				{
 					periodB = b.Contexts.First().Period;
 				}
@@ -292,12 +292,12 @@ namespace Diwen.Xbrl
 			var aList = new List<Identifier>();
 			var bList = new List<Identifier>();
 
-			if (a.Contexts != null && a.Contexts.Count != 0)
+			if (a.Contexts != null && a.Contexts.Any())
 			{
 				aList.Add(a.Contexts.First().Entity.Identifier);
 			}
 
-			if (b.Contexts != null && b.Contexts.Count != 0)
+			if (b.Contexts != null && b.Contexts.Any())
 			{
 				bList.Add(b.Contexts.First().Entity.Identifier);
 			}
@@ -314,12 +314,12 @@ namespace Diwen.Xbrl
 			var aList = new List<Period>();
 			var bList = new List<Period>();
 
-			if (a.Contexts != null && a.Contexts.Count != 0)
+			if (a.Contexts != null && a.Contexts.Any())
 			{
 				aList.Add(a.Contexts.First().Period);
 			}
 
-			if (b.Contexts != null && b.Contexts.Count != 0)
+			if (b.Contexts != null && b.Contexts.Any())
 			{
 				bList.Add(b.Contexts.First().Period);
 			}

@@ -22,6 +22,7 @@
 namespace Diwen.Xbrl
 {
 	using System;
+	using System.Linq;
 	using System.Xml.Serialization;
 
 	[Serializable]
@@ -51,7 +52,7 @@ namespace Diwen.Xbrl
 			var result = false;
 			if (Segment != null)
 			{
-				result = (Segment.ExplicitMembers != null && Segment.ExplicitMembers.Count != 0);
+				result = (Segment.ExplicitMembers.Any());
 			}
 			return result;
 		}

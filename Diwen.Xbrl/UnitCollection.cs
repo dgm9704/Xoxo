@@ -41,6 +41,14 @@ namespace Diwen.Xbrl
 			Instance = instance;
 		}
 
+		public void AddRange(IEnumerable<Unit> units)
+		{
+			foreach (var unit in units)
+			{
+				Add(unit);
+			}
+		}
+
 		public void Add(string id, string measure)
 		{
 			Add(new Unit(id, measure));
@@ -49,17 +57,7 @@ namespace Diwen.Xbrl
 		public UnitCollection UsedUnits()
 		{
 			var result = new UnitCollection();
-			foreach (var unit in this)
-			{
-				var fact = Instance.
-								   Facts.
-								   FirstOrDefault(f => f.Unit == unit);
-				if (fact != null)
-				{
-					result.Add(unit);
-				}
-			}
-
+			result.AddRange(this.Where(u => Instance.Facts.Any(f => f.Unit == u)));
 			return result;
 		}
 

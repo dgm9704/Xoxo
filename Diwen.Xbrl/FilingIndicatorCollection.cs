@@ -58,7 +58,6 @@ namespace Diwen.Xbrl
 			}
 			else
 			{
-
 				result = this.
 					Where(i => i.Filed).
 					ToList().
