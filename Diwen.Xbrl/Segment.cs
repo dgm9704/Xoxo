@@ -21,9 +21,9 @@
 
 namespace Diwen.Xbrl
 {
-	using System.Linq;
-	using System.Collections.Generic;
 	using System;
+	using System.Collections.Generic;
+	using System.Linq;
 	using System.Xml.Serialization;
 
 	[Serializable]
@@ -49,6 +49,8 @@ namespace Diwen.Xbrl
 
 		[XmlElement("typedMember", Namespace = "http://xbrl.org/2006/xbrldi")]
 		public TypedMemberCollection TypedMembers { get; set; }
+
+		public bool HasMembers { get { return ExplicitMembers.Any() || TypedMembers.Any(); } }
 
 		public Segment()
 		{

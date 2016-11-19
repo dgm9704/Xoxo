@@ -22,7 +22,6 @@
 namespace Diwen.Xbrl
 {
 	using System;
-	using System.Collections.Generic;
 	using System.Linq;
 	using System.Xml;
 	using System.Xml.Serialization;
@@ -54,21 +53,13 @@ namespace Diwen.Xbrl
 		{
 			get
 			{
-				var elements = new List<XmlElement>();
-				foreach (var item in Facts)
-				{
-					elements.Add(item.ToXmlElement());
-				}
-				return elements.ToArray();
+				return Facts.Select(f => f.ToXmlElement()).ToArray();
 			}
 			set
 			{
 				if (value != null)
 				{
-					foreach (var element in value)
-					{
-						Facts.Add(FromXmlElement(element));
-					}
+					Facts.AddRange(value.Select(e => FromXmlElement(e)));
 				}
 			}
 		}
@@ -125,7 +116,7 @@ namespace Diwen.Xbrl
 			{
 				Facts.Instance = scenario.Instance;
 
-				if (scenario.ExplicitMembers.Count == 0 && scenario.TypedMembers.Count == 0)
+				if (!scenario.ExplicitMembers.Any() && !scenario.TypedMembers.Any())
 				{
 					scenario = null;
 				}
@@ -139,7 +130,7 @@ namespace Diwen.Xbrl
 			{
 				Facts.Instance = segment.Instance;
 
-				if (segment.ExplicitMembers.Count == 0 && segment.TypedMembers.Count == 0)
+				if (!segment.ExplicitMembers.Any() && !segment.TypedMembers.Any())
 				{
 					segment = null;
 				}
@@ -161,9 +152,7 @@ namespace Diwen.Xbrl
 
 			if (Facts.Any())
 			{
-				Facts.
-					 ToList().
-					 ForEach(f => element.AppendChild(f.ToXmlElement()));
+				element.AppendChildren(Facts.Select(f => f.ToXmlElement()));
 			}
 			else
 			{
@@ -176,6 +165,7 @@ namespace Diwen.Xbrl
 				{
 					element.SetAttribute("unitRef", Unit.Id);
 				}
+
 				if (!string.IsNullOrEmpty(Decimals))
 				{
 					element.SetAttribute("decimals", Decimals);
@@ -212,10 +202,6 @@ namespace Diwen.Xbrl
 			if (other != null && Equals(other))
 			{
 				result |= Facts.Equals(other.Facts);
-			}
-			if (!result)
-			{
-				Console.WriteLine("Schema references different");
 			}
 			return result;
 		}

@@ -200,18 +200,15 @@ namespace Diwen.Xbrl
 
 		static IEnumerable<string> ScenarioComparison(Instance a, Instance b)
 		{
-			var aList = new List<Scenario>(a.Contexts.Count);
+			var aList = a.
+						 Contexts.
+						 Select(c => c.Scenario).
+						 ToList();
 
-			foreach (var c in a.Contexts)
-			{
-				aList.Add(c.Scenario);
-			}
-
-			var bList = new List<Scenario>(b.Contexts.Count);
-			foreach (var c in b.Contexts)
-			{
-				bList.Add(c.Scenario);
-			}
+			var bList = b.
+						 Contexts.
+						 Select(c => c.Scenario).
+						 ToList();
 
 			var differences = aList.ContentCompareReport(bList);
 

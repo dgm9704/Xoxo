@@ -23,6 +23,7 @@ namespace Diwen.Xbrl
 {
 	using System;
 	using System.Diagnostics;
+	using System.Linq;
 	using System.Xml.Serialization;
 
 	[DebuggerDisplay("{Id}")]
@@ -47,8 +48,8 @@ namespace Diwen.Xbrl
 			var result = false;
 			if (Scenario != null)
 			{
-				result = (Scenario.ExplicitMembers != null && Scenario.ExplicitMembers.Count != 0)
-				|| (Scenario.TypedMembers != null && Scenario.TypedMembers.Count != 0);
+				result = (Scenario.ExplicitMembers.Any())
+					|| (Scenario.TypedMembers.Any());
 			}
 			return result;
 		}
@@ -95,11 +96,11 @@ namespace Diwen.Xbrl
 			var result = false;
 			if (other != null)
 			{
-				if ((Scenario == null && other.Scenario == null) || (Scenario != null && Scenario.Equals(other.Scenario)))
+				if ((Period == null && other.Period == null) || Period.Equals(other.Period))
 				{
 					if ((Entity == null && other.Entity == null) || Entity.Equals(other.Entity))
 					{
-						result |= (Period == null && other.Period == null) || Period.Equals(other.Period);
+						result |= (Scenario == null && other.Scenario == null) || (Scenario != null && Scenario.Equals(other.Scenario));
 					}
 				}
 			}

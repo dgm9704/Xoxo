@@ -24,7 +24,6 @@ namespace Diwen.Xbrl
 	using System;
 	using System.Collections.Generic;
 	using System.Collections.ObjectModel;
-	using System.Globalization;
 	using System.IO;
 	using System.Linq;
 	using System.Reflection;
@@ -36,7 +35,6 @@ namespace Diwen.Xbrl
 	[XmlRoot(ElementName = "xbrl", Namespace = "http://www.xbrl.org/2003/instance")]
 	public class Instance : IEquatable<Instance>
 	{
-		static IFormatProvider ic = CultureInfo.InvariantCulture;
 		static AssemblyName assembly = Assembly.GetExecutingAssembly().GetName();
 		static Version version = assembly.Version;
 		static string id = assembly.Name;
@@ -115,9 +113,7 @@ namespace Diwen.Xbrl
 		{
 			get
 			{
-				return Facts.
-							Select(f => f.ToXmlElement()).
-							ToArray();
+				return Facts.Select(f => f.ToXmlElement()).ToArray();
 			}
 			set
 			{
@@ -125,7 +121,7 @@ namespace Diwen.Xbrl
 			}
 		}
 
-		internal void GetElementTree(ICollection<Fact> facts, XmlElement[] value)
+		internal static void GetElementTree(ICollection<Fact> facts, IEnumerable<XmlElement> value)
 		{
 			if (value != null)
 			{
@@ -134,9 +130,10 @@ namespace Diwen.Xbrl
 					var fact = Fact.FromXmlElement(element);
 					facts.Add(fact);
 
-					if (element.ChildNodes.OfType<XmlElement>().Any())
+					var children = element.ChildNodes.OfType<XmlElement>();
+					if (children.Any())
 					{
-						GetElementTree(fact.Facts, element.ChildNodes.Cast<XmlElement>().ToArray());
+						GetElementTree(fact.Facts, children);
 					}
 				}
 			}
@@ -260,11 +257,11 @@ namespace Diwen.Xbrl
 			Units.RemoveUnusedItems(usedIds);
 		}
 
-		internal void GetUsedUnits(FactCollection facts, HashSet<string> usedIds)
+		internal static void GetUsedUnits(FactCollection facts, HashSet<string> usedIds)
 		{
-			foreach (var fact in facts.Where(f => f.Unit != null || f.UnitRef != "" || f.Facts.Count > 0))
+			foreach (var fact in facts.Where(f => f.Unit != null || f.UnitRef != "" || f.Facts.Any()))
 			{
-				if (fact.Facts.Count == 0)
+				if (!fact.Facts.Any())
 				{
 					if (fact.Unit == null)
 					{
@@ -275,7 +272,8 @@ namespace Diwen.Xbrl
 						usedIds.Add(fact.Unit.Id);
 					}
 				}
-				else {
+				else
+				{
 					GetUsedUnits(fact.Facts, usedIds);
 				}
 			}
@@ -289,25 +287,22 @@ namespace Diwen.Xbrl
 
 		public void CollapseDuplicateContexts()
 		{
-			var found = false;
-			for (int i = 0; i < Contexts.Count; i++)
+			var duplicates = Contexts.
+									 GroupBy(c => c).
+									 Where(g => g.Count() > 1);
+
+			if (duplicates.Any())
 			{
-				var left = Contexts[i];
-				for (int j = i + 1; j < Contexts.Count; j++)
+				foreach (var group in duplicates)
 				{
-					var right = Contexts[j];
-					if (left.Equals(right))
+					foreach (var duplicate in group.Skip(1))
 					{
-						found = true;
-						foreach (var fact in Facts.Where(f => f.Context.Id == right.Id))
-						{
-							fact.Context = left;
-						}
+						Facts.
+							 Where(f => f.Context.Id == duplicate.Id).
+							 ToList().
+							 ForEach(f => f.Context = group.First());
 					}
 				}
-			}
-			if (found)
-			{
 				RemoveUnusedContexts();
 			}
 		}
@@ -330,15 +325,15 @@ namespace Diwen.Xbrl
 
 		internal void GetUsedContexts(FactCollection facts, HashSet<string> usedIds)
 		{
-			foreach (var fact in facts.Where(f => f.Context != null || f.Facts.Count > 0))
+			foreach (var fact in facts.Where(f => f.Context != null || f.Facts.Any()))
 			{
-				if (fact.Facts.Count == 0)
+				if (fact.Facts.Any())
 				{
-					usedIds.Add(fact.Context.Id);
+					GetUsedContexts(fact.Facts, usedIds);
 				}
 				else
 				{
-					GetUsedContexts(fact.Facts, usedIds);
+					usedIds.Add(fact.Context.Id);
 				}
 			}
 		}
@@ -416,19 +411,16 @@ namespace Diwen.Xbrl
 
 		void SetContextReferences(FactCollection facts)
 		{
-			foreach (var filingIndicator in FilingIndicators)
+			foreach (var filingIndicator in FilingIndicators.Where(i => i.Context == null))
 			{
-				if (filingIndicator.Context == null)
+				var contextRef = filingIndicator.ContextRef;
+				if (!string.IsNullOrEmpty(contextRef))
 				{
-					var contextRef = filingIndicator.ContextRef;
-					if (!string.IsNullOrEmpty(contextRef))
+					if (!Contexts.Contains(contextRef))
 					{
-						if (!Contexts.Contains(contextRef))
-						{
-							throw new KeyNotFoundException($"Referenced context '{contextRef}' does not exist");
-						}
-						filingIndicator.Context = Contexts[contextRef];
+						throw new KeyNotFoundException($"Referenced context '{contextRef}' does not exist");
 					}
+					filingIndicator.Context = Contexts[contextRef];
 				}
 			}
 
@@ -469,7 +461,7 @@ namespace Diwen.Xbrl
 						fact.Unit = Units[unitRef];
 					}
 				}
-				if (fact.Facts.Count > 0)
+				if (fact.Facts.Any())
 				{
 					SetUnitReferences(fact.Facts);
 				}
@@ -531,7 +523,7 @@ namespace Diwen.Xbrl
 
 		void DimensionFromTypedMembers(IXmlNamespaceResolver namespaces, IEnumerable<Context> contextsWithMembers)
 		{
-			var contextWithTypedMembers = contextsWithMembers.FirstOrDefault(c => c.Scenario.TypedMembers != null && c.Scenario.TypedMembers.Count != 0);
+			var contextWithTypedMembers = contextsWithMembers.FirstOrDefault(c => c.Scenario.TypedMembers.Any());
 			if (contextWithTypedMembers != null)
 			{
 				var member = contextWithTypedMembers.Scenario.TypedMembers.First();
@@ -554,7 +546,7 @@ namespace Diwen.Xbrl
 		{
 			if (string.IsNullOrEmpty(DimensionNamespace))
 			{
-				var contextWithExplicitMembers = contextsWithMembers.FirstOrDefault(c => c.Scenario.ExplicitMembers != null && c.Scenario.ExplicitMembers.Count != 0);
+				var contextWithExplicitMembers = contextsWithMembers.FirstOrDefault(c => c.Scenario.ExplicitMembers.Any());
 				if (contextWithExplicitMembers != null)
 				{
 					var member = contextWithExplicitMembers.Scenario.ExplicitMembers.First();
@@ -600,7 +592,7 @@ namespace Diwen.Xbrl
 			{
 				scenario.Instance = this;
 
-				if (scenario.ExplicitMembers.Count == 0 && scenario.TypedMembers.Count == 0)
+				if (!scenario.HasMembers)
 				{
 					scenario = null;
 				}
@@ -614,7 +606,7 @@ namespace Diwen.Xbrl
 			{
 				segment.Instance = this;
 
-				if (segment.ExplicitMembers.Count == 0 && segment.TypedMembers.Count == 0)
+				if (!segment.HasMembers)
 				{
 					segment = null;
 				}
@@ -625,12 +617,15 @@ namespace Diwen.Xbrl
 
 		internal List<string> GetUsedDomainNamespaces()
 		{
-			var used = new List<string>();
-			var contexts = Contexts.Where(c => c != null && c.Scenario != null && c.Scenario.ExplicitMembers != null).ToList();
-			foreach (var value in contexts.SelectMany(c => c.Scenario.ExplicitMembers).Select(e => e.Value.Namespace))
-			{
-				used.Add(value);
-			}
+			var used = Contexts.
+							   Where(c => c != null).
+							   Where(c => c.Scenario != null).
+							   Where(c => c.Scenario.ExplicitMembers.Any()).
+							   SelectMany(c => c.Scenario.ExplicitMembers).
+							   Select(e => e.Value.Namespace).
+							   Distinct().
+							   ToList();
+
 			GetUsedFactDomainNamespaces(used, Facts);
 			return used;
 		}
@@ -789,50 +784,43 @@ namespace Diwen.Xbrl
 				result.Add(item.Key, item.Value);
 			}
 
-			var foo = new List<string>();
+			var namespaces = new List<string>();
 
 			if (Facts.Any())
 			{
-				foo.Add(FactNamespace);
+				namespaces.Add(FactNamespace);
 			}
 
 			var scenarios = Contexts.Where(c => c.Scenario != null).Select(c => c.Scenario).ToList();
 
 			if (scenarios.Any(s => s.TypedMembers.Any()))
 			{
-				foo.Add(DimensionNamespace);
-				foo.Add(TypedDomainNamespace);
+				namespaces.Add(DimensionNamespace);
+				namespaces.Add(TypedDomainNamespace);
 			}
 			else if (scenarios.Any(s => s.ExplicitMembers.Any()))
 			{
-				foo.Add(DimensionNamespace);
+				namespaces.Add(DimensionNamespace);
 			}
 
 			var segments = Contexts.Where(c => c.Entity.Segment != null).Select(c => c.Entity.Segment).ToList();
 
 			if (segments.Any(s => s.TypedMembers.Any()))
 			{
-				foo.Add(DimensionNamespace);
-				foo.Add(TypedDomainNamespace);
+				namespaces.Add(DimensionNamespace);
+				namespaces.Add(TypedDomainNamespace);
 			}
 			else if (segments.Any(s => s.ExplicitMembers.Any()))
 			{
-				foo.Add(DimensionNamespace);
+				namespaces.Add(DimensionNamespace);
 			}
 
-			foreach (var item in foo)
-			{
-				if (!string.IsNullOrEmpty(item))
-				{
-					var prefix = Namespaces.LookupPrefix(item);
-					result.Add(prefix, item);
-				}
-			}
+			namespaces.
+					  Where(i => !string.IsNullOrEmpty(i)).
+					  Concat(usedDomains).
+					  ToList().
+					  ForEach(i => result.Add(Namespaces.LookupPrefix(i), i));
 
-			foreach (var item in usedDomains)
-			{
-				result.Add(Namespaces.LookupPrefix(item), item);
-			}
 			return result;
 		}
 
@@ -890,7 +878,7 @@ namespace Diwen.Xbrl
 		{
 			var ns = GetXmlSerializerNamespaces();
 
-			var info = string.Format(ic, "id=\"{0}\" version=\"{1}\" creationdate=\"{2:yyyy-MM-ddTHH:mm:ss:ffzzz}\"", id, version, DateTime.Now);
+			var info = $"id=\"{id}\" version=\"{version}\" creationdate=\"{DateTime.Now:yyyy-MM-ddTHH:mm:ss:ffzzz}\"";
 
 			writer.WriteProcessingInstruction("instance-generator", info);
 
@@ -932,14 +920,12 @@ namespace Diwen.Xbrl
 
 				return FromStream(stream);
 			}
-
 		}
 
 		public string ToXml()
 		{
 			return ToXmlDocument().OuterXml;
 		}
-
 
 		#endregion
 	}

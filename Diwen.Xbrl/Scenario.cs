@@ -50,6 +50,12 @@ namespace Diwen.Xbrl
 		[XmlElement("typedMember", Namespace = "http://xbrl.org/2006/xbrldi")]
 		public TypedMemberCollection TypedMembers { get; set; }
 
+		[XmlIgnore]
+		public bool HasMembers
+		{
+			get { return ExplicitMembers.Any() || TypedMembers.Any(); }
+		}
+
 		public Scenario()
 		{
 			ExplicitMembers = new ExplicitMemberCollection();

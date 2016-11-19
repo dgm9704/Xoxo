@@ -18,6 +18,7 @@
     <DefineConstants>DEBUG;</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
     <ConsolePause>false</ConsolePause>
     <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
     <EnvironmentVariables>
@@ -29,13 +30,13 @@
       <CustomCommands>
         <Command>
           <type>AfterBuild</type>
-          <command>sgen /force bin/Debug/Diwen.Xbrl.dll</command>
+          <command></command>
         </Command>
       </CustomCommands>
     </CustomCommands>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <DebugType>full</DebugType>
+    <DebugType></DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release</OutputPath>
     <ErrorReport>prompt</ErrorReport>

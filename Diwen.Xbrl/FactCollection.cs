@@ -75,6 +75,14 @@ namespace Diwen.Xbrl
 			return Add(context, metric, unitRef, decimals, value);
 		}
 
+		public void AddRange(IEnumerable<Fact> facts)
+		{
+			foreach (var fact in facts)
+			{
+				Add(fact);
+			}
+		}
+
 		#region IEquatable implementation
 
 		public bool Equals(IList<Fact> other)
