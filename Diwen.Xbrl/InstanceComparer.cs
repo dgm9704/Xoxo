@@ -23,14 +23,11 @@ namespace Diwen.Xbrl
 {
 	using System;
 	using System.Collections.Generic;
-	using System.Globalization;
 	using System.IO;
 	using System.Linq;
 
 	public static class InstanceComparer
 	{
-		static IFormatProvider ic = CultureInfo.InvariantCulture;
-
 		public static ComparisonReport Report(string a, string b)
 		{
 			return Report(Instance.FromFile(a), Instance.FromFile(b), ComparisonTypes.All);
@@ -238,7 +235,7 @@ namespace Diwen.Xbrl
 				{
 					var key = item != null ? item.ToString() : "";
 					var contextId = aLookup[key];
-					messages.Add(string.Format("(a) {0}: {1}", contextId, item));
+					messages.Add($"(a) {contextId}: {item}");
 				}
 			}
 
@@ -257,7 +254,7 @@ namespace Diwen.Xbrl
 				{
 					var key = item != null ? item.ToString() : "";
 					var contextId = bLookup[key];
-					messages.Add(string.Format("(b) {0}: {1}", contextId, item));
+					messages.Add($"(b) {contextId}: {item}");
 				}
 			}
 			return messages;
@@ -267,8 +264,8 @@ namespace Diwen.Xbrl
 		{
 			var differences = a.Facts.ContentCompareReport(b.Facts);
 			var result = new List<string>(differences.Item1.Count + differences.Item2.Count);
-			result.AddRange(differences.Item1.Select(item => string.Format(ic, "(a) {0} ({1})", item, item.Context.Scenario)));
-			result.AddRange(differences.Item2.Select(item => string.Format(ic, "(b) {0} ({1})", item, item.Context.Scenario)));
+			result.AddRange(differences.Item1.Select(item => $"(a) {item} ({item.Context.Scenario})"));
+			result.AddRange(differences.Item2.Select(item => $"(b) {item} ({item.Context.Scenario})"));
 			return result;
 		}
 
@@ -278,8 +275,8 @@ namespace Diwen.Xbrl
 				ContentCompareReport(b.GetUsedDomainNamespaces());
 
 			var result = new List<string>(differences.Item1.Count + differences.Item2.Count);
-			result.AddRange(differences.Item1.Select(item => "(a) " + item));
-			result.AddRange(differences.Item2.Select(item => "(b) " + item));
+			result.AddRange(differences.Item1.Select(item => $"(a) {item}"));
+			result.AddRange(differences.Item2.Select(item => $"(b) {item}"));
 			return result;
 		}
 
@@ -288,8 +285,8 @@ namespace Diwen.Xbrl
 			var differences = a.Units.
 				ContentCompareReport(b.Units);
 
-			return differences.Item1.Select(item => "(a) " + item).
-				Concat(differences.Item2.Select(item => "(b) " + item)).
+			return differences.Item1.Select(item => $"(a) {item}").
+							  Concat(differences.Item2.Select(item => $"(b) {item}")).
 				OrderBy(m => m);
 		}
 
@@ -310,8 +307,8 @@ namespace Diwen.Xbrl
 
 			var differences = aList.ContentCompareReport(bList);
 
-			return differences.Item1.Select(item => "(a) Identifier=" + item).
-			Concat(differences.Item2.Select(item => "(b) Identifier=" + item));
+			return differences.Item1.Select(item => $"(a) Identifier={item}").
+							  Concat(differences.Item2.Select(item => $"(b) Identifier={item}"));
 
 		}
 
@@ -332,8 +329,8 @@ namespace Diwen.Xbrl
 
 			var differences = aList.ContentCompareReport(bList);
 
-			return differences.Item1.Select(item => "(a) " + item).
-				Concat(differences.Item2.Select(item => "(b) " + item));
+			return differences.Item1.Select(item => $"(a) {item}").
+							  Concat(differences.Item2.Select(item => $"(b) {item}"));
 		}
 
 		static IEnumerable<string> TaxonomyVersionComparison(Instance a, Instance b)
@@ -346,8 +343,8 @@ namespace Diwen.Xbrl
 
 			var differences = aList.ContentCompareReport(bList);
 
-			return differences.Item1.Select(item => "(a) taxonomy-version: " + item).
-				Concat(differences.Item2.Select(item => "(b) taxonomy-version: " + item));
+			return differences.Item1.Select(item => $"(a) taxonomy-version: {item}").
+							  Concat(differences.Item2.Select(item => $"(b) taxonomy-version: {item}"));
 		}
 
 		static IEnumerable<string> SchemaReferenceComparison(Instance a, Instance b)
@@ -360,8 +357,8 @@ namespace Diwen.Xbrl
 
 			var differences = aList.ContentCompareReport(bList);
 
-			return differences.Item1.Select(item => "(a) " + item).
-				Concat(differences.Item2.Select(item => "(b) " + item));
+			return differences.Item1.Select(item => $"(a) {item}").
+				Concat(differences.Item2.Select(item => $"(b) {item}"));
 		}
 
 
@@ -371,8 +368,8 @@ namespace Diwen.Xbrl
 				ContentCompareReport(b.FilingIndicators.Where(fi => fi.Filed).ToList());
 
 			var result = new List<string>(differences.Item1.Count + differences.Item2.Count);
-			result.AddRange(differences.Item1.Select(item => "(a) " + item));
-			result.AddRange(differences.Item2.Select(item => "(b) " + item));
+			result.AddRange(differences.Item1.Select(item => $"(a) {item}"));
+			result.AddRange(differences.Item2.Select(item => $"(b) {item}"));
 			return result;
 		}
 

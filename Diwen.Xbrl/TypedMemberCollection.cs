@@ -52,12 +52,12 @@ namespace Diwen.Xbrl
 					item.Instance = value;
 					if (item.Dimension.Namespace != instanceField.DimensionNamespace)
 					{
-						item.Dimension = new XmlQualifiedName(dimPrefix + ":" + item.Dimension.Name, dimNs);
+						item.Dimension = new XmlQualifiedName($"{dimPrefix}:{item.Dimension.Name}", dimNs);
 					}
 
 					if (item.Domain.Namespace != instanceField.TypedDomainNamespace)
 					{
-						item.Domain = new XmlQualifiedName(domprefix + ":" + item.Domain.Name, domNs);
+						item.Domain = new XmlQualifiedName($"{domprefix}:{item.Domain.Name}", domNs);
 					}
 				}
 			}

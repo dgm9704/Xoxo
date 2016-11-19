@@ -21,24 +21,24 @@
 
 namespace Diwen.Xbrl
 {
-	using System.Linq;
-	using System.Collections.Generic;
 	using System;
+	using System.Collections.Generic;
+	using System.Linq;
 	using System.Xml.Serialization;
 
 	[Serializable]
 	[XmlRoot(ElementName = "scenario", Namespace = "http://www.xbrl.org/2003/instance")]
 	public class Scenario : IEquatable<Scenario>
 	{
-		Instance instanceField;
+		Instance instance;
 
 		[XmlIgnore]
 		public Instance Instance
 		{
-			get { return instanceField; }
+			get { return instance; }
 			set
 			{
-				instanceField = value;
+				instance = value;
 				ExplicitMembers.Instance = value;
 				TypedMembers.Instance = value;
 			}

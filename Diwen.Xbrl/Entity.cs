@@ -74,7 +74,7 @@ namespace Diwen.Xbrl
 
 		public override string ToString()
 		{
-			return string.Format("Identifier={0}", Identifier);
+			return $"Identifier={Identifier}";
 		}
 
 		#region IEquatable implementation
@@ -86,7 +86,8 @@ namespace Diwen.Xbrl
 			{
 				if (Identifier.Equals(other.Identifier))
 				{
-					result |= (Segment == null && other.Segment == null) || (Segment != null && Segment.Equals(other.Segment));
+					result |= (Segment == null && other.Segment == null)
+						|| (Segment != null && Segment.Equals(other.Segment));
 				}
 			}
 			return result;

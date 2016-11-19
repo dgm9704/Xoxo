@@ -23,6 +23,7 @@ namespace Diwen.Xbrl
 {
 	using System;
 	using System.Collections.Generic;
+	using System.Collections.ObjectModel;
 	using System.Globalization;
 	using System.IO;
 	using System.Linq;
@@ -30,7 +31,6 @@ namespace Diwen.Xbrl
 	using System.Text;
 	using System.Xml;
 	using System.Xml.Serialization;
-	using System.Collections.ObjectModel;
 
 	[Serializable]
 	[XmlRoot(ElementName = "xbrl", Namespace = "http://www.xbrl.org/2003/instance")]
@@ -115,12 +115,9 @@ namespace Diwen.Xbrl
 		{
 			get
 			{
-				var elements = new List<XmlElement>();
-				foreach (var item in Facts)
-				{
-					elements.Add(item.ToXmlElement());
-				}
-				return elements.ToArray();
+				return Facts.
+							Select(f => f.ToXmlElement()).
+							ToArray();
 			}
 			set
 			{
@@ -428,7 +425,7 @@ namespace Diwen.Xbrl
 					{
 						if (!Contexts.Contains(contextRef))
 						{
-							throw new KeyNotFoundException(string.Format(ic, "Referenced context '{0}' does not exist", contextRef));
+							throw new KeyNotFoundException($"Referenced context '{contextRef}' does not exist");
 						}
 						filingIndicator.Context = Contexts[contextRef];
 					}
@@ -444,12 +441,12 @@ namespace Diwen.Xbrl
 					{
 						if (!Contexts.Contains(contextRef))
 						{
-							throw new KeyNotFoundException(string.Format(ic, "Referenced context '{0}' does not exist", contextRef));
+							throw new KeyNotFoundException($"Referenced context '{contextRef}' does not exist");
 						}
 						fact.Context = Contexts[contextRef];
 					}
 				}
-				if (fact.Facts.Count > 0)
+				if (fact.Facts.Any())
 				{
 					SetContextReferences(fact.Facts);
 				}
@@ -467,7 +464,7 @@ namespace Diwen.Xbrl
 					{
 						if (!Units.Contains(unitRef))
 						{
-							throw new KeyNotFoundException(string.Format(ic, "Referenced unit '{0}' does not exist", unitRef));
+							throw new KeyNotFoundException($"Referenced unit '{unitRef}' does not exist");
 						}
 						fact.Unit = Units[unitRef];
 					}

@@ -1,5 +1,5 @@
 ﻿//
-//  ScenarioTests.cs
+//  IEnumerableExtensions.cs
 //
 //  Author:
 //       John Nordberg <john.nordberg@gmail.com>
@@ -21,26 +21,13 @@
 
 namespace Diwen.Xbrl.Tests
 {
-	using System;
-	using System.IO;
-	using NUnit.Framework;
-	using Xbrl;
+	using System.Collections.Generic;
 
-	[TestFixture]
-	public static class ScenarioTests
+	public static class IEnumerableOfStringExtensions
 	{
-		[Test]
-		public static void CompareScenarioMemberOrderDifferent()
+		public static string Join(this IEnumerable<string> values, string separator)
 		{
-			var left = Instance.FromFile(Path.Combine("data", "memberorder0.xbrl"));
-			var right = Instance.FromFile(Path.Combine("data", "memberorder1.xbrl"));
-
-			Assert.AreEqual(left, right);
-
-			var report = InstanceComparer.Report(left, right);
-
-			Assert.IsTrue(report.Result, string.Join(Environment.NewLine, report.Messages));
-
+			return string.Join(separator, values);
 		}
 	}
 }

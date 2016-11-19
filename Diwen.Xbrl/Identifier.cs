@@ -46,7 +46,7 @@ namespace Diwen.Xbrl
 
 		public override string ToString()
 		{
-			return string.Join(":", Scheme, Value);
+			return $"{Scheme}:{Value}";
 		}
 
 		#region IEquatable implementation

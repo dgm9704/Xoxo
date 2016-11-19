@@ -22,7 +22,6 @@
 namespace Diwen.Xbrl
 {
 
-	using System.Globalization;
 	using System;
 	using System.Xml;
 	using System.Xml.Serialization;
@@ -31,8 +30,6 @@ namespace Diwen.Xbrl
 	[XmlRoot(ElementName = "explicitMember", Namespace = "http://xbrl.org/2006/xbrldi")]
 	public class ExplicitMember : IEquatable<ExplicitMember>, IComparable<ExplicitMember>
 	{
-		static IFormatProvider ic = CultureInfo.InvariantCulture;
-
 		internal Instance Instance { get; set; }
 
 		[XmlAttribute("dimension", Namespace = "http://xbrl.org/2006/xbrldi")]
@@ -81,7 +78,7 @@ namespace Diwen.Xbrl
 
 		public override string ToString()
 		{
-			return string.Format(ic, "{0}={1}", Dimension.LocalName(), MemberCode);
+			return $"{Dimension.LocalName()}={MemberCode}";
 		}
 
 		public int Compare(ExplicitMember other)

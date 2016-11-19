@@ -21,61 +21,61 @@
 
 namespace Diwen.Xbrl.Tests
 {
-    using System;
-    using System.Collections.Generic;
-    using System.IO;
-    using System.Linq;
-    using NUnit.Framework;
+	using System;
+	using System.Collections.Generic;
+	using System.IO;
+	using System.Linq;
+	using NUnit.Framework;
 
-    [TestFixture]
-    public static class ExternalTests
-    {
-        [Test]
-        [Ignore ("bad performance")]
-        public static void EBA ()
-        {
-            CheckFolderResults (TestFolder ("eba"));
-        }
+	[TestFixture]
+	public static class ExternalTests
+	{
+		[Test]
+		[Ignore("bad performance")]
+		public static void EBA()
+		{
+			CheckFolderResults(TestFolder("eba"));
+		}
 
-        [Test]
-        [Ignore ("bad performance")]
-        public static void EIOPA ()
-        {
-            CheckFolderResults (TestFolder ("eiopa"));
-        }
+		[Test]
+		[Ignore("bad performance")]
+		public static void EIOPA()
+		{
+			CheckFolderResults(TestFolder("eiopa"));
+		}
 
-        [Test]
-        public static void Fi_Sbr ()
-        {
-            CheckFolderResults (TestFolder ("fi-sbr"));
-        }
+		[Test]
+		public static void Fi_Sbr()
+		{
+			CheckFolderResults(TestFolder("fi-sbr"));
+		}
 
-        static void CheckFolderResults (Dictionary<string, ComparisonReport> reports)
-        {
-            Assert.IsTrue (
-                reports.Values.All (report => report.Result),
-                string.Join (Environment.NewLine,
-                    reports.
-                    Where (report => !report.Value.Result).
-                    Select (report => report.Key)));
-        }
+		static void CheckFolderResults(Dictionary<string, ComparisonReport> reports)
+		{
+			Assert.IsTrue(
+				reports.Values.All(report => report.Result),
+				string.Join(Environment.NewLine,
+					reports.
+					Where(report => !report.Value.Result).
+					Select(report => report.Key)));
+		}
 
-        static Dictionary<string, ComparisonReport> TestFolder (string folderPath)
-        {
-            return Directory.GetFiles (folderPath, "*.xbrl").
-                ToDictionary (inputFile => inputFile,
-                inputFile => TestFile (inputFile,
-                    Path.ChangeExtension (inputFile, "out"),
-                    Path.ChangeExtension (inputFile, "log")));
-        }
+		static Dictionary<string, ComparisonReport> TestFolder(string folderPath)
+		{
+			return Directory.GetFiles(folderPath, "*.xbrl").
+				ToDictionary(inputFile => inputFile,
+				inputFile => TestFile(inputFile,
+					Path.ChangeExtension(inputFile, "out"),
+					Path.ChangeExtension(inputFile, "log")));
+		}
 
-        static ComparisonReport TestFile (string inputFile, string outputFile, string reportFile)
-        {
-            Instance.FromFile (inputFile).ToFile (outputFile);
-            var report = InstanceComparer.Report (inputFile, outputFile);
-            File.WriteAllLines (reportFile, report.Messages);
-            return report;
-        }
-    }
+		static ComparisonReport TestFile(string inputFile, string outputFile, string reportFile)
+		{
+			Instance.FromFile(inputFile).ToFile(outputFile);
+			var report = InstanceComparer.Report(inputFile, outputFile);
+			File.WriteAllLines(reportFile, report.Messages);
+			return report;
+		}
+	}
 }
 

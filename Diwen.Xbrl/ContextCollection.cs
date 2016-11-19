@@ -115,12 +115,9 @@ namespace Diwen.Xbrl
 
 		protected override string GetKeyForItem(Context item)
 		{
-			string key = null;
-			if (item != null)
-			{
-				key = item.Id;
-			}
-			return key;
+			return item != null
+				? item.Id
+				: null;
 		}
 
 		#region IEquatable implementation

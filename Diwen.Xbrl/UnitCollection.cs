@@ -21,9 +21,9 @@
 
 namespace Diwen.Xbrl
 {
+	using System;
 	using System.Collections.Generic;
 	using System.Collections.ObjectModel;
-	using System;
 	using System.Linq;
 
 	public class UnitCollection : KeyedCollection<string, Unit>, IEquatable<IList<Unit>>
@@ -51,7 +51,9 @@ namespace Diwen.Xbrl
 			var result = new UnitCollection();
 			foreach (var unit in this)
 			{
-				var fact = Instance.Facts.FirstOrDefault(f => f.Unit == unit);
+				var fact = Instance.
+								   Facts.
+								   FirstOrDefault(f => f.Unit == unit);
 				if (fact != null)
 				{
 					result.Add(unit);
@@ -63,12 +65,7 @@ namespace Diwen.Xbrl
 
 		protected override string GetKeyForItem(Unit item)
 		{
-			string key = null;
-			if (item != null)
-			{
-				key = item.Id;
-			}
-			return key;
+			return item != null ? item.Id : null;
 		}
 
 		public override bool Equals(object obj)

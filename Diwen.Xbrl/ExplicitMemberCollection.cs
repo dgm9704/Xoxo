@@ -24,14 +24,12 @@ namespace Diwen.Xbrl
 	using System;
 	using System.Collections.Generic;
 	using System.Collections.ObjectModel;
-	using System.Globalization;
 	using System.Xml;
 	using System.Xml.Serialization;
 
 	public class ExplicitMemberCollection : Collection<ExplicitMember>, IEquatable<IList<ExplicitMember>>
 	{
 		Instance instanceField;
-		IFormatProvider ic = CultureInfo.InvariantCulture;
 
 		[XmlIgnore]
 		public Instance Instance
@@ -65,7 +63,7 @@ namespace Diwen.Xbrl
 						else
 						if (Instance.CheckExplicitMemberDomainExists)
 						{
-							throw new InvalidOperationException(string.Format(ic, "No namespace declared for domain '{0}'", item.Value.Prefix()));
+							throw new InvalidOperationException($"No namespace declared for domain '{item.Value.Prefix()}'");
 						}
 					}
 				}
@@ -108,7 +106,7 @@ namespace Diwen.Xbrl
 				{
 					if (string.IsNullOrEmpty(valNs))
 					{
-						throw new InvalidOperationException(string.Format(ic, "No namespace declared for domain '{0}'", valPrefix));
+						throw new InvalidOperationException($"No namespace declared for domain '{valPrefix}'");
 					}
 				}
 

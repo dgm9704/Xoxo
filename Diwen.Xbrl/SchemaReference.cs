@@ -53,7 +53,7 @@ namespace Diwen.Xbrl
 
 		public override string ToString()
 		{
-			return string.Format("SchemaReference: Type={0}, Value={1}", Type, Value);
+			return $"SchemaReference: Type={Type}, Value={Value}";
 		}
 
 		#region IEquatable implementation

@@ -23,14 +23,12 @@ namespace Diwen.Xbrl
 {
 	using System;
 	using System.Collections.Generic;
-	using System.Globalization;
+	using System.Linq;
 	using System.Xml;
 	using System.Xml.Serialization;
 
 	public class Fact : IEquatable<Fact>
 	{
-		static IFormatProvider ic = CultureInfo.InvariantCulture;
-
 		static XmlDocument doc = new XmlDocument();
 
 		[XmlIgnore]
@@ -87,14 +85,7 @@ namespace Diwen.Xbrl
 		{
 			var metric = Metric != null ? Metric.LocalName() : string.Empty;
 			var measure = Unit != null ? Unit.Measure : string.Empty;
-			//            var scenario = string.Empty;
-			//            if(Context != null && Context.Scenario != null)
-			//            {
-			//                scenario = Context.Scenario.ToString();
-			//            }
-
-			return string.Format(ic, "Metric={0}, Value={1}, Unit={2}, Decimals={3}, Context={4}",
-				metric, Value, measure, Decimals, ContextRef);
+			return $"Metric={metric}, Value={Value}, Unit={measure}, Decimals={Decimals}, Context={ContextRef}";
 		}
 
 		public Fact(Context context, string metric, Unit unit, string decimals, string value, string namespaceUri, string prefix)
@@ -115,7 +106,7 @@ namespace Diwen.Xbrl
 			}
 
 			Facts = new FactCollection(null);
-			Metric = new XmlQualifiedName(prefix + ":" + metric, namespaceUri.ToString());
+			Metric = new XmlQualifiedName($"{prefix}:{metric}", namespaceUri.ToString());
 			Unit = unit;
 			Decimals = decimals;
 			Context = context;
@@ -160,13 +151,11 @@ namespace Diwen.Xbrl
 		{
 			var element = doc.CreateElement(Metric.Name, Metric.Namespace);
 
-			if (Facts.Count > 0)
+			if (Facts.Any())
 			{
-				//var elements = new List<XmlElement>();
-				foreach (var item in Facts)
-				{
-					element.AppendChild(item.ToXmlElement());
-				}
+				Facts.
+					 ToList().
+					 ForEach(f => element.AppendChild(f.ToXmlElement()));
 			}
 			else
 			{
@@ -216,7 +205,9 @@ namespace Diwen.Xbrl
 			var result = false;
 			var other = obj as Fact;
 			if (other != null && Equals(other))
+			{
 				result |= Facts.Equals(other.Facts);
+			}
 			if (!result)
 			{
 				Console.WriteLine("Schema references different");

@@ -24,12 +24,10 @@ namespace Diwen.Xbrl
 	using System;
 	using System.Collections.Generic;
 	using System.Collections.ObjectModel;
-	using System.Globalization;
 
 	public class FactCollection : Collection<Fact>, IEquatable<IList<Fact>>
 	{
 		public Instance Instance;
-		static IFormatProvider ic = CultureInfo.InvariantCulture;
 
 		public FactCollection(Instance instance)
 		{
@@ -55,7 +53,7 @@ namespace Diwen.Xbrl
 			{
 				if (!Instance.Units.Contains(unitRef))
 				{
-					throw new KeyNotFoundException(string.Format(ic, "Referenced unit '{0}' does not exist", unitRef));
+					throw new KeyNotFoundException($"Referenced unit '{unitRef}' does not exist");
 				}
 				unit = Instance.Units[unitRef];
 			}

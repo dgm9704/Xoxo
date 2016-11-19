@@ -21,17 +21,16 @@
 
 namespace Diwen.Xbrl.Tests
 {
-    using System;
-    using NUnit.Framework;
+	using NUnit.Framework;
 
-    [TestFixture]
-    public static class FactTests
-    {
-        [Test]
-        public static void FactWithNullPropertiesToString ()
-        {
-            var fact = new Fact ();
-            Console.WriteLine (fact);
-        }
-    }
+	[TestFixture]
+	public static class FactTests
+	{
+		[Test]
+		public static void FactWithNullPropertiesToString()
+		{
+			var fact = new Fact();
+			Assert.IsNotEmpty(fact.ToString());
+		}
+	}
 }
