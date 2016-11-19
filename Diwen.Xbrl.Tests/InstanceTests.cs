@@ -353,7 +353,7 @@ namespace Diwen.Xbrl.Tests
 			instance.AddDomainNamespace("s2c_CN", "http://eiopa.europa.eu/xbrl/s2c/dict/dom/CN");
 
 			// write the instance to file and read it back
-			const string file = "EnumeratedFactValueNamespace.xbrl";
+			string file = Path.Combine(TestContext.CurrentContext.TestDirectory, "EnumeratedFactValueNamespace.xbrl");
 			instance.ToFile(file);
 			instance = Instance.FromFile(file);
 
