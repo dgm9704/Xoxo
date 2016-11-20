@@ -2,12 +2,16 @@
 Container for the Diwen.Xbrl library and any related stuff
 
 ### Environment
-C# 6
-Mono/.Net 4.5
-I use MonoDevelop (6.1) on Xubuntu, but should work just as well with VisualStudio
+C# 6, Mono/.Net 4.5
+
+My development enviroment is MonoDevelop 6.x on Xubuntu 16.10 
+
+Builds and runs without modifications on Microsoft Visual Studio Community 2015 / Windows 7 (tested 2016-11-20)
+
+(Also managed to build and get some tests running on .Net Core / Visual Studio Code on Xubuntu with some work.)
 
 ### Dependencies
-NUnit for testing, tests are pretty simple and should mostly work also with MSTest or XUnit 
+NUnit 3+ for testing, tests are pretty simple and should mostly work also with MSTest or XUnit 
 
 ## Diwen.Xbrl
 A .NET library for reading, writing and comparing XBRL documents (instances)
