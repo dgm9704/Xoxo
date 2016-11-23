@@ -96,11 +96,11 @@ namespace Diwen.Xbrl
 			var result = false;
 			if (other != null)
 			{
-				if ((Period == null && other.Period == null) || Period.Equals(other.Period))
+				if ((Scenario == null && other.Scenario == null) || (Scenario != null && Scenario.Equals(other.Scenario)))
 				{
 					if ((Entity == null && other.Entity == null) || Entity.Equals(other.Entity))
 					{
-						result |= (Scenario == null && other.Scenario == null) || (Scenario != null && Scenario.Equals(other.Scenario));
+						result |= (Period == null && other.Period == null) || Period.Equals(other.Period);
 					}
 				}
 			}

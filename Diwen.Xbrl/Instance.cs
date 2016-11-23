@@ -472,8 +472,10 @@ namespace Diwen.Xbrl
 		{
 			foreach (var context in contextsWithMembers)
 			{
-				foreach (var m in context.Scenario.ExplicitMembers)
+				//foreach (var m in context.Scenario.ExplicitMembers)
+				for (int i = 0; i < context.Scenario.ExplicitMembers.Count; i++)
 				{
+					var m = context.Scenario.ExplicitMembers[i];
 					if (string.IsNullOrEmpty(m.Dimension.Namespace))
 					{
 						m.Dimension = new XmlQualifiedName(m.Dimension.Name, DimensionNamespace);
@@ -484,9 +486,12 @@ namespace Diwen.Xbrl
 						var localname = m.Value.Name.Substring(m.Value.Name.IndexOf(':') + 1);
 						m.Value = new XmlQualifiedName(localname, ns);
 					}
+					context.Scenario.ExplicitMembers[i] = m;
 				}
-				foreach (var m in context.Scenario.TypedMembers)
+				//foreach (var m in context.Scenario.TypedMembers)
+				for (int i = 0; i < context.Scenario.TypedMembers.Count; i++)
 				{
+					var m = context.Scenario.TypedMembers[i];
 					if (string.IsNullOrEmpty(m.Dimension.Namespace))
 					{
 						m.Dimension = new XmlQualifiedName(m.Dimension.Name, DimensionNamespace);
@@ -495,6 +500,7 @@ namespace Diwen.Xbrl
 					{
 						m.Domain = new XmlQualifiedName(m.Domain.Name, TypedDomainNamespace);
 					}
+					context.Scenario.TypedMembers[i] = m;
 				}
 			}
 		}
@@ -677,6 +683,7 @@ namespace Diwen.Xbrl
 		static XmlWriterSettings XmlWriterSettings = new XmlWriterSettings
 		{
 			Indent = true,
+			IndentChars = "\t",
 			NamespaceHandling = NamespaceHandling.OmitDuplicates,
 			Encoding = Encoding.UTF8
 		};

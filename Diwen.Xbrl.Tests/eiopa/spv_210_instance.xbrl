@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?instance-generator id="EIOPA Sample XBRL Instance Documents Generator" version="2016.07.15.1" creationdate="2016-07-15T00:00:00+02:00"?>
+<!-- (C) EIOPA - Sample XBRL Instance Document -->
+<xbrli:xbrl
+	xmlns:s2c_AP="http://eiopa.europa.eu/xbrl/s2c/dict/dom/AP"
+	xmlns:s2c_CN="http://eiopa.europa.eu/xbrl/s2c/dict/dom/CN"
+	xmlns:s2c_CU="http://eiopa.europa.eu/xbrl/s2c/dict/dom/CU"
+	xmlns:s2c_GA="http://eiopa.europa.eu/xbrl/s2c/dict/dom/GA"
+	xmlns:find="http://www.eurofiling.info/xbrl/ext/filing-indicators"
+	xmlns:iso4217="http://www.xbrl.org/2003/iso4217"
+	xmlns:link="http://www.xbrl.org/2003/linkbase"
+	xmlns:s2c_AM="http://eiopa.europa.eu/xbrl/s2c/dict/dom/AM"
+	xmlns:s2c_dim="http://eiopa.europa.eu/xbrl/s2c/dict/dim"
+	xmlns:s2c_typ="http://eiopa.europa.eu/xbrl/s2c/dict/typ"
+	xmlns:s2md_met="http://eiopa.europa.eu/xbrl/s2md/dict/met"
+	xmlns:xbrldi="http://xbrl.org/2006/xbrldi"
+	xmlns:xbrli="http://www.xbrl.org/2003/instance"
+	xmlns:xlink="http://www.w3.org/1999/xlink"
+	>
+<link:schemaRef xlink:href="http://eiopa.europa.eu/eu/xbrl/s2md/fws/solvency/solvency2/2016-07-15/mod/spv.xsd" xlink:type="simple"/>
+<xbrli:unit id="u">
+    <xbrli:measure>iso4217:EUR</xbrli:measure>
+</xbrli:unit>
+<xbrli:unit id="p">
+    <xbrli:measure>xbrli:pure</xbrli:measure>
+</xbrli:unit>
+<xbrli:context id="c">
+    <xbrli:entity>
+        <xbrli:identifier scheme="http://standards.iso.org/iso/17442">H3JMRYM8WOAINCSM7813</xbrli:identifier>
+    </xbrli:entity>
+    <xbrli:period>
+        <xbrli:instant>2015-12-31</xbrli:instant>
+    </xbrli:period>
+</xbrli:context>
+<find:fIndicators>
+	<find:filingIndicator contextRef="c">SPV.01.01</find:filingIndicator>
+	<find:filingIndicator contextRef="c">SPV.01.02</find:filingIndicator>
+	<find:filingIndicator contextRef="c">SPV.02.01</find:filingIndicator>
+	<find:filingIndicator contextRef="c">SPV.02.02</find:filingIndicator>
+	<find:filingIndicator contextRef="c">SPV.03.01</find:filingIndicator>
+	<find:filingIndicator contextRef="c">SPV.03.02</find:filingIndicator>
+</find:fIndicators>
+<s2md_met:di1043 contextRef="c">2007-08-15</s2md_met:di1043>
+<s2md_met:di1044 contextRef="c">2002-08-07</s2md_met:di1044>
+<s2md_met:ei1633 contextRef="c">s2c_CN:x1</s2md_met:ei1633>
+<s2md_met:ei1634 contextRef="c">s2c_CN:x0</s2md_met:ei1634>
+<s2md_met:ei1674 contextRef="c">s2c_CN:x1</s2md_met:ei1674>
+<s2md_met:ei1930 contextRef="c">s2c_CU:NIO</s2md_met:ei1930>
+<s2md_met:ei1960 contextRef="c">s2c_GA:TG</s2md_met:ei1960>
+<s2md_met:ei2177 contextRef="c">s2c_CN:x0</s2md_met:ei2177>
+<s2md_met:ei2178 contextRef="c">s2c_CN:x1</s2md_met:ei2178>
+<s2md_met:ei2181 contextRef="c">s2c_AP:x30</s2md_met:ei2181>
+<s2md_met:ii2180 contextRef="c" decimals="0" unitRef="p">53421</s2md_met:ii2180>
+<s2md_met:si1384 contextRef="c" xml:lang="en">fjuwsw sk pyij</s2md_met:si1384>
+<s2md_met:si2179 contextRef="c" xml:lang="en">LEI/IZ0RZ2YOIGVN25UCZ294</s2md_met:si2179>
+<xbrli:context id="DANA_VGx80">
+    <xbrli:entity>
+        <xbrli:identifier scheme="http://standards.iso.org/iso/17442">H3JMRYM8WOAINCSM7813</xbrli:identifier>
+    </xbrli:entity>
+    <xbrli:period>
+        <xbrli:instant>2015-12-31</xbrli:instant>
+    </xbrli:period>
+	<xbrli:scenario>
+		<xbrldi:typedMember dimension="s2c_dim:DA"><s2c_typ:NA>1</s2c_typ:NA></xbrldi:typedMember>
+		<xbrldi:explicitMember dimension="s2c_dim:VG">s2c_AM:x80</xbrldi:explicitMember>
+	</xbrli:scenario>
+</xbrli:context>
+<s2md_met:mi2189 contextRef="DANA_VGx80" decimals="2" unitRef="u">642624205.58</s2md_met:mi2189>
+<xbrli:context id="DBNA">
+    <xbrli:entity>
+        <xbrli:identifier scheme="http://standards.iso.org/iso/17442">H3JMRYM8WOAINCSM7813</xbrli:identifier>
+    </xbrli:entity>
+    <xbrli:period>
+        <xbrli:instant>2015-12-31</xbrli:instant>
+    </xbrli:period>
+	<xbrli:scenario>
+		<xbrldi:typedMember dimension="s2c_dim:DB"><s2c_typ:NA>1</s2c_typ:NA></xbrldi:typedMember>
+	</xbrli:scenario>
+</xbrli:context>
+<s2md_met:mi2200 contextRef="DBNA" decimals="2" unitRef="u">909573202.53</s2md_met:mi2200>
+<xbrli:context id="DENA_VGx80">
+    <xbrli:entity>
+        <xbrli:identifier scheme="http://standards.iso.org/iso/17442">H3JMRYM8WOAINCSM7813</xbrli:identifier>
+    </xbrli:entity>
+    <xbrli:period>
+        <xbrli:instant>2015-12-31</xbrli:instant>
+    </xbrli:period>
+	<xbrli:scenario>
+		<xbrldi:typedMember dimension="s2c_dim:DE"><s2c_typ:NA>1</s2c_typ:NA></xbrldi:typedMember>
+		<xbrldi:explicitMember dimension="s2c_dim:VG">s2c_AM:x80</xbrldi:explicitMember>
+	</xbrli:scenario>
+</xbrli:context>
+<s2md_met:mi2196 contextRef="DENA_VGx80" decimals="2" unitRef="u">635306325.41</s2md_met:mi2196>
+<xbrli:context id="DFNA">
+    <xbrli:entity>
+        <xbrli:identifier scheme="http://standards.iso.org/iso/17442">H3JMRYM8WOAINCSM7813</xbrli:identifier>
+    </xbrli:entity>
+    <xbrli:period>
+        <xbrli:instant>2015-12-31</xbrli:instant>
+    </xbrli:period>
+	<xbrli:scenario>
+		<xbrldi:typedMember dimension="s2c_dim:DF"><s2c_typ:NA>1</s2c_typ:NA></xbrldi:typedMember>
+	</xbrli:scenario>
+</xbrli:context>
+<s2md_met:mi2199 contextRef="DFNA" decimals="2" unitRef="u">695343894.11</s2md_met:mi2199>
+<xbrli:context id="DLNA_VGx80">
+    <xbrli:entity>
+        <xbrli:identifier scheme="http://standards.iso.org/iso/17442">H3JMRYM8WOAINCSM7813</xbrli:identifier>
+    </xbrli:entity>
+    <xbrli:period>
+        <xbrli:instant>2015-12-31</xbrli:instant>
+    </xbrli:period>
+	<xbrli:scenario>
+		<xbrldi:typedMember dimension="s2c_dim:DL"><s2c_typ:NA>1</s2c_typ:NA></xbrldi:typedMember>
+		<xbrldi:explicitMember dimension="s2c_dim:VG">s2c_AM:x80</xbrldi:explicitMember>
+	</xbrli:scenario>
+</xbrli:context>
+<s2md_met:mi2194 contextRef="DLNA_VGx80" decimals="2" unitRef="u">153196207.18</s2md_met:mi2194>
+<xbrli:context id="RSID">
+    <xbrli:entity>
+        <xbrli:identifier scheme="http://standards.iso.org/iso/17442">H3JMRYM8WOAINCSM7813</xbrli:identifier>
+    </xbrli:entity>
+    <xbrli:period>
+        <xbrli:instant>2015-12-31</xbrli:instant>
+    </xbrli:period>
+	<xbrli:scenario>
+		<xbrldi:typedMember dimension="s2c_dim:RS"><s2c_typ:ID>1</s2c_typ:ID></xbrldi:typedMember>
+	</xbrli:scenario>
+</xbrli:context>
+<s2md_met:di2202 contextRef="RSID">2013-04-02</s2md_met:di2202>
+<s2md_met:ei2181 contextRef="RSID">s2c_AP:x30</s2md_met:ei2181>
+<s2md_met:ei2203 contextRef="RSID">s2c_AP:x31</s2md_met:ei2203>
+<s2md_met:mi1131 contextRef="RSID" decimals="2" unitRef="u">156050389.06</s2md_met:mi1131>
+<s2md_met:mi2206 contextRef="RSID" decimals="2" unitRef="u">657728460.27</s2md_met:mi2206>
+<s2md_met:mi2208 contextRef="RSID" decimals="2" unitRef="u">899708487.47</s2md_met:mi2208>
+<s2md_met:ri2441 contextRef="RSID" decimals="0" unitRef="p">643514</s2md_met:ri2441>
+<s2md_met:si2204 contextRef="RSID" xml:lang="en">wdqmhr stzd wrat</s2md_met:si2204>
+<s2md_met:si2205 contextRef="RSID" xml:lang="en">LEI/52IDIWHX6IVQLBNR4DBZ</s2md_met:si2205>
+<s2md_met:si2209 contextRef="RSID" xml:lang="en">vu xgyq rd</s2md_met:si2209>
+<xbrli:context id="TAx132_VGx80">
+    <xbrli:entity>
+        <xbrli:identifier scheme="http://standards.iso.org/iso/17442">H3JMRYM8WOAINCSM7813</xbrli:identifier>
+    </xbrli:entity>
+    <xbrli:period>
+        <xbrli:instant>2015-12-31</xbrli:instant>
+    </xbrli:period>
+	<xbrli:scenario>
+		<xbrldi:explicitMember dimension="s2c_dim:TA">s2c_AM:x132</xbrldi:explicitMember>
+		<xbrldi:explicitMember dimension="s2c_dim:VG">s2c_AM:x80</xbrldi:explicitMember>
+	</xbrli:scenario>
+</xbrli:context>
+<s2md_met:mi2201 contextRef="TAx132_VGx80" decimals="2" unitRef="u">480596154.87</s2md_met:mi2201>
+<xbrli:context id="VGx80">
+    <xbrli:entity>
+        <xbrli:identifier scheme="http://standards.iso.org/iso/17442">H3JMRYM8WOAINCSM7813</xbrli:identifier>
+    </xbrli:entity>
+    <xbrli:period>
+        <xbrli:instant>2015-12-31</xbrli:instant>
+    </xbrli:period>
+	<xbrli:scenario>
+		<xbrldi:explicitMember dimension="s2c_dim:VG">s2c_AM:x80</xbrldi:explicitMember>
+	</xbrli:scenario>
+</xbrli:context>
+<s2md_met:mi201 contextRef="VGx80" decimals="2" unitRef="u">896311669.75</s2md_met:mi201>
+<s2md_met:mi2182 contextRef="VGx80" decimals="2" unitRef="u">463473515.55</s2md_met:mi2182>
+<s2md_met:mi2183 contextRef="VGx80" decimals="2" unitRef="u">5419335.33</s2md_met:mi2183>
+<s2md_met:mi2184 contextRef="VGx80" decimals="2" unitRef="u">945957745.38</s2md_met:mi2184>
+<s2md_met:mi2185 contextRef="VGx80" decimals="2" unitRef="u">71851127.12</s2md_met:mi2185>
+<s2md_met:mi2186 contextRef="VGx80" decimals="2" unitRef="u">731906023.38</s2md_met:mi2186>
+<s2md_met:mi2187 contextRef="VGx80" decimals="2" unitRef="u">280453743.10</s2md_met:mi2187>
+<s2md_met:mi2188 contextRef="VGx80" decimals="2" unitRef="u">435100378.23</s2md_met:mi2188>
+<s2md_met:mi2189 contextRef="VGx80" decimals="2" unitRef="u">299410219.07</s2md_met:mi2189>
+<s2md_met:mi2190 contextRef="VGx80" decimals="2" unitRef="u">574861568.04</s2md_met:mi2190>
+<s2md_met:mi2192 contextRef="VGx80" decimals="2" unitRef="u">358936142.69</s2md_met:mi2192>
+<s2md_met:mi2193 contextRef="VGx80" decimals="2" unitRef="u">91196593.67</s2md_met:mi2193>
+<s2md_met:mi2194 contextRef="VGx80" decimals="2" unitRef="u">739942628.56</s2md_met:mi2194>
+<s2md_met:mi2195 contextRef="VGx80" decimals="2" unitRef="u">734099029.47</s2md_met:mi2195>
+<s2md_met:mi2196 contextRef="VGx80" decimals="2" unitRef="u">287302653.26</s2md_met:mi2196>
+<s2md_met:mi346 contextRef="VGx80" decimals="2" unitRef="u">107337471.93</s2md_met:mi346>
+<s2md_met:mi360 contextRef="VGx80" decimals="2" unitRef="u">949964590.12</s2md_met:mi360>
+<xbrli:context id="VGx84">
+    <xbrli:entity>
+        <xbrli:identifier scheme="http://standards.iso.org/iso/17442">H3JMRYM8WOAINCSM7813</xbrli:identifier>
+    </xbrli:entity>
+    <xbrli:period>
+        <xbrli:instant>2015-12-31</xbrli:instant>
+    </xbrli:period>
+	<xbrli:scenario>
+		<xbrldi:explicitMember dimension="s2c_dim:VG">s2c_AM:x84</xbrldi:explicitMember>
+	</xbrli:scenario>
+</xbrli:context>
+<s2md_met:mi1969 contextRef="VGx84" decimals="2" unitRef="u">496958546.37</s2md_met:mi1969>
+<s2md_met:mi2197 contextRef="VGx84" decimals="2" unitRef="u">685045189.60</s2md_met:mi2197>
+<s2md_met:mi2198 contextRef="VGx84" decimals="2" unitRef="u">850414014.77</s2md_met:mi2198>
+<s2md_met:mi2220 contextRef="VGx84" decimals="2" unitRef="u">434384166.88</s2md_met:mi2220>
+<s2md_met:mi597 contextRef="VGx84" decimals="2" unitRef="u">445177928.07</s2md_met:mi597>
+</xbrli:xbrl>

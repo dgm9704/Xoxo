@@ -208,7 +208,7 @@ namespace Diwen.Xbrl
 
 		public override int GetHashCode()
 		{
-			return Metric.GetHashCode();
+			return Value.GetHashCode();
 		}
 
 		#region IEquatable implementation
@@ -216,9 +216,9 @@ namespace Diwen.Xbrl
 		public bool Equals(Fact other)
 		{
 			var result = other != null
-						 && Metric.Equals(other.Metric)
-						 && Value.Equals(other.Value, StringComparison.Ordinal)
-						 && Decimals.Equals(other.Decimals, StringComparison.Ordinal);
+				&& Value.Equals(other.Value, StringComparison.Ordinal)
+				&& Metric.Equals(other.Metric)
+				&& Decimals.Equals(other.Decimals, StringComparison.Ordinal);
 			if (result)
 			{
 				result = Unit == null

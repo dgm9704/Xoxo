@@ -90,16 +90,12 @@ namespace Diwen.Xbrl
 			return other != null && Equals(other);
 		}
 
+		int hashCode = -1;
 		public override int GetHashCode()
 		{
-			int hashCode = 0;
-			foreach (var m in TypedMembers.OrderBy(m => m.Dimension.LocalName()))
+			if (hashCode == -1)
 			{
-				hashCode = 31 * hashCode + m.GetHashCode();
-			}
-			foreach (var m in ExplicitMembers.OrderBy(m => m.Dimension.LocalName()))
-			{
-				hashCode = 31 * hashCode + m.GetHashCode();
+				hashCode = TypedMembers.GetHashCode() + 31 * ExplicitMembers.GetHashCode();
 			}
 			return hashCode;
 		}

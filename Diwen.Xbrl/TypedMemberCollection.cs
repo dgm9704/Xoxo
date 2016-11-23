@@ -24,6 +24,7 @@ namespace Diwen.Xbrl
 	using System;
 	using System.Collections.Generic;
 	using System.Collections.ObjectModel;
+	using System.Linq;
 	using System.Xml;
 	using System.Xml.Serialization;
 
@@ -47,17 +48,27 @@ namespace Diwen.Xbrl
 				var domNs = instanceField.TypedDomainNamespace;
 				var domprefix = instanceField.Namespaces.LookupPrefix(domNs);
 
-				foreach (var item in this)
+				//foreach (var item in this)
+				//{
+				for (int i = 0; i < this.Count; i++)
 				{
+					var item = this[i];
+					var dirty = false;
 					item.Instance = value;
 					if (item.Dimension.Namespace != instanceField.DimensionNamespace)
 					{
 						item.Dimension = new XmlQualifiedName($"{dimPrefix}:{item.Dimension.Name}", dimNs);
+						dirty = true;
 					}
 
 					if (item.Domain.Namespace != instanceField.TypedDomainNamespace)
 					{
 						item.Domain = new XmlQualifiedName($"{domprefix}:{item.Domain.Name}", domNs);
+						dirty = true;
+					}
+					if (dirty)
+					{
+						this[i] = item;
 					}
 				}
 			}
@@ -102,5 +113,19 @@ namespace Diwen.Xbrl
 		}
 
 		#endregion
+
+		int hashCode = -1;
+
+		public override int GetHashCode()
+		{
+			if (hashCode == -1)
+			{
+				hashCode = this.Select(m => m.Value ?? "").
+					OrderBy(m => m).
+					Join("").
+					GetHashCode();
+			}
+			return hashCode;
+		}
 	}
 }

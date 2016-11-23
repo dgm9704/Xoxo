@@ -28,7 +28,7 @@ namespace Diwen.Xbrl
 
 	[Serializable]
 	[XmlRoot(ElementName = "explicitMember", Namespace = "http://xbrl.org/2006/xbrldi")]
-	public class ExplicitMember : IEquatable<ExplicitMember>, IComparable<ExplicitMember>
+	public struct ExplicitMember : IEquatable<ExplicitMember>, IComparable<ExplicitMember>
 	{
 		internal Instance Instance { get; set; }
 
@@ -37,10 +37,6 @@ namespace Diwen.Xbrl
 
 		[XmlText]
 		public XmlQualifiedName Value { get; set; }
-
-		public ExplicitMember()
-		{
-		}
 
 		public ExplicitMember(XmlQualifiedName dimension, XmlQualifiedName value)
 			: this()
@@ -72,8 +68,7 @@ namespace Diwen.Xbrl
 
 		public override bool Equals(object obj)
 		{
-			var other = obj as ExplicitMember;
-			return other != null && Equals(other);
+			return Equals((ExplicitMember)obj);
 		}
 
 		public override string ToString()
@@ -90,61 +85,19 @@ namespace Diwen.Xbrl
 
 		public static bool operator ==(ExplicitMember left, ExplicitMember right)
 		{
-			bool result;
-
-			// If both are null, or both are same instance, return true.
-			if (ReferenceEquals(left, right))
-			{
-				result = true;
-			}
-			// If one is null, but not both, return false.
-			else if (((object)left == null) || ((object)right == null))
-			{
-				result = false;
-			}
-			else
-			{
-				// Return true if the fields match:
-				result = left.Equals(right);
-			}
-
-			return result;
+			// Return true if the fields match:
+			return left.Equals(right);
 		}
 
 		public static bool operator !=(ExplicitMember left, ExplicitMember right)
 		{
-			bool result;
-
-			// If one is null, but not both, return true.
-			if (((object)left == null) || ((object)right == null))
-			{
-				result = true;
-			}
-			else
-			{
-				result = !left.Equals(right);
-			}
-
-			return result;
+			return !left.Equals(right);
 		}
 
 		public static bool operator >(ExplicitMember left, ExplicitMember right)
 		{
-			bool result;
-
-			// If both are null, or both are same instance, return false.
-			if (ReferenceEquals(left, right))
-			{
-				result = false;
-			}
-			else
-			{
-				result = left != null && left.CompareTo(right) > 0;
-			}
-
-			return result;
+			return left.CompareTo(right) > 0;
 		}
-
 		public static bool operator <(ExplicitMember left, ExplicitMember right)
 		{
 			return right > left;
@@ -156,17 +109,7 @@ namespace Diwen.Xbrl
 
 		public bool Equals(ExplicitMember other)
 		{
-			var result = false;
-			if (other != null)
-			{
-				if (Dimension == other.Dimension)
-				{
-					result |= Value == other.Value;
-				}
-
-			}
-
-			return result;
+			return Dimension == other.Dimension && Value == other.Value;
 		}
 
 		#endregion
@@ -176,17 +119,10 @@ namespace Diwen.Xbrl
 		public int CompareTo(ExplicitMember other)
 		{
 			int result;
-			if (other == null)
+			result = string.Compare(Dimension.Name, other.Dimension.Name, StringComparison.Ordinal);
+			if (result == 0)
 			{
-				result = 1;
-			}
-			else
-			{
-				result = string.Compare(Dimension.Name, other.Dimension.Name, StringComparison.Ordinal);
-				if (result == 0)
-				{
-					result = string.Compare(Value.Name, other.Value.Name, StringComparison.Ordinal);
-				}
+				result = string.Compare(Value.Name, other.Value.Name, StringComparison.Ordinal);
 			}
 
 			return result;

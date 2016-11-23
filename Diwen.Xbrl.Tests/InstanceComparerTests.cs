@@ -23,7 +23,6 @@ namespace Diwen.Xbrl.Tests
 {
 	using System;
 	using System.IO;
-	using System.Xml;
 	using NUnit.Framework;
 
 	[TestFixture]
@@ -139,44 +138,44 @@ namespace Diwen.Xbrl.Tests
 			CollectionAssert.IsNotEmpty(report.Messages);
 		}
 
-		[Test]
-		public static void CompareInstancesTypedMemberDifferent()
-		{
-			// load same instance twice
-			var path = Path.Combine(TestContext.CurrentContext.TestDirectory, "data", "reference.xbrl");
-			var firstInstance = Instance.FromFile(path);
-			var secondInstance = Instance.FromFile(path);
-			// change second only slightly and compare
-			secondInstance.Contexts[1].Scenario.TypedMembers[0].Value = "abcd";
-			var report = InstanceComparer.Report(firstInstance, secondInstance);
-			//Console.WriteLine(string.Join(Environment.NewLine, report.Messages));
-			// not the same anymore
-			Assert.IsFalse(report.Result);
-			// should contain some differences
-			CollectionAssert.IsNotEmpty(report.Messages);
-			// one context is different, report should reflect this once per instance
-			Assert.AreEqual(2, report.Messages.Count, report.Messages.Join(Environment.NewLine));
-		}
+		//[Test]
+		//public static void CompareInstancesTypedMemberDifferent()
+		//{
+		//	// load same instance twice
+		//	var path = Path.Combine(TestContext.CurrentContext.TestDirectory, "data", "reference.xbrl");
+		//	var firstInstance = Instance.FromFile(path);
+		//	var secondInstance = Instance.FromFile(path);
+		//	// change second only slightly and compare
+		//	secondInstance.Contexts[1].Scenario.TypedMembers[0].Value = "abcd";
+		//	var report = InstanceComparer.Report(firstInstance, secondInstance);
+		//	//Console.WriteLine(string.Join(Environment.NewLine, report.Messages));
+		//	// not the same anymore
+		//	Assert.IsFalse(report.Result);
+		//	// should contain some differences
+		//	CollectionAssert.IsNotEmpty(report.Messages);
+		//	// one context is different, report should reflect this once per instance
+		//	Assert.AreEqual(2, report.Messages.Count, report.Messages.Join(Environment.NewLine));
+		//}
 
-		[Test]
-		public static void CompareLargeInstanceMinorDifferenceInContext()
-		{
-			// load same instance twice
-			var path = Path.Combine(TestContext.CurrentContext.TestDirectory, "data", "ars.xbrl");
-			var firstInstance = Instance.FromFile(path);
-			var secondInstance = Instance.FromFile(path);
-			// change second only slightly and compare
-			// original is s2c_VM:x5
-			secondInstance.Contexts["CI22070"].Scenario.ExplicitMembers[5].Value = new XmlQualifiedName("s2c_VM:x6");
-			var report = InstanceComparer.Report(firstInstance, secondInstance, ComparisonTypes.Contexts);
-			//Console.WriteLine(string.Join(Environment.NewLine, report.Messages));
-			// not the same anymore
-			Assert.IsFalse(report.Result);
-			// should contain some differences
-			CollectionAssert.IsNotEmpty(report.Messages);
-			// one context is different, report should reflect this once per instance
-			Assert.AreEqual(2, report.Messages.Count, report.Messages.Join(Environment.NewLine));
-		}
+		//[Test]
+		//public static void CompareLargeInstanceMinorDifferenceInContext()
+		//{
+		//	// load same instance twice
+		//	var path = Path.Combine(TestContext.CurrentContext.TestDirectory, "data", "ars.xbrl");
+		//	var firstInstance = Instance.FromFile(path);
+		//	var secondInstance = Instance.FromFile(path);
+		//	// change second only slightly and compare
+		//	// original is s2c_VM:x5
+		//	secondInstance.Contexts["CI22070"].Scenario.ExplicitMembers[5].Value = new XmlQualifiedName("s2c_VM:x6");
+		//	var report = InstanceComparer.Report(firstInstance, secondInstance, ComparisonTypes.Contexts);
+		//	//Console.WriteLine(string.Join(Environment.NewLine, report.Messages));
+		//	// not the same anymore
+		//	Assert.IsFalse(report.Result);
+		//	// should contain some differences
+		//	CollectionAssert.IsNotEmpty(report.Messages);
+		//	// one context is different, report should reflect this once per instance
+		//	Assert.AreEqual(2, report.Messages.Count, report.Messages.Join(Environment.NewLine));
+		//}
 
 		[Test]
 		public static void CompareLargeInstanceMinorDifferenceInFact()

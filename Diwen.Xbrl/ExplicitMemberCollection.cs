@@ -24,6 +24,7 @@ namespace Diwen.Xbrl
 	using System;
 	using System.Collections.Generic;
 	using System.Collections.ObjectModel;
+	using System.Linq;
 	using System.Xml;
 	using System.Xml.Serialization;
 
@@ -38,8 +39,10 @@ namespace Diwen.Xbrl
 			set
 			{
 				instanceField = value;
-				foreach (var item in this)
+				//foreach (var item in this)
+				for (int i = 0; i < this.Count; i++)
 				{
+					var item = this[i];
 
 					item.Instance = value;
 
@@ -66,6 +69,7 @@ namespace Diwen.Xbrl
 							throw new InvalidOperationException($"No namespace declared for domain '{item.Value.Prefix()}'");
 						}
 					}
+					this[i] = item;
 				}
 			}
 		}
@@ -122,6 +126,21 @@ namespace Diwen.Xbrl
 			var explicitMember = new ExplicitMember(dim, val);
 			Add(explicitMember);
 			return explicitMember;
+		}
+
+		int hashCode = -1;
+
+		public override int GetHashCode()
+		{
+			if (hashCode == -1)
+			{
+				hashCode = this.
+							   Select(m => m.Value.LocalName()).
+								OrderBy(m => m).
+								Join("").
+								GetHashCode();
+			}
+			return hashCode;
 		}
 
 		#region IEquatable implementation

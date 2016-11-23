@@ -26,7 +26,7 @@ namespace Diwen.Xbrl
 	using System.Xml.Schema;
 	using System.Xml.Serialization;
 
-	public class TypedMember : IXmlSerializable, IEquatable<TypedMember>, IComparable<TypedMember>
+	public struct TypedMember : IXmlSerializable, IEquatable<TypedMember>, IComparable<TypedMember>
 	{
 		internal Instance Instance { get; set; }
 
@@ -39,13 +39,8 @@ namespace Diwen.Xbrl
 		[XmlIgnore]
 		public string Value { get; set; }
 
-		public TypedMember()
-		{
-
-		}
-
 		public TypedMember(XmlQualifiedName dimension, XmlQualifiedName domain, string value)
-			: this()
+					: this()
 		{
 			Dimension = dimension;
 			Domain = domain;
@@ -59,8 +54,7 @@ namespace Diwen.Xbrl
 
 		public override bool Equals(object obj)
 		{
-			var other = obj as TypedMember;
-			return other != null && Equals(other);
+			return Equals((TypedMember)obj);
 		}
 
 		public override int GetHashCode()
@@ -72,40 +66,18 @@ namespace Diwen.Xbrl
 
 		public static bool operator ==(TypedMember left, TypedMember right)
 		{
-			// If both are null, or both are same instance, return true.
-			if (ReferenceEquals(left, right))
-			{
-				return true;
-			}
-
-			// If one is null, but not both, return false.
-			if (((object)left == null) || ((object)right == null))
-			{
-				return false;
-			}
-
 			// Return true if the fields match:
 			return left.Equals(right);
 		}
 
 		public static bool operator !=(TypedMember left, TypedMember right)
 		{
-			// If one is null, but not both, return true.
-			if (((object)left == null) || ((object)right == null))
-			{
-				return true;
-			}
 			return !left.Equals(right);
 		}
 
 		public static bool operator >(TypedMember left, TypedMember right)
 		{
-			// If both are null, or both are same instance, return false.
-			if (ReferenceEquals(left, right))
-			{
-				return false;
-			}
-			return left != null && left.CompareTo(right) > 0;
+			return left.CompareTo(right) > 0;
 		}
 
 		public static bool operator <(TypedMember left, TypedMember right)
@@ -164,7 +136,6 @@ namespace Diwen.Xbrl
 				writer.WriteAttributeString("xsi", "nil", XmlSchema.InstanceNamespace, "true");
 				writer.WriteEndElement();
 			}
-
 		}
 
 		#endregion
@@ -173,10 +144,9 @@ namespace Diwen.Xbrl
 
 		public bool Equals(TypedMember other)
 		{
-			return other != null
-			&& Dimension == other.Dimension
-			&& Domain == other.Domain
-			&& Value == other.Value;
+			return Dimension == other.Dimension
+						&& Domain == other.Domain
+						&& Value == other.Value;
 		}
 
 		#endregion
@@ -186,21 +156,14 @@ namespace Diwen.Xbrl
 		public int CompareTo(TypedMember other)
 		{
 			int result;
-			if (other == null)
+			result = string.Compare(Dimension.Name, other.Dimension.Name, StringComparison.Ordinal);
+			if (result == 0)
 			{
-				result = -1;
+				result = string.Compare(Domain.Name, other.Domain.Name, StringComparison.Ordinal);
 			}
-			else
+			if (result == 0)
 			{
-				result = string.Compare(Dimension.Name, other.Dimension.Name, StringComparison.Ordinal);
-				if (result == 0)
-				{
-					result = string.Compare(Domain.Name, other.Domain.Name, StringComparison.Ordinal);
-				}
-				if (result == 0)
-				{
-					result = string.Compare(Value, other.Value, StringComparison.Ordinal);
-				}
+				result = string.Compare(Value, other.Value, StringComparison.Ordinal);
 			}
 			return result;
 		}
