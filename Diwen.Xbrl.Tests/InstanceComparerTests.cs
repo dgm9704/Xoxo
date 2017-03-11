@@ -257,6 +257,20 @@ namespace Diwen.Xbrl.Tests
 			Assert.IsFalse(report.Result);
 			Assert.AreEqual(2, report.Messages.Count, report.Messages.Join(Environment.NewLine));
 		}
+
+		[Test]
+		public static void BypassTaxonomyVersion()
+		{
+			var path = Path.Combine(TestContext.CurrentContext.TestDirectory, "data", "reference.xbrl");
+			var firstInstance = Instance.FromFile(path);
+			var secondInstance = Instance.FromFile(path);
+			secondInstance.TaxonomyVersion = null;
+
+			var types = ComparisonTypes.All & ~ComparisonTypes.TaxonomyVersion;
+
+			var report = InstanceComparer.Report(firstInstance, secondInstance, types);
+			Assert.IsTrue(report.Result);
+		}
 	}
 }
 

@@ -81,7 +81,6 @@ namespace Diwen.Xbrl
 		static Dictionary<string, Func<Instance, Instance, bool>> SimpleCheckMethods
 		= new Dictionary<string, Func<Instance, Instance, bool>> {
 			{ "At least one the instances is null", CheckNullInstances },
-			{ "Different TaxonomyVersion", CheckTaxonomyVersion },
 			{ "Different SchemaReference", CheckSchemaReference },
 			{ "Different Units", CheckUnits },
 			{ "Different FilingIndicators", CheckFilingIndicators },
