@@ -55,16 +55,27 @@ namespace Diwen.Xbrl
 
 		public static ComparisonReport Report(Instance a, Instance b, ComparisonTypes comparisonTypes)
 		{
-			var messages = ComparisonMethods.
+			return Report(a, b, comparisonTypes, BasicComparisons.All);
+		}
+
+		public static ComparisonReport Report(Instance a, Instance b, ComparisonTypes comparisonTypes, BasicComparisons basicComparisons)
+		{
+			var messages = new List<string>();
+
+			if (comparisonTypes.HasFlag(ComparisonTypes.Basic))
+			{
+				messages.AddRange(BasicComparison(a, b, basicComparisons));
+			}
+
+			messages.AddRange(ComparisonMethods.
 							Where(c => comparisonTypes.HasFlag(c.Key)).
-							SelectMany(c => c.Value(a, b)).
-							ToList();
+			                  SelectMany(c => c.Value(a, b)));
+			    
 			return new ComparisonReport(!messages.Any(), messages);
 		}
 
 		static Dictionary<ComparisonTypes, Func<Instance, Instance, IEnumerable<string>>> ComparisonMethods
 		= new Dictionary<ComparisonTypes, Func<Instance, Instance, IEnumerable<string>>> {
-			{ ComparisonTypes.Basic, BasicComparison },
 			{ ComparisonTypes.Contexts, ScenarioComparison },
 			{ ComparisonTypes.Facts, FactComparison },
 			{ ComparisonTypes.DomainNamespaces, DomainNamespaceComparison },
@@ -78,24 +89,25 @@ namespace Diwen.Xbrl
 
 		#region SimpleChecks
 
-		static Dictionary<string, Func<Instance, Instance, bool>> SimpleCheckMethods
-		= new Dictionary<string, Func<Instance, Instance, bool>> {
-			{ "At least one the instances is null", CheckNullInstances },
-			{ "Different SchemaReference", CheckSchemaReference },
-			{ "Different Units", CheckUnits },
-			{ "Different FilingIndicators", CheckFilingIndicators },
-			{ "Different number of Contexts", CheckContextCount },
-			{ "Different number of Facts", CheckFactCount },
-			{ "Different domain namespaces", CheckDomainNamespaces },
-			{ "Different Entity", CheckEntity },
-			{ "Different Period", CheckPeriod }
+		static Dictionary<BasicComparisons, Tuple<string, Func<Instance, Instance, bool>>> SimpleCheckMethods
+		= new Dictionary<BasicComparisons, Tuple<string, Func<Instance, Instance, bool>>> {
+			{BasicComparisons.NullInstances, Tuple.Create<string, Func<Instance, Instance, bool>>("At least one the instances is null", CheckNullInstances) },
+			{BasicComparisons.SchemaReference,Tuple.Create<string, Func<Instance, Instance, bool>>( "Different SchemaReference", CheckSchemaReference) },
+			{BasicComparisons.Units,Tuple.Create<string, Func<Instance, Instance, bool>>( "Different Units", CheckUnits) },
+			{BasicComparisons.FilingIndicators,Tuple.Create<string, Func<Instance, Instance, bool>>( "Different FilingIndicators", CheckFilingIndicators) },
+			{BasicComparisons.ContextCount,Tuple.Create<string, Func<Instance, Instance, bool>>( "Different number of Contexts", CheckContextCount) },
+			{BasicComparisons.FactCount,Tuple.Create<string, Func<Instance, Instance, bool>>( "Different number of Facts", CheckFactCount) },
+			{BasicComparisons.DomainNamespaces,Tuple.Create<string, Func<Instance, Instance, bool>>( "Different domain namespaces", CheckDomainNamespaces) },
+			{BasicComparisons.Entity,Tuple.Create<string, Func<Instance, Instance, bool>>( "Different Entity", CheckEntity) },
+			{BasicComparisons.Period,Tuple.Create<string, Func<Instance, Instance, bool>>( "Different Period", CheckPeriod) }
 		};
 
-		static IEnumerable<string> BasicComparison(Instance a, Instance b)
+		static IEnumerable<string> BasicComparison(Instance a, Instance b, BasicComparisons selection)
 		{
 			return SimpleCheckMethods.
-				Where(check => !check.Value(a, b)).
-				Select(check => check.Key);
+ 				Where(c => selection.HasFlag(c.Key)).
+				Where(c => !c.Value.Item2(a, b)).
+				Select(c => c.Value.Item1);
 		}
 
 		static bool CheckNullInstances(object a, object b)

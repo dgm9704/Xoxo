@@ -271,6 +271,67 @@ namespace Diwen.Xbrl.Tests
 			var report = InstanceComparer.Report(firstInstance, secondInstance, types);
 			Assert.IsTrue(report.Result);
 		}
+
+		[Test]
+		public static void ChooseBasicComparisons()
+		{
+			// Load same file twice
+			// change the other a little, save it and reload so we get a fresh instance
+			// bypassing some bugs that lead to not everything updating on the fly :(
+
+			var path = Path.Combine(TestContext.CurrentContext.TestDirectory, "data", "minimal.xbrl");
+			var tempPath = Path.GetTempFileName();
+
+			var first = Instance.FromFile(path);
+			var second = Instance.FromFile(path);
+
+			var period = new Period(2050, 12, 31);
+			var entity = new Entity("foo", "bar");
+
+			foreach (var context in second.Contexts)
+			{
+				context.Period = period;
+				context.Entity = entity;
+			}
+
+			second.ToFile(tempPath);
+			second = Instance.FromFile(tempPath);
+
+			ComparisonReport report = null;
+			string[] expectedMessages = null;
+			BasicComparisons basicSelection;
+
+			// Full comparison outputs both Entity and Period from basic and detailed comparion
+			report = InstanceComparer.Report(first, second, ComparisonTypes.All);
+			Assert.IsFalse(report.Result);
+			expectedMessages = new string[] {
+				"Different Entity",
+				"Different Period",
+				$"(a) {first.Contexts[0].Entity}",
+				$"(b) {second.Contexts[0].Entity}",
+				$"(a) {first.Contexts[0].Period}",
+				$"(b) {second.Contexts[0].Period}"
+			};
+			CollectionAssert.AreEquivalent(expectedMessages, report.Messages, report.Messages.Join(Environment.NewLine));
+
+			// basic comparison with all flags reports Entity and Period
+			basicSelection = BasicComparisons.All;
+			report = InstanceComparer.Report(first, second, ComparisonTypes.Basic);
+			Assert.IsFalse(report.Result);
+			expectedMessages = new string[] {
+				"Different Entity",
+				"Different Period",
+			};
+			CollectionAssert.AreEquivalent(expectedMessages, report.Messages, report.Messages.Join(Environment.NewLine));
+
+
+			// basic comparison without Entity and Period flags does not list any differences
+			basicSelection &= ~BasicComparisons.Entity;
+			basicSelection &= ~BasicComparisons.Period;
+
+			report = InstanceComparer.Report(first, second, ComparisonTypes.Basic, basicSelection);
+			Assert.IsTrue(report.Result);
+}
 	}
 }
 
