@@ -74,6 +74,68 @@ namespace Diwen.Xbrl
 			return new ComparisonReport(!messages.Any(), messages);
 		}
 
+		public static ComparisonReportObjects ReportObjects(string a, string b)
+		{
+			return ReportObjects(Instance.FromFile(a), Instance.FromFile(b), ComparisonTypes.All, BasicComparisons.All);
+		}
+
+		public static ComparisonReportObjects ReportObjects(Instance a, Instance b, ComparisonTypes comparisons, BasicComparisons basicSelection)
+		{
+			var report = new ComparisonReportObjects();
+
+			if (comparisons.HasFlag(ComparisonTypes.Basic))
+			{
+				report.Basics = BasicComparison(a, b, basicSelection).ToList();
+			}
+
+			if (comparisons.HasFlag(ComparisonTypes.Contexts))
+			{
+				report.Contexts = ScenarioComparison(a, b);
+			}
+
+			if (comparisons.HasFlag(ComparisonTypes.Facts))
+			{
+				report.Facts = FactComparison(a, b);
+			}
+
+			if (comparisons.HasFlag(ComparisonTypes.DomainNamespaces))
+			{
+				report.DomainNamespaces = DomainNamespaceComparison(a, b);
+			}
+
+			if (comparisons.HasFlag(ComparisonTypes.Units))
+			{
+				report.Units = UnitComparison(a, b);
+			}
+
+			if (comparisons.HasFlag(ComparisonTypes.Entity))
+			{
+				report.Entities = EntityComparison(a, b);
+			}
+
+			if (comparisons.HasFlag(ComparisonTypes.Entity))
+			{
+				report.Periods = PeriodComparison(a, b);
+			}
+
+			if (comparisons.HasFlag(ComparisonTypes.TaxonomyVersion))
+			{
+				report.TaxonomyVersions = TaxonomyVersionComparison(a, b);
+			}
+
+			if (comparisons.HasFlag(ComparisonTypes.SchemaReference))
+			{
+				report.SchemaReferences = SchemaReferenceComparison(a, b);
+			}
+
+			if (comparisons.HasFlag(ComparisonTypes.FilingIndicators))
+			{
+				report.FilingIndicators = FilingIndicatorComparison(a, b);
+			}
+
+			return report;
+		}
+
 		static Dictionary<ComparisonTypes, Func<Instance, Instance, IEnumerable<string>>> ComparisonMethods
 		= new Dictionary<ComparisonTypes, Func<Instance, Instance, IEnumerable<string>>> {
 			{ ComparisonTypes.Contexts, ScenarioComparisonMessages },

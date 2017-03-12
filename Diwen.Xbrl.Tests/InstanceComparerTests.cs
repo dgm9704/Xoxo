@@ -331,7 +331,17 @@ namespace Diwen.Xbrl.Tests
 
 			report = InstanceComparer.Report(first, second, ComparisonTypes.Basic, basicSelection);
 			Assert.IsTrue(report.Result);
-}
+		}
+
+		[Test]
+		public static void CompareTotallyDifferentInstancesReportObjects()
+		{
+			var firstPath = Path.Combine(TestContext.CurrentContext.TestDirectory, "data", "reference.xbrl");
+			var secondPath = Path.Combine(TestContext.CurrentContext.TestDirectory, "data", "ars.xbrl");
+			var report = InstanceComparer.ReportObjects(firstPath, secondPath);
+			Assert.IsFalse(report.Result);
+
+		}
 	}
 }
 
