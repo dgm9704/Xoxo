@@ -69,22 +69,22 @@ namespace Diwen.Xbrl
 
 			messages.AddRange(ComparisonMethods.
 							Where(c => comparisonTypes.HasFlag(c.Key)).
-			                  SelectMany(c => c.Value(a, b)));
-			    
+							  SelectMany(c => c.Value(a, b)));
+
 			return new ComparisonReport(!messages.Any(), messages);
 		}
 
 		static Dictionary<ComparisonTypes, Func<Instance, Instance, IEnumerable<string>>> ComparisonMethods
 		= new Dictionary<ComparisonTypes, Func<Instance, Instance, IEnumerable<string>>> {
-			{ ComparisonTypes.Contexts, ScenarioComparison },
-			{ ComparisonTypes.Facts, FactComparison },
-			{ ComparisonTypes.DomainNamespaces, DomainNamespaceComparison },
-			{ ComparisonTypes.Units, UnitComparison },
-			{ ComparisonTypes.Entity, EntityComparison },
-			{ ComparisonTypes.Period, PeriodComparison },
-			{ ComparisonTypes.TaxonomyVersion, TaxonomyVersionComparison },
-			{ ComparisonTypes.SchemaReference, SchemaReferenceComparison },
-			{ ComparisonTypes.FilingIndicators, FilingIndicatorComparison }
+			{ ComparisonTypes.Contexts, ScenarioComparisonMessages },
+			{ ComparisonTypes.Facts, FactComparisonMessages },
+			{ ComparisonTypes.DomainNamespaces, DomainNamespaceComparisonMessages },
+			{ ComparisonTypes.Units, UnitComparisonMessages },
+			{ ComparisonTypes.Entity, EntityComparisonMessages },
+			{ ComparisonTypes.Period, PeriodComparisonMessages },
+			{ ComparisonTypes.TaxonomyVersion, TaxonomyVersionComparisonMessages },
+			{ ComparisonTypes.SchemaReference, SchemaReferenceComparisonMessages },
+			{ ComparisonTypes.FilingIndicators, FilingIndicatorComparisonMessages }
 		};
 
 		#region SimpleChecks
@@ -200,21 +200,26 @@ namespace Diwen.Xbrl
 
 		#region DetailedChecks
 
-		static IEnumerable<string> ContextComparison(Instance a, Instance b)
+		static Tuple<List<Context>, List<Context>> ContextComparison(Instance a, Instance b)
 		{
-			var differences = a.Contexts.ContentCompareReport(b.Contexts);
+			return a.Contexts.ContentCompareReport(b.Contexts);
+		}
+
+		static IEnumerable<string> ContextComparisonMessages(Instance a, Instance b)
+		{
+			var differences = ContextComparison(a, b);
 			var messages = new List<string>(differences.Item1.Count + differences.Item2.Count);
 			messages.AddRange(differences.Item1.Select(item => "(a) " + item.Id + ":" + (item.Scenario != null ? item.Scenario.ToString() : string.Empty)));
 			messages.AddRange(differences.Item2.Select(item => "(b) " + item.Id + ":" + (item.Scenario != null ? item.Scenario.ToString() : string.Empty)));
 			return messages;
 		}
 
-		static IEnumerable<string> ScenarioComparison(Instance a, Instance b)
+		static Tuple<List<Scenario>, List<Scenario>> ScenarioComparison(Instance a, Instance b)
 		{
 			var aList = a.
-						 Contexts.
-						 Select(c => c.Scenario).
-						 ToList();
+			 Contexts.
+			 Select(c => c.Scenario).
+			 ToList();
 
 			var bList = b.
 						 Contexts.
@@ -223,6 +228,12 @@ namespace Diwen.Xbrl
 
 			var differences = aList.ContentCompareReport(bList);
 
+			return differences;
+		}
+
+		static IEnumerable<string> ScenarioComparisonMessages(Instance a, Instance b)
+		{
+			var differences = ScenarioComparison(a, b);
 			var notInB = differences.Item1;
 			var notInA = differences.Item2;
 
@@ -268,27 +279,42 @@ namespace Diwen.Xbrl
 			return messages;
 		}
 
-		static IEnumerable<string> FactComparison(Instance a, Instance b)
+		static Tuple<List<Fact>, List<Fact>> FactComparison(Instance a, Instance b)
 		{
-			var differences = a.Facts.ContentCompareReport(b.Facts);
+			return a.Facts.ContentCompareReport(b.Facts);
+		}
+
+		static IEnumerable<string> FactComparisonMessages(Instance a, Instance b)
+		{
+			var differences = FactComparison(a, b);
 			var result = new List<string>(differences.Item1.Count + differences.Item2.Count);
 			result.AddRange(differences.Item1.Select(item => $"(a) {item} ({item.Context.Scenario})"));
 			result.AddRange(differences.Item2.Select(item => $"(b) {item} ({item.Context.Scenario})"));
 			return result;
 		}
 
-		static IEnumerable<string> DomainNamespaceComparison(Instance a, Instance b)
+		static Tuple<List<string>, List<string>> DomainNamespaceComparison(Instance a, Instance b)
 		{
-			var differences = a.GetUsedDomainNamespaces().
+			return a.GetUsedDomainNamespaces().
 				ContentCompareReport(b.GetUsedDomainNamespaces());
+		}
 
+		static IEnumerable<string> DomainNamespaceComparisonMessages(Instance a, Instance b)
+		{
+			var differences = DomainNamespaceComparison(a, b);
 			var result = new List<string>(differences.Item1.Count + differences.Item2.Count);
 			result.AddRange(differences.Item1.Select(item => $"(a) {item}"));
 			result.AddRange(differences.Item2.Select(item => $"(b) {item}"));
 			return result;
 		}
 
-		static IEnumerable<string> UnitComparison(Instance a, Instance b)
+		static Tuple<List<Unit>, List<Unit>> UnitComparison(Instance a, Instance b)
+		{
+			return a.Units.
+					ContentCompareReport(b.Units);
+		}
+
+		static IEnumerable<string> UnitComparisonMessages(Instance a, Instance b)
 		{
 			var differences = a.Units.
 				ContentCompareReport(b.Units);
@@ -298,7 +324,7 @@ namespace Diwen.Xbrl
 				OrderBy(m => m);
 		}
 
-		static IEnumerable<string> EntityComparison(Instance a, Instance b)
+		static Tuple<List<Identifier>, List<Identifier>> EntityComparison(Instance a, Instance b)
 		{
 			var aList = new List<Identifier>();
 			var bList = new List<Identifier>();
@@ -313,14 +339,17 @@ namespace Diwen.Xbrl
 				bList.Add(b.Contexts.First().Entity.Identifier);
 			}
 
-			var differences = aList.ContentCompareReport(bList);
-
-			return differences.Item1.Select(item => $"(a) Identifier={item}").
-							  Concat(differences.Item2.Select(item => $"(b) Identifier={item}"));
-
+			return aList.ContentCompareReport(bList);
 		}
 
-		static IEnumerable<string> PeriodComparison(Instance a, Instance b)
+		static IEnumerable<string> EntityComparisonMessages(Instance a, Instance b)
+		{
+			var differences = EntityComparison(a, b);
+			return differences.Item1.Select(item => $"(a) Identifier={item}").
+			Concat(differences.Item2.Select(item => $"(b) Identifier={item}"));
+		}
+
+		static Tuple<List<Period>, List<Period>> PeriodComparison(Instance a, Instance b)
 		{
 			var aList = new List<Period>();
 			var bList = new List<Period>();
@@ -335,13 +364,17 @@ namespace Diwen.Xbrl
 				bList.Add(b.Contexts.First().Period);
 			}
 
-			var differences = aList.ContentCompareReport(bList);
-
-			return differences.Item1.Select(item => $"(a) {item}").
-							  Concat(differences.Item2.Select(item => $"(b) {item}"));
+			return aList.ContentCompareReport(bList);
 		}
 
-		static IEnumerable<string> TaxonomyVersionComparison(Instance a, Instance b)
+		static IEnumerable<string> PeriodComparisonMessages(Instance a, Instance b)
+		{
+			var differences = PeriodComparison(a, b);
+			return differences.Item1.Select(item => $"(a) {item}").
+			Concat(differences.Item2.Select(item => $"(b) {item}"));
+		}
+
+		static Tuple<List<string>, List<string>> TaxonomyVersionComparison(Instance a, Instance b)
 		{
 			var aList = new List<string>();
 			var bList = new List<string>();
@@ -349,13 +382,17 @@ namespace Diwen.Xbrl
 			aList.Add(a.TaxonomyVersion);
 			bList.Add(b.TaxonomyVersion);
 
-			var differences = aList.ContentCompareReport(bList);
-
-			return differences.Item1.Select(item => $"(a) taxonomy-version: {item}").
-							  Concat(differences.Item2.Select(item => $"(b) taxonomy-version: {item}"));
+			return aList.ContentCompareReport(bList);
 		}
 
-		static IEnumerable<string> SchemaReferenceComparison(Instance a, Instance b)
+		static IEnumerable<string> TaxonomyVersionComparisonMessages(Instance a, Instance b)
+		{
+			var differences = TaxonomyVersionComparison(a, b);
+			return differences.Item1.Select(item => $"(a) taxonomy-version: {item}").
+			Concat(differences.Item2.Select(item => $"(b) taxonomy-version: {item}"));
+		}
+
+		static Tuple<List<SchemaReference>,List<SchemaReference>> SchemaReferenceComparison(Instance a, Instance b)
 		{
 			var aList = new List<SchemaReference>();
 			var bList = new List<SchemaReference>();
@@ -363,17 +400,25 @@ namespace Diwen.Xbrl
 			aList.Add(a.SchemaReference);
 			bList.Add(b.SchemaReference);
 
-			var differences = aList.ContentCompareReport(bList);
-
-			return differences.Item1.Select(item => $"(a) {item}").
-				Concat(differences.Item2.Select(item => $"(b) {item}"));
+			return aList.ContentCompareReport(bList);
 		}
 
-
-		static IEnumerable<string> FilingIndicatorComparison(Instance a, Instance b)
+		static IEnumerable<string> SchemaReferenceComparisonMessages(Instance a, Instance b)
 		{
-			var differences = a.FilingIndicators.Where(fi => fi.Filed).ToList().
-				ContentCompareReport(b.FilingIndicators.Where(fi => fi.Filed).ToList());
+			var differences = SchemaReferenceComparison(a, b);
+			return differences.Item1.Select(item => $"(a) {item}").
+			Concat(differences.Item2.Select(item => $"(b) {item}"));
+		}
+
+		static Tuple<List<FilingIndicator>,List<FilingIndicator>> FilingIndicatorComparison(Instance a, Instance b)
+		{
+			return a.FilingIndicators.Where(fi => fi.Filed).ToList().
+			ContentCompareReport(b.FilingIndicators.Where(fi => fi.Filed).ToList());
+		}
+
+		static IEnumerable<string> FilingIndicatorComparisonMessages(Instance a, Instance b)
+		{
+			var differences = FilingIndicatorComparison(a, b);
 
 			var result = new List<string>(differences.Item1.Count + differences.Item2.Count);
 			result.AddRange(differences.Item1.Select(item => $"(a) {item}"));

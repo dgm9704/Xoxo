@@ -31,24 +31,24 @@ namespace Diwen.Xbrl.Tests
 	[TestFixture]
 	public static class ExternalTests
 	{
-		[Test]
-		[Ignore("bad performance")]
-		public static void EBA()
-		{
-			//CheckFolderResults(TestFolder("eba"));
-			var folder = Path.Combine(TestContext.CurrentContext.TestDirectory, "eba");
-			foreach (var zip in Directory.GetFiles(folder, "*.zip"))
-			{
-				TestZippedFiles(zip, folder);
-			}
-		}
+		//[Test]
+		//[Ignore("bad performance")]
+		//public static void EBA()
+		//{
+		//	//CheckFolderResults(TestFolder("eba"));
+		//	var folder = Path.Combine(TestContext.CurrentContext.TestDirectory, "eba");
+		//	foreach (var zip in Directory.GetFiles(folder, "*.zip"))
+		//	{
+		//		TestZippedFiles(zip, folder);
+		//	}
+		//}
 
-		[Test]
-		[Ignore("bad performance")]
-		public static void EIOPA()
-		{
-			CheckFolderResults(TestFolder("eiopa"));
-		}
+		//[Test]
+		//[Ignore("bad performance")]
+		//public static void EIOPA()
+		//{
+		//	CheckFolderResults(TestFolder("eiopa"));
+		//}
 
 		[Test]
 		public static void Fi_Sbr()
