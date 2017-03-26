@@ -1,6 +1,26 @@
 # Xoxo
 Container for the Diwen.Xbrl library and any related stuff
 
+## Diwen.Xbrl
+A .NET library for reading, writing and comparing XBRL documents (instances)
+Supports:
+
+- EBA and EIOPA ITS reporting (eg Solvency II, COREP, FINREP, AE, FP, SBP)
+
+- Australian and Finnish (tentative) SBR message structures
+
+### License:
+
+GNU Lesser General Public License v3.0
+
+http://www.gnu.org/licenses/gpl.txt
+
+http://www.gnu.org/licenses/lgpl.txt
+
+### NuGet 
+https://www.nuget.org/packages/Diwen.Xbrl/
+
+
 ### Environment
 C# 6, Mono/.Net 4.5
 
@@ -13,27 +33,11 @@ Builds and runs without modifications on Microsoft Visual Studio Community 2015 
 ### Dependencies
 NUnit 3+ for testing, tests are pretty simple and should mostly work also with MSTest or XUnit 
 
-## Diwen.Xbrl
-A .NET library for reading, writing and comparing XBRL documents (instances)
-Supports:
-- EBA and EIOPA ITS reporting (eg Solvency II, COREP, FINREP, AE, FP, SBP)
-- Australian and Finnish (tentative) SBR message structures
-
-License:
-
-GNU Lesser General Public License v3.0
-
-http://www.gnu.org/licenses/gpl.txt
-
-http://www.gnu.org/licenses/lgpl.txt
-
-### NuGet 
-https://www.nuget.org/packages/Diwen.Xbrl/
 
 ## Diwen.Xbrl.Tests
 Tests for exercising Diwen.Xbrl code, also serving as documentation and samples
 
-License
+### License
 
 Free Public License 1.0.0
 
