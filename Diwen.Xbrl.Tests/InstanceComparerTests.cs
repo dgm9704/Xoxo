@@ -340,8 +340,88 @@ namespace Diwen.Xbrl.Tests
 			var secondPath = Path.Combine(TestContext.CurrentContext.TestDirectory, "data", "ars.xbrl");
 			var report = InstanceComparer.ReportObjects(firstPath, secondPath);
 			Assert.IsFalse(report.Result);
+		}
 
+		[Test]
+		public static void CompareLargeInstanceMinorDifferenceInFactReportObjects()
+		{
+			// load same instance twice
+			var path = Path.Combine(TestContext.CurrentContext.TestDirectory, "data", "ars.xbrl");
+			var firstInstance = Instance.FromFile(path);
+			var secondInstance = Instance.FromFile(path);
+			// change one fact in both instances
+			// original is 0
+			firstInstance.Facts[33099].Value = "FOOBAR";
+			secondInstance.Facts[33099].Value = "DEADBEEF";
+			var report = InstanceComparer.ReportObjects(firstInstance, secondInstance, ComparisonTypes.All, BasicComparisons.All);
+
+			// not the same anymore
+			Assert.IsFalse(report.Result);
+
+			// one fact is different, report should reflect this once per instance
+			Assert.AreEqual(1, report.Facts.Item1.Count);
+			Assert.AreEqual(1, report.Facts.Item2.Count);
+		}
+
+		[Test]
+		public static void ExamineFactDifferences()
+		{
+			// load same instance twice
+			var path = Path.Combine(TestContext.CurrentContext.TestDirectory, "data", "ars.xbrl");
+			var firstInstance = Instance.FromFile(path);
+			var secondInstance = Instance.FromFile(path);
+
+			// change some facts  on the second instance
+			firstInstance.Facts[0].Value = "DEADBEED";
+			firstInstance.Facts[1].Decimals = "16";
+
+			secondInstance.Facts[0].Value = "FOOBAR";
+			secondInstance.Facts[1].Decimals = "9";
+
+			// change some context members
+			secondInstance.Contexts[4].AddExplicitMember("AO", "s2c_AO:x0");
+			secondInstance.Contexts[5].AddExplicitMember("RT", "s2c_RT:x52");
+
+			// generate raw differences
+			var report = InstanceComparer.ReportObjects(firstInstance, secondInstance, ComparisonTypes.All, BasicComparisons.All);
+			// should give negative result because differences were found
+			Assert.IsFalse(report.Result);
+			// should report both facts for both instances
+			Assert.AreEqual(2, report.Facts.Item1.Count);
+			Assert.AreEqual(2, report.Facts.Item2.Count);
+
+			// try to match the facts
+			var factReport = FactReport.FromReport(report);
+			Assert.IsNotNull(factReport.Matches);
+		}
+
+		[Test]
+		public static void CompareDifferentUnits()
+		{
+			var path = Path.Combine(TestContext.CurrentContext.TestDirectory, "data", "reference.xbrl");
+			var first = Instance.FromFile(path);
+			var second = Instance.FromFile(path);
+
+			var unit = new Unit("uUSD", "iso4217:USD");
+			second.Units.Add(unit);
+			second.Facts[1].Unit = unit;
+			second.Units.Remove("uEUR");
+
+			// write+read just to make sure all references are updated internally :(
+			var tmpfile = Path.GetTempFileName();
+			second.ToFile(tmpfile);
+			second = Instance.FromFile(tmpfile);
+
+			var report = InstanceComparer.Report(first, second, ComparisonTypes.All);
+			Assert.IsFalse(report.Result);
+			var expectedMessages = new string[] {
+				"Different Units",
+				$"(a) {first.Facts[1]} ({first.Facts[1].Context.Scenario})",
+				$"(b) {second.Facts[1]} ({second.Facts[1].Context.Scenario})",
+				"(a) iso4217:EUR",
+				"(b) iso4217:USD",
+			};
+			CollectionAssert.AreEquivalent(expectedMessages, report.Messages, report.Messages.Join(Environment.NewLine));
 		}
 	}
 }
-

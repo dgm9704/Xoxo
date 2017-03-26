@@ -133,7 +133,25 @@ namespace Diwen.Xbrl
 				report.FilingIndicators = FilingIndicatorComparison(a, b);
 			}
 
+			report.Result = GetResultForReport(report);
+
 			return report;
+		}
+
+		private static bool GetResultForReport(ComparisonReportObjects report)
+		{
+			return !(
+				(report.Basics != null && report.Basics.Any())
+				|| (report.Contexts != null && (report.Contexts.Item1.Any() || report.Contexts.Item2.Any()))
+				|| (report.Facts != null && (report.Facts.Item1.Any()) || report.Facts.Item2.Any())
+				|| (report.DomainNamespaces != null && (report.DomainNamespaces.Item1.Any() || report.DomainNamespaces.Item2.Any()))
+				|| (report.Units != null && (report.Units.Item1.Any() || report.Units.Item2.Any()))
+				|| (report.Entities != null && (report.Entities.Item1.Any() || report.Entities.Item2.Any()))
+				|| (report.Periods != null && (report.Periods.Item1.Any() || report.Periods.Item2.Any()))
+				|| (report.TaxonomyVersions != null && (report.TaxonomyVersions.Item1.Any() || report.TaxonomyVersions.Item2.Any()))
+				|| (report.SchemaReferences != null && (report.SchemaReferences.Item1.Any() || report.SchemaReferences.Item2.Any()))
+				|| (report.FilingIndicators != null && (report.FilingIndicators.Item1.Any() || report.FilingIndicators.Item2.Any()))
+				);
 		}
 
 		static Dictionary<ComparisonTypes, Func<Instance, Instance, IEnumerable<string>>> ComparisonMethods
@@ -167,7 +185,7 @@ namespace Diwen.Xbrl
 		static IEnumerable<string> BasicComparison(Instance a, Instance b, BasicComparisons selection)
 		{
 			return SimpleCheckMethods.
- 				Where(c => selection.HasFlag(c.Key)).
+				 Where(c => selection.HasFlag(c.Key)).
 				Where(c => !c.Value.Item2(a, b)).
 				Select(c => c.Value.Item1);
 		}
@@ -454,7 +472,7 @@ namespace Diwen.Xbrl
 			Concat(differences.Item2.Select(item => $"(b) taxonomy-version: {item}"));
 		}
 
-		static Tuple<List<SchemaReference>,List<SchemaReference>> SchemaReferenceComparison(Instance a, Instance b)
+		static Tuple<List<SchemaReference>, List<SchemaReference>> SchemaReferenceComparison(Instance a, Instance b)
 		{
 			var aList = new List<SchemaReference>();
 			var bList = new List<SchemaReference>();
@@ -472,7 +490,7 @@ namespace Diwen.Xbrl
 			Concat(differences.Item2.Select(item => $"(b) {item}"));
 		}
 
-		static Tuple<List<FilingIndicator>,List<FilingIndicator>> FilingIndicatorComparison(Instance a, Instance b)
+		static Tuple<List<FilingIndicator>, List<FilingIndicator>> FilingIndicatorComparison(Instance a, Instance b)
 		{
 			return a.FilingIndicators.Where(fi => fi.Filed).ToList().
 			ContentCompareReport(b.FilingIndicators.Where(fi => fi.Filed).ToList());

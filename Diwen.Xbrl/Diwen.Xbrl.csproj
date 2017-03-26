@@ -1,5 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+﻿<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
@@ -56,7 +55,6 @@
     <Compile Include="SchemaReference.cs" />
     <Compile Include="Fact.cs" />
     <Compile Include="ExplicitMemberCollection.cs" />
-    <Compile Include="FilingIndicatorCollection.cs" />
     <Compile Include="TypedMemberCollection.cs" />
     <Compile Include="ContextCollection.cs" />
     <Compile Include="FactCollection.cs" />
@@ -70,9 +68,12 @@
     <Compile Include="IListExtensions.cs" />
     <Compile Include="InstanceInfo.cs" />
     <Compile Include="XmlElementExtensions.cs" />
+    <Compile Include="FilingIndicatorCollection.cs" />
     <Compile Include="IEnumerableOfStringExtensions.cs" />
     <Compile Include="BasicComparisons.cs" />
     <Compile Include="ComparisonReportObjects.cs" />
+    <Compile Include="FactReport.cs" />
+    <Compile Include="ContextReport.cs" />
   </ItemGroup>
   <ItemGroup>
     <CodeAnalysisDictionary Include="..\CustomDictionary.xml">
