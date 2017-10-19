@@ -52,9 +52,7 @@ namespace Diwen.Xbrl
 
 		[XmlIgnore]
 		public bool HasMembers
-		{
-			get { return ExplicitMembers.Any() || TypedMembers.Any(); }
-		}
+		=> ExplicitMembers.Any() || TypedMembers.Any();
 
 		public Scenario()
 		{
@@ -85,10 +83,7 @@ namespace Diwen.Xbrl
 		}
 
 		public override bool Equals(object obj)
-		{
-			var other = obj as Scenario;
-			return other != null && Equals(other);
-		}
+		=> Equals(obj as Scenario);
 
 		int hashCode = -1;
 		public override int GetHashCode()
@@ -101,14 +96,10 @@ namespace Diwen.Xbrl
 		}
 
 		public ExplicitMember AddExplicitMember(string dimension, string value)
-		{
-			return ExplicitMembers.Add(dimension, value);
-		}
+		=> ExplicitMembers.Add(dimension, value);
 
 		public TypedMember AddTypedMember(string dimension, string domain, string value)
-		{
-			return TypedMembers.Add(dimension, domain, value);
-		}
+		=> TypedMembers.Add(dimension, domain, value);
 
 		#region IEquatable implementation
 

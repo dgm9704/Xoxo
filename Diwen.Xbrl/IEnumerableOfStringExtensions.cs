@@ -26,8 +26,6 @@ namespace Diwen.Xbrl
 	public static class IEnumerableOfStringExtensions
 	{
 		public static string Join(this IEnumerable<string> values, string separator)
-		{
-			return string.Join(separator, values);
-		}
+		=> string.Join(separator, values);
 	}
 }

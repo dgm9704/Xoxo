@@ -62,55 +62,37 @@ namespace Diwen.Xbrl
 		}
 
 		public override int GetHashCode()
-		{
-			return Value != null ? Value.GetHashCode() : 0;
-		}
+		=> Value != null ? Value.GetHashCode() : 0;
 
 		public override bool Equals(object obj)
-		{
-			return Equals((ExplicitMember)obj);
-		}
+		=> Equals((ExplicitMember)obj);
 
 		public override string ToString()
-		{
-			return $"{Dimension.LocalName()}={MemberCode}";
-		}
+		=> $"{Dimension.LocalName()}={MemberCode}";
 
 		public int Compare(ExplicitMember other)
-		{
-			return CompareTo(other);
-		}
+		=> CompareTo(other);
 
 		#region operator overloads
 
 		public static bool operator ==(ExplicitMember left, ExplicitMember right)
-		{
-			// Return true if the fields match:
-			return left.Equals(right);
-		}
+		=> left.Equals(right);
 
 		public static bool operator !=(ExplicitMember left, ExplicitMember right)
-		{
-			return !left.Equals(right);
-		}
+		=> !left.Equals(right);
 
 		public static bool operator >(ExplicitMember left, ExplicitMember right)
-		{
-			return left.CompareTo(right) > 0;
-		}
+		=> left.CompareTo(right) > 0;
+
 		public static bool operator <(ExplicitMember left, ExplicitMember right)
-		{
-			return right > left;
-		}
+		=> right > left;
 
 		#endregion
 
 		#region IEquatable implementation
 
 		public bool Equals(ExplicitMember other)
-		{
-			return Dimension == other.Dimension && Value == other.Value;
-		}
+		=> Dimension == other.Dimension && Value == other.Value;
 
 		#endregion
 

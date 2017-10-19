@@ -29,9 +29,7 @@ namespace Diwen.Xbrl
 	public class FilingIndicatorCollection : Collection<FilingIndicator>, IEquatable<IList<FilingIndicator>>
 	{
 		public FilingIndicator Add(Context context, string value)
-		{
-			return Add(context, value, true);
-		}
+		=> Add(context, value, true);
 
 		public FilingIndicator Add(Context context, string value, bool filed)
 		{

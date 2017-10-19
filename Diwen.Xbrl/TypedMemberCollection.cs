@@ -108,9 +108,7 @@ namespace Diwen.Xbrl
 		#region IEquatable implementation
 
 		public bool Equals(IList<TypedMember> other)
-		{
-			return this.ContentCompare(other);
-		}
+		=> this.ContentCompare(other);
 
 		#endregion
 

@@ -81,10 +81,7 @@ namespace Diwen.Xbrl
 		}
 
 		public override bool Equals(object obj)
-		{
-			var other = obj as Segment;
-			return other != null && Equals(other);
-		}
+		=> Equals(obj as Segment);
 
 		public override int GetHashCode()
 		{
@@ -101,14 +98,10 @@ namespace Diwen.Xbrl
 		}
 
 		public ExplicitMember AddExplicitMember(string dimension, string value)
-		{
-			return ExplicitMembers.Add(dimension, value);
-		}
+		=> ExplicitMembers.Add(dimension, value);
 
 		public TypedMember AddTypedMember(string dimension, string domain, string value)
-		{
-			return TypedMembers.Add(dimension, domain, value);
-		}
+		=> TypedMembers.Add(dimension, domain, value);
 
 		#region IEquatable implementation
 

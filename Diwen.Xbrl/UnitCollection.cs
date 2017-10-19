@@ -30,15 +30,17 @@ namespace Diwen.Xbrl
 	{
 		Instance Instance;
 
-		public UnitCollection()
-		{
-
-		}
+		public UnitCollection() { }
 
 		public UnitCollection(Instance instance)
 			: this()
 		{
 			Instance = instance;
+		}
+
+		public UnitCollection(IEnumerable<Unit> units)
+		{
+			AddRange(units);
 		}
 
 		public void AddRange(IEnumerable<Unit> units)
@@ -50,27 +52,16 @@ namespace Diwen.Xbrl
 		}
 
 		public void Add(string id, string measure)
-		{
-			Add(new Unit(id, measure));
-		}
+		=> Add(new Unit(id, measure));
 
 		public UnitCollection UsedUnits()
-		{
-			var result = new UnitCollection();
-			result.AddRange(this.Where(u => Instance.Facts.Any(f => f.Unit == u)));
-			return result;
-		}
+		=> new UnitCollection(this.Where(u => Instance.Facts.Any(f => f.Unit == u)));
 
 		protected override string GetKeyForItem(Unit item)
-		{
-			return item != null ? item.Id : null;
-		}
+		=> item != null ? item.Id : null;
 
 		public override bool Equals(object obj)
-		{
-			var other = obj as UnitCollection;
-			return other != null && Equals(other);
-		}
+		=> Equals(obj as UnitCollection);
 
 		public override int GetHashCode()
 		{
@@ -85,9 +76,7 @@ namespace Diwen.Xbrl
 		#region IEquatable implementation
 
 		public bool Equals(IList<Unit> other)
-		{
-			return this.ContentCompare(other);
-		}
+		=> this.ContentCompare(other);
 
 		#endregion
 	}

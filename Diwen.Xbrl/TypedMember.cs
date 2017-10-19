@@ -48,56 +48,37 @@ namespace Diwen.Xbrl
 		}
 
 		public override string ToString()
-		{
-			return $"{Dimension.LocalName()}={Value}";
-		}
+		=> $"{Dimension.LocalName()}={Value}";
 
 		public override bool Equals(object obj)
-		{
-			return Equals((TypedMember)obj);
-		}
+		=> Equals((TypedMember)obj);
 
 		public override int GetHashCode()
-		{
-			return Value != null ? Value.GetHashCode() : 0;
-		}
+		=> Value != null ? Value.GetHashCode() : 0;
 
 		#region operator overloads
 
 		public static bool operator ==(TypedMember left, TypedMember right)
-		{
-			// Return true if the fields match:
-			return left.Equals(right);
-		}
+		=> left.Equals(right);
 
 		public static bool operator !=(TypedMember left, TypedMember right)
-		{
-			return !left.Equals(right);
-		}
+		=> !left.Equals(right);
 
 		public static bool operator >(TypedMember left, TypedMember right)
-		{
-			return left.CompareTo(right) > 0;
-		}
+		=> left.CompareTo(right) > 0;
 
 		public static bool operator <(TypedMember left, TypedMember right)
-		{
-			return right > left;
-		}
+		=> right > left;
 
 		public int Compare(TypedMember other)
-		{
-			return CompareTo(other);
-		}
+		=> CompareTo(other);
 
 		#endregion
 
 		#region IXmlSerializable implementation
 
 		public XmlSchema GetSchema()
-		{
-			return null;
-		}
+		=> null;
 
 		public void ReadXml(XmlReader reader)
 		{
@@ -143,11 +124,9 @@ namespace Diwen.Xbrl
 		#region IEquatable implementation
 
 		public bool Equals(TypedMember other)
-		{
-			return Dimension == other.Dimension
+		=> Dimension == other.Dimension
 						&& Domain == other.Domain
 						&& Value == other.Value;
-		}
 
 		#endregion
 

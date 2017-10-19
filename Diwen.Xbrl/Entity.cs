@@ -59,6 +59,7 @@ namespace Diwen.Xbrl
 
 		public Entity()
 		{
+			Identifier = new Identifier();
 			Segment = new Segment();
 		}
 
@@ -69,14 +70,10 @@ namespace Diwen.Xbrl
 		}
 
 		public ExplicitMember AddExplicitMember(string dimension, string value)
-		{
-			return Segment.ExplicitMembers.Add(dimension, value);
-		}
+		=> Segment.ExplicitMembers.Add(dimension, value);
 
 		public override string ToString()
-		{
-			return $"Identifier={Identifier}";
-		}
+		=> $"Identifier={Identifier}";
 
 		#region IEquatable implementation
 

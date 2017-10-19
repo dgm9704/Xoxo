@@ -114,18 +114,14 @@ namespace Diwen.Xbrl
 		}
 
 		protected override string GetKeyForItem(Context item)
-		{
-			return item != null
+		=> item != null
 				? item.Id
 				: null;
-		}
 
 		#region IEquatable implementation
 
 		public bool Equals(IList<Context> other)
-		{
-			return this.ContentCompare(other);
-		}
+		=> this.ContentCompare(other);
 
 		#endregion
 	}

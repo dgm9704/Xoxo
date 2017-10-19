@@ -55,7 +55,7 @@ namespace Diwen.Xbrl
 		[XmlIgnore]
 		public XmlNamespaceManager Namespaces { get; set; }
 
-		Entity entityField;
+		Entity entityField = new Entity();
 
 		[XmlIgnore]
 		public Entity Entity
@@ -69,7 +69,7 @@ namespace Diwen.Xbrl
 		}
 
 		[XmlIgnore]
-		public Period Period { get; set; }
+		public Period Period { get; set; } = new Period();
 
 		[XmlIgnore]
 		public string TaxonomyVersion { get; set; }
@@ -87,20 +87,18 @@ namespace Diwen.Xbrl
 		public string TypedDomainNamespace { get; private set; }
 
 		[XmlElement("schemaRef", Namespace = "http://www.xbrl.org/2003/linkbase")]
-		public SchemaReference SchemaReference { get; set; }
+		public SchemaReference SchemaReference { get; set; } = new SchemaReference();
 
 		[XmlElement("unit", Namespace = "http://www.xbrl.org/2003/instance")]
 		public UnitCollection Units { get; set; }
 
 		[XmlArray("fIndicators", Namespace = "http://www.eurofiling.info/xbrl/ext/filing-indicators")]
 		[XmlArrayItem("filingIndicator", Namespace = "http://www.eurofiling.info/xbrl/ext/filing-indicators")]
-		public FilingIndicatorCollection FilingIndicators { get; set; }
+		public FilingIndicatorCollection FilingIndicators { get; set; } = new FilingIndicatorCollection();
 
 		[XmlIgnore]
 		public bool FilingIndicatorsSpecified
-		{
-			get { return FilingIndicators != null && FilingIndicators.Any(); }
-		}
+		=> FilingIndicators != null && FilingIndicators.Any();
 
 		[XmlElement("context", Namespace = "http://www.xbrl.org/2003/instance")]
 		public ContextCollection Contexts { get; set; }
@@ -204,9 +202,7 @@ namespace Diwen.Xbrl
 		}
 
 		public void AddDomainNamespace(string prefix, string namespaceUri)
-		{
-			Namespaces.AddNamespace(prefix, namespaceUri);
-		}
+		=> Namespaces.AddNamespace(prefix, namespaceUri);
 
 		public Context GetContext(Scenario scenario)
 		{
@@ -342,12 +338,14 @@ namespace Diwen.Xbrl
 		{
 			Namespaces = new XmlNamespaceManager(new NameTable());
 			AddDefaultNamespaces();
-			SchemaReference = new SchemaReference();
-			FilingIndicators = new FilingIndicatorCollection();
+			//SchemaReference = new SchemaReference();
+			//FilingIndicators = new FilingIndicatorCollection();
 			Units = new UnitCollection(this);
 			Contexts = new ContextCollection(this);
 			Facts = new FactCollection(this);
 			Comments = new Collection<string>();
+			//Entity = new Entity();
+			//Period = new Period();
 		}
 
 		#region IEquatable implementation
@@ -376,19 +374,14 @@ namespace Diwen.Xbrl
 		}
 
 		public override int GetHashCode()
-		{
-			return SchemaReference.GetHashCode()
+		=> SchemaReference.GetHashCode()
 			^ Units.GetHashCode()
 			^ FilingIndicators.GetHashCode();
-		}
 
 		#endregion
 
 		public override bool Equals(object obj)
-		{
-			var other = obj as Instance;
-			return other != null && Equals(other);
-		}
+		=> Equals(obj as Instance);
 
 		void RebuildNamespacesAfterRead()
 		{
@@ -472,7 +465,6 @@ namespace Diwen.Xbrl
 		{
 			foreach (var context in contextsWithMembers)
 			{
-				//foreach (var m in context.Scenario.ExplicitMembers)
 				for (int i = 0; i < context.Scenario.ExplicitMembers.Count; i++)
 				{
 					var m = context.Scenario.ExplicitMembers[i];
@@ -488,7 +480,7 @@ namespace Diwen.Xbrl
 					}
 					context.Scenario.ExplicitMembers[i] = m;
 				}
-				//foreach (var m in context.Scenario.TypedMembers)
+
 				for (int i = 0; i < context.Scenario.TypedMembers.Count; i++)
 				{
 					var m = context.Scenario.TypedMembers[i];
@@ -567,30 +559,19 @@ namespace Diwen.Xbrl
 		}
 
 		public FilingIndicator AddFilingIndicator(string value)
-		{
-			return AddFilingIndicator(value, true);
-		}
+		=> AddFilingIndicator(value, true);
 
 		public FilingIndicator AddFilingIndicator(Context context, string value)
-		{
-			return AddFilingIndicator(context, value, true);
-		}
+		=> AddFilingIndicator(context, value, true);
 
 		public FilingIndicator AddFilingIndicator(string value, bool filed)
-		{
-			var context = GetContext((Scenario)null);
-			return AddFilingIndicator(context, value, filed);
-		}
+		=> AddFilingIndicator(GetContext((Scenario)null), value, filed);
 
 		public FilingIndicator AddFilingIndicator(Context context, string value, bool filed)
-		{
-			return FilingIndicators.Add(context, value, filed);
-		}
+		=> FilingIndicators.Add(context, value, filed);
 
 		public Fact AddFact(Context context, string metric, string unitRef, string decimals, string value)
-		{
-			return Facts.Add(context, metric, unitRef, decimals, value);
-		}
+		=> Facts.Add(context, metric, unitRef, decimals, value);
 
 		public Fact AddFact(Scenario scenario, string metric, string unitRef, string decimals, string value)
 		{
@@ -832,9 +813,7 @@ namespace Diwen.Xbrl
 		}
 
 		public static Instance FromStream(Stream stream)
-		{
-			return FromStream(stream, false);
-		}
+		=> FromStream(stream, false);
 
 		public static Instance FromStream(Stream stream, bool removeUnusedObjects)
 		{
@@ -930,9 +909,7 @@ namespace Diwen.Xbrl
 		}
 
 		public string ToXml()
-		{
-			return ToXmlDocument().OuterXml;
-		}
+		=> ToXmlDocument().OuterXml;
 
 		#endregion
 	}

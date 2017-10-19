@@ -417,5 +417,17 @@ namespace Diwen.Xbrl.Tests
 			};
 			CollectionAssert.AreEquivalent(expectedMessages, report.Messages, report.Messages.Join(Environment.NewLine));
 		}
+
+		[Test]
+		public static void InstancesAreComparableAfterCreation()
+		{
+			var first = new Instance();
+			var second = new Instance();
+
+			var comparison = InstanceComparer.Report(first, second);
+
+			Assert.IsTrue(comparison.Result, comparison.Messages.Join(Environment.NewLine));
+		}
+
 	}
 }

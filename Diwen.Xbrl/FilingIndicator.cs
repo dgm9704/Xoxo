@@ -78,29 +78,20 @@ namespace Diwen.Xbrl
 		}
 
 		public override bool Equals(object obj)
-		{
-			var other = obj as FilingIndicator;
-			return other != null && Equals(other);
-		}
+		=> Equals(obj as FilingIndicator);
 
 		public override int GetHashCode()
-		{
-			return Value.GetHashCode();
-		}
+		=> Value.GetHashCode();
 
 		public override string ToString()
-		{
-			return $"Value={Value}, Filed={Filed}, Context={ContextRef}";
-		}
+		=> $"Value={Value}, Filed={Filed}, Context={ContextRef}";
 
 		#region IEquatable implementation
 
 		public bool Equals(FilingIndicator other)
-		{
-			return other != null
+		=> other != null
 			&& Filed == other.Filed
 			&& Value.Equals(other.Value, StringComparison.Ordinal);
-		}
 
 		#endregion
 	}

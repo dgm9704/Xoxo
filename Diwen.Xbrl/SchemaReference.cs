@@ -46,29 +46,20 @@ namespace Diwen.Xbrl
 		}
 
 		public override bool Equals(object obj)
-		{
-			var other = obj as SchemaReference;
-			return other != null && Equals(other);
-		}
+		=> Equals(obj as SchemaReference);
 
 		public override string ToString()
-		{
-			return $"SchemaReference: Type={Type}, Value={Value}";
-		}
+		=> $"SchemaReference: Type={Type}, Value={Value}";
 
 		#region IEquatable implementation
 
 		public bool Equals(SchemaReference other)
-		{
-			return other != null
-			&& Type.Equals(other.Type, StringComparison.Ordinal)
-			&& Value.Equals(other.Value, StringComparison.Ordinal);
-		}
+		=> other != null
+			&& Type == null ? other.Type == null : Type.Equals(other.Type, StringComparison.Ordinal)
+			&& Value == null ? other.Value == null : Value.Equals(other.Value, StringComparison.Ordinal);
 
 		public override int GetHashCode()
-		{
-			return Value != null ? Value.GetHashCode() : 0;
-		}
+		=> Value != null ? Value.GetHashCode() : 0;
 
 		#endregion
 

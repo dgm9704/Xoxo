@@ -106,9 +106,7 @@ namespace Diwen.Xbrl
 		}
 
 		public Fact AddFact(Context context, string metric, string unitRef, string decimals, string value)
-		{
-			return Facts.Add(context, metric, unitRef, decimals, value);
-		}
+		=> Facts.Add(context, metric, unitRef, decimals, value);
 
 		public Fact AddFact(Scenario scenario, string metric, string unitRef, string decimals, string value)
 		{
@@ -207,9 +205,7 @@ namespace Diwen.Xbrl
 		}
 
 		public override int GetHashCode()
-		{
-			return Value.GetHashCode();
-		}
+		=> Value.GetHashCode();
 
 		#region IEquatable implementation
 

@@ -39,7 +39,7 @@ namespace Diwen.Xbrl
 			set
 			{
 				instanceField = value;
-				//foreach (var item in this)
+
 				for (int i = 0; i < this.Count; i++)
 				{
 					var item = this[i];
@@ -103,8 +103,8 @@ namespace Diwen.Xbrl
 			if (Instance != null)
 			{
 				string dimNs = Instance.DimensionNamespace;
-				string valPrefix = value.Substring(0, value.IndexOf(':'));
-				string valNs = Instance.Namespaces.LookupNamespace(valPrefix);
+				var valPrefix = value.Substring(0, value.IndexOf(':'));
+				var valNs = Instance.Namespaces.LookupNamespace(valPrefix);
 				value = value.Substring(value.IndexOf(':') + 1);
 				if (Instance.CheckExplicitMemberDomainExists)
 				{
@@ -146,9 +146,7 @@ namespace Diwen.Xbrl
 		#region IEquatable implementation
 
 		public bool Equals(IList<ExplicitMember> other)
-		{
-			return this.ContentCompare(other);
-		}
+		=> this.ContentCompare(other);
 
 		#endregion
 	}

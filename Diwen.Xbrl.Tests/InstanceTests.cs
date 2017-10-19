@@ -25,7 +25,7 @@ namespace Diwen.Xbrl.Tests
 	[TestFixture]
 	public static class InstanceTests
 	{
-		static Instance CreateSolvencyInstance()
+		internal static Instance CreateSolvencyInstance()
 		{
 			// Sets default namespaces and units PURE, EUR
 			var instance = new Instance();

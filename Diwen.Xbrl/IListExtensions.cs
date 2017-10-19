@@ -73,11 +73,9 @@ namespace Diwen.Xbrl
 		}
 
 		internal static Tuple<List<T>, List<T>> ContentCompareReport<T>(this IList<T> left, IList<T> right)
-		{
-			return new Tuple<List<T>, List<T>>(
+		=> new Tuple<List<T>, List<T>>(
 				left.AsParallel().Except(right.AsParallel()).ToList(),
 				right.AsParallel().Except(left.AsParallel()).ToList());
-		}
 
 		internal static void RemoveUnusedItems<T>(this IList<T> items, ICollection<string> usedIds) where T : class, IXbrlObject
 		{

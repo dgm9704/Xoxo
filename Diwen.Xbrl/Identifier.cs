@@ -45,31 +45,22 @@ namespace Diwen.Xbrl
 		}
 
 		public override string ToString()
-		{
-			return $"{Scheme}:{Value}";
-		}
+		=> $"{Scheme}:{Value}";
 
 		#region IEquatable implementation
 
 		public bool Equals(Identifier other)
-		{
-			return other != null
+		=> other != null
 			&& Scheme.Equals(other.Scheme, StringComparison.Ordinal)
 			&& Value.Equals(other.Value, StringComparison.Ordinal);
-		}
 
 		public override int GetHashCode()
-		{
-			return Scheme == null ? 0 : Scheme.GetHashCode()
+		=> Scheme == null ? 0 : Scheme.GetHashCode()
 			+ Value == null ? 0 : Value.GetHashCode();
-		}
 
 		#endregion
 
 		public override bool Equals(object obj)
-		{
-			var other = obj as Identifier;
-			return other != null && Equals(other);
-		}
+		=> Equals(obj as Identifier);
 	}
 }

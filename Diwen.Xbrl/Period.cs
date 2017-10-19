@@ -70,42 +70,27 @@ namespace Diwen.Xbrl
 		}
 
 		public bool ShouldSerializeInstant()
-		{
-			return Instant != DateTime.MinValue;
-		}
+		=> Instant != DateTime.MinValue;
 
 		public bool ShouldSerializeStartDate()
-		{
-			return StartDate != DateTime.MinValue;
-		}
+		=> StartDate != DateTime.MinValue;
 
 		public bool ShouldSerializeEndDate()
-		{
-			return EndDate != DateTime.MinValue;
-		}
+		=> EndDate != DateTime.MinValue;
 
 		public override bool Equals(object obj)
-		{
-			var other = obj as Period;
-			return other != null && Equals(other);
-		}
+		=> Equals(obj as Period);
 
 		public override string ToString()
-		{
-			return $"Instant={Instant:yyyy-MM-dd}";
-		}
+		=> $"Instant={Instant:yyyy-MM-dd}";
 
 		#region IEquatable implementation
 
 		public bool Equals(Period other)
-		{
-			return other != null && Instant.Equals(other.Instant);
-		}
+		=> other != null && Instant.Equals(other.Instant);
 
 		public override int GetHashCode()
-		{
-			return Instant.Date.GetHashCode();
-		}
+		=> Instant.Date.GetHashCode();
 
 		#endregion
 	}

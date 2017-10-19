@@ -36,10 +36,7 @@ namespace Diwen.Xbrl
 		[XmlElement("measure")]
 		public string Measure { get; set; }
 
-		public Unit()
-		{
-
-		}
+		public Unit() { }
 
 		public Unit(string id, string measure)
 			: this()
@@ -49,28 +46,19 @@ namespace Diwen.Xbrl
 		}
 
 		public override string ToString()
-		{
-			return Measure;
-		}
+		=> Measure;
 
 		public override bool Equals(object obj)
-		{
-			var other = obj as Unit;
-			return other != null && Equals(other);
-		}
+		=> Equals(obj as Unit);
 
 		#region IEquatable implementation
 
 		public bool Equals(Unit other)
-		{
-			return other != null
+		=> other != null
 			&& Measure.Equals(other.Measure, StringComparison.Ordinal);
-		}
 
 		public override int GetHashCode()
-		{
-			return Measure != null ? Measure.GetHashCode() : 0;
-		}
+		=> Measure != null ? Measure.GetHashCode() : 0;
 
 		#endregion
 	}

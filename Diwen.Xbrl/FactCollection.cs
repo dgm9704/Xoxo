@@ -64,16 +64,10 @@ namespace Diwen.Xbrl
 		}
 
 		public Fact Add(Scenario scenario, string metric, string unitRef, string decimals, string value)
-		{
-			var context = Instance.GetContext(scenario);
-			return Add(context, metric, unitRef, decimals, value);
-		}
+		=> Add(Instance.GetContext(scenario), metric, unitRef, decimals, value);
 
 		public Fact Add(Segment segment, string metric, string unitRef, string decimals, string value)
-		{
-			var context = Instance.GetContext(segment);
-			return Add(context, metric, unitRef, decimals, value);
-		}
+		=> Add(Instance.GetContext(segment), metric, unitRef, decimals, value);
 
 		public void AddRange(IEnumerable<Fact> facts)
 		{
@@ -86,9 +80,7 @@ namespace Diwen.Xbrl
 		#region IEquatable implementation
 
 		public bool Equals(IList<Fact> other)
-		{
-			return this.ContentCompare(other);
-		}
+		=> this.ContentCompare(other);
 
 		#endregion
 	}

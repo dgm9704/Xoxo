@@ -69,25 +69,16 @@ namespace Diwen.Xbrl
 		}
 
 		public ExplicitMember AddExplicitMember(string dimension, string value)
-		{
-			return Scenario.ExplicitMembers.Add(dimension, value);
-		}
+		=> Scenario.ExplicitMembers.Add(dimension, value);
 
 		public TypedMember AddTypedMember(string dimension, string domain, string value)
-		{
-			return Scenario.TypedMembers.Add(dimension, domain, value);
-		}
+		=> Scenario.TypedMembers.Add(dimension, domain, value);
 
 		public override bool Equals(object obj)
-		{
-			var other = obj as Context;
-			return other != null && Equals(other);
-		}
+		=> Equals(obj as Context);
 
 		public override int GetHashCode()
-		{
-			return Scenario != null ? Scenario.GetHashCode() : 0;
-		}
+		=> Scenario != null ? Scenario.GetHashCode() : 0;
 
 		#region IEquatable implementation
 
