@@ -183,7 +183,7 @@ namespace Diwen.Xbrl
 				: a.TaxonomyVersion == null && b.TaxonomyVersion == null;
 
 		static bool CheckSchemaReference(Instance a, Instance b)
-		=> a.SchemaReference.Equals(b.SchemaReference);
+		=> a.SchemaReference == null ? b.SchemaReference == null : a.SchemaReference.Equals(b.SchemaReference);
 
 		static bool CheckUnits(Instance a, Instance b)
 		=> a.Units.Equals(b.Units);
