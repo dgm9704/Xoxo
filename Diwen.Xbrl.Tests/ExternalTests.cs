@@ -4,20 +4,14 @@
 //  Author:
 //       John Nordberg <john.nordberg@gmail.com>
 //
-//  Copyright (c) 2016 John Nordberg
+//  Copyright (c) 2015-2017 John Nordberg
 //
-//  This program is free software: you can redistribute it and/or modify
-//  it under the terms of the GNU Lesser General Public License as published by
-//  the Free Software Foundation, either version 3 of the License, or
-//  (at your option) any later version.
-//
-//  This program is distributed in the hope that it will be useful,
-//  but WITHOUT ANY WARRANTY; without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-//  GNU Lesser General Public License for more details.
-//
-//  You should have received a copy of the GNU Lesser General Public License
-//  along with this program.  If not, see <http://www.gnu.org/licenses/>.
+//  Free Public License 1.0.0
+//  Permission to use, copy, modify, and/or distribute this software for any purpose with or without fee is hereby granted.
+//  THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES WITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES 
+//  OF MERCHANTABILITY AND FITNESS.IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR ANY SPECIAL, DIRECT, INDIRECT, OR CONSEQUENTIAL DAMAGES 
+//  OR ANY DAMAGES WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN AN ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS 
+//  ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 
 namespace Diwen.Xbrl.Tests
 {
@@ -52,28 +46,23 @@ namespace Diwen.Xbrl.Tests
 
 		[Test]
 		public static void Fi_Sbr()
-		{
-			CheckFolderResults(TestFolder("fi-sbr"));
-		}
+		=> CheckFolderResults(TestFolder("fi-sbr"));
 
 		static void CheckFolderResults(Dictionary<string, ComparisonReport> reports)
-		{
-			Assert.IsTrue(
+		=> Assert.IsTrue(
 				reports.Values.All(report => report.Result),
 				string.Join(Environment.NewLine,
 					reports.
 					Where(report => !report.Value.Result).
 					Select(report => report.Key)));
-		}
 
 		static Dictionary<string, ComparisonReport> TestFolder(string folderName)
-		{
-			return Directory.GetFiles(Path.Combine(TestContext.CurrentContext.TestDirectory, folderName), "*.xbrl").
+		=> Directory.GetFiles(Path.Combine(TestContext.CurrentContext.TestDirectory, folderName), "*.xbrl").
 				ToDictionary(inputFile => inputFile,
 							inputFile => TestFile(inputFile,
 												Path.ChangeExtension(inputFile, "out"),
 												Path.ChangeExtension(inputFile, "log")));
-		}
+
 
 		static ComparisonReport TestFile(string inputFile, string outputFile, string reportFile)
 		{
