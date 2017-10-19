@@ -24,7 +24,7 @@ https://www.nuget.org/packages/Diwen.Xbrl/
 ### Environment
 C# 6, Mono/.Net 4.5
 
-My development enviroment is MonoDevelop 6.x on Xubuntu 16.10 
+My development enviroment is MonoDevelop 6.2 on Xubuntu 17.04 
 
 Builds and runs without modifications on Microsoft Visual Studio Community 2015 / Windows 7 (tested 2016-11-20)
 
