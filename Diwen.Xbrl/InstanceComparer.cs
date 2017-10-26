@@ -124,7 +124,7 @@ namespace Diwen.Xbrl
 			return report;
 		}
 
-		private static bool GetResultForReport(ComparisonReportObjects report)
+		static bool GetResultForReport(ComparisonReportObjects report)
 		=> !(
 				(report.Basics != null && report.Basics.Any())
 				|| (report.Contexts != null && (report.Contexts.Item1.Any() || report.Contexts.Item2.Any()))
@@ -170,7 +170,7 @@ namespace Diwen.Xbrl
 
 		static IEnumerable<string> BasicComparison(Instance a, Instance b, BasicComparisons selection)
 		=> SimpleCheckMethods.
-				 Where(c => selection.HasFlag(c.Key)).
+				Where(c => selection.HasFlag(c.Key)).
 				Where(c => !c.Value.Item2(a, b)).
 				Select(c => c.Value.Item1);
 
@@ -250,13 +250,11 @@ namespace Diwen.Xbrl
 		=> a.Contexts.ContentCompareReport(b.Contexts);
 
 		static IEnumerable<string> ContextComparisonMessages(Instance a, Instance b)
-		{
-			var differences = ContextComparison(a, b);
-			var messages = new List<string>(differences.Item1.Count + differences.Item2.Count);
-			messages.AddRange(differences.Item1.Select(item => "(a) " + item.Id + ":" + (item.Scenario != null ? item.Scenario.ToString() : string.Empty)));
-			messages.AddRange(differences.Item2.Select(item => "(b) " + item.Id + ":" + (item.Scenario != null ? item.Scenario.ToString() : string.Empty)));
-			return messages;
-		}
+		=> ContextComparisonMessages(ContextComparison(a, b));
+
+		static IEnumerable<string> ContextComparisonMessages(Tuple<List<Context>, List<Context>> differences)
+		=> differences.Item1.Select(item => $"(a) {item.Id}:" + (item.Scenario?.ToString() ?? "")).Concat(
+			differences.Item2.Select(item => $"(b) {item.Id}:" + (item.Scenario?.ToString() ?? "")));
 
 		static Tuple<List<Scenario>, List<Scenario>> ScenarioComparison(Instance a, Instance b)
 		{
@@ -270,10 +268,9 @@ namespace Diwen.Xbrl
 						 Select(c => c.Scenario).
 						 ToList();
 
-			var differences = aList.ContentCompareReport(bList);
-
-			return differences;
+			return aList.ContentCompareReport(bList);
 		}
+
 
 		static IEnumerable<string> ScenarioComparisonMessages(Instance a, Instance b)
 		{
@@ -287,82 +284,62 @@ namespace Diwen.Xbrl
 			{
 				// not until we're sure that there won't be duplicates
 				// var aLookup = a.Contexts.ToDictionary(c => c.Scenario != null ? c.Scenario.ToString() : "", c => c.Id);
-				var aLookup = new Dictionary<string, string>();
-				foreach (var c in a.Contexts)
-				{
-					string key = c.Scenario != null ? c.Scenario.ToString() : "";
-					aLookup[key] = c.Id;
-				}
-
-				foreach (var item in notInB)
-				{
-					var key = item != null ? item.ToString() : "";
-					var contextId = aLookup[key];
-					messages.Add($"(a) {contextId}: {item}");
-				}
+				var aLookup = GetScenarios(a);
+				messages.AddRange(notInB.Select(item => ScenarioComparisonMessage(aLookup, item, "(a)")));
 			}
 
 			if (notInA.Any())
 			{
 				// not until we're sure that there won't be duplicates
-				// var bLookup = b.Contexts.ToDictionary(c => c.Scenario != null ? c.Scenario.ToString() : "", c => c.Id);
-				var bLookup = new Dictionary<string, string>();
-				foreach (var c in b.Contexts)
-				{
-					string key = c.Scenario != null ? c.Scenario.ToString() : "";
-					bLookup[key] = c.Id;
-				}
 
-				foreach (var item in notInA)
-				{
-					var key = item != null ? item.ToString() : "";
-					var contextId = bLookup[key];
-					messages.Add($"(b) {contextId}: {item}");
-				}
+				var bLookup = GetScenarios(b);
+				messages.AddRange(notInA.Select(item => ScenarioComparisonMessage(bLookup, item, "(b)")));
 			}
+
 			return messages;
+		}
+
+		static string ScenarioComparisonMessage(Dictionary<string, string> contexts, Scenario item, string label)
+		=> $"({label}) {contexts[item?.ToString() ?? ""]}: {item}";
+
+		static Dictionary<string, string> GetScenarios(Instance instance)
+		{
+			var scenarios = new Dictionary<string, string>();
+			foreach (var c in instance.Contexts)
+			{
+				scenarios[c.Scenario?.ToString() ?? ""] = c.Id;
+			}
+
+			return scenarios;
 		}
 
 		static Tuple<List<Fact>, List<Fact>> FactComparison(Instance a, Instance b)
 		=> a.Facts.ContentCompareReport(b.Facts);
 
 		static IEnumerable<string> FactComparisonMessages(Instance a, Instance b)
-		{
-			var differences = FactComparison(a, b);
-			var result = new List<string>(differences.Item1.Count + differences.Item2.Count);
-			result.AddRange(differences.Item1.Select(item => $"(a) {item} ({item.Context.Scenario})"));
-			result.AddRange(differences.Item2.Select(item => $"(b) {item} ({item.Context.Scenario})"));
-			return result;
-		}
+		=> FactComparisonMesssages(FactComparison(a, b));
+
+		static IEnumerable<string> FactComparisonMesssages(Tuple<List<Fact>, List<Fact>> differences)
+		=> differences.Item1.Select(f => FactComparisonMessage(f, "a")).
+			Concat(differences.Item2.Select(f => FactComparisonMessage(f, "b")));
+
+		static string FactComparisonMessage(Fact fact, string label)
+		=> $"({label}) {fact} ({fact.Context.Scenario})";
 
 		static Tuple<List<string>, List<string>> DomainNamespaceComparison(Instance a, Instance b)
 		=> a.GetUsedDomainNamespaces().
 				ContentCompareReport(b.GetUsedDomainNamespaces());
 
 		static IEnumerable<string> DomainNamespaceComparisonMessages(Instance a, Instance b)
-		{
-			var differences = DomainNamespaceComparison(a, b);
-			var result = new List<string>(differences.Item1.Count + differences.Item2.Count);
-			result.AddRange(differences.Item1.Select(item => $"(a) {item}"));
-			result.AddRange(differences.Item2.Select(item => $"(b) {item}"));
-			return result;
-		}
+		=> ComparisonMessages(DomainNamespaceComparison(a, b));
 
 		static Tuple<List<Unit>, List<Unit>> UnitComparison(Instance a, Instance b)
-		=> a.Units.
-					ContentCompareReport(b.Units);
+		=> a.Units.ContentCompareReport(b.Units);
 
 		static IEnumerable<string> UnitComparisonMessages(Instance a, Instance b)
-		{
-			var differences = a.Units.
-				ContentCompareReport(b.Units);
+		=> ComparisonMessages(a.Units.ContentCompareReport(b.Units));
 
-			return differences.Item1.Select(item => $"(a) {item}").
-							  Concat(differences.Item2.Select(item => $"(b) {item}")).
-				OrderBy(m => m);
-		}
-
-		static Tuple<List<Identifier>, List<Identifier>> EntityComparison(Instance a, Instance b)
+			static Tuple<List<Identifier>, List<Identifier>> EntityComparison(Instance a, Instance b)
 		{
 			var aList = new List<Identifier>();
 			var bList = new List<Identifier>();
@@ -381,11 +358,11 @@ namespace Diwen.Xbrl
 		}
 
 		static IEnumerable<string> EntityComparisonMessages(Instance a, Instance b)
-		{
-			var differences = EntityComparison(a, b);
-			return differences.Item1.Select(item => $"(a) Identifier={item}").
-			Concat(differences.Item2.Select(item => $"(b) Identifier={item}"));
-		}
+		=> EntityComparisonMessages(EntityComparison(a, b));
+
+		static IEnumerable<string> EntityComparisonMessages(Tuple<List<Identifier>, List<Identifier>> differences)
+		=> differences.Item1.Select(item => $"(a) Identifier={item}").Concat(
+			differences.Item2.Select(item => $"(b) Identifier={item}"));
 
 		static Tuple<List<Period>, List<Period>> PeriodComparison(Instance a, Instance b)
 		{
@@ -406,11 +383,7 @@ namespace Diwen.Xbrl
 		}
 
 		static IEnumerable<string> PeriodComparisonMessages(Instance a, Instance b)
-		{
-			var differences = PeriodComparison(a, b);
-			return differences.Item1.Select(item => $"(a) {item}").
-			Concat(differences.Item2.Select(item => $"(b) {item}"));
-		}
+		=> ComparisonMessages(PeriodComparison(a, b));
 
 		static Tuple<List<string>, List<string>> TaxonomyVersionComparison(Instance a, Instance b)
 		{
@@ -424,11 +397,11 @@ namespace Diwen.Xbrl
 		}
 
 		static IEnumerable<string> TaxonomyVersionComparisonMessages(Instance a, Instance b)
-		{
-			var differences = TaxonomyVersionComparison(a, b);
-			return differences.Item1.Select(item => $"(a) taxonomy-version: {item}").
-			Concat(differences.Item2.Select(item => $"(b) taxonomy-version: {item}"));
-		}
+		=> TaxonomyVersionComparisonMessages(TaxonomyVersionComparison(a, b));
+
+		static IEnumerable<string> TaxonomyVersionComparisonMessages(Tuple<List<string>, List<string>> differences)
+		=> differences.Item1.Select(item => $"(a) taxonomy-version: {item}").Concat(
+			differences.Item2.Select(item => $"(b) taxonomy-version: {item}"));
 
 		static Tuple<List<SchemaReference>, List<SchemaReference>> SchemaReferenceComparison(Instance a, Instance b)
 		{
@@ -442,25 +415,18 @@ namespace Diwen.Xbrl
 		}
 
 		static IEnumerable<string> SchemaReferenceComparisonMessages(Instance a, Instance b)
-		{
-			var differences = SchemaReferenceComparison(a, b);
-			return differences.Item1.Select(item => $"(a) {item}").
-			Concat(differences.Item2.Select(item => $"(b) {item}"));
-		}
+		=> ComparisonMessages(SchemaReferenceComparison(a, b));
 
 		static Tuple<List<FilingIndicator>, List<FilingIndicator>> FilingIndicatorComparison(Instance a, Instance b)
 		=> a.FilingIndicators.Where(fi => fi.Filed).ToList().
 			ContentCompareReport(b.FilingIndicators.Where(fi => fi.Filed).ToList());
 
 		static IEnumerable<string> FilingIndicatorComparisonMessages(Instance a, Instance b)
-		{
-			var differences = FilingIndicatorComparison(a, b);
+		=> ComparisonMessages(FilingIndicatorComparison(a, b));
 
-			var result = new List<string>(differences.Item1.Count + differences.Item2.Count);
-			result.AddRange(differences.Item1.Select(item => $"(a) {item}"));
-			result.AddRange(differences.Item2.Select(item => $"(b) {item}"));
-			return result;
-		}
+		static IEnumerable<string> ComparisonMessages<T>(Tuple<List<T>, List<T>> differences)
+		=> differences.Item1.Select(item => $"(a) {item}").Concat(
+		differences.Item2.Select(item => $"(b) {item}"));
 
 		#endregion
 	}

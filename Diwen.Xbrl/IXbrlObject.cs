@@ -25,6 +25,8 @@ namespace Diwen.Xbrl
 	interface IXbrlObject
 	{
 		string Id { get; set; }
+
+		//string ComparisonMessage();
 	}
 
 }

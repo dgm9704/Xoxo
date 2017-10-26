@@ -60,6 +60,9 @@ namespace Diwen.Xbrl
 		public override int GetHashCode()
 		=> Measure != null ? Measure.GetHashCode() : 0;
 
+		public string ComparisonMessage()
+		=> ToString();
+
 		#endregion
 	}
 }
