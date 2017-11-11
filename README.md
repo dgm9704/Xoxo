@@ -1,4 +1,4 @@
-<img src="https://diwen.visualstudio.com/_apis/public/build/definitions/6843cceb-b448-4749-bca8-a422dda79f10/2/badge"/>
+[<img src="https://diwen.visualstudio.com/_apis/public/build/definitions/6843cceb-b448-4749-bca8-a422dda79f10/2/badge">](https://diwen.visualstudio.com/Diwen.Xbrl.Build/_build/index?definitionId=6843cceb-b448-4749-bca8-a422dda79f10)
 
 # Xoxo
 Container for the Diwen.Xbrl library and any related stuff
