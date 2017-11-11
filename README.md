@@ -1,3 +1,5 @@
+<img src="https://diwen.visualstudio.com/_apis/public/build/definitions/6843cceb-b448-4749-bca8-a422dda79f10/2/badge"/>
+
 # Xoxo
 Container for the Diwen.Xbrl library and any related stuff
 
