@@ -1,3 +1,5 @@
+[<img src="https://diwen.visualstudio.com/_apis/public/build/definitions/6843cceb-b448-4749-bca8-a422dda79f10/2/badge">](https://diwen.visualstudio.com/Diwen.Xbrl.Build/_build/index?definitionId=6843cceb-b448-4749-bca8-a422dda79f10)
+
 # Xoxo
 Container for the Diwen.Xbrl library and any related stuff
 
@@ -24,7 +26,7 @@ https://www.nuget.org/packages/Diwen.Xbrl/
 ### Environment
 C# 6, Mono/.Net 4.5
 
-My development enviroment is MonoDevelop 6.2 on Xubuntu 17.04 
+My development enviroment is MonoDevelop 6.2 on \*Ubuntu 17.10 
 
 Builds and runs without modifications on Microsoft Visual Studio Community 2015 / Windows 7 (tested 2016-11-20)
 
