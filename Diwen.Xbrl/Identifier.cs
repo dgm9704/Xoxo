@@ -55,8 +55,7 @@ namespace Diwen.Xbrl
 			&& Value.Equals(other.Value, StringComparison.Ordinal);
 
 		public override int GetHashCode()
-		=> Scheme == null ? 0 : Scheme.GetHashCode()
-			+ Value == null ? 0 : Value.GetHashCode();
+		=> Scheme == null ? 0 : Scheme.GetHashCode() + 7 * (Value == null ? 0 : Value.GetHashCode());
 
 		#endregion
 

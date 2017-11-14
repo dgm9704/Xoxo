@@ -87,10 +87,15 @@ namespace Diwen.Xbrl
 		#region IEquatable implementation
 
 		public bool Equals(Period other)
-		=> other != null && Instant.Equals(other.Instant);
+		=> other != null
+			&& Instant.Equals(other.Instant)
+			&& StartDate.Equals(other.StartDate)
+			&& EndDate.Equals(other.EndDate);
 
 		public override int GetHashCode()
-		=> Instant.Date.GetHashCode();
+		=> Instant.Date.GetHashCode() 
+          + 7 * StartDate.GetHashCode() 
+          + 31 * EndDate.GetHashCode();
 
 		#endregion
 	}

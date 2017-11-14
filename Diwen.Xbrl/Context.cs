@@ -78,7 +78,9 @@ namespace Diwen.Xbrl
 		=> Equals(obj as Context);
 
 		public override int GetHashCode()
-		=> Scenario != null ? Scenario.GetHashCode() : 0;
+		=> (Period != null ? Period.GetHashCode() : 0)
+			+ 7 * (Entity != null ? Entity.GetHashCode() : 0)
+			+ 31 * (Scenario != null ? Scenario.GetHashCode() : 0);
 
 		#region IEquatable implementation
 
@@ -87,11 +89,11 @@ namespace Diwen.Xbrl
 			var result = false;
 			if (other != null)
 			{
-				if ((Scenario == null && other.Scenario == null) || (Scenario != null && Scenario.Equals(other.Scenario)))
+				if ((Period == null && other.Period == null) || (Period != null && Period.Equals(other.Period)))
 				{
 					if ((Entity == null && other.Entity == null) || Entity.Equals(other.Entity))
 					{
-						result |= (Period == null && other.Period == null) || Period.Equals(other.Period);
+						result |= (Scenario == null && other.Scenario == null) || Scenario.Equals(other.Scenario);
 					}
 				}
 			}

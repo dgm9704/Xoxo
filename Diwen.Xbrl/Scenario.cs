@@ -85,14 +85,15 @@ namespace Diwen.Xbrl
 		public override bool Equals(object obj)
 		=> Equals(obj as Scenario);
 
-		int hashCode = -1;
+		//int hashCode = -1;
 		public override int GetHashCode()
 		{
-			if (hashCode == -1)
-			{
-				hashCode = TypedMembers.GetHashCode() + 31 * ExplicitMembers.GetHashCode();
-			}
-			return hashCode;
+			//if (hashCode == -1)
+			//{
+				//hashCode = TypedMembers.GetHashCode() + 31 * ExplicitMembers.GetHashCode();
+			return TypedMembers.GetHashCode() + 31 * ExplicitMembers.GetHashCode();
+			//}
+			//return hashCode;
 		}
 
 		public ExplicitMember AddExplicitMember(string dimension, string value)

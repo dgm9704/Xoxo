@@ -220,13 +220,17 @@ namespace Diwen.Xbrl.Tests
 		public static void CollapseDuplicateContexts()
 		{
 			var inputPath = Path.Combine(TestContext.CurrentContext.TestDirectory, "data", "duplicate_context.xbrl");
-			var instance = Instance.FromFile(inputPath);
+			Instance instance = null;
+			using (var stream = new FileStream(inputPath, FileMode.Open))
+				instance = Instance.FromStream(stream, removeUnusedObjects: false, collapseDuplicateContexts: false);
 
-			Assert.IsTrue(instance.Contexts.Count == 2);
+			Assert.AreEqual(2,instance.Contexts.Count);
 
 			instance.CollapseDuplicateContexts();
+			Assert.AreEqual(1,instance.Contexts.Count);
 
-			Assert.IsTrue(instance.Contexts.Count == 1);
+			instance = Instance.FromFile(inputPath);
+			Assert.AreEqual(1,instance.Contexts.Count);
 		}
 
 		[Test]

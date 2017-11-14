@@ -77,6 +77,13 @@ namespace Diwen.Xbrl
 
 		#region IEquatable implementation
 
+		public override int GetHashCode()
+		=> Identifier.GetHashCode() + 7 * Segment.GetHashCode();
+
+
+		public override bool Equals(object obj)
+		=> Equals(obj as Entity);
+
 		public bool Equals(Entity other)
 		{
 			var result = false;

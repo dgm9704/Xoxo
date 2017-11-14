@@ -285,7 +285,7 @@ namespace Diwen.Xbrl
 		{
 			var duplicates = Contexts.
 									 GroupBy(c => c).
-									 Where(g => g.Count() > 1);
+									 Where(g => g.Skip(1).Any());
 
 			if (duplicates.Any())
 			{
@@ -711,29 +711,32 @@ namespace Diwen.Xbrl
 			return new InstanceInfo(taxonomyVersion, instanceGenerator, comments);
 		}
 
-		static void SetInstanceInfo(Instance xbrl, InstanceInfo info)
+		static void SetInstanceInfo(Instance instance, InstanceInfo info)
 		{
 			if (!string.IsNullOrEmpty(info.TaxonomyVersion))
 			{
-				xbrl.TaxonomyVersion = info.TaxonomyVersion;
+				instance.TaxonomyVersion = info.TaxonomyVersion;
 			}
 			if (!string.IsNullOrEmpty(info.InstanceGenerator))
 			{
-				xbrl.InstanceGenerator = info.InstanceGenerator;
+				instance.InstanceGenerator = info.InstanceGenerator;
 			}
-			xbrl.Comments = new Collection<string>(info.Comments);
+			instance.Comments = new Collection<string>(info.Comments);
 		}
 
-		static void CleanupAfterDeserialization(Instance xbrl, bool removeUnusedObjects)
+		static void CleanupAfterDeserialization(Instance instance, InstanceOptions options)
 		{
-			xbrl.SetContextReferences(xbrl.Facts);
-			xbrl.SetUnitReferences(xbrl.Facts);
-			if (removeUnusedObjects)
-			{
-				xbrl.RemoveUnusedObjects();
-			}
-			xbrl.RebuildNamespacesAfterRead();
-			xbrl.SetInstanceReferences();
+			instance.SetContextReferences(instance.Facts);
+			instance.SetUnitReferences(instance.Facts);
+
+			if (options.HasFlag(InstanceOptions.CollapseDuplicateContexts))
+				instance.CollapseDuplicateContexts();
+			
+			if (options.HasFlag(InstanceOptions.RemoveUnusedObjects))
+				instance.RemoveUnusedObjects();
+
+			instance.RebuildNamespacesAfterRead();
+			instance.SetInstanceReferences();
 		}
 
 		void SetInstanceReferences()
@@ -813,9 +816,12 @@ namespace Diwen.Xbrl
 		}
 
 		public static Instance FromStream(Stream stream)
-		=> FromStream(stream, false);
+		=> FromStream(stream, true);
 
 		public static Instance FromStream(Stream stream, bool removeUnusedObjects)
+		=> FromStream(stream, removeUnusedObjects, true);
+
+		public static Instance FromStream(Stream stream, bool removeUnusedObjects, bool collapseDuplicateContexts)
 		{
 			stream.Position = 0;
 
@@ -825,11 +831,19 @@ namespace Diwen.Xbrl
 
 			var xbrl = (Instance)Serializer.Deserialize(stream);
 
-			CleanupAfterDeserialization(xbrl, removeUnusedObjects);
+			var options = InstanceOptions.None;
+			if (removeUnusedObjects)
+				options |= InstanceOptions.RemoveUnusedObjects;
+
+			if (collapseDuplicateContexts)
+				options |= InstanceOptions.CollapseDuplicateContexts;
+
+			CleanupAfterDeserialization(xbrl, options);
 
 			SetInstanceInfo(xbrl, info);
 
 			return xbrl;
+
 		}
 
 		public void ToStream(Stream stream)
@@ -840,7 +854,10 @@ namespace Diwen.Xbrl
 			}
 		}
 
-		public static Instance FromFile(string path, bool removeUnusedObjects = false)
+		public static Instance FromFile(string path)
+		=> FromFile(path, false);
+
+		public static Instance FromFile(string path, bool removeUnusedObjects)
 		{
 			Instance xbrl;
 
