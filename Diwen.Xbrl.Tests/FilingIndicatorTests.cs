@@ -4,7 +4,7 @@
 //  Author:
 //       John Nordberg <john.nordberg@gmail.com>
 //
-//  Copyright (c) 2015-2017 John Nordberg
+//  Copyright (c) 2015-2018 John Nordberg
 //
 //  Free Public License 1.0.0
 //  Permission to use, copy, modify, and/or distribute this software for any purpose with or without fee is hereby granted.
@@ -15,12 +15,12 @@
 
 namespace Diwen.Xbrl.Tests
 {
-	using NUnit.Framework;
+	using Diwen.Xbrl;
+	using Xunit;
 
-	[TestFixture]
 	public class FilingIndicatorTests
 	{
-		[Test]
+		[Fact]
 		public void PositiveFilingIndicatorsMatchExactly()
 		{
 			var ctx = new Context();
@@ -28,10 +28,10 @@ namespace Diwen.Xbrl.Tests
 			a.Add(ctx, "A.00.01", true);
 			var b = new FilingIndicatorCollection();
 			b.Add(ctx, "A.00.01", true);
-			Assert.AreEqual(a, b);
+			Assert.Equal(a, b);
 		}
 
-		[Test]
+		[Fact]
 		public void NegativeFilingIndicatorsMatchExactly()
 		{
 			var ctx = new Context();
@@ -39,10 +39,10 @@ namespace Diwen.Xbrl.Tests
 			a.Add(ctx, "A.00.01", false);
 			var b = new FilingIndicatorCollection();
 			b.Add(ctx, "A.00.01", false);
-			Assert.AreEqual(a, b);
+			Assert.Equal(a, b);
 		}
 
-		[Test]
+		[Fact]
 		public void PositiveFilingIndicatorsMatchImplicitly()
 		{
 			var ctx = new Context();
@@ -50,10 +50,10 @@ namespace Diwen.Xbrl.Tests
 			a.Add(ctx, "A.00.01", true);
 			var b = new FilingIndicatorCollection();
 			b.Add(ctx, "A.00.01");
-			Assert.AreEqual(a, b);
+			Assert.Equal(a, b);
 		}
 
-		[Test]
+		[Fact]
 		public void FilingIndicatorCollectionsMatchFunctionally()
 		{
 			var c0 = new Context();
@@ -67,10 +67,10 @@ namespace Diwen.Xbrl.Tests
 			b.Add(c1, "B");
 			b.Add(c1, "A");
 
-			Assert.IsTrue(a.Equals(b));
+			Assert.True(a.Equals(b));
 		}
 
-		[Test]
+		[Fact]
 		public void FilingIndicatorCollectionsDoNotMatchFunctionally()
 		{
 			var c0 = new Context();
@@ -85,7 +85,7 @@ namespace Diwen.Xbrl.Tests
 			b.Add(c1, "B");
 			b.Add(c1, "C");
 
-			Assert.IsFalse(a.Equals(b));
+			Assert.False(a.Equals(b));
 		}
 	}
 }

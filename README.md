@@ -26,7 +26,7 @@ https://www.nuget.org/packages/Diwen.Xbrl/
 ### Environment
 C# 6, Mono/.Net 4.5
 
-My development enviroment is MonoDevelop 6.2 on \*Ubuntu 17.10 
+My development enviroment is [MonoDevelop](http://www.monodevelop.com/) on [Arch Linux](https://www.archlinux.org/) 
 
 Builds and runs without modifications on Microsoft Visual Studio Community 2015 / Windows 7 (tested 2016-11-20)
 
@@ -41,9 +41,7 @@ Tests for exercising Diwen.Xbrl code, also serving as documentation and samples
 
 ### License
 
-Free Public License 1.0.0
-
-https://opensource.org/licenses/FPL-1.0.0
+[Free Public License 1.0.0](https://opensource.org/licenses/FPL-1.0.0)
 
 
 # Get in touch

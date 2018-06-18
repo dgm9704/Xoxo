@@ -4,7 +4,7 @@
 //  Author:
 //       John Nordberg <john.nordberg@gmail.com>
 //
-//  Copyright (c) 2015-2017 John Nordberg
+//  Copyright (c) 2015-2018 John Nordberg
 //
 //  Free Public License 1.0.0
 //  Permission to use, copy, modify, and/or distribute this software for any purpose with or without fee is hereby granted.
@@ -17,23 +17,22 @@ namespace Diwen.Xbrl.Tests
 {
 	using System;
 	using System.IO;
-	using NUnit.Framework;
+	using Xunit;
 	using Xbrl;
 
-	[TestFixture]
 	public static class ScenarioTests
 	{
-		[Test]
+		[Fact]
 		public static void CompareScenarioMemberOrderDifferent()
 		{
 			var left = Instance.FromFile(Path.Combine(TestContext.CurrentContext.TestDirectory, "data", "memberorder0.xbrl"));
 			var right = Instance.FromFile(Path.Combine(TestContext.CurrentContext.TestDirectory, "data", "memberorder1.xbrl"));
 
-			Assert.AreEqual(left, right);
+			Assert.Equal(left, right);
 
 			var report = InstanceComparer.Report(left, right);
 
-			Assert.IsTrue(report.Result, string.Join(Environment.NewLine, report.Messages));
+			Assert.True(report.Result, string.Join(Environment.NewLine, report.Messages));
 
 		}
 	}

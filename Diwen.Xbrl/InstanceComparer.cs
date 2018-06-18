@@ -4,7 +4,7 @@
 //  Author:
 //       John Nordberg <john.nordberg@gmail.com>
 //
-//  Copyright (c) 2015-2017 John Nordberg
+//  Copyright (c) 2015-2018 John Nordberg
 //
 //  This program is free software: you can redistribute it and/or modify
 //  it under the terms of the GNU Lesser General Public License as published by
@@ -179,8 +179,8 @@ namespace Diwen.Xbrl
 
 		static bool CheckTaxonomyVersion(Instance a, Instance b)
 		=> a.TaxonomyVersion != null && b.TaxonomyVersion != null
-				? a.TaxonomyVersion.Equals(b.TaxonomyVersion, StringComparison.Ordinal)
-				: a.TaxonomyVersion == null && b.TaxonomyVersion == null;
+			? a.TaxonomyVersion.Equals(b.TaxonomyVersion, StringComparison.Ordinal)
+			: a.TaxonomyVersion == null && b.TaxonomyVersion == null;
 
 		static bool CheckSchemaReference(Instance a, Instance b)
 		=> a.SchemaReference == null ? b.SchemaReference == null : a.SchemaReference.Equals(b.SchemaReference);
@@ -339,7 +339,7 @@ namespace Diwen.Xbrl
 		static IEnumerable<string> UnitComparisonMessages(Instance a, Instance b)
 		=> ComparisonMessages(a.Units.ContentCompareReport(b.Units));
 
-			static Tuple<List<Identifier>, List<Identifier>> EntityComparison(Instance a, Instance b)
+		static Tuple<List<Identifier>, List<Identifier>> EntityComparison(Instance a, Instance b)
 		{
 			var aList = new List<Identifier>();
 			var bList = new List<Identifier>();

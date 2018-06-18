@@ -4,7 +4,7 @@
 //  Author:
 //       John Nordberg <john.nordberg@gmail.com>
 //
-//  Copyright (c) 2015-2017 John Nordberg
+//  Copyright (c) 2015-2018 John Nordberg
 //
 //  Free Public License 1.0.0
 //  Permission to use, copy, modify, and/or distribute this software for any purpose with or without fee is hereby granted.
@@ -20,12 +20,11 @@ namespace Diwen.Xbrl.Tests
 	using System.IO;
 	using System.IO.Compression;
 	using System.Linq;
-	using NUnit.Framework;
+	using Xunit;
 
-	[TestFixture]
 	public static class ExternalTests
 	{
-		//[Test]
+		//[Fact]
 		//[Ignore("bad performance")]
 		//public static void EBA()
 		//{
@@ -37,19 +36,19 @@ namespace Diwen.Xbrl.Tests
 		//	}
 		//}
 
-		//[Test]
+		//[Fact]
 		//[Ignore("bad performance")]
 		//public static void EIOPA()
 		//{
 		//	CheckFolderResults(TestFolder("eiopa"));
 		//}
 
-		[Test]
+		[Fact]
 		public static void Fi_Sbr()
 		=> CheckFolderResults(TestFolder("fi-sbr"));
 
 		static void CheckFolderResults(Dictionary<string, ComparisonReport> reports)
-		=> Assert.IsTrue(
+		=> Assert.True(
 				reports.Values.All(report => report.Result),
 				string.Join(Environment.NewLine,
 					reports.

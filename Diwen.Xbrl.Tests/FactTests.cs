@@ -4,7 +4,7 @@
 //  Author:
 //       John Nordberg <john.nordberg@gmail.com>
 //
-//  Copyright (c) 2015-2017 John Nordberg
+//  Copyright (c) 2015-2018 John Nordberg
 //
 //  Free Public License 1.0.0
 //  Permission to use, copy, modify, and/or distribute this software for any purpose with or without fee is hereby granted.
@@ -15,16 +15,15 @@
 
 namespace Diwen.Xbrl.Tests
 {
-	using NUnit.Framework;
+	using Xunit;
 
-	[TestFixture]
 	public static class FactTests
 	{
-		[Test]
+		[Fact]
 		public static void FactWithNullPropertiesToString()
 		{
 			var fact = new Fact();
-			Assert.IsNotEmpty(fact.ToString());
+			Assert.NotEmpty(fact.ToString());
 		}
 	}
 }

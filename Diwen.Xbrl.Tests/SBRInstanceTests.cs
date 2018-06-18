@@ -4,7 +4,7 @@
 //  Author:
 //       John Nordberg <john.nordberg@gmail.com>
 //
-//  Copyright (c) 2015-2017 John Nordberg
+//  Copyright (c) 2015-2018 John Nordberg
 //
 //  Free Public License 1.0.0
 //  Permission to use, copy, modify, and/or distribute this software for any purpose with or without fee is hereby granted.
@@ -16,10 +16,9 @@
 namespace Diwen.Xbrl.Tests
 {
 	using System.IO;
-	using NUnit.Framework;
+	using Xunit;
 	using Xbrl;
 
-	[TestFixture]
 	public static class SBRInstanceTests
 	{
 		static Instance CreatePaymentSummaryInstance()
@@ -213,7 +212,7 @@ namespace Diwen.Xbrl.Tests
 			return instance;
 		}
 
-		[Test]
+		[Fact]
 		public static void WritePaymentSummaryInstance()
 		{
 			var instance = CreatePaymentSummaryInstance();
@@ -223,7 +222,7 @@ namespace Diwen.Xbrl.Tests
 			instance.ToFile(path);
 		}
 
-		[Test]
+		[Fact]
 		public static void ComparePaymentSummaryInstance()
 		{
 			var instance = CreatePaymentSummaryInstance();
@@ -241,20 +240,20 @@ namespace Diwen.Xbrl.Tests
 			// They have the same facts matched by metric, value, decimals and unit
 			// Entity and Period are also matched
 			// Some things are NOT checked, eg. taxonomy version, context names
-			//Assert.AreEqual(instance, referenceInstance);
+			//Assert.Equal(instance, referenceInstance);
 
 			string tempFile = Path.Combine(TestContext.CurrentContext.TestDirectory, "sbr_temp.xbrl");
 			instance.ToFile(tempFile);
 
 			var newInstance = Instance.FromFile(tempFile, true);
 
-			Assert.IsTrue(newInstance.Equals(instance));
+			Assert.True(newInstance.Equals(instance));
 
-			Assert.IsTrue(newInstance.Equals(referenceInstance));
+			Assert.True(newInstance.Equals(referenceInstance));
 
 			newInstance.Contexts[0].Entity.AddExplicitMember("AM", "s2c_AM:x1");
 
-			Assert.IsFalse(newInstance.Equals(referenceInstance));
+			Assert.False(newInstance.Equals(referenceInstance));
 		}
 
 	}
