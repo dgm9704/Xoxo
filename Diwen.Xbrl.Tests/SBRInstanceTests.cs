@@ -218,7 +218,7 @@ namespace Diwen.Xbrl.Tests
 			var instance = CreatePaymentSummaryInstance();
 
 			// Write the instace to a file
-			var path = Path.Combine(TestContext.CurrentContext.TestDirectory, "output.sbr.xml");
+			var path = "output.sbr.xml";
 			instance.ToFile(path);
 		}
 
@@ -231,7 +231,7 @@ namespace Diwen.Xbrl.Tests
 			// aren't automatically removed until serialization so do it before comparisons
 			instance.RemoveUnusedObjects();
 
-			var referencePath = Path.Combine(TestContext.CurrentContext.TestDirectory, "data", "sbr_reference.xbrl");
+			var referencePath = Path.Combine("data", "sbr_reference.xbrl");
 			var referenceInstance = Instance.FromFile(referencePath, true);
 
 			// Instances are functionally equivalent:
@@ -242,7 +242,7 @@ namespace Diwen.Xbrl.Tests
 			// Some things are NOT checked, eg. taxonomy version, context names
 			//Assert.Equal(instance, referenceInstance);
 
-			string tempFile = Path.Combine(TestContext.CurrentContext.TestDirectory, "sbr_temp.xbrl");
+			string tempFile = "sbr_temp.xbrl";
 			instance.ToFile(tempFile);
 
 			var newInstance = Instance.FromFile(tempFile, true);

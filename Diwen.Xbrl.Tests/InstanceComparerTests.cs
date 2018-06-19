@@ -26,7 +26,7 @@ namespace Diwen.Xbrl.Tests
         public static void CompareInstanceToItself()
         {
             // load same instance twice and compare
-            var path = Path.Combine(TestContext.CurrentContext.TestDirectory, "data", "reference.xbrl");
+            var path = Path.Combine("data", "reference.xbrl");
             var firstInstance = Instance.FromFile(path);
             var secondInstance = Instance.FromFile(path);
             var report = InstanceComparer.Report(firstInstance, secondInstance);
@@ -41,7 +41,7 @@ namespace Diwen.Xbrl.Tests
         public static void CompareInstanceToItselfWithPath()
         {
             // load same instance twice and compare
-            var path = Path.Combine(TestContext.CurrentContext.TestDirectory, "data", "reference.xbrl");
+            var path = Path.Combine("data", "reference.xbrl");
             var report = InstanceComparer.Report(path, path);
             //Console.WriteLine(string.Join(Environment.NewLine, report.Messages));
             // comparison should find the instances equivalent
@@ -54,7 +54,7 @@ namespace Diwen.Xbrl.Tests
         public static void ComparisonReportContainsContextWithNullScenario()
         {
             // load same instance twice
-            var path = Path.Combine(TestContext.CurrentContext.TestDirectory, "data", "reference.xbrl");
+            var path = Path.Combine("data", "reference.xbrl");
             var firstInstance = Instance.FromFile(path);
             var secondInstance = Instance.FromFile(path);
 
@@ -76,7 +76,7 @@ namespace Diwen.Xbrl.Tests
         public static void CompareBasicNullValues()
         {
             // load same instance twice and compare
-            var path = Path.Combine(TestContext.CurrentContext.TestDirectory, "data", "reference.xbrl");
+            var path = Path.Combine("data", "reference.xbrl");
             var firstInstance = Instance.FromFile(path);
             var secondInstance = Instance.FromFile(path);
 
@@ -94,7 +94,7 @@ namespace Diwen.Xbrl.Tests
         public static void CompareSimilarFacts()
         {
             // load same instance twice and compare
-            var path = Path.Combine(TestContext.CurrentContext.TestDirectory, "data", "reference.xbrl");
+            var path = Path.Combine("data", "reference.xbrl");
             var firstInstance = Instance.FromFile(path);
             var secondInstance = Instance.FromFile(path);
 
@@ -112,8 +112,8 @@ namespace Diwen.Xbrl.Tests
         [Fact]
         public static void CompareTotallyDifferentInstances()
         {
-            var firstPath = Path.Combine(TestContext.CurrentContext.TestDirectory, "data", "reference.xbrl");
-            var secondPath = Path.Combine(TestContext.CurrentContext.TestDirectory, "data", "ars.xbrl");
+            var firstPath = Path.Combine("data", "reference.xbrl");
+            var secondPath = Path.Combine("data", "ars.xbrl");
             var report = InstanceComparer.Report(firstPath, secondPath, ComparisonTypes.All);
             //Console.WriteLine(string.Join(Environment.NewLine, report.Messages));
             Assert.False(report.Result);
@@ -123,8 +123,8 @@ namespace Diwen.Xbrl.Tests
         [Fact]
         public static void CompareDomainNamespacesOfTotallyDifferentInstances()
         {
-            var firstPath = Path.Combine(TestContext.CurrentContext.TestDirectory, "data", "reference.xbrl");
-            var secondPath = Path.Combine(TestContext.CurrentContext.TestDirectory, "data", "ars.xbrl");
+            var firstPath = Path.Combine("data", "reference.xbrl");
+            var secondPath = Path.Combine("data", "ars.xbrl");
             var report = InstanceComparer.Report(firstPath, secondPath, ComparisonTypes.DomainNamespaces);
             //Console.WriteLine(string.Join(Environment.NewLine, report.Messages));
             Assert.False(report.Result);
@@ -135,7 +135,7 @@ namespace Diwen.Xbrl.Tests
         //public static void CompareInstancesTypedMemberDifferent()
         //{
         //	// load same instance twice
-        //	var path = Path.Combine(TestContext.CurrentContext.TestDirectory, "data", "reference.xbrl");
+        //	var path = Path.Combine("data", "reference.xbrl");
         //	var firstInstance = Instance.FromFile(path);
         //	var secondInstance = Instance.FromFile(path);
         //	// change second only slightly and compare
@@ -154,7 +154,7 @@ namespace Diwen.Xbrl.Tests
         //public static void CompareLargeInstanceMinorDifferenceInContext()
         //{
         //	// load same instance twice
-        //	var path = Path.Combine(TestContext.CurrentContext.TestDirectory, "data", "ars.xbrl");
+        //	var path = Path.Combine("data", "ars.xbrl");
         //	var firstInstance = Instance.FromFile(path);
         //	var secondInstance = Instance.FromFile(path);
         //	// change second only slightly and compare
@@ -174,7 +174,7 @@ namespace Diwen.Xbrl.Tests
         public static void CompareLargeInstanceMinorDifferenceInFact()
         {
             // load same instance twice
-            var path = Path.Combine(TestContext.CurrentContext.TestDirectory, "data", "ars.xbrl");
+            var path = Path.Combine("data", "ars.xbrl");
             var firstInstance = Instance.FromFile(path);
             var secondInstance = Instance.FromFile(path);
             // change one fact in both instances
@@ -195,7 +195,7 @@ namespace Diwen.Xbrl.Tests
         public static void CompareReportTest()
         {
             // load same instance twice
-            var path = Path.Combine(TestContext.CurrentContext.TestDirectory, "data", "reference.xbrl");
+            var path = Path.Combine("data", "reference.xbrl");
             var report = InstanceComparer.Report(path, path, ComparisonTypes.Contexts);
             //Console.WriteLine(string.Join(Environment.NewLine, report.Messages));
             Assert.True(report.Result, report.Messages.Join(Environment.NewLine));
@@ -204,8 +204,8 @@ namespace Diwen.Xbrl.Tests
         [Fact]
         public static void CompareEntityWithNoEntity()
         {
-            var first = Instance.FromFile(Path.Combine(TestContext.CurrentContext.TestDirectory, "data", "empty_instance.xbrl"));
-            var second = Instance.FromFile(Path.Combine(TestContext.CurrentContext.TestDirectory, "data", "empty_instance.xbrl"));
+            var first = Instance.FromFile(Path.Combine("data", "empty_instance.xbrl"));
+            var second = Instance.FromFile(Path.Combine("data", "empty_instance.xbrl"));
 
             second.Entity = new Entity("LEI", "00000000000000000098");
             second.Period = new Period(2016, 05, 31);
@@ -217,8 +217,8 @@ namespace Diwen.Xbrl.Tests
         [Fact]
         public static void CompareDifferentEntityAndPeriodOnly()
         {
-            var path = Path.Combine(TestContext.CurrentContext.TestDirectory, "data", "reference.xbrl");
-            var path2 = Path.Combine(TestContext.CurrentContext.TestDirectory, "data", "reference2.xbrl");
+            var path = Path.Combine("data", "reference.xbrl");
+            var path2 = Path.Combine("data", "reference2.xbrl");
 
             var report = InstanceComparer.Report(path, path2);
             //Console.WriteLine(string.Join(Environment.NewLine, report.Messages));
@@ -238,7 +238,7 @@ namespace Diwen.Xbrl.Tests
         [Fact]
         public static void CompareFactWithMissingUnit()
         {
-            var path = Path.Combine(TestContext.CurrentContext.TestDirectory, "data", "reference.xbrl");
+            var path = Path.Combine("data", "reference.xbrl");
             var firstInstance = Instance.FromFile(path);
             var secondInstance = Instance.FromFile(path);
 
@@ -254,7 +254,7 @@ namespace Diwen.Xbrl.Tests
         [Fact]
         public static void BypassTaxonomyVersion()
         {
-            var path = Path.Combine(TestContext.CurrentContext.TestDirectory, "data", "reference.xbrl");
+            var path = Path.Combine("data", "reference.xbrl");
             var firstInstance = Instance.FromFile(path);
             var secondInstance = Instance.FromFile(path);
             secondInstance.TaxonomyVersion = null;
@@ -272,7 +272,7 @@ namespace Diwen.Xbrl.Tests
             // change the other a little, save it and reload so we get a fresh instance
             // bypassing some bugs that lead to not everything updating on the fly :(
 
-            var path = Path.Combine(TestContext.CurrentContext.TestDirectory, "data", "minimal.xbrl");
+            var path = Path.Combine("data", "minimal.xbrl");
             var tempPath = Path.GetTempFileName();
 
             var first = Instance.FromFile(path);
@@ -329,8 +329,8 @@ namespace Diwen.Xbrl.Tests
         [Fact]
         public static void CompareTotallyDifferentInstancesReportObjects()
         {
-            var firstPath = Path.Combine(TestContext.CurrentContext.TestDirectory, "data", "reference.xbrl");
-            var secondPath = Path.Combine(TestContext.CurrentContext.TestDirectory, "data", "ars.xbrl");
+            var firstPath = Path.Combine("data", "reference.xbrl");
+            var secondPath = Path.Combine("data", "ars.xbrl");
             var report = InstanceComparer.ReportObjects(firstPath, secondPath);
             Assert.False(report.Result);
         }
@@ -339,7 +339,7 @@ namespace Diwen.Xbrl.Tests
         public static void CompareLargeInstanceMinorDifferenceInFactReportObjects()
         {
             // load same instance twice
-            var path = Path.Combine(TestContext.CurrentContext.TestDirectory, "data", "ars.xbrl");
+            var path = Path.Combine("data", "ars.xbrl");
             var firstInstance = Instance.FromFile(path);
             var secondInstance = Instance.FromFile(path);
             // change one fact in both instances
@@ -360,7 +360,7 @@ namespace Diwen.Xbrl.Tests
         public static void ExamineFactDifferences()
         {
             // load same instance twice
-            var path = Path.Combine(TestContext.CurrentContext.TestDirectory, "data", "ars.xbrl");
+            var path = Path.Combine("data", "ars.xbrl");
             var firstInstance = Instance.FromFile(path);
             var secondInstance = Instance.FromFile(path);
 
@@ -391,7 +391,7 @@ namespace Diwen.Xbrl.Tests
         [Fact]
         public static void CompareDifferentUnits()
         {
-            var path = Path.Combine(TestContext.CurrentContext.TestDirectory, "data", "reference.xbrl");
+            var path = Path.Combine("data", "reference.xbrl");
             var first = Instance.FromFile(path);
             var second = Instance.FromFile(path);
 

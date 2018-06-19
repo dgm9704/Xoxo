@@ -56,7 +56,7 @@ namespace Diwen.Xbrl.Tests
 					Select(report => report.Key)));
 
 		static Dictionary<string, ComparisonReport> TestFolder(string folderName)
-		=> Directory.GetFiles(Path.Combine(TestContext.CurrentContext.TestDirectory, folderName), "*.xbrl").
+		=> Directory.GetFiles(folderName, "*.xbrl").
 				ToDictionary(inputFile => inputFile,
 							inputFile => TestFile(inputFile,
 												Path.ChangeExtension(inputFile, "out"),

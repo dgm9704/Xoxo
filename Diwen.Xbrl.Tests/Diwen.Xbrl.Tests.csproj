@@ -16,15 +16,15 @@
   <ItemGroup>
     <ProjectReference Include="..\Diwen.Xbrl\Diwen.Xbrl.csproj" />
   </ItemGroup>
-
-  <!-- <PropertyGroup Condition="'$(TargetFramework)'== 'net452'">
-    <FrameworkPathOverride>$(NuGetPackageRoot)microsoft.targetingpack.netframework.v4.5.2/1.0.1/lib/net452/</FrameworkPathOverride>
-  </PropertyGroup> -->
   
-  <!-- <ItemGroup Condition="'$(TargetFramework)'== 'net452'">
-      <PackageReference Include="Microsoft.TargetingPack.NETFramework.v4.5.2"
-                        Version="1.0.1" ExcludeAssets="All" PrivateAssets="All" />
-     <Reference Include="System.XML" />
-  </ItemGroup> -->
+  <ItemGroup>
+    <Content Include="data/*.xbrl" />
+    <Content Include="fi-sbr/*.*" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Update="data/*.xbrl" CopyToOutputDirectory="PreserveNewest" />
+    <Content Update="fi-sbr/*.*" CopyToOutputDirectory="PreserveNewest" />
+  </ItemGroup>
 
 </Project>
