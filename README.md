@@ -24,17 +24,18 @@ https://www.nuget.org/packages/Diwen.Xbrl/
 
 
 ### Environment
-C# 6, Mono/.Net 4.5
 
-My development enviroment is [MonoDevelop](http://www.monodevelop.com/) on [Arch Linux](https://www.archlinux.org/) 
+# Environment
+I use [Visual Studio Code](https://code.visualstudio.com/) 
+on [Arch Linux](https://www.archlinux.org/)
 
-Builds and runs without modifications on Microsoft Visual Studio Community 2015 / Windows 7 (tested 2016-11-20)
+Code is written in [C#](https://docs.microsoft.com/en-us/dotnet/csharp/index) 7.0, targeting 
+[.NET Standard 2.0](https://github.com/dotnet/standard/blob/master/docs/versions/netstandard2.0.md) / 
+[.NET Framework 4.5.2](https://docs.microsoft.com/en-us/dotnet/framework/)
 
-(Also managed to build and get some tests running on .Net Core / Visual Studio Code on Xubuntu with some work.)
+Test framework is [xUnit.net](https://xunit.github.io/)
 
-### Dependencies
-NUnit 3+ for testing, tests are pretty simple and should mostly work also with MSTest or XUnit 
-
+and test code is targeting [.NET Core 2.1](https://docs.microsoft.com/en-us/dotnet/core/)
 
 ## Diwen.Xbrl.Tests
 Tests for exercising Diwen.Xbrl code, also serving as documentation and samples
