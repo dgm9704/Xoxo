@@ -2,18 +2,20 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
   <metadata>
     <id>Diwen.Xbrl</id>
-    <version>1.0.0-beta</version>
+    <version>1.0.1</version>
     <authors>John Nordberg</authors>
     <owners>diwen</owners>
     <licenseUrl>http://www.gnu.org/licenses/lgpl.txt</licenseUrl>
     <projectUrl>https://github.com/dgm9704/Xoxo</projectUrl>
-    <requireLicenseAcceptance>true</requireLicenseAcceptance>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>.NET library for reading, writing and comparing XBRL instances.
 Please consider giving feedback if you use the library in your own software projects.</description>
     <frameworkAssemblies>
       <frameworkAssembly assemblyName="System.XML" targetFramework=".NETFramework4.5.2" />
     </frameworkAssemblies>
-    <releaseNotes>Changed from building on Mono to multitargeting netstandard2.0 and net452</releaseNotes>
+    <releaseNotes>bug fixes:
+extensionmethods should be in their own namespace #59
+Namespaces of unused units aren't removed #60</releaseNotes>
     <copyright>Copyright 2015-2018 John Nordberg</copyright>
     <tags>.NET XBRL</tags>
   </metadata>
