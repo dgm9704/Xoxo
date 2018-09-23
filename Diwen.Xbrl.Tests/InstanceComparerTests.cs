@@ -427,6 +427,5 @@ namespace Diwen.Xbrl.Tests
 
             Assert.True(comparison.Result, comparison.Messages.Join(Environment.NewLine));
         }
-
     }
 }

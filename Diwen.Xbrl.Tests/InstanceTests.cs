@@ -1,5 +1,5 @@
 ﻿//
-//  InstanceComparerTests.cs
+//  InstanceTests.cs
 //
 //  Author:
 //       John Nordberg <john.nordberg@gmail.com>
@@ -400,6 +400,17 @@ namespace Diwen.Xbrl.Tests
             Assert.NotEmpty(output);
             // Most probably wont't match due to differences in casing or apostrophe vs. quotation etc.
             // // Assert.Equal(input, output);
+        }
+
+        [Fact]
+        public static void SerializedInstanceWithNoMonetaryUnitShouldNotHaveUnusedNamespace()
+        {
+            var inFile = Path.Combine("data", "minimal.xbrl");
+            var instance = Instance.FromFile(inFile);
+            var outFile = "minimal.out";
+            instance.ToFile(outFile);
+            var filecontent = File.ReadAllText(outFile);
+            Assert.DoesNotContain("iso4217", filecontent);
         }
 
     }

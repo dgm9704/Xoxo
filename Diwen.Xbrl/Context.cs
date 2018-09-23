@@ -21,85 +21,74 @@
 
 namespace Diwen.Xbrl
 {
-	using System;
-	using System.Diagnostics;
-	using System.Linq;
-	using System.Xml.Serialization;
+    using System;
+    using System.Diagnostics;
+    using System.Linq;
+    using System.Xml.Serialization;
 
-	[DebuggerDisplay("{Id}")]
-	[Serializable]
-	[XmlRoot(ElementName = "context", Namespace = "http://www.xbrl.org/2003/instance")]
-	public class Context : IEquatable<Context>, IXbrlObject
-	{
-		[XmlAttribute("id", Namespace = "http://www.xbrl.org/2003/instance")]
-		public string Id { get; set; }
+    [DebuggerDisplay("{Id}")]
+    [Serializable]
+    [XmlRoot(ElementName = "context", Namespace = "http://www.xbrl.org/2003/instance")]
+    public class Context : IEquatable<Context>, IXbrlObject
+    {
+        [XmlAttribute("id", Namespace = "http://www.xbrl.org/2003/instance")]
+        public string Id { get; set; }
 
-		[XmlElement("entity", Namespace = "http://www.xbrl.org/2003/instance")]
-		public Entity Entity { get; set; }
+        [XmlElement("entity", Namespace = "http://www.xbrl.org/2003/instance")]
+        public Entity Entity { get; set; }
 
-		[XmlElement("period", Namespace = "http://www.xbrl.org/2003/instance")]
-		public Period Period { get; set; }
+        [XmlElement("period", Namespace = "http://www.xbrl.org/2003/instance")]
+        public Period Period { get; set; }
 
-		[XmlElement("scenario", Namespace = "http://www.xbrl.org/2003/instance")]
-		public Scenario Scenario { get; set; }
+        [XmlElement("scenario", Namespace = "http://www.xbrl.org/2003/instance")]
+        public Scenario Scenario { get; set; }
 
-		public bool ShouldSerializeScenario()
-		{
-			var result = false;
-			if (Scenario != null)
-			{
-				result = (Scenario.ExplicitMembers.Any())
-					|| (Scenario.TypedMembers.Any());
-			}
-			return result;
-		}
+        public bool ShouldSerializeScenario()
+        {
+            var result = false;
+            if (Scenario != null)
+            {
+                result = (Scenario.ExplicitMembers.Any())
+                    || (Scenario.TypedMembers.Any());
+            }
+            return result;
+        }
 
-		public Context()
-		{
-		}
+        public Context() { }
 
-		public Context(Scenario scenario)
-		{
-			Scenario = scenario;
-		}
+        public Context(Scenario scenario)
+        => Scenario = scenario;
 
-		public Context(Entity entity, Segment segment)
-		{
-			entity.Segment = segment;
-		}
+        public Context(Entity entity, Segment segment)
+        => entity.Segment = segment;
 
-		public ExplicitMember AddExplicitMember(string dimension, string value)
-		=> Scenario.ExplicitMembers.Add(dimension, value);
+        public ExplicitMember AddExplicitMember(string dimension, string value)
+        => Scenario.ExplicitMembers.Add(dimension, value);
 
-		public TypedMember AddTypedMember(string dimension, string domain, string value)
-		=> Scenario.TypedMembers.Add(dimension, domain, value);
+        public TypedMember AddTypedMember(string dimension, string domain, string value)
+        => Scenario.TypedMembers.Add(dimension, domain, value);
 
-		public override bool Equals(object obj)
-		=> Equals(obj as Context);
+        public override bool Equals(object obj)
+        => Equals(obj as Context);
 
-		public override int GetHashCode()
-		=> (Period != null ? Period.GetHashCode() : 0)
-			+ 7 * (Entity != null ? Entity.GetHashCode() : 0)
-			+ 31 * (Scenario != null ? Scenario.GetHashCode() : 0);
+        public override int GetHashCode()
+        => (Period != null ? Period.GetHashCode() : 0)
+            + 7 * (Entity != null ? Entity.GetHashCode() : 0)
+            + 31 * (Scenario != null ? Scenario.GetHashCode() : 0);
 
-		#region IEquatable implementation
+        #region IEquatable implementation
 
-		public bool Equals(Context other)
-		{
-			var result = false;
-			if (other != null)
-			{
-				if ((Period == null && other.Period == null) || (Period != null && Period.Equals(other.Period)))
-				{
-					if ((Entity == null && other.Entity == null) || Entity.Equals(other.Entity))
-					{
-						result |= (Scenario == null && other.Scenario == null) || Scenario.Equals(other.Scenario);
-					}
-				}
-			}
-			return result;
-		}
+        public bool Equals(Context other)
+        {
+            var result = false;
+            if (other != null)
+                if ((Period == null && other.Period == null) || (Period != null && Period.Equals(other.Period)))
+                    if ((Entity == null && other.Entity == null) || Entity.Equals(other.Entity))
+                        result |= (Scenario == null && other.Scenario == null) || Scenario.Equals(other.Scenario);
 
-		#endregion
-	}
+            return result;
+        }
+
+        #endregion
+    }
 }
