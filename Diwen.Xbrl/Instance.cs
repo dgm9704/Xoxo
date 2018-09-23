@@ -30,6 +30,7 @@ namespace Diwen.Xbrl
     using System.Text;
     using System.Xml;
     using System.Xml.Serialization;
+    using Diwen.Xbrl.Extensions;
 
     [Serializable]
     [XmlRoot(ElementName = "xbrl", Namespace = "http://www.xbrl.org/2003/instance")]
@@ -715,14 +716,9 @@ namespace Diwen.Xbrl
 
             foreach (var item in DefaultUnitNamespaces)
                 if (Units.Any(u => u.Measure.StartsWith(item.Key)))
-                {
                     result.Add(item.Key, item.Value);
-                }
                 else
-                {
                     Namespaces.RemoveNamespace(item.Key, item.Value);
-                    Console.WriteLine($"Namespace removed: {item.Key}:{item.Value}");
-                }
 
             if (FilingIndicators.Any())
                 foreach (var item in DefaultIndicatorNamespaces)

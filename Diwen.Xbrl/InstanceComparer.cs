@@ -25,8 +25,9 @@ namespace Diwen.Xbrl
 	using System.Collections.Generic;
 	using System.IO;
 	using System.Linq;
+    using Diwen.Xbrl.Extensions;
 
-	public static class InstanceComparer
+    public static class InstanceComparer
 	{
 		public static ComparisonReport Report(string a, string b)
 		=> Report(Instance.FromFile(a), Instance.FromFile(b), ComparisonTypes.All);

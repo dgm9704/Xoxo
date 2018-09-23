@@ -30,7 +30,6 @@ namespace Diwen.Xbrl.Tests
             var firstInstance = Instance.FromFile(path);
             var secondInstance = Instance.FromFile(path);
             var report = InstanceComparer.Report(firstInstance, secondInstance);
-            //Console.WriteLine(string.Join(Environment.NewLine, report.Messages));
             // comparison should find the instances equivalent
             Assert.True(report.Result);
             // there should be no differences reported
@@ -43,7 +42,6 @@ namespace Diwen.Xbrl.Tests
             // load same instance twice and compare
             var path = Path.Combine("data", "reference.xbrl");
             var report = InstanceComparer.Report(path, path);
-            //Console.WriteLine(string.Join(Environment.NewLine, report.Messages));
             // comparison should find the instances equivalent
             Assert.True(report.Result);
             // there should be no differences reported
@@ -65,7 +63,6 @@ namespace Diwen.Xbrl.Tests
             }
 
             var report = InstanceComparer.Report(firstInstance, secondInstance);
-            //Console.WriteLine(string.Join(Environment.NewLine, report.Messages));
             // comparison should find the instances different and not crash
             Assert.False(report.Result);
             // there should be some differences reported
@@ -85,7 +82,6 @@ namespace Diwen.Xbrl.Tests
 
             var report = InstanceComparer.Report(firstInstance, secondInstance, ComparisonTypes.Basic);
             // comparison should find the instances different and not throw
-            //Console.WriteLine(string.Join(Environment.NewLine, report.Messages));
             Assert.False(report.Result);
             Assert.NotEmpty(report.Messages);//, report.Messages.Join(Environment.NewLine));
         }
@@ -103,7 +99,6 @@ namespace Diwen.Xbrl.Tests
 
             var report = InstanceComparer.Report(firstInstance, secondInstance, ComparisonTypes.Facts);
             // comparison should find the instances different and not throw
-            //Console.WriteLine(string.Join(Environment.NewLine, report.Messages));
             Assert.False(report.Result);
             Assert.NotEmpty(report.Messages);
             Assert.Equal(4, report.Messages.Count); // report.Messages.Join(Environment.NewLine));
@@ -115,7 +110,6 @@ namespace Diwen.Xbrl.Tests
             var firstPath = Path.Combine("data", "reference.xbrl");
             var secondPath = Path.Combine("data", "ars.xbrl");
             var report = InstanceComparer.Report(firstPath, secondPath, ComparisonTypes.All);
-            //Console.WriteLine(string.Join(Environment.NewLine, report.Messages));
             Assert.False(report.Result);
             Assert.NotEmpty(report.Messages);
         }
@@ -126,7 +120,6 @@ namespace Diwen.Xbrl.Tests
             var firstPath = Path.Combine("data", "reference.xbrl");
             var secondPath = Path.Combine("data", "ars.xbrl");
             var report = InstanceComparer.Report(firstPath, secondPath, ComparisonTypes.DomainNamespaces);
-            //Console.WriteLine(string.Join(Environment.NewLine, report.Messages));
             Assert.False(report.Result);
             Assert.NotEmpty(report.Messages);
         }
@@ -141,7 +134,6 @@ namespace Diwen.Xbrl.Tests
         //	// change second only slightly and compare
         //	secondInstance.Contexts[1].Scenario.TypedMembers[0].Value = "abcd";
         //	var report = InstanceComparer.Report(firstInstance, secondInstance);
-        //	//Console.WriteLine(string.Join(Environment.NewLine, report.Messages));
         //	// not the same anymore
         //	Assert.False(report.Result);
         //	// should contain some differences
@@ -161,7 +153,6 @@ namespace Diwen.Xbrl.Tests
         //	// original is s2c_VM:x5
         //	secondInstance.Contexts["CI22070"].Scenario.ExplicitMembers[5].Value = new XmlQualifiedName("s2c_VM:x6");
         //	var report = InstanceComparer.Report(firstInstance, secondInstance, ComparisonTypes.Contexts);
-        //	//Console.WriteLine(string.Join(Environment.NewLine, report.Messages));
         //	// not the same anymore
         //	Assert.False(report.Result);
         //	// should contain some differences
@@ -182,7 +173,6 @@ namespace Diwen.Xbrl.Tests
             firstInstance.Facts[33099].Value = "FOOBAR";
             secondInstance.Facts[33099].Value = "DEADBEEF";
             var report = InstanceComparer.Report(firstInstance, secondInstance, ComparisonTypes.Facts);
-            //Console.WriteLine(string.Join(Environment.NewLine, report.Messages));
             // not the same anymore
             Assert.False(report.Result);
             // should contain some differences
@@ -197,8 +187,7 @@ namespace Diwen.Xbrl.Tests
             // load same instance twice
             var path = Path.Combine("data", "reference.xbrl");
             var report = InstanceComparer.Report(path, path, ComparisonTypes.Contexts);
-            //Console.WriteLine(string.Join(Environment.NewLine, report.Messages));
-            Assert.True(report.Result, report.Messages.Join(Environment.NewLine));
+            Assert.True(report.Result, string.Join(Environment.NewLine, report.Messages));
         }
 
         [Fact]
@@ -221,7 +210,6 @@ namespace Diwen.Xbrl.Tests
             var path2 = Path.Combine("data", "reference2.xbrl");
 
             var report = InstanceComparer.Report(path, path2);
-            //Console.WriteLine(string.Join(Environment.NewLine, report.Messages));
             Assert.False(report.Result);
             string[] expectedMessages = {
                 "Different Entity",
@@ -246,7 +234,6 @@ namespace Diwen.Xbrl.Tests
             secondInstance.Facts[0].Unit = null;
 
             var report = InstanceComparer.Report(firstInstance, secondInstance);
-            //Console.WriteLine(string.Join(Environment.NewLine, report.Messages));
             Assert.False(report.Result);
             Assert.Equal(2, report.Messages.Count); //, report.Messages.Join(Environment.NewLine));
         }
@@ -425,7 +412,7 @@ namespace Diwen.Xbrl.Tests
 
             var comparison = InstanceComparer.Report(first, second);
 
-            Assert.True(comparison.Result, comparison.Messages.Join(Environment.NewLine));
+            Assert.True(comparison.Result, string.Join(Environment.NewLine, comparison.Messages));
         }
     }
 }

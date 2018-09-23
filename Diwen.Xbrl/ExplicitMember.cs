@@ -25,8 +25,9 @@ namespace Diwen.Xbrl
 	using System;
 	using System.Xml;
 	using System.Xml.Serialization;
+    using Diwen.Xbrl.Extensions;
 
-	[Serializable]
+    [Serializable]
 	[XmlRoot(ElementName = "explicitMember", Namespace = "http://xbrl.org/2006/xbrldi")]
 	public struct ExplicitMember : IEquatable<ExplicitMember>, IComparable<ExplicitMember>
 	{

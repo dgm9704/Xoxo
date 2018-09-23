@@ -25,8 +25,9 @@ namespace Diwen.Xbrl
 	using System.Collections.Generic;
 	using System.Collections.ObjectModel;
 	using System.Linq;
+    using Diwen.Xbrl.Extensions;
 
-	public class UnitCollection : KeyedCollection<string, Unit>, IEquatable<IList<Unit>>
+    public class UnitCollection : KeyedCollection<string, Unit>, IEquatable<IList<Unit>>
 	{
 		Instance Instance;
 

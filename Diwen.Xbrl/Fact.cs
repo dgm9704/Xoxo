@@ -25,8 +25,9 @@ namespace Diwen.Xbrl
 	using System.Linq;
 	using System.Xml;
 	using System.Xml.Serialization;
+    using Diwen.Xbrl.Extensions;
 
-	public class Fact : IEquatable<Fact>
+    public class Fact : IEquatable<Fact>
 	{
 		static XmlDocument doc = new XmlDocument();
 

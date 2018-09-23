@@ -25,8 +25,9 @@ namespace Diwen.Xbrl
 	using System.Xml;
 	using System.Xml.Schema;
 	using System.Xml.Serialization;
+    using Diwen.Xbrl.Extensions;
 
-	public struct TypedMember : IXmlSerializable, IEquatable<TypedMember>, IComparable<TypedMember>
+    public struct TypedMember : IXmlSerializable, IEquatable<TypedMember>, IComparable<TypedMember>
 	{
 		internal Instance Instance { get; set; }
 

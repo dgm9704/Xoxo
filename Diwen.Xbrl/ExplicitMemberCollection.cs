@@ -27,8 +27,9 @@ namespace Diwen.Xbrl
 	using System.Linq;
 	using System.Xml;
 	using System.Xml.Serialization;
+    using Diwen.Xbrl.Extensions;
 
-	public class ExplicitMemberCollection : Collection<ExplicitMember>, IEquatable<IList<ExplicitMember>>
+    public class ExplicitMemberCollection : Collection<ExplicitMember>, IEquatable<IList<ExplicitMember>>
 	{
 		Instance instanceField;
 

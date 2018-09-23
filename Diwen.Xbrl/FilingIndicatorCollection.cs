@@ -25,8 +25,9 @@ namespace Diwen.Xbrl
 	using System.Collections.Generic;
 	using System.Collections.ObjectModel;
 	using System.Linq;
+    using Diwen.Xbrl.Extensions;
 
-	public class FilingIndicatorCollection : Collection<FilingIndicator>, IEquatable<IList<FilingIndicator>>
+    public class FilingIndicatorCollection : Collection<FilingIndicator>, IEquatable<IList<FilingIndicator>>
 	{
 		public FilingIndicator Add(Context context, string value)
 		=> Add(context, value, true);

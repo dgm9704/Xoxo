@@ -24,8 +24,9 @@ namespace Diwen.Xbrl
 	using System;
 	using System.Collections.Generic;
 	using System.Collections.ObjectModel;
+    using Diwen.Xbrl.Extensions;
 
-	public class FactCollection : Collection<Fact>, IEquatable<IList<Fact>>
+    public class FactCollection : Collection<Fact>, IEquatable<IList<Fact>>
 	{
 		public Instance Instance;
 

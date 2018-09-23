@@ -25,8 +25,9 @@ namespace Diwen.Xbrl
 	using System.Collections.Generic;
 	using System.Collections.ObjectModel;
 	using System.Globalization;
+    using Diwen.Xbrl.Extensions;
 
-	public class ContextCollection : KeyedCollection<string, Context>, IEquatable<IList<Context>>
+    public class ContextCollection : KeyedCollection<string, Context>, IEquatable<IList<Context>>
 	{
 		static IFormatProvider ic = CultureInfo.InvariantCulture;
 
