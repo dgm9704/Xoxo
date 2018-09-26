@@ -82,7 +82,9 @@ namespace Diwen.Xbrl
 		=> Equals(obj as Period);
 
 		public override string ToString()
-		=> $"Instant={Instant:yyyy-MM-dd}";
+		=> ShouldSerializeInstant()
+		 ?  $"Instant={Instant:yyyy-MM-dd}"
+		 :  $"StartDate={StartDate:yyyy-MM-dd}, EndDate={EndDate:yyyy-MM-dd}";
 
 		#region IEquatable implementation
 

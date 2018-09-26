@@ -21,104 +21,82 @@
 
 namespace Diwen.Xbrl
 {
-	using System;
-	using System.Collections.Generic;
-	using System.Linq;
-	using System.Xml.Serialization;
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Xml.Serialization;
 
-	[Serializable]
-	[XmlRoot(ElementName = "segment", Namespace = "http://www.xbrl.org/2003/instance")]
-	public class Segment : IEquatable<Segment>
-	{
-		Instance instanceField;
+    [Serializable]
+    [XmlRoot(ElementName = "segment", Namespace = "http://www.xbrl.org/2003/instance")]
+    public class Segment : IEquatable<Segment>
+    {
+        Instance instance;
 
-		[XmlIgnore]
-		public Instance Instance
-		{
-			get { return instanceField; }
-			set
-			{
-				instanceField = value;
-				ExplicitMembers.Instance = value;
-				TypedMembers.Instance = value;
-			}
-		}
+        [XmlIgnore]
+        public Instance Instance
+        {
+            get => instance;
+            set
+            {
+                instance = value;
+                ExplicitMembers.Instance = value;
+                TypedMembers.Instance = value;
+            }
+        }
 
-		[XmlElement("explicitMember", Namespace = "http://xbrl.org/2006/xbrldi")]
-		public ExplicitMemberCollection ExplicitMembers { get; set; }
+        [XmlElement("explicitMember", Namespace = "http://xbrl.org/2006/xbrldi")]
+        public ExplicitMemberCollection ExplicitMembers { get; set; }
 
-		[XmlElement("typedMember", Namespace = "http://xbrl.org/2006/xbrldi")]
-		public TypedMemberCollection TypedMembers { get; set; }
+        [XmlElement("typedMember", Namespace = "http://xbrl.org/2006/xbrldi")]
+        public TypedMemberCollection TypedMembers { get; set; }
 
-		public bool HasMembers { get { return ExplicitMembers.Any() || TypedMembers.Any(); } }
+        public bool HasMembers => ExplicitMembers.Any() || TypedMembers.Any();
 
-		public Segment()
-		{
-			ExplicitMembers = new ExplicitMemberCollection();
-			TypedMembers = new TypedMemberCollection();
-		}
+        public Segment()
+        {
+            ExplicitMembers = new ExplicitMemberCollection();
+            TypedMembers = new TypedMemberCollection();
+        }
 
-		public Segment(Instance instance)
-		{
-			ExplicitMembers = new ExplicitMemberCollection(instance);
-			TypedMembers = new TypedMemberCollection(instance);
-		}
+        public Segment(Instance instance)
+        {
+            ExplicitMembers = new ExplicitMemberCollection(instance);
+            TypedMembers = new TypedMemberCollection(instance);
+        }
 
-		public override string ToString()
-		{
-			var members = new List<string>();
-			if (ExplicitMembers != null)
-			{
-				members.AddRange(ExplicitMembers.Select(m => m.ToString()));
-			}
-			if (TypedMembers != null)
-			{
-				members.AddRange(TypedMembers.Select(m => m.ToString()));
-			}
+        public override string ToString()
+        {
+            var members = new List<string>();
 
-			members.Sort();
-			return string.Join(", ", members);
-		}
+            if (ExplicitMembers != null)
+                members.AddRange(ExplicitMembers.Select(m => m.ToString()));
 
-		public override bool Equals(object obj)
-		=> Equals(obj as Segment);
+            if (TypedMembers != null)
+                members.AddRange(TypedMembers.Select(m => m.ToString()));
 
-		public override int GetHashCode()
-		{
-			int hashCode = 0;
-			foreach (var m in TypedMembers)
-			{
-				hashCode = 31 * hashCode + m.GetHashCode();
-			}
-			foreach (var m in ExplicitMembers)
-			{
-				hashCode = 31 * hashCode + m.GetHashCode();
-			}
-			return hashCode;
-		}
+            members.Sort();
+            return string.Join(", ", members);
+        }
 
-		public ExplicitMember AddExplicitMember(string dimension, string value)
-		=> ExplicitMembers.Add(dimension, value);
+        public override bool Equals(object obj)
+        => Equals(obj as Segment);
 
-		public TypedMember AddTypedMember(string dimension, string domain, string value)
-		=> TypedMembers.Add(dimension, domain, value);
+        public override int GetHashCode()
+        => TypedMembers.GetHashCode() + 31 * ExplicitMembers.GetHashCode();
 
-		#region IEquatable implementation
+        public ExplicitMember AddExplicitMember(string dimension, string value)
+        => ExplicitMembers.Add(dimension, value);
 
-		public bool Equals(Segment other)
-		{
-			var result = false;
-			if (other != null)
-			{
-				if (ExplicitMembers.Equals(other.ExplicitMembers))
-				{
-					result |= TypedMembers.Equals(other.TypedMembers);
-				}
-			}
+        public TypedMember AddTypedMember(string dimension, string domain, string value)
+        => TypedMembers.Add(dimension, domain, value);
 
-			return result;
-		}
+        #region IEquatable implementation
 
-		#endregion
-	}
+        public bool Equals(Segment other)
+        => other != null
+        	&& ExplicitMembers.Equals(other.ExplicitMembers)
+            && TypedMembers.Equals(other.TypedMembers);
+
+        #endregion
+    }
 }

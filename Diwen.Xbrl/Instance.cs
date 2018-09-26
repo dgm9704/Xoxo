@@ -724,7 +724,7 @@ namespace Diwen.Xbrl
                 foreach (var item in DefaultIndicatorNamespaces)
                     result.Add(item.Key, item.Value);
 
-            var namespaces = new List<string>();
+            var namespaces = new HashSet<string>();
 
             if (Facts.Any())
                 namespaces.Add(FactNamespace);
@@ -741,17 +741,12 @@ namespace Diwen.Xbrl
                 namespaces.Add(DimensionNamespace);
             }
 
-            var segments = Contexts.Where(c => c.Entity.Segment != null).Select(c => c.Entity.Segment).ToList();
-
-            if (segments.Any(s => s.TypedMembers.Any()))
-            {
-                namespaces.Add(DimensionNamespace);
-                namespaces.Add(TypedDomainNamespace);
-            }
-            else if (segments.Any(s => s.ExplicitMembers.Any()))
-            {
-                namespaces.Add(DimensionNamespace);
-            }
+            Contexts.
+                Where(c => c.Entity.Segment != null).
+                Select(c => c.Entity.Segment).
+                SelectMany(s => s.ExplicitMembers).
+                Select(m => m.Dimension.Namespace).
+                ToList().ForEach(ns=>namespaces.Add(ns));
 
             namespaces.
                 Where(i => !string.IsNullOrEmpty(i)).

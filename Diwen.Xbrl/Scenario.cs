@@ -35,7 +35,7 @@ namespace Diwen.Xbrl
 		[XmlIgnore]
 		public Instance Instance
 		{
-			get { return instance; }
+			get => instance;
 			set
 			{
 				instance = value;
@@ -69,14 +69,12 @@ namespace Diwen.Xbrl
 		public override string ToString()
 		{
 			var members = new List<string>();
+
 			if (ExplicitMembers != null)
-			{
 				members.AddRange(ExplicitMembers.Select(m => m.ToString()));
-			}
+
 			if (TypedMembers != null)
-			{
 				members.AddRange(TypedMembers.Select(m => m.ToString()));
-			}
 
 			members.Sort();
 			return string.Join(", ", members);
@@ -85,16 +83,8 @@ namespace Diwen.Xbrl
 		public override bool Equals(object obj)
 		=> Equals(obj as Scenario);
 
-		//int hashCode = -1;
 		public override int GetHashCode()
-		{
-			//if (hashCode == -1)
-			//{
-				//hashCode = TypedMembers.GetHashCode() + 31 * ExplicitMembers.GetHashCode();
-			return TypedMembers.GetHashCode() + 31 * ExplicitMembers.GetHashCode();
-			//}
-			//return hashCode;
-		}
+		=> TypedMembers.GetHashCode() + 31 * ExplicitMembers.GetHashCode();
 
 		public ExplicitMember AddExplicitMember(string dimension, string value)
 		=> ExplicitMembers.Add(dimension, value);
@@ -105,18 +95,9 @@ namespace Diwen.Xbrl
 		#region IEquatable implementation
 
 		public bool Equals(Scenario other)
-		{
-			var result = false;
-			if (other != null)
-			{
-				if (ExplicitMembers.Equals(other.ExplicitMembers))
-				{
-					result |= TypedMembers.Equals(other.TypedMembers);
-				}
-			}
-
-			return result;
-		}
+		=> other != null
+			&& ExplicitMembers.Equals(other.ExplicitMembers)
+			&& TypedMembers.Equals(other.TypedMembers);
 
 		#endregion
 	}
