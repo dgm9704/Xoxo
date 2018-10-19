@@ -21,84 +21,102 @@
 
 namespace Diwen.Xbrl
 {
-	using System;
-	using System.Collections.Generic;
-	using System.Linq;
-	using System.Xml.Serialization;
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Xml.Serialization;
 
-	[Serializable]
-	[XmlRoot(ElementName = "scenario", Namespace = "http://www.xbrl.org/2003/instance")]
-	public class Scenario : IEquatable<Scenario>
-	{
-		Instance instance;
+    [Serializable]
+    [XmlRoot(ElementName = "scenario", Namespace = "http://www.xbrl.org/2003/instance")]
+    public class Scenario : IEquatable<Scenario>
+    {
+        Instance instance;
 
-		[XmlIgnore]
-		public Instance Instance
-		{
-			get => instance;
-			set
-			{
-				instance = value;
-				ExplicitMembers.Instance = value;
-				TypedMembers.Instance = value;
-			}
-		}
+        [XmlIgnore]
+        public Instance Instance
+        {
+            get => instance;
+            set
+            {
+                instance = value;
+                ExplicitMembers.Instance = value;
+                TypedMembers.Instance = value;
+            }
+        }
 
-		[XmlElement("explicitMember", Namespace = "http://xbrl.org/2006/xbrldi")]
-		public ExplicitMemberCollection ExplicitMembers { get; set; }
+        [XmlElement("explicitMember", Namespace = "http://xbrl.org/2006/xbrldi")]
+        public ExplicitMemberCollection ExplicitMembers { get; set; }
 
-		[XmlElement("typedMember", Namespace = "http://xbrl.org/2006/xbrldi")]
-		public TypedMemberCollection TypedMembers { get; set; }
+        [XmlElement("typedMember", Namespace = "http://xbrl.org/2006/xbrldi")]
+        public TypedMemberCollection TypedMembers { get; set; }
 
-		[XmlIgnore]
-		public bool HasMembers
-		=> ExplicitMembers.Any() || TypedMembers.Any();
+        [XmlIgnore]
+        public bool HasMembers
+        => ExplicitMembers.Any() || TypedMembers.Any();
 
-		public Scenario()
-		{
-			ExplicitMembers = new ExplicitMemberCollection();
-			TypedMembers = new TypedMemberCollection();
-		}
+        public Scenario()
+        {
+            ExplicitMembers = new ExplicitMemberCollection();
+            TypedMembers = new TypedMemberCollection();
+        }
 
-		public Scenario(Instance instance)
-		{
-			ExplicitMembers = new ExplicitMemberCollection(instance);
-			TypedMembers = new TypedMemberCollection(instance);
-		}
+        public Scenario(Instance instance)
+        {
+            ExplicitMembers = new ExplicitMemberCollection(instance);
+            TypedMembers = new TypedMemberCollection(instance);
+        }
 
-		public override string ToString()
-		{
-			var members = new List<string>();
+        public override string ToString()
+        {
+            var members = new List<string>();
 
-			if (ExplicitMembers != null)
-				members.AddRange(ExplicitMembers.Select(m => m.ToString()));
+            if (ExplicitMembers != null)
+                members.AddRange(ExplicitMembers.Select(m => m.ToString()));
 
-			if (TypedMembers != null)
-				members.AddRange(TypedMembers.Select(m => m.ToString()));
+            if (TypedMembers != null)
+                members.AddRange(TypedMembers.Select(m => m.ToString()));
 
-			members.Sort();
-			return string.Join(", ", members);
-		}
+            members.Sort();
+            return string.Join(", ", members);
+        }
 
-		public override bool Equals(object obj)
-		=> Equals(obj as Scenario);
+        public override bool Equals(object obj)
+        => Equals(obj as Scenario);
 
-		public override int GetHashCode()
-		=> TypedMembers.GetHashCode() + 31 * ExplicitMembers.GetHashCode();
+        public override int GetHashCode()
+        => TypedMembers.GetHashCode() + 31 * ExplicitMembers.GetHashCode();
 
-		public ExplicitMember AddExplicitMember(string dimension, string value)
-		=> ExplicitMembers.Add(dimension, value);
+        // public override int GetHashCode()
+        // => Key.GetHashCode();
 
-		public TypedMember AddTypedMember(string dimension, string domain, string value)
-		=> TypedMembers.Add(dimension, domain, value);
+        public ExplicitMember AddExplicitMember(string dimension, string value)
+        => ExplicitMembers.Add(dimension, value);
 
-		#region IEquatable implementation
+        public TypedMember AddTypedMember(string dimension, string domain, string value)
+        => TypedMembers.Add(dimension, domain, value);
 
-		public bool Equals(Scenario other)
-		=> other != null
-			&& ExplicitMembers.Equals(other.ExplicitMembers)
-			&& TypedMembers.Equals(other.TypedMembers);
+        // private string key;
+        // protected string Key
+        // {
+        //     get
+        //     {
+        //         if (key == null)
+        //             key = ToString();
+        //         return key;
+        //     }
+        // }
 
-		#endregion
-	}
+        #region IEquatable implementation
+
+        public bool Equals(Scenario other)
+        => other != null
+        	&& ExplicitMembers.Equals(other.ExplicitMembers)
+        	&& TypedMembers.Equals(other.TypedMembers);
+
+        // public bool Equals(Scenario other)
+    	// => other != null
+        // && Key.Equals(other.Key, StringComparison.Ordinal);
+
+        #endregion
+    }
 }

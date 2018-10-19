@@ -71,54 +71,34 @@ namespace Diwen.Xbrl
 			var report = new ComparisonReportObjects();
 
 			if (comparisons.HasFlag(ComparisonTypes.Basic))
-			{
 				report.Basics = BasicComparison(a, b, basicSelection).ToList();
-			}
 
 			if (comparisons.HasFlag(ComparisonTypes.Contexts))
-			{
 				report.Contexts = ScenarioComparison(a, b);
-			}
 
 			if (comparisons.HasFlag(ComparisonTypes.Facts))
-			{
 				report.Facts = FactComparison(a, b);
-			}
 
 			if (comparisons.HasFlag(ComparisonTypes.DomainNamespaces))
-			{
 				report.DomainNamespaces = DomainNamespaceComparison(a, b);
-			}
 
 			if (comparisons.HasFlag(ComparisonTypes.Units))
-			{
 				report.Units = UnitComparison(a, b);
-			}
 
 			if (comparisons.HasFlag(ComparisonTypes.Entity))
-			{
 				report.Entities = EntityComparison(a, b);
-			}
 
 			if (comparisons.HasFlag(ComparisonTypes.Entity))
-			{
 				report.Periods = PeriodComparison(a, b);
-			}
 
 			if (comparisons.HasFlag(ComparisonTypes.TaxonomyVersion))
-			{
 				report.TaxonomyVersions = TaxonomyVersionComparison(a, b);
-			}
 
 			if (comparisons.HasFlag(ComparisonTypes.SchemaReference))
-			{
 				report.SchemaReferences = SchemaReferenceComparison(a, b);
-			}
 
 			if (comparisons.HasFlag(ComparisonTypes.FilingIndicators))
-			{
 				report.FilingIndicators = FilingIndicatorComparison(a, b);
-			}
 
 			report.Result = GetResultForReport(report);
 

@@ -216,6 +216,9 @@ namespace Diwen.Xbrl
             return context;
         }
 
+        public Context CreateContext(Scenario scenario)
+        => Contexts.Add(new Context(scenario) { Id = Contexts.NextId() });
+
         public Context GetContext(Segment segment)
         {
             Context context;
@@ -746,7 +749,7 @@ namespace Diwen.Xbrl
                 Select(c => c.Entity.Segment).
                 SelectMany(s => s.ExplicitMembers).
                 Select(m => m.Dimension.Namespace).
-                ToList().ForEach(ns=>namespaces.Add(ns));
+                ToList().ForEach(ns => namespaces.Add(ns));
 
             namespaces.
                 Where(i => !string.IsNullOrEmpty(i)).

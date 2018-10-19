@@ -156,7 +156,9 @@ namespace Diwen.Xbrl.Tests
 
             var newInstance = Instance.FromFile(tempFile, true);
 
-            Assert.True(newInstance.Equals(instance));
+            // Assert.True(newInstance.Equals(instance));
+            var report = InstanceComparer.Report(instance, newInstance);
+            Assert.Empty(report.Messages);
 
             Assert.True(newInstance.Equals(referenceInstance));
 
