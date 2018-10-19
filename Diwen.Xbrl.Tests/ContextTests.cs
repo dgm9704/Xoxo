@@ -15,6 +15,8 @@
 
 namespace Diwen.Xbrl.Tests
 {
+    using System;
+    using System.Diagnostics;
     using System.IO;
     using Xunit;
 
@@ -206,26 +208,26 @@ namespace Diwen.Xbrl.Tests
             Assert.NotEqual(left, right);
         }
 
-        // [Fact]
-        // public static void AddLargeNumberOfContexts()
-        // {
-        //     var instance = Instance.FromFile(Path.Combine("data", "ars.xbrl"));
+        [Fact]
+        public static void AddLargeNumberOfContexts()
+        {
+            var instance = Instance.FromFile(Path.Combine("data", "ars.xbrl"));
 
-        //     var scenario = new Scenario();
-        //     scenario.ExplicitMembers.Add("s2c_dim:BL", "s2c_LB:x142");
-        //     scenario.ExplicitMembers.Add("s2c_dim:CS", "s2c_CS:x26");
-        //     scenario.ExplicitMembers.Add("s2c_dim:LX", "s2c_GA:LU");
-        //     scenario.ExplicitMembers.Add("s2c_dim:BL", "s2c_LB:x142");
-        //     for (int i = 0; i < 10; i++)
-        //     {
-        //         var context = instance.GetContext()
-        //     }
-
-        // }
-
-
-        // <xbrldi:explicitMember dimension="s2c_dim:PI">s2c_PI:x1</xbrldi:explicitMember>
-        // <xbrldi:explicitMember dimension="s2c_dim:VG">s2c_AM:x80</xbrldi:explicitMember>
-        // <xbrldi:explicitMember dimension="s2c_dim:VL">s2c_VM:x5</xbrldi:explicitMember>
+            var scenario = new Scenario();
+            scenario.ExplicitMembers.Add("s2c_dim:BL", "s2c_LB:x142");
+            scenario.ExplicitMembers.Add("s2c_dim:CS", "s2c_CS:x26");
+            scenario.ExplicitMembers.Add("s2c_dim:LX", "s2c_GA:LU");
+            scenario.ExplicitMembers.Add("s2c_dim:PI", "s2c_PI:x1");
+            scenario.ExplicitMembers.Add("s2c_dim:VG", "s2c_AM:x80");
+            scenario.ExplicitMembers.Add("s2c_dim:VL", "s2c_VM:x5");
+            var sw = Stopwatch.StartNew();
+            for (int i = 0; i < 100000; i++)
+            {
+                var context = instance.CreateContext(scenario);
+            }
+            instance.CollapseDuplicateContexts();
+            sw.Stop();
+            Console.WriteLine($"{sw.Elapsed}");
+        }
     }
 }
