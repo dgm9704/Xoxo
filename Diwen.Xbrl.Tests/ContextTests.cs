@@ -18,6 +18,7 @@ namespace Diwen.Xbrl.Tests
     using System;
     using System.Diagnostics;
     using System.IO;
+    using System.Linq;
     using Xunit;
 
     public static class ContextTests
@@ -211,23 +212,128 @@ namespace Diwen.Xbrl.Tests
         [Fact]
         public static void AddLargeNumberOfContexts()
         {
-            var instance = Instance.FromFile(Path.Combine("data", "ars.xbrl"));
+            // This test demonstrates the usual scenario of adding contexts to an instance
+            // There is a performance hit that comes from checking each new context 
+            // against existing ones to avoid duplicates (GetContext)
+            // This of course does not scale well
 
-            var scenario = new Scenario();
-            scenario.ExplicitMembers.Add("s2c_dim:BL", "s2c_LB:x142");
-            scenario.ExplicitMembers.Add("s2c_dim:CS", "s2c_CS:x26");
-            scenario.ExplicitMembers.Add("s2c_dim:LX", "s2c_GA:LU");
-            scenario.ExplicitMembers.Add("s2c_dim:PI", "s2c_PI:x1");
-            scenario.ExplicitMembers.Add("s2c_dim:VG", "s2c_AM:x80");
-            scenario.ExplicitMembers.Add("s2c_dim:VL", "s2c_VM:x5");
-            var sw = Stopwatch.StartNew();
-            for (int i = 0; i < 100000; i++)
+            // Duplicate checking and removing can be done at caller side when 
+            // creating the scenarios and/or after adding all contexts
+            // So now there is a new method (CreateContext)
+            // that does not check for duplicates
+
+            Instance instance;
+            Scenario scenario;
+            Entity entity;
+            Period period;
+
+            Stopwatch sw;
+
+            var numberOfRuns = 10000;
+            var baseInstance = Path.Combine("data", "minimal.xbrl");
+
+            // load a minimal instance to work with
+            // and setup a scenario to add
+            instance = Instance.FromFile(baseInstance);
+
+            entity = instance.Contexts.First().Entity;
+            period = instance.Contexts.First().Period;
+
+            instance.SetDimensionNamespace("s2c_dim", "http://eiopa.europa.eu/xbrl/s2c/dict/dim");
+            instance.AddDomainNamespace("s2c_LB", "http://eiopa.europa.eu/xbrl/s2c/dict/dom/LB");
+            instance.AddDomainNamespace("s2c_CS", "http://eiopa.europa.eu/xbrl/s2c/dict/dom/CS");
+            instance.AddDomainNamespace("s2c_GA", "http://eiopa.europa.eu/xbrl/s2c/dict/dom/GA");
+            instance.AddDomainNamespace("s2c_PI", "http://eiopa.europa.eu/xbrl/s2c/dict/dom/PI");
+            instance.AddDomainNamespace("s2c_AM", "http://eiopa.europa.eu/xbrl/s2c/dict/dom/AM");
+            instance.AddDomainNamespace("s2c_VM", "http://eiopa.europa.eu/xbrl/s2c/dict/dom/VM");
+
+            scenario = new Scenario(instance);
+            scenario.ExplicitMembers.Add("BL", "s2c_LB:x142");
+            scenario.ExplicitMembers.Add("CS", "s2c_CS:x26");
+            scenario.ExplicitMembers.Add("LX", "s2c_GA:LU");
+            scenario.ExplicitMembers.Add("PI", "s2c_PI:x1");
+            scenario.ExplicitMembers.Add("VG", "s2c_AM:x80");
+            scenario.ExplicitMembers.Add("VL", "s2c_VM:x5");
+
+            sw = Stopwatch.StartNew();
+            for (int i = 0; i < numberOfRuns; i++)
             {
-                var context = instance.CreateContext(scenario);
+                scenario = new Scenario(instance);
+                scenario.ExplicitMembers.Add("BL", "s2c_LB:x142");
+                scenario.ExplicitMembers.Add("CS", "s2c_CS:x26");
+                scenario.ExplicitMembers.Add("LX", "s2c_GA:LU");
+                scenario.ExplicitMembers.Add("PI", "s2c_PI:x1");
+                scenario.ExplicitMembers.Add("VG", "s2c_AM:x80");
+                scenario.ExplicitMembers.Add("VL", $"s2c_VM:x{i}"); // <- change one member slightly so each context is different
+
+                // GetContext checks compares the scenario to existing ones 
+                // and returns the match if found
+                // creates and returns a new one if not found
+                var context = instance.GetContext(scenario);
+                context.Entity = entity;
+                context.Period = period;
             }
+
+            //Console.WriteLine($"instance made with GetContext has {instance.Contexts.Count} contexts");
+
+            // removing duplicates should not be needed but 
+            // make sure we do the same cleanup for both methods
+            // so any timing is comparable
+            instance.Facts.First().Context = instance.Contexts.Skip(1).First();
             instance.CollapseDuplicateContexts();
+            instance.RemoveUnusedObjects();
             sw.Stop();
-            Console.WriteLine($"{sw.Elapsed}");
+            Console.WriteLine($"GetContext {sw.Elapsed}");
+            instance.ToFile("GetContext.xbrl");
+
+            // load a minimal instance to work with
+            // and setup a scenario to add
+            instance = Instance.FromFile(baseInstance);
+
+            entity = instance.Contexts.First().Entity;
+            period = instance.Contexts.First().Period;
+
+            instance.SetDimensionNamespace("s2c_dim", "http://eiopa.europa.eu/xbrl/s2c/dict/dim");
+            instance.AddDomainNamespace("s2c_LB", "http://eiopa.europa.eu/xbrl/s2c/dict/dom/LB");
+            instance.AddDomainNamespace("s2c_CS", "http://eiopa.europa.eu/xbrl/s2c/dict/dom/CS");
+            instance.AddDomainNamespace("s2c_GA", "http://eiopa.europa.eu/xbrl/s2c/dict/dom/GA");
+            instance.AddDomainNamespace("s2c_PI", "http://eiopa.europa.eu/xbrl/s2c/dict/dom/PI");
+            instance.AddDomainNamespace("s2c_AM", "http://eiopa.europa.eu/xbrl/s2c/dict/dom/AM");
+            instance.AddDomainNamespace("s2c_VM", "http://eiopa.europa.eu/xbrl/s2c/dict/dom/VM");
+
+            sw = Stopwatch.StartNew();
+            for (int i = 0; i < numberOfRuns; i++)
+            {
+                scenario = new Scenario(instance);
+                scenario.ExplicitMembers.Add("BL", "s2c_LB:x142");
+                scenario.ExplicitMembers.Add("CS", "s2c_CS:x26");
+                scenario.ExplicitMembers.Add("LX", "s2c_GA:LU");
+                scenario.ExplicitMembers.Add("PI", "s2c_PI:x1");
+                scenario.ExplicitMembers.Add("VG", "s2c_AM:x80");
+                scenario.ExplicitMembers.Add("VL", $"s2c_VM:x{i}"); // <- change one member slightly so each context is different
+
+                // CreateContext always creates and returns a new context 
+                // without overhead of checking existing ones for duplicates
+                var context = instance.CreateContext(scenario);
+                context.Entity = entity;
+                context.Period = period;
+            }
+
+            //Console.WriteLine($"instance made with CreateContext has {instance.Contexts.Count} contexts");
+
+            // since we didn't check for existing matching scenarios
+            // there can be duplicates that need to be cleaned up
+            instance.Facts.First().Context = instance.Contexts.Skip(1).First();
+            instance.CollapseDuplicateContexts();
+            instance.RemoveUnusedObjects();
+            sw.Stop();
+            Console.WriteLine($"CreateContext {sw.Elapsed}");
+            instance.ToFile("CreateContext.xbrl");
+
+            // both methods should produce same result
+            var result = InstanceComparer.Report("GetContext.xbrl", "CreateContext.xbrl");
+            Assert.True(result.Result, string.Join(Environment.NewLine, result.Messages));
+
         }
     }
 }

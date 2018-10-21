@@ -51,8 +51,8 @@ namespace Diwen.Xbrl
 
 		public bool Equals(Identifier other)
 		=> other != null
-			&& Scheme.Equals(other.Scheme, StringComparison.Ordinal)
-			&& Value.Equals(other.Value, StringComparison.Ordinal);
+			&& ((Scheme == null && other.Scheme == null) || Scheme.Equals(other.Scheme, StringComparison.Ordinal))
+			&& ((Value == null && other.Value == null) || Value.Equals(other.Value, StringComparison.Ordinal));
 
 		public override int GetHashCode()
 		=> Scheme == null ? 0 : Scheme.GetHashCode() + 7 * (Value == null ? 0 : Value.GetHashCode());
