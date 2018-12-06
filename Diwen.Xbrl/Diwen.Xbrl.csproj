@@ -14,10 +14,28 @@
   </PropertyGroup>
   
   <ItemGroup Condition="'$(TargetFramework)'== 'net452'">
-      <!-- Make sure the reference assemblies are available -->
-      <PackageReference Include="Microsoft.TargetingPack.NETFramework.v4.5.2"
-                        Version="1.0.1" ExcludeAssets="All" PrivateAssets="All" />
-      <!-- The DLL case has changed between 4.5 and 4.6; this avoids a warning. -->
-      <Reference Include="System.XML" />
+    <!-- Make sure the reference assemblies are available -->
+    <PackageReference Include="Microsoft.TargetingPack.NETFramework.v4.5.2"
+                      Version="1.0.1" ExcludeAssets="All" PrivateAssets="All" />
+    <!-- The DLL case has changed between 4.5 and 4.6; this avoids a warning. -->
+    <Reference Include="System.XML" />
   </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="COPYING.txt" />
+    <Content Include="COPYING.LESSER.txt" />
+  </ItemGroup>
+
+  <PropertyGroup>
+    <Authors>John Nordberg</Authors>
+    <Owners>diwen</Owners>
+    <PackageLicenseUrl>http://www.gnu.org/licenses/lgpl.txt</PackageLicenseUrl>
+    <PackageProjectUrl>https://github.com/dgm9704/Xoxo</PackageProjectUrl>
+    <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
+    <Description>.NET library for reading, writing and comparing XBRL instances.
+Please consider giving feedback if you use the library in your own software projects.</Description>
+    <PackageReleaseNotes></PackageReleaseNotes>
+    <Copyright>Copyright 2015-2018 John Nordberg</Copyright>
+    <PackageTags>.NET XBRL</PackageTags>
+  </PropertyGroup>
 </Project>
