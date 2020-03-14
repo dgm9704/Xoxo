@@ -4,7 +4,7 @@
 //  Author:
 //       John Nordberg <john.nordberg@gmail.com>
 //
-//  Copyright (c) 2015-2018 John Nordberg
+//  Copyright (c) 2015-2020 John Nordberg
 //
 //  Free Public License 1.0.0
 //  Permission to use, copy, modify, and/or distribute this software for any purpose with or without fee is hereby granted.
@@ -414,6 +414,14 @@ namespace Diwen.Xbrl.Tests
             var filecontent = File.ReadAllText(outFile);
             Assert.DoesNotContain("iso4217", filecontent);
         }
+
+		[Fact]
+		public static void ExplicitMembersWithSurroundingWhitespaceShouldNotBork()
+		{
+			var infile = Path.Combine("data", "dk_example.xbrl");
+			var instance = Instance.FromFile(infile);
+			Assert.NotNull(instance);	
+		}
 
     }
 }
