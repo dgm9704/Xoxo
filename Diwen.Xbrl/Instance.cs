@@ -4,7 +4,7 @@
 //  Author:
 //       John Nordberg <john.nordberg@gmail.com>
 //
-//  Copyright (c) 2015-2018 John Nordberg
+//  Copyright (c) 2015-2020 John Nordberg
 //
 //  This program is free software: you can redistribute it and/or modify
 //  it under the terms of the GNU Lesser General Public License as published by
@@ -774,7 +774,9 @@ namespace Diwen.Xbrl
 
             stream.Position = 0;
 
-            var xbrl = (Instance)Serializer.Deserialize(stream);
+			Instance xbrl;
+            using (var reader = XmlReader.Create(stream, XmlReaderSettings))
+            	xbrl = (Instance)Serializer.Deserialize(reader);
 
             var options = InstanceOptions.None;
             if (removeUnusedObjects)
