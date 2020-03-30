@@ -4,7 +4,7 @@
 //  Author:
 //       John Nordberg <john.nordberg@gmail.com>
 //
-//  Copyright (c) 2015-2018 John Nordberg
+//  Copyright (c) 2015-2020 John Nordberg
 //
 //  This program is free software: you can redistribute it and/or modify
 //  it under the terms of the GNU Lesser General Public License as published by
@@ -54,9 +54,7 @@ namespace Diwen.Xbrl
                 var localname = Value.LocalName();
 
                 if (string.IsNullOrEmpty(prefix))
-                {
                     prefix = Instance?.Namespaces?.LookupPrefix(Value.Namespace) ?? "";
-                }
 
                 return string.Join(":", prefix, localname);
             }
@@ -104,9 +102,7 @@ namespace Diwen.Xbrl
             int result;
             result = string.Compare(Dimension.Name, other.Dimension.Name, StringComparison.Ordinal);
             if (result == 0)
-            {
                 result = string.Compare(Value.Name, other.Value.Name, StringComparison.Ordinal);
-            }
 
             return result;
         }
