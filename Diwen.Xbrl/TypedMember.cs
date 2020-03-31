@@ -4,7 +4,7 @@
 //  Author:
 //       John Nordberg <john.nordberg@gmail.com>
 //
-//  Copyright (c) 2015-2018 John Nordberg
+//  Copyright (c) 2015-2020 John Nordberg
 //
 //  This program is free software: you can redistribute it and/or modify
 //  it under the terms of the GNU Lesser General Public License as published by
@@ -21,133 +21,131 @@
 
 namespace Diwen.Xbrl
 {
-	using System;
-	using System.Xml;
-	using System.Xml.Schema;
-	using System.Xml.Serialization;
+    using System;
+    using System.Xml;
+    using System.Xml.Schema;
+    using System.Xml.Serialization;
     using Diwen.Xbrl.Extensions;
 
+    [XmlRoot(ElementName = "typedMember", Namespace = "http://xbrl.org/2006/xbrldi")]
     public struct TypedMember : IXmlSerializable, IEquatable<TypedMember>, IComparable<TypedMember>
-	{
-		internal Instance Instance { get; set; }
+    {
+        internal Instance Instance { get; set; }
 
-		[XmlIgnore]
-		public XmlQualifiedName Dimension { get; set; }
+        [XmlIgnore]
+        public XmlQualifiedName Dimension { get; set; }
 
-		[XmlIgnore]
-		public XmlQualifiedName Domain { get; set; }
+        [XmlIgnore]
+        public XmlQualifiedName Domain { get; set; }
 
-		[XmlIgnore]
-		public string Value { get; set; }
+        [XmlIgnore]
+        public string Value { get; set; }
 
-		public TypedMember(XmlQualifiedName dimension, XmlQualifiedName domain, string value)
-					: this()
-		{
-			Dimension = dimension;
-			Domain = domain;
-			Value = value;
-		}
+        public TypedMember(XmlQualifiedName dimension, XmlQualifiedName domain, string value)
+                    : this()
+        {
+            Dimension = dimension;
+            Domain = domain;
+            Value = value;
+        }
 
-		public override string ToString()
-		=> $"{Dimension.LocalName()}={Value}";
+        public override string ToString()
+        => $"{Dimension.LocalName()}={Value}";
 
-		public override bool Equals(object obj)
-		=> Equals((TypedMember)obj);
+        public override bool Equals(object obj)
+        => Equals((TypedMember)obj);
 
-		public override int GetHashCode()
-		=> Value != null ? Value.GetHashCode() : 0;
+        public override int GetHashCode()
+        => Value != null ? Value.GetHashCode() : 0;
 
-		#region operator overloads
+        #region operator overloads
 
-		public static bool operator ==(TypedMember left, TypedMember right)
-		=> left.Equals(right);
+        public static bool operator ==(TypedMember left, TypedMember right)
+        => left.Equals(right);
 
-		public static bool operator !=(TypedMember left, TypedMember right)
-		=> !left.Equals(right);
+        public static bool operator !=(TypedMember left, TypedMember right)
+        => !left.Equals(right);
 
-		public static bool operator >(TypedMember left, TypedMember right)
-		=> left.CompareTo(right) > 0;
+        public static bool operator >(TypedMember left, TypedMember right)
+        => left.CompareTo(right) > 0;
 
-		public static bool operator <(TypedMember left, TypedMember right)
-		=> right > left;
+        public static bool operator <(TypedMember left, TypedMember right)
+        => right > left;
 
-		public int Compare(TypedMember other)
-		=> CompareTo(other);
+        public int Compare(TypedMember other)
+        => CompareTo(other);
 
-		#endregion
+        #endregion
 
-		#region IXmlSerializable implementation
+        #region IXmlSerializable implementation
 
-		public XmlSchema GetSchema()
-		=> null;
+        public XmlSchema GetSchema()
+        => null;
 
-		public void ReadXml(XmlReader reader)
-		{
-			if (reader == null)
-			{
-				throw new ArgumentNullException(nameof(reader));
-			}
-			reader.MoveToContent();
-			var dim = reader.GetAttribute("dimension");
-			var idx = dim.IndexOf(':');
-			var prefix = dim.Substring(0, idx);
-			var dimNs = reader.LookupNamespace(prefix);
-			Dimension = new XmlQualifiedName(dim, dimNs);
-			reader.ReadStartElement();
-			Domain = new XmlQualifiedName(reader.Name, reader.NamespaceURI);
-			Value = reader.ReadElementString();
-			reader.ReadEndElement();
+        public void ReadXml(XmlReader reader)
+        {
+            if (reader == null)
+                throw new ArgumentNullException(nameof(reader));
 
-		}
+            reader.MoveToContent();
+            var dim = reader.GetAttribute("dimension");
+            var idx = dim.IndexOf(':');
+            var prefix = dim.Substring(0, idx);
+            var dimNs = reader.LookupNamespace(prefix);
+            Dimension = new XmlQualifiedName(dim, dimNs);
+            reader.ReadStartElement();
+            Domain = new XmlQualifiedName(reader.Name, reader.NamespaceURI);
+            Value = reader.ReadElementString();
+            reader.ReadEndElement();
+        }
 
-		public void WriteXml(XmlWriter writer)
-		{
-			if (writer == null)
-			{
-				throw new ArgumentNullException(nameof(writer));
-			}
-			writer.WriteAttributeString("dimension", Dimension.Name);
+        public void WriteXml(XmlWriter writer)
+        {
+            if (writer == null)
+                throw new ArgumentNullException(nameof(writer));
 
-			if (!string.IsNullOrEmpty(Value))
-			{
-				writer.WriteElementString(Domain.Prefix(), Domain.LocalName(), Domain.Namespace, Value);
-			}
-			else
-			{
-				writer.WriteStartElement(Domain.Prefix(), Domain.LocalName(), Domain.Namespace);
-				writer.WriteAttributeString("xsi", "nil", XmlSchema.InstanceNamespace, "true");
-				writer.WriteEndElement();
-			}
-		}
+            writer.WriteAttributeString("dimension", Dimension.Name);
 
-		#endregion
+            if (!string.IsNullOrEmpty(Value))
+            {
+                writer.WriteElementString(Domain.Prefix(), Domain.LocalName(), Domain.Namespace, Value);
+            }
+            else
+            {
+                writer.WriteStartElement(Domain.Prefix(), Domain.LocalName(), Domain.Namespace);
+                writer.WriteAttributeString("xsi", "nil", XmlSchema.InstanceNamespace, "true");
+                writer.WriteEndElement();
+            }
+        }
 
-		#region IEquatable implementation
+        #endregion
 
-		public bool Equals(TypedMember other)
-		=> Dimension == other.Dimension
-						&& Domain == other.Domain
-						&& Value == other.Value;
+        #region IEquatable implementation
 
-		#endregion
+        public bool Equals(TypedMember other)
+        => Dimension == other.Dimension
+                        && Domain == other.Domain
+                        && Value == other.Value;
 
-		#region IComparable implementation
+        #endregion
 
-		public int CompareTo(TypedMember other)
-		{
-			int result;
-			result = string.Compare(Dimension.Name, other.Dimension.Name, StringComparison.Ordinal);
-			if (result == 0)
-			{
-				result = string.Compare(Domain.Name, other.Domain.Name, StringComparison.Ordinal);
-			}
-			if (result == 0)
-			{
-				result = string.Compare(Value, other.Value, StringComparison.Ordinal);
-			}
-			return result;
-		}
+        #region IComparable implementation
 
-		#endregion
-	}
+        public int CompareTo(TypedMember other)
+        {
+            int result;
+            result = string.Compare(Dimension.Name, other.Dimension.Name, StringComparison.Ordinal);
+            if (result == 0)
+            {
+                result = string.Compare(Domain.Name, other.Domain.Name, StringComparison.Ordinal);
+            }
+            if (result == 0)
+            {
+                result = string.Compare(Value, other.Value, StringComparison.Ordinal);
+            }
+            return result;
+        }
+
+        #endregion
+    }
 }

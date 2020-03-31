@@ -24,19 +24,19 @@ namespace Diwen.Xbrl
 
     using System;
     using System.Xml;
+    using System.Xml.Schema;
     using System.Xml.Serialization;
     using Diwen.Xbrl.Extensions;
 
-    [Serializable]
     [XmlRoot(ElementName = "explicitMember", Namespace = "http://xbrl.org/2006/xbrldi")]
-    public struct ExplicitMember : IEquatable<ExplicitMember>, IComparable<ExplicitMember>
+    public struct ExplicitMember : IXmlSerializable, IEquatable<ExplicitMember>, IComparable<ExplicitMember>
     {
         internal Instance Instance { get; set; }
 
-        [XmlAttribute("dimension", Namespace = "http://xbrl.org/2006/xbrldi")]
+        [XmlIgnore]
         public XmlQualifiedName Dimension { get; set; }
 
-        [XmlText]
+        [XmlIgnore]
         public XmlQualifiedName Value { get; set; }
 
         public ExplicitMember(XmlQualifiedName dimension, XmlQualifiedName value)
@@ -85,6 +85,42 @@ namespace Diwen.Xbrl
 
         public static bool operator <(ExplicitMember left, ExplicitMember right)
         => right > left;
+
+        #endregion
+
+        #region IXmlSerializable implementation
+
+        public XmlSchema GetSchema()
+        => null;
+
+        public void ReadXml(XmlReader reader)
+        {
+            if (reader == null)
+                throw new ArgumentNullException(nameof(reader));
+
+            reader.MoveToContent();
+            var content = reader.GetAttribute("dimension");
+            var idx = content.IndexOf(':');
+            var prefix = content.Substring(0, idx);
+            var ns = reader.LookupNamespace(prefix);
+            Dimension = new XmlQualifiedName(content, ns);
+
+            content = reader.ReadString().Trim();
+            idx = content.IndexOf(':');
+            prefix = content.Substring(0, idx);
+            ns = reader.LookupNamespace(prefix);
+            Value = new XmlQualifiedName(content, ns);
+            reader.ReadEndElement();
+        }
+
+        public void WriteXml(XmlWriter writer)
+        {
+            if (writer == null)
+                throw new ArgumentNullException(nameof(writer));
+
+            writer.WriteAttributeString("dimension", Dimension.Name);
+            writer.WriteQualifiedName(Value.LocalName(), Value.Namespace);
+        }
 
         #endregion
 
