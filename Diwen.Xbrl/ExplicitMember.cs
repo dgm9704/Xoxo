@@ -103,13 +103,15 @@ namespace Diwen.Xbrl
             var idx = content.IndexOf(':');
             var prefix = content.Substring(0, idx);
             var ns = reader.LookupNamespace(prefix);
-            Dimension = new XmlQualifiedName(content, ns);
+            var name = content.Substring(idx + 1);
+            Dimension = new XmlQualifiedName(name, ns);
 
             content = reader.ReadString().Trim();
             idx = content.IndexOf(':');
             prefix = content.Substring(0, idx);
             ns = reader.LookupNamespace(prefix);
-            Value = new XmlQualifiedName(content, ns);
+            name = content.Substring(idx + 1);
+            Value = new XmlQualifiedName(name, ns);
             reader.ReadEndElement();
         }
 
@@ -117,9 +119,10 @@ namespace Diwen.Xbrl
         {
             if (writer == null)
                 throw new ArgumentNullException(nameof(writer));
-
-            writer.WriteAttributeString("dimension", Dimension.Name);
-            writer.WriteQualifiedName(Value.LocalName(), Value.Namespace);
+            var prefix = writer.LookupPrefix(Dimension.Namespace);
+            var dim = $"{prefix}:{Dimension.LocalName()}";
+            writer.WriteAttributeString("dimension", dim);
+            writer.WriteQualifiedName(Value.Name, Value.Namespace);
         }
 
         #endregion
