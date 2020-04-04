@@ -15,87 +15,81 @@
 
 namespace Diwen.Xbrl.Tests
 {
-	using System;
-	using System.Collections.Generic;
-	using System.IO;
-	using System.IO.Compression;
-	using System.Linq;
-	using Xunit;
+    using System;
+    using System.Collections.Generic;
+    using System.IO;
+    using System.IO.Compression;
+    using System.Linq;
+    using Xunit;
 
-	public static class ExternalTests
-	{
-		//[Fact]
-		//[Ignore("bad performance")]
-		//public static void EBA()
-		//{
-		//	//CheckFolderResults(TestFolder("eba"));
-		//	var folder = Path.Combine(TestContext.CurrentContext.TestDirectory, "eba");
-		//	foreach (var zip in Directory.GetFiles(folder, "*.zip"))
-		//	{
-		//		TestZippedFiles(zip, folder);
-		//	}
-		//}
+    public static class ExternalTests
+    {
+        // [Fact]
+        // public static void EBA()
+        // {
+        //     var folder = "eba";
+        //     foreach (var zip in Directory.GetFiles(folder, "*.zip"))
+        //     {
+        //         TestZippedFiles(zip, folder);
+        //     }
+        // }
 
-		//[Fact]
-		//[Ignore("bad performance")]
-		//public static void EIOPA()
-		//{
-		//	CheckFolderResults(TestFolder("eiopa"));
-		//}
+        [Fact]
+        public static void EIOPA()
+        => CheckFolderResults(TestFolder("eiopa"));
 
-		[Fact]
-		public static void Fi_Sbr()
-		=> CheckFolderResults(TestFolder("fi-sbr"));
+        [Fact]
+        public static void Fi_Sbr()
+        => CheckFolderResults(TestFolder("fi-sbr"));
 
-		static void CheckFolderResults(Dictionary<string, ComparisonReport> reports)
-		=> Assert.True(
-				reports.Values.All(report => report.Result),
-				string.Join(Environment.NewLine,
-					reports.
-					Where(report => !report.Value.Result).
-					Select(report => report.Key)));
+        static void CheckFolderResults(Dictionary<string, ComparisonReport> reports)
+        => Assert.True(
+                reports.Values.All(report => report.Result),
+                string.Join(Environment.NewLine,
+                    reports.
+                    Where(report => !report.Value.Result).
+                    Select(report => report.Key)));
 
-		static Dictionary<string, ComparisonReport> TestFolder(string folderName)
-		=> Directory.GetFiles(folderName, "*.xbrl").
-				ToDictionary(inputFile => inputFile,
-							inputFile => TestFile(inputFile,
-												Path.ChangeExtension(inputFile, "out"),
-												Path.ChangeExtension(inputFile, "log")));
+        static Dictionary<string, ComparisonReport> TestFolder(string folderName)
+        => Directory.GetFiles(folderName, "*.xbrl").
+                ToDictionary(inputFile => inputFile,
+                            inputFile => TestFile(inputFile,
+                                                Path.ChangeExtension(inputFile, "out"),
+                                                Path.ChangeExtension(inputFile, "log")));
 
 
-		static ComparisonReport TestFile(string inputFile, string outputFile, string reportFile)
-		{
-			Instance.FromFile(inputFile).ToFile(outputFile);
-			var report = InstanceComparer.Report(inputFile, outputFile);
-			File.WriteAllLines(reportFile, report.Messages);
-			return report;
-		}
+        static ComparisonReport TestFile(string inputFile, string outputFile, string reportFile)
+        {
+            Instance.FromFile(inputFile).ToFile(outputFile);
+            var report = InstanceComparer.Report(inputFile, outputFile);
+            File.WriteAllLines(reportFile, report.Messages);
+            return report;
+        }
 
-		static List<ComparisonReport> TestZippedFiles(string zipFile, string outputFolder)
-		{
-			var result = new List<ComparisonReport>();
-			using (var file = File.OpenRead(zipFile))
-			using (var zip = new ZipArchive(file, ZipArchiveMode.Read))
-			{
-				foreach (var entry in zip.Entries.Where(e => Path.GetExtension(e.Name) == ".xbrl"))
-				{
-					var outputFile = Path.Combine(outputFolder, Path.ChangeExtension(entry.Name, "out"));
+        static List<ComparisonReport> TestZippedFiles(string zipFile, string outputFolder)
+        {
+            var result = new List<ComparisonReport>();
+            using (var file = File.OpenRead(zipFile))
+            using (var zip = new ZipArchive(file, ZipArchiveMode.Read))
+            {
+                foreach (var entry in zip.Entries.Where(e => Path.GetExtension(e.Name) == ".xbrl"))
+                {
+                    var outputFile = Path.Combine(outputFolder, Path.ChangeExtension(entry.Name, "out"));
 
-					var memoryStream = new MemoryStream();
-					using (var zipStream = entry.Open())
-					{
-						zipStream.CopyTo(memoryStream);
-					}
-					var instance = Instance.FromStream(memoryStream);
-					instance.ToFile(outputFile);
-					var report = InstanceComparer.Report(instance, Instance.FromFile(outputFile));
-					File.WriteAllLines(Path.Combine(outputFolder, Path.ChangeExtension(entry.Name, "log")), report.Messages);
-					result.Add(report);
+                    var memoryStream = new MemoryStream();
+                    using (var zipStream = entry.Open())
+                        zipStream.CopyTo(memoryStream);
 
-				}
-			}
-			return result;
-		}
-	}
+                    var instance = Instance.FromStream(memoryStream);
+                    instance.ToFile(outputFile);
+                    var report = InstanceComparer.Report(instance, Instance.FromFile(outputFile));
+                    File.WriteAllLines(Path.Combine(outputFolder, Path.ChangeExtension(entry.Name, "log")), report.Messages);
+                    result.Add(report);
+
+                }
+            }
+            return result;
+        }
+    }
 }
 
