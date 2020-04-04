@@ -418,7 +418,7 @@ namespace Diwen.Xbrl.Tests
 		[Fact]
 		public static void ExplicitMembersWithSurroundingWhitespaceShouldNotBork()
 		{
-			var infile = Path.Combine("data", "dk_example.xbrl");
+			var infile = Path.Combine("data", "example_erst_dcca.xbrl");
 			var instance = Instance.FromFile(infile);
 			Assert.NotNull(instance);	
 		}
