@@ -24,31 +24,35 @@ namespace Diwen.Xbrl.Tests
 
     public static class ExternalTests
     {
-        // [Fact]
-        // public static void EBA()
-        // {
-        //     var folder = "eba";
-        //     foreach (var zip in Directory.GetFiles(folder, "*.zip"))
-        //     {
-        //         TestZippedFiles(zip, folder);
-        //     }
-        // }
+        [Fact]
+        public static void EBA()
+        {
+            var folder = "eba";
+            foreach (var zip in Directory.GetFiles(folder, "*.zip"))
+                TestZippedFiles(zip, folder);
+
+        }
 
         [Fact]
         public static void EIOPA()
-        => CheckFolderResults(TestFolder("eiopa"));
+        {
+            var folder = "eiopa";
+            foreach (var zip in Directory.GetFiles(folder, "*.zip"))
+                TestZippedFiles(zip, folder);
 
-        [Fact]
-        public static void Fi_Sbr()
-        => CheckFolderResults(TestFolder("fi-sbr"));
+        }
+
+        // [Fact]
+        // public static void Fi_Sbr()
+        // => CheckFolderResults(TestFolder("fi-sbr"));
 
         static void CheckFolderResults(Dictionary<string, ComparisonReport> reports)
-        => Assert.True(
-                reports.Values.All(report => report.Result),
-                string.Join(Environment.NewLine,
-                    reports.
-                    Where(report => !report.Value.Result).
-                    Select(report => report.Key)));
+                => Assert.True(
+                        reports.Values.All(report => report.Result),
+                        string.Join(Environment.NewLine,
+                            reports.
+                            Where(report => !report.Value.Result).
+                            Select(report => report.Key)));
 
         static Dictionary<string, ComparisonReport> TestFolder(string folderName)
         => Directory.GetFiles(folderName, "*.xbrl").
@@ -60,6 +64,7 @@ namespace Diwen.Xbrl.Tests
 
         static ComparisonReport TestFile(string inputFile, string outputFile, string reportFile)
         {
+            Console.WriteLine(Path.GetFileName(inputFile));
             Instance.FromFile(inputFile).ToFile(outputFile);
             var report = InstanceComparer.Report(inputFile, outputFile);
             File.WriteAllLines(reportFile, report.Messages);
@@ -68,12 +73,14 @@ namespace Diwen.Xbrl.Tests
 
         static List<ComparisonReport> TestZippedFiles(string zipFile, string outputFolder)
         {
+            Console.WriteLine(zipFile);
             var result = new List<ComparisonReport>();
             using (var file = File.OpenRead(zipFile))
             using (var zip = new ZipArchive(file, ZipArchiveMode.Read))
             {
                 foreach (var entry in zip.Entries.Where(e => Path.GetExtension(e.Name) == ".xbrl"))
                 {
+                    Console.WriteLine($"\t{entry.Name}");
                     var outputFile = Path.Combine(outputFolder, Path.ChangeExtension(entry.Name, "out"));
 
                     var memoryStream = new MemoryStream();
