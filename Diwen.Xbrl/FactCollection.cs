@@ -44,18 +44,16 @@ namespace Diwen.Xbrl
 				prefix = metric.Substring(0, metric.IndexOf(':'));
 				metric = metric.Substring(metric.IndexOf(':') + 1);
 			}
+			
 			if (ns == null)
-			{
 				ns = Instance.Namespaces.LookupNamespace(prefix);
-			}
 
 			Unit unit = null;
 			if (!string.IsNullOrEmpty(unitRef))
 			{
 				if (!Instance.Units.Contains(unitRef))
-				{
 					throw new KeyNotFoundException($"Referenced unit '{unitRef}' does not exist");
-				}
+
 				unit = Instance.Units[unitRef];
 			}
 
@@ -73,9 +71,7 @@ namespace Diwen.Xbrl
 		public void AddRange(IEnumerable<Fact> facts)
 		{
 			foreach (var fact in facts)
-			{
 				Add(fact);
-			}
 		}
 
 		#region IEquatable implementation

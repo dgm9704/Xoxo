@@ -68,9 +68,7 @@ namespace Diwen.Xbrl
 			: this()
 		{
 			if (context == null)
-			{
 				throw new ArgumentNullException(nameof(context));
-			}
 
 			Context = context;
 			Value = value;

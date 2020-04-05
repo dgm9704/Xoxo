@@ -47,9 +47,7 @@ namespace Diwen.Xbrl
 		public void AddRange(IEnumerable<Unit> units)
 		{
 			foreach (var unit in units)
-			{
 				Add(unit);
-			}
 		}
 
 		public void Add(string id, string measure)
@@ -68,9 +66,8 @@ namespace Diwen.Xbrl
 		{
 			int hashCode = 0;
 			foreach (var u in this)
-			{
 				hashCode = 31 * hashCode + u.GetHashCode();
-			}
+
 			return hashCode;
 		}
 

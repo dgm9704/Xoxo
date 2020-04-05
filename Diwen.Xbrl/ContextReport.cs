@@ -49,9 +49,7 @@ namespace Diwen.Xbrl
 				}
 
 				if (right != null)
-				{
 					result.Matches.Add(Tuple.Create(left, right));
-				}
 			}
 
 			return result;

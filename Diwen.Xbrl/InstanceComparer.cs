@@ -52,9 +52,7 @@ namespace Diwen.Xbrl
 			var messages = new List<string>();
 
 			if (comparisonTypes.HasFlag(ComparisonTypes.Basic))
-			{
 				messages.AddRange(BasicComparison(a, b, basicComparisons));
-			}
 
 			messages.AddRange(ComparisonMethods.
 							Where(c => comparisonTypes.HasFlag(c.Key)).
@@ -196,9 +194,7 @@ namespace Diwen.Xbrl
 				entityA = a.Contexts.First().Entity;
 
 				if (b.Contexts != null && b.Contexts.Any())
-				{
 					entityB = b.Contexts.First().Entity;
-				}
 			}
 
 			return (entityA == null && entityB == null)
@@ -214,9 +210,7 @@ namespace Diwen.Xbrl
 				periodA = a.Contexts.First().Period;
 
 				if (b.Contexts != null && b.Contexts.Any())
-				{
 					periodB = b.Contexts.First().Period;
-				}
 			}
 
 			return (periodA == null && periodB == null)
@@ -287,9 +281,7 @@ namespace Diwen.Xbrl
 		{
 			var scenarios = new Dictionary<string, string>();
 			foreach (var c in instance.Contexts)
-			{
 				scenarios[c.Scenario?.ToString() ?? ""] = c.Id;
-			}
 
 			return scenarios;
 		}
@@ -326,14 +318,10 @@ namespace Diwen.Xbrl
 			var bList = new List<Identifier>();
 
 			if (a.Contexts != null && a.Contexts.Any())
-			{
 				aList.Add(a.Contexts.First().Entity.Identifier);
-			}
 
 			if (b.Contexts != null && b.Contexts.Any())
-			{
 				bList.Add(b.Contexts.First().Entity.Identifier);
-			}
 
 			return aList.ContentCompareReport(bList);
 		}
@@ -351,14 +339,10 @@ namespace Diwen.Xbrl
 			var bList = new List<Period>();
 
 			if (a.Contexts != null && a.Contexts.Any())
-			{
 				aList.Add(a.Contexts.First().Period);
-			}
 
 			if (b.Contexts != null && b.Contexts.Any())
-			{
 				bList.Add(b.Contexts.First().Period);
-			}
 
 			return aList.ContentCompareReport(bList);
 		}

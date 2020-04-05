@@ -95,27 +95,12 @@ namespace Diwen.Xbrl
         public TypedMember AddTypedMember(string dimension, string domain, string value)
         => TypedMembers.Add(dimension, domain, value);
 
-        // private string key;
-        // protected string Key
-        // {
-        //     get
-        //     {
-        //         if (key == null)
-        //             key = ToString();
-        //         return key;
-        //     }
-        // }
-
         #region IEquatable implementation
 
         public bool Equals(Scenario other)
         => other != null
         	&& ExplicitMembers.Equals(other.ExplicitMembers)
         	&& TypedMembers.Equals(other.TypedMembers);
-
-        // public bool Equals(Scenario other)
-    	// => other != null
-        // && Key.Equals(other.Key, StringComparison.Ordinal);
 
         #endregion
     }

@@ -47,10 +47,9 @@ namespace Diwen.Xbrl
         {
             var result = false;
             if (Scenario != null)
-            {
                 result = (Scenario.ExplicitMembers.Any())
                     || (Scenario.TypedMembers.Any());
-            }
+
             return result;
         }
 

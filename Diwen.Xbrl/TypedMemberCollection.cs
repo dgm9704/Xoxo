@@ -40,17 +40,14 @@ namespace Diwen.Xbrl
 			set
 			{
 				if (value == null)
-				{
 					throw new ArgumentNullException();
-				}
+
 				instanceField = value;
 				var dimNs = instanceField.DimensionNamespace;
 				var dimPrefix = instanceField.Namespaces.LookupPrefix(dimNs);
 				var domNs = instanceField.TypedDomainNamespace;
 				var domprefix = instanceField.Namespaces.LookupPrefix(domNs);
 
-				//foreach (var item in this)
-				//{
 				for (int i = 0; i < this.Count; i++)
 				{
 					var item = this[i];
@@ -67,10 +64,9 @@ namespace Diwen.Xbrl
 						item.Domain = new XmlQualifiedName($"{domprefix}:{item.Domain.Name}", domNs);
 						dirty = true;
 					}
+
 					if (dirty)
-					{
 						this[i] = item;
-					}
 				}
 			}
 		}
@@ -118,12 +114,11 @@ namespace Diwen.Xbrl
 		public override int GetHashCode()
 		{
 			if (hashCode == -1)
-			{
 				hashCode = this.Select(m => m.Value ?? "").
 					OrderBy(m => m).
 					Join("").
 					GetHashCode();
-			}
+
 			return hashCode;
 		}
 	}

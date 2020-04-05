@@ -42,13 +42,9 @@ namespace Diwen.Xbrl
 				{
 					var match = false;
 					if (candidate.Metric.Equals(left.Metric) && candidate.Context.Scenario.Equals(left.Context.Scenario))
-					{
 						match = true;
-					}
 					else if (candidate.Equals(left))
-					{
 						match = true;
-					}
 
 					if (match)
 					{
@@ -59,9 +55,7 @@ namespace Diwen.Xbrl
 				}
 
 				if (right != null)
-				{
 					result.Matches.Add(Tuple.Create(left, right));
-				}
 			}
 
 			return result;

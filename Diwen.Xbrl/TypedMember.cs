@@ -135,14 +135,13 @@ namespace Diwen.Xbrl
         {
             int result;
             result = string.Compare(Dimension.Name, other.Dimension.Name, StringComparison.Ordinal);
+            
             if (result == 0)
-            {
                 result = string.Compare(Domain.Name, other.Domain.Name, StringComparison.Ordinal);
-            }
+
             if (result == 0)
-            {
                 result = string.Compare(Value, other.Value, StringComparison.Ordinal);
-            }
+
             return result;
         }
 

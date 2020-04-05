@@ -59,9 +59,7 @@ namespace Diwen.Xbrl
 			set
 			{
 				if (value != null)
-				{
 					Facts.AddRange(value.Select(e => FromXmlElement(e)));
-				}
 			}
 		}
 
@@ -90,14 +88,10 @@ namespace Diwen.Xbrl
 		public Fact(Context context, string metric, Unit unit, string decimals, string value, Uri namespaceUri, string prefix) : this()
 		{
 			if (context == null)
-			{
 				throw new ArgumentNullException(nameof(context));
-			}
 
 			if (namespaceUri == null)
-			{
 				throw new ArgumentNullException(nameof(namespaceUri));
-			}
 
 			Metric = new XmlQualifiedName($"{prefix}:{metric}", namespaceUri.ToString());
 			Unit = unit;
@@ -116,9 +110,7 @@ namespace Diwen.Xbrl
 				Facts.Instance = scenario.Instance;
 
 				if (!scenario.ExplicitMembers.Any() && !scenario.TypedMembers.Any())
-				{
 					scenario = null;
-				}
 			}
 			return Facts.Add(scenario, metric, unitRef, decimals, value);
 		}
@@ -130,9 +122,7 @@ namespace Diwen.Xbrl
 				Facts.Instance = segment.Instance;
 
 				if (!segment.HasMembers)
-				{
 					segment = null;
-				}
 			}
 
 			return Facts.Add(segment, metric, unitRef, decimals, value);
@@ -156,19 +146,13 @@ namespace Diwen.Xbrl
 			else
 			{
 				if (Context != null)
-				{
 					element.SetAttribute("contextRef", Context.Id);
-				}
 
 				if (Unit != null)
-				{
 					element.SetAttribute("unitRef", Unit.Id);
-				}
 
 				if (!string.IsNullOrEmpty(Decimals))
-				{
 					element.SetAttribute("decimals", Decimals);
-				}
 
 				element.InnerText = Value;
 			}
@@ -199,9 +183,8 @@ namespace Diwen.Xbrl
 			var result = false;
 			var other = obj as Fact;
 			if (other != null && Equals(other))
-			{
 				result |= Facts.Equals(other.Facts);
-			}
+
 			return result;
 		}
 
@@ -216,12 +199,12 @@ namespace Diwen.Xbrl
 				&& Value.Equals(other.Value, StringComparison.Ordinal)
 				&& Metric.Equals(other.Metric)
 				&& Decimals.Equals(other.Decimals, StringComparison.Ordinal);
+
 			if (result)
-			{
 				result = Unit == null
 					? other.Unit == null
 					: Unit.Equals(other.Unit);
-			}
+
 			return result;
 		}
 

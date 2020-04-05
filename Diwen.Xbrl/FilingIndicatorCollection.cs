@@ -46,24 +46,19 @@ namespace Diwen.Xbrl
 			bool result;
 
 			if (this == null && other == null)
-			{
 				// if both are null then consider equal
 				result = true;
-			}
 			else if (this == null ^ other == null)
-			{
 				// if just one is null then not equal
 				result = false;
-			}
 			else
-			{
 				result = this.
 					Where(i => i.Filed).
 					ToList().
 					ContentCompare(other.
 						Where(i => i.Filed).
 						ToList());
-			}
+
 			return result;
 		}
 

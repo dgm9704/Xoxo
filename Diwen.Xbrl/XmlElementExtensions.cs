@@ -29,9 +29,7 @@ namespace Diwen.Xbrl.Extensions
 		public static void AppendChildren(this XmlElement element, IEnumerable<XmlElement> children)
 		{
 			foreach (var item in children)
-			{
 				element.AppendChild(item);
-			}
 		}
 	}
 }

@@ -49,19 +49,13 @@ namespace Diwen.Xbrl
 		public new Context Add(Context context)
 		{
 			if (context == null)
-			{
 				throw new ArgumentNullException(nameof(context));
-			}
 
 			if (context.Entity == null)
-			{
 				context.Entity = Instance.Entity;
-			}
 
 			if (context.Period == null)
-			{
 				context.Period = Instance.Period;
-			}
 
 			if (string.IsNullOrEmpty(context.Id))
 			{
@@ -95,9 +89,7 @@ namespace Diwen.Xbrl
 			var counter = Count;
 			string id;
 			do
-			{
 				id = string.Format(ic, IdFormat, counter++);
-			}
 			while (Contains(id));
 
 			return id;
@@ -106,12 +98,8 @@ namespace Diwen.Xbrl
 		public void AddRange(IEnumerable<Context> values)
 		{
 			if (values != null)
-			{
 				foreach (var item in values)
-				{
 					Add(item);
-				}
-			}
 		}
 
 		protected override string GetKeyForItem(Context item)
