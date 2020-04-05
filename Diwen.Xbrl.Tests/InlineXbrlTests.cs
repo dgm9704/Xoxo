@@ -16,12 +16,7 @@
 namespace Diwen.Xbrl.Tests
 {
     using System;
-    using System.Collections.Generic;
-    using System.Globalization;
-    using System.IO;
-    using System.IO.Compression;
     using System.Linq;
-    using System.Xml;
     using System.Xml.Linq;
     using System.Xml.Serialization;
     using Xunit;
@@ -30,10 +25,25 @@ namespace Diwen.Xbrl.Tests
     {
 
         [Fact]
-        public static void ReadInlineXbrl()
+        public static void ParseInlineXbrlDocument()
         {
             var file = "esma/G2-1-2.xhtml";
             var doc = XDocument.Load(file);
+            var namespaces =
+                doc.
+                Root.
+                Attributes().
+                Where(a => a.IsNamespaceDeclaration).
+                ToDictionary(
+                    g => g.Name.LocalName,
+                    g => g.Value);
+
+            // ix:header/ix:references/link:schemaRef
+            var link = doc.Root.GetNamespaceOfPrefix("link");
+            var s = doc.Root.Descendants(link + "schemaRef").Single();
+            var xml = new XmlSerializer(typeof(SchemaReference));
+            var reader = s.CreateReader();
+            var schemaRef = (SchemaReference)xml.Deserialize(reader);
         }
 
         [Fact]
@@ -41,15 +51,14 @@ namespace Diwen.Xbrl.Tests
         {
             var file = "esma/G2-1-2.xhtml";
             var doc = XDocument.Load(file);
+            // ix:header/ix:resources/xbrli:context
             var xbrli = doc.Root.GetNamespaceOfPrefix("xbrli");
             var contexts = doc.Root.Descendants(xbrli + "context");
             var xml = new XmlSerializer(typeof(Context));
             foreach (var c in contexts)
             {
-                var stream = new MemoryStream();
-                c.Save(stream);
-                stream.Seek(0, SeekOrigin.Begin);
-                var context = (Context)xml.Deserialize(stream);
+                var reader = c.CreateReader();
+                var context = (Context)xml.Deserialize(reader);
             }
         }
 
@@ -58,15 +67,14 @@ namespace Diwen.Xbrl.Tests
         {
             var file = "esma/G2-1-2.xhtml";
             var doc = XDocument.Load(file);
+            // ix:header/ix:resources/xbrli:unit
             var xbrli = doc.Root.GetNamespaceOfPrefix("xbrli");
             var units = doc.Root.Descendants(xbrli + "unit");
             var xml = new XmlSerializer(typeof(Unit));
             foreach (var u in units)
             {
-                var stream = new MemoryStream();
-                u.Save(stream);
-                stream.Seek(0, SeekOrigin.Begin);
-                var unit = (Unit)xml.Deserialize(stream);
+                var reader = u.CreateReader();
+                var unit = (Unit)xml.Deserialize(reader);
             }
         }
 
@@ -90,7 +98,7 @@ namespace Diwen.Xbrl.Tests
                 if (!string.IsNullOrWhiteSpace(scale))
                 {
                     var power = int.Parse(scale);
-                    var v = decimal.Parse(value.Replace(" ",""));
+                    var v = decimal.Parse(value.Replace(" ", ""));
                     var multiplier = (decimal)Math.Pow(10, power);
                     v *= multiplier;
                     value = v.ToString();
