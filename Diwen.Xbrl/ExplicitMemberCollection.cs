@@ -58,10 +58,14 @@ namespace Diwen.Xbrl
                         string valNs = Instance.Namespaces.LookupNamespace(item.Value.Prefix());
 
                         if (!string.IsNullOrEmpty(valNs))
+                        {
                             if (item.Value.Namespace != valNs)
                                 item.Value = new XmlQualifiedName(item.Value.LocalName(), valNs);
+                        }
                         else if (Instance.CheckExplicitMemberDomainExists)
+                        {
                             throw new InvalidOperationException($"No namespace declared for domain '{item.Value.Prefix()}'");
+                        }
                     }
                     this[i] = item;
                 }
@@ -120,10 +124,10 @@ namespace Diwen.Xbrl
         {
             if (hashCode == -1)
                 hashCode = this.
-							Select(m => m.Value.LocalName()).
-							OrderBy(m => m).
-							Join("").
-							GetHashCode();
+                            Select(m => m.Value.LocalName()).
+                            OrderBy(m => m).
+                            Join("").
+                            GetHashCode();
 
             return hashCode;
         }
