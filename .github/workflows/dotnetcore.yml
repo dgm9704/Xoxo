@@ -18,8 +18,10 @@ jobs:
       with:
         dotnet-version: 3.1.101
     - name: Install dependencies
-      run: dotnet restore
+      run: dotnet restore Diwen.Xbrl/Diwen.Xbrl.csproj
+    - name: Install dependencies testproject
+      run: dotnet restore Diwen.Xbrl.Tests/Diwen.Xbrl.Tests.csproj
     - name: Build
       run: dotnet build --configuration Release --no-restore Diwen.Xbrl/Diwen.Xbrl.csproj
     - name: Test
-      run: dotnet test --no-restore --verbosity normal
+      run: dotnet test --no-restore --verbosity normal Diwen.Xbrl.Tests/Diwen.Xbrl.Tests.csproj
