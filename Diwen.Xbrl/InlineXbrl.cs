@@ -30,62 +30,23 @@ namespace Diwen.Xbrl
     {
         public static Instance ParseInstance(XDocument report)
         {
-            // Create new XBRL Instance
             var instance = new Instance();
 
-            // parse namespaces from xhtml and add to instance
-            var namespaces =
-                report.
-                Root.
-                Attributes().
-                Where(a => a.IsNamespaceDeclaration).
-                Where(a=> a.Name.LocalName != "xmlns").
-                ToDictionary(
-                    g => g.Name.LocalName,
-                    g => g.Value);
+            ParseNamespaces(report, instance);
 
-            foreach (var ns in namespaces)
-                instance.Namespaces.AddNamespace(ns.Key, ns.Value);
+            ParseSchemaReference(report, instance);
 
-            // parse schemaRef and add to instance
-            // ix:header/ix:references/link:schemaRef
-            var link = report.Root.GetNamespaceOfPrefix("link");
-            // there can be only one
-            var schemaRefElements = report.Root.Descendants(link + "schemaRef");
-            var schemaRefSerializer = new XmlSerializer(typeof(SchemaReference));
-            var schemaRefElement = schemaRefElements.Single();
-            var schemaReader = schemaRefElement.CreateReader();
-            var schemaRef = (SchemaReference)schemaRefSerializer.Deserialize(schemaReader);
-            instance.SchemaReference = schemaRef;
+            ParseContexts(report, instance);
 
-            // parse contexts and add to instance
-            // ix:header/ix:resources/xbrli:context
-            var xbrli = report.Root.GetNamespaceOfPrefix("xbrli");
-            var contextElements = report.Root.Descendants(xbrli + "context");
-            var contextSerializer = new XmlSerializer(typeof(Context));
+            ParseUnits(report, instance);
 
-            var contexts = new ContextCollection(instance);
-            foreach (var contextElement in contextElements)
-            {
-                var contextReader = contextElement.CreateReader();
-                var context = (Context)contextSerializer.Deserialize(contextReader);
-                contexts.Add(context);
-            }
-            instance.Contexts = contexts;
+            ParseFacts(report, instance);
 
-            // parse units and add to instance
-            // ix:header/ix:resources/xbrli:unit
-            var unitElements = report.Root.Descendants(xbrli + "unit");
-            var unitSerializer = new XmlSerializer(typeof(Unit));
-            var units = new UnitCollection(instance);
-            foreach (var unitElement in unitElements)
-            {
-                var unitReader = unitElement.CreateReader();
-                var unit = (Unit)unitSerializer.Deserialize(unitReader);
-                units.Add(unit);
-            }
-            instance.Units = units;
+            return instance;
+        }
 
+        private static void ParseFacts(XDocument report, Instance instance)
+        {
             // parse facts and add to instance
             var factElements = report.Descendants().Where(d => d.Attribute("contextRef") != null);
             var facts = new FactCollection(instance);
@@ -112,10 +73,74 @@ namespace Diwen.Xbrl
                 var fact = new Fact(name, ns, unitRef, decimals, contextRef, value);
                 facts.Add(fact);
             }
-            foreach(var fact in facts)
+            foreach (var fact in facts)
                 instance.Facts.Add(fact);
+        }
 
-            return instance;
+        private static void ParseUnits(XDocument report, Instance instance)
+        {
+            // parse units and add to instance
+            // ix:header/ix:resources/xbrli:unit
+            var unitNs = report.Root.GetNamespaceOfPrefix("xbrli");
+            var unitElements = report.Root.Descendants(unitNs + "unit");
+            var unitSerializer = new XmlSerializer(typeof(Unit));
+            var units = new UnitCollection(instance);
+            foreach (var unitElement in unitElements)
+            {
+                var unitReader = unitElement.CreateReader();
+                var unit = (Unit)unitSerializer.Deserialize(unitReader);
+                units.Add(unit);
+            }
+            instance.Units = units;
+        }
+
+        private static void ParseContexts(XDocument report, Instance instance)
+        {
+            // parse contexts and add to instance
+            // ix:header/ix:resources/xbrli:context
+            var contextNs = report.Root.GetNamespaceOfPrefix("xbrli");
+            var contextElements = report.Root.Descendants(contextNs + "context");
+            var contextSerializer = new XmlSerializer(typeof(Context));
+
+            var contexts = new ContextCollection(instance);
+            foreach (var contextElement in contextElements)
+            {
+                var contextReader = contextElement.CreateReader();
+                var context = (Context)contextSerializer.Deserialize(contextReader);
+                contexts.Add(context);
+            }
+            instance.Contexts = contexts;
+        }
+
+        private static void ParseSchemaReference(XDocument report, Instance instance)
+        {
+            // parse schemaRef and add to instance
+            // ix:header/ix:references/link:schemaRef
+            var link = report.Root.GetNamespaceOfPrefix("link");
+            // there can be only one
+            var schemaRefElements = report.Root.Descendants(link + "schemaRef");
+            var schemaRefSerializer = new XmlSerializer(typeof(SchemaReference));
+            var schemaRefElement = schemaRefElements.Single();
+            var schemaReader = schemaRefElement.CreateReader();
+            var schemaRef = (SchemaReference)schemaRefSerializer.Deserialize(schemaReader);
+            instance.SchemaReference = schemaRef;
+        }
+
+        private static void ParseNamespaces(XDocument report, Instance instance)
+        {
+            // parse namespaces from xhtml and add to instance
+            var namespaces =
+                report.
+                Root.
+                Attributes().
+                Where(a => a.IsNamespaceDeclaration).
+                Where(a => a.Name.LocalName != "xmlns").
+                ToDictionary(
+                    g => g.Name.LocalName,
+                    g => g.Value);
+
+            foreach (var ns in namespaces)
+                instance.Namespaces.AddNamespace(ns.Key, ns.Value);
         }
 
         public static Instance ParseInstance(string path)
