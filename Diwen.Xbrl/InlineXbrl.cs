@@ -23,26 +23,36 @@ namespace Diwen.Xbrl
 {
     using System;
     using System.Collections.Generic;
+    using System.Globalization;
     using System.Linq;
     using System.Xml.Linq;
     using System.Xml.Serialization;
 
     public static class InlineXbrl
     {
+        private static IFormatProvider ic = CultureInfo.InvariantCulture;
         private static Dictionary<InlineXbrlType, Func<string, ValidationResult>> FormatValidations =
         new Dictionary<InlineXbrlType, Func<string, ValidationResult>>
         {
             [InlineXbrlType.Esef] = ValidateEsef,
         };
-        
-        private static List<Func<string,string>> EsefValidations = new List<Func<string, string>>
+
+        private static List<Func<string, string>> EsefValidations = new List<Func<string, string>>
         {
             G_2_1_2,
         };
 
         private static string G_2_1_2(string path)
         {
-            return "<xbrli:period> element should contain values in YYYY-MM-DD format without time component";
+            var report = XDocument.Load(path);
+            var periodNs = report.Root.GetNamespaceOfPrefix("xbrli");
+            var periodElements = report.Root.Descendants(periodNs + "period");
+            var dateElements = periodElements.SelectMany(p=>p.Descendants());
+
+            return dateElements.
+                Any(p => !DateTime.TryParseExact(p.Value, "yyyy-MM-dd", ic, DateTimeStyles.None, out DateTime value))
+                    ? "<xbrli:period> element should contain values in YYYY-MM-DD format without time component"
+                    : null;
         }
 
         private static ValidationResult ValidateEsef(string path)
