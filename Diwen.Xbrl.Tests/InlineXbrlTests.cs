@@ -15,6 +15,7 @@
 
 namespace Diwen.Xbrl.Tests
 {
+    using System;
     using System.IO;
     using System.Linq;
     using Xunit;
@@ -36,8 +37,13 @@ namespace Diwen.Xbrl.Tests
         {
             var inputFile = "esma/G2-1-2.xhtml";
             var result = InlineXbrl.Validate(inputFile, InlineXbrlType.Esef);
-            Assert.True(result.Success);
-            Assert.False(result.Messages.Any());
+            Assert.False(result.Messages.Any(), string.Join("\n", result.Messages));
         }
+
+        [Fact]
+        public static void ValidateUnknownInlineXbrlDocument()
+        => Assert.Throws<ArgumentOutOfRangeException>(
+            () => InlineXbrl.Validate("inputFile", (InlineXbrlType)42));
     }
+
 }

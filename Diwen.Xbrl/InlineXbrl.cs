@@ -29,6 +29,28 @@ namespace Diwen.Xbrl
 
     public static class InlineXbrl
     {
+        private static Dictionary<InlineXbrlType, Func<string, ValidationResult>> FormatValidations =
+        new Dictionary<InlineXbrlType, Func<string, ValidationResult>>
+        {
+            [InlineXbrlType.Esef] = ValidateEsef,
+        };
+        
+        private static List<Func<string,string>> EsefValidations = new List<Func<string, string>>
+        {
+            G_2_1_2,
+        };
+
+        private static string G_2_1_2(string path)
+        {
+            return "<xbrli:period> element should contain values in YYYY-MM-DD format without time component";
+        }
+
+        private static ValidationResult ValidateEsef(string path)
+        {
+            var messages = EsefValidations.Select(validation => validation(path)).Where(message => !string.IsNullOrWhiteSpace(message));
+            return new ValidationResult(!messages.Any(), messages.ToArray());
+        }
+
         public static Instance ParseInstance(XDocument report)
         {
             var instance = new Instance();
@@ -47,22 +69,7 @@ namespace Diwen.Xbrl
         }
 
         public static ValidationResult Validate(string inputFile, InlineXbrlType type)
-        {
-            var success = true;
-            var messages = new List<string>();
-
-            switch (type)
-            {
-                case InlineXbrlType.Esef:
-
-                    break;
-
-                default:
-                    throw new ArgumentOutOfRangeException(nameof(type));
-            }
-
-            return new ValidationResult(success, messages.ToArray());
-        }
+        => FormatValidations.GetValueOrDefault(type, (f) => throw new ArgumentOutOfRangeException(nameof(type)))(inputFile);
 
         private static void ParseFacts(XDocument report, Instance instance)
         {
