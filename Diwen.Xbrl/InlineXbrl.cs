@@ -22,6 +22,7 @@
 namespace Diwen.Xbrl
 {
     using System;
+    using System.Collections.Generic;
     using System.Linq;
     using System.Xml.Linq;
     using System.Xml.Serialization;
@@ -43,6 +44,24 @@ namespace Diwen.Xbrl
             ParseFacts(report, instance);
 
             return instance;
+        }
+
+        public static ValidationResult Validate(string inputFile, InlineXbrlType type)
+        {
+            var success = true;
+            var messages = new List<string>();
+
+            switch (type)
+            {
+                case InlineXbrlType.Esef:
+
+                    break;
+
+                default:
+                    throw new ArgumentOutOfRangeException(nameof(type));
+            }
+
+            return new ValidationResult(success, messages.ToArray());
         }
 
         private static void ParseFacts(XDocument report, Instance instance)

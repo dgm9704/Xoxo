@@ -16,6 +16,7 @@
 namespace Diwen.Xbrl.Tests
 {
     using System.IO;
+    using System.Linq;
     using Xunit;
 
     public static class InlineXbrlTests
@@ -26,9 +27,17 @@ namespace Diwen.Xbrl.Tests
         {
             var inputFile = "esma/G2-1-2.xhtml";
             var instance = InlineXbrl.ParseInstance(inputFile);
-            var outputFile = Path.ChangeExtension(inputFile,"xbrl");
+            var outputFile = Path.ChangeExtension(inputFile, "xbrl");
             instance.ToFile(outputFile);
         }
 
+        [Fact]
+        public static void ValidateInlineXbrlDocument()
+        {
+            var inputFile = "esma/G2-1-2.xhtml";
+            var result = InlineXbrl.Validate(inputFile, InlineXbrlType.Esef);
+            Assert.True(result.Success);
+            Assert.False(result.Messages.Any());
+        }
     }
 }
