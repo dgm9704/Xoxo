@@ -31,23 +31,22 @@ namespace Diwen.Xbrl
     public static class InlineXbrl
     {
         private static IFormatProvider ic = CultureInfo.InvariantCulture;
-        private static Dictionary<InlineXbrlType, Func<string, ValidationResult>> FormatValidations =
-        new Dictionary<InlineXbrlType, Func<string, ValidationResult>>
-        {
-            [InlineXbrlType.Esef] = ValidateEsef,
-        };
+        // private static Dictionary<InlineXbrlType, Func<string, ValidationResult>> FormatValidations =
+        // new Dictionary<InlineXbrlType, Func<string, ValidationResult>>
+        // {
+        //     [InlineXbrlType.Esef] = ValidateEsef,
+        // };
 
-        private static List<Func<string, string>> EsefValidations = new List<Func<string, string>>
+        private static List<Func<XDocument, string>> EsefValidations = new List<Func<XDocument, string>>
         {
             G_2_1_2,
         };
 
-        private static string G_2_1_2(string path)
+        private static string G_2_1_2(XDocument report)
         {
-            var report = XDocument.Load(path);
             var periodNs = report.Root.GetNamespaceOfPrefix("xbrli");
             var periodElements = report.Root.Descendants(periodNs + "period");
-            var dateElements = periodElements.SelectMany(p=>p.Descendants());
+            var dateElements = periodElements.SelectMany(p => p.Descendants());
 
             return dateElements.
                 Any(p => !DateTime.TryParseExact(p.Value, "yyyy-MM-dd", ic, DateTimeStyles.None, out DateTime value))
@@ -55,9 +54,17 @@ namespace Diwen.Xbrl
                     : null;
         }
 
-        private static ValidationResult ValidateEsef(string path)
+
+        public static ValidationResult ValidateEsef(string path)
+        => ValidateEsef(XDocument.Load(path));
+
+        public static ValidationResult ValidateEsef(XDocument report)
         {
-            var messages = EsefValidations.Select(validation => validation(path)).Where(message => !string.IsNullOrWhiteSpace(message));
+            var messages =
+                EsefValidations.
+                Select(validation => validation(report)).
+                Where(message => !string.IsNullOrWhiteSpace(message));
+
             return new ValidationResult(!messages.Any(), messages.ToArray());
         }
 
@@ -78,8 +85,8 @@ namespace Diwen.Xbrl
             return instance;
         }
 
-        public static ValidationResult Validate(string inputFile, InlineXbrlType type)
-        => FormatValidations.GetValueOrDefault(type, (f) => throw new ArgumentOutOfRangeException(nameof(type)))(inputFile);
+        // public static ValidationResult ValidateEsef(string inputFile)
+        //  FormatValidations.GetValueOrDefault(InlineXbrlType.Esef, (f) => throw new ArgumentOutOfRangeException(nameof(InlineXbrlType.Esef)))(inputFile);
 
         private static void ParseFacts(XDocument report, Instance instance)
         {
