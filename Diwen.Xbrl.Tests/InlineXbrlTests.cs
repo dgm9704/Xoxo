@@ -83,9 +83,8 @@ namespace Diwen.Xbrl.Tests
 
                                 if (reportFile != null)
                                 {
-                                    var reportFilename = reportFile.Name;
-                                    var reportDocument = XDocumentFromZipArchiveEntry(reportFile);
-                                    yield return new object[] { testcaseNumber, variationId, expected, error, reportFilename, reportDocument, };
+                                    var report = new Report(reportFile.Name, XDocumentFromZipArchiveEntry(reportFile));
+                                    yield return new object[] { testcaseNumber, variationId, expected, error, report };
                                 }
                                 else
                                 {
@@ -95,14 +94,14 @@ namespace Diwen.Xbrl.Tests
                                     // because there isn't and index for it
                                     // TODO: need to figure out how to pass this case on like the others, 
                                     // and have the validation return a meaningful result
-                                    yield return new object[] { testcaseNumber, variationId, expected, error, string.Empty, null, };
+                                    yield return new object[] { testcaseNumber, variationId, expected, error, Report.Empty };
                                 }
                             }
                         }
                         else
                         {
                             // G3-1-3 incorrect package
-                            yield return new object[] { testcaseNumber, variationId, expected, error, string.Empty, null, };
+                            yield return new object[] { testcaseNumber, variationId, expected, error, Report.Empty };
                         }
                     }
                 }
@@ -117,18 +116,31 @@ namespace Diwen.Xbrl.Tests
 
         [Theory]
         [MemberData(nameof(ESEFConformanceSuite))]
-        public void RunESEFConformanceSuite(string testcaseNumber, string variationId, string expected, string error, string reportFilename, XDocument report)
+        public void RunESEFConformanceSuite(string testcaseNumber, string variationId, string expected, string error, Report report)
         {
-            var result = InlineXbrl.ValidateEsef(report);
+            var result = InlineXbrl.ValidateEsef(report.Document);
             var actualError = result.Errors.Join(",");
             output.WriteLine($"{testcaseNumber}\t{variationId}");
             output.WriteLine($"\texpected: {expected} {error}");
             output.WriteLine($"\tactual  : {result.Conclusion} {actualError}");
 
-            Assert.Equal(expected, result.Conclusion);
-            Assert.Equal(error ?? "", actualError);
+            var expectedResult = $"{expected} {error}";
+            var actualResult = $"{result.Conclusion} {actualError}";
+            Assert.Equal(expectedResult, actualResult);
+        }
 
-            //Assert.Equal(expectedResult, result.Success);
+        public struct Report
+        {
+            public string Filename { get; }
+            public XDocument Document { get; }
+
+            public static readonly Report Empty = new Report(null, null);
+
+            public Report(string filename, XDocument document)
+            {
+                Filename = filename;
+                Document = document;
+            }
         }
 
     }

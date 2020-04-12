@@ -101,22 +101,15 @@ namespace Diwen.Xbrl
 
         private static string G2_2_3(XDocument report)
         {
-            // var factElements = FindFacts(report);
-            // var factFormats = 
-            //     factElements.
-            //     Select(f => f.Attribute("format")).
-            //     Where(a => a != null).
-            //     Select(a => a.Value).
-            //     ToHashSet();
-
-            // return factElements.Except(AllowedFormats).Any()
-            //          ? "All tags eligible for transformation shall be formatted using Transformation Rules Registry 3"
-            //          : null;
-
             var ixt = report.Root.GetNamespaceOfPrefix("ixt");
-            return (ixt == null || ixt.NamespaceName == "http://www.xbrl.org/inlineXBRL/transformation/2015-02-26" || ixt.NamespaceName == "http://www.xbrl.org/inlineXBRL/transformation/2020-02-12")
+            return (
+                ixt == null
+                || ixt.NamespaceName == "http://www.xbrl.org/inlineXBRL/transformation/2015-02-26" // TR 3
+                || ixt.NamespaceName == "http://www.xbrl.org/inlineXBRL/transformation/2019-04-19" // TR 4 PWD
+                || ixt.NamespaceName == "http://www.xbrl.org/inlineXBRL/transformation/2020-02-12" // TR 4
+            )
                 ? null
-                : "All tags eligible for transformation shall be formatted using Transformation Rules Registry 3";
+                : "transformRegistry";
         }
 
 
@@ -128,7 +121,8 @@ namespace Diwen.Xbrl
             var errors =
                 EsefValidations.
                 Select(validation => validation(report)).
-                Where(error => !string.IsNullOrWhiteSpace(error));
+                Where(error => !string.IsNullOrWhiteSpace(error)).
+                ToArray();
 
             return new EsefResult(errors.Any() ? "invalid" : "valid", errors.ToArray());
         }
