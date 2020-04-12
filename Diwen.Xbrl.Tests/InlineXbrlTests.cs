@@ -50,26 +50,30 @@ namespace Diwen.Xbrl.Tests
 
         public static IEnumerable<object[]> ESEFConformanceSuite()
         {
-            var results = new List<object[]> { };
-            var zipFile = Path.Combine("esma", "esef_conformancesuite_2020-03-06.zip");
-            using (var file = File.OpenRead(zipFile))
-            using (var zip = new ZipArchive(file, ZipArchiveMode.Read))
+            var suiteFile = Path.Combine("esma", "esef_conformancesuite_2020-03-06.zip");
+
+            using (var suiteStream = File.OpenRead(suiteFile))
+            using (var suiteArchive = new ZipArchive(suiteStream, ZipArchiveMode.Read))
             {
-                var indexFile = zip.Entries.FirstOrDefault(e => e.Name == "index.xml");
-                var index = XDocument.Load(indexFile.Open()); // TODO: using
-                var testcasesElement = index.Root.Descendants("testcases").Single();
+                var suiteIndexFile = suiteArchive.Entries.FirstOrDefault(e => e.Name == "index.xml");
+
+                var suiteIndexDocument = XDocumentFromZipArchiveEntry(suiteIndexFile);
+
+                var testcasesElement = suiteIndexDocument.Root.Descendants("testcases").Single();
                 var root = testcasesElement.Attribute("root").Value;
                 var title = testcasesElement.Attribute("title").Value;
-                var testcaseElements = index.Root.Descendants("testcase");
+                var testcaseElements = suiteIndexDocument.Root.Descendants("testcase");
                 foreach (var testcaseElement in testcaseElements)
                 {
                     var uri = testcaseElement.Attribute("uri").Value;
                     var testcasePath = Path.Combine(root, uri);
-                    var testcaseIndexFile = zip.Entries.FirstOrDefault(e => e.FullName.EndsWith(testcasePath, StringComparison.Ordinal));
-                    var testcaseIndex = XDocument.Load(testcaseIndexFile.Open()); // TODO: using
-                    var ns = testcaseIndex.Root.GetDefaultNamespace();
-                    var testcaseNumber = testcaseIndex.Root.Descendants(ns + "number").Single().Value;
-                    var variationElements = testcaseIndex.Root.Descendants(ns + "variation");
+                    var testcaseIndexFile = suiteArchive.Entries.FirstOrDefault(e => e.FullName.EndsWith(testcasePath, StringComparison.Ordinal));
+
+                    var testcaseIndexDocument = XDocumentFromZipArchiveEntry(testcaseIndexFile);
+
+                    var ns = testcaseIndexDocument.Root.GetDefaultNamespace();
+                    var testcaseNumber = testcaseIndexDocument.Root.Descendants(ns + "number").Single().Value;
+                    var variationElements = testcaseIndexDocument.Root.Descendants(ns + "variation");
                     foreach (var variationElement in variationElements)
                     {
                         var variationId = variationElement.Attribute("id").Value;
@@ -79,42 +83,49 @@ namespace Diwen.Xbrl.Tests
                         var error = resultElement.Descendants(ns + "error").SingleOrDefault()?.Value;
                         var packageName = variationElement.Descendants(ns + "taxonomyPackage").Single().Value;
                         var packagePath = Path.Combine(root, testcaseNumber, packageName);
-                        var packageFile = zip.Entries.SingleOrDefault(e => e.FullName.EndsWith(packagePath, StringComparison.Ordinal));
+                        var packageFile = suiteArchive.Entries.SingleOrDefault(e => e.FullName.EndsWith(packagePath, StringComparison.Ordinal));
                         if (packageFile != null)
                         {
-                            var package = new ZipArchive(packageFile.Open(), ZipArchiveMode.Read); // TODO: using using
-                                                                                                   // Skipping over any taxonomy stuff 
-                            var reportFile = package.Entries.FirstOrDefault(
-                                e => e.FullName.StartsWith($"{variationId}/reports/", StringComparison.Ordinal)
-                                && e.Name.StartsWith("abc.", StringComparison.Ordinal));
+                            using (var packageStream = packageFile.Open())
+                            using (var packageArchive = new ZipArchive(packageStream, ZipArchiveMode.Read))
+                            {
+                                // Skipping over any taxonomy stuff 
+                                var reportFile = packageArchive.Entries.FirstOrDefault(
+                                    e => e.FullName.StartsWith($"{variationId}/reports/", StringComparison.Ordinal)
+                                    && e.Name.StartsWith("abc.", StringComparison.Ordinal));
 
-                            if (reportFile != null)
-                            {
-                                var reportFilename = reportFile.Name;
-                                var report = XDocument.Load(reportFile.Open()); // TODO: using
-                                                                                //yield return new object[] { reportFilename, expectedResult, report, };
-                                results.Add(new object[] { testcaseNumber, variationId, expectedResult, reportFilename, report, });
-                            }
-                            else
-                            {
-                                // this is an actual condition to check for per G2-6 ?                            
-                                // files not in a correct folder
-                                // we're guessing here anyway with finding report files in the variation zip,
-                                // because there isn't and index for it
-                                // TODO: need to figure out how to pass this case on like the others, 
-                                // and have the validation return a meaningful result
-                                results.Add(new object[] { testcaseNumber, variationId, expectedResult, string.Empty, null, });
+                                if (reportFile != null)
+                                {
+                                    var reportFilename = reportFile.Name;
+                                    var reportDocument = XDocumentFromZipArchiveEntry(reportFile);
+                                    yield return new object[] { testcaseNumber, variationId, expectedResult, reportFilename, reportDocument, };
+                                }
+                                else
+                                {
+                                    // this is an actual condition to check for per G2-6 ?                            
+                                    // files not in a correct folder
+                                    // we're guessing here anyway with finding report files in the variation zip,
+                                    // because there isn't and index for it
+                                    // TODO: need to figure out how to pass this case on like the others, 
+                                    // and have the validation return a meaningful result
+                                    yield return new object[] { testcaseNumber, variationId, expectedResult, string.Empty, null, };
+                                }
                             }
                         }
                         else
                         {
                             // G3-1-3 incorrect package
-                            results.Add(new object[] { testcaseNumber, variationId, expectedResult, string.Empty, null, });
+                            yield return new object[] { testcaseNumber, variationId, expectedResult, string.Empty, null, };
                         }
                     }
                 }
             }
-            return results;
+        }
+
+        private static XDocument XDocumentFromZipArchiveEntry(ZipArchiveEntry reportFile)
+        {
+            using (var reportStream = reportFile.Open())
+                return XDocument.Load(reportStream);
         }
 
         [Theory]
