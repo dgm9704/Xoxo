@@ -38,6 +38,7 @@ namespace Diwen.Xbrl
             G2_1_3_1,
             G2_1_3_2,
             G2_2_1,
+            G2_2_2,
         };
 
         private static string G2_1_2(XDocument report)
@@ -81,6 +82,20 @@ namespace Diwen.Xbrl
                     ? "The accuracy of numeric facts SHOULD be defined with the 'decimals' attribute rather than the 'precision' attribute"
                     : null;
         }
+
+        private static string G2_2_2(XDocument report)
+        {
+            // var num = report.Root.GetNamespaceOfPrefix("num");
+            // var percents = report.Root.Descendants(num + "percentItemType");
+            // return percents.Any(e => Decimal.Parse(e.Value) > 1)
+            //         ? "All elements of num:percentItemType should be less or equal to 1"
+            //         : null;
+
+            // checking this requires loading documents outside the report
+            return null;
+        }
+
+
 
         public static ValidationResult ValidateEsef(string path)
         => ValidateEsef(XDocument.Load(path));
