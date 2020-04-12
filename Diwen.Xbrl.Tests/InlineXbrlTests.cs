@@ -35,6 +35,20 @@ namespace Diwen.Xbrl.Tests
             this.output = output;
         }
 
+        public struct Report
+        {
+            public string Filename { get; }
+            public XDocument Document { get; }
+
+            public static readonly Report Empty = new Report(null, null);
+
+            public Report(string filename, XDocument document)
+            {
+                Filename = filename;
+                Document = document;
+            }
+        }
+
         public static IEnumerable<object[]> ESEFConformanceSuite()
         {
             var suiteFile = Path.Combine("esma", "esef_conformancesuite_2020-03-06.zip");
@@ -128,21 +142,6 @@ namespace Diwen.Xbrl.Tests
             var actualResult = $"{result.Conclusion} {actualError}";
             Assert.Equal(expectedResult, actualResult);
         }
-
-        public struct Report
-        {
-            public string Filename { get; }
-            public XDocument Document { get; }
-
-            public static readonly Report Empty = new Report(null, null);
-
-            public Report(string filename, XDocument document)
-            {
-                Filename = filename;
-                Document = document;
-            }
-        }
-
     }
 
 }

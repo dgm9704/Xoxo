@@ -41,6 +41,7 @@ namespace Diwen.Xbrl
             G2_2_1,
             G2_2_2,
             G2_2_3,
+            G2_3_1_1,
         };
 
         private static string G2_1_2(XDocument report)
@@ -62,7 +63,8 @@ namespace Diwen.Xbrl
             var xbrli = report.Root.GetNamespaceOfPrefix("xbrli");
             var segmentElements = report.Root.Descendants(xbrli + "segment");
 
-            return segmentElements.Any()
+            return
+                segmentElements.Any()
                     ? "segmentUsed"
                     : null;
         }
@@ -74,7 +76,8 @@ namespace Diwen.Xbrl
             var scenarioElements = report.Root.Descendants(xbrli + "scenario");
             var customElements = scenarioElements.SelectMany(s => s.Descendants().Where(e => e.Name.Namespace != xbrldi));
 
-            return customElements.Any()
+            return
+                customElements.Any()
                     ? "scenarioContainsNonDimensionalContent"
                     : null;
         }
@@ -82,7 +85,8 @@ namespace Diwen.Xbrl
         private static string G2_2_1(XDocument report)
         {
             var factElements = FindFacts(report);
-            return factElements.Any(e => e.Attribute("precision") != null)
+            return
+                factElements.Any(e => e.Attribute("precision") != null)
                     ? "precisionAttributeUsed"
                     : null;
         }
@@ -102,16 +106,28 @@ namespace Diwen.Xbrl
         private static string G2_2_3(XDocument report)
         {
             var ixt = report.Root.GetNamespaceOfPrefix("ixt");
-            return (
+            return !(
                 ixt == null
                 || ixt.NamespaceName == "http://www.xbrl.org/inlineXBRL/transformation/2015-02-26" // TR 3
                 || ixt.NamespaceName == "http://www.xbrl.org/inlineXBRL/transformation/2019-04-19" // TR 4 PWD
                 || ixt.NamespaceName == "http://www.xbrl.org/inlineXBRL/transformation/2020-02-12" // TR 4
             )
-                ? null
-                : "transformRegistry";
+                ? "transformRegistry"
+                : null;
         }
 
+        private static string G2_3_1_1(XDocument report)
+        {
+            var ix = report.Root.GetNamespaceOfPrefix("ix");
+            var footnotes = report.Root.Descendants(ix + "footnote");
+            var relationships = report.Root.Descendants(ix + "relationship");
+
+            return
+                footnotes.Any(f => f.Attribute("footnoteRole") != null)
+                || relationships.Any(r => r.Attribute("arcrole") != null)
+                    ? "nonStandardRoleForFootnote"
+                    : null;
+        }
 
         public static EsefResult ValidateEsef(string path)
         => ValidateEsef(XDocument.Load(path));
