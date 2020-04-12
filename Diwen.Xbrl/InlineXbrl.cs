@@ -37,6 +37,7 @@ namespace Diwen.Xbrl
             G2_1_2,
             G2_1_3_1,
             G2_1_3_2,
+            G2_2_1,
         };
 
         private static string G2_1_2(XDocument report)
@@ -70,6 +71,14 @@ namespace Diwen.Xbrl
 
             return customElements.Any()
                     ? "<xbrli:scenario> in contexts MUST NOT contain any other content than defined in XBRL Dimensions specification"
+                    : null;
+        }
+
+        private static string G2_2_1(XDocument report)
+        {
+            var factElements = FindFacts(report);
+            return factElements.Any(e => e.Attribute("precision") != null)
+                    ? "The accuracy of numeric facts SHOULD be defined with the 'decimals' attribute rather than the 'precision' attribute"
                     : null;
         }
 
@@ -108,8 +117,7 @@ namespace Diwen.Xbrl
 
         private static void ParseFacts(XDocument report, Instance instance)
         {
-            // parse facts and add to instance
-            var factElements = report.Descendants().Where(d => d.Attribute("contextRef") != null);
+            var factElements = FindFacts(report);
             var facts = new FactCollection(instance);
             foreach (var factElement in factElements)
             {
@@ -136,6 +144,12 @@ namespace Diwen.Xbrl
             }
             foreach (var fact in facts)
                 instance.Facts.Add(fact);
+        }
+
+        private static IEnumerable<XElement> FindFacts(XDocument report)
+        {
+            // parse facts and add to instance
+            return report.Descendants().Where(d => d.Attribute("contextRef") != null);
         }
 
         private static void ParseUnits(XDocument report, Instance instance)
