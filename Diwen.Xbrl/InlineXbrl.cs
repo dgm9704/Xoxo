@@ -36,6 +36,7 @@ namespace Diwen.Xbrl
         {
             G2_1_2,
             G2_1_3_1,
+            G2_1_3_2,
         };
 
         private static string G2_1_2(XDocument report)
@@ -57,6 +58,18 @@ namespace Diwen.Xbrl
 
             return segmentElements.Any()
                     ? "<xbrli:scenario> element must be used instead of <xbrli:segment>"
+                    : null;
+        }
+
+        private static string G2_1_3_2(XDocument report)
+        {
+            var xbrli = report.Root.GetNamespaceOfPrefix("xbrli");
+            var xbrldi = report.Root.GetNamespaceOfPrefix("xbrldi");
+            var scenarioElements = report.Root.Descendants(xbrli + "scenario");
+            var customElements = scenarioElements.SelectMany(s => s.Descendants().Where(e => e.Name.Namespace != xbrldi));
+
+            return customElements.Any()
+                    ? "<xbrli:scenario> in contexts MUST NOT contain any other content than defined in XBRL Dimensions specification"
                     : null;
         }
 
