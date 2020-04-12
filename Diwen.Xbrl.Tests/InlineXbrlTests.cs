@@ -22,31 +22,17 @@ namespace Diwen.Xbrl.Tests
     using System.Linq;
     using System.Xml.Linq;
     using Xunit;
+    using Xunit.Abstractions;
 
-    public static class InlineXbrlTests
+    public class InlineXbrlTests
     {
 
-        // [Fact]
-        // public static void ParseInlineXbrlDocument()
-        // {
-        //     var inputFile = "esma/G2-1-2.xhtml";
-        //     var instance = InlineXbrl.ParseInstance(inputFile);
-        //     var outputFile = Path.ChangeExtension(inputFile, "xbrl");
-        //     instance.ToFile(outputFile);
-        // }
+        private readonly ITestOutputHelper output;
 
-        // [Fact]
-        // public static void ValidateInlineXbrlDocument()
-        // {
-        //     var inputFile = "esma/G2-1-2.xhtml";
-        //     var result = InlineXbrl.ValidateEsef(inputFile);
-        //     Assert.False(result.Messages.Any(), string.Join("\n", result.Messages));
-        // }
-
-        // [Fact]
-        // public static void ValidateUnknownInlineXbrlDocument()
-        // => Assert.Throws<ArgumentOutOfRangeException>(
-        //     () => InlineXbrl.ValidateEsef("inputFile", (InlineXbrlType)42));
+        public InlineXbrlTests(ITestOutputHelper output)
+        {
+            this.output = output;
+        }
 
         public static IEnumerable<object[]> ESEFConformanceSuite()
         {
@@ -130,12 +116,11 @@ namespace Diwen.Xbrl.Tests
 
         [Theory]
         [MemberData(nameof(ESEFConformanceSuite))]
-        public static void RunESEFConformanceSuite(string testcaseNumber, string variationId, bool expectedResult, string reportFilename, XDocument report)
+        public void RunESEFConformanceSuite(string testcaseNumber, string variationId, bool expectedResult, string reportFilename, XDocument report)
         {
-            Console.Write($"{testcaseNumber}\t{variationId}\texpected: {expectedResult}");
             var result = InlineXbrl.ValidateEsef(report);
-            Console.WriteLine($"\tactual: {result.Success}");
-            Assert.Equal(expectedResult, result.Success); //, result.Messages.Any(), string.Join("\n", result.Messages));
+            output.WriteLine($"{testcaseNumber}\t{variationId}\texpected: {expectedResult}\tactual: {result.Success}");
+            Assert.Equal(expectedResult, result.Success);
         }
 
     }

@@ -31,21 +31,17 @@ namespace Diwen.Xbrl
     public static class InlineXbrl
     {
         private static IFormatProvider ic = CultureInfo.InvariantCulture;
-        // private static Dictionary<InlineXbrlType, Func<string, ValidationResult>> FormatValidations =
-        // new Dictionary<InlineXbrlType, Func<string, ValidationResult>>
-        // {
-        //     [InlineXbrlType.Esef] = ValidateEsef,
-        // };
 
         private static List<Func<XDocument, string>> EsefValidations = new List<Func<XDocument, string>>
         {
-            G_2_1_2,
+            G2_1_2,
+            G2_1_3_1,
         };
 
-        private static string G_2_1_2(XDocument report)
+        private static string G2_1_2(XDocument report)
         {
-            var periodNs = report.Root.GetNamespaceOfPrefix("xbrli");
-            var periodElements = report.Root.Descendants(periodNs + "period");
+            var xbrli = report.Root.GetNamespaceOfPrefix("xbrli");
+            var periodElements = report.Root.Descendants(xbrli + "period");
             var dateElements = periodElements.SelectMany(p => p.Descendants());
 
             return dateElements.
@@ -54,6 +50,15 @@ namespace Diwen.Xbrl
                     : null;
         }
 
+        private static string G2_1_3_1(XDocument report)
+        {
+            var xbrli = report.Root.GetNamespaceOfPrefix("xbrli");
+            var segmentElements = report.Root.Descendants(xbrli + "segment");
+
+            return segmentElements.Any()
+                    ? "<xbrli:scenario> element must be used instead of <xbrli:segment>"
+                    : null;
+        }
 
         public static ValidationResult ValidateEsef(string path)
         => ValidateEsef(XDocument.Load(path));
