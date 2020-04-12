@@ -23,6 +23,7 @@ namespace Diwen.Xbrl.Tests
     using System.Xml.Linq;
     using Xunit;
     using Xunit.Abstractions;
+    using Diwen.Xbrl.Extensions;
 
     public class InlineXbrlTests
     {
@@ -58,7 +59,7 @@ namespace Diwen.Xbrl.Tests
                     var testcaseIndexDocument = XDocumentFromZipArchiveEntry(testcaseIndexFile);
 
                     var ns = testcaseIndexDocument.Root.GetDefaultNamespace();
-                    var testcaseNumber = testcaseIndexDocument.Root.Descendants(ns + "number").Single().Value;
+                    var testcaseNumber = testcaseIndexDocument.Root.Descendants(ns + "number").Single().Value.Trim();
                     var variationElements = testcaseIndexDocument.Root.Descendants(ns + "variation");
                     foreach (var variationElement in variationElements)
                     {
@@ -66,8 +67,8 @@ namespace Diwen.Xbrl.Tests
                         var resultElement = variationElement.Descendants(ns + "result").Single();
                         var expected = resultElement.Attribute("expected").Value;
                         var expectedResult = expected == "valid";
-                        var error = resultElement.Descendants(ns + "error").SingleOrDefault()?.Value;
-                        var packageName = variationElement.Descendants(ns + "taxonomyPackage").Single().Value;
+                        var error = resultElement.Descendants(ns + "error").SingleOrDefault()?.Value.Trim();
+                        var packageName = variationElement.Descendants(ns + "taxonomyPackage").Single().Value.Trim();
                         var packagePath = Path.Combine(root, testcaseNumber, packageName);
                         var packageFile = suiteArchive.Entries.SingleOrDefault(e => e.FullName.EndsWith(packagePath, StringComparison.Ordinal));
                         if (packageFile != null)
@@ -84,7 +85,7 @@ namespace Diwen.Xbrl.Tests
                                 {
                                     var reportFilename = reportFile.Name;
                                     var reportDocument = XDocumentFromZipArchiveEntry(reportFile);
-                                    yield return new object[] { testcaseNumber, variationId, expectedResult, reportFilename, reportDocument, };
+                                    yield return new object[] { testcaseNumber, variationId, expected, error, reportFilename, reportDocument, };
                                 }
                                 else
                                 {
@@ -94,14 +95,14 @@ namespace Diwen.Xbrl.Tests
                                     // because there isn't and index for it
                                     // TODO: need to figure out how to pass this case on like the others, 
                                     // and have the validation return a meaningful result
-                                    yield return new object[] { testcaseNumber, variationId, expectedResult, string.Empty, null, };
+                                    yield return new object[] { testcaseNumber, variationId, expected, error, string.Empty, null, };
                                 }
                             }
                         }
                         else
                         {
                             // G3-1-3 incorrect package
-                            yield return new object[] { testcaseNumber, variationId, expectedResult, string.Empty, null, };
+                            yield return new object[] { testcaseNumber, variationId, expected, error, string.Empty, null, };
                         }
                     }
                 }
@@ -116,11 +117,18 @@ namespace Diwen.Xbrl.Tests
 
         [Theory]
         [MemberData(nameof(ESEFConformanceSuite))]
-        public void RunESEFConformanceSuite(string testcaseNumber, string variationId, bool expectedResult, string reportFilename, XDocument report)
+        public void RunESEFConformanceSuite(string testcaseNumber, string variationId, string expected, string error, string reportFilename, XDocument report)
         {
             var result = InlineXbrl.ValidateEsef(report);
-            output.WriteLine($"{testcaseNumber}\t{variationId}\texpected: {expectedResult}\tactual: {result.Success}");
-            Assert.Equal(expectedResult, result.Success);
+            var actualError = result.Errors.Join(",");
+            output.WriteLine($"{testcaseNumber}\t{variationId}");
+            output.WriteLine($"\texpected: {expected} {error}");
+            output.WriteLine($"\tactual  : {result.Conclusion} {actualError}");
+
+            Assert.Equal(expected, result.Conclusion);
+            Assert.Equal(error ?? "", actualError);
+
+            //Assert.Equal(expectedResult, result.Success);
         }
 
     }

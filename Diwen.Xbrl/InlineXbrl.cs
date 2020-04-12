@@ -27,6 +27,7 @@ namespace Diwen.Xbrl
     using System.Linq;
     using System.Xml.Linq;
     using System.Xml.Serialization;
+    using Diwen.Xbrl.Extensions;
 
     public static class InlineXbrl
     {
@@ -39,6 +40,7 @@ namespace Diwen.Xbrl
             G2_1_3_2,
             G2_2_1,
             G2_2_2,
+            G2_2_3,
         };
 
         private static string G2_1_2(XDocument report)
@@ -51,6 +53,8 @@ namespace Diwen.Xbrl
                 Any(p => !DateTime.TryParseExact(p.Value, "yyyy-MM-dd", ic, DateTimeStyles.None, out DateTime value))
                     ? "<xbrli:period> element should contain values in YYYY-MM-DD format without time component"
                     : null;
+
+            //"periodWithTimeContent", "periodWithTimeZone"
         }
 
         private static string G2_1_3_1(XDocument report)
@@ -59,7 +63,7 @@ namespace Diwen.Xbrl
             var segmentElements = report.Root.Descendants(xbrli + "segment");
 
             return segmentElements.Any()
-                    ? "<xbrli:scenario> element must be used instead of <xbrli:segment>"
+                    ? "segmentUsed"
                     : null;
         }
 
@@ -71,7 +75,7 @@ namespace Diwen.Xbrl
             var customElements = scenarioElements.SelectMany(s => s.Descendants().Where(e => e.Name.Namespace != xbrldi));
 
             return customElements.Any()
-                    ? "<xbrli:scenario> in contexts MUST NOT contain any other content than defined in XBRL Dimensions specification"
+                    ? "scenarioContainsNonDimensionalContent"
                     : null;
         }
 
@@ -79,7 +83,7 @@ namespace Diwen.Xbrl
         {
             var factElements = FindFacts(report);
             return factElements.Any(e => e.Attribute("precision") != null)
-                    ? "The accuracy of numeric facts SHOULD be defined with the 'decimals' attribute rather than the 'precision' attribute"
+                    ? "precisionAttributeUsed"
                     : null;
         }
 
@@ -95,19 +99,38 @@ namespace Diwen.Xbrl
             return null;
         }
 
+        private static string G2_2_3(XDocument report)
+        {
+            // var factElements = FindFacts(report);
+            // var factFormats = 
+            //     factElements.
+            //     Select(f => f.Attribute("format")).
+            //     Where(a => a != null).
+            //     Select(a => a.Value).
+            //     ToHashSet();
+
+            // return factElements.Except(AllowedFormats).Any()
+            //          ? "All tags eligible for transformation shall be formatted using Transformation Rules Registry 3"
+            //          : null;
+
+            var ixt = report.Root.GetNamespaceOfPrefix("ixt");
+            return (ixt == null || ixt.NamespaceName == "http://www.xbrl.org/inlineXBRL/transformation/2015-02-26" || ixt.NamespaceName == "http://www.xbrl.org/inlineXBRL/transformation/2020-02-12")
+                ? null
+                : "All tags eligible for transformation shall be formatted using Transformation Rules Registry 3";
+        }
 
 
-        public static ValidationResult ValidateEsef(string path)
+        public static EsefResult ValidateEsef(string path)
         => ValidateEsef(XDocument.Load(path));
 
-        public static ValidationResult ValidateEsef(XDocument report)
+        public static EsefResult ValidateEsef(XDocument report)
         {
-            var messages =
+            var errors =
                 EsefValidations.
                 Select(validation => validation(report)).
-                Where(message => !string.IsNullOrWhiteSpace(message));
+                Where(error => !string.IsNullOrWhiteSpace(error));
 
-            return new ValidationResult(!messages.Any(), messages.ToArray());
+            return new EsefResult(errors.Any() ? "invalid" : "valid", errors.ToArray());
         }
 
         public static Instance ParseInstance(XDocument report)

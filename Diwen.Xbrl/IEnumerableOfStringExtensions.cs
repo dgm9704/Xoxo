@@ -21,11 +21,16 @@
 
 namespace Diwen.Xbrl.Extensions
 {
-	using System.Collections.Generic;
+    using System.Collections.Generic;
 
-	public static class IEnumerableOfStringExtensions
-	{
-		public static string Join(this IEnumerable<string> values, string separator)
-		=> string.Join(separator, values);
-	}
+    public static class IEnumerableOfStringExtensions
+    {
+        public static string Join(this IEnumerable<string> values, string separator)
+        => values != null
+            ? string.Join(separator ?? "", values)
+            : string.Empty;
+
+        public static HashSet<string> ToHashSet(this IEnumerable<string> values)
+        => new HashSet<string>(values);
+    }
 }

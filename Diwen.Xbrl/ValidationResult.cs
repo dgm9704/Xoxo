@@ -21,15 +21,15 @@
 
 namespace Diwen.Xbrl
 {
-    public class ValidationResult
+    public class EsefResult
     {
-        public bool Success { get; }
-        public string[] Messages;
+        public string Conclusion { get; }
+        public string[] Errors { get; }
 
-        public ValidationResult(bool success, string[] messages)
+        public EsefResult(string conclusion, string[] errors)
         {
-            this.Success = success;
-            this.Messages = messages;
+            this.Conclusion = conclusion;
+            this.Errors = errors;
         }
     }
 }
