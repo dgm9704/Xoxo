@@ -47,6 +47,8 @@ namespace Diwen.Xbrl
             G2_4_1_1,
             G2_4_1_2,
             G2_4_1_3,
+            G2_4_2_1,
+            G2_4_2_2,
         };
 
 
@@ -401,6 +403,22 @@ namespace Diwen.Xbrl
                 errors.Add("fractionElementUsed");
 
             return errors.Join(",");
+        }
+
+        private static string G2_4_2_1(XDocument report)
+        {
+            var xml = report.Root.GetNamespaceOfPrefix("xml");
+            return report.Root.DescendantsAndSelf().Any(e => e.Attribute(xml + "base") != null)
+                ? "htmlOrXmlBaseUsed"
+                : null;
+        }
+
+        private static string G2_4_2_2(XDocument report)
+        {
+            var html = report.Root.GetDefaultNamespace();
+            return report.Root.Descendants(html + "base").Any()
+                ? "htmlOrXmlBaseUsed"
+                : null;
         }
     }
 }
