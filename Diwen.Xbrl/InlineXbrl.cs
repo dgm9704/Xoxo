@@ -42,7 +42,8 @@ namespace Diwen.Xbrl
             G2_2_2,
             G2_2_3,
             G2_3_1_1,
-            G2_3_1_2
+            G2_3_1_2,
+            G2_3_1_3,
         };
 
         private static string G2_1_2(XDocument report)
@@ -152,6 +153,32 @@ namespace Diwen.Xbrl
                 footnotes.Except(relationships).Any()
                     ? "unusedFootnote"
                     : null;
+        }
+
+        private static string G2_3_1_3(XDocument report)
+        {
+            var error = new HashSet<string>();
+            var ix = report.Root.GetNamespaceOfPrefix("ix");
+            var xml = report.Root.GetNamespaceOfPrefix("xml");
+
+            var reportLanguage = report.Root.Attribute(xml + "lang")?.Value ?? "";
+
+            var footnotes =
+                report.Root.
+                    Descendants(ix + "footnote").
+                    ToList();
+
+            if (footnotes.Any(f => f.Attribute(xml + "lang") == null))
+                error.Add("undefinedLanguageForFootnote");
+
+            if (footnotes.
+                    Select(f => f.Attribute(xml + "lang")).
+                    Where(a => a != null).
+                    Any(a => a.Value != reportLanguage)
+            )
+                error.Add("footnoteOnlyInLanguagesOtherThanLanguageOfAReport");
+
+            return error.Join(",");
         }
 
         public static EsefResult ValidateEsef(string path)
