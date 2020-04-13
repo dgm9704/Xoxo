@@ -45,6 +45,7 @@ namespace Diwen.Xbrl
             G2_3_1_2,
             G2_3_1_3,
             G2_4_1_1,
+            G2_4_1_2,
         };
 
         private static string G2_1_2(XDocument report)
@@ -225,6 +226,21 @@ namespace Diwen.Xbrl
             return error.Join(",");
         }
 
+        private static string G2_4_1_2(XDocument report)
+        {
+            var errors = new HashSet<string>();
+
+            var ix = report.Root.GetNamespaceOfPrefix("ix");
+            var tuples = report.Root.Descendants(ix + "tuple");
+
+            if (tuples.Any(t => (t.Attribute("name")?.Value ?? "").IndexOf(':') != -1))
+                errors.Add("tupleDefinedInExtensionTaxonomy");
+
+            if (tuples.Any())
+                errors.Add("tupleElementUsed");
+
+            return errors.Join(",");
+        }
 
         public static EsefResult ValidateEsef(string path)
         => ValidateEsef(XDocument.Load(path));

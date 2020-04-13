@@ -132,15 +132,16 @@ namespace Diwen.Xbrl.Tests
         [MemberData(nameof(ESEFConformanceSuite))]
         public void RunESEFConformanceSuite(string testcaseNumber, string variationId, string expected, string error, Report report)
         {
-            // if (testcaseNumber == "G2-4-1_1")
+            // if (testcaseNumber == "G2-4-1_2")
             // {
             var result = InlineXbrl.ValidateEsef(report.Document);
+            var expectedError = (error ?? "").Split(',').Select(e => e.Trim()).Join(",");
             var actualError = result.Errors.Join(",");
             output.WriteLine($"{testcaseNumber}\t{variationId}");
-            output.WriteLine($"\texpected: {expected} {error}");
+            output.WriteLine($"\texpected: {expected} {expectedError}");
             output.WriteLine($"\tactual  : {result.Conclusion} {actualError}");
 
-            var expectedResult = $"{expected} {error}";
+            var expectedResult = $"{expected} {expectedError}";
             var actualResult = $"{result.Conclusion} {actualError}";
             Assert.Equal(expectedResult, actualResult);
             // }
