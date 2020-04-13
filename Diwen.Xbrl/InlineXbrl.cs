@@ -49,6 +49,7 @@ namespace Diwen.Xbrl
             G2_4_1_3,
             G2_4_2_1,
             G2_4_2_2,
+            G2_5_1,
         };
 
 
@@ -418,6 +419,16 @@ namespace Diwen.Xbrl
             var html = report.Root.GetDefaultNamespace();
             return report.Root.Descendants(html + "base").Any()
                 ? "htmlOrXmlBaseUsed"
+                : null;
+        }
+
+        private static string G2_5_1(XDocument report)
+        {
+            var html = report.Root.GetDefaultNamespace();
+            return report.Root.
+                Descendants(html + "img").
+                Any(i => i.Attribute("src").Value.Split(',').First().IndexOf("base64") == -1)
+                ? "embeddedImageNotUsingBase64Encoding"
                 : null;
         }
     }
