@@ -132,6 +132,8 @@ namespace Diwen.Xbrl.Tests
         [MemberData(nameof(ESEFConformanceSuite))]
         public void RunESEFConformanceSuite(string testcaseNumber, string variationId, string expected, string error, Report report)
         {
+            // if (testcaseNumber == "")
+            // {
             var result = InlineXbrl.ValidateEsef(report.Document);
             var actualError = result.Errors.Join(",");
             output.WriteLine($"{testcaseNumber}\t{variationId}");
@@ -141,6 +143,7 @@ namespace Diwen.Xbrl.Tests
             var expectedResult = $"{expected} {error}";
             var actualResult = $"{result.Conclusion} {actualError}";
             Assert.Equal(expectedResult, actualResult);
+            // }
         }
     }
 

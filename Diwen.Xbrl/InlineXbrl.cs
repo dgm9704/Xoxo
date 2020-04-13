@@ -42,6 +42,7 @@ namespace Diwen.Xbrl
             G2_2_2,
             G2_2_3,
             G2_3_1_1,
+            G2_3_1_2
         };
 
         private static string G2_1_2(XDocument report)
@@ -126,6 +127,30 @@ namespace Diwen.Xbrl
                 footnotes.Any(f => f.Attribute("footnoteRole") != null)
                 || relationships.Any(r => r.Attribute("arcrole") != null)
                     ? "nonStandardRoleForFootnote"
+                    : null;
+        }
+
+        private static string G2_3_1_2(XDocument report)
+        {
+            var ix = report.Root.GetNamespaceOfPrefix("ix");
+
+            var footnotes =
+                report.Root.
+                    Descendants(ix + "footnote").
+                    Select(f => f.Attribute("id")?.Value).
+                    Where(a => !string.IsNullOrEmpty(a))
+                    .ToHashSet();
+
+            var relationships =
+                report.Root.
+                    Descendants(ix + "relationship").
+                    Select(r => r.Attribute("toRefs")?.Value).
+                    Where(a => !string.IsNullOrEmpty(a)).
+                    ToHashSet();
+
+            return
+                footnotes.Except(relationships).Any()
+                    ? "unusedFootnote"
                     : null;
         }
 
