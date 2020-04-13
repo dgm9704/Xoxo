@@ -21,10 +21,19 @@ namespace Diwen.Xbrl.Tests
     using System.IO;
     using Xunit;
     using Xbrl;
+    using Xunit.Abstractions;
 
-    public static class InstanceTests
+    public class InstanceTests
     {
-        internal static Instance CreateSolvencyInstance()
+
+        private readonly ITestOutputHelper output;
+
+        public InstanceTests(ITestOutputHelper output)
+        {
+            this.output = output;
+        }
+
+        internal Instance CreateSolvencyInstance()
         {
             // Sets default namespaces and units PURE, EUR
             var instance = new Instance();
@@ -92,7 +101,7 @@ namespace Diwen.Xbrl.Tests
             }
             catch (KeyNotFoundException ex)
             {
-                Console.WriteLine(ex.Message);
+                output.WriteLine(ex.Message);
             }
 
             var invalidScenario = new Scenario();
@@ -107,14 +116,14 @@ namespace Diwen.Xbrl.Tests
             }
             catch (InvalidOperationException ex)
             {
-                Console.WriteLine(ex.Message);
+                output.WriteLine(ex.Message);
             }
 
             return instance;
         }
 
         [Fact]
-        public static void WriteSolvencyInstance()
+        public void WriteSolvencyInstance()
         {
             var instance = CreateSolvencyInstance();
             instance.AddDomainNamespace("s2c_XX", "http://eiopa.europa.eu/xbrl/s2c/dict/dom/XX");
@@ -124,7 +133,7 @@ namespace Diwen.Xbrl.Tests
         }
 
         [Fact]
-        public static void ReadSolvencyReferenceInstance()
+        public void ReadSolvencyReferenceInstance()
         {
             var path = Path.Combine("data", "reference.xbrl");
             var referenceInstance = Instance.FromFile(path);
@@ -132,7 +141,7 @@ namespace Diwen.Xbrl.Tests
         }
 
         [Fact]
-        public static void CompareSolvencyReferenceInstance()
+        public void CompareSolvencyReferenceInstance()
         {
             var instance = CreateSolvencyInstance();
 
@@ -168,7 +177,7 @@ namespace Diwen.Xbrl.Tests
         }
 
         [Fact]
-        public static void RoundtripCompareExampleInstanceArs()
+        public void RoundtripCompareExampleInstanceArs()
         {
             var sw = new Stopwatch();
 
@@ -177,28 +186,28 @@ namespace Diwen.Xbrl.Tests
             sw.Start();
             var firstRead = Instance.FromFile(inputPath);
             sw.Stop();
-            Console.WriteLine("Read took {0}", sw.Elapsed);
+            output.WriteLine("Read took {0}", sw.Elapsed);
 
             var outputPath = "output.ars.xbrl";
 
             sw.Restart();
             firstRead.ToFile(outputPath);
             sw.Stop();
-            Console.WriteLine("Write took {0}", sw.Elapsed);
+            output.WriteLine("Write took {0}", sw.Elapsed);
 
             sw.Restart();
             var secondRead = Instance.FromFile(outputPath);
             sw.Stop();
-            Console.WriteLine("Read took {0}", sw.Elapsed);
+            output.WriteLine("Read took {0}", sw.Elapsed);
 
             sw.Restart();
             Assert.True(firstRead.Equals(secondRead));
             sw.Stop();
-            Console.WriteLine("Comparison took {0}", sw.Elapsed);
+            output.WriteLine("Comparison took {0}", sw.Elapsed);
         }
 
         [Fact]
-        public static void CompareDimensionOrder()
+        public void CompareDimensionOrder()
         {
             var first = new Scenario();
             first.AddExplicitMember("AA", "foo:bar");
@@ -218,7 +227,7 @@ namespace Diwen.Xbrl.Tests
         }
 
         [Fact]
-        public static void CollapseDuplicateContexts()
+        public void CollapseDuplicateContexts()
         {
             var inputPath = Path.Combine("data", "duplicate_context.xbrl");
             Instance instance = null;
@@ -235,7 +244,7 @@ namespace Diwen.Xbrl.Tests
         }
 
         [Fact]
-        public static void ReadExampleInstanceFPInd()
+        public void ReadExampleInstanceFPInd()
         {
             var inputPath = Path.Combine("data", "fp_ind_new_correct.xbrl");
             var first = Instance.FromFile(inputPath);
@@ -254,7 +263,7 @@ namespace Diwen.Xbrl.Tests
         }
 
         [Fact]
-        public static void RemoveUnusedObjectsPerformance()
+        public void RemoveUnusedObjectsPerformance()
         {
             var inputPath = Path.Combine("data", "fp_ind_new_correct.xbrl");
             var xi = Instance.FromFile(inputPath);
@@ -267,7 +276,7 @@ namespace Diwen.Xbrl.Tests
         }
 
         [Fact]
-        public static void WriteEmptyTypedMember()
+        public void WriteEmptyTypedMember()
         {
             var instance = CreateSolvencyInstance();
             instance.CheckExplicitMemberDomainExists = true;
@@ -280,13 +289,13 @@ namespace Diwen.Xbrl.Tests
         }
 
         [Fact]
-        public static void WriteToXmlDocument()
+        public void WriteToXmlDocument()
         => CreateSolvencyInstance().
                                    ToXmlDocument().
                                    Save("xbrl2doc.xml");
 
         [Fact]
-        public static void NoMembers()
+        public void NoMembers()
         {
             var instance = new Instance();
             instance.SchemaReference = new SchemaReference("simple", "http://eiopa.europa.eu/eu/xbrl/s2md/fws/solvency/solvency2/2014-12-23/mod/ars.xsd");
@@ -318,7 +327,7 @@ namespace Diwen.Xbrl.Tests
         }
 
         [Fact]
-        public static void FiledOrNot()
+        public void FiledOrNot()
         {
             var instance = new Instance();
             instance.SchemaReference = new SchemaReference("simple", "http://eiopa.europa.eu/eu/xbrl/s2md/fws/solvency/solvency2/2014-12-23/mod/ars.xsd");
@@ -334,7 +343,7 @@ namespace Diwen.Xbrl.Tests
         }
 
         [Fact]
-        public static void EnumeratedFactValueNamespace()
+        public void EnumeratedFactValueNamespace()
         {
             // Create a minimal test instance
             var instance = new Instance();
@@ -360,7 +369,7 @@ namespace Diwen.Xbrl.Tests
         }
 
         [Fact]
-        public static void ReadAndWriteComments()
+        public void ReadAndWriteComments()
         {
             // read a test instance with a comment
             var inputPath = Path.Combine("data", "comments.xbrl");
@@ -376,7 +385,7 @@ namespace Diwen.Xbrl.Tests
         }
 
         [Fact]
-        public static void NoExtraNamespaces()
+        public void NoExtraNamespaces()
         {
             var instance = Instance.FromFile(Path.Combine("data", "comments.xbrl"));
             instance.SetDimensionNamespace("s2c_dim", "http://eiopa.europa.eu/xbrl/s2c/dict/dim");
@@ -385,7 +394,7 @@ namespace Diwen.Xbrl.Tests
         }
 
         [Fact]
-        public static void EmptyInstance()
+        public void EmptyInstance()
         {
             // should load ok
             var instance = Instance.FromFile(Path.Combine("data", "empty_instance.xbrl"));
@@ -394,7 +403,7 @@ namespace Diwen.Xbrl.Tests
         }
 
         [Fact]
-        public static void InstanceFromString()
+        public void InstanceFromString()
         {
             var input = File.ReadAllText(Path.Combine("data", "comments.xbrl"));
             var instance = Instance.FromXml(input);
@@ -405,7 +414,7 @@ namespace Diwen.Xbrl.Tests
         }
 
         [Fact]
-        public static void SerializedInstanceWithNoMonetaryUnitShouldNotHaveUnusedNamespace()
+        public void SerializedInstanceWithNoMonetaryUnitShouldNotHaveUnusedNamespace()
         {
             var inFile = Path.Combine("data", "minimal.xbrl");
             var instance = Instance.FromFile(inFile);
@@ -415,13 +424,13 @@ namespace Diwen.Xbrl.Tests
             Assert.DoesNotContain("iso4217", filecontent);
         }
 
-		[Fact]
-		public static void ExplicitMembersWithSurroundingWhitespaceShouldNotBork()
-		{
-			var infile = Path.Combine("data", "example_erst_dcca.xbrl");
-			var instance = Instance.FromFile(infile);
-			Assert.NotNull(instance);	
-		}
+        [Fact]
+        public void ExplicitMembersWithSurroundingWhitespaceShouldNotBork()
+        {
+            var infile = Path.Combine("data", "example_erst_dcca.xbrl");
+            var instance = Instance.FromFile(infile);
+            Assert.NotNull(instance);
+        }
 
     }
 }

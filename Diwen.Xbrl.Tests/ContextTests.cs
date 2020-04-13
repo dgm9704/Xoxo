@@ -17,11 +17,10 @@ namespace Diwen.Xbrl.Tests
 {
     using System;
     using System.Diagnostics;
-    using System.IO;
-    using System.Linq;
     using Xunit;
+    using Xunit.Abstractions;
 
-    public static class ContextTests
+    public class ContextTests
     {
 
         // 			<xbrli:context id="end2014">
@@ -33,9 +32,15 @@ namespace Diwen.Xbrl.Tests
         //     </xbrli:period>
         //   </xbrli:context>
 
+        private readonly ITestOutputHelper output;
+
+        public ContextTests(ITestOutputHelper output)
+        {
+            this.output = output;
+        }
 
         [Fact]
-        public static void CompareContextsWithSameEntity()
+        public void CompareContextsWithSameEntity()
         {
             var entity = new Entity("http://www.xbrl.fi", "1234567-1");
             var left = new Context();
@@ -47,7 +52,7 @@ namespace Diwen.Xbrl.Tests
         }
 
         [Fact]
-        public static void CompareContextsWithDifferentEntity()
+        public void CompareContextsWithDifferentEntity()
         {
             var leftentity = new Entity("http://www.xbrl.fi", "1234567-1");
             var rightentity = new Entity("http://www.xbrl.fi", "0123456-7");
@@ -60,7 +65,7 @@ namespace Diwen.Xbrl.Tests
         }
 
         [Fact]
-        public static void CompareContextsWithSameInstant()
+        public void CompareContextsWithSameInstant()
         {
             var entity = new Entity("http://www.xbrl.fi", "1234567-1");
             var period = new Period(2014, 12, 31);
@@ -95,7 +100,7 @@ namespace Diwen.Xbrl.Tests
         }
 
         [Fact]
-        public static void CompareContextsWithSameSpan()
+        public void CompareContextsWithSameSpan()
         {
             var entity = new Entity("http://www.xbrl.fi", "1234567-1");
             var period = new Period(2014, 12, 01, 2014, 12, 31);
@@ -112,7 +117,7 @@ namespace Diwen.Xbrl.Tests
         }
 
         [Fact]
-        public static void CompareContextsWithDifferentSpan()
+        public void CompareContextsWithDifferentSpan()
         {
             var entity = new Entity("http://www.xbrl.fi", "1234567-1");
             var leftperiod = new Period(2014, 12, 01, 2014, 12, 31);
@@ -130,7 +135,7 @@ namespace Diwen.Xbrl.Tests
         }
 
         [Fact]
-        public static void CompareContextsWithDifferentTypeOfPeriod()
+        public void CompareContextsWithDifferentTypeOfPeriod()
         {
             var entity = new Entity("http://www.xbrl.fi", "1234567-1");
             var leftperiod = new Period(2014, 12, 31);
@@ -160,7 +165,7 @@ namespace Diwen.Xbrl.Tests
         //   </xbrli:context>
 
         [Fact]
-        public static void CompareContextsWithSameSegment()
+        public void CompareContextsWithSameSegment()
         {
             var entity = new Entity("http://www.xbrl.fi", "1234567-1");
             var period = new Period(2013, 12, 31);
@@ -183,7 +188,7 @@ namespace Diwen.Xbrl.Tests
         }
 
         [Fact]
-        public static void CompareContextsWithDifferentSegment()
+        public void CompareContextsWithDifferentSegment()
         {
             var period = new Period(2013, 12, 31);
 
@@ -210,7 +215,7 @@ namespace Diwen.Xbrl.Tests
         }
 
         [Fact]
-        public static void AddLargeNumberOfContexts()
+        public void AddLargeNumberOfContexts()
         {
             // This test demonstrates the usual scenario of adding contexts to an instance
             // There is a performance hit that comes from checking each new context 
@@ -251,7 +256,7 @@ namespace Diwen.Xbrl.Tests
                 instance.AddFact(context, "mi363", "uEUR", "-3", $"{i}");
             }
 
-            //Console.WriteLine($"instance made with GetContext has {instance.Contexts.Count} contexts");
+            //output.WriteLine($"instance made with GetContext has {instance.Contexts.Count} contexts");
 
             // removing duplicates should not be needed but 
             // make sure we do the same cleanup for both methods
@@ -259,7 +264,7 @@ namespace Diwen.Xbrl.Tests
             instance.CollapseDuplicateContexts();
             instance.RemoveUnusedObjects();
             sw.Stop();
-            Console.WriteLine($"GetContext {sw.Elapsed}");
+            output.WriteLine($"GetContext {sw.Elapsed}");
             instance.ToFile("GetContext.xbrl");
 
             // load a minimal instance to work with
@@ -284,14 +289,14 @@ namespace Diwen.Xbrl.Tests
                 instance.AddFact(context, "mi363", "uEUR", "-3", $"{i}");
             }
 
-            //Console.WriteLine($"instance made with CreateContext has {instance.Contexts.Count} contexts");
+            //output.WriteLine($"instance made with CreateContext has {instance.Contexts.Count} contexts");
 
             // since we didn't check for existing matching scenarios
             // there can be duplicates that need to be cleaned up
             instance.CollapseDuplicateContexts();
             instance.RemoveUnusedObjects();
             sw.Stop();
-            Console.WriteLine($"CreateContext {sw.Elapsed}");
+            output.WriteLine($"CreateContext {sw.Elapsed}");
             instance.ToFile("CreateContext.xbrl");
 
             // both methods should produce same result
