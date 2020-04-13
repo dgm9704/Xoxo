@@ -132,7 +132,7 @@ namespace Diwen.Xbrl.Tests
         [MemberData(nameof(ESEFConformanceSuite))]
         public void RunESEFConformanceSuite(string testcaseNumber, string variationId, string expected, string error, Report report)
         {
-            // if (testcaseNumber == "")
+            // if (testcaseNumber == "G2-4-1_1")
             // {
             var result = InlineXbrl.ValidateEsef(report.Document);
             var actualError = result.Errors.Join(",");

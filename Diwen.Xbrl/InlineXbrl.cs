@@ -44,6 +44,7 @@ namespace Diwen.Xbrl
             G2_3_1_1,
             G2_3_1_2,
             G2_3_1_3,
+            G2_4_1_1,
         };
 
         private static string G2_1_2(XDocument report)
@@ -180,6 +181,50 @@ namespace Diwen.Xbrl
 
             return error.Join(",");
         }
+
+        private static string G2_4_1_1(XDocument report)
+        {
+            var error = new HashSet<string>();
+            var ix = report.Root.GetNamespaceOfPrefix("ix");
+
+            var hiddenFacts =
+                report.Root.
+                Descendants(ix + "hidden").
+                FirstOrDefault()?.
+                Descendants().
+                Where(d => d.Attribute("contextRef") != null);
+
+            var transformableHiddenFacts =
+                hiddenFacts?.
+                Where(d => d.Attribute("format") != null);
+
+            if (transformableHiddenFacts != null && transformableHiddenFacts.Any())
+                error.Add("transformableElementIncludedInHiddenSection");
+
+            var hiddenFactIds =
+                hiddenFacts?.
+                Select(f => f.Attribute("id").Value).
+                ToHashSet() ?? new HashSet<string>();
+
+            var reportHiddenFactIds =
+                report.Root.
+                    Descendants().
+                    Select(d => d.Attribute("style")).
+                    Where(a => a != null).
+                    Select(a => a.Value.Split(':')).
+                    Where(v => v.First() == "-esef-ix-hidden").
+                    Select(v => v.Last()).
+                    ToHashSet() ?? new HashSet<string>();
+
+            if (reportHiddenFactIds.Except(hiddenFactIds).Any())
+                error.Add("esefIxHiddenStyleNotLinkingFactInHiddenSection");
+
+            if (hiddenFactIds.Except(reportHiddenFactIds).Any())
+                error.Add("factInHiddenSectionNotInReport");
+
+            return error.Join(",");
+        }
+
 
         public static EsefResult ValidateEsef(string path)
         => ValidateEsef(XDocument.Load(path));
