@@ -192,16 +192,19 @@ namespace Diwen.Xbrl
 
         private static string G2_1_2(XDocument report)
         {
+            var errors = new HashSet<string>();
             var xbrli = report.Root.GetNamespaceOfPrefix("xbrli");
             var periodElements = report.Root.Descendants(xbrli + "period");
-            var dateElements = periodElements.SelectMany(p => p.Descendants());
+            var dates = periodElements.SelectMany(p => p.Descendants().Select(d => d.Value));
 
-            return dateElements.
-                Any(p => !DateTime.TryParseExact(p.Value, "yyyy-MM-dd", ic, DateTimeStyles.None, out DateTime value))
-                    ? "<xbrli:period> element should contain values in YYYY-MM-DD format without time component"
-                    : null;
+            if (dates.Any(d => d.IndexOf('T') != -1))
+                errors.Add("periodWithTimeContent");
 
-            //"periodWithTimeContent", "periodWithTimeZone"
+            var zones = new char[] { 'Z', '+', '-' };
+            if (dates.Any(d => d.LastIndexOfAny(zones) > 9))
+                errors.Add("periodWithTimeZone");
+
+            return errors.Join(",");
         }
 
         private static string G2_1_3_1(XDocument report)
