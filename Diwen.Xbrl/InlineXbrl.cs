@@ -53,6 +53,8 @@ namespace Diwen.Xbrl
             G2_5_1,
             G2_5_2,
             G2_5_3,
+            G2_5_4_1,
+            G2_5_4_2,
         };
 
         public struct ReportFile
@@ -321,30 +323,35 @@ namespace Diwen.Xbrl
         private static string G2_3_1_2(IEnumerable<ReportFile> reportFiles)
         {
             var errors = new HashSet<string>();
+
+            var footnotes = new HashSet<string>();
+            var relationships = new HashSet<string>();
             foreach (var reportFile in reportFiles.Where(f => f.Content is XDocument))
             {
                 var document = reportFile.Content as XDocument;
 
                 var ix = document.Root.GetNamespaceOfPrefix("ix");
 
-                var footnotes =
-                    document.Root.
-                        Descendants(ix + "footnote").
-                        Select(f => f.Attribute("id")?.Value).
-                        Where(a => !string.IsNullOrEmpty(a))
-                        .ToHashSet();
+                document.Root.
+                    Descendants(ix + "footnote").
+                    Select(f => f.Attribute("id")?.Value).
+                    Where(a => !string.IsNullOrEmpty(a)).
+                    ToList().
+                    ForEach(f => footnotes.Add(f));
 
-                var relationships =
-                    document.Root.
-                        Descendants(ix + "relationship").
-                        Select(r => r.Attribute("toRefs")?.Value).
-                        Where(a => !string.IsNullOrEmpty(a)).
-                        ToHashSet();
-
-                if (footnotes.Except(relationships).Any())
-                    errors.Add("unusedFootnote");
+                document.Root.
+                    Descendants(ix + "relationship").
+                    Select(r => r.Attribute("toRefs")?.Value).
+                    Where(a => !string.IsNullOrEmpty(a)).
+                    ToList().
+                    ForEach(r => relationships.Add(r));
             }
+
+            if (footnotes.Except(relationships).Any())
+                errors.Add("unusedFootnote");
+
             return errors.Join(",");
+
         }
 
         private static string G2_3_1_3(IEnumerable<ReportFile> reportFiles)
@@ -567,6 +574,51 @@ namespace Diwen.Xbrl
                     errors.Add("targetAttributeUsed");
             }
             return errors.Join(",");
+        }
+
+        private static string G2_5_4_1(IEnumerable<ReportFile> reportFiles)
+        {
+            var errors = new HashSet<string>();
+
+            var parts = reportFiles.Where(f => f.Content is XDocument).ToArray();
+            if (parts.Length == 1)
+            {
+                var document = parts.Single().Content as XDocument;
+                var html = document.Root.GetDefaultNamespace();
+                if (
+                    document.Root.
+                    Descendants(html + "link").
+                    Any(l => l.Attributes("rel").
+                    Any(r => r.Value == "stylesheet")))
+                    errors.Add("externalCssFileForSingleIXbrlDocument");
+            }
+            return errors.Join(",");
+            //Where an Inline XBRL document set contains a single document, 
+            //the CSS MUST be embedded within the document. 
+        }
+
+        private static string G2_5_4_2(IEnumerable<ReportFile> reportFiles)
+        {
+            var errors = new HashSet<string>();
+
+            var parts = reportFiles.Where(f => f.Content is XDocument).ToArray();
+            if (parts.Length > 1)
+            {
+                foreach (var part in parts)
+                {
+                    var document = part.Content as XDocument;
+                    var html = document.Root.GetDefaultNamespace();
+                    if (document.Root.
+                        Descendants(html + "style").
+                        Any())
+                        errors.Add("embeddedCssForMultiHtmlIXbrlDocumentSets");
+                }
+            }
+            return errors.Join(",");
+
+            //Where an Inline XBRL document set contains multiple documents, 
+            //the CSS SHOULD be defined in a separate file.
+
         }
     }
 }
