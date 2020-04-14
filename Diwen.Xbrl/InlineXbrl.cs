@@ -51,6 +51,7 @@ namespace Diwen.Xbrl
             G2_4_2_2,
             G2_5_1,
             G2_5_2,
+            G2_5_3,
         };
 
 
@@ -463,6 +464,18 @@ namespace Diwen.Xbrl
             }
 
             return errors.Join(",");
+        }
+
+        private static string G2_5_3(XDocument report)
+        {
+            var ix = report.Root.GetNamespaceOfPrefix("ix");
+            return
+                report.Root.
+                Descendants().
+                Where(e => e.Name.Namespace == ix).
+                Any(e => e.Attribute("target") != null)
+                    ? "targetAttributeUsed"
+                    : null;
         }
     }
 }
