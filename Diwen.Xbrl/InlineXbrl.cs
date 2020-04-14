@@ -50,6 +50,7 @@ namespace Diwen.Xbrl
             G2_4_2_1,
             G2_4_2_2,
             G2_5_1,
+            G2_5_2,
         };
 
 
@@ -430,6 +431,38 @@ namespace Diwen.Xbrl
                 Any(i => i.Attribute("src").Value.Split(',').First().IndexOf("base64") == -1)
                 ? "embeddedImageNotUsingBase64Encoding"
                 : null;
+        }
+
+        private static string G2_5_2(XDocument report)
+        {
+            var errors = new HashSet<string>();
+            var ix = report.Root.GetNamespaceOfPrefix("ix");
+            var xml = report.Root.GetNamespaceOfPrefix("xml");
+
+            var reportLanguage =
+                report.Root.
+                Attribute(xml + "lang")?.
+                Value;
+
+            var textFactLanguages =
+                report.Root.
+                Descendants(ix + "nonNumeric").
+                Select(f =>
+                    f.Attribute(xml + "lang")?.Value ?? f.Parent.Attribute(xml + "lang")?.Value).
+                ToHashSet();
+
+            if (string.IsNullOrEmpty(reportLanguage))
+            {
+                if (textFactLanguages.Any(l => string.IsNullOrEmpty(l)))
+                    errors.Add("undefinedLanguageForTextFact");
+            }
+            else
+            {
+                if (textFactLanguages.Where(l => !string.IsNullOrEmpty(l)).Any(l => l != reportLanguage))
+                    errors.Add("taggedTextFactOnlyInLanguagesOtherThanLanguageOfAReport");
+            }
+
+            return errors.Join(",");
         }
     }
 }
