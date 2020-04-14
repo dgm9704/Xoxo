@@ -33,7 +33,8 @@ namespace Diwen.Xbrl
     {
         private static IFormatProvider ic = CultureInfo.InvariantCulture;
 
-        private static List<Func<XDocument, string>> EsefValidations = new List<Func<XDocument, string>>
+        private static List<Func<IEnumerable<ReportFile>, string>> EsefValidations =
+        new List<Func<IEnumerable<ReportFile>, string>>
         {
             G2_1_2,
             G2_1_3_1,
@@ -54,40 +55,46 @@ namespace Diwen.Xbrl
             G2_5_3,
         };
 
+        public struct ReportFile
+        {
+            public string Filename { get; }
+            public object Content { get; }
+            public ReportFile(string filename, object content)
+            {
+                Filename = filename;
+                Content = content;
+            }
+        }
 
-        public static EsefResult ValidateEsef(string path)
-        => ValidateEsef(XDocument.Load(path));
-
-        public static EsefResult ValidateEsef(XDocument report)
+        public static EsefResult ValidateEsef(IEnumerable<ReportFile> reportFiles)
         {
             var errors =
                 EsefValidations.
-                Select(validation => validation(report)).
+                Select(validation => validation(reportFiles)).
                 Where(error => !string.IsNullOrWhiteSpace(error)).
                 ToArray();
 
             return new EsefResult(errors.Any() ? "invalid" : "valid", errors.ToArray());
         }
 
-        public static Instance ParseInstance(XDocument report)
+        public static Instance ParseInstance(IEnumerable<ReportFile> reportFiles)
         {
             var instance = new Instance();
 
-            ParseNamespaces(report, instance);
+            foreach (var reportFile in reportFiles.Select(f => f.Content as XDocument).Where(r => r != null))
+            {
+                ParseNamespaces(reportFile, instance);
 
-            ParseSchemaReference(report, instance);
+                ParseSchemaReference(reportFile, instance);
 
-            ParseContexts(report, instance);
+                ParseContexts(reportFile, instance);
 
-            ParseUnits(report, instance);
+                ParseUnits(reportFile, instance);
 
-            ParseFacts(report, instance);
-
+                ParseFacts(reportFile, instance);
+            }
             return instance;
         }
-
-        // public static ValidationResult ValidateEsef(string inputFile)
-        //  FormatValidations.GetValueOrDefault(InlineXbrlType.Esef, (f) => throw new ArgumentOutOfRangeException(nameof(InlineXbrlType.Esef)))(inputFile);
 
         private static void ParseFacts(XDocument report, Instance instance)
         {
@@ -120,18 +127,18 @@ namespace Diwen.Xbrl
                 instance.Facts.Add(fact);
         }
 
-        private static IEnumerable<XElement> FindFacts(XDocument report)
+        private static IEnumerable<XElement> FindFacts(XDocument document)
         {
             // parse facts and add to instance
-            return report.Descendants().Where(d => d.Attribute("contextRef") != null);
+            return document.Root.Descendants().Where(d => d.Attribute("contextRef") != null);
         }
 
-        private static void ParseUnits(XDocument report, Instance instance)
+        private static void ParseUnits(XDocument document, Instance instance)
         {
             // parse units and add to instance
             // ix:header/ix:resources/xbrli:unit
-            var unitNs = report.Root.GetNamespaceOfPrefix("xbrli");
-            var unitElements = report.Root.Descendants(unitNs + "unit");
+            var unitNs = document.Root.GetNamespaceOfPrefix("xbrli");
+            var unitElements = document.Root.Descendants(unitNs + "unit");
             var unitSerializer = new XmlSerializer(typeof(Unit));
             var units = new UnitCollection(instance);
             foreach (var unitElement in unitElements)
@@ -192,60 +199,76 @@ namespace Diwen.Xbrl
                 instance.Namespaces.AddNamespace(ns.Key, ns.Value);
         }
 
-        public static Instance ParseInstance(string path)
-        => ParseInstance(XDocument.Load(path));
-
-        private static string G2_1_2(XDocument report)
+        private static string G2_1_2(IEnumerable<ReportFile> reportFiles)
         {
             var errors = new HashSet<string>();
-            var xbrli = report.Root.GetNamespaceOfPrefix("xbrli");
-            var periodElements = report.Root.Descendants(xbrli + "period");
-            var dates = periodElements.SelectMany(p => p.Descendants().Select(d => d.Value));
+            foreach (var reportFile in reportFiles.Where(f => f.Content is XDocument))
+            {
+                var document = reportFile.Content as XDocument;
+                if (document != null)
+                {
+                    var xbrli = document.Root.GetNamespaceOfPrefix("xbrli");
+                    var periodElements = document.Root.Descendants(xbrli + "period");
+                    var dates = periodElements.SelectMany(p => p.Descendants().Select(d => d.Value));
 
-            if (dates.Any(d => d.IndexOf('T') != -1))
-                errors.Add("periodWithTimeContent");
+                    if (dates.Any(d => d.IndexOf('T') != -1))
+                        errors.Add("periodWithTimeContent");
 
-            var zones = new char[] { 'Z', '+', '-' };
-            if (dates.Any(d => d.LastIndexOfAny(zones) > 9))
-                errors.Add("periodWithTimeZone");
+                    var zones = new char[] { 'Z', '+', '-' };
+                    if (dates.Any(d => d.LastIndexOfAny(zones) > 9))
+                        errors.Add("periodWithTimeZone");
+                }
+            }
 
             return errors.Join(",");
         }
 
-        private static string G2_1_3_1(XDocument report)
+        private static string G2_1_3_1(IEnumerable<ReportFile> reportFiles)
         {
-            var xbrli = report.Root.GetNamespaceOfPrefix("xbrli");
-            var segmentElements = report.Root.Descendants(xbrli + "segment");
-
-            return
-                segmentElements.Any()
-                    ? "segmentUsed"
-                    : null;
+            var errors = new HashSet<string>();
+            foreach (var reportFile in reportFiles.Where(f => f.Content is XDocument))
+            {
+                var document = reportFile.Content as XDocument;
+                var xbrli = document.Root.GetNamespaceOfPrefix("xbrli");
+                var segmentElements = document.Root.Descendants(xbrli + "segment");
+                if (segmentElements.Any())
+                    errors.Add("segmentUsed");
+            }
+            return errors.Join(",");
         }
 
-        private static string G2_1_3_2(XDocument report)
+        private static string G2_1_3_2(IEnumerable<ReportFile> reportFiles)
         {
-            var xbrli = report.Root.GetNamespaceOfPrefix("xbrli");
-            var xbrldi = report.Root.GetNamespaceOfPrefix("xbrldi");
-            var scenarioElements = report.Root.Descendants(xbrli + "scenario");
-            var customElements = scenarioElements.SelectMany(s => s.Descendants().Where(e => e.Name.Namespace != xbrldi));
+            var errors = new HashSet<string>();
+            foreach (var reportFile in reportFiles.Where(f => f.Content is XDocument))
+            {
+                var document = reportFile.Content as XDocument;
+                var xbrli = document.Root.GetNamespaceOfPrefix("xbrli");
+                var xbrldi = document.Root.GetNamespaceOfPrefix("xbrldi");
+                var scenarioElements = document.Root.Descendants(xbrli + "scenario");
+                var customElements = scenarioElements.SelectMany(s => s.Descendants().Where(e => e.Name.Namespace != xbrldi));
 
-            return
-                customElements.Any()
-                    ? "scenarioContainsNonDimensionalContent"
-                    : null;
+                if (customElements.Any())
+                    errors.Add("scenarioContainsNonDimensionalContent");
+            }
+            return errors.Join(",");
         }
 
-        private static string G2_2_1(XDocument report)
+        private static string G2_2_1(IEnumerable<ReportFile> reportFiles)
         {
-            var factElements = FindFacts(report);
-            return
-                factElements.Any(e => e.Attribute("precision") != null)
-                    ? "precisionAttributeUsed"
-                    : null;
+            var errors = new HashSet<string>();
+            foreach (var reportFile in reportFiles.Where(f => f.Content is XDocument))
+            {
+                var document = reportFile.Content as XDocument;
+                var factElements = FindFacts(document);
+
+                if (factElements.Any(e => e.Attribute("precision") != null))
+                    errors.Add("precisionAttributeUsed");
+            }
+            return errors.Join(",");
         }
 
-        private static string G2_2_2(XDocument report)
+        private static string G2_2_2(IEnumerable<ReportFile> reportFiles)
         {
             // var num = report.Root.GetNamespaceOfPrefix("num");
             // var percents = report.Root.Descendants(num + "percentItemType");
@@ -257,225 +280,293 @@ namespace Diwen.Xbrl
             return null;
         }
 
-        private static string G2_2_3(XDocument report)
+        private static string G2_2_3(IEnumerable<ReportFile> reportFiles)
         {
-            var ixt = report.Root.GetNamespaceOfPrefix("ixt");
-            return !(
-                ixt == null
-                || ixt.NamespaceName == "http://www.xbrl.org/inlineXBRL/transformation/2015-02-26" // TR 3
-                || ixt.NamespaceName == "http://www.xbrl.org/inlineXBRL/transformation/2019-04-19" // TR 4 PWD
-                || ixt.NamespaceName == "http://www.xbrl.org/inlineXBRL/transformation/2020-02-12" // TR 4
-            )
-                ? "transformRegistry"
-                : null;
+
+            var errors = new HashSet<string>();
+            foreach (var reportFile in reportFiles.Where(f => f.Content is XDocument))
+            {
+                var document = reportFile.Content as XDocument;
+
+                var ixt = document.Root.GetNamespaceOfPrefix("ixt");
+                if (!(
+                    ixt == null
+                    || ixt.NamespaceName == "http://www.xbrl.org/inlineXBRL/transformation/2015-02-26" // TR 3
+                    || ixt.NamespaceName == "http://www.xbrl.org/inlineXBRL/transformation/2019-04-19" // TR 4 PWD
+                    || ixt.NamespaceName == "http://www.xbrl.org/inlineXBRL/transformation/2020-02-12" // TR 4
+                ))
+                    errors.Add("transformRegistry");
+            }
+            return errors.Join(",");
         }
 
-        private static string G2_3_1_1(XDocument report)
+        private static string G2_3_1_1(IEnumerable<ReportFile> reportFiles)
         {
-            var ix = report.Root.GetNamespaceOfPrefix("ix");
-            var footnotes = report.Root.Descendants(ix + "footnote");
-            var relationships = report.Root.Descendants(ix + "relationship");
+            var errors = new HashSet<string>();
+            foreach (var reportFile in reportFiles.Where(f => f.Content is XDocument))
+            {
+                var document = reportFile.Content as XDocument;
 
-            return
-                footnotes.Any(f => f.Attribute("footnoteRole") != null)
-                || relationships.Any(r => r.Attribute("arcrole") != null)
-                    ? "nonStandardRoleForFootnote"
-                    : null;
+                var ix = document.Root.GetNamespaceOfPrefix("ix");
+                var footnotes = document.Root.Descendants(ix + "footnote");
+                var relationships = document.Root.Descendants(ix + "relationship");
+
+                if (footnotes.Any(f => f.Attribute("footnoteRole") != null)
+                    || relationships.Any(r => r.Attribute("arcrole") != null))
+                    errors.Add("nonStandardRoleForFootnote");
+            }
+            return errors.Join(",");
         }
 
-        private static string G2_3_1_2(XDocument report)
+        private static string G2_3_1_2(IEnumerable<ReportFile> reportFiles)
         {
-            var ix = report.Root.GetNamespaceOfPrefix("ix");
+            var errors = new HashSet<string>();
+            foreach (var reportFile in reportFiles.Where(f => f.Content is XDocument))
+            {
+                var document = reportFile.Content as XDocument;
 
-            var footnotes =
-                report.Root.
-                    Descendants(ix + "footnote").
-                    Select(f => f.Attribute("id")?.Value).
-                    Where(a => !string.IsNullOrEmpty(a))
-                    .ToHashSet();
+                var ix = document.Root.GetNamespaceOfPrefix("ix");
 
-            var relationships =
-                report.Root.
-                    Descendants(ix + "relationship").
-                    Select(r => r.Attribute("toRefs")?.Value).
-                    Where(a => !string.IsNullOrEmpty(a)).
-                    ToHashSet();
+                var footnotes =
+                    document.Root.
+                        Descendants(ix + "footnote").
+                        Select(f => f.Attribute("id")?.Value).
+                        Where(a => !string.IsNullOrEmpty(a))
+                        .ToHashSet();
 
-            return
-                footnotes.Except(relationships).Any()
-                    ? "unusedFootnote"
-                    : null;
+                var relationships =
+                    document.Root.
+                        Descendants(ix + "relationship").
+                        Select(r => r.Attribute("toRefs")?.Value).
+                        Where(a => !string.IsNullOrEmpty(a)).
+                        ToHashSet();
+
+                if (footnotes.Except(relationships).Any())
+                    errors.Add("unusedFootnote");
+            }
+            return errors.Join(",");
         }
 
-        private static string G2_3_1_3(XDocument report)
+        private static string G2_3_1_3(IEnumerable<ReportFile> reportFiles)
         {
             var error = new HashSet<string>();
-            var ix = report.Root.GetNamespaceOfPrefix("ix");
-            var xml = report.Root.GetNamespaceOfPrefix("xml");
+            foreach (var reportFile in reportFiles.Where(f => f.Content is XDocument))
+            {
+                var document = reportFile.Content as XDocument;
 
-            var reportLanguage = report.Root.Attribute(xml + "lang")?.Value ?? "";
+                var ix = document.Root.GetNamespaceOfPrefix("ix");
+                var xml = document.Root.GetNamespaceOfPrefix("xml");
 
-            var footnotes =
-                report.Root.
-                    Descendants(ix + "footnote").
-                    ToList();
+                var reportLanguage = document.Root.Attribute(xml + "lang")?.Value ?? "";
 
-            if (footnotes.Any(f => f.Attribute(xml + "lang") == null))
-                error.Add("undefinedLanguageForFootnote");
+                var footnotes =
+                    document.Root.
+                        Descendants(ix + "footnote").
+                        ToList();
 
-            if (footnotes.
-                    Select(f => f.Attribute(xml + "lang")).
-                    Where(a => a != null).
-                    Any(a => a.Value != reportLanguage)
-            )
-                error.Add("footnoteOnlyInLanguagesOtherThanLanguageOfAReport");
+                if (footnotes.Any(f => f.Attribute(xml + "lang") == null))
+                    error.Add("undefinedLanguageForFootnote");
 
+                if (footnotes.
+                        Select(f => f.Attribute(xml + "lang")).
+                        Where(a => a != null).
+                        Any(a => a.Value != reportLanguage)
+                )
+                    error.Add("footnoteOnlyInLanguagesOtherThanLanguageOfAReport");
+            }
             return error.Join(",");
         }
 
-        private static string G2_4_1_1(XDocument report)
+        private static string G2_4_1_1(IEnumerable<ReportFile> reportFiles)
         {
             var error = new HashSet<string>();
-            var ix = report.Root.GetNamespaceOfPrefix("ix");
+            foreach (var reportFile in reportFiles.Where(f => f.Content is XDocument))
+            {
+                var document = reportFile.Content as XDocument;
+                var ix = document.Root.GetNamespaceOfPrefix("ix");
 
-            var hiddenFacts =
-                report.Root.
-                Descendants(ix + "hidden").
-                FirstOrDefault()?.
-                Descendants().
-                Where(d => d.Attribute("contextRef") != null);
-
-            var transformableHiddenFacts =
-                hiddenFacts?.
-                Where(d => d.Attribute("format") != null);
-
-            if (transformableHiddenFacts != null && transformableHiddenFacts.Any())
-                error.Add("transformableElementIncludedInHiddenSection");
-
-            var hiddenFactIds =
-                hiddenFacts?.
-                Select(f => f.Attribute("id").Value).
-                ToHashSet() ?? new HashSet<string>();
-
-            var reportHiddenFactIds =
-                report.Root.
+                var hiddenFacts =
+                    document.Root.
+                    Descendants(ix + "hidden").
+                    FirstOrDefault()?.
                     Descendants().
-                    Select(d => d.Attribute("style")).
-                    Where(a => a != null).
-                    Select(a => a.Value.Split(':')).
-                    Where(v => v.First() == "-esef-ix-hidden").
-                    Select(v => v.Last()).
+                    Where(d => d.Attribute("contextRef") != null);
+
+                var transformableHiddenFacts =
+                    hiddenFacts?.
+                    Where(d => d.Attribute("format") != null);
+
+                if (transformableHiddenFacts != null && transformableHiddenFacts.Any())
+                    error.Add("transformableElementIncludedInHiddenSection");
+
+                var hiddenFactIds =
+                    hiddenFacts?.
+                    Select(f => f.Attribute("id").Value).
                     ToHashSet() ?? new HashSet<string>();
 
-            if (reportHiddenFactIds.Except(hiddenFactIds).Any())
-                error.Add("esefIxHiddenStyleNotLinkingFactInHiddenSection");
+                var reportHiddenFactIds =
+                    document.Root.
+                        Descendants().
+                        Select(d => d.Attribute("style")).
+                        Where(a => a != null).
+                        Select(a => a.Value.Split(':')).
+                        Where(v => v.First() == "-esef-ix-hidden").
+                        Select(v => v.Last()).
+                        ToHashSet() ?? new HashSet<string>();
 
-            if (hiddenFactIds.Except(reportHiddenFactIds).Any())
-                error.Add("factInHiddenSectionNotInReport");
+                if (reportHiddenFactIds.Except(hiddenFactIds).Any())
+                    error.Add("esefIxHiddenStyleNotLinkingFactInHiddenSection");
 
+                if (hiddenFactIds.Except(reportHiddenFactIds).Any())
+                    error.Add("factInHiddenSectionNotInReport");
+            }
             return error.Join(",");
         }
 
-        private static string G2_4_1_2(XDocument report)
+        private static string G2_4_1_2(IEnumerable<ReportFile> reportFiles)
         {
             var errors = new HashSet<string>();
 
-            var ix = report.Root.GetNamespaceOfPrefix("ix");
-            var tuples = report.Root.Descendants(ix + "tuple");
-
-            if (tuples.Any(t => (t.Attribute("name")?.Value ?? "").IndexOf(':') != -1))
-                errors.Add("tupleDefinedInExtensionTaxonomy");
-
-            if (tuples.Any())
-                errors.Add("tupleElementUsed");
-
-            return errors.Join(",");
-        }
-
-        private static string G2_4_1_3(XDocument report)
-        {
-            var errors = new HashSet<string>();
-
-            var ix = report.Root.GetNamespaceOfPrefix("ix");
-            var fractions = report.Root.Descendants(ix + "fraction");
-
-            if (fractions.Any(t => (t.Attribute("name")?.Value ?? "").IndexOf(':') != -1))
-                errors.Add("fractionDefinedInExtensionTaxonomy");
-
-            if (fractions.Any())
-                errors.Add("fractionElementUsed");
-
-            return errors.Join(",");
-        }
-
-        private static string G2_4_2_1(XDocument report)
-        {
-            var xml = report.Root.GetNamespaceOfPrefix("xml");
-            return report.Root.DescendantsAndSelf().Any(e => e.Attribute(xml + "base") != null)
-                ? "htmlOrXmlBaseUsed"
-                : null;
-        }
-
-        private static string G2_4_2_2(XDocument report)
-        {
-            var html = report.Root.GetDefaultNamespace();
-            return report.Root.Descendants(html + "base").Any()
-                ? "htmlOrXmlBaseUsed"
-                : null;
-        }
-
-        private static string G2_5_1(XDocument report)
-        {
-            var html = report.Root.GetDefaultNamespace();
-            return report.Root.
-                Descendants(html + "img").
-                Any(i => i.Attribute("src").Value.Split(',').First().IndexOf("base64") == -1)
-                ? "embeddedImageNotUsingBase64Encoding"
-                : null;
-        }
-
-        private static string G2_5_2(XDocument report)
-        {
-            var errors = new HashSet<string>();
-            var ix = report.Root.GetNamespaceOfPrefix("ix");
-            var xml = report.Root.GetNamespaceOfPrefix("xml");
-
-            var reportLanguage =
-                report.Root.
-                Attribute(xml + "lang")?.
-                Value;
-
-            var textFactLanguages =
-                report.Root.
-                Descendants(ix + "nonNumeric").
-                Select(f =>
-                    f.Attribute(xml + "lang")?.Value ?? f.Parent.Attribute(xml + "lang")?.Value).
-                ToHashSet();
-
-            if (string.IsNullOrEmpty(reportLanguage))
+            foreach (var reportFile in reportFiles.Where(f => f.Content is XDocument))
             {
-                if (textFactLanguages.Any(l => string.IsNullOrEmpty(l)))
-                    errors.Add("undefinedLanguageForTextFact");
-            }
-            else
-            {
-                if (textFactLanguages.Where(l => !string.IsNullOrEmpty(l)).Any(l => l != reportLanguage))
-                    errors.Add("taggedTextFactOnlyInLanguagesOtherThanLanguageOfAReport");
-            }
+                var document = reportFile.Content as XDocument;
 
+                var ix = document.Root.GetNamespaceOfPrefix("ix");
+                var tuples = document.Root.Descendants(ix + "tuple");
+
+                if (tuples.Any(t => (t.Attribute("name")?.Value ?? "").IndexOf(':') != -1))
+                    errors.Add("tupleDefinedInExtensionTaxonomy");
+
+                if (tuples.Any())
+                    errors.Add("tupleElementUsed");
+            }
             return errors.Join(",");
         }
 
-        private static string G2_5_3(XDocument report)
+        private static string G2_4_1_3(IEnumerable<ReportFile> reportFiles)
         {
-            var ix = report.Root.GetNamespaceOfPrefix("ix");
-            return
-                report.Root.
-                Descendants().
-                Where(e => e.Name.Namespace == ix).
-                Any(e => e.Attribute("target") != null)
-                    ? "targetAttributeUsed"
-                    : null;
+            var errors = new HashSet<string>();
+
+            foreach (var reportFile in reportFiles.Where(f => f.Content is XDocument))
+            {
+                var document = reportFile.Content as XDocument;
+
+                var ix = document.Root.GetNamespaceOfPrefix("ix");
+                var fractions = document.Root.Descendants(ix + "fraction");
+
+                if (fractions.Any(t => (t.Attribute("name")?.Value ?? "").IndexOf(':') != -1))
+                    errors.Add("fractionDefinedInExtensionTaxonomy");
+
+                if (fractions.Any())
+                    errors.Add("fractionElementUsed");
+            }
+            return errors.Join(",");
+        }
+
+        private static string G2_4_2_1(IEnumerable<ReportFile> reportFiles)
+        {
+            var errors = new HashSet<string>();
+
+            foreach (var reportFile in reportFiles.Where(f => f.Content is XDocument))
+            {
+                var document = reportFile.Content as XDocument;
+                var xml = document.Root.GetNamespaceOfPrefix("xml");
+                if (document.Root.DescendantsAndSelf().Any(e => e.Attribute(xml + "base") != null))
+                    errors.Add("htmlOrXmlBaseUsed");
+            }
+            return errors.Join(",");
+        }
+
+        private static string G2_4_2_2(IEnumerable<ReportFile> reportFiles)
+        {
+            var errors = new HashSet<string>();
+
+            foreach (var reportFile in reportFiles.Where(f => f.Content is XDocument))
+            {
+                var document = reportFile.Content as XDocument;
+                var html = document.Root.GetDefaultNamespace();
+
+                if (document.Root.Descendants(html + "base").Any())
+                    errors.Add("htmlOrXmlBaseUsed");
+            }
+            return errors.Join(",");
+        }
+
+        private static string G2_5_1(IEnumerable<ReportFile> reportFiles)
+        {
+            var errors = new HashSet<string>();
+
+            foreach (var reportFile in reportFiles.Where(f => f.Content is XDocument))
+            {
+                var document = reportFile.Content as XDocument;
+                var html = document.Root.GetDefaultNamespace();
+                if (document.Root.
+                    Descendants(html + "img").
+                    Any(i =>
+                        i.
+                        Attribute("src").
+                        Value.
+                        Split(',').
+                        First().
+                        IndexOf("base64") == -1))
+                    errors.Add("embeddedImageNotUsingBase64Encoding");
+            }
+            return errors.Join(",");
+        }
+
+        private static string G2_5_2(IEnumerable<ReportFile> reportFiles)
+        {
+            var errors = new HashSet<string>();
+
+            foreach (var reportFile in reportFiles.Where(f => f.Content is XDocument))
+            {
+                var document = reportFile.Content as XDocument;
+
+                var ix = document.Root.GetNamespaceOfPrefix("ix");
+                var xml = document.Root.GetNamespaceOfPrefix("xml");
+
+                var reportLanguage =
+                    document.Root.
+                    Attribute(xml + "lang")?.
+                    Value;
+
+                var textFactLanguages =
+                    document.Root.
+                    Descendants(ix + "nonNumeric").
+                    Select(f =>
+                        f.Attribute(xml + "lang")?.Value ?? f.Parent.Attribute(xml + "lang")?.Value).
+                    ToHashSet();
+
+                if (string.IsNullOrEmpty(reportLanguage))
+                {
+                    if (textFactLanguages.Any(l => string.IsNullOrEmpty(l)))
+                        errors.Add("undefinedLanguageForTextFact");
+                }
+                else
+                {
+                    if (textFactLanguages.Where(l => !string.IsNullOrEmpty(l)).Any(l => l != reportLanguage))
+                        errors.Add("taggedTextFactOnlyInLanguagesOtherThanLanguageOfAReport");
+                }
+            }
+            return errors.Join(",");
+        }
+
+        private static string G2_5_3(IEnumerable<ReportFile> reportFiles)
+        {
+            var errors = new HashSet<string>();
+
+            foreach (var reportFile in reportFiles.Where(f => f.Content is XDocument))
+            {
+                var document = reportFile.Content as XDocument;
+
+                var ix = document.Root.GetNamespaceOfPrefix("ix");
+                if (document.Root.
+                    Descendants().
+                    Where(e => e.Name.Namespace == ix).
+                    Any(e => e.Attribute("target") != null))
+                    errors.Add("targetAttributeUsed");
+            }
+            return errors.Join(",");
         }
     }
 }

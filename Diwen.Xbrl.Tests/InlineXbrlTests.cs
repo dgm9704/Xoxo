@@ -24,6 +24,7 @@ namespace Diwen.Xbrl.Tests
     using Xunit;
     using Xunit.Abstractions;
     using Diwen.Xbrl.Extensions;
+    using static Diwen.Xbrl.InlineXbrl;
 
     public class InlineXbrlTests
     {
@@ -33,20 +34,6 @@ namespace Diwen.Xbrl.Tests
         public InlineXbrlTests(ITestOutputHelper output)
         {
             this.output = output;
-        }
-
-        public struct Report
-        {
-            public string Filename { get; }
-            public XDocument Document { get; }
-
-            public static readonly Report Empty = new Report(null, null);
-
-            public Report(string filename, XDocument document)
-            {
-                Filename = filename;
-                Document = document;
-            }
         }
 
         public static IEnumerable<object[]> ESEFConformanceSuite()
@@ -91,13 +78,16 @@ namespace Diwen.Xbrl.Tests
                             using (var packageArchive = new ZipArchive(packageStream, ZipArchiveMode.Read))
                             {
                                 // Skipping over any taxonomy stuff 
-                                var reportFile = packageArchive.Entries.FirstOrDefault(
-                                    e => e.FullName.StartsWith($"{variationId}/reports/", StringComparison.Ordinal)
-                                    && e.Name.StartsWith("abc.", StringComparison.Ordinal));
+                                var reportFiles = packageArchive.Entries.
+                                    Where(e => e.Length != 0).
+                                    Where(e => e.FullName.StartsWith($"{variationId}/reports/", StringComparison.Ordinal));
 
-                                if (reportFile != null)
+                                if (reportFiles.Any())
                                 {
-                                    var report = new Report(reportFile.Name, XDocumentFromZipArchiveEntry(reportFile));
+                                    var report = new List<ReportFile>();
+                                    foreach (var reportFile in reportFiles)
+                                        report.Add(new ReportFile(reportFile.Name, (ContentFromZipArchiveEntry(reportFile))));
+
                                     yield return new object[] { testcaseNumber, variationId, expected, error, report };
                                 }
                                 else
@@ -108,33 +98,51 @@ namespace Diwen.Xbrl.Tests
                                     // because there isn't and index for it
                                     // TODO: need to figure out how to pass this case on like the others, 
                                     // and have the validation return a meaningful result
-                                    yield return new object[] { testcaseNumber, variationId, expected, error, Report.Empty };
+                                    yield return new object[] { testcaseNumber, variationId, expected, error, null };
                                 }
                             }
                         }
                         else
                         {
                             // G3-1-3 incorrect package
-                            yield return new object[] { testcaseNumber, variationId, expected, error, Report.Empty };
+                            yield return new object[] { testcaseNumber, variationId, expected, error, null };
                         }
                     }
                 }
             }
         }
 
-        private static XDocument XDocumentFromZipArchiveEntry(ZipArchiveEntry reportFile)
+        private static object ContentFromZipArchiveEntry(ZipArchiveEntry entry)
         {
-            using (var reportStream = reportFile.Open())
+            var extension = Path.GetExtension(entry.Name);
+            return (extension == ".html" || extension == ".xhtml")
+                ? XDocumentFromZipArchiveEntry(entry)
+                : (object)ByteArrayFromZipArchiveEntry(entry);
+        }
+
+        private static byte[] ByteArrayFromZipArchiveEntry(ZipArchiveEntry entry)
+        {
+            using (var reportStream = entry.Open())
+            using (var memoryStream = new MemoryStream())
+            {
+                reportStream.CopyTo(memoryStream);
+                return memoryStream.ToArray();
+            }
+        }
+
+        private static XDocument XDocumentFromZipArchiveEntry(ZipArchiveEntry entry)
+        {
+            using (var reportStream = entry.Open())
                 return XDocument.Load(reportStream);
         }
 
         [Theory]
         [MemberData(nameof(ESEFConformanceSuite))]
-        public void RunESEFConformanceSuite(string testcaseNumber, string variationId, string expected, string error, Report report)
+        public void RunESEFConformanceSuite(string testcaseNumber, string variationId, string expected, string error, IEnumerable<ReportFile> report)
         {
-            // if (testcaseNumber == "G2-5-3")
+            // if (testcaseNumber == "G2-5-4_2")
             // {
-            var result = InlineXbrl.ValidateEsef(report.Document);
+            var result = InlineXbrl.ValidateEsef(report);
             var expectedError = (error ?? "").Split(',').Select(e => e.Trim()).Join(",");
             var actualError = result.Errors.Join(",");
             output.WriteLine($"{testcaseNumber}\t{variationId}");
