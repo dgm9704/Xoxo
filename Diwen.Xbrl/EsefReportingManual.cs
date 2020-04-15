@@ -51,6 +51,26 @@ namespace Diwen.Xbrl
             G2_5_3,
             G2_5_4_1,
             G2_5_4_2,
+            G2_6_1,
+            G2_6_2,
+            G2_7_1_1,
+            G2_7_1_2,
+            G3_1_1_1,
+            G3_1_1_2,
+            G3_1_1_3,
+            G3_2_1,
+            G3_2_2,
+            G3_2_3,
+            G3_2_5,
+            G3_4_2_1,
+            G3_4_2_2,
+            G3_4_2_3,
+            G3_4_2_4,
+            G3_4_3_1,
+            G3_4_3_2,
+            G3_4_4,
+            G3_4_5_1,
+            G3_4_5_2,
         };
 
         public static EsefResult Validate(IEnumerable<ReportFile> reportFiles)
@@ -484,5 +504,65 @@ namespace Diwen.Xbrl
             //the CSS SHOULD be defined in a separate file.
 
         }
+
+        private static string G2_6_1(IEnumerable<ReportFile> reportFiles)
+        => null;
+
+        private static string G2_6_2(IEnumerable<ReportFile> reportFiles)
+        => null;
+
+        private static string G2_7_1_1(IEnumerable<ReportFile> reportFiles)
+        => null;
+
+        private static string G2_7_1_2(IEnumerable<ReportFile> reportFiles)
+        => null;
+
+        private static string G3_1_1_1(IEnumerable<ReportFile> reportFiles)
+        => null;
+
+        private static string G3_1_1_2(IEnumerable<ReportFile> reportFiles)
+        => null;
+
+        private static string G3_1_1_3(IEnumerable<ReportFile> reportFiles)
+        => null;
+
+        private static string G3_2_1(IEnumerable<ReportFile> reportFiles)
+        => null;
+
+        private static string G3_2_2(IEnumerable<ReportFile> reportFiles)
+        => null;
+
+        private static string G3_2_3(IEnumerable<ReportFile> reportFiles)
+        => null;
+
+        private static string G3_2_5(IEnumerable<ReportFile> reportFiles)
+        => null;
+
+        private static string G3_4_2_1(IEnumerable<ReportFile> reportFiles)
+        => null;
+
+        private static string G3_4_2_2(IEnumerable<ReportFile> reportFiles)
+        => null;
+
+        private static string G3_4_2_3(IEnumerable<ReportFile> reportFiles)
+        => null;
+
+        private static string G3_4_2_4(IEnumerable<ReportFile> reportFiles)
+        => null;
+
+        private static string G3_4_3_1(IEnumerable<ReportFile> reportFiles)
+        => null;
+
+        private static string G3_4_3_2(IEnumerable<ReportFile> reportFiles)
+        => null;
+
+        private static string G3_4_4(IEnumerable<ReportFile> reportFiles)
+        => null;
+
+        private static string G3_4_5_1(IEnumerable<ReportFile> reportFiles)
+        => null;
+
+        private static string G3_4_5_2(IEnumerable<ReportFile> reportFiles)
+        => null;
     }
 }

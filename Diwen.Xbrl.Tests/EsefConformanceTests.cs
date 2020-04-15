@@ -26,17 +26,17 @@ namespace Diwen.Xbrl.Tests
     using Diwen.Xbrl.Extensions;
     using Diwen.Xbrl;
 
-    public class InlineXbrlTests
+    public class EsefConformanceTests
     {
 
         private readonly ITestOutputHelper output;
 
-        public InlineXbrlTests(ITestOutputHelper output)
+        public EsefConformanceTests(ITestOutputHelper output)
         {
             this.output = output;
         }
 
-        public static IEnumerable<object[]> ESEFConformanceSuite()
+        public static IEnumerable<object[]> EsefConformanceSuite()
         {
             var suiteFile = Path.Combine("esma", "esef_conformancesuite_2020-03-06.zip");
 
@@ -124,8 +124,8 @@ namespace Diwen.Xbrl.Tests
         }
 
         [Theory]
-        [MemberData(nameof(ESEFConformanceSuite))]
-        public void RunESEFConformanceSuite(string testcaseNumber, string variationId, string expected, string error, IEnumerable<ReportFile> report)
+        [MemberData(nameof(EsefConformanceSuite))]
+        public void RunEsefConformanceSuite(string testcaseNumber, string variationId, string expected, string error, IEnumerable<ReportFile> report)
         {
             // if (testcaseNumber == "G2-5-4_2")
             // {
