@@ -24,7 +24,7 @@ namespace Diwen.Xbrl.Tests
     using Xunit;
     using Xunit.Abstractions;
     using Diwen.Xbrl.Extensions;
-    using static Diwen.Xbrl.InlineXbrl;
+    using Diwen.Xbrl;
 
     public class InlineXbrlTests
     {
@@ -72,6 +72,7 @@ namespace Diwen.Xbrl.Tests
                         var packageName = variationElement.Descendants(ns + "taxonomyPackage").Single().Value.Trim();
                         var packagePath = Path.Combine(root, testcaseNumber, packageName);
                         var packageFile = suiteArchive.Entries.SingleOrDefault(e => e.FullName.EndsWith(packagePath, StringComparison.Ordinal));
+                        var report = new List<ReportFile>();
                         if (packageFile != null)
                         {
                             using (var packageStream = packageFile.Open())
@@ -82,30 +83,16 @@ namespace Diwen.Xbrl.Tests
                                     Where(e => e.Length != 0).
                                     Where(e => e.FullName.StartsWith($"{variationId}/reports/", StringComparison.Ordinal));
 
-                                if (reportFiles.Any())
-                                {
-                                    var report = new List<ReportFile>();
-                                    foreach (var reportFile in reportFiles)
-                                        report.Add(new ReportFile(reportFile.Name, (ContentFromZipArchiveEntry(reportFile))));
+                                foreach (var reportFile in reportFiles)
+                                    report.Add(new ReportFile(reportFile.Name, (ContentFromZipArchiveEntry(reportFile))));
 
-                                    yield return new object[] { testcaseNumber, variationId, expected, error, report };
-                                }
-                                else
-                                {
-                                    // this is an actual condition to check for per G2-6 ?                            
-                                    // files not in a correct folder
-                                    // we're guessing here anyway with finding report files in the variation zip,
-                                    // because there isn't and index for it
-                                    // TODO: need to figure out how to pass this case on like the others, 
-                                    // and have the validation return a meaningful result
-                                    yield return new object[] { testcaseNumber, variationId, expected, error, null };
-                                }
+                                yield return new object[] { testcaseNumber, variationId, expected, error, report };
                             }
                         }
                         else
                         {
                             // G3-1-3 incorrect package
-                            yield return new object[] { testcaseNumber, variationId, expected, error, null };
+                            yield return new object[] { testcaseNumber, variationId, expected, error, report };
                         }
                     }
                 }
@@ -142,7 +129,7 @@ namespace Diwen.Xbrl.Tests
         {
             // if (testcaseNumber == "G2-5-4_2")
             // {
-            var result = InlineXbrl.ValidateEsef(report);
+            var result = EsefReportingManual.Validate(report);
             var expectedError = (error ?? "").Split(',').Select(e => e.Trim()).Join(",");
             var actualError = result.Errors.Join(",");
             output.WriteLine($"{testcaseNumber}\t{variationId}");
