@@ -1,11 +1,5 @@
 ![.NET Core](https://github.com/dgm9704/Xoxo/workflows/.NET%20Core/badge.svg)
 
-# Attention!
-## I am considering removing support for .NET Framework 4.5.2
-## After that all code would be targeting and packaged against .NET Standard only (2.0 or later)
-## If you need support for .NET Framework 4.5.2 please let me know
-
-
 # Xoxo
 Container for the Diwen.Xbrl library and any related stuff
 
