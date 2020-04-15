@@ -127,7 +127,7 @@ namespace Diwen.Xbrl.Tests
         [MemberData(nameof(EsefConformanceSuite))]
         public void RunEsefConformanceSuite(string testcaseNumber, string variationId, string expected, string error, IEnumerable<ReportFile> report)
         {
-            // if (testcaseNumber == "G2-5-4_2")
+            // if (testcaseNumber == "G2-5-1")
             // {
             var result = EsefReportingManual.Validate(report);
             var expectedError = (error ?? "").Split(',').Select(e => e.Trim()).Join(",");

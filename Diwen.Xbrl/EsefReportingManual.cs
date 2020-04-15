@@ -71,6 +71,7 @@ namespace Diwen.Xbrl
             G3_4_4,
             G3_4_5_1,
             G3_4_5_2,
+            G3_5_1
         };
 
         public static EsefResult Validate(IEnumerable<ReportFile> reportFiles)
@@ -393,13 +394,9 @@ namespace Diwen.Xbrl
                 var html = document.Root.GetDefaultNamespace();
                 if (document.Root.
                     Descendants(html + "img").
-                    Any(i =>
-                        i.
-                        Attribute("src").
-                        Value.
-                        Split(',').
-                        First().
-                        IndexOf("base64") == -1))
+                    Select(i => i.Attribute("src").Value).
+                    Where(src => !src.StartsWith("http")). // external reference handled elsewhere
+                    Any(src => !src.StartsWith("data:") || src.IndexOf(";base64,") == -1))
                     errors.Add("embeddedImageNotUsingBase64Encoding");
             }
             return errors.Join(",");
@@ -564,5 +561,24 @@ namespace Diwen.Xbrl
 
         private static string G3_4_5_2(IEnumerable<ReportFile> reportFiles)
         => null;
+
+        private static string G3_5_1(IEnumerable<ReportFile> reportFiles)
+        {
+            var errors = new HashSet<string>();
+
+            var parts = reportFiles.Where(f => f.Content is XDocument).ToArray();
+            foreach (var part in parts)
+            {
+                var document = part.Content as XDocument;
+                var html = document.Root.GetDefaultNamespace();
+                if (document.Root.
+                    Descendants().
+                    Any(d => (d.Attribute("src")?.Value ?? "").StartsWith("http")))
+                    errors.Add("inlinXbrlContainsExternalReferences"); // Typo in the conformance test data
+            }
+            return errors.Join(",");
+        }
+
+
     }
 }
