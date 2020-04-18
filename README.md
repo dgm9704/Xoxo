@@ -50,9 +50,7 @@ I use [Visual Studio Code](https://code.visualstudio.com/)
 on [Arch Linux](https://www.archlinux.org/)
 
 Code is written in [C#](https://docs.microsoft.com/en-us/dotnet/csharp/index), targeting 
-[.NET Standard 2.0](https://github.com/dotnet/standard/blob/master/docs/versions/netstandard2.0.md) / 
-[.NET Framework 4.5.2](https://docs.microsoft.com/en-us/dotnet/framework/)
-
+[.NET Standard 2.0](https://github.com/dotnet/standard/blob/master/docs/versions/netstandard2.0.md)
 Test framework is [xUnit.net](https://xunit.github.io/)
 
 and test code is targeting [.NET Core 3.1](https://docs.microsoft.com/en-us/dotnet/core/)
