@@ -25,6 +25,9 @@ Supports:
 
 - (tentative) parsing of Inline XBRL from ESMA ESEF
 
+### NuGet 
+[![nuget](https://img.shields.io/nuget/v/Diwen.Xbrl.svg)](https://www.nuget.org/packages/Diwen.Xbrl/)
+
 ### License:
 
 GNU Lesser General Public License v3.0
@@ -32,10 +35,6 @@ GNU Lesser General Public License v3.0
 http://www.gnu.org/licenses/gpl.txt
 
 http://www.gnu.org/licenses/lgpl.txt
-
-### NuGet 
-https://www.nuget.org/packages/Diwen.Xbrl/
-
 
 ## Diwen.Xbrl.Tests
 Tests for exercising Diwen.Xbrl code, also serving as documentation and samples
