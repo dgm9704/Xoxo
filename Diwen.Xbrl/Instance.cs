@@ -281,7 +281,7 @@ namespace Diwen.Xbrl
                 foreach (var group in duplicates)
                     foreach (var duplicate in group.Skip(1))
                         Facts.
-                             Where(f => f.Context.Id == duplicate.Id).
+                             Where(f => f.Context?.Id == duplicate.Id).
                              ToList().
                              ForEach(f => f.Context = group.First());
 
