@@ -47,7 +47,7 @@ namespace Diwen.Xbrl
 
                     item.Instance = value;
 
-                    if (item.Dimension.Namespace != Instance.DimensionNamespace)
+                    if (string.IsNullOrEmpty(item.Dimension.Namespace))
                     {
                         var dimensionNs = instanceField.DimensionNamespace;
                         item.Dimension = new XmlQualifiedName(item.Dimension.LocalName(), dimensionNs);
