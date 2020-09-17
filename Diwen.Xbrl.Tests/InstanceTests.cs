@@ -440,5 +440,21 @@ namespace Diwen.Xbrl.Tests
             Assert.NotNull(instance);
         }
 
+        [Fact]
+        public void ExplicitMemberNamespaceOverwriting_72()
+        {
+            var instance = new Instance();
+            var intermediaryEntity = new Entity("http://www.ato.gov.au/abn", "123456789") { Instance = instance };
+            instance.SetDimensionNamespace("h04", "http://sbr.gov.au/dims/RprtPyType.02.00.dims");
+            intermediaryEntity.AddExplicitMember("ReportPartyTypeDimension", "h04:Intermediary");
+            instance.SetDimensionNamespace("h05", "http://sbr.gov.au/dims/TaxOblgtn.02.00.dims");
+            intermediaryEntity.AddExplicitMember("TaxObligationTypeDimension", "h05:PAYGI");
+            var intermediaryEntityCtx = new Context { Entity = intermediaryEntity };
+            instance.Contexts.Add(intermediaryEntityCtx);
+            instance.SetMetricNamespace("pyid", "http://sbr.gov.au/icls/py/pyid/pyid.02.00.data");
+            instance.AddFact(intermediaryEntityCtx.Entity.Segment, "Identifiers.TaxAgentNumber.Identifier", null, null, "123456789");
+            output.WriteLine(instance.ToXml());
+        }
+
     }
 }
