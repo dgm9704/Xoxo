@@ -432,5 +432,13 @@ namespace Diwen.Xbrl.Tests
             Assert.NotNull(instance);
         }
 
+        [Fact]
+        public void FactWithNullContextShouldNotThrow_71()
+        {
+            var infile = Path.Combine("data", "71.xbrl");
+            var instance = Instance.FromFile(infile);
+            Assert.NotNull(instance);
+        }
+
     }
 }
