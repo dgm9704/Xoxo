@@ -1,4 +1,4 @@
-![.NET Core](https://github.com/dgm9704/Xoxo/workflows/.NET%20Core/badge.svg)
+[![.NET Core](https://github.com/dgm9704/Xoxo/workflows/.NET%20Core/badge.svg)](https://github.com/dgm9704/Xoxo/actions/workflows/dotnetcore.yml)
 
 # Xoxo
 Container for the Diwen.Xbrl library and any related stuff
