@@ -32,6 +32,39 @@ namespace Diwen.XbrlCsv.Tests
 			report.FilingIndicators.Add("C_114.00", true);
 			report.FilingIndicators.Add("S_00.01", true);
 
+			//datapoint,factValue
+			report.AddData("S_00.01", "dp31870", "eba_AS:x1");
+			report.AddData("S_00.01", "dp37969", "eba_SC:x6");
+
+			// datapoint,factValue,IRN
+			report.AddData("C_105.03", "dp434188", "grarenmw", "IRN", "36");
+			report.AddData("C_105.03", "dp434189", "eba_GA:AL", "IRN", "36");
+			report.AddData("C_105.03", "dp434188", "grarenmw2", "IRN", "8");
+			report.AddData("C_105.03", "dp434189", "eba_GA:AL", "IRN", "8");
+
+			// datapoint,factValue,IMI,PBE
+			report.AddData("C_105.02", "dp439585", "250238.28", ("IMI", "ksnpfnwn"), ("PBI", "ksnpfnwn"));
+			report.AddData("C_105.02", "dp439586", "247370.72", ("IMI", "ksnpfnwn"), ("PBI", "ksnpfnwn"));
+			report.AddData("C_105.02", "dp439585", "250238.28", ("IMI", "kotnyngp"), ("PBI", "kotnyngp"));
+			report.AddData("C_105.02", "dp439586", "247370.72", ("IMI", "kotnyngp"), ("PBI", "kotnyngp"));
+
+
+			// datapoint,factValue,FTY,INC
+			report.AddData("C_113.00", "dp439732", "304132.94", new[] { ("FTY", "htkaaxvr"), ("INC", "htkaaxvr") });
+			report.AddData("C_113.00", "dp439750", "eba_IM:x33", new[] { ("FTY", "htkaaxvr"), ("INC", "htkaaxvr") });
+			report.AddData("C_113.00", "dp439744", "0.1", new[] { ("FTY", "htkaaxvr"), ("INC", "htkaaxvr") });
+			report.AddData("C_113.00", "dp439745", "0.72", new[] { ("FTY", "htkaaxvr"), ("INC", "htkaaxvr") });
+			report.AddData("C_113.00", "dp439751", "0.34", new[] { ("FTY", "htkaaxvr"), ("INC", "htkaaxvr") });
+			report.AddData("C_113.00", "dp439752", "0.46", new[] { ("FTY", "htkaaxvr"), ("INC", "htkaaxvr") });
+			report.AddData("C_113.00", "dp439753", "eba_ZZ:x409", new[] { ("FTY", "htkaaxvr"), ("INC", "htkaaxvr") });
+			report.AddData("C_113.00", "dp439732", "304132.94", new[] { ("FTY", "ynqtbutq"), ("INC", "ynqtbutq") });
+			report.AddData("C_113.00", "dp439750", "eba_IM:x33", new[] { ("FTY", "ynqtbutq"), ("INC", "ynqtbutq") });
+			report.AddData("C_113.00", "dp439744", "0.1", new[] { ("FTY", "ynqtbutq"), ("INC", "ynqtbutq") });
+			report.AddData("C_113.00", "dp439745", "0.72", new[] { ("FTY", "ynqtbutq"), ("INC", "ynqtbutq") });
+			report.AddData("C_113.00", "dp439751", "0.34", new[] { ("FTY", "ynqtbutq"), ("INC", "ynqtbutq") });
+			report.AddData("C_113.00", "dp439752", "0.46", new[] { ("FTY", "ynqtbutq"), ("INC", "ynqtbutq") });
+			report.AddData("C_113.00", "dp439753", "eba_ZZ:x409", new[] { ("FTY", "ynqtbutq"), ("INC", "ynqtbutq") });
+
 			report.Export();
 		}
 
