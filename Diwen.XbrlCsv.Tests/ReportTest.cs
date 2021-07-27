@@ -10,7 +10,7 @@ namespace Diwen.XbrlCsv.Tests
 		public void Export()
 		{
 			var report = new Report();
-			report.DocumentInfo.Extends = "http://www.eba.europa.eu/eu/fr/xbrl/crr/fws/sbp/cir-2070-2016/2021-07-15/mod/sbp_cr_con.json";
+			report.DocumentInfo.Extends = new[] { "http://www.eba.europa.eu/eu/fr/xbrl/crr/fws/sbp/cir-2070-2016/2021-07-15/mod/sbp_cr_con.json" };
 
 			report.Parameters.Add("entityID", "lei:DUMMYLEI123456789012");
 			report.Parameters.Add("refPeriod", "2021-12-31");

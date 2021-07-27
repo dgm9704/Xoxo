@@ -8,6 +8,6 @@ namespace Diwen.XbrlCsv
 		public string DocumentType { get; set; } = "https://xbrl.org/CR/2021-02-03/xbrl-csv";
 
 		[JsonPropertyName("extends")]
-		public string Extends { get; set; }
+		public string[] Extends { get; set; }
 	}
 }
