@@ -22,8 +22,6 @@ namespace Diwen.XbrlCsv
 				Dimensions.Add(pair.key, pair.value);
 		}
 
-
-
 		public ReportData(string table, string datapoint, string value, Dictionary<string, string> dimensions)
 		: this(table, datapoint, value)
 		=> Dimensions = dimensions;
@@ -32,6 +30,5 @@ namespace Diwen.XbrlCsv
 		public string Datapoint { get; set; }
 		public string Value { get; set; }
 		public Dictionary<string, string> Dimensions { get; set; } = new Dictionary<string, string>();
-
 	}
 }

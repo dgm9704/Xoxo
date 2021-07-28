@@ -4,25 +4,18 @@
 	using System.IO;
 	using System.Linq;
 	using System.Text;
-	using System.Text.Json;
-	using System.Text.Json.Serialization;
 
 	public class Report
 	{
-		[JsonPropertyName("documentInfo")]
-		public DocumentInfo DocumentInfo { get; set; }// = new DocumentInfo();
+		public string DocumentType { get; set; } = "https://xbrl.org/CR/2021-02-03/xbrl-csv";
 
-		[JsonIgnore]
+		public string Entrypoint { get; set; }
+
 		public Dictionary<string, bool> FilingIndicators = new Dictionary<string, bool>();
 
-		[JsonIgnore]
 		public Dictionary<string, string> Parameters = new Dictionary<string, string>();
 
-		[JsonIgnore]
 		public List<ReportData> Data = new List<ReportData>();
-
-		public Report()
-		=> DocumentInfo = new DocumentInfo();
 
 		public void AddData(string table, string datapoint, string value)
 		=> Data.Add(new ReportData(table, datapoint, value));
@@ -50,9 +43,8 @@
 		private void ExportDocumentInfo()
 		{
 			string fileName = "report.json";
-			var options = new JsonSerializerOptions { WriteIndented = true };
-			string jsonString = JsonSerializer.Serialize<Report>(this, options);
-			File.WriteAllText(fileName, jsonString);
+			string content = $"{{\"documentInfo\":{{\"documentType\":\"{DocumentType}}}\",\"extends\":[\"{Entrypoint}\"]}}}}";
+			File.WriteAllText(fileName, content);
 		}
 
 		private void ExportParameters()

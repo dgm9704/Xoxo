@@ -1,7 +1,6 @@
 namespace Diwen.XbrlCsv.Tests
 {
 	using System.IO;
-	using System.Text.Json;
 	using Xunit;
 
 	public class ReportTest
@@ -10,7 +9,7 @@ namespace Diwen.XbrlCsv.Tests
 		public void Export()
 		{
 			var report = new Report();
-			report.DocumentInfo.Extends = new[] { "http://www.eba.europa.eu/eu/fr/xbrl/crr/fws/sbp/cir-2070-2016/2021-07-15/mod/sbp_cr_con.json" };
+			report.Entrypoint = "http://www.eba.europa.eu/eu/fr/xbrl/crr/fws/sbp/cir-2070-2016/2021-07-15/mod/sbp_cr_con.json";
 
 			report.Parameters.Add("entityID", "lei:DUMMYLEI123456789012");
 			report.Parameters.Add("refPeriod", "2021-12-31");
@@ -68,12 +67,12 @@ namespace Diwen.XbrlCsv.Tests
 			report.Export();
 		}
 
-		[Fact]
-		public void Import()
-		{
-			string fileName = "report.json";
-			string jsonString = File.ReadAllText(fileName);
-			var report = JsonSerializer.Deserialize<Report>(jsonString);
-		}
+		// [Fact]
+		// public void Import()
+		// {
+		// 	string fileName = "report.json";
+		// 	string jsonString = File.ReadAllText(fileName);
+		// 	var report = JsonSerializer.Deserialize<Report>(jsonString);
+		// }
 	}
 }
