@@ -29,52 +29,71 @@
 		public void AddData(string table, string datapoint, string value, Dictionary<string, string> dimensions)
 		=> Data.Add(new ReportData(table, datapoint, value, dimensions));
 
-		public void Export()
+		public void Export(string packagename)
 		{
-			ExportDocumentInfo();
+			var metafolder = Path.Combine(packagename, "META-INF");
+			var reportfolder = Path.Combine(packagename, "reports");
+			Directory.CreateDirectory(metafolder);
+			Directory.CreateDirectory(reportfolder);
 
-			ExportParameters();
+			ExportPackageInfo(metafolder);
 
-			ExportFilingIndicators();
+			ExportReportInfo(reportfolder);
 
-			ExportReportData();
+			ExportParameters(reportfolder);
+
+			ExportFilingIndicators(reportfolder);
+
+			ExportReportData(reportfolder);
 		}
 
-		private void ExportDocumentInfo()
+		private void ExportPackageInfo(string folderpath)
 		{
-			string fileName = "report.json";
-			string content = $"{{\"documentInfo\":{{\"documentType\":\"{DocumentType}}}\",\"extends\":[\"{Entrypoint}\"]}}}}";
-			File.WriteAllText(fileName, content);
+			var filename = "reports.json";
+			var filepath = Path.Combine(folderpath, filename);
+			var content = "{\"documentInfo\":{\"documentType\":\"http://xbrl.org/PWD/2020-12-09/report-package\"}}";
+			File.WriteAllText(filepath, content);
 		}
 
-		private void ExportParameters()
+		private void ExportReportInfo(string folderpath)
 		{
-			var fileName = "parameters.csv";
+			var filename = "report.json";
+			var filepath = Path.Combine(folderpath, filename);
+			var content = $"{{\"documentInfo\":{{\"documentType\":\"{DocumentType}}}\",\"extends\":[\"{Entrypoint}\"]}}}}";
+			File.WriteAllText(filepath, content);
+		}
+
+		private void ExportParameters(string folderpath)
+		{
+			var filename = "parameters.csv";
+			var filepath = Path.Combine(folderpath, filename);
 			var data = new StringBuilder();
 			data.AppendLine("name,value");
 			foreach (var p in Parameters)
 				data.AppendLine($"{p.Key},{p.Value}");
-			File.WriteAllText(fileName, data.ToString());
+			File.WriteAllText(filepath, data.ToString());
 		}
 
-		private void ExportFilingIndicators()
+		private void ExportFilingIndicators(string folderpath)
 		{
-			var fileName = "FilingIndicators.csv";
+			var filename = "FilingIndicators.csv";
+			var filepath = Path.Combine(folderpath, filename);
 			var data = new StringBuilder();
 			data.AppendLine("templateId,reported");
 			foreach (var fi in FilingIndicators)
 				data.AppendLine($"{fi.Key},{fi.Value.ToString().ToLower()}");
-			File.WriteAllText(fileName, data.ToString());
+			File.WriteAllText(filepath, data.ToString());
 		}
 
-		private void ExportReportData()
+		private void ExportReportData(string folderpath)
 		{
 			foreach (var template in FilingIndicators.Where(fi => fi.Value))
 			{
 				var tabledata = Data.Where(d => d.Table == template.Key);
 				if (tabledata.Any())
 				{
-					var fileName = Path.ChangeExtension(template.Key, "csv");
+					var filename = Path.ChangeExtension(template.Key, "csv");
+					var filepath = Path.Combine(folderpath, filename);
 					var output = new StringBuilder("datapoint,factvalue");
 					foreach (var dimension in tabledata.First().Dimensions.Keys)
 						output.Append($",{dimension}");
@@ -87,7 +106,7 @@
 							output.Append($",{dimension}");
 						output.AppendLine();
 					}
-					File.WriteAllText(fileName, output.ToString());
+					File.WriteAllText(filepath, output.ToString());
 				}
 			}
 		}

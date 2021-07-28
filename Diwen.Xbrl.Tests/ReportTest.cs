@@ -1,6 +1,5 @@
 namespace Diwen.XbrlCsv.Tests
 {
-	using System.IO;
 	using Xunit;
 
 	public class ReportTest
@@ -64,7 +63,7 @@ namespace Diwen.XbrlCsv.Tests
 			report.AddData("C_113.00", "dp439752", "0.46", new[] { ("FTY", "ynqtbutq"), ("INC", "ynqtbutq") });
 			report.AddData("C_113.00", "dp439753", "eba_ZZ:x409", new[] { ("FTY", "ynqtbutq"), ("INC", "ynqtbutq") });
 
-			report.Export();
+			report.Export("DUMMYLEI123456789012_GB_SBP010200_SBPCRCON_2021-12-31_20210623163233000");
 		}
 
 		// [Fact]
