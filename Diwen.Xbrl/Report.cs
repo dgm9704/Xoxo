@@ -2,6 +2,7 @@
 {
 	using System.Collections.Generic;
 	using System.IO;
+	using System.IO.Compression;
 	using System.Linq;
 	using System.Text;
 
@@ -31,84 +32,130 @@
 
 		public void Export(string packagename)
 		{
-			var metafolder = Path.Combine(packagename, "META-INF");
-			var reportfolder = Path.Combine(packagename, "reports");
-			Directory.CreateDirectory(metafolder);
-			Directory.CreateDirectory(reportfolder);
-
-			ExportPackageInfo(metafolder);
-
-			ExportReportInfo(reportfolder);
-
-			ExportParameters(reportfolder);
-
-			ExportFilingIndicators(reportfolder);
-
-			ExportReportData(reportfolder);
+			var package = CreatePackage();
+			var zip = CreateZip(package, packagename);
+			WriteStreamToFile(zip, Path.ChangeExtension(packagename, "zip"));
 		}
 
-		private void ExportPackageInfo(string folderpath)
+		private Dictionary<string, Stream> CreatePackage()
 		{
-			var filename = "reports.json";
-			var filepath = Path.Combine(folderpath, filename);
-			var content = "{\"documentInfo\":{\"documentType\":\"http://xbrl.org/PWD/2020-12-09/report-package\"}}";
-			File.WriteAllText(filepath, content);
+			var metafolder = "META-INF";
+			var reportfolder = "reports";
+			var package = new Dictionary<string, Stream>();
+
+			package.Add(Path.Combine(metafolder, "reports.json"), CreatePackageInfo());
+			package.Add(Path.Combine(reportfolder, "report.json"), CreateReportInfo());
+			package.Add(Path.Combine(reportfolder, "parameters.csv"), CreateParameters());
+			package.Add(Path.Combine(reportfolder, "FilingIndicators.csv"), CreateFilingIndicators());
+			foreach ((string path, Stream stream) in CreateReportData(reportfolder))
+				package.Add(path, stream);
+
+			return package;
 		}
 
-		private void ExportReportInfo(string folderpath)
+		private void WriteStreamToFile(Stream stream, string path)
 		{
-			var filename = "report.json";
-			var filepath = Path.Combine(folderpath, filename);
-			var content = $"{{\"documentInfo\":{{\"documentType\":\"{DocumentType}}}\",\"extends\":[\"{Entrypoint}\"]}}}}";
-			File.WriteAllText(filepath, content);
+			using (var fileStream = new FileStream(path, FileMode.Create, FileAccess.Write))
+				stream.CopyTo(fileStream);
 		}
 
-		private void ExportParameters(string folderpath)
+		private Stream CreateZip(Dictionary<string, Stream> package, string packagename)
 		{
-			var filename = "parameters.csv";
-			var filepath = Path.Combine(folderpath, filename);
-			var data = new StringBuilder();
-			data.AppendLine("name,value");
+			var stream = new MemoryStream();
+			var zip = new ZipArchive(stream, ZipArchiveMode.Create);
+
+			foreach (var item in package)
+			{
+				ZipArchiveEntry entry = zip.CreateEntry(item.Key);
+				using (var entryStream = entry.Open())
+					item.Value.CopyTo(entryStream);
+			}
+			stream.Position = 0;
+			return stream;
+		}
+
+		private Stream CreatePackageInfo()
+		{
+			var stream = new MemoryStream();
+			var writer = new StreamWriter(stream);
+			writer.Write("{\"documentInfo\":{\"documentType\":\"http://xbrl.org/PWD/2020-12-09/report-package\"}}");
+			writer.Flush();
+			stream.Position = 0;
+			return stream;
+		}
+
+		private Stream CreateReportInfo()
+		{
+			var stream = new MemoryStream();
+			var writer = new StreamWriter(stream);
+			writer.Write($"{{\"documentInfo\":{{\"documentType\":\"{DocumentType}}}\",\"extends\":[\"{Entrypoint}\"]}}}}");
+			writer.Flush();
+			stream.Position = 0;
+			return stream;
+		}
+
+		private Stream CreateParameters()
+		{
+			var stream = new MemoryStream();
+			var writer = new StreamWriter(stream);
+
+			var builder = new StringBuilder();
+			builder.AppendLine("name,value");
 			foreach (var p in Parameters)
-				data.AppendLine($"{p.Key},{p.Value}");
-			File.WriteAllText(filepath, data.ToString());
+				builder.AppendLine($"{p.Key},{p.Value}");
+			writer.Write(builder.ToString());
+			writer.Flush();
+			stream.Position = 0;
+			return stream;
 		}
 
-		private void ExportFilingIndicators(string folderpath)
+		private Stream CreateFilingIndicators()
 		{
-			var filename = "FilingIndicators.csv";
-			var filepath = Path.Combine(folderpath, filename);
-			var data = new StringBuilder();
-			data.AppendLine("templateId,reported");
+			var stream = new MemoryStream();
+			var writer = new StreamWriter(stream);
+
+			var builder = new StringBuilder();
+			builder.AppendLine("templateId,reported");
 			foreach (var fi in FilingIndicators)
-				data.AppendLine($"{fi.Key},{fi.Value.ToString().ToLower()}");
-			File.WriteAllText(filepath, data.ToString());
+				builder.AppendLine($"{fi.Key},{fi.Value.ToString().ToLower()}");
+			writer.Write(builder.ToString());
+			writer.Flush();
+			stream.Position = 0;
+			return stream;
 		}
 
-		private void ExportReportData(string folderpath)
+		private List<(string, Stream)> CreateReportData(string folderpath)
 		{
+			var reportdata = new List<(string, Stream)>();
+
 			foreach (var template in FilingIndicators.Where(fi => fi.Value))
 			{
 				var tabledata = Data.Where(d => d.Table == template.Key);
 				if (tabledata.Any())
 				{
-					var filename = Path.ChangeExtension(template.Key, "csv");
+					var filename = template.Key + ".csv";
 					var filepath = Path.Combine(folderpath, filename);
-					var output = new StringBuilder("datapoint,factvalue");
+					var builder = new StringBuilder("datapoint,factvalue");
 					foreach (var dimension in tabledata.First().Dimensions.Keys)
-						output.Append($",{dimension}");
-					output.AppendLine();
+						builder.Append($",{dimension}");
+					builder.AppendLine();
 
 					foreach (var item in tabledata)
 					{
-						output.AppendFormat($"{item.Datapoint},{item.Value}");
+						builder.AppendFormat($"{item.Datapoint},{item.Value}");
 						foreach (var dimension in item.Dimensions.Values)
-							output.Append($",{dimension}");
-						output.AppendLine();
+							builder.Append($",{dimension}");
+						builder.AppendLine();
 					}
-					File.WriteAllText(filepath, output.ToString());
+					var stream = new MemoryStream();
+					var writer = new StreamWriter(stream);
+					writer.Write(builder.ToString());
+					writer.Flush();
+					stream.Position = 0;
+					reportdata.Add((filepath, stream));
 				}
 			}
+			return reportdata;
 		}
 	}
 }
