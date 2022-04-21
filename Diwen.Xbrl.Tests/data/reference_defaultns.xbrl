@@ -1,0 +1,63 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<?taxonomy-version 1.5.2.c?>
+<xbrl
+		xmlns:link="http://www.xbrl.org/2003/linkbase"
+		xmlns:xlink="http://www.w3.org/1999/xlink"
+		xmlns:iso4217="http://www.xbrl.org/2003/iso4217"
+		xmlns:find="http://www.eurofiling.info/xbrl/ext/filing-indicators"
+		xmlns:xbrldi="http://xbrl.org/2006/xbrldi"
+		xmlns:s2c_CS="http://eiopa.europa.eu/xbrl/s2c/dict/dom/CS"
+		xmlns:s2c_dim="http://eiopa.europa.eu/xbrl/s2c/dict/dim"
+		xmlns:s2c_typ="http://eiopa.europa.eu/xbrl/s2c/dict/typ"
+		xmlns:s2md_met="http://eiopa.europa.eu/xbrl/s2md/dict/met"
+		xmlns:s2c_CU="http://eiopa.europa.eu/xbrl/s2c/dict/dom/CU"
+		xmlns:s2c_AM="http://eiopa.europa.eu/xbrl/s2c/dict/dom/AM"
+		xmlns:s2c_SE="http://eiopa.europa.eu/xbrl/s2c/dict/dom/SE"
+		xmlns:s2c_AP="http://eiopa.europa.eu/xbrl/s2c/dict/dom/AP"
+		xmlns:s2c_PU="http://eiopa.europa.eu/xbrl/s2c/dict/dom/PU"
+		xmlns:s2c_GA="http://eiopa.europa.eu/xbrl/s2c/dict/dom/GA"
+		xmlns="http://www.xbrl.org/2003/instance">
+	<link:schemaRef
+			xlink:type="simple"
+			xlink:href="http://eiopa.europa.eu/eu/xbrl/s2md/fws/solvency/solvency2/2014-12-23/mod/ars.xsd" />
+	<unit id="uEUR">
+		<measure>iso4217:EUR</measure>
+	</unit>
+	<unit id="uPURE">
+		<measure>pure</measure>
+	</unit>
+	<find:fIndicators>
+		<find:filingIndicator contextRef="A1">S.01.01</find:filingIndicator>
+		<find:filingIndicator contextRef="A1">S.02.02</find:filingIndicator>
+	</find:fIndicators>
+	<context id="A1">
+		<entity>
+			<identifier scheme="http://standards.iso.org/iso/17442">1234567890ABCDEFGHIJ</identifier>
+		</entity>
+		<period>
+			<instant>2014-12-31</instant>
+		</period>
+	</context>
+	<context id="A2">
+		<entity>
+			<identifier scheme="http://standards.iso.org/iso/17442">1234567890ABCDEFGHIJ</identifier>
+		</entity>
+		<period>
+			<instant>2014-12-31</instant>
+		</period>
+		<scenario>
+			<xbrldi:explicitMember dimension="s2c_dim:CS">s2c_CS:x26</xbrldi:explicitMember>
+			<xbrldi:typedMember dimension="s2c_dim:CE">
+				<s2c_typ:ID>abc</s2c_typ:ID>
+			</xbrldi:typedMember>
+		</scenario>
+	</context>
+	<s2md_met:pi545
+			unitRef="uPURE"
+			decimals="4"
+			contextRef="A2">0.2547</s2md_met:pi545>
+	<s2md_met:mi363
+			unitRef="uEUR"
+			decimals="-3"
+			contextRef="A2">45345</s2md_met:mi363>
+</xbrl>

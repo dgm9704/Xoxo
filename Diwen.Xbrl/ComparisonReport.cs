@@ -21,6 +21,7 @@
 
 namespace Diwen.Xbrl
 {
+	using System;
 	using System.Collections.Generic;
 	using System.Collections.ObjectModel;
 
@@ -34,6 +35,14 @@ namespace Diwen.Xbrl
 		{
 			Result = result;
 			Messages = new ReadOnlyCollection<string>(messages);
+		}
+
+		public override string ToString()
+		{
+			return $"result: {Result}" + (
+				Result
+				? string.Empty
+				: Environment.NewLine + string.Join(Environment.NewLine, Messages));
 		}
 	}
 }
