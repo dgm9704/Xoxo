@@ -1,4 +1,5 @@
 [![.NET Core](https://github.com/dgm9704/Xoxo/workflows/.NET%20Core/badge.svg)](https://github.com/dgm9704/Xoxo/actions/workflows/dotnetcore.yml)
+[![nuget](https://img.shields.io/nuget/v/Diwen.Xbrl.svg)](https://www.nuget.org/packages/Diwen.Xbrl/)
 
 # Xoxo
 Container for the Diwen.Xbrl library and any related stuff
@@ -24,9 +25,6 @@ Supports:
 - Australian and Finnish SBR message structures
 
 - (tentative) parsing of Inline XBRL from ESMA ESEF
-
-### NuGet 
-[![nuget](https://img.shields.io/nuget/v/Diwen.Xbrl.svg)](https://www.nuget.org/packages/Diwen.Xbrl/)
 
 ### License:
 
