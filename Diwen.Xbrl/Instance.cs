@@ -733,7 +733,7 @@ namespace Diwen.Xbrl
 			}
 
 			foreach (var item in DefaultUnitNamespaces)
-				if (Units.Any(u => u.Measure.StartsWith(item.Key)))
+				if (Units.Any(u => u.Measure.Namespace == item.Value))
 					result.Add(item.Key, item.Value);
 				else
 					Namespaces.RemoveNamespace(item.Key, item.Value);

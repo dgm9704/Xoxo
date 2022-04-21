@@ -471,19 +471,13 @@ namespace Diwen.Xbrl.Tests
 		[Fact]
 		public void DefaultNamespaceIsHandledCorrectly()
 		{
-			// other completely the same but other (right) has "http://www.xbrl.org/2003/instance" as default namespace 
-			// and other (left) has it with the canonical prefix "xbrli"
-			var left = Instance.FromFile(Path.Combine("data", "reference.xbrl"));
-			var right = Instance.FromFile(Path.Combine("data", "reference_defaultns.xbrl"));
-			var report = InstanceComparer.Report(left, right);
-
+			// other completely the same but other (second) has "http://www.xbrl.org/2003/instance" as default namespace 
+			// and other (first) has it with the canonical prefix "xbrli"
+			var first = Path.Combine("data", "reference.xbrl");
+			var second = Path.Combine("data", "reference_defaultns.xbrl");
+			var report = InstanceComparer.Report(first, second);
 			Console.WriteLine(report);
-
-			// comparison should find the instances equivalent
 			Assert.True(report.Result);
-			// there should be no differences reported
-			// Assert.Empty(report.Messages);//, report.Messages.Join(Environment.NewLine));
 		}
-
 	}
 }

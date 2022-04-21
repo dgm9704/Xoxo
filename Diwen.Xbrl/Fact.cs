@@ -25,9 +25,9 @@ namespace Diwen.Xbrl
 	using System.Linq;
 	using System.Xml;
 	using System.Xml.Serialization;
-    using Diwen.Xbrl.Extensions;
+	using Diwen.Xbrl.Extensions;
 
-    public class Fact : IEquatable<Fact>
+	public class Fact : IEquatable<Fact>
 	{
 		static XmlDocument doc = new XmlDocument();
 
@@ -131,7 +131,7 @@ namespace Diwen.Xbrl
 		public override string ToString()
 		{
 			var metric = Metric != null ? Metric.LocalName() : string.Empty;
-			var measure = Unit != null ? Unit.Measure : string.Empty;
+			var measure = Unit != null ? Unit.Measure.ToString() : string.Empty;
 			return $"Metric={metric}, Value={Value}, Unit={measure}, Decimals={Decimals}, Context={ContextRef}";
 		}
 

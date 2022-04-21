@@ -23,6 +23,7 @@ namespace Diwen.Xbrl
 {
 	using System;
 	using System.Diagnostics;
+	using System.Xml;
 	using System.Xml.Serialization;
 
 	[DebuggerDisplay("{Id}")]
@@ -34,7 +35,7 @@ namespace Diwen.Xbrl
 		public string Id { get; set; }
 
 		[XmlElement("measure")]
-		public string Measure { get; set; }
+		public XmlQualifiedName Measure { get; set; }
 
 		public Unit() { }
 
@@ -42,11 +43,11 @@ namespace Diwen.Xbrl
 			: this()
 		{
 			Id = id;
-			Measure = measure;
+			Measure = new XmlQualifiedName(measure);
 		}
 
 		public override string ToString()
-		=> Measure;
+		=> Measure.ToString();
 
 		public override bool Equals(object obj)
 		=> Equals(obj as Unit);
@@ -55,7 +56,7 @@ namespace Diwen.Xbrl
 
 		public bool Equals(Unit other)
 		=> other != null
-			&& Measure.Equals(other.Measure, StringComparison.Ordinal);
+			&& Measure.ToString().Equals(other.Measure.ToString(), StringComparison.Ordinal);
 
 		public override int GetHashCode()
 		=> Measure != null ? Measure.GetHashCode() : 0;
