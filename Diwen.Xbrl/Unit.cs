@@ -24,30 +24,42 @@ namespace Diwen.Xbrl
 	using System;
 	using System.Diagnostics;
 	using System.Xml;
+	using System.Xml.Schema;
 	using System.Xml.Serialization;
+	using Diwen.Xbrl.Extensions;
 
 	[DebuggerDisplay("{Id}")]
 	[Serializable]
 	[XmlRoot(ElementName = "unit", Namespace = "http://www.xbrl.org/2003/instance")]
-	public class Unit : IEquatable<Unit>, IXbrlObject
+	public class Unit : IXmlSerializable, IEquatable<Unit>, IXbrlObject
 	{
-		[XmlAttribute("id")]
+
+		internal Instance Instance { get; set; }
+
+		[XmlIgnore]
 		public string Id { get; set; }
 
-		[XmlElement("measure")]
+		[XmlIgnore]
 		public XmlQualifiedName Measure { get; set; }
 
 		public Unit() { }
 
-		public Unit(string id, string measure)
+		public Unit(string id, string value)
 			: this()
 		{
 			Id = id;
-			Measure = new XmlQualifiedName(measure);
+			Measure = new XmlQualifiedName(value);
+		}
+
+		public Unit(string id, XmlQualifiedName measure)
+			: this()
+		{
+			Id = id;
+			Measure = measure;
 		}
 
 		public override string ToString()
-		=> Measure.ToString();
+		=> $"{Measure.Namespace}:{Measure.LocalName()}";
 
 		public override bool Equals(object obj)
 		=> Equals(obj as Unit);
@@ -56,14 +68,66 @@ namespace Diwen.Xbrl
 
 		public bool Equals(Unit other)
 		=> other != null
-			&& Measure.ToString().Equals(other.Measure.ToString(), StringComparison.Ordinal);
+			&& Measure.LocalName().Equals(other.Measure.LocalName(), StringComparison.Ordinal)
+			&& Measure.Namespace.Equals(other.Measure.Namespace, StringComparison.Ordinal);
 
 		public override int GetHashCode()
-		=> Measure != null ? Measure.GetHashCode() : 0;
+		=> Measure != null ? Measure.Namespace.GetHashCode() * Measure.LocalName().GetHashCode() : 0;
 
 		public string ComparisonMessage()
 		=> ToString();
 
 		#endregion
+
+		#region IXmlSerializable implementation
+
+		public XmlSchema GetSchema()
+		=> null;
+
+		public void ReadXml(XmlReader reader)
+		{
+			if (reader == null)
+				throw new ArgumentNullException(nameof(reader));
+
+			reader.MoveToContent();
+			Id = reader.GetAttribute("id");
+			reader.ReadStartElement();
+			var prefix = reader.Prefix;
+
+			var content = reader.ReadString().Trim();
+			var idx = content.IndexOf(':');
+
+			if (idx != -1)
+				prefix = content.Substring(0, idx);
+			else
+				Console.WriteLine("Foo");
+
+			var ns = reader.LookupNamespace(prefix);
+
+			if (string.IsNullOrEmpty(ns))
+				Console.WriteLine("Bar");
+
+			var name = content.Substring(idx + 1);
+			Measure = new XmlQualifiedName(name, ns);
+			reader.ReadEndElement();
+			reader.ReadEndElement();
+		}
+
+		public void WriteXml(XmlWriter writer)
+		{
+			if (writer == null)
+				throw new ArgumentNullException(nameof(writer));
+
+			writer.WriteAttributeString("id", Id);
+			var prefix = Measure.Prefix();
+			if (string.IsNullOrEmpty(prefix))
+				prefix = Instance.Namespaces.LookupPrefix(Measure.Namespace);
+
+			var value = $"{prefix}:{Measure.LocalName()}";
+			writer.WriteElementString("measure", "http://www.xbrl.org/2003/instance", value);
+		}
+
+		#endregion
+
 	}
 }

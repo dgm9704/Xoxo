@@ -25,9 +25,10 @@ namespace Diwen.Xbrl
 	using System.Collections.Generic;
 	using System.Collections.ObjectModel;
 	using System.Linq;
-    using Diwen.Xbrl.Extensions;
+	using System.Xml;
+	using Diwen.Xbrl.Extensions;
 
-    public class UnitCollection : KeyedCollection<string, Unit>, IEquatable<IList<Unit>>
+	public class UnitCollection : KeyedCollection<string, Unit>, IEquatable<IList<Unit>>
 	{
 		Instance Instance;
 
@@ -47,11 +48,23 @@ namespace Diwen.Xbrl
 		public void AddRange(IEnumerable<Unit> units)
 		{
 			foreach (var unit in units)
+			{
+				unit.Instance = this.Instance;
 				Add(unit);
+			}
 		}
 
-		public void Add(string id, string measure)
-		=> Add(new Unit(id, measure));
+		public void Add(string id, string value)
+		{
+			var idx = value.IndexOf(':');
+			var prefix = value.Substring(0, idx);
+			var ns = Instance.Namespaces.LookupNamespace(prefix);
+			var localname = value.Substring(idx + 1);
+			var measure = new XmlQualifiedName(localname, ns);
+			var unit = new Unit(id, measure);
+			unit.Instance = this.Instance;
+			Add(unit);
+		}
 
 		public UnitCollection UsedUnits()
 		=> new UnitCollection(this.Where(u => Instance.Facts.Any(f => f.Unit == u)));

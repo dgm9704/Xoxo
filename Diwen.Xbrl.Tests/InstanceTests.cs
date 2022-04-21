@@ -22,6 +22,7 @@ namespace Diwen.Xbrl.Tests
 	using Xunit;
 	using Xbrl;
 	using Xunit.Abstractions;
+	using System.Linq;
 
 	public class InstanceTests
 	{
@@ -167,6 +168,8 @@ namespace Diwen.Xbrl.Tests
 
 			// Assert.True(newInstance.Equals(instance));
 			var report = InstanceComparer.Report(instance, newInstance);
+			if (!report.Result)
+				Console.WriteLine(report);
 			Assert.Empty(report.Messages);
 
 			Assert.True(newInstance.Equals(referenceInstance));
@@ -174,6 +177,41 @@ namespace Diwen.Xbrl.Tests
 			newInstance.Contexts[1].AddExplicitMember("AM", "s2c_AM:x1");
 
 			Assert.False(newInstance.Equals(referenceInstance));
+		}
+
+		[Fact]
+		public void TestUnits1()
+		{
+			var path = Path.Combine("data", "reference.xbrl");
+			var instance = Instance.FromFile(path, true);
+			Assert.True(instance.Units.All(u => !string.IsNullOrEmpty(u.Measure.Namespace)));
+		}
+
+		[Fact]
+		public void TestUnits2()
+		{
+			var instance = CreateSolvencyInstance();
+			instance.RemoveUnusedObjects();
+			Assert.True(instance.Units.All(u => !string.IsNullOrEmpty(u.Measure.Namespace)));
+		}
+
+		[Fact]
+		public void TestUnits3()
+		{
+			var instance = CreateSolvencyInstance();
+			instance.RemoveUnusedObjects();
+			instance.ToFile("testunits3.xbrl");
+			Assert.True(instance.Units.All(u => !string.IsNullOrEmpty(u.Measure.Namespace)));
+		}
+
+		[Fact]
+		public void TestUnits4()
+		{
+			var instance = CreateSolvencyInstance();
+			instance.RemoveUnusedObjects();
+			instance.ToFile("testunits3.xbrl");
+			instance = Instance.FromFile("testunits3.xbrl");
+			Assert.True(instance.Units.All(u => !string.IsNullOrEmpty(u.Measure.Namespace)));
 		}
 
 		[Fact]

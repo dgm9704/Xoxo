@@ -131,8 +131,8 @@ namespace Diwen.Xbrl
 		public override string ToString()
 		{
 			var metric = Metric != null ? Metric.LocalName() : string.Empty;
-			var measure = Unit != null ? Unit.Measure.ToString() : string.Empty;
-			return $"Metric={metric}, Value={Value}, Unit={measure}, Decimals={Decimals}, Context={ContextRef}";
+			var unit = Unit != null ? Unit.ToString() : string.Empty;
+			return $"Metric={metric}, Value={Value}, Unit={unit}, Decimals={Decimals}, Context={ContextRef}";
 		}
 
 		internal XmlElement ToXmlElement()

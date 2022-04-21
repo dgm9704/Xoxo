@@ -243,6 +243,9 @@ namespace Diwen.Xbrl
 
 			foreach (var item in DefaultIndicatorNamespaces)
 				Namespaces.AddNamespace(item.Key, item.Value);
+
+			foreach (var item in DefaultUnitNamespaces)
+				Namespaces.AddNamespace(item.Key, item.Value);
 		}
 
 		public void RemoveUnusedUnits()
@@ -364,6 +367,7 @@ namespace Diwen.Xbrl
 			GetFactNamespace();
 
 			UpdateContextNamespaces(namespaces, contextsWithMembers);
+			UpdateUnitNamespaces(namespaces, Units);
 
 			Namespaces = namespaces;
 
@@ -453,6 +457,20 @@ namespace Diwen.Xbrl
 						m.Domain = new XmlQualifiedName(m.Domain.Name, TypedDomainNamespace);
 
 					context.Scenario.TypedMembers[i] = m;
+				}
+			}
+		}
+
+		void UpdateUnitNamespaces(IXmlNamespaceResolver namespaces, IEnumerable<Unit> units)
+		{
+			foreach (var unit in units)
+			{
+				if (string.IsNullOrEmpty(unit.Measure.Namespace))
+				{
+					var idx = unit.Measure.Name.IndexOf(':');
+					var ns = namespaces.LookupNamespace(unit.Measure.Name.Substring(0, idx));
+					var localname = unit.Measure.Name.Substring(idx + 1);
+					unit.Measure = new XmlQualifiedName(localname, ns);
 				}
 			}
 		}
@@ -676,6 +694,8 @@ namespace Diwen.Xbrl
 
 		static void CleanupAfterDeserialization(Instance instance, InstanceOptions options)
 		{
+			instance.RebuildNamespacesAfterRead();
+
 			instance.SetContextReferences(instance.Facts);
 			instance.SetUnitReferences(instance.Facts);
 
@@ -685,7 +705,6 @@ namespace Diwen.Xbrl
 			if (options.HasFlag(InstanceOptions.RemoveUnusedObjects))
 				instance.RemoveUnusedObjects();
 
-			instance.RebuildNamespacesAfterRead();
 			instance.SetInstanceReferences();
 		}
 
@@ -733,7 +752,7 @@ namespace Diwen.Xbrl
 			}
 
 			foreach (var item in DefaultUnitNamespaces)
-				if (Units.Any(u => u.Measure.Namespace == item.Value))
+				if (Units.Any(u => u.Measure.Namespace == item.Value || u.Measure.Prefix() == item.Key))
 					result.Add(item.Key, item.Value);
 				else
 					Namespaces.RemoveNamespace(item.Key, item.Value);
