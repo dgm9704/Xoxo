@@ -25,9 +25,9 @@ namespace Diwen.Xbrl
 	using System.Collections.Generic;
 	using System.IO;
 	using System.Linq;
-    using Diwen.Xbrl.Extensions;
+	using Diwen.Xbrl.Extensions;
 
-    public static class InstanceComparer
+	public static class InstanceComparer
 	{
 		public static ComparisonReport Report(string a, string b)
 		=> Report(Instance.FromFile(a), Instance.FromFile(b), ComparisonTypes.All);
@@ -260,7 +260,7 @@ namespace Diwen.Xbrl
 				// not until we're sure that there won't be duplicates
 				// var aLookup = a.Contexts.ToDictionary(c => c.Scenario != null ? c.Scenario.ToString() : "", c => c.Id);
 				var aLookup = GetScenarios(a);
-				messages.AddRange(notInB.Select(item => ScenarioComparisonMessage(aLookup, item, "(a)")));
+				messages.AddRange(notInB.Select(item => ScenarioComparisonMessage(aLookup, item, "a")));
 			}
 
 			if (notInA.Any())
@@ -268,7 +268,7 @@ namespace Diwen.Xbrl
 				// not until we're sure that there won't be duplicates
 
 				var bLookup = GetScenarios(b);
-				messages.AddRange(notInA.Select(item => ScenarioComparisonMessage(bLookup, item, "(b)")));
+				messages.AddRange(notInA.Select(item => ScenarioComparisonMessage(bLookup, item, "b")));
 			}
 
 			return messages;
