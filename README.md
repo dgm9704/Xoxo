@@ -53,7 +53,7 @@ Tests for exercising Diwen.Xbrl code, also serving as documentation and samples
 
 # Environment
 Code is written in [C#](https://docs.microsoft.com/en-us/dotnet/csharp/index), targeting 
-[.NET Standard 2.0](https://github.com/dotnet/standard/blob/master/docs/versions/netstandard2.0.md)
+[.NET Standard 2.0](https://github.com/dotnet/standard/blob/v2.1.0/docs/versions/netstandard2.0.md)
 
 Test framework is [xUnit](https://xunit.net/)
 and test code is targeting [.NET 6](https://docs.microsoft.com/en-us/dotnet/)
