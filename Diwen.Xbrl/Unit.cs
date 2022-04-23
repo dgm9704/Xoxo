@@ -99,8 +99,6 @@ namespace Diwen.Xbrl
 
 			if (idx != -1)
 				prefix = content.Substring(0, idx);
-			else
-				Console.WriteLine("Foo");
 
 			var ns = reader.LookupNamespace(prefix);
 

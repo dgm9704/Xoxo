@@ -725,6 +725,9 @@ namespace Diwen.Xbrl
 					if (seg.Instance == null)
 						seg.Instance = this;
 			}
+
+			foreach (var unit in Units)
+				unit.Instance = this;
 		}
 
 		XmlSerializerNamespaces GetXmlSerializerNamespaces()

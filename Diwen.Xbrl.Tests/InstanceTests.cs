@@ -180,41 +180,6 @@ namespace Diwen.Xbrl.Tests
 		}
 
 		[Fact]
-		public void TestUnits1()
-		{
-			var path = Path.Combine("data", "reference.xbrl");
-			var instance = Instance.FromFile(path, true);
-			Assert.True(instance.Units.All(u => !string.IsNullOrEmpty(u.Measure.Namespace)));
-		}
-
-		[Fact]
-		public void TestUnits2()
-		{
-			var instance = CreateSolvencyInstance();
-			instance.RemoveUnusedObjects();
-			Assert.True(instance.Units.All(u => !string.IsNullOrEmpty(u.Measure.Namespace)));
-		}
-
-		[Fact]
-		public void TestUnits3()
-		{
-			var instance = CreateSolvencyInstance();
-			instance.RemoveUnusedObjects();
-			instance.ToFile("testunits3.xbrl");
-			Assert.True(instance.Units.All(u => !string.IsNullOrEmpty(u.Measure.Namespace)));
-		}
-
-		[Fact]
-		public void TestUnits4()
-		{
-			var instance = CreateSolvencyInstance();
-			instance.RemoveUnusedObjects();
-			instance.ToFile("testunits3.xbrl");
-			instance = Instance.FromFile("testunits3.xbrl");
-			Assert.True(instance.Units.All(u => !string.IsNullOrEmpty(u.Measure.Namespace)));
-		}
-
-		[Fact]
 		public void RoundtripCompareExampleInstanceArs()
 		{
 			var sw = new Stopwatch();
@@ -448,7 +413,7 @@ namespace Diwen.Xbrl.Tests
 			var output = instance.ToXml();
 			Assert.NotEmpty(output);
 			// Most probably wont't match due to differences in casing or apostrophe vs. quotation etc.
-			// // Assert.Equal(input, output);
+			// Assert.Equal(input, output);
 		}
 
 		[Fact]
@@ -509,12 +474,14 @@ namespace Diwen.Xbrl.Tests
 		[Fact]
 		public void DefaultNamespaceIsHandledCorrectly()
 		{
-			// other completely the same but other (second) has "http://www.xbrl.org/2003/instance" as default namespace 
-			// and other (first) has it with the canonical prefix "xbrli"
+			// should be completely the same instance
+			// first has canonical prefix "xbrli" for "http://www.xbrl.org/2003/instance"
+			// and second has it as default namespace 
 			var first = Path.Combine("data", "reference.xbrl");
 			var second = Path.Combine("data", "reference_defaultns.xbrl");
 			var report = InstanceComparer.Report(first, second);
-			Console.WriteLine(report);
+			if (!report.Result)
+				Console.WriteLine(report);
 			Assert.True(report.Result);
 		}
 	}
