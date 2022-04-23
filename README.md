@@ -1,6 +1,15 @@
 [![.NET Core](https://github.com/dgm9704/Xoxo/workflows/.NET%20Core/badge.svg)](https://github.com/dgm9704/Xoxo/actions/workflows/dotnetcore.yml)
 [![nuget](https://img.shields.io/nuget/v/Diwen.Xbrl.svg)](https://www.nuget.org/packages/Diwen.Xbrl/)
 
+# Default branch has been renamed
+Use these commands to update:
+```
+git branch -m master main
+git fetch origin
+git branch -u origin/main main
+git remote set-head origin -a
+```
+
 # Xoxo
 Container for the Diwen.Xbrl library and any related stuff
 
