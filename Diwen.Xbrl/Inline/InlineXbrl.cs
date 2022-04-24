@@ -33,18 +33,20 @@ namespace Diwen.Xbrl.Inline
 	{
 		private static IFormatProvider ic = CultureInfo.InvariantCulture;
 
-		public static Instance ParseReportFiles(IEnumerable<ReportFile> reportFiles)
+		public static Instance ParseReportFiles(params ReportFile[] reportFiles)
 		=> ParseXDocuments(
 			reportFiles.
 				Select(f => f.Content as XDocument).
-				Where(r => r != null));
+				Where(r => r != null).
+				ToArray());
 
 		public static Instance ParseFiles(params string[] files)
 		=> ParseXDocuments(
 			files.
-				Select(file => XDocument.Load(file)));
+				Select(file => XDocument.Load(file)).
+				ToArray());
 
-		public static Instance ParseXDocuments(IEnumerable<XDocument> documents)
+		public static Instance ParseXDocuments(params XDocument[] documents)
 		{
 			var instance = new Instance();
 
