@@ -1,4 +1,4 @@
-[![.NET Core](https://github.com/dgm9704/Xoxo/workflows/.NET%20Core/badge.svg)](https://github.com/dgm9704/Xoxo/actions/workflows/dotnetcore.yml)
+[![.NET](https://github.com/dgm9704/Xoxo/actions/workflows/dotnet.yml/badge.svg)](https://github.com/dgm9704/Xoxo/actions/workflows/dotnet.yml)
 [![nuget](https://img.shields.io/nuget/v/Diwen.Xbrl.svg)](https://www.nuget.org/packages/Diwen.Xbrl/)
 
 # Default branch has been renamed
