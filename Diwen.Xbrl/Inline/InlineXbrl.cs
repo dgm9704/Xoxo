@@ -25,6 +25,7 @@ namespace Diwen.Xbrl.Inline
 	using System.Collections.Generic;
 	using System.Globalization;
 	using System.Linq;
+	using System.Xml;
 	using System.Xml.Linq;
 	using System.Xml.Serialization;
 
@@ -59,6 +60,9 @@ namespace Diwen.Xbrl.Inline
 
 				ParseFacts(document, instance);
 			}
+
+			foreach (var item in instance.Namespaces.GetNamespacesInScope(XmlNamespaceScope.All))
+				instance.XmlSerializerNamespaces.Add(item.Key, item.Value);
 
 			Instance.CleanupAfterDeserialization(instance, InstanceOptions.None);
 

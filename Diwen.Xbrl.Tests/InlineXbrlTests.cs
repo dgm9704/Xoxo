@@ -12,7 +12,7 @@ namespace Diwen.Xbrl.Tests
 			var reportfile = Path.Combine("esma", "gleif-19ar.xhtml");
 			var instance = InlineXbrl.ParseFiles(reportfile);
 			Assert.NotNull(instance);
-			//instance.ToFile("gleif-19ar.xbrl");
+			instance.ToFile("gleif-19ar.xbrl");
 		}
 	}
 }
