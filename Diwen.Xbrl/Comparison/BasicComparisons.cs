@@ -1,5 +1,5 @@
-//
-//  This file is part of Diwen.Xbrl.
+﻿////
+//  This file is part of Diwen.xbrl.
 //
 //  Author:
 //       John Nordberg <john.nordberg@gmail.com>
@@ -18,16 +18,24 @@
 //
 //  You should have received a copy of the GNU Lesser General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
-namespace Diwen.Xbrl
+
+namespace Diwen.Xbrl.Comparison
 {
-    public struct ReportFile
-    {
-        public string Filename { get; }
-        public object Content { get; }
-        public ReportFile(string filename, object content)
-        {
-            Filename = filename;
-            Content = content;
-        }
-    }
+	using System;
+
+	[Flags, Serializable]
+	public enum BasicComparisons
+	{
+		None = 0,
+		NullInstances = 1 << 0,
+		SchemaReference = 1 << 1,
+		Units = 1 << 2,
+		FilingIndicators = 1 << 3,
+		ContextCount = 1 << 4,
+		FactCount = 1 << 5,
+		DomainNamespaces = 1 << 6,
+		Entity = 1 << 7,
+		Period = 1 << 8,
+		All = 0xFFFFFFF
+	}
 }

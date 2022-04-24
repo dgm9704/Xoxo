@@ -19,13 +19,13 @@
 //  You should have received a copy of the GNU Lesser General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-namespace Diwen.Xbrl
+namespace Diwen.Xbrl.Inline
 {
-    using System.ComponentModel;
+	using System.ComponentModel;
 
-    public enum InlineXbrlType
-    {
-        [Description("ESMA ESEF")]
-        Esef,
-    }
+	public enum InlineXbrlType
+	{
+		[Description("ESMA ESEF")]
+		Esef,
+	}
 }

@@ -1,5 +1,5 @@
-//
-//  This file is part of Diwen.Xbrl.
+﻿//
+//  This file is part of Diwen.xbrl.
 //
 //  Author:
 //       John Nordberg <john.nordberg@gmail.com>
@@ -19,17 +19,25 @@
 //  You should have received a copy of the GNU Lesser General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-namespace Diwen.Xbrl
+namespace Diwen.Xbrl.Comparison
 {
-    public class EsefResult
-    {
-        public string Conclusion { get; }
-        public string[] Errors { get; }
+	using System;
 
-        public EsefResult(string conclusion, string[] errors)
-        {
-            this.Conclusion = conclusion;
-            this.Errors = errors;
-        }
-    }
+	[Flags, Serializable]
+	public enum ComparisonTypes
+	{
+		None = 0,
+		Basic = 1 << 0,
+		Contexts = 1 << 1,
+		Facts = 1 << 2,
+		DomainNamespaces = 1 << 3,
+		Units = 1 << 4,
+		Entity = 1 << 5,
+		Period = 1 << 6,
+		FilingIndicators = 1 << 7,
+		TaxonomyVersion = 1 << 8,
+		SchemaReference = 1 << 9,
+		All = 0xFFFFFFF
+	}
 }
+

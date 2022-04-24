@@ -19,19 +19,15 @@
 //  You should have received a copy of the GNU Lesser General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-namespace Diwen.Xbrl
+namespace Diwen.Xbrl.Extensions
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Xml.Linq;
-    using System.Xml.Serialization;
+	using System.Collections.Generic;
 
-    public static class DictionaryExtensions
-    {
-        public static TValue GetValueOrDefault<TKey, TValue>(this Dictionary<TKey, TValue> dictionary, TKey key, TValue defaultValue)
-        => dictionary.ContainsKey(key)
-             ? dictionary[key]
-             : defaultValue;
-    }
+	public static class DictionaryExtensions
+	{
+		public static TValue GetValueOrDefault<TKey, TValue>(this Dictionary<TKey, TValue> dictionary, TKey key, TValue defaultValue)
+		=> dictionary.ContainsKey(key)
+			 ? dictionary[key]
+			 : defaultValue;
+	}
 }

@@ -18,7 +18,8 @@ namespace Diwen.Xbrl.Tests
 	using System;
 	using System.IO;
 	using Xunit;
-	using Xbrl;
+	using Diwen.Xbrl;
+	using Diwen.Xbrl.Comparison;
 
 	public static class ScenarioTests
 	{

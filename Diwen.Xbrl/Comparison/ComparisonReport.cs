@@ -19,46 +19,31 @@
 //  You should have received a copy of the GNU Lesser General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-namespace Diwen.Xbrl
+namespace Diwen.Xbrl.Comparison
 {
 	using System;
 	using System.Collections.Generic;
+	using System.Collections.ObjectModel;
 
-	public class FactReport
+	public class ComparisonReport
 	{
-		public List<Tuple<Fact, Fact>> Matches { get; set; } = new List<Tuple<Fact, Fact>>();
+		public bool Result { get; }
 
-		public static FactReport FromReport(ComparisonReportObjects report)
+		public ReadOnlyCollection<string> Messages { get; }
+
+		internal ComparisonReport(bool result, IList<string> messages)
 		{
-			var result = new FactReport();
+			Result = result;
+			Messages = new ReadOnlyCollection<string>(messages);
+		}
 
-			var l = new LinkedList<Fact>(report.Facts.Item1);
-			var r = new LinkedList<Fact>(report.Facts.Item2);
-
-			foreach (var left in l)
-			{
-				Fact right = null;
-				foreach (var candidate in r)
-				{
-					var match = false;
-					if (candidate.Metric.Equals(left.Metric) && candidate.Context.Scenario.Equals(left.Context.Scenario))
-						match = true;
-					else if (candidate.Equals(left))
-						match = true;
-
-					if (match)
-					{
-						right = candidate;
-						r.Remove(candidate);
-						break;
-					}
-				}
-
-				if (right != null)
-					result.Matches.Add(Tuple.Create(left, right));
-			}
-
-			return result;
+		public override string ToString()
+		{
+			return $"result: {Result}" + (
+				Result
+				? string.Empty
+				: Environment.NewLine + string.Join(Environment.NewLine, Messages));
 		}
 	}
 }
+

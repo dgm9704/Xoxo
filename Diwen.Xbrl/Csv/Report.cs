@@ -1,4 +1,4 @@
-﻿namespace Diwen.XbrlCsv
+﻿namespace Diwen.Xbrl.Csv
 {
 	using System.Collections.Generic;
 	using System.IO;

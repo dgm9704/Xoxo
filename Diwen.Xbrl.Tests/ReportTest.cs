@@ -1,5 +1,6 @@
 namespace Diwen.XbrlCsv.Tests
 {
+	using Diwen.Xbrl.Csv;
 	using Xunit;
 
 	public class ReportTest

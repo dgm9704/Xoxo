@@ -22,7 +22,7 @@ namespace Diwen.Xbrl.Tests
 	using Xunit;
 	using Xbrl;
 	using Xunit.Abstractions;
-	using System.Linq;
+	using Diwen.Xbrl.Comparison;
 
 	public class InstanceTests
 	{

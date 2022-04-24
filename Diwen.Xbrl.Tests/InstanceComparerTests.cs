@@ -17,6 +17,7 @@ namespace Diwen.Xbrl.Tests
 {
 	using System;
 	using System.IO;
+	using Diwen.Xbrl.Comparison;
 	using Xunit;
 
 	public static class InstanceComparerTests
