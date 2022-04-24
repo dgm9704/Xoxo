@@ -33,7 +33,8 @@ Supports:
 
 - Australian and Finnish SBR message structures
 
-- (tentative) parsing of Inline XBRL from ESMA ESEF
+- Parsing of Inline XBRL from ESMA ESEF
+
 
 ### License:
 

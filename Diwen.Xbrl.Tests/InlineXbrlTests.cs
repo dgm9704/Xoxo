@@ -13,19 +13,17 @@ namespace Diwen.Xbrl.Tests
 		public static void ReadGLEIFAnnualReport()
 		{
 			var reportPackage = Path.Combine("esma", "gleif-19ar.zip");
-
+			XDocument reportDocument;
 			using (var reportStream = File.OpenRead(reportPackage))
 			using (var reportArchive = new ZipArchive(reportStream, ZipArchiveMode.Read))
 			{
 				var reportFile = reportArchive.Entries.FirstOrDefault(e => e.Name == "gleif-19ar.xhtml");
-				var reportDocument = XDocumentFromZipArchiveEntry(reportFile);
-
-				// var reportfile = Path.Combine("esma", "gleif-19ar.xhtml");
-				//var instance = InlineXbrl.ParseFiles(reportfile);
-				var instance = InlineXbrl.ParseXDocuments(reportDocument);
-				Assert.NotNull(instance);
-				instance.ToFile("gleif-19ar.xbrl");
+				reportDocument = XDocumentFromZipArchiveEntry(reportFile);
 			}
+
+			var instance = InlineXbrl.ParseXDocuments(reportDocument);
+			Assert.NotNull(instance);
+			instance.ToFile("gleif-19ar.xbrl");
 		}
 
 		private static XDocument XDocumentFromZipArchiveEntry(ZipArchiveEntry entry)
