@@ -32,22 +32,36 @@ namespace Diwen.Xbrl.Inline
 	{
 		private static IFormatProvider ic = CultureInfo.InvariantCulture;
 
-		public static Instance ParseInstance(IEnumerable<ReportFile> reportFiles)
+		public static Instance ParseReportFiles(IEnumerable<ReportFile> reportFiles)
+		=> ParseXDocuments(
+			reportFiles.
+				Select(f => f.Content as XDocument).
+				Where(r => r != null));
+
+		public static Instance ParseFiles(params string[] files)
+		=> ParseXDocuments(
+			files.
+				Select(file => XDocument.Load(file)));
+
+		public static Instance ParseXDocuments(IEnumerable<XDocument> documents)
 		{
 			var instance = new Instance();
 
-			foreach (var reportFile in reportFiles.Select(f => f.Content as XDocument).Where(r => r != null))
+			foreach (var document in documents)
 			{
-				ParseNamespaces(reportFile, instance);
+				ParseNamespaces(document, instance);
 
-				ParseSchemaReference(reportFile, instance);
+				ParseSchemaReference(document, instance);
 
-				ParseContexts(reportFile, instance);
+				ParseContexts(document, instance);
 
-				ParseUnits(reportFile, instance);
+				ParseUnits(document, instance);
 
-				ParseFacts(reportFile, instance);
+				ParseFacts(document, instance);
 			}
+
+			Instance.CleanupAfterDeserialization(instance, InstanceOptions.None);
+
 			return instance;
 		}
 

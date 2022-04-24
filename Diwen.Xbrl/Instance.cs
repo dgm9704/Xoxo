@@ -320,6 +320,7 @@ namespace Diwen.Xbrl
 
 		public Instance()
 		{
+			XmlSerializerNamespaces = new XmlSerializerNamespaces();
 			Namespaces = new XmlNamespaceManager(new NameTable());
 			AddDefaultNamespaces();
 			Units = new UnitCollection(this);
@@ -692,7 +693,7 @@ namespace Diwen.Xbrl
 			instance.Comments = new Collection<string>(info.Comments);
 		}
 
-		static void CleanupAfterDeserialization(Instance instance, InstanceOptions options)
+		internal static void CleanupAfterDeserialization(Instance instance, InstanceOptions options)
 		{
 			instance.RebuildNamespacesAfterRead();
 
