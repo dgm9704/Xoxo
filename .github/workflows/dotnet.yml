@@ -1,0 +1,25 @@
+name: .NET
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v2
+      with:
+        dotnet-version: 6.0.x
+    - name: Install dependencies
+      run: dotnet restore Diwen.Xbrl.Tests/Diwen.Xbrl.Tests.csproj
+    - name: Build
+      run: dotnet build --configuration Release --no-restore Diwen.Xbrl.Tests/Diwen.Xbrl.Tests.csproj
+    - name: Test
+      run: dotnet test --no-restore --verbosity normal Diwen.Xbrl.Tests/Diwen.Xbrl.Tests.csproj
