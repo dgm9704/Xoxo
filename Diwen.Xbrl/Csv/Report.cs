@@ -1,5 +1,6 @@
 ﻿namespace Diwen.Xbrl.Csv
 {
+	using System;
 	using System.Collections.Generic;
 	using System.IO;
 	using System.IO.Compression;
@@ -73,7 +74,6 @@
 			}
 			stream.Flush();
 			stream.Position = 0;
-			//stream.Seek(0, SeekOrigin.Begin);
 			return stream;
 		}
 
@@ -159,6 +159,46 @@
 				}
 			}
 			return reportdata;
+		}
+
+		public static Report Import(string packagePath)
+		{
+			var report = new Report();
+			var reportFiles = ReadPackage(packagePath);
+
+			ReadParameters(reportFiles["reports/parameters.csv"], report);
+
+			return report;
+		}
+
+		private static void ReadParameters(string data, Report report)
+		=> report.Parameters =
+			data.
+				Split(new string[] { Environment.NewLine }, StringSplitOptions.RemoveEmptyEntries).
+				Skip(1).
+				Select(line => line.Split(',')).
+				ToDictionary(
+					p => p[0],
+					p => p[1]);
+
+		public static Dictionary<string, string> ReadPackage(string packagePath)
+		{
+			var reportFiles = new Dictionary<string, string>();
+			using (var packageStream = File.OpenRead(packagePath))
+			using (var archive = new ZipArchive(packageStream, ZipArchiveMode.Read))
+			{
+				foreach (var entry in archive.Entries)
+				{
+					using (var entryStream = entry.Open())
+					using (var memoryStream = new MemoryStream())
+					{
+						entryStream.CopyTo(memoryStream);
+						string content = Encoding.UTF8.GetString(memoryStream.ToArray());
+						reportFiles.Add(entry.FullName, content);
+					}
+				}
+			}
+			return reportFiles;
 		}
 	}
 }

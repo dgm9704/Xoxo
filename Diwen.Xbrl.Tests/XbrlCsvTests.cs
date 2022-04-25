@@ -1,12 +1,13 @@
 namespace Diwen.XbrlCsv.Tests
 {
+	using System.IO;
 	using Diwen.Xbrl.Csv;
 	using Xunit;
 
 	public class XbrlCsvTests
 	{
 		[Fact]
-		public void Export()
+		public void ExportTests()
 		{
 			var report = new Report();
 			report.Entrypoint = "http://www.eba.europa.eu/eu/fr/xbrl/crr/fws/sbp/cir-2070-2016/2021-07-15/mod/sbp_cr_con.json";
@@ -49,30 +50,56 @@ namespace Diwen.XbrlCsv.Tests
 
 
 			// datapoint,factValue,FTY,INC
-			report.AddData("C_113.00", "dp439732", "304132.94", new[] { ("FTY", "htkaaxvr"), ("INC", "htkaaxvr") });
-			report.AddData("C_113.00", "dp439750", "eba_IM:x33", new[] { ("FTY", "htkaaxvr"), ("INC", "htkaaxvr") });
-			report.AddData("C_113.00", "dp439744", "0.1", new[] { ("FTY", "htkaaxvr"), ("INC", "htkaaxvr") });
-			report.AddData("C_113.00", "dp439745", "0.72", new[] { ("FTY", "htkaaxvr"), ("INC", "htkaaxvr") });
-			report.AddData("C_113.00", "dp439751", "0.34", new[] { ("FTY", "htkaaxvr"), ("INC", "htkaaxvr") });
-			report.AddData("C_113.00", "dp439752", "0.46", new[] { ("FTY", "htkaaxvr"), ("INC", "htkaaxvr") });
-			report.AddData("C_113.00", "dp439753", "eba_ZZ:x409", new[] { ("FTY", "htkaaxvr"), ("INC", "htkaaxvr") });
-			report.AddData("C_113.00", "dp439732", "304132.94", new[] { ("FTY", "ynqtbutq"), ("INC", "ynqtbutq") });
-			report.AddData("C_113.00", "dp439750", "eba_IM:x33", new[] { ("FTY", "ynqtbutq"), ("INC", "ynqtbutq") });
-			report.AddData("C_113.00", "dp439744", "0.1", new[] { ("FTY", "ynqtbutq"), ("INC", "ynqtbutq") });
-			report.AddData("C_113.00", "dp439745", "0.72", new[] { ("FTY", "ynqtbutq"), ("INC", "ynqtbutq") });
-			report.AddData("C_113.00", "dp439751", "0.34", new[] { ("FTY", "ynqtbutq"), ("INC", "ynqtbutq") });
-			report.AddData("C_113.00", "dp439752", "0.46", new[] { ("FTY", "ynqtbutq"), ("INC", "ynqtbutq") });
-			report.AddData("C_113.00", "dp439753", "eba_ZZ:x409", new[] { ("FTY", "ynqtbutq"), ("INC", "ynqtbutq") });
+			report.AddData("C_113.00", "dp439732", "304132.94", ("FTY", "htkaaxvr"), ("INC", "htkaaxvr"));
+			report.AddData("C_113.00", "dp439750", "eba_IM:x33", ("FTY", "htkaaxvr"), ("INC", "htkaaxvr"));
+			report.AddData("C_113.00", "dp439744", "0.1", ("FTY", "htkaaxvr"), ("INC", "htkaaxvr"));
+			report.AddData("C_113.00", "dp439745", "0.72", ("FTY", "htkaaxvr"), ("INC", "htkaaxvr"));
+			report.AddData("C_113.00", "dp439751", "0.34", ("FTY", "htkaaxvr"), ("INC", "htkaaxvr"));
+			report.AddData("C_113.00", "dp439752", "0.46", ("FTY", "htkaaxvr"), ("INC", "htkaaxvr"));
+			report.AddData("C_113.00", "dp439753", "eba_ZZ:x409", ("FTY", "htkaaxvr"), ("INC", "htkaaxvr"));
+			report.AddData("C_113.00", "dp439732", "304132.94", ("FTY", "ynqtbutq"), ("INC", "ynqtbutq"));
+			report.AddData("C_113.00", "dp439750", "eba_IM:x33", ("FTY", "ynqtbutq"), ("INC", "ynqtbutq"));
+			report.AddData("C_113.00", "dp439744", "0.1", ("FTY", "ynqtbutq"), ("INC", "ynqtbutq"));
+			report.AddData("C_113.00", "dp439745", "0.72", ("FTY", "ynqtbutq"), ("INC", "ynqtbutq"));
+			report.AddData("C_113.00", "dp439751", "0.34", ("FTY", "ynqtbutq"), ("INC", "ynqtbutq"));
+			report.AddData("C_113.00", "dp439752", "0.46", ("FTY", "ynqtbutq"), ("INC", "ynqtbutq"));
+			report.AddData("C_113.00", "dp439753", "eba_ZZ:x409", ("FTY", "ynqtbutq"), ("INC", "ynqtbutq"));
 
 			report.Export("DUMMYLEI123456789012_GB_SBP010200_SBPCRCON_2021-12-31_20210623163233000");
 		}
 
-		// [Fact]
-		// public void Import()
-		// {
-		// 	string fileName = "report.json";
-		// 	string jsonString = File.ReadAllText(fileName);
-		// 	var report = JsonSerializer.Deserialize<Report>(jsonString);
-		// }
+		[Fact]
+		public static void ReadPackageTest()
+		{
+			var packagePath = Path.Combine("csv", "DUMMYLEI123456789012_GB_SBP010200_SBPCRCON_2021-12-31_20210623163233000.zip");
+			var reportFiles = Report.ReadPackage(packagePath);
+
+			var metafolder = "META-INF";
+			var reportfolder = "reports";
+
+			Assert.True(reportFiles.ContainsKey(Path.Combine(metafolder, "reports.json")));
+			Assert.True(reportFiles.ContainsKey(Path.Combine(reportfolder, "report.json")));
+			Assert.True(reportFiles.ContainsKey(Path.Combine(reportfolder, "parameters.csv")));
+			Assert.True(reportFiles.ContainsKey(Path.Combine(reportfolder, "FilingIndicators.csv")));
+			Assert.True(reportFiles.ContainsKey(Path.Combine(reportfolder, "S_00.01.csv")));
+			Assert.True(reportFiles.ContainsKey(Path.Combine(reportfolder, "C_105.02.csv")));
+			Assert.True(reportFiles.ContainsKey(Path.Combine(reportfolder, "C_105.03.csv")));
+			Assert.True(reportFiles.ContainsKey(Path.Combine(reportfolder, "C_113.00.csv")));
+		}
+
+		[Fact]
+		public static void ImportTest()
+		{
+			var packagePath = Path.Combine("csv", "DUMMYLEI123456789012_GB_SBP010200_SBPCRCON_2021-12-31_20210623163233000.zip");
+			var report = Report.Import(packagePath);
+
+			Assert.Equal("lei:DUMMYLEI123456789012", report.Parameters["entityID"]);
+			Assert.Equal("2021-12-31", report.Parameters["refPeriod"]);
+			Assert.Equal("iso4217:EUR", report.Parameters["baseCurrency"]);
+			Assert.Equal("0", report.Parameters["decimalsInteger"]);
+			Assert.Equal("-3", report.Parameters["decimalsMonetary"]);
+			Assert.Equal("4", report.Parameters["decimalsPercentage"]);
+			Assert.Equal("2", report.Parameters["decimalsDecimal"]);
+		}
 	}
 }
