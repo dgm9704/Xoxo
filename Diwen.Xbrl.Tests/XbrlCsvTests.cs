@@ -3,7 +3,7 @@ namespace Diwen.XbrlCsv.Tests
 	using Diwen.Xbrl.Csv;
 	using Xunit;
 
-	public class ReportTest
+	public class XbrlCsvTests
 	{
 		[Fact]
 		public void Export()

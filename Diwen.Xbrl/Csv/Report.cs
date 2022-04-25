@@ -62,15 +62,18 @@
 		private Stream CreateZip(Dictionary<string, Stream> package, string packagename)
 		{
 			var stream = new MemoryStream();
-			var zip = new ZipArchive(stream, ZipArchiveMode.Create);
-
-			foreach (var item in package)
+			using (var zip = new ZipArchive(stream, ZipArchiveMode.Create, true))
 			{
-				ZipArchiveEntry entry = zip.CreateEntry(item.Key);
-				using (var entryStream = entry.Open())
-					item.Value.CopyTo(entryStream);
+				foreach (var item in package)
+				{
+					ZipArchiveEntry entry = zip.CreateEntry(item.Key, CompressionLevel.Optimal);
+					using (var entryStream = entry.Open())
+						item.Value.CopyTo(entryStream);
+				}
 			}
+			stream.Flush();
 			stream.Position = 0;
+			//stream.Seek(0, SeekOrigin.Begin);
 			return stream;
 		}
 
