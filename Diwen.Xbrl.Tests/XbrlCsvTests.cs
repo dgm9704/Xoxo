@@ -100,6 +100,18 @@ namespace Diwen.XbrlCsv.Tests
 			Assert.Equal("-3", report.Parameters["decimalsMonetary"]);
 			Assert.Equal("4", report.Parameters["decimalsPercentage"]);
 			Assert.Equal("2", report.Parameters["decimalsDecimal"]);
+
+			Assert.True(report.FilingIndicators["C_101.00"]);
+			Assert.True(report.FilingIndicators["C_102.00"]);
+			Assert.True(report.FilingIndicators["C_103.00"]);
+			Assert.True(report.FilingIndicators["C_105.01"]);
+			Assert.True(report.FilingIndicators["C_105.02"]);
+			Assert.True(report.FilingIndicators["C_105.03"]);
+			Assert.True(report.FilingIndicators["C_111.00"]);
+			Assert.True(report.FilingIndicators["C_112.00"]);
+			Assert.True(report.FilingIndicators["C_113.00"]);
+			Assert.True(report.FilingIndicators["C_114.00"]);
+			Assert.True(report.FilingIndicators["S_00.01"]);
 		}
 	}
 }

@@ -166,20 +166,30 @@
 			var report = new Report();
 			var reportFiles = ReadPackage(packagePath);
 
-			ReadParameters(reportFiles["reports/parameters.csv"], report);
+			report.Parameters = ReadParameters(reportFiles["reports/parameters.csv"]);
+			report.FilingIndicators = ReadFilingIndicators(reportFiles["reports/FilingIndicators.csv"]);
 
 			return report;
 		}
 
-		private static void ReadParameters(string data, Report report)
-		=> report.Parameters =
-			data.
-				Split(new string[] { Environment.NewLine }, StringSplitOptions.RemoveEmptyEntries).
-				Skip(1).
-				Select(line => line.Split(',')).
-				ToDictionary(
-					p => p[0],
-					p => p[1]);
+		private static Dictionary<string, bool> ReadFilingIndicators(string data)
+		=> data.
+			Split(new string[] { Environment.NewLine }, StringSplitOptions.RemoveEmptyEntries).
+			Skip(1).
+			Select(line => line.Split(',')).
+			ToDictionary(
+				f => f[0],
+				f => Convert.ToBoolean(f[1]));
+
+
+		private static Dictionary<string, string> ReadParameters(string data)
+		=> data.
+			Split(new string[] { Environment.NewLine }, StringSplitOptions.RemoveEmptyEntries).
+			Skip(1).
+			Select(line => line.Split(',')).
+			ToDictionary(
+				p => p[0],
+				p => p[1]);
 
 		public static Dictionary<string, string> ReadPackage(string packagePath)
 		{
