@@ -44,11 +44,21 @@ Supports:
 
 ### License:
 
+
 GNU Lesser General Public License v3.0
 
 http://www.gnu.org/licenses/gpl.txt
 
 http://www.gnu.org/licenses/lgpl.txt
+
+
+TLDR; 
+
+You can use the compiled library with your application without it affecting the licensing of your other source code. 
+
+(Just remember to link back here ie. "attribution")
+
+If you modify the source code and distribute it, you need to license the software containing the modified version accordingly.
 
 ## Diwen.Xbrl.Tests
 Tests for exercising Diwen.Xbrl code, also serving as documentation and samples
