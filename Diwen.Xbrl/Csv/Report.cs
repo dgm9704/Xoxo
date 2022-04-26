@@ -168,8 +168,32 @@
 
 			report.Parameters = ReadParameters(reportFiles["reports/parameters.csv"]);
 			report.FilingIndicators = ReadFilingIndicators(reportFiles["reports/FilingIndicators.csv"]);
+			foreach (var table in report.FilingIndicators.Where(fi => fi.Value).Select(fi => fi.Key))
+				report.Data.AddRange(ReadTableData(table, reportFiles[$"reports/{table}.csv"]));
 
 			return report;
+		}
+
+		private static IEnumerable<ReportData> ReadTableData(string table, string data)
+		{
+			var result = new List<ReportData>();
+			var records =
+				data.
+				Split(new string[] { Environment.NewLine }, StringSplitOptions.RemoveEmptyEntries).
+				Select(line => line.Split(','));
+
+			var header = records.First();
+			foreach (var record in records.Skip(1))
+			{
+				var datapoint = record[0];
+				var value = record[1];
+				var item = new ReportData(table, datapoint, value);
+				for (int i = 2; i < header.Length; i++)
+					item.Dimensions.Add(header[i], record[i]);
+
+				result.Add(item);
+			}
+			return result;
 		}
 
 		private static Dictionary<string, bool> ReadFilingIndicators(string data)

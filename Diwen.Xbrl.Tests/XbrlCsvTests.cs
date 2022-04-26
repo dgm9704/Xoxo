@@ -20,16 +20,15 @@ namespace Diwen.XbrlCsv.Tests
 			report.Parameters.Add("decimalsPercentage", "4");
 			report.Parameters.Add("decimalsDecimal", "2");
 
-			report.FilingIndicators.Add("C_101.00", true);
-			report.FilingIndicators.Add("C_102.00", true);
-			report.FilingIndicators.Add("C_103.00", true);
-			report.FilingIndicators.Add("C_105.01", true);
+			report.FilingIndicators.Add("C_101.00", false);
+			report.FilingIndicators.Add("C_102.00", false);
+			report.FilingIndicators.Add("C_103.00", false);
+			report.FilingIndicators.Add("C_105.01", false);
 			report.FilingIndicators.Add("C_105.02", true);
 			report.FilingIndicators.Add("C_105.03", true);
-			report.FilingIndicators.Add("C_111.00", true);
-			report.FilingIndicators.Add("C_112.00", true);
+			report.FilingIndicators.Add("C_111.00", false);
+			report.FilingIndicators.Add("C_112.00", false);
 			report.FilingIndicators.Add("C_113.00", true);
-			report.FilingIndicators.Add("C_114.00", true);
 			report.FilingIndicators.Add("S_00.01", true);
 
 			//datapoint,factValue
@@ -101,16 +100,15 @@ namespace Diwen.XbrlCsv.Tests
 			Assert.Equal("4", report.Parameters["decimalsPercentage"]);
 			Assert.Equal("2", report.Parameters["decimalsDecimal"]);
 
-			Assert.True(report.FilingIndicators["C_101.00"]);
-			Assert.True(report.FilingIndicators["C_102.00"]);
-			Assert.True(report.FilingIndicators["C_103.00"]);
-			Assert.True(report.FilingIndicators["C_105.01"]);
+			Assert.False(report.FilingIndicators["C_101.00"]);
+			Assert.False(report.FilingIndicators["C_102.00"]);
+			Assert.False(report.FilingIndicators["C_103.00"]);
+			Assert.False(report.FilingIndicators["C_105.01"]);
 			Assert.True(report.FilingIndicators["C_105.02"]);
 			Assert.True(report.FilingIndicators["C_105.03"]);
-			Assert.True(report.FilingIndicators["C_111.00"]);
-			Assert.True(report.FilingIndicators["C_112.00"]);
+			Assert.False(report.FilingIndicators["C_111.00"]);
+			Assert.False(report.FilingIndicators["C_112.00"]);
 			Assert.True(report.FilingIndicators["C_113.00"]);
-			Assert.True(report.FilingIndicators["C_114.00"]);
 			Assert.True(report.FilingIndicators["S_00.01"]);
 		}
 	}

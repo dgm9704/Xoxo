@@ -4,6 +4,11 @@ namespace Diwen.Xbrl.Csv
 
 	public class ReportData
 	{
+		public string Table { get; set; }
+		public string Datapoint { get; set; }
+		public string Value { get; set; }
+		public Dictionary<string, string> Dimensions { get; set; } = new Dictionary<string, string>();
+
 		public ReportData(string table, string datapoint, string value)
 		{
 			Table = table;
@@ -25,10 +30,5 @@ namespace Diwen.Xbrl.Csv
 		public ReportData(string table, string datapoint, string value, Dictionary<string, string> dimensions)
 		: this(table, datapoint, value)
 		=> Dimensions = dimensions;
-
-		public string Table { get; set; }
-		public string Datapoint { get; set; }
-		public string Value { get; set; }
-		public Dictionary<string, string> Dimensions { get; set; } = new Dictionary<string, string>();
 	}
 }
