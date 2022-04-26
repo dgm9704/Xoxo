@@ -23,7 +23,7 @@ https://github.com/dgm9704/Xoxo/issues/new
 https://twitter.com/DiwenXbrl
 
 ### send a message through the NuGet package page
-https://www.nuget.org/packages/Diwen.Xbrl/1.0.4/ContactOwners
+https://www.nuget.org/packages/Diwen.Xbrl/1.2.0/ContactOwners
 
 ## Diwen.Xbrl
 A .NET library for reading, writing and comparing XBRL documents (instances)
