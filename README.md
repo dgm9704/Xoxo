@@ -35,6 +35,8 @@ Supports:
 
 - Parsing of Inline XBRL from ESMA ESEF
 
+- Bare-bones implementation of reading and writing xBRL-csv (no connection to "normal" XBRL yet)
+
 
 ### License:
 
