@@ -33,7 +33,7 @@ Supports:
 
 - Australian and Finnish SBR message structures
 
-- Parsing of Inline XBRL from ESMA ESEF
+- Parsing of Inline XBRL to "normal" instance (from ESMA ESEF)
 
 - Bare-bones implementation of reading and writing xBRL-csv (no connection to "normal" XBRL yet)
 
