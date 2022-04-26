@@ -13,8 +13,8 @@ git remote set-head origin -a
 # Xoxo
 Container for the Diwen.Xbrl library and any related stuff
 
-## Please get in touch
-If you have any questions, comments, suggestions, problems, etc
+## Ways get in touch
+If you have any questions, comments, suggestions, problems, bugfixes, etc
 
 ### create an issue
 https://github.com/dgm9704/Xoxo/issues/new
