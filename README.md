@@ -14,16 +14,20 @@ git remote set-head origin -a
 Container for the Diwen.Xbrl library and any related stuff
 
 ## Ways get in touch
-If you have any questions, comments, suggestions, problems, bugfixes, etc
+If you have any questions, comments, suggestions, problems, bugreports/fixes, etc
 
-### create an issue
+### create an issue 
+It's always ok to create one even if you're not sure
+
 https://github.com/dgm9704/Xoxo/issues/new
+
+### send a message through the NuGet package page
+This might be the best way if you have a complicated issue or something you don't want share publicly
+
+https://www.nuget.org/packages/Diwen.Xbrl/1.2.0/ContactOwners
 
 ### twitter: @DiwenXbrl
 https://twitter.com/DiwenXbrl
-
-### send a message through the NuGet package page
-https://www.nuget.org/packages/Diwen.Xbrl/1.2.0/ContactOwners
 
 ## Diwen.Xbrl
 A .NET library for reading, writing and comparing XBRL documents (instances)
