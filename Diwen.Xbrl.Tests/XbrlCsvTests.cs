@@ -92,6 +92,7 @@ namespace Diwen.XbrlCsv.Tests
 			var packagePath = Path.Combine("csv", "DUMMYLEI123456789012_GB_SBP010200_SBPCRCON_2021-12-31_20210623163233000.zip");
 			var report = Report.Import(packagePath);
 
+			Assert.Equal("http://www.eba.europa.eu/eu/fr/xbrl/crr/fws/sbp/cir-2070-2016/2021-07-15/mod/sbp_cr_con.json", report.Entrypoint);
 			Assert.Equal("lei:DUMMYLEI123456789012", report.Parameters["entityID"]);
 			Assert.Equal("2021-12-31", report.Parameters["refPeriod"]);
 			Assert.Equal("iso4217:EUR", report.Parameters["baseCurrency"]);

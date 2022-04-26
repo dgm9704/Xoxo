@@ -6,6 +6,7 @@
 	using System.IO.Compression;
 	using System.Linq;
 	using System.Text;
+	using System.Text.RegularExpressions;
 
 	public class Report
 	{
@@ -166,12 +167,20 @@
 			var report = new Report();
 			var reportFiles = ReadPackage(packagePath);
 
+			report.Entrypoint = ReadEntryPoint(reportFiles["reports/report.json"]);
 			report.Parameters = ReadParameters(reportFiles["reports/parameters.csv"]);
 			report.FilingIndicators = ReadFilingIndicators(reportFiles["reports/FilingIndicators.csv"]);
 			foreach (var table in report.FilingIndicators.Where(fi => fi.Value).Select(fi => fi.Key))
 				report.Data.AddRange(ReadTableData(table, reportFiles[$"reports/{table}.csv"]));
 
 			return report;
+		}
+
+		private static string ReadEntryPoint(string data)
+		{
+			var expression = new Regex(@"[^\""]*\.json", RegexOptions.Compiled);
+			var match = expression.Match(data);
+			return match.Value;
 		}
 
 		private static IEnumerable<ReportData> ReadTableData(string table, string data)
@@ -204,7 +213,6 @@
 			ToDictionary(
 				f => f[0],
 				f => Convert.ToBoolean(f[1]));
-
 
 		private static Dictionary<string, string> ReadParameters(string data)
 		=> data.
