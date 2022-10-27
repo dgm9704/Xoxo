@@ -15,7 +15,6 @@
 
 namespace Diwen.Xbrl.Tests
 {
-    using System;
     using Xunit;
     using Diwen.Xbrl;
 
@@ -34,7 +33,7 @@ namespace Diwen.Xbrl.Tests
             instance.AddDomainNamespace("ns3", "http://tempuri.org/xbrl/fact");
 
             instance.Entity = new Entity("http://tempuri.org/id", "12345678");
-            instance.Period = new Period(DateTime.Today);
+            instance.Period = new Period(2022, 09, 30);
 
             var segment = new Segment();
             segment.AddExplicitMember("ns1:AA", "ns1:aaa"); // Ok ("ns1" is used in the same segment as dimension)
@@ -43,7 +42,7 @@ namespace Diwen.Xbrl.Tests
 
             instance.AddFact(segment, "ns3:metric", "", "2", "12345");
 
-            instance.ToFile("output.xbrl");
+            instance.ToFile("output_segment_namespace.xbrl");
         }
 
     }
