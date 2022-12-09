@@ -128,6 +128,7 @@ namespace Diwen.XbrlCsv.Tests
             var baseCurrency = report.Parameters["baseCurrency"];
             var baseCurrencyRef = $"u{baseCurrency.Split(':').Last()}";
             instance.Units.Add(baseCurrencyRef, baseCurrency);
+			instance.SetTypedDomainNamespace("eba_typ","http://www.eba.europa.eu/xbrl/crr/dict/typ");
 
             var filed = report.FilingIndicators.Where(i => i.Value).Select(i => i.Key.ToLowerInvariant()).ToHashSet();
 
@@ -189,9 +190,9 @@ namespace Diwen.XbrlCsv.Tests
                                 scenario.AddExplicitMember(prop.Name, prop.Value.ToString());
                         }
 
-                        foreach (var d in fact.Dimensions)
-                            scenario.AddTypedMember(d.Key, "eba_ID", d.Value);
-                            //scenario.ExplicitMembers.Add(d.Key, d.Value.Trim());
+						// DANGER
+                        foreach (var d in fact.Dimensions) 
+                            scenario.AddTypedMember(d.Key, "ID", d.Value);
 
                         var unitRef = unit.Replace("$baseCurrency", baseCurrencyRef);
 
