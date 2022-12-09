@@ -166,12 +166,13 @@
 		{
 			var report = new Report();
 			var reportFiles = ReadPackage(packagePath);
+			var packagename = Path.GetFileNameWithoutExtension(packagePath);
 
-			report.Entrypoint = ReadEntryPoint(reportFiles["reports/report.json"]);
-			report.Parameters = ReadParameters(reportFiles["reports/parameters.csv"]);
-			report.FilingIndicators = ReadFilingIndicators(reportFiles["reports/FilingIndicators.csv"]);
-			foreach (var table in report.FilingIndicators.Where(fi => fi.Value).Select(fi => fi.Key))
-				report.Data.AddRange(ReadTableData(table, reportFiles[$"reports/{table}.csv"]));
+			report.Entrypoint = ReadEntryPoint(reportFiles[$"{packagename}/reports/report.json"]);
+			report.Parameters = ReadParameters(reportFiles[$"{packagename}/reports/parameters.csv"]);
+			report.FilingIndicators = ReadFilingIndicators(reportFiles[$"{packagename}/reports/FilingIndicators.csv"]);
+			foreach (var table in report.FilingIndicators.Where(fi => fi.Value).Select(fi => fi.Key.ToLowerInvariant()))
+				report.Data.AddRange(ReadTableData(table, reportFiles[$"{packagename}/reports/{table}.csv"]));
 
 			return report;
 		}

@@ -112,5 +112,12 @@ namespace Diwen.XbrlCsv.Tests
 			Assert.True(report.FilingIndicators["C_113.00"]);
 			Assert.True(report.FilingIndicators["S_00.01"]);
 		}
+
+		[Fact]
+		public static void TaxonomyLookup()
+		{
+			var packagePath = Path.Combine("csv", "DUMMYLEI123456789012.IND_FR_IF010200_IFTM_2022-12-31_20220222134211000.zip");
+			var report = Report.Import(packagePath);
+		}
 	}
 }
