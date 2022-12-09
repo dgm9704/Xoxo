@@ -125,6 +125,10 @@ namespace Diwen.XbrlCsv.Tests
 
             var packagePath = Path.Combine("csv", "DUMMYLEI123456789012.CON_FR_SBP010201_SBPCR_2022-12-31_20220411141758000.zip");
             var report = Report.Import(packagePath);
+            var baseCurrency = report.Parameters["baseCurrency"];
+            var baseCurrencyRef = $"u{baseCurrency.Split(':').Last()}";
+            instance.Units.Add(baseCurrencyRef, baseCurrency);
+
             var filed = report.FilingIndicators.Where(i => i.Value).Select(i => i.Key.ToLowerInvariant()).ToHashSet();
 
             var tabledata =
@@ -149,6 +153,18 @@ namespace Diwen.XbrlCsv.Tests
                 using (var document = JsonDocument.Parse(stream))
                 {
                     var root = document.RootElement;
+                    var documentinfo = root.GetProperty("documentInfo");
+                    var namespaces = documentinfo.GetProperty("namespaces");
+                    foreach (var ns in namespaces.EnumerateObject())
+                    {
+                        if (ns.Name.EndsWith("_dim"))
+                            instance.SetDimensionNamespace(ns.Name, ns.Value.GetString());
+                        else if (ns.Name.EndsWith("_met"))
+                            instance.SetMetricNamespace(ns.Name, ns.Value.GetString());
+                        else
+                            instance.AddDomainNamespace(ns.Name, ns.Value.GetString());
+                    }
+
                     var templates = root.GetProperty("tableTemplates");
                     var template = templates.GetProperty(table.Key.ToUpperInvariant().Replace('.', '-'));
                     var columns = template.GetProperty("columns");
@@ -157,23 +173,34 @@ namespace Diwen.XbrlCsv.Tests
 
                     foreach (var fact in table.Value)
                     {
+                        var scenario = new Scenario();
                         var dp = propertyGroups.GetProperty(fact.Datapoint);
                         var dimensions = dp.GetProperty("dimensions");
-                        string metric;
-						var dimensionValues = new Dictionary<string,string>();
+                        string metric = string.Empty;
+                        string unit = string.Empty;
+
                         foreach (var prop in dimensions.EnumerateObject())
                         {
                             if (prop.Name == "concept")
-                                metric = prop.Value.GetString();
-							else
-								dimensionValues.Add(prop.Name, prop.Value.GetString());
-                            // var concept = dimensions.GetProperty("concept");
-                            // var metric = concept.GetString();
+                                metric = prop.Value.GetString().Split(':').Last();
+                            else if (prop.Name == "unit")
+                                unit = prop.Value.GetString();
+                            else 
+                                scenario.AddExplicitMember(prop.Name, prop.Value.ToString());
                         }
-						
+
+                        foreach (var d in fact.Dimensions)
+                            scenario.AddTypedMember(d.Key, "eba_ID", d.Value);
+                            //scenario.ExplicitMembers.Add(d.Key, d.Value.Trim());
+
+                        var unitRef = unit.Replace("$baseCurrency", baseCurrencyRef);
+
+                        instance.AddFact(scenario, metric, unitRef, "", fact.Value);
+
                     }
                 }
             }
+            instance.ToFile(Path.ChangeExtension(packagePath, ".xbrl"));
         }
     }
 }

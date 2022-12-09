@@ -189,7 +189,7 @@
 			var result = new List<ReportData>();
 			var records =
 				data.
-				Split(new string[] { Environment.NewLine }, StringSplitOptions.RemoveEmptyEntries).
+				Split(new string[] { Environment.NewLine, "\r", "\n" }, StringSplitOptions.RemoveEmptyEntries).
 				Select(line => line.Split(','));
 
 			var header = records.First();
@@ -217,7 +217,7 @@
 
 		private static Dictionary<string, string> ReadParameters(string data)
 		=> data.
-			Split(new string[] { Environment.NewLine }, StringSplitOptions.RemoveEmptyEntries).
+			Split(new string[] { Environment.NewLine, "\r", "\n" }, StringSplitOptions.RemoveEmptyEntries).
 			Skip(1).
 			Select(line => line.Split(',')).
 			ToDictionary(
