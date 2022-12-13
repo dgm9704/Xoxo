@@ -129,8 +129,6 @@ namespace Diwen.XbrlCsv.Tests
             var rootpath = "/home/john/Downloads/EBA/EBA_CRD_XBRL_3.2_Reporting_Frameworks_3.2.2.0/";
             var entrypoint = Path.Combine(rootpath, report.Entrypoint.Replace(@"http://", ""));
             var modfolder = Path.GetDirectoryName(entrypoint);
-            var taxfoder = Path.GetDirectoryName(modfolder);
-            var tabfolder = Path.Combine(taxfoder, "tab");
 
             JsonModule module;
             using (var stream = new FileStream(entrypoint, FileMode.Open, FileAccess.Read))
@@ -145,73 +143,13 @@ namespace Diwen.XbrlCsv.Tests
                     using (var stream = new FileStream(tabfile, FileMode.Open, FileAccess.Read))
                     {
                         var jsonTable = (JsonTable)JsonSerializer.Deserialize(stream, typeof(JsonTable));
-                        //var tablecode = module.tables.Values.Single(t => Path.GetFileName(moduleTable) == t.url).template;
                         var tablecode = jsonTable.tableTemplates.Single().Key;
                         jsonTables.Add(tablecode, jsonTable);
                     }
             }
 
-            var instance = new Instance();
+            var instance = report.ToXml(jsonTables);
 
-            var baseCurrency = report.Parameters["baseCurrency"];
-            var baseCurrencyRef = $"u{baseCurrency.Split(':').Last()}";
-            instance.Units.Add(baseCurrencyRef, baseCurrency);
-            instance.SetTypedDomainNamespace("eba_typ", "http://www.eba.europa.eu/xbrl/crr/dict/typ");
-
-            var filed = report.FilingIndicators.Where(i => i.Value).Select(i => i.Key.ToLowerInvariant()).ToHashSet();
-
-            var tabledata =
-                report.
-                Data.
-                GroupBy(d => d.Table).
-                Where(t => filed.Contains(t.Key)).
-                ToDictionary(d => d.Key, d => d.ToArray());
-
-
-            foreach (var table in tabledata)
-            {
-                var tablecode = table.Key.ToUpperInvariant().Replace('.', '-');
-                var jsonTable = jsonTables[tablecode];
-
-                foreach (var ns in jsonTable.documentInfo.namespaces)
-                {
-                    if (ns.Key.EndsWith("_dim"))
-                        instance.SetDimensionNamespace(ns.Key, ns.Value);
-                    else if (ns.Key.EndsWith("_met"))
-                        instance.SetMetricNamespace(ns.Key, ns.Value);
-                    else
-                        instance.AddDomainNamespace(ns.Key, ns.Value);
-                }
-
-                var propertyGroups = jsonTable.tableTemplates[tablecode].columns.datapoint.propertyGroups;
-                foreach (var fact in table.Value)
-                {
-                    var scenario = new Scenario();
-                    var dimensions = propertyGroups[fact.Datapoint].dimensions;
-                    string metric = string.Empty;
-                    string unit = string.Empty;
-
-                    foreach (var dimension in dimensions)
-                    {
-                        if (dimension.Key == "concept")
-                            metric = dimension.Value.Split(':').Last();
-                        else if (dimension.Key == "unit")
-                            unit = dimension.Value;
-                        else
-                            scenario.AddExplicitMember(dimension.Key, dimension.Value);
-                    }
-
-                    // DANGER
-                    foreach (var d in fact.Dimensions)
-                        scenario.AddTypedMember(d.Key, "ID", d.Value);
-
-                    var unitRef = unit.Replace("$baseCurrency", baseCurrencyRef);
-
-                    instance.AddFact(scenario, metric, unitRef, "", fact.Value);
-
-                }
-
-            }
             instance.ToFile(Path.ChangeExtension(packagePath, ".xbrl"));
         }
 
