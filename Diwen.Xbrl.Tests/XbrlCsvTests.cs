@@ -125,11 +125,11 @@ namespace Diwen.XbrlCsv.Tests
 
             var packagePath = Path.Combine("csv", "DUMMYLEI123456789012.CON_FR_SBP010201_SBPCR_2022-12-31_20220411141758000.zip");
             var report = Report.Import(packagePath);
-            
+
             var baseCurrency = report.Parameters["baseCurrency"];
             var baseCurrencyRef = $"u{baseCurrency.Split(':').Last()}";
             instance.Units.Add(baseCurrencyRef, baseCurrency);
-			instance.SetTypedDomainNamespace("eba_typ","http://www.eba.europa.eu/xbrl/crr/dict/typ");
+            instance.SetTypedDomainNamespace("eba_typ", "http://www.eba.europa.eu/xbrl/crr/dict/typ");
 
             var filed = report.FilingIndicators.Where(i => i.Value).Select(i => i.Key.ToLowerInvariant()).ToHashSet();
 
@@ -187,12 +187,12 @@ namespace Diwen.XbrlCsv.Tests
                                 metric = prop.Value.GetString().Split(':').Last();
                             else if (prop.Name == "unit")
                                 unit = prop.Value.GetString();
-                            else 
+                            else
                                 scenario.AddExplicitMember(prop.Name, prop.Value.ToString());
                         }
 
-						// DANGER
-                        foreach (var d in fact.Dimensions) 
+                        // DANGER
+                        foreach (var d in fact.Dimensions)
                             scenario.AddTypedMember(d.Key, "ID", d.Value);
 
                         var unitRef = unit.Replace("$baseCurrency", baseCurrencyRef);
@@ -204,15 +204,26 @@ namespace Diwen.XbrlCsv.Tests
             }
             instance.ToFile(Path.ChangeExtension(packagePath, ".xbrl"));
         }
-    
+
         [Fact]
         public static void DeserializeModuleFromJson()
         {
             var path = "/home/john/Downloads/EBA/EBA_CRD_XBRL_3.2_Reporting_Frameworks_3.2.2.0/www.eba.europa.eu/eu/fr/xbrl/crr/fws/sbp/cir-2070-2016/2022-06-01/mod/sbp_cr.json";
-            using (var stream = new FileStream(path,FileMode.Open, FileAccess.Read))
+            using (var stream = new FileStream(path, FileMode.Open, FileAccess.Read))
             {
-                var module = JsonSerializer.Deserialize(stream, typeof(Module));
+                var module = JsonSerializer.Deserialize(stream, typeof(JsonModule));
                 Assert.NotNull(module);
+            }
+        }
+
+        [Fact]
+        public static void DeserializeTableFromJson()
+        {
+            var path = "/home/john/Downloads/EBA/EBA_CRD_XBRL_3.2_Reporting_Frameworks_3.2.2.0/www.eba.europa.eu/eu/fr/xbrl/crr/fws/sbp/cir-2070-2016/2022-06-01/tab/c_101.00/c_101.00.json";
+            using (var stream = new FileStream(path, FileMode.Open, FileAccess.Read))
+            {
+                var table = JsonSerializer.Deserialize(stream, typeof(JsonTable));
+                Assert.NotNull(table);
             }
         }
 

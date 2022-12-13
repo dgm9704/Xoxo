@@ -2,7 +2,7 @@ namespace Diwen.Xbrl.Csv.Taxonomy
 {
     using System.Collections.Generic;
 
-    public class Module
+    public class JsonModule
     {
         public Dictionary<string, string> dimensions { get; set; }
         public DocumentInfo documentInfo { get; set; }
@@ -28,5 +28,51 @@ namespace Diwen.Xbrl.Csv.Taxonomy
         public bool optional { get; set; }
         public string template { get; set; }
         public string url { get; set; }
+    }
+
+    public class INC
+    {
+    }
+
+    public class EbaDocumentation
+    {
+        public string CellCode { get; set; }
+        public string logicalDataPointId { get; set; }
+    }
+
+    public class PropertyGroup
+    {
+        public string decimals { get; set; }
+        public Dictionary<string, string> dimensions { get; set; }
+
+    }
+
+    public class Datapoint
+    {
+        public Dictionary<string, PropertyGroup> propertyGroups { get; set; }
+    }
+
+    public class FactValue
+    {
+        public Dictionary<string, string> dimensions { get; set; }
+        public IList<string> propertiesFrom { get; set; }
+    }
+
+    public class Columns
+    {
+        public INC INC { get; set; }
+        public Datapoint datapoint { get; set; }
+        public FactValue factValue { get; set; }
+    }
+
+    public class TableTemplate
+    {
+        public Columns columns { get; set; }
+    }
+
+    public class JsonTable
+    {
+        public DocumentInfo documentInfo { get; set; }
+        public Dictionary<string, TableTemplate> tableTemplates { get; set; }
     }
 }
