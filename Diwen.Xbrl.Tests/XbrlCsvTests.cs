@@ -1,12 +1,12 @@
 namespace Diwen.XbrlCsv.Tests
 {
     using System;
-    using System.Collections.Generic;
     using System.IO;
     using System.Linq;
     using System.Text.Json;
     using Diwen.Xbrl;
     using Diwen.Xbrl.Csv;
+    using Diwen.Xbrl.Csv.Taxonomy;
     using Xunit;
 
     public class XbrlCsvTests
@@ -119,12 +119,13 @@ namespace Diwen.XbrlCsv.Tests
         }
 
         [Fact]
-        public static void TaxonomyLookup()
+        public static void XbrlCsvToXml()
         {
             var instance = new Instance();
 
             var packagePath = Path.Combine("csv", "DUMMYLEI123456789012.CON_FR_SBP010201_SBPCR_2022-12-31_20220411141758000.zip");
             var report = Report.Import(packagePath);
+            
             var baseCurrency = report.Parameters["baseCurrency"];
             var baseCurrencyRef = $"u{baseCurrency.Split(':').Last()}";
             instance.Units.Add(baseCurrencyRef, baseCurrency);
@@ -203,5 +204,17 @@ namespace Diwen.XbrlCsv.Tests
             }
             instance.ToFile(Path.ChangeExtension(packagePath, ".xbrl"));
         }
+    
+        [Fact]
+        public static void DeserializeModuleFromJson()
+        {
+            var path = "/home/john/Downloads/EBA/EBA_CRD_XBRL_3.2_Reporting_Frameworks_3.2.2.0/www.eba.europa.eu/eu/fr/xbrl/crr/fws/sbp/cir-2070-2016/2022-06-01/mod/sbp_cr.json";
+            using (var stream = new FileStream(path,FileMode.Open, FileAccess.Read))
+            {
+                var module = JsonSerializer.Deserialize(stream, typeof(Module));
+                Assert.NotNull(module);
+            }
+        }
+
     }
 }
