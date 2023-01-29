@@ -154,6 +154,40 @@ namespace Diwen.XbrlCsv.Tests
         }
 
         [Fact]
+        public static void XbrlCsvToXml2()
+        {
+
+            var packagePath = Path.Combine("csv", "DUMMYLEI123456789012.CON_FR_FINREP030100_FINREP9_2022-12-31_20220411141600000.zip");
+            var report = Report.Import(packagePath);
+
+            var rootpath = "/home/john/Downloads/EBA/EBA_CRD_XBRL_3.2_Reporting_Frameworks_3.2.2.0/";
+            var entrypoint = Path.Combine(rootpath, report.Entrypoint.Replace(@"http://", ""));
+            var modfolder = Path.GetDirectoryName(entrypoint);
+
+            JsonModule module;
+            using (var stream = new FileStream(entrypoint, FileMode.Open, FileAccess.Read))
+                module = (JsonModule)JsonSerializer.Deserialize(stream, typeof(JsonModule));
+
+            var jsonTables = new Dictionary<string, JsonTable>();
+
+            foreach (var moduleTable in module.documentInfo.extends)
+            {
+                var tabfile = Path.GetFullPath(Path.Combine(modfolder, moduleTable));
+                if (File.Exists(tabfile))
+                    using (var stream = new FileStream(tabfile, FileMode.Open, FileAccess.Read))
+                    {
+                        var jsonTable = (JsonTable)JsonSerializer.Deserialize(stream, typeof(JsonTable));
+                        var tablecode = jsonTable.tableTemplates.Single().Key;
+                        jsonTables.Add(tablecode, jsonTable);
+                    }
+            }
+
+            var instance = report.ToXml(jsonTables);
+
+            instance.ToFile(Path.ChangeExtension(packagePath, ".xbrl"));
+        }
+
+        [Fact]
         public static void DeserializeModuleFromJson()
         {
             var path = "/home/john/Downloads/EBA/EBA_CRD_XBRL_3.2_Reporting_Frameworks_3.2.2.0/www.eba.europa.eu/eu/fr/xbrl/crr/fws/sbp/cir-2070-2016/2022-06-01/mod/sbp_cr.json";
