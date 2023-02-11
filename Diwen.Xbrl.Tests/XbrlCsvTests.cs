@@ -1,6 +1,5 @@
 namespace Diwen.XbrlCsv.Tests
 {
-    using System;
     using System.Collections.Generic;
     using System.IO;
     using System.Linq;
@@ -136,6 +135,8 @@ namespace Diwen.XbrlCsv.Tests
 
             var jsonTables = new Dictionary<string, JsonTable>();
 
+            var dimensionDomain = ReadDimensionDomainInfo();
+
             foreach (var moduleTable in module.documentInfo.extends)
             {
                 var tabfile = Path.GetFullPath(Path.Combine(modfolder, moduleTable));
@@ -148,7 +149,7 @@ namespace Diwen.XbrlCsv.Tests
                     }
             }
 
-            var instance = report.ToXml(jsonTables);
+            var instance = report.ToXml(jsonTables, dimensionDomain);
 
             instance.ToFile(Path.ChangeExtension(packagePath, ".xbrl"));
         }
@@ -170,6 +171,8 @@ namespace Diwen.XbrlCsv.Tests
 
             var jsonTables = new Dictionary<string, JsonTable>();
 
+            var dimensionDomain = ReadDimensionDomainInfo();
+
             foreach (var moduleTable in module.documentInfo.extends)
             {
                 var tabfile = Path.GetFullPath(Path.Combine(modfolder, moduleTable));
@@ -182,10 +185,15 @@ namespace Diwen.XbrlCsv.Tests
                     }
             }
 
-            var instance = report.ToXml(jsonTables);
+            var instance = report.ToXml(jsonTables, dimensionDomain);
 
             instance.ToFile(Path.ChangeExtension(packagePath, ".xbrl"));
         }
+
+        private static Dictionary<string, string> ReadDimensionDomainInfo()
+        => File.ReadAllLines(Path.Combine("csv", "EBA32_DimensionDomain.csv")).
+            Select(l => l.Split(',')).
+            ToDictionary(x => x[0], x => x[1]);
 
         [Fact]
         public static void DeserializeModuleFromJson()

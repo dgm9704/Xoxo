@@ -247,9 +247,10 @@
             return reportFiles;
         }
 
-        public Instance ToXml(Dictionary<string, JsonTable> jsonTables) => ToXml(this, jsonTables);
+        public Instance ToXml(Dictionary<string, JsonTable> jsonTables, Dictionary<string,string> dimensionDomain) 
+        => ToXml(this, jsonTables, dimensionDomain);
 
-        public static Instance ToXml(Report report, Dictionary<string, JsonTable> jsonTables)
+        public static Instance ToXml(Report report, Dictionary<string, JsonTable> jsonTables, Dictionary<string, string> dimensionDomain)
         {
             var instance = new Instance();
             var baseCurrency = report.Parameters["baseCurrency"];
@@ -300,9 +301,8 @@
                             scenario.AddExplicitMember(dimension.Key, dimension.Value);
                     }
 
-                    // DANGER
                     foreach (var d in fact.Dimensions)
-                        scenario.AddTypedMember(d.Key, "ID", d.Value);
+                        scenario.AddTypedMember(d.Key, dimensionDomain[d.Key], d.Value);
 
                     var unitRef = unit.Replace("$baseCurrency", baseCurrencyRef);
 
