@@ -118,60 +118,37 @@ namespace Diwen.XbrlCsv.Tests
             Assert.True(report.FilingIndicators["S_00.01"]);
         }
 
-        [Fact]
-        public static void XbrlCsvToXml()
+        [Theory]
+        [InlineData("DUMMYLEI123456789012.CON_FR_SBP010201_SBPIFRS9_2022-12-31_20220411141759000.zip")]
+        [InlineData("DUMMYLEI123456789012.CON_FR_FINREP030100_FINREP9_2022-12-31_20220411141600000.zip")]
+        public static void XbrlCsvToXml(string packageName)
         {
-            var packagePath = Path.Combine("csv", "DUMMYLEI123456789012.CON_FR_SBP010201_SBPIFRS9_2022-12-31_20220411141759000.zip");
+            var packagePath = Path.Combine("csv", packageName);
 
             var report = Report.Import(packagePath);
 
-            var rootpath = "";
-            var entrypoint = Path.Combine(rootpath, report.Entrypoint.Replace(@"http://", ""));
-            var modfolder = Path.GetDirectoryName(entrypoint);
+            var entrypoint = report.Entrypoint.Replace(@"http://", "");
 
-            JsonModule module;
-            using (var stream = new FileStream(entrypoint, FileMode.Open, FileAccess.Read))
-                module = (JsonModule)JsonSerializer.Deserialize(stream, typeof(JsonModule));
-
-            var jsonTables = new Dictionary<string, JsonTable>();
+            var jsonTables = ReadTaxonomyInfo(entrypoint);
 
             var dimensionDomain = ReadDimensionDomainInfo();
 
-            foreach (var moduleTable in module.documentInfo.extends)
-            {
-                var tabfile = Path.GetFullPath(Path.Combine(modfolder, moduleTable));
-                if (File.Exists(tabfile))
-                    using (var stream = new FileStream(tabfile, FileMode.Open, FileAccess.Read))
-                    {
-                        var jsonTable = (JsonTable)JsonSerializer.Deserialize(stream, typeof(JsonTable));
-                        var tablecode = jsonTable.tableTemplates.Single().Key;
-                        jsonTables.Add(tablecode, jsonTable);
-                    }
-            }
+            var typedDomainNamespace = KeyValuePair.Create("eba_typ", "http://www.eba.europa.eu/xbrl/crr/dict/typ");
 
-            var instance = report.ToXml(jsonTables, dimensionDomain);
+            var instance = report.ToXml(jsonTables, dimensionDomain, typedDomainNamespace);
 
             instance.ToFile(Path.ChangeExtension(packagePath, ".xbrl"));
         }
 
-        [Fact]
-        public static void XbrlCsvToXml2()
+        private static Dictionary<string, TableDefinition> ReadTaxonomyInfo(string entrypoint)
         {
-
-            var packagePath = Path.Combine("csv", "DUMMYLEI123456789012.CON_FR_FINREP030100_FINREP9_2022-12-31_20220411141600000.zip");
-            var report = Report.Import(packagePath);
-
-            var rootpath = "";
-            var entrypoint = Path.Combine(rootpath, report.Entrypoint.Replace(@"http://", ""));
             var modfolder = Path.GetDirectoryName(entrypoint);
 
-            JsonModule module;
+            ModuleDefinition module;
             using (var stream = new FileStream(entrypoint, FileMode.Open, FileAccess.Read))
-                module = (JsonModule)JsonSerializer.Deserialize(stream, typeof(JsonModule));
+                module = (ModuleDefinition)JsonSerializer.Deserialize(stream, typeof(ModuleDefinition));
 
-            var jsonTables = new Dictionary<string, JsonTable>();
-
-            var dimensionDomain = ReadDimensionDomainInfo();
+            var jsonTables = new Dictionary<string, TableDefinition>();
 
             foreach (var moduleTable in module.documentInfo.extends)
             {
@@ -179,15 +156,13 @@ namespace Diwen.XbrlCsv.Tests
                 if (File.Exists(tabfile))
                     using (var stream = new FileStream(tabfile, FileMode.Open, FileAccess.Read))
                     {
-                        var jsonTable = (JsonTable)JsonSerializer.Deserialize(stream, typeof(JsonTable));
+                        var jsonTable = (TableDefinition)JsonSerializer.Deserialize(stream, typeof(TableDefinition));
                         var tablecode = jsonTable.tableTemplates.Single().Key;
                         jsonTables.Add(tablecode, jsonTable);
                     }
             }
 
-            var instance = report.ToXml(jsonTables, dimensionDomain);
-
-            instance.ToFile(Path.ChangeExtension(packagePath, ".xbrl"));
+            return jsonTables;
         }
 
         private static Dictionary<string, string> ReadDimensionDomainInfo()
@@ -201,7 +176,7 @@ namespace Diwen.XbrlCsv.Tests
             var path = "www.eba.europa.eu/eu/fr/xbrl/crr/fws/sbp/cir-2070-2016/2022-06-01/mod/sbp_cr.json";
             using (var stream = new FileStream(path, FileMode.Open, FileAccess.Read))
             {
-                var module = JsonSerializer.Deserialize(stream, typeof(JsonModule));
+                var module = JsonSerializer.Deserialize(stream, typeof(ModuleDefinition));
                 Assert.NotNull(module);
             }
         }
@@ -212,7 +187,7 @@ namespace Diwen.XbrlCsv.Tests
             var path = "www.eba.europa.eu/eu/fr/xbrl/crr/fws/sbp/cir-2070-2016/2022-06-01/tab/c_101.00/c_101.00.json";
             using (var stream = new FileStream(path, FileMode.Open, FileAccess.Read))
             {
-                var table = JsonSerializer.Deserialize(stream, typeof(JsonTable));
+                var table = JsonSerializer.Deserialize(stream, typeof(TableDefinition));
                 Assert.NotNull(table);
             }
         }

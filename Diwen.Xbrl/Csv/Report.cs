@@ -247,16 +247,16 @@
             return reportFiles;
         }
 
-        public Instance ToXml(Dictionary<string, JsonTable> jsonTables, Dictionary<string, string> dimensionDomain)
-        => ToXml(this, jsonTables, dimensionDomain);
+        public Instance ToXml(Dictionary<string, TableDefinition> jsonTables, Dictionary<string, string> dimensionDomain, KeyValuePair<string, string> typedDomainNamespace)
+        => ToXml(this, jsonTables, dimensionDomain, typedDomainNamespace);
 
-        public static Instance ToXml(Report report, Dictionary<string, JsonTable> jsonTables, Dictionary<string, string> dimensionDomain)
+        public static Instance ToXml(Report report, Dictionary<string, TableDefinition> jsonTables, Dictionary<string, string> dimensionDomain, KeyValuePair<string, string> typedDomainNamespace)
         {
             var instance = new Instance();
             var baseCurrency = report.Parameters["baseCurrency"];
             var baseCurrencyRef = $"u{baseCurrency.Split(':').Last()}";
             instance.Units.Add(baseCurrencyRef, baseCurrency);
-            instance.SetTypedDomainNamespace("eba_typ", "http://www.eba.europa.eu/xbrl/crr/dict/typ");
+            instance.SetTypedDomainNamespace(typedDomainNamespace.Key, typedDomainNamespace.Value);
 
             var filed = report.FilingIndicators.Where(i => i.Value).Select(i => i.Key.ToLowerInvariant()).ToHashSet();
 

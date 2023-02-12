@@ -2,7 +2,7 @@ namespace Diwen.Xbrl.Csv.Taxonomy
 {
     using System.Collections.Generic;
 
-    public class JsonModule
+    public class ModuleDefinition
     {
         public Dictionary<string, string> dimensions { get; set; }
         public DocumentInfo documentInfo { get; set; }
