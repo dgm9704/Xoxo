@@ -351,11 +351,12 @@
             foreach (var fact in xmlReport.Facts)
             {
                 var value = fact.Value;
+                var dimensions = fact.Context.Scenario.TypedMembers.ToDictionary(m=>m.Dimension.LocalName(), m=>m.Value);
                 var scenario = fact.Context.Scenario;
                 var datapoints = GetTableDatapoints(fact, reportedTables, dimNsPrefix);
                 foreach (var table in datapoints)
                     foreach (var datapoint in table.Value)
-                        report.AddData(table.Key.Replace('-', '.'), datapoint, fact.Value);
+                        report.AddData(table.Key.Replace('-', '.'), datapoint, fact.Value, dimensions);
 
             }
 

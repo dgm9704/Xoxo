@@ -142,6 +142,7 @@ namespace Diwen.XbrlCsv.Tests
 
         [Theory]
         [InlineData("DUMMYLEI123456789012.CON_FR_SBP010201_SBPIFRS9_2022-12-31_20220411141759000.xbrl")]
+        //[InlineData("DUMMYLEI123456789012.CON_FR_FINREP030100_FINREP9_2022-12-31_20220411141600000.xbrl")]
         public static void XmlToCsv(string reportName)
         {
             var reportPath = Path.Combine("csv", reportName);
