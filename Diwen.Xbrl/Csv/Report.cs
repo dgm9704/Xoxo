@@ -315,7 +315,7 @@
 
         }
 
-        public static Report FromXml(Instance xmlReport)
+        public static Report FromXml(Instance xmlReport, Dictionary<string, TableDefinition> tableDefinitions)
         {
             var report = new Report();
 
@@ -323,14 +323,31 @@
 
             report.Parameters.Add("entityID", xmlReport.Entity.Identifier.Value);
             report.Parameters.Add("refPeriod", xmlReport.Period.Instant.ToString("yyyy-MM-dd"));
-            report.Parameters.Add("baseCurrency", xmlReport.Units.First(u=>u.Measure.Namespace == "http://www.xbrl.org/2003/iso4217").Measure.LocalName());
+            report.Parameters.Add("baseCurrency", xmlReport.Units.First(u => u.Measure.Namespace == "http://www.xbrl.org/2003/iso4217").Measure.LocalName());
             report.Parameters.Add("decimalsInteger", "0");
             report.Parameters.Add("decimalsMonetary", "-3");
             report.Parameters.Add("decimalsPercentage", "4");
             report.Parameters.Add("decimalsDecimal", "2");
 
-            foreach(var fi in xmlReport.FilingIndicators)
+            foreach (var fi in xmlReport.FilingIndicators)
                 report.FilingIndicators.Add(fi.Value, fi.Filed);
+
+            var dimNsPrefix = xmlReport.Namespaces.LookupPrefix(
+                xmlReport.Contexts.First(c => c.Scenario != null && c.Scenario.ExplicitMembers.Any()).
+                Scenario.ExplicitMembers.First().Dimension.Namespace);
+
+            var reportedTables =
+                tableDefinitions.
+                Where(td => report.FilingIndicators[td.Key.Replace('-', '.')]).
+                ToDictionary(t => t.Key, t => t.Value);
+
+            foreach (var fact in xmlReport.Facts)
+            {
+                var value = fact.Value;
+                var scenario = fact.Context.Scenario;
+                var datapoint = GetDatapoint(fact, reportedTables, dimNsPrefix);
+            }
+
 
             //datapoint,factValue
             report.AddData("S_00.01", "dp31870", "eba_AS:x1");
@@ -366,6 +383,51 @@
             report.AddData("C_113.00", "dp439753", "eba_ZZ:x409", ("FTY", "ynqtbutq"), ("INC", "ynqtbutq"));
 
             return report;
+        }
+
+        // "tableTemplates": {
+        //         "S_00-01": {
+        //             "columns": {
+        //                 "datapoint": {
+        //                     "propertyGroups": {
+        //                         "dp31870": {
+        //                             "dimensions": {
+        //                                 "concept": "eba_met:ei4",
+        //                                 "eba_dim:BAS": "eba_BA:x17"
+        //                             },
+        //                             "eba:documentation": {
+        //                                 "CellCode": "{S 00.01, r0010, c0010}",
+        //                                 "DataPointVersionId": "31870"
+        //                             }
+        //                         },
+
+        private static string GetDatapoint(Fact fact, Dictionary<string, TableDefinition> tabledefinitions, string dimNsPrefix)
+        {
+            var metric = fact.Metric.Name;
+
+            foreach (var td in tabledefinitions)
+            {
+                // filter by metric
+                var candidateDatapoints =
+                td.Value.tableTemplates.First().Value.
+                    columns.
+                        datapoint.
+                            propertyGroups.
+                                Where(pg => pg.Value.dimensions["concept"] == metric).
+                                ToArray();
+
+                // filter by matching explicit members
+                candidateDatapoints =
+                candidateDatapoints.
+                    Where(pg => fact.Context.Scenario.ExplicitMembers.
+                    All(m => pg.Value.dimensions.GetValueOrDefault($"{dimNsPrefix}:{m.Dimension.Name}", string.Empty) == m.MemberCode))
+                    .ToArray();
+
+                if(candidateDatapoints.Any())
+                    return candidateDatapoints.First().Key;
+            }
+
+            return string.Empty;
         }
     }
 }

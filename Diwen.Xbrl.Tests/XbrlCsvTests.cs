@@ -148,7 +148,9 @@ namespace Diwen.XbrlCsv.Tests
 
             var xmlReport = Instance.FromFile(reportPath);
 
-            var csvReport = Report.FromXml(xmlReport);
+            var tableDefinitions = ReadTaxonomyInfo(Path.ChangeExtension(xmlReport.SchemaReference.Value.Replace("http://", ""), "json"));
+
+            var csvReport = Report.FromXml(xmlReport, tableDefinitions);
 
             csvReport.Export(Path.ChangeExtension(reportName, ".zip"));
         }
