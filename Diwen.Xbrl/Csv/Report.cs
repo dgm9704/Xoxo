@@ -5,6 +5,7 @@
     using System.IO;
     using System.IO.Compression;
     using System.Linq;
+    using System.Reflection;
     using System.Text;
     using System.Text.RegularExpressions;
     using Diwen.Xbrl.Csv.Taxonomy;
@@ -92,9 +93,15 @@
 
         private Stream CreateReportInfo()
         {
+            AssemblyName assembly = Assembly.GetExecutingAssembly().GetName();
+            Version version = assembly.Version;
+            string id = assembly.Name;
+            var compileTime = new DateTime(Builtin.CompileTime, DateTimeKind.Utc);
+
             var stream = new MemoryStream();
             var writer = new StreamWriter(stream);
-            writer.Write($"{{\"documentInfo\":{{\"documentType\":\"{DocumentType}}}\",\"extends\":[\"{Entrypoint}\"]}}}}");
+            writer.WriteLine($"{{\"documentInfo\":{{\"documentType\":\"{DocumentType}\",\"extends\":[\"{Entrypoint}\"]}},");
+            writer.WriteLine($"\"eba:generatingSoftwareInformation\": {{\"eba:softwareId\": \"{id}\",\"eba:softwareVersion\": \"{version}\",\"eba:softwareCreationDate\": \"{compileTime.Date:yyyy-MM-dd}\",\"eba:softwareAdditionalInfo\": \"https://github.com/dgm9704/Xoxo\"}}}}");
             writer.Flush();
             stream.Position = 0;
             return stream;
@@ -346,10 +353,10 @@
                 var value = fact.Value;
                 var scenario = fact.Context.Scenario;
                 var datapoints = GetTableDatapoints(fact, reportedTables, dimNsPrefix);
-                foreach(var table in datapoints)
-                 foreach(var datapoint in table.Value)
-                    report.AddData(table.Key.Replace('-','.'), datapoint, fact.Value);
-                    
+                foreach (var table in datapoints)
+                    foreach (var datapoint in table.Value)
+                        report.AddData(table.Key.Replace('-', '.'), datapoint, fact.Value);
+
             }
 
 
@@ -429,7 +436,7 @@
                     .ToArray();
 
                 if (candidateDatapoints.Any())
-                   result[td.Key] = candidateDatapoints.Select(dp=> dp.Key).ToArray();
+                    result[td.Key] = candidateDatapoints.Select(dp => dp.Key).ToArray();
             }
 
             return result;
