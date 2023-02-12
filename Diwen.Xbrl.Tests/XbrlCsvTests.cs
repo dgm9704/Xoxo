@@ -125,7 +125,7 @@ namespace Diwen.XbrlCsv.Tests
             var packagePath = Path.Combine("csv", "DUMMYLEI123456789012.CON_FR_SBP010201_SBPCR_2022-12-31_20220411141758000.zip");
             var report = Report.Import(packagePath);
 
-            var rootpath = "/home/john/Downloads/EBA/EBA_CRD_XBRL_3.2_Reporting_Frameworks_3.2.2.0/";
+            var rootpath = "";
             var entrypoint = Path.Combine(rootpath, report.Entrypoint.Replace(@"http://", ""));
             var modfolder = Path.GetDirectoryName(entrypoint);
 
@@ -161,7 +161,6 @@ namespace Diwen.XbrlCsv.Tests
             var packagePath = Path.Combine("csv", "DUMMYLEI123456789012.CON_FR_FINREP030100_FINREP9_2022-12-31_20220411141600000.zip");
             var report = Report.Import(packagePath);
 
-            //var rootpath = "/home/john/Downloads/EBA/EBA_CRD_XBRL_3.2_Reporting_Frameworks_3.2.2.0/";
             var rootpath = "";
             var entrypoint = Path.Combine(rootpath, report.Entrypoint.Replace(@"http://", ""));
             var modfolder = Path.GetDirectoryName(entrypoint);
