@@ -174,8 +174,8 @@
             report.Parameters = ReadParameters(reportFiles.Single(f => f.Key.EndsWith("reports/parameters.csv")).Value);
             report.FilingIndicators = ReadFilingIndicators(reportFiles.Single(f => f.Key.EndsWith("reports/FilingIndicators.csv")).Value);
             foreach (var template in report.FilingIndicators.Where(fi => fi.Value).Select(fi => fi.Key))
-                foreach (var tablefile in reportFiles.Keys.Where(f => Path.GetFileNameWithoutExtension(f).StartsWith(template)))
-                    report.Data.AddRange(ReadTableData(Path.GetFileNameWithoutExtension(tablefile), tablefile));
+                foreach (var tablefile in reportFiles.Where(f => Path.GetFileNameWithoutExtension(f.Key).StartsWith(template, StringComparison.OrdinalIgnoreCase)))
+                    report.Data.AddRange(ReadTableData(Path.GetFileNameWithoutExtension(tablefile.Key), tablefile.Value));
 
             return report;
         }
@@ -247,7 +247,7 @@
             return reportFiles;
         }
 
-        public Instance ToXml(Dictionary<string, JsonTable> jsonTables, Dictionary<string,string> dimensionDomain) 
+        public Instance ToXml(Dictionary<string, JsonTable> jsonTables, Dictionary<string, string> dimensionDomain)
         => ToXml(this, jsonTables, dimensionDomain);
 
         public static Instance ToXml(Report report, Dictionary<string, JsonTable> jsonTables, Dictionary<string, string> dimensionDomain)
