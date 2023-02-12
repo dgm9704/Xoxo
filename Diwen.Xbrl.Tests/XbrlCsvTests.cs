@@ -161,7 +161,8 @@ namespace Diwen.XbrlCsv.Tests
             var packagePath = Path.Combine("csv", "DUMMYLEI123456789012.CON_FR_FINREP030100_FINREP9_2022-12-31_20220411141600000.zip");
             var report = Report.Import(packagePath);
 
-            var rootpath = "/home/john/Downloads/EBA/EBA_CRD_XBRL_3.2_Reporting_Frameworks_3.2.2.0/";
+            //var rootpath = "/home/john/Downloads/EBA/EBA_CRD_XBRL_3.2_Reporting_Frameworks_3.2.2.0/";
+            var rootpath = "";
             var entrypoint = Path.Combine(rootpath, report.Entrypoint.Replace(@"http://", ""));
             var modfolder = Path.GetDirectoryName(entrypoint);
 
@@ -198,7 +199,7 @@ namespace Diwen.XbrlCsv.Tests
         [Fact]
         public static void DeserializeModuleFromJson()
         {
-            var path = "/home/john/Downloads/EBA/EBA_CRD_XBRL_3.2_Reporting_Frameworks_3.2.2.0/www.eba.europa.eu/eu/fr/xbrl/crr/fws/sbp/cir-2070-2016/2022-06-01/mod/sbp_cr.json";
+            var path = "www.eba.europa.eu/eu/fr/xbrl/crr/fws/sbp/cir-2070-2016/2022-06-01/mod/sbp_cr.json";
             using (var stream = new FileStream(path, FileMode.Open, FileAccess.Read))
             {
                 var module = JsonSerializer.Deserialize(stream, typeof(JsonModule));
@@ -209,7 +210,7 @@ namespace Diwen.XbrlCsv.Tests
         [Fact]
         public static void DeserializeTableFromJson()
         {
-            var path = "/home/john/Downloads/EBA/EBA_CRD_XBRL_3.2_Reporting_Frameworks_3.2.2.0/www.eba.europa.eu/eu/fr/xbrl/crr/fws/sbp/cir-2070-2016/2022-06-01/tab/c_101.00/c_101.00.json";
+            var path = "www.eba.europa.eu/eu/fr/xbrl/crr/fws/sbp/cir-2070-2016/2022-06-01/tab/c_101.00/c_101.00.json";
             using (var stream = new FileStream(path, FileMode.Open, FileAccess.Read))
             {
                 var table = JsonSerializer.Deserialize(stream, typeof(JsonTable));

@@ -1,0 +1,177 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<?taxonomy-version 3.1.0.0 ?>  <?taxonomy-set-overall-version 3.2.1.0 ?>
+<!--(C) EBA-->
+<link:linkbase xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:link="http://www.xbrl.org/2003/linkbase" xmlns:gen="http://xbrl.org/2008/generic" xmlns:label="http://xbrl.org/2008/label" xmlns:formula="http://xbrl.org/2008/formula" xmlns:df="http://xbrl.org/2008/filter/dimension" xmlns:table="http://xbrl.org/2014/table" xmlns:model="http://www.eurofiling.info/xbrl/ext/model" xmlns:eba_met="http://www.eba.europa.eu/xbrl/crr/dict/met" xmlns:eba_dim="http://www.eba.europa.eu/xbrl/crr/dict/dim" xmlns:eba_IM="http://www.eba.europa.eu/xbrl/crr/dict/dom/IM" xmlns:eba_BA="http://www.eba.europa.eu/xbrl/crr/dict/dom/BA" xmlns:eba_MC="http://www.eba.europa.eu/xbrl/crr/dict/dom/MC" xmlns:eba_PL="http://www.eba.europa.eu/xbrl/crr/dict/dom/PL" xmlns:eba_CT="http://www.eba.europa.eu/xbrl/crr/dict/dom/CT" xmlns:eba_CG="http://www.eba.europa.eu/xbrl/crr/dict/dom/CG" xsi:schemaLocation="http://www.xbrl.org/2003/linkbase http://www.xbrl.org/2003/xbrl-linkbase-2003-12-31.xsd http://xbrl.org/2008/generic http://www.xbrl.org/2008/generic-link.xsd http://xbrl.org/2008/label http://www.xbrl.org/2008/generic-label.xsd http://xbrl.org/2008/formula http://www.xbrl.org/2008/formula.xsd http://xbrl.org/2008/filter/dimension http://www.xbrl.org/2008/dimension-filter.xsd http://xbrl.org/2014/table http://www.xbrl.org/2014/table.xsd http://www.eurofiling.info/xbrl/ext/model http://www.eurofiling.info/eu/fr/xbrl/ext/model.xsd">
+  <link:arcroleRef arcroleURI="http://xbrl.org/arcrole/2014/breakdown-tree" xlink:type="simple" xlink:href="http://www.xbrl.org/2014/table.xsd#breakdown-tree" />
+  <link:arcroleRef arcroleURI="http://xbrl.org/arcrole/2014/definition-node-subtree" xlink:type="simple" xlink:href="http://www.xbrl.org/2014/table.xsd#definition-node-subtree" />
+  <link:arcroleRef arcroleURI="http://xbrl.org/arcrole/2014/table-breakdown" xlink:type="simple" xlink:href="http://www.xbrl.org/2014/table.xsd#table-breakdown" />
+  <link:roleRef roleURI="http://www.eba.europa.eu/xbrl/crr/role/fws/FINREP/its-005-2020/2022-06-01/tab/F_18.02.c" xlink:type="simple" xlink:href="f_18.02.c.xsd#role" />
+  <gen:link xlink:type="extended" xlink:role="http://www.eba.europa.eu/xbrl/crr/role/fws/FINREP/its-005-2020/2022-06-01/tab/F_18.02.c">
+    <table:table xlink:type="resource" xlink:label="eba_tF_18.02.c" id="eba_tF_18.02.c" />
+    <table:breakdown xlink:type="resource" xlink:label="eba_a1" parentChildOrder="parent-first" id="eba_a1" />
+    <table:ruleNode xlink:type="resource" xlink:label="eba_a1.root" abstract="true" merge="true" id="eba_a1.root" />
+    <table:breakdownTreeArc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2014/breakdown-tree" xlink:from="eba_a1" xlink:to="eba_a1.root" order="0" />
+    <table:ruleNode xlink:type="resource" xlink:label="eba_c66431" abstract="true" id="eba_c66431" />
+    <table:ruleNode xlink:type="resource" xlink:label="eba_c66432" abstract="true" id="eba_c66432" />
+    <table:ruleNode xlink:type="resource" xlink:label="eba_c66392" id="eba_c66392">
+      <formula:concept>
+        <formula:qname>eba_met:mi340</formula:qname>
+      </formula:concept>
+      <formula:explicitDimension dimension="eba_dim:PFS">
+        <formula:member>
+          <formula:qname>eba_IM:x17</formula:qname>
+        </formula:member>
+      </formula:explicitDimension>
+    </table:ruleNode>
+    <table:definitionNodeSubtreeArc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2014/definition-node-subtree" xlink:from="eba_c66432" xlink:to="eba_c66392" order="1" />
+    <table:ruleNode xlink:type="resource" xlink:label="eba_c66393" id="eba_c66393">
+      <formula:concept>
+        <formula:qname>eba_met:mi340</formula:qname>
+      </formula:concept>
+      <formula:explicitDimension dimension="eba_dim:PFS">
+        <formula:member>
+          <formula:qname>eba_IM:x16</formula:qname>
+        </formula:member>
+      </formula:explicitDimension>
+    </table:ruleNode>
+    <table:definitionNodeSubtreeArc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2014/definition-node-subtree" xlink:from="eba_c66432" xlink:to="eba_c66393" order="2" />
+    <table:definitionNodeSubtreeArc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2014/definition-node-subtree" xlink:from="eba_c66431" xlink:to="eba_c66432" order="1" />
+    <table:definitionNodeSubtreeArc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2014/definition-node-subtree" xlink:from="eba_a1.root" xlink:to="eba_c66431" order="1" />
+    <table:tableBreakdownArc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2014/table-breakdown" xlink:from="eba_tF_18.02.c" xlink:to="eba_a1" axis="x" order="1" />
+    <table:breakdown xlink:type="resource" xlink:label="eba_a2" parentChildOrder="parent-first" id="eba_a2" />
+    <table:ruleNode xlink:type="resource" xlink:label="eba_a2.root" abstract="true" merge="true" id="eba_a2.root">
+      <formula:explicitDimension dimension="eba_dim:BAS">
+        <formula:member>
+          <formula:qname>eba_BA:x6</formula:qname>
+        </formula:member>
+      </formula:explicitDimension>
+      <formula:explicitDimension dimension="eba_dim:MCY">
+        <formula:member>
+          <formula:qname>eba_MC:x469</formula:qname>
+        </formula:member>
+      </formula:explicitDimension>
+      <formula:explicitDimension dimension="eba_dim:APL">
+        <formula:member>
+          <formula:qname>eba_PL:x104</formula:qname>
+        </formula:member>
+      </formula:explicitDimension>
+    </table:ruleNode>
+    <table:breakdownTreeArc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2014/breakdown-tree" xlink:from="eba_a2" xlink:to="eba_a2.root" order="0" />
+    <table:ruleNode xlink:type="resource" xlink:label="eba_c66419" abstract="true" id="eba_c66419">
+      <formula:explicitDimension dimension="eba_dim:CPS">
+        <formula:member>
+          <formula:qname>eba_CT:x20</formula:qname>
+        </formula:member>
+      </formula:explicitDimension>
+    </table:ruleNode>
+    <table:ruleNode xlink:type="resource" xlink:label="eba_c66420" id="eba_c66420">
+      <formula:explicitDimension dimension="eba_dim:MCG">
+        <formula:member>
+          <formula:qname>eba_MC:x155</formula:qname>
+        </formula:member>
+      </formula:explicitDimension>
+      <formula:explicitDimension dimension="eba_dim:CPZ">
+        <formula:member>
+          <formula:qname>eba_CT:x23</formula:qname>
+        </formula:member>
+      </formula:explicitDimension>
+      <formula:explicitDimension dimension="eba_dim:MCB">
+        <formula:member>
+          <formula:qname>eba_MC:x727</formula:qname>
+        </formula:member>
+      </formula:explicitDimension>
+    </table:ruleNode>
+    <table:definitionNodeSubtreeArc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2014/definition-node-subtree" xlink:from="eba_c66419" xlink:to="eba_c66420" order="1" />
+    <table:ruleNode xlink:type="resource" xlink:label="eba_c66421" id="eba_c66421">
+      <formula:explicitDimension dimension="eba_dim:MCG">
+        <formula:member>
+          <formula:qname>eba_MC:x155</formula:qname>
+        </formula:member>
+      </formula:explicitDimension>
+      <formula:explicitDimension dimension="eba_dim:CPZ">
+        <formula:member>
+          <formula:qname>eba_CT:x11</formula:qname>
+        </formula:member>
+      </formula:explicitDimension>
+      <formula:explicitDimension dimension="eba_dim:MCB">
+        <formula:member>
+          <formula:qname>eba_MC:x727</formula:qname>
+        </formula:member>
+      </formula:explicitDimension>
+    </table:ruleNode>
+    <table:definitionNodeSubtreeArc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2014/definition-node-subtree" xlink:from="eba_c66419" xlink:to="eba_c66421" order="2" />
+    <table:ruleNode xlink:type="resource" xlink:label="eba_c66422" id="eba_c66422">
+      <formula:explicitDimension dimension="eba_dim:MCG">
+        <formula:member>
+          <formula:qname>eba_MC:x484</formula:qname>
+        </formula:member>
+      </formula:explicitDimension>
+    </table:ruleNode>
+    <table:ruleNode xlink:type="resource" xlink:label="eba_c66423" id="eba_c66423">
+      <formula:explicitDimension dimension="eba_dim:CTL">
+        <formula:member>
+          <formula:qname>eba_CG:x27</formula:qname>
+        </formula:member>
+      </formula:explicitDimension>
+    </table:ruleNode>
+    <table:definitionNodeSubtreeArc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2014/definition-node-subtree" xlink:from="eba_c66422" xlink:to="eba_c66423" order="1" />
+    <table:ruleNode xlink:type="resource" xlink:label="eba_c66424" id="eba_c66424">
+      <formula:explicitDimension dimension="eba_dim:CTL">
+        <formula:member>
+          <formula:qname>eba_CG:x25</formula:qname>
+        </formula:member>
+      </formula:explicitDimension>
+    </table:ruleNode>
+    <table:definitionNodeSubtreeArc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2014/definition-node-subtree" xlink:from="eba_c66422" xlink:to="eba_c66424" order="2" />
+    <table:ruleNode xlink:type="resource" xlink:label="eba_c66425" id="eba_c66425">
+      <formula:explicitDimension dimension="eba_dim:CTL">
+        <formula:member>
+          <formula:qname>eba_CG:x26</formula:qname>
+        </formula:member>
+      </formula:explicitDimension>
+    </table:ruleNode>
+    <table:definitionNodeSubtreeArc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2014/definition-node-subtree" xlink:from="eba_c66422" xlink:to="eba_c66425" order="3" />
+    <table:definitionNodeSubtreeArc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2014/definition-node-subtree" xlink:from="eba_c66419" xlink:to="eba_c66422" order="3" />
+    <table:definitionNodeSubtreeArc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2014/definition-node-subtree" xlink:from="eba_a2.root" xlink:to="eba_c66419" order="1" />
+    <table:ruleNode xlink:type="resource" xlink:label="eba_c66426" abstract="true" id="eba_c66426">
+      <formula:explicitDimension dimension="eba_dim:CPS">
+        <formula:member>
+          <formula:qname>eba_CT:x5</formula:qname>
+        </formula:member>
+      </formula:explicitDimension>
+      <formula:explicitDimension dimension="eba_dim:MCG">
+        <formula:member>
+          <formula:qname>eba_MC:x485</formula:qname>
+        </formula:member>
+      </formula:explicitDimension>
+    </table:ruleNode>
+    <table:ruleNode xlink:type="resource" xlink:label="eba_c66427" id="eba_c66427" />
+    <table:ruleNode xlink:type="resource" xlink:label="eba_c66428" id="eba_c66428">
+      <formula:explicitDimension dimension="eba_dim:CTL">
+        <formula:member>
+          <formula:qname>eba_CG:x27</formula:qname>
+        </formula:member>
+      </formula:explicitDimension>
+    </table:ruleNode>
+    <table:definitionNodeSubtreeArc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2014/definition-node-subtree" xlink:from="eba_c66427" xlink:to="eba_c66428" order="1" />
+    <table:ruleNode xlink:type="resource" xlink:label="eba_c66429" id="eba_c66429">
+      <formula:explicitDimension dimension="eba_dim:CTL">
+        <formula:member>
+          <formula:qname>eba_CG:x25</formula:qname>
+        </formula:member>
+      </formula:explicitDimension>
+    </table:ruleNode>
+    <table:definitionNodeSubtreeArc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2014/definition-node-subtree" xlink:from="eba_c66427" xlink:to="eba_c66429" order="2" />
+    <table:ruleNode xlink:type="resource" xlink:label="eba_c66430" id="eba_c66430">
+      <formula:explicitDimension dimension="eba_dim:CTL">
+        <formula:member>
+          <formula:qname>eba_CG:x26</formula:qname>
+        </formula:member>
+      </formula:explicitDimension>
+    </table:ruleNode>
+    <table:definitionNodeSubtreeArc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2014/definition-node-subtree" xlink:from="eba_c66427" xlink:to="eba_c66430" order="3" />
+    <table:definitionNodeSubtreeArc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2014/definition-node-subtree" xlink:from="eba_c66426" xlink:to="eba_c66427" order="1" />
+    <table:definitionNodeSubtreeArc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2014/definition-node-subtree" xlink:from="eba_a2.root" xlink:to="eba_c66426" order="2" />
+    <table:tableBreakdownArc xlink:type="arc" xlink:arcrole="http://xbrl.org/arcrole/2014/table-breakdown" xlink:from="eba_tF_18.02.c" xlink:to="eba_a2" axis="y" order="2" />
+  </gen:link>
+</link:linkbase>

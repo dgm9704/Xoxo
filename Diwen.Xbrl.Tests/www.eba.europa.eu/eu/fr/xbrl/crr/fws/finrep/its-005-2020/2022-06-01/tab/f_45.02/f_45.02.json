@@ -1,0 +1,104 @@
+{
+    "documentInfo": {
+        "documentType": "https://xbrl.org/CR/2021-02-03/xbrl-csv",
+        "namespaces": {
+            "eba": "http://www.eba.europa.eu",
+            "eba_BA": "http://www.eba.europa.eu/xbrl/crr/dict/dom/BA",
+            "eba_MC": "http://www.eba.europa.eu/xbrl/crr/dict/dom/MC",
+            "eba_PL": "http://www.eba.europa.eu/xbrl/crr/dict/dom/PL",
+            "eba_dim": "http://www.eba.europa.eu/xbrl/crr/dict/dim",
+            "eba_met": "http://www.eba.europa.eu/xbrl/crr/dict/met"
+        }
+    },
+    "tableTemplates": {
+        "F_45-02": {
+            "columns": {
+                "datapoint": {
+                    "propertyGroups": {
+                        "dp112738": {
+                            "decimals": "$decimalsMonetary",
+                            "dimensions": {
+                                "concept": "eba_met:md103",
+                                "eba_dim:APL": "eba_PL:x37",
+                                "eba_dim:BAS": "eba_BA:x1",
+                                "eba_dim:MCE": "eba_MC:x329",
+                                "eba_dim:MCY": "eba_MC:x180",
+                                "unit": "$baseCurrency"
+                            },
+                            "eba:documentation": {
+                                "CellCode": "{F 45.02, r0020, c0010}",
+                                "logicalDataPointId": "11781"
+                            }
+                        },
+                        "dp113217": {
+                            "decimals": "$decimalsMonetary",
+                            "dimensions": {
+                                "concept": "eba_met:md103",
+                                "eba_dim:APL": "eba_PL:x79",
+                                "eba_dim:BAS": "eba_BA:x1",
+                                "eba_dim:MCE": "eba_MC:x209",
+                                "eba_dim:MCY": "eba_MC:x180",
+                                "unit": "$baseCurrency"
+                            },
+                            "eba:documentation": {
+                                "CellCode": "{F 45.02, r0030, c0010}",
+                                "logicalDataPointId": "33929"
+                            }
+                        },
+                        "dp113218": {
+                            "decimals": "$decimalsMonetary",
+                            "dimensions": {
+                                "concept": "eba_met:md103",
+                                "eba_dim:APL": "eba_PL:x79",
+                                "eba_dim:BAS": "eba_BA:x1",
+                                "eba_dim:MCE": "eba_MC:x575",
+                                "eba_dim:MCY": "eba_MC:x180",
+                                "unit": "$baseCurrency"
+                            },
+                            "eba:documentation": {
+                                "CellCode": "{F 45.02, r0050, c0010}",
+                                "logicalDataPointId": "33924"
+                            }
+                        },
+                        "dp429252": {
+                            "decimals": "$decimalsMonetary",
+                            "dimensions": {
+                                "concept": "eba_met:md103",
+                                "eba_dim:APL": "eba_PL:x46",
+                                "eba_dim:BAS": "eba_BA:x1",
+                                "eba_dim:MCE": "eba_MC:x329",
+                                "eba_dim:MCY": "eba_MC:x180",
+                                "unit": "$baseCurrency"
+                            },
+                            "eba:documentation": {
+                                "CellCode": "{F 45.02, r0010, c0010}",
+                                "logicalDataPointId": "429252"
+                            }
+                        },
+                        "dp434224": {
+                            "decimals": "$decimalsMonetary",
+                            "dimensions": {
+                                "concept": "eba_met:md103",
+                                "eba_dim:APL": "eba_PL:x79",
+                                "eba_dim:BAS": "eba_BA:x1",
+                                "eba_dim:MCE": "eba_MC:x37",
+                                "eba_dim:MCY": "eba_MC:x180",
+                                "unit": "$baseCurrency"
+                            },
+                            "eba:documentation": {
+                                "CellCode": "{F 45.02, r0040, c0010}",
+                                "logicalDataPointId": "434224"
+                            }
+                        }
+                    }
+                },
+                "factValue": {
+                    "dimensions": {},
+                    "propertiesFrom": [
+                        "datapoint"
+                    ]
+                }
+            }
+        }
+    }
+}

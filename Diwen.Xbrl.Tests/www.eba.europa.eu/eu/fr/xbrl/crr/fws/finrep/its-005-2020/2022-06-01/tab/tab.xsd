@@ -1,0 +1,117 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<?taxonomy-version 3.1.0.0 ?>  <?taxonomy-set-overall-version 3.2.1.0 ?>
+<!--(C) EBA-->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xbrli="http://www.xbrl.org/2003/instance" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:link="http://www.xbrl.org/2003/linkbase" xmlns:model="http://www.eurofiling.info/xbrl/ext/model" xmlns:eba_tab="http://www.eba.europa.eu/xbrl/crr/fws/finrep/its-005-2020/2022-06-01_tab" targetNamespace="http://www.eba.europa.eu/xbrl/crr/fws/finrep/its-005-2020/2022-06-01_tab" elementFormDefault="qualified" attributeFormDefault="unqualified">
+  <xs:import namespace="http://www.xbrl.org/2003/instance" schemaLocation="http://www.xbrl.org/2003/xbrl-instance-2003-12-31.xsd" />
+  <xs:import namespace="http://www.eurofiling.info/xbrl/ext/model" schemaLocation="http://www.eurofiling.info/eu/fr/xbrl/ext/model.xsd" />
+  <xs:annotation>
+    <xs:appinfo>
+      <link:linkbaseRef xlink:href="tab-lab-en.xml" xlink:type="simple" xlink:arcrole="http://www.w3.org/1999/xlink/properties/linkbase" xlink:role="http://www.xbrl.org/2003/role/labelLinkbaseRef" />
+      <link:linkbaseRef xlink:href="tab-lab-codes.xml" xlink:type="simple" xlink:arcrole="http://www.w3.org/1999/xlink/properties/linkbase" xlink:role="http://www.xbrl.org/2003/role/labelLinkbaseRef" />
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="tgFinRep_-_Part_1" type="model:tableGroupType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant" abstract="true" model:creationDate="2022-06-01" id="eba_tgFinRep_-_Part_1" />
+  <xs:element name="tgF_01.01" type="model:tableGroupType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant" abstract="true" model:creationDate="2013-12-01" id="eba_tgF_01.01" />
+  <xs:element name="tgF_01.02" type="model:tableGroupType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant" abstract="true" model:creationDate="2013-12-01" id="eba_tgF_01.02" />
+  <xs:element name="tgF_01.03" type="model:tableGroupType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant" abstract="true" model:creationDate="2013-12-01" id="eba_tgF_01.03" />
+  <xs:element name="tgF_02.00" type="model:tableGroupType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant" abstract="true" model:creationDate="2013-12-01" id="eba_tgF_02.00" />
+  <xs:element name="tgF_03.00" type="model:tableGroupType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant" abstract="true" model:creationDate="2013-12-01" id="eba_tgF_03.00" />
+  <xs:element name="tgF_04.01" type="model:tableGroupType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant" abstract="true" model:creationDate="2013-12-01" id="eba_tgF_04.01" />
+  <xs:element name="tgF_04.02.1" type="model:tableGroupType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant" abstract="true" model:creationDate="2016-11-15" id="eba_tgF_04.02.1" />
+  <xs:element name="tgF_04.02.2" type="model:tableGroupType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant" abstract="true" model:creationDate="2016-11-15" id="eba_tgF_04.02.2" />
+  <xs:element name="tgF_04.03.1" type="model:tableGroupType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant" abstract="true" model:creationDate="2016-11-15" id="eba_tgF_04.03.1" />
+  <xs:element name="tgF_04.04.1" type="model:tableGroupType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant" abstract="true" model:creationDate="2016-11-15" id="eba_tgF_04.04.1" />
+  <xs:element name="tgF_04.05" type="model:tableGroupType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant" abstract="true" model:creationDate="2013-12-01" id="eba_tgF_04.05" />
+  <xs:element name="tgF_05.01" type="model:tableGroupType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant" abstract="true" model:creationDate="2016-11-15" id="eba_tgF_05.01" />
+  <xs:element name="tgF_06.01" type="model:tableGroupType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant" abstract="true" model:creationDate="2016-11-15" model:modificationDate="2019-08-31" id="eba_tgF_06.01" />
+  <xs:element name="tgF_07.01" type="model:tableGroupType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant" abstract="true" model:creationDate="2016-11-15" id="eba_tgF_07.01" />
+  <xs:element name="tgF_08.01" type="model:tableGroupType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant" abstract="true" model:creationDate="2013-12-01" model:modificationDate="2019-08-31" id="eba_tgF_08.01" />
+  <xs:element name="tgF_08.02" type="model:tableGroupType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant" abstract="true" model:creationDate="2013-12-01" id="eba_tgF_08.02" />
+  <xs:element name="tgF_09.01.1" type="model:tableGroupType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant" abstract="true" model:creationDate="2016-11-15" id="eba_tgF_09.01.1" />
+  <xs:element name="tgF_09.02" type="model:tableGroupType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant" abstract="true" model:creationDate="2013-12-01" id="eba_tgF_09.02" />
+  <xs:element name="tgF_10.00" type="model:tableGroupType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant" abstract="true" model:creationDate="2013-12-01" id="eba_tgF_10.00" />
+  <xs:element name="tgF_11.01" type="model:tableGroupType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant" abstract="true" model:creationDate="2013-12-01" id="eba_tgF_11.01" />
+  <xs:element name="tgF_11.03" type="model:tableGroupType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant" abstract="true" model:creationDate="2016-11-15" id="eba_tgF_11.03" />
+  <xs:element name="tgF_11.04" type="model:tableGroupType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant" abstract="true" model:creationDate="2016-11-15" id="eba_tgF_11.04" />
+  <xs:element name="tgF_12.01" type="model:tableGroupType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant" abstract="true" model:creationDate="2016-11-15" id="eba_tgF_12.01" />
+  <xs:element name="tgF_12.02" type="model:tableGroupType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant" abstract="true" model:creationDate="2016-11-15" id="eba_tgF_12.02" />
+  <xs:element name="tgF_13.01" type="model:tableGroupType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant" abstract="true" model:creationDate="2013-12-01" model:modificationDate="2019-08-31" id="eba_tgF_13.01" />
+  <xs:element name="tgF_13.02.1" type="model:tableGroupType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant" abstract="true" model:creationDate="2019-04-30" id="eba_tgF_13.02.1" />
+  <xs:element name="tgF_13.03.1" type="model:tableGroupType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant" abstract="true" model:creationDate="2019-04-30" id="eba_tgF_13.03.1" />
+  <xs:element name="tgF_14.00" type="model:tableGroupType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant" abstract="true" model:creationDate="2013-12-01" id="eba_tgF_14.00" />
+  <xs:element name="tgF_15.00" type="model:tableGroupType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant" abstract="true" model:creationDate="2013-12-01" id="eba_tgF_15.00" />
+  <xs:element name="tgF_16.01" type="model:tableGroupType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant" abstract="true" model:creationDate="2013-12-01" id="eba_tgF_16.01" />
+  <xs:element name="tgF_16.02" type="model:tableGroupType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant" abstract="true" model:creationDate="2013-12-01" id="eba_tgF_16.02" />
+  <xs:element name="tgF_16.03" type="model:tableGroupType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant" abstract="true" model:creationDate="2013-12-01" id="eba_tgF_16.03" />
+  <xs:element name="tgF_16.04" type="model:tableGroupType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant" abstract="true" model:creationDate="2013-12-01" id="eba_tgF_16.04" />
+  <xs:element name="tgF_16.04.1" type="model:tableGroupType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant" abstract="true" model:creationDate="2016-11-15" id="eba_tgF_16.04.1" />
+  <xs:element name="tgF_16.05" type="model:tableGroupType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant" abstract="true" model:creationDate="2013-12-01" id="eba_tgF_16.05" />
+  <xs:element name="tgF_16.06" type="model:tableGroupType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant" abstract="true" model:creationDate="2013-12-01" id="eba_tgF_16.06" />
+  <xs:element name="tgF_16.07" type="model:tableGroupType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant" abstract="true" model:creationDate="2013-12-01" id="eba_tgF_16.07" />
+  <xs:element name="tgF_16.08" type="model:tableGroupType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant" abstract="true" model:creationDate="2019-04-30" id="eba_tgF_16.08" />
+  <xs:element name="tgF_17.01" type="model:tableGroupType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant" abstract="true" model:creationDate="2013-12-01" id="eba_tgF_17.01" />
+  <xs:element name="tgF_17.02" type="model:tableGroupType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant" abstract="true" model:creationDate="2013-12-01" id="eba_tgF_17.02" />
+  <xs:element name="tgF_17.03" type="model:tableGroupType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant" abstract="true" model:creationDate="2013-12-01" id="eba_tgF_17.03" />
+  <xs:element name="tgF_18.00" type="model:tableGroupType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant" abstract="true" model:creationDate="2014-03-31" id="eba_tgF_18.00" />
+  <xs:element name="tgF_18.01" type="model:tableGroupType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant" abstract="true" model:creationDate="2019-07-31" id="eba_tgF_18.01" />
+  <xs:element name="tgF_18.02" type="model:tableGroupType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant" abstract="true" model:creationDate="2019-07-31" id="eba_tgF_18.02" />
+  <xs:element name="tgF_19.00" type="model:tableGroupType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant" abstract="true" model:creationDate="2014-03-31" model:modificationDate="2019-08-31" id="eba_tgF_19.00" />
+  <xs:element name="tgFinRep_-_Part_1_GAAP_only" type="model:tableGroupType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant" abstract="true" model:creationDate="2022-06-01" id="eba_tgFinRep_-_Part_1_GAAP_only" />
+  <xs:element name="tgF_04.06" type="model:tableGroupType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant" abstract="true" model:creationDate="2013-12-01" id="eba_tgF_04.06" />
+  <xs:element name="tgF_04.07" type="model:tableGroupType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant" abstract="true" model:creationDate="2013-12-01" id="eba_tgF_04.07" />
+  <xs:element name="tgF_04.08" type="model:tableGroupType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant" abstract="true" model:creationDate="2013-12-01" id="eba_tgF_04.08" />
+  <xs:element name="tgF_04.09" type="model:tableGroupType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant" abstract="true" model:creationDate="2013-12-01" id="eba_tgF_04.09" />
+  <xs:element name="tgF_04.10" type="model:tableGroupType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant" abstract="true" model:creationDate="2013-12-01" id="eba_tgF_04.10" />
+  <xs:element name="tgF_07.02" type="model:tableGroupType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant" abstract="true" model:creationDate="2016-11-15" id="eba_tgF_07.02" />
+  <xs:element name="tgF_09.01" type="model:tableGroupType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant" abstract="true" model:creationDate="2013-12-01" id="eba_tgF_09.01" />
+  <xs:element name="tgF_11.02" type="model:tableGroupType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant" abstract="true" model:creationDate="2013-12-01" id="eba_tgF_11.02" />
+  <xs:element name="tgF_11.03.1" type="model:tableGroupType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant" abstract="true" model:creationDate="2016-11-15" id="eba_tgF_11.03.1" />
+  <xs:element name="tgF_12.00" type="model:tableGroupType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant" abstract="true" model:creationDate="2013-12-01" id="eba_tgF_12.00" />
+  <xs:element name="tgFinRep_-_Part_2" type="model:tableGroupType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant" abstract="true" model:creationDate="2022-06-01" id="eba_tgFinRep_-_Part_2" />
+  <xs:element name="tgF_20.01" type="model:tableGroupType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant" abstract="true" model:creationDate="2013-12-01" id="eba_tgF_20.01" />
+  <xs:element name="tgF_20.02" type="model:tableGroupType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant" abstract="true" model:creationDate="2013-12-01" id="eba_tgF_20.02" />
+  <xs:element name="tgF_20.03" type="model:tableGroupType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant" abstract="true" model:creationDate="2013-12-01" id="eba_tgF_20.03" />
+  <xs:element name="tgF_20.04" type="model:tableGroupType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant" abstract="true" model:creationDate="2013-12-01" id="eba_tgF_20.04" />
+  <xs:element name="tgF_20.05" type="model:tableGroupType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant" abstract="true" model:creationDate="2013-12-01" model:modificationDate="2019-08-31" id="eba_tgF_20.05" />
+  <xs:element name="tgF_20.06" type="model:tableGroupType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant" abstract="true" model:creationDate="2013-12-01" id="eba_tgF_20.06" />
+  <xs:element name="tgF_20.07.1" type="model:tableGroupType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant" abstract="true" model:creationDate="2016-11-15" id="eba_tgF_20.07.1" />
+  <xs:element name="tgF_21.00" type="model:tableGroupType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant" abstract="true" model:creationDate="2013-12-01" id="eba_tgF_21.00" />
+  <xs:element name="tgF_22.01" type="model:tableGroupType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant" abstract="true" model:creationDate="2013-12-01" id="eba_tgF_22.01" />
+  <xs:element name="tgF_22.02" type="model:tableGroupType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant" abstract="true" model:creationDate="2013-12-01" id="eba_tgF_22.02" />
+  <xs:element name="tgF_23.01" type="model:tableGroupType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant" abstract="true" model:creationDate="2019-04-30" id="eba_tgF_23.01" />
+  <xs:element name="tgF_23.02" type="model:tableGroupType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant" abstract="true" model:creationDate="2019-04-30" id="eba_tgF_23.02" />
+  <xs:element name="tgF_23.03" type="model:tableGroupType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant" abstract="true" model:creationDate="2019-04-30" id="eba_tgF_23.03" />
+  <xs:element name="tgF_23.04" type="model:tableGroupType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant" abstract="true" model:creationDate="2019-07-31" id="eba_tgF_23.04" />
+  <xs:element name="tgF_23.05" type="model:tableGroupType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant" abstract="true" model:creationDate="2019-07-31" id="eba_tgF_23.05" />
+  <xs:element name="tgF_23.06" type="model:tableGroupType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant" abstract="true" model:creationDate="2019-07-31" id="eba_tgF_23.06" />
+  <xs:element name="tgF_24.01" type="model:tableGroupType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant" abstract="true" model:creationDate="2019-04-30" id="eba_tgF_24.01" />
+  <xs:element name="tgF_24.02" type="model:tableGroupType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant" abstract="true" model:creationDate="2019-04-30" id="eba_tgF_24.02" />
+  <xs:element name="tgF_24.03" type="model:tableGroupType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant" abstract="true" model:creationDate="2019-04-30" id="eba_tgF_24.03" />
+  <xs:element name="tgF_25.01" type="model:tableGroupType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant" abstract="true" model:creationDate="2019-04-30" id="eba_tgF_25.01" />
+  <xs:element name="tgF_25.02" type="model:tableGroupType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant" abstract="true" model:creationDate="2019-04-30" id="eba_tgF_25.02" />
+  <xs:element name="tgF_25.03" type="model:tableGroupType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant" abstract="true" model:creationDate="2019-04-30" id="eba_tgF_25.03" />
+  <xs:element name="tgF_26.00" type="model:tableGroupType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant" abstract="true" model:creationDate="2019-04-30" id="eba_tgF_26.00" />
+  <xs:element name="tgFinRep_-_Part_3" type="model:tableGroupType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant" abstract="true" model:creationDate="2022-06-01" id="eba_tgFinRep_-_Part_3" />
+  <xs:element name="tgF_30.01" type="model:tableGroupType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant" abstract="true" model:creationDate="2013-12-01" id="eba_tgF_30.01" />
+  <xs:element name="tgF_30.02" type="model:tableGroupType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant" abstract="true" model:creationDate="2013-12-01" id="eba_tgF_30.02" />
+  <xs:element name="tgF_31.01" type="model:tableGroupType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant" abstract="true" model:creationDate="2013-12-01" id="eba_tgF_31.01" />
+  <xs:element name="tgF_31.02" type="model:tableGroupType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant" abstract="true" model:creationDate="2013-12-01" id="eba_tgF_31.02" />
+  <xs:element name="tgFinRep_-_Part_4" type="model:tableGroupType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant" abstract="true" model:creationDate="2022-06-01" id="eba_tgFinRep_-_Part_4" />
+  <xs:element name="tgF_40.01" type="model:tableGroupType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant" abstract="true" model:creationDate="2013-12-01" id="eba_tgF_40.01" />
+  <xs:element name="tgF_40.02" type="model:tableGroupType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant" abstract="true" model:creationDate="2013-12-01" id="eba_tgF_40.02" />
+  <xs:element name="tgF_41.01" type="model:tableGroupType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant" abstract="true" model:creationDate="2013-12-01" id="eba_tgF_41.01" />
+  <xs:element name="tgF_41.02" type="model:tableGroupType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant" abstract="true" model:creationDate="2013-12-01" id="eba_tgF_41.02" />
+  <xs:element name="tgF_42.00" type="model:tableGroupType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant" abstract="true" model:creationDate="2013-12-01" model:modificationDate="2019-08-31" id="eba_tgF_42.00" />
+  <xs:element name="tgF_43.00" type="model:tableGroupType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant" abstract="true" model:creationDate="2013-12-01" id="eba_tgF_43.00" />
+  <xs:element name="tgF_44.01" type="model:tableGroupType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant" abstract="true" model:creationDate="2013-12-01" id="eba_tgF_44.01" />
+  <xs:element name="tgF_44.02" type="model:tableGroupType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant" abstract="true" model:creationDate="2013-12-01" id="eba_tgF_44.02" />
+  <xs:element name="tgF_44.03" type="model:tableGroupType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant" abstract="true" model:creationDate="2013-12-01" model:modificationDate="2019-08-31" id="eba_tgF_44.03" />
+  <xs:element name="tgF_44.04" type="model:tableGroupType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant" abstract="true" model:creationDate="2019-04-30" id="eba_tgF_44.04" />
+  <xs:element name="tgF_45.01" type="model:tableGroupType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant" abstract="true" model:creationDate="2013-12-01" id="eba_tgF_45.01" />
+  <xs:element name="tgF_45.02" type="model:tableGroupType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant" abstract="true" model:creationDate="2013-12-01" id="eba_tgF_45.02" />
+  <xs:element name="tgF_45.03" type="model:tableGroupType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant" abstract="true" model:creationDate="2013-12-01" id="eba_tgF_45.03" />
+  <xs:element name="tgF_46.00" type="model:tableGroupType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant" abstract="true" model:creationDate="2013-12-01" id="eba_tgF_46.00" />
+  <xs:element name="tgF_47.00" type="model:tableGroupType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant" abstract="true" model:creationDate="2019-04-30" id="eba_tgF_47.00" />
+  <xs:element name="tgFinRep_-_General_Information" type="model:tableGroupType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant" abstract="true" model:creationDate="2022-06-01" id="eba_tgFinRep_-_General_Information" />
+  <xs:element name="tgF_00.01" type="model:tableGroupType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant" abstract="true" model:creationDate="2013-12-01" id="eba_tgF_00.01" />
+</xs:schema>
