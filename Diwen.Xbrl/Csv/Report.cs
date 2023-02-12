@@ -345,42 +345,46 @@
             {
                 var value = fact.Value;
                 var scenario = fact.Context.Scenario;
-                var datapoint = GetDatapoint(fact, reportedTables, dimNsPrefix);
+                var datapoints = GetTableDatapoints(fact, reportedTables, dimNsPrefix);
+                foreach(var table in datapoints)
+                 foreach(var datapoint in table.Value)
+                    report.AddData(table.Key.Replace('-','.'), datapoint, fact.Value);
+                    
             }
 
 
-            //datapoint,factValue
-            report.AddData("S_00.01", "dp31870", "eba_AS:x1");
-            report.AddData("S_00.01", "dp37969", "eba_SC:x6");
+            // //datapoint,factValue
+            // report.AddData("S_00.01", "dp31870", "eba_AS:x1");
+            // report.AddData("S_00.01", "dp37969", "eba_SC:x6");
 
-            // datapoint,factValue,IRN
-            report.AddData("C_105.03", "dp434188", "grarenmw", "IRN", "36");
-            report.AddData("C_105.03", "dp434189", "eba_GA:AL", "IRN", "36");
-            report.AddData("C_105.03", "dp434188", "grarenmw2", "IRN", "8");
-            report.AddData("C_105.03", "dp434189", "eba_GA:AL", "IRN", "8");
+            // // datapoint,factValue,IRN
+            // report.AddData("C_105.03", "dp434188", "grarenmw", "IRN", "36");
+            // report.AddData("C_105.03", "dp434189", "eba_GA:AL", "IRN", "36");
+            // report.AddData("C_105.03", "dp434188", "grarenmw2", "IRN", "8");
+            // report.AddData("C_105.03", "dp434189", "eba_GA:AL", "IRN", "8");
 
-            // datapoint,factValue,IMI,PBE
-            report.AddData("C_105.02", "dp439585", "250238.28", ("IMI", "ksnpfnwn"), ("PBI", "ksnpfnwn"));
-            report.AddData("C_105.02", "dp439586", "247370.72", ("IMI", "ksnpfnwn"), ("PBI", "ksnpfnwn"));
-            report.AddData("C_105.02", "dp439585", "250238.28", ("IMI", "kotnyngp"), ("PBI", "kotnyngp"));
-            report.AddData("C_105.02", "dp439586", "247370.72", ("IMI", "kotnyngp"), ("PBI", "kotnyngp"));
+            // // datapoint,factValue,IMI,PBE
+            // report.AddData("C_105.02", "dp439585", "250238.28", ("IMI", "ksnpfnwn"), ("PBI", "ksnpfnwn"));
+            // report.AddData("C_105.02", "dp439586", "247370.72", ("IMI", "ksnpfnwn"), ("PBI", "ksnpfnwn"));
+            // report.AddData("C_105.02", "dp439585", "250238.28", ("IMI", "kotnyngp"), ("PBI", "kotnyngp"));
+            // report.AddData("C_105.02", "dp439586", "247370.72", ("IMI", "kotnyngp"), ("PBI", "kotnyngp"));
 
 
-            // datapoint,factValue,FTY,INC
-            report.AddData("C_113.00", "dp439732", "304132.94", ("FTY", "htkaaxvr"), ("INC", "htkaaxvr"));
-            report.AddData("C_113.00", "dp439750", "eba_IM:x33", ("FTY", "htkaaxvr"), ("INC", "htkaaxvr"));
-            report.AddData("C_113.00", "dp439744", "0.1", ("FTY", "htkaaxvr"), ("INC", "htkaaxvr"));
-            report.AddData("C_113.00", "dp439745", "0.72", ("FTY", "htkaaxvr"), ("INC", "htkaaxvr"));
-            report.AddData("C_113.00", "dp439751", "0.34", ("FTY", "htkaaxvr"), ("INC", "htkaaxvr"));
-            report.AddData("C_113.00", "dp439752", "0.46", ("FTY", "htkaaxvr"), ("INC", "htkaaxvr"));
-            report.AddData("C_113.00", "dp439753", "eba_ZZ:x409", ("FTY", "htkaaxvr"), ("INC", "htkaaxvr"));
-            report.AddData("C_113.00", "dp439732", "304132.94", ("FTY", "ynqtbutq"), ("INC", "ynqtbutq"));
-            report.AddData("C_113.00", "dp439750", "eba_IM:x33", ("FTY", "ynqtbutq"), ("INC", "ynqtbutq"));
-            report.AddData("C_113.00", "dp439744", "0.1", ("FTY", "ynqtbutq"), ("INC", "ynqtbutq"));
-            report.AddData("C_113.00", "dp439745", "0.72", ("FTY", "ynqtbutq"), ("INC", "ynqtbutq"));
-            report.AddData("C_113.00", "dp439751", "0.34", ("FTY", "ynqtbutq"), ("INC", "ynqtbutq"));
-            report.AddData("C_113.00", "dp439752", "0.46", ("FTY", "ynqtbutq"), ("INC", "ynqtbutq"));
-            report.AddData("C_113.00", "dp439753", "eba_ZZ:x409", ("FTY", "ynqtbutq"), ("INC", "ynqtbutq"));
+            // // datapoint,factValue,FTY,INC
+            // report.AddData("C_113.00", "dp439732", "304132.94", ("FTY", "htkaaxvr"), ("INC", "htkaaxvr"));
+            // report.AddData("C_113.00", "dp439750", "eba_IM:x33", ("FTY", "htkaaxvr"), ("INC", "htkaaxvr"));
+            // report.AddData("C_113.00", "dp439744", "0.1", ("FTY", "htkaaxvr"), ("INC", "htkaaxvr"));
+            // report.AddData("C_113.00", "dp439745", "0.72", ("FTY", "htkaaxvr"), ("INC", "htkaaxvr"));
+            // report.AddData("C_113.00", "dp439751", "0.34", ("FTY", "htkaaxvr"), ("INC", "htkaaxvr"));
+            // report.AddData("C_113.00", "dp439752", "0.46", ("FTY", "htkaaxvr"), ("INC", "htkaaxvr"));
+            // report.AddData("C_113.00", "dp439753", "eba_ZZ:x409", ("FTY", "htkaaxvr"), ("INC", "htkaaxvr"));
+            // report.AddData("C_113.00", "dp439732", "304132.94", ("FTY", "ynqtbutq"), ("INC", "ynqtbutq"));
+            // report.AddData("C_113.00", "dp439750", "eba_IM:x33", ("FTY", "ynqtbutq"), ("INC", "ynqtbutq"));
+            // report.AddData("C_113.00", "dp439744", "0.1", ("FTY", "ynqtbutq"), ("INC", "ynqtbutq"));
+            // report.AddData("C_113.00", "dp439745", "0.72", ("FTY", "ynqtbutq"), ("INC", "ynqtbutq"));
+            // report.AddData("C_113.00", "dp439751", "0.34", ("FTY", "ynqtbutq"), ("INC", "ynqtbutq"));
+            // report.AddData("C_113.00", "dp439752", "0.46", ("FTY", "ynqtbutq"), ("INC", "ynqtbutq"));
+            // report.AddData("C_113.00", "dp439753", "eba_ZZ:x409", ("FTY", "ynqtbutq"), ("INC", "ynqtbutq"));
 
             return report;
         }
@@ -401,9 +405,10 @@
         //                             }
         //                         },
 
-        private static string GetDatapoint(Fact fact, Dictionary<string, TableDefinition> tabledefinitions, string dimNsPrefix)
+        private static Dictionary<string, string[]> GetTableDatapoints(Fact fact, Dictionary<string, TableDefinition> tabledefinitions, string dimNsPrefix)
         {
             var metric = fact.Metric.Name;
+            var result = new Dictionary<string, string[]>();
 
             foreach (var td in tabledefinitions)
             {
@@ -423,11 +428,11 @@
                     All(m => pg.Value.dimensions.GetValueOrDefault($"{dimNsPrefix}:{m.Dimension.Name}", string.Empty) == m.MemberCode))
                     .ToArray();
 
-                if(candidateDatapoints.Any())
-                    return candidateDatapoints.First().Key;
+                if (candidateDatapoints.Any())
+                   result[td.Key] = candidateDatapoints.Select(dp=> dp.Key).ToArray();
             }
 
-            return string.Empty;
+            return result;
         }
     }
 }
