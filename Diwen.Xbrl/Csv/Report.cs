@@ -247,10 +247,10 @@
             return reportFiles;
         }
 
-        public Instance ToXml(Dictionary<string, TableDefinition> jsonTables, Dictionary<string, string> dimensionDomain, KeyValuePair<string, string> typedDomainNamespace)
-        => ToXml(this, jsonTables, dimensionDomain, typedDomainNamespace);
+        public Instance ToXml(Dictionary<string, TableDefinition> tableDefinitions, Dictionary<string, string> dimensionDomain, KeyValuePair<string, string> typedDomainNamespace)
+        => ToXml(this, tableDefinitions, dimensionDomain, typedDomainNamespace);
 
-        public static Instance ToXml(Report report, Dictionary<string, TableDefinition> jsonTables, Dictionary<string, string> dimensionDomain, KeyValuePair<string, string> typedDomainNamespace)
+        public static Instance ToXml(Report report, Dictionary<string, TableDefinition> tableDefinitions, Dictionary<string, string> dimensionDomain, KeyValuePair<string, string> typedDomainNamespace)
         {
             var instance = new Instance();
             var baseCurrency = report.Parameters["baseCurrency"];
@@ -271,7 +271,7 @@
             foreach (var table in tabledata)
             {
                 var tablecode = table.Key.ToUpperInvariant().Replace('.', '-');
-                var jsonTable = jsonTables[tablecode];
+                var jsonTable = tableDefinitions[tablecode];
 
                 foreach (var ns in jsonTable.documentInfo.namespaces)
                 {
@@ -313,6 +313,59 @@
             }
             return instance;
 
+        }
+
+        public static Report FromXml(Instance xmlReport)
+        {
+            var report = new Report();
+
+            report.Entrypoint = Path.ChangeExtension(xmlReport.SchemaReference.Value, ".json");
+
+            report.Parameters.Add("entityID", xmlReport.Entity.Identifier.Value);
+            report.Parameters.Add("refPeriod", xmlReport.Period.Instant.ToString("yyyy-MM-dd"));
+            report.Parameters.Add("baseCurrency", xmlReport.Units.First(u=>u.Measure.Namespace == "http://www.xbrl.org/2003/iso4217").Measure.LocalName());
+            report.Parameters.Add("decimalsInteger", "0");
+            report.Parameters.Add("decimalsMonetary", "-3");
+            report.Parameters.Add("decimalsPercentage", "4");
+            report.Parameters.Add("decimalsDecimal", "2");
+
+            foreach(var fi in xmlReport.FilingIndicators)
+                report.FilingIndicators.Add(fi.Value, fi.Filed);
+
+            //datapoint,factValue
+            report.AddData("S_00.01", "dp31870", "eba_AS:x1");
+            report.AddData("S_00.01", "dp37969", "eba_SC:x6");
+
+            // datapoint,factValue,IRN
+            report.AddData("C_105.03", "dp434188", "grarenmw", "IRN", "36");
+            report.AddData("C_105.03", "dp434189", "eba_GA:AL", "IRN", "36");
+            report.AddData("C_105.03", "dp434188", "grarenmw2", "IRN", "8");
+            report.AddData("C_105.03", "dp434189", "eba_GA:AL", "IRN", "8");
+
+            // datapoint,factValue,IMI,PBE
+            report.AddData("C_105.02", "dp439585", "250238.28", ("IMI", "ksnpfnwn"), ("PBI", "ksnpfnwn"));
+            report.AddData("C_105.02", "dp439586", "247370.72", ("IMI", "ksnpfnwn"), ("PBI", "ksnpfnwn"));
+            report.AddData("C_105.02", "dp439585", "250238.28", ("IMI", "kotnyngp"), ("PBI", "kotnyngp"));
+            report.AddData("C_105.02", "dp439586", "247370.72", ("IMI", "kotnyngp"), ("PBI", "kotnyngp"));
+
+
+            // datapoint,factValue,FTY,INC
+            report.AddData("C_113.00", "dp439732", "304132.94", ("FTY", "htkaaxvr"), ("INC", "htkaaxvr"));
+            report.AddData("C_113.00", "dp439750", "eba_IM:x33", ("FTY", "htkaaxvr"), ("INC", "htkaaxvr"));
+            report.AddData("C_113.00", "dp439744", "0.1", ("FTY", "htkaaxvr"), ("INC", "htkaaxvr"));
+            report.AddData("C_113.00", "dp439745", "0.72", ("FTY", "htkaaxvr"), ("INC", "htkaaxvr"));
+            report.AddData("C_113.00", "dp439751", "0.34", ("FTY", "htkaaxvr"), ("INC", "htkaaxvr"));
+            report.AddData("C_113.00", "dp439752", "0.46", ("FTY", "htkaaxvr"), ("INC", "htkaaxvr"));
+            report.AddData("C_113.00", "dp439753", "eba_ZZ:x409", ("FTY", "htkaaxvr"), ("INC", "htkaaxvr"));
+            report.AddData("C_113.00", "dp439732", "304132.94", ("FTY", "ynqtbutq"), ("INC", "ynqtbutq"));
+            report.AddData("C_113.00", "dp439750", "eba_IM:x33", ("FTY", "ynqtbutq"), ("INC", "ynqtbutq"));
+            report.AddData("C_113.00", "dp439744", "0.1", ("FTY", "ynqtbutq"), ("INC", "ynqtbutq"));
+            report.AddData("C_113.00", "dp439745", "0.72", ("FTY", "ynqtbutq"), ("INC", "ynqtbutq"));
+            report.AddData("C_113.00", "dp439751", "0.34", ("FTY", "ynqtbutq"), ("INC", "ynqtbutq"));
+            report.AddData("C_113.00", "dp439752", "0.46", ("FTY", "ynqtbutq"), ("INC", "ynqtbutq"));
+            report.AddData("C_113.00", "dp439753", "eba_ZZ:x409", ("FTY", "ynqtbutq"), ("INC", "ynqtbutq"));
+
+            return report;
         }
     }
 }

@@ -121,23 +121,36 @@ namespace Diwen.XbrlCsv.Tests
         [Theory]
         [InlineData("DUMMYLEI123456789012.CON_FR_SBP010201_SBPIFRS9_2022-12-31_20220411141759000.zip")]
         [InlineData("DUMMYLEI123456789012.CON_FR_FINREP030100_FINREP9_2022-12-31_20220411141600000.zip")]
-        public static void XbrlCsvToXml(string packageName)
+        public static void CsvToXml(string reportName)
         {
-            var packagePath = Path.Combine("csv", packageName);
+            var reportPath = Path.Combine("csv", reportName);
 
-            var report = Report.Import(packagePath);
+            var csvReport = Report.Import(reportPath);
 
-            var entrypoint = report.Entrypoint.Replace(@"http://", "");
+            var entrypoint = csvReport.Entrypoint.Replace(@"http://", "");
 
-            var jsonTables = ReadTaxonomyInfo(entrypoint);
+            var tableDefinitions = ReadTaxonomyInfo(entrypoint);
 
-            var dimensionDomain = ReadDimensionDomainInfo();
+            var dimensionDomainInfo = ReadDimensionDomainInfo();
 
             var typedDomainNamespace = KeyValuePair.Create("eba_typ", "http://www.eba.europa.eu/xbrl/crr/dict/typ");
 
-            var instance = report.ToXml(jsonTables, dimensionDomain, typedDomainNamespace);
+            var xmlReport = csvReport.ToXml(tableDefinitions, dimensionDomainInfo, typedDomainNamespace);
 
-            instance.ToFile(Path.ChangeExtension(packagePath, ".xbrl"));
+            xmlReport.ToFile(Path.ChangeExtension(reportName, ".xbrl"));
+        }
+
+        [Theory]
+        [InlineData("DUMMYLEI123456789012.CON_FR_SBP010201_SBPIFRS9_2022-12-31_20220411141759000.xbrl")]
+        public static void XmlToCsv(string reportName)
+        {
+            var reportPath = Path.Combine("csv", reportName);
+
+            var xmlReport = Instance.FromFile(reportPath);
+
+            var csvReport = Report.FromXml(xmlReport);
+
+            csvReport.Export(Path.ChangeExtension(reportName, ".zip"));
         }
 
         private static Dictionary<string, TableDefinition> ReadTaxonomyInfo(string entrypoint)

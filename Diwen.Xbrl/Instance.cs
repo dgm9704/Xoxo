@@ -721,6 +721,13 @@ namespace Diwen.Xbrl
             if (options.HasFlag(InstanceOptions.RemoveUnusedObjects))
                 instance.RemoveUnusedObjects();
 
+            if (instance.Contexts.Any())
+            {
+                instance.Entity = instance.Contexts.First().Entity;
+                instance.Period = instance.Contexts.First().Period;
+            }
+
+
             instance.SetInstanceReferences();
         }
 
