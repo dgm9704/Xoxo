@@ -1,0 +1,126 @@
+{
+    "documentInfo": {
+        "documentType": "https://xbrl.org/CR/2021-02-03/xbrl-csv",
+        "namespaces": {
+            "eba": "http://www.eba.europa.eu",
+            "eba_AP": "http://www.eba.europa.eu/xbrl/crr/dict/dom/AP",
+            "eba_BA": "http://www.eba.europa.eu/xbrl/crr/dict/dom/BA",
+            "eba_BT": "http://www.eba.europa.eu/xbrl/crr/dict/dom/BT",
+            "eba_CA": "http://www.eba.europa.eu/xbrl/crr/dict/dom/CA",
+            "eba_IS": "http://www.eba.europa.eu/xbrl/crr/dict/dom/IS",
+            "eba_MC": "http://www.eba.europa.eu/xbrl/crr/dict/dom/MC",
+            "eba_TR": "http://www.eba.europa.eu/xbrl/crr/dict/dom/TR",
+            "eba_ZZ": "http://www.eba.europa.eu/xbrl/crr/dict/dom/ZZ",
+            "eba_dim": "http://www.eba.europa.eu/xbrl/crr/dict/dim",
+            "eba_met": "http://www.eba.europa.eu/xbrl/crr/dict/met"
+        }
+    },
+    "tableTemplates": {
+        "C_106-00": {
+            "columns": {
+                "PBE": {},
+                "datapoint": {
+                    "propertyGroups": {
+                        "dp113367": {
+                            "dimensions": {
+                                "concept": "eba_met:si333",
+                                "eba_dim:APR": "eba_AP:x26",
+                                "eba_dim:BAS": "eba_BA:x17",
+                                "eba_dim:MCY": "eba_MC:x156",
+                                "eba_dim:MRW": "eba_AP:x93",
+                                "eba_dim:TRI": "eba_TR:x11"
+                            },
+                            "eba:documentation": {
+                                "CellCode": "{C 106.00, r999, c0060}",
+                                "DataPointVersionId": "439579"
+                            }
+                        },
+                        "dp113368": {
+                            "dimensions": {
+                                "concept": "eba_met:bi382",
+                                "eba_dim:APR": "eba_AP:x26",
+                                "eba_dim:BAS": "eba_BA:x17",
+                                "eba_dim:MCY": "eba_MC:x156",
+                                "eba_dim:MRW": "eba_AP:x93",
+                                "eba_dim:TRI": "eba_TR:x11"
+                            },
+                            "eba:documentation": {
+                                "CellCode": "{C 106.00, r999, c0020}",
+                                "DataPointVersionId": "439580"
+                            }
+                        },
+                        "dp113369": {
+                            "dimensions": {
+                                "concept": "eba_met:bi383",
+                                "eba_dim:APR": "eba_AP:x26",
+                                "eba_dim:BAS": "eba_BA:x17",
+                                "eba_dim:MCY": "eba_MC:x156",
+                                "eba_dim:MRW": "eba_AP:x93",
+                                "eba_dim:TRI": "eba_TR:x11"
+                            },
+                            "eba:documentation": {
+                                "CellCode": "{C 106.00, r999, c0030}",
+                                "DataPointVersionId": "439581"
+                            }
+                        },
+                        "dp113370": {
+                            "dimensions": {
+                                "concept": "eba_met:bi384",
+                                "eba_dim:APR": "eba_AP:x26",
+                                "eba_dim:BAS": "eba_BA:x17",
+                                "eba_dim:MCY": "eba_MC:x156",
+                                "eba_dim:MRW": "eba_AP:x93",
+                                "eba_dim:TRI": "eba_TR:x11"
+                            },
+                            "eba:documentation": {
+                                "CellCode": "{C 106.00, r999, c0040}",
+                                "DataPointVersionId": "439582"
+                            }
+                        },
+                        "dp113371": {
+                            "dimensions": {
+                                "concept": "eba_met:ei385",
+                                "eba_dim:APR": "eba_AP:x26",
+                                "eba_dim:BAS": "eba_BA:x17",
+                                "eba_dim:MCY": "eba_MC:x156",
+                                "eba_dim:MRW": "eba_AP:x93",
+                                "eba_dim:TRI": "eba_TR:x11"
+                            },
+                            "eba:documentation": {
+                                "CellCode": "{C 106.00, r999, c0050}",
+                                "DataPointVersionId": "439583"
+                            }
+                        },
+                        "dp132672": {
+                            "decimals": "$decimalsMonetary",
+                            "dimensions": {
+                                "concept": "eba_met:mi420",
+                                "eba_dim:APR": "eba_AP:x26",
+                                "eba_dim:BAS": "eba_BA:x17",
+                                "eba_dim:CCA": "eba_CA:x1",
+                                "eba_dim:HYV": "eba_BT:x10",
+                                "eba_dim:MCY": "eba_MC:x156",
+                                "eba_dim:MRW": "eba_AP:x93",
+                                "eba_dim:TRI": "eba_TR:x11",
+                                "unit": "$unit"
+                            },
+                            "eba:documentation": {
+                                "CellCode": "{C 106.00, r999, c0070}",
+                                "DataPointVersionId": "439584"
+                            }
+                        }
+                    }
+                },
+                "factValue": {
+                    "dimensions": {
+                        "eba_dim:PBE": "$PBE"
+                    },
+                    "propertiesFrom": [
+                        "datapoint"
+                    ]
+                },
+                "unit": {}
+            }
+        }
+    }
+}

@@ -121,8 +121,8 @@ namespace Diwen.XbrlCsv.Tests
         [Fact]
         public static void XbrlCsvToXml()
         {
+            var packagePath = Path.Combine("csv", "DUMMYLEI123456789012.CON_FR_SBP010201_SBPIFRS9_2022-12-31_20220411141759000.zip");
 
-            var packagePath = Path.Combine("csv", "DUMMYLEI123456789012.CON_FR_SBP010201_SBPCR_2022-12-31_20220411141758000.zip");
             var report = Report.Import(packagePath);
 
             var rootpath = "";

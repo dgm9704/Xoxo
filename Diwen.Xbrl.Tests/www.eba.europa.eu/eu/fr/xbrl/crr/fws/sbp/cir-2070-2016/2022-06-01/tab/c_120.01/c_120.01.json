@@ -1,0 +1,105 @@
+{
+    "documentInfo": {
+        "documentType": "https://xbrl.org/CR/2021-02-03/xbrl-csv",
+        "namespaces": {
+            "eba": "http://www.eba.europa.eu",
+            "eba_BA": "http://www.eba.europa.eu/xbrl/crr/dict/dom/BA",
+            "eba_BT": "http://www.eba.europa.eu/xbrl/crr/dict/dom/BT",
+            "eba_CA": "http://www.eba.europa.eu/xbrl/crr/dict/dom/CA",
+            "eba_CU": "http://www.eba.europa.eu/xbrl/crr/dict/dom/CU",
+            "eba_IS": "http://www.eba.europa.eu/xbrl/crr/dict/dom/IS",
+            "eba_MC": "http://www.eba.europa.eu/xbrl/crr/dict/dom/MC",
+            "eba_PL": "http://www.eba.europa.eu/xbrl/crr/dict/dom/PL",
+            "eba_TR": "http://www.eba.europa.eu/xbrl/crr/dict/dom/TR",
+            "eba_ZZ": "http://www.eba.europa.eu/xbrl/crr/dict/dom/ZZ",
+            "eba_dim": "http://www.eba.europa.eu/xbrl/crr/dict/dim",
+            "eba_met": "http://www.eba.europa.eu/xbrl/crr/dict/met"
+        }
+    },
+    "tableTemplates": {
+        "C_120-01": {
+            "columns": {
+                "PBE": {},
+                "RFB": {},
+                "RFI": {},
+                "RFS": {},
+                "RIB": {},
+                "datapoint": {
+                    "propertyGroups": {
+                        "dp461001": {
+                            "decimals": "$decimalsDecimal",
+                            "dimensions": {
+                                "concept": "eba_met:ri910",
+                                "eba_dim:BAS": "eba_BA:x17",
+                                "eba_dim:MCY": "eba_MC:x156",
+                                "eba_dim:TRI": "eba_TR:x68"
+                            },
+                            "eba:documentation": {
+                                "CellCode": "{C 120.01, r999, c0050, s999}",
+                                "DataPointVersionId": "461001"
+                            }
+                        },
+                        "dp461003": {
+                            "decimals": "$decimalsMonetary",
+                            "dimensions": {
+                                "concept": "eba_met:mi911",
+                                "eba_dim:BAS": "eba_BA:x17",
+                                "eba_dim:CCA": "eba_CA:x1",
+                                "eba_dim:HYV": "eba_BT:x10",
+                                "eba_dim:MCY": "eba_MC:x156",
+                                "eba_dim:PRP": "eba_PL:x10",
+                                "eba_dim:TRI": "eba_TR:x68",
+                                "unit": "$unit"
+                            },
+                            "eba:documentation": {
+                                "CellCode": "{C 120.01, r999, c0080, s999}",
+                                "DataPointVersionId": "461003"
+                            }
+                        },
+                        "dp461005": {
+                            "decimals": "$decimalsMonetary",
+                            "dimensions": {
+                                "concept": "eba_met:mi911",
+                                "eba_dim:BAS": "eba_BA:x17",
+                                "eba_dim:HYV": "eba_BT:x10",
+                                "eba_dim:MCY": "eba_MC:x156",
+                                "eba_dim:PRP": "eba_PL:x10",
+                                "eba_dim:TRI": "eba_TR:x68",
+                                "unit": "$baseCurrency"
+                            },
+                            "eba:documentation": {
+                                "CellCode": "{C 120.01, r999, c0060, s999}",
+                                "DataPointVersionId": "461005"
+                            }
+                        },
+                        "dp461008": {
+                            "dimensions": {
+                                "concept": "eba_met:ei912",
+                                "eba_dim:BAS": "eba_BA:x17",
+                                "eba_dim:MCY": "eba_MC:x156",
+                                "eba_dim:TRI": "eba_TR:x68"
+                            },
+                            "eba:documentation": {
+                                "CellCode": "{C 120.01, r999, c0070, s999}",
+                                "DataPointVersionId": "461008"
+                            }
+                        }
+                    }
+                },
+                "factValue": {
+                    "dimensions": {
+                        "eba_dim:PBE": "$PBE",
+                        "eba_dim:RFB": "$RFB",
+                        "eba_dim:RFI": "$RFI",
+                        "eba_dim:RFS": "$RFS",
+                        "eba_dim:RIB": "$RIB"
+                    },
+                    "propertiesFrom": [
+                        "datapoint"
+                    ]
+                },
+                "unit": {}
+            }
+        }
+    }
+}
