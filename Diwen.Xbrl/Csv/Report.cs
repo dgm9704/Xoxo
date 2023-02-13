@@ -322,7 +322,7 @@
 
         }
 
-        public static Report FromXml(Instance xmlReport, Dictionary<string, TableDefinition> tableDefinitions)
+        public static Report FromXml(Instance xmlReport, Dictionary<string, TableDefinition> tableDefinitions, Dictionary<string,string> filingIndicators)
         {
             var report = new Report();
 
@@ -345,7 +345,7 @@
 
             var reportedTables =
                 tableDefinitions.
-                Where(td => report.FilingIndicators[td.Key.Replace('-', '.')]).
+                Where(table => report.FilingIndicators[filingIndicators[table.Key]]).
                 ToDictionary(t => t.Key, t => t.Value);
 
             foreach (var fact in xmlReport.Facts)

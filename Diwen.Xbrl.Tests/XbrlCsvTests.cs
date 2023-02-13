@@ -1,5 +1,6 @@
 namespace Diwen.XbrlCsv.Tests
 {
+    using System;
     using System.Collections.Generic;
     using System.IO;
     using System.Linq;
@@ -131,7 +132,7 @@ namespace Diwen.XbrlCsv.Tests
 
             var tableDefinitions = ReadTaxonomyInfo(entrypoint);
 
-            var dimensionDomainInfo = ReadDimensionDomainInfo();
+            var dimensionDomainInfo = ReadDimensionDomainInfo("EBA32_DimensionDomain.csv");
 
             var typedDomainNamespace = KeyValuePair.Create("eba_typ", "http://www.eba.europa.eu/xbrl/crr/dict/typ");
 
@@ -141,8 +142,8 @@ namespace Diwen.XbrlCsv.Tests
         }
 
         [Theory]
-        [InlineData("DUMMYLEI123456789012.CON_FR_SBP010201_SBPIFRS9_2022-12-31_20220411141759000.xbrl")]
-        //[InlineData("DUMMYLEI123456789012.CON_FR_FINREP030100_FINREP9_2022-12-31_20220411141600000.xbrl")]
+        //[InlineData("DUMMYLEI123456789012.CON_FR_SBP010201_SBPIFRS9_2022-12-31_20220411141759000.xbrl")]
+        [InlineData("DUMMYLEI123456789012.CON_FR_FINREP030100_FINREP9_2022-12-31_20220411141600000.xbrl")]
         public static void XmlToCsv(string reportName)
         {
             var reportPath = Path.Combine("csv", reportName);
@@ -151,10 +152,17 @@ namespace Diwen.XbrlCsv.Tests
 
             var tableDefinitions = ReadTaxonomyInfo(Path.ChangeExtension(xmlReport.SchemaReference.Value.Replace("http://", ""), "json"));
 
-            var csvReport = Report.FromXml(xmlReport, tableDefinitions);
+            var filingIndicators = ReadFilingIndicatorInfo("EBA32_finrep_FilingIndicators.csv");
+
+            var csvReport = Report.FromXml(xmlReport, tableDefinitions, filingIndicators);
 
             csvReport.Export(Path.ChangeExtension(reportName, ".zip"));
         }
+
+        private static Dictionary<string, string> ReadFilingIndicatorInfo(string file)
+        => File.ReadAllLines(Path.Combine("csv", file)).
+            Select(l => l.Split(',')).
+            ToDictionary(x => x[0], x => x[1]);
 
         private static Dictionary<string, TableDefinition> ReadTaxonomyInfo(string entrypoint)
         {
@@ -173,7 +181,8 @@ namespace Diwen.XbrlCsv.Tests
                     using (var stream = new FileStream(tabfile, FileMode.Open, FileAccess.Read))
                     {
                         var jsonTable = (TableDefinition)JsonSerializer.Deserialize(stream, typeof(TableDefinition));
-                        var tablecode = jsonTable.tableTemplates.Single().Key;
+                        //var tablecode = jsonTable.tableTemplates.Single().Key;
+                        var tablecode = Path.GetFileNameWithoutExtension(tabfile);
                         jsonTables.Add(tablecode, jsonTable);
                     }
             }
@@ -181,8 +190,8 @@ namespace Diwen.XbrlCsv.Tests
             return jsonTables;
         }
 
-        private static Dictionary<string, string> ReadDimensionDomainInfo()
-        => File.ReadAllLines(Path.Combine("csv", "EBA32_DimensionDomain.csv")).
+        private static Dictionary<string, string> ReadDimensionDomainInfo(string file)
+        => File.ReadAllLines(Path.Combine("csv", file)).
             Select(l => l.Split(',')).
             ToDictionary(x => x[0], x => x[1]);
 
