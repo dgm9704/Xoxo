@@ -254,10 +254,10 @@
             return reportFiles;
         }
 
-        public Instance ToXml(Dictionary<string, TableDefinition> tableDefinitions, Dictionary<string, string> dimensionDomain, KeyValuePair<string, string> typedDomainNamespace)
-        => ToXml(this, tableDefinitions, dimensionDomain, typedDomainNamespace);
+        public Instance ToXml(Dictionary<string, TableDefinition> tableDefinitions, Dictionary<string, string> dimensionDomain, KeyValuePair<string, string> typedDomainNamespace, Dictionary<string,string> filingIndicators)
+        => ToXml(this, tableDefinitions, dimensionDomain, typedDomainNamespace, filingIndicators);
 
-        public static Instance ToXml(Report report, Dictionary<string, TableDefinition> tableDefinitions, Dictionary<string, string> dimensionDomain, KeyValuePair<string, string> typedDomainNamespace)
+        public static Instance ToXml(Report report, Dictionary<string, TableDefinition> tableDefinitions, Dictionary<string, string> dimensionDomain, KeyValuePair<string, string> typedDomainNamespace, Dictionary<string,string> filingIndicators)
         {
             var instance = new Instance();
             var baseCurrency = report.Parameters["baseCurrency"];
@@ -265,19 +265,19 @@
             instance.Units.Add(baseCurrencyRef, baseCurrency);
             instance.SetTypedDomainNamespace(typedDomainNamespace.Key, typedDomainNamespace.Value);
 
-            var filed = report.FilingIndicators.Where(i => i.Value).Select(i => i.Key.ToLowerInvariant()).ToHashSet();
+            var filed = report.FilingIndicators.Where(i => i.Value).Select(i => i.Key).ToHashSet();
 
             var tabledata =
                 report.
                 Data.
                 GroupBy(d => d.Table).
-                Where(t => filed.Contains(t.Key)).
+                Where(t => filed.Contains(filingIndicators[t.Key])).
                 ToDictionary(d => d.Key, d => d.ToArray());
 
 
             foreach (var table in tabledata)
             {
-                var tablecode = table.Key.ToUpperInvariant().Replace('.', '-');
+                var tablecode = table.Key; 
                 var jsonTable = tableDefinitions[tablecode];
 
                 foreach (var ns in jsonTable.documentInfo.namespaces)
@@ -290,11 +290,11 @@
                         instance.AddDomainNamespace(ns.Key, ns.Value);
                 }
 
-                var propertyGroups = jsonTable.tableTemplates[tablecode].columns.datapoint.propertyGroups;
+                var tableDatapoints = jsonTable.tableTemplates.First().Value.columns.datapoint.propertyGroups;
                 foreach (var fact in table.Value)
                 {
                     var scenario = new Scenario();
-                    var dimensions = propertyGroups[fact.Datapoint].dimensions;
+                    var dimensions = tableDatapoints[fact.Datapoint].dimensions;
                     string metric = string.Empty;
                     string unit = string.Empty;
 
