@@ -186,14 +186,15 @@ namespace Diwen.XbrlCsv.Tests
             Select(l => l.Split(',')).
             ToDictionary(x => x[0], x => x[1]);
 
-        [Fact]
-        public static void DeserializeModuleFromJson()
+        [Theory]
+        [InlineData("www.eba.europa.eu/eu/fr/xbrl/crr/fws/sbp/cir-2070-2016/2022-06-01/mod/sbp_cr.json")]
+        public static ModuleDefinition DeserializeModuleFromJson(string path)
         {
-            var path = "www.eba.europa.eu/eu/fr/xbrl/crr/fws/sbp/cir-2070-2016/2022-06-01/mod/sbp_cr.json";
             using (var stream = new FileStream(path, FileMode.Open, FileAccess.Read))
             {
-                var module = JsonSerializer.Deserialize(stream, typeof(ModuleDefinition));
+                var module = (ModuleDefinition)JsonSerializer.Deserialize(stream, typeof(ModuleDefinition));
                 Assert.NotNull(module);
+                return module;
             }
         }
 
