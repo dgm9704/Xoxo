@@ -1,6 +1,5 @@
 namespace Diwen.XbrlCsv.Tests
 {
-    using System;
     using System.Collections.Generic;
     using System.IO;
     using System.Linq;
@@ -73,10 +72,11 @@ namespace Diwen.XbrlCsv.Tests
             report.Export("DUMMYLEI123456789012_GB_SBP010200_SBPCRCON_2021-12-31_20210623163233000");
         }
 
-        [Fact]
-        public static void ReadPackageTest()
+        [Theory]
+        [InlineData("DUMMYLEI123456789012_GB_SBP010200_SBPCRCON_2021-12-31_20210623163233000.zip")]
+        public static void ReadPackageTest(string packageName)
         {
-            var packagePath = Path.Combine("csv", "DUMMYLEI123456789012_GB_SBP010200_SBPCRCON_2021-12-31_20210623163233000.zip");
+            var packagePath = Path.Combine("csv", packageName);
             var reportFiles = Report.ReadPackage(packagePath);
 
             var metafolder = "META-INF";
@@ -92,10 +92,11 @@ namespace Diwen.XbrlCsv.Tests
             Assert.True(reportFiles.ContainsKey(Path.Combine(reportfolder, "C_113.00.csv")));
         }
 
-        [Fact]
-        public static void ImportTest()
+        [Theory]
+        [InlineData("DUMMYLEI123456789012_GB_SBP010200_SBPCRCON_2021-12-31_20210623163233000.zip")]
+        public static void ImportTest(string packageName)
         {
-            var packagePath = Path.Combine("csv", "DUMMYLEI123456789012_GB_SBP010200_SBPCRCON_2021-12-31_20210623163233000.zip");
+            var packagePath = Path.Combine("csv", packageName);
             var report = Report.Import(packagePath);
 
             Assert.Equal("http://www.eba.europa.eu/eu/fr/xbrl/crr/fws/sbp/cir-2070-2016/2021-07-15/mod/sbp_cr_con.json", report.Entrypoint);
@@ -134,14 +135,21 @@ namespace Diwen.XbrlCsv.Tests
 
             var dimensionDomainInfo = ReadDimensionDomainInfo("EBA32_DimensionDomain.csv");
 
+            var typedDomains = ReadTypedDomainInfo("EBA32_TypedDomain.csv");
+
             var typedDomainNamespace = KeyValuePair.Create("eba_typ", "http://www.eba.europa.eu/xbrl/crr/dict/typ");
 
             var filingIndicators = ReadFilingIndicatorInfo("EBA32_finrep_FilingIndicators.csv");
 
-            var xmlReport = csvReport.ToXml(tableDefinitions, dimensionDomainInfo, typedDomainNamespace, filingIndicators);
+            var xmlReport = csvReport.ToXml(tableDefinitions, dimensionDomainInfo, typedDomainNamespace, filingIndicators, typedDomains);
 
             xmlReport.ToFile(Path.ChangeExtension(reportName, ".xbrl"));
         }
+
+        [Theory]
+        [InlineData("EBA32_TypedDomain.csv")]
+        private static HashSet<string> ReadTypedDomainInfo(string path)
+        => File.ReadAllLines(Path.Combine("csv", path)).ToHashSet();
 
         [Theory]
         //[InlineData("DUMMYLEI123456789012.CON_FR_SBP010201_SBPIFRS9_2022-12-31_20220411141759000.xbrl")]
@@ -161,12 +169,17 @@ namespace Diwen.XbrlCsv.Tests
             csvReport.Export(Path.ChangeExtension(reportName, ".zip"));
         }
 
-        private static Dictionary<string, string> ReadFilingIndicatorInfo(string file)
+
+        [Theory]
+        [InlineData("EBA32_finrep_FilingIndicators.csv")]
+        public static Dictionary<string, string> ReadFilingIndicatorInfo(string file)
         => File.ReadAllLines(Path.Combine("csv", file)).
             Select(l => l.Split(',')).
             ToDictionary(x => x[0], x => x[1]);
 
-        private static Dictionary<string, TableDefinition> ReadTaxonomyInfo(string entrypoint)
+        [Theory]
+        [InlineData("www.eba.europa.eu/eu/fr/xbrl/crr/fws/finrep/its-005-2020/2022-06-01/mod/finrep9.json")]
+        public static Dictionary<string, TableDefinition> ReadTaxonomyInfo(string entrypoint)
         {
             var modfolder = Path.GetDirectoryName(entrypoint);
 
@@ -192,7 +205,9 @@ namespace Diwen.XbrlCsv.Tests
             return jsonTables;
         }
 
-        private static Dictionary<string, string> ReadDimensionDomainInfo(string file)
+        [Theory]
+        [InlineData("EBA32_DimensionDomain.csv")]
+        public static Dictionary<string, string> ReadDimensionDomainInfo(string file)
         => File.ReadAllLines(Path.Combine("csv", file)).
             Select(l => l.Split(',')).
             ToDictionary(x => x[0], x => x[1]);
@@ -209,14 +224,15 @@ namespace Diwen.XbrlCsv.Tests
             }
         }
 
-        [Fact]
-        public static void DeserializeTableFromJson()
+        [Theory]
+        [InlineData("www.eba.europa.eu/eu/fr/xbrl/crr/fws/sbp/cir-2070-2016/2022-06-01/tab/c_101.00/c_101.00.json")]
+        public static TableDefinition DeserializeTableFromJson(string path)
         {
-            var path = "www.eba.europa.eu/eu/fr/xbrl/crr/fws/sbp/cir-2070-2016/2022-06-01/tab/c_101.00/c_101.00.json";
             using (var stream = new FileStream(path, FileMode.Open, FileAccess.Read))
             {
-                var table = JsonSerializer.Deserialize(stream, typeof(TableDefinition));
+                var table = (TableDefinition)JsonSerializer.Deserialize(stream, typeof(TableDefinition));
                 Assert.NotNull(table);
+                return table;
             }
         }
 

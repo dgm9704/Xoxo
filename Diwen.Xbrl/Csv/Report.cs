@@ -254,10 +254,10 @@
             return reportFiles;
         }
 
-        public Instance ToXml(Dictionary<string, TableDefinition> tableDefinitions, Dictionary<string, string> dimensionDomain, KeyValuePair<string, string> typedDomainNamespace, Dictionary<string,string> filingIndicators)
-        => ToXml(this, tableDefinitions, dimensionDomain, typedDomainNamespace, filingIndicators);
+        public Instance ToXml(Dictionary<string, TableDefinition> tableDefinitions, Dictionary<string, string> dimensionDomain, KeyValuePair<string, string> typedDomainNamespace, Dictionary<string, string> filingIndicators, HashSet<string> typedDomains)
+        => ToXml(this, tableDefinitions, dimensionDomain, typedDomainNamespace, filingIndicators, typedDomains);
 
-        public static Instance ToXml(Report report, Dictionary<string, TableDefinition> tableDefinitions, Dictionary<string, string> dimensionDomain, KeyValuePair<string, string> typedDomainNamespace, Dictionary<string,string> filingIndicators)
+        public static Instance ToXml(Report report, Dictionary<string, TableDefinition> tableDefinitions, Dictionary<string, string> dimensionDomain, KeyValuePair<string, string> typedDomainNamespace, Dictionary<string, string> filingIndicators, HashSet<string> typedDomains)
         {
             var instance = new Instance();
             var baseCurrency = report.Parameters["baseCurrency"];
@@ -277,7 +277,7 @@
 
             foreach (var table in tabledata)
             {
-                var tablecode = table.Key; 
+                var tablecode = table.Key;
                 var jsonTable = tableDefinitions[tablecode];
 
                 foreach (var ns in jsonTable.documentInfo.namespaces)
@@ -309,7 +309,10 @@
                     }
 
                     foreach (var d in fact.Dimensions)
-                        scenario.AddTypedMember(d.Key, dimensionDomain[d.Key], d.Value);
+                        if (typedDomains.Contains(dimensionDomain[d.Key]))
+                            scenario.AddTypedMember(d.Key, dimensionDomain[d.Key], d.Value);
+                        else
+                            scenario.AddExplicitMember(d.Key, d.Value);
 
                     var unitRef = unit.Replace("$baseCurrency", baseCurrencyRef);
 
@@ -322,7 +325,7 @@
 
         }
 
-        public static Report FromXml(Instance xmlReport, Dictionary<string, TableDefinition> tableDefinitions, Dictionary<string,string> filingIndicators)
+        public static Report FromXml(Instance xmlReport, Dictionary<string, TableDefinition> tableDefinitions, Dictionary<string, string> filingIndicators)
         {
             var report = new Report();
 
@@ -351,7 +354,7 @@
             foreach (var fact in xmlReport.Facts)
             {
                 var value = fact.Value;
-                var dimensions = fact.Context.Scenario.TypedMembers.ToDictionary(m=>m.Dimension.LocalName(), m=>m.Value);
+                var dimensions = fact.Context.Scenario.TypedMembers.ToDictionary(m => m.Dimension.LocalName(), m => m.Value);
                 var scenario = fact.Context.Scenario;
                 var datapoints = GetTableDatapoints(fact, reportedTables, dimNsPrefix);
                 foreach (var table in datapoints)
