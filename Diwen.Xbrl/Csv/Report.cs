@@ -255,20 +255,26 @@
             return reportFiles;
         }
 
-        public Instance ToXml(Dictionary<string, TableDefinition> tableDefinitions, Dictionary<string, string> dimensionDomain, KeyValuePair<string, string> typedDomainNamespace, Dictionary<string, string> filingIndicators, HashSet<string> typedDomains)
-        => ToXml(this, tableDefinitions, dimensionDomain, typedDomainNamespace, filingIndicators, typedDomains);
+        public Instance ToXml(Dictionary<string, TableDefinition> tableDefinitions, Dictionary<string, string> dimensionDomain, KeyValuePair<string, string> typedDomainNamespace, Dictionary<string, string> filingIndicators, HashSet<string> typedDomains, ModuleDefinition moduleDefinition)
+        => ToXml(this, tableDefinitions, dimensionDomain, typedDomainNamespace, filingIndicators, typedDomains, moduleDefinition);
 
-        public static Instance ToXml(Report report, Dictionary<string, TableDefinition> tableDefinitions, Dictionary<string, string> dimensionDomain, KeyValuePair<string, string> typedDomainNamespace, Dictionary<string, string> filingIndicators, HashSet<string> typedDomains)
+        public static Instance ToXml(Report report, Dictionary<string, TableDefinition> tableDefinitions, Dictionary<string, string> dimensionDomain, KeyValuePair<string, string> typedDomainNamespace, Dictionary<string, string> filingIndicators, HashSet<string> typedDomains, ModuleDefinition moduleDefinition)
         {
             var instance = new Instance();
-            instance.Entity = new Entity("lei", report.Parameters["entityID"]);
-            instance.Period = new Period(DateTime.ParseExact(report.Parameters["refPeriod"], "yyyy-MM-dd", CultureInfo.InvariantCulture));
+            foreach (var ns in moduleDefinition.documentInfo.namespaces)
+                instance.Namespaces.AddNamespace(ns.Key, ns.Value);
 
+            var idParts = report.Parameters["entityID"].Split(':');
+            var idNs = instance.Namespaces.LookupNamespace(idParts.First());
+            instance.Entity = new Entity(idNs, idParts.Last());
+            instance.Period = new Period(DateTime.ParseExact(report.Parameters["refPeriod"], "yyyy-MM-dd", CultureInfo.InvariantCulture));
 
             var baseCurrency = report.Parameters["baseCurrency"];
             var baseCurrencyRef = $"u{baseCurrency.Split(':').Last()}";
             instance.Units.Add(baseCurrencyRef, baseCurrency);
             instance.SetTypedDomainNamespace(typedDomainNamespace.Key, typedDomainNamespace.Value);
+
+
 
             var filed = report.FilingIndicators.Where(i => i.Value).Select(i => i.Key).ToHashSet();
 
@@ -296,7 +302,7 @@
                 }
 
                 var tableDatapoints = jsonTable.tableTemplates.First().Value.columns.datapoint.propertyGroups;
-                foreach (var fact in table.Value)
+                foreach (var fact in table.Value.Where(f => !string.IsNullOrWhiteSpace(f.Value)))
                 {
                     var scenario = new Scenario();
                     var dimensions = tableDatapoints[fact.Datapoint].dimensions;

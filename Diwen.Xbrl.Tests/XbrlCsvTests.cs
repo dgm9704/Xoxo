@@ -143,7 +143,7 @@ namespace Diwen.XbrlCsv.Tests
 
             var filingIndicators = ReadFilingIndicatorInfo("EBA32_finrep_FilingIndicators.csv");
 
-            var xmlReport = csvReport.ToXml(tableDefinitions, dimensionDomainInfo, typedDomainNamespace, filingIndicators, typedDomains);
+            var xmlReport = csvReport.ToXml(tableDefinitions, dimensionDomainInfo, typedDomainNamespace, filingIndicators, typedDomains, moduleDefinition);
 
             xmlReport.ToFile(Path.ChangeExtension(reportName, ".xbrl"));
         }
