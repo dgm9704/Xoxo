@@ -131,7 +131,9 @@ namespace Diwen.XbrlCsv.Tests
 
             var entrypoint = csvReport.Entrypoint.Replace(@"http://", "");
 
-            var tableDefinitions = ReadTaxonomyInfo(entrypoint);
+            var moduleDefinition = ReadModuleDefinition(entrypoint);
+
+            var tableDefinitions = ReadTableDefinitions(moduleDefinition);
 
             var dimensionDomainInfo = ReadDimensionDomainInfo("EBA32_DimensionDomain.csv");
 
@@ -160,7 +162,9 @@ namespace Diwen.XbrlCsv.Tests
 
             var xmlReport = Instance.FromFile(reportPath);
 
-            var tableDefinitions = ReadTaxonomyInfo(Path.ChangeExtension(xmlReport.SchemaReference.Value.Replace("http://", ""), "json"));
+            var moduleDefinition = ReadModuleDefinition(Path.ChangeExtension(xmlReport.SchemaReference.Value.Replace("http://", ""), "json"));
+
+            var tableDefinitions = ReadTableDefinitions(moduleDefinition);
 
             var filingIndicators = ReadFilingIndicatorInfo("EBA32_finrep_FilingIndicators.csv");
 
@@ -179,14 +183,15 @@ namespace Diwen.XbrlCsv.Tests
 
         [Theory]
         [InlineData("www.eba.europa.eu/eu/fr/xbrl/crr/fws/finrep/its-005-2020/2022-06-01/mod/finrep9.json")]
-        public static Dictionary<string, TableDefinition> ReadTaxonomyInfo(string entrypoint)
+        public static ModuleDefinition ReadModuleDefinition(string entrypoint)
         {
-            var modfolder = Path.GetDirectoryName(entrypoint);
-
-            ModuleDefinition module;
             using (var stream = new FileStream(entrypoint, FileMode.Open, FileAccess.Read))
-                module = (ModuleDefinition)JsonSerializer.Deserialize(stream, typeof(ModuleDefinition));
+                return (ModuleDefinition)JsonSerializer.Deserialize(stream, typeof(ModuleDefinition));
+        }
 
+        private static Dictionary<string, TableDefinition> ReadTableDefinitions(ModuleDefinition module)
+        {
+            var modfolder = Path.GetDirectoryName(module.documentInfo.taxonomy.First().Replace("http://", ""));
             var jsonTables = new Dictionary<string, TableDefinition>();
 
             foreach (var moduleTable in module.documentInfo.extends)
@@ -196,7 +201,6 @@ namespace Diwen.XbrlCsv.Tests
                     using (var stream = new FileStream(tabfile, FileMode.Open, FileAccess.Read))
                     {
                         var jsonTable = (TableDefinition)JsonSerializer.Deserialize(stream, typeof(TableDefinition));
-                        //var tablecode = jsonTable.tableTemplates.Single().Key;
                         var tablecode = Path.GetFileNameWithoutExtension(tabfile);
                         jsonTables.Add(tablecode, jsonTable);
                     }
