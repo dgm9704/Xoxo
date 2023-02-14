@@ -2,6 +2,7 @@
 {
     using System;
     using System.Collections.Generic;
+    using System.Globalization;
     using System.IO;
     using System.IO.Compression;
     using System.Linq;
@@ -260,6 +261,10 @@
         public static Instance ToXml(Report report, Dictionary<string, TableDefinition> tableDefinitions, Dictionary<string, string> dimensionDomain, KeyValuePair<string, string> typedDomainNamespace, Dictionary<string, string> filingIndicators, HashSet<string> typedDomains)
         {
             var instance = new Instance();
+            instance.Entity = new Entity("lei", report.Parameters["entityID"]);
+            instance.Period = new Period(DateTime.ParseExact(report.Parameters["refPeriod"], "yyyy-MM-dd", CultureInfo.InvariantCulture));
+
+
             var baseCurrency = report.Parameters["baseCurrency"];
             var baseCurrencyRef = $"u{baseCurrency.Split(':').Last()}";
             instance.Units.Add(baseCurrencyRef, baseCurrency);
