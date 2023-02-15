@@ -1,10 +1,12 @@
 namespace Diwen.XbrlCsv.Tests
 {
+    using System;
     using System.Collections.Generic;
     using System.IO;
     using System.Linq;
     using System.Text.Json;
     using Diwen.Xbrl;
+    using Diwen.Xbrl.Comparison;
     using Diwen.Xbrl.Csv;
     using Diwen.Xbrl.Csv.Taxonomy;
     using Xunit;
@@ -121,12 +123,28 @@ namespace Diwen.XbrlCsv.Tests
         }
 
         [Theory]
-        //[InlineData("DUMMYLEI123456789012.CON_FR_SBP010201_SBPIFRS9_2022-12-31_20220411141759000.zip")]
-        [InlineData("DUMMYLEI123456789012.CON_FR_FINREP030100_FINREP9_2022-12-31_20220411141600000.zip")]
-        public static void CsvToXml(string reportName)
+        [InlineData("csv/DUMMYLEI123456789012.CON_FR_FINREP030100_FINREP9_2022-12-31_20220411141600000.xbrl")]
+        public static string XmlToCsv(string reportPath)
         {
-            var reportPath = Path.Combine("csv", reportName);
+            var xmlReport = Instance.FromFile(reportPath);
 
+            var moduleDefinition = ReadModuleDefinition(Path.ChangeExtension(xmlReport.SchemaReference.Value.Replace("http://", ""), "json"));
+
+            var tableDefinitions = ReadTableDefinitions(moduleDefinition);
+
+            var filingIndicators = ReadFilingIndicatorInfo("EBA32_finrep_FilingIndicators.csv");
+
+            var csvReport = Report.FromXml(xmlReport, tableDefinitions, filingIndicators);
+
+            var csvReportPath = Path.ChangeExtension(Path.GetFileName(reportPath), ".zip");
+            csvReport.Export(csvReportPath);
+            return csvReportPath;
+        }
+
+        [Theory]
+        [InlineData("csv/DUMMYLEI123456789012.CON_FR_FINREP030100_FINREP9_2022-12-31_20220411141600000.zip")]
+        public static string CsvToXml(string reportPath)
+        {
             var csvReport = Report.Import(reportPath);
 
             var entrypoint = csvReport.Entrypoint.Replace(@"http://", "");
@@ -145,33 +163,29 @@ namespace Diwen.XbrlCsv.Tests
 
             var xmlReport = csvReport.ToXml(tableDefinitions, dimensionDomainInfo, typedDomainNamespace, filingIndicators, typedDomains, moduleDefinition);
 
-            xmlReport.ToFile(Path.ChangeExtension(reportName, ".xbrl"));
+            var xmlReportPath = Path.ChangeExtension(Path.GetFileName(reportPath), ".xbrl");
+            xmlReport.ToFile(xmlReportPath);
+            return xmlReportPath;
+
+        }
+
+        [Theory]
+        [InlineData("csv/DUMMYLEI123456789012.CON_FR_FINREP030100_FINREP9_2022-12-31_20220411141600000.xbrl")]
+        public static void XmlToCsvToXml(string xmlInPath)
+        {
+            var csvPath = XmlToCsv(xmlInPath);
+            var xmlOutPath = CsvToXml(csvPath);
+            var result = InstanceComparer.Report(xmlInPath, xmlOutPath);
+            if (!result.Result)
+                File.WriteAllLines(Path.ChangeExtension(Path.GetFileName(xmlOutPath), ".report"), result.Messages);
+                
+            Assert.True(result.Result);
         }
 
         [Theory]
         [InlineData("EBA32_TypedDomain.csv")]
         private static HashSet<string> ReadTypedDomainInfo(string path)
         => File.ReadAllLines(Path.Combine("csv", path)).ToHashSet();
-
-        [Theory]
-        //[InlineData("DUMMYLEI123456789012.CON_FR_SBP010201_SBPIFRS9_2022-12-31_20220411141759000.xbrl")]
-        [InlineData("DUMMYLEI123456789012.CON_FR_FINREP030100_FINREP9_2022-12-31_20220411141600000.xbrl")]
-        public static void XmlToCsv(string reportName)
-        {
-            var reportPath = Path.Combine("csv", reportName);
-
-            var xmlReport = Instance.FromFile(reportPath);
-
-            var moduleDefinition = ReadModuleDefinition(Path.ChangeExtension(xmlReport.SchemaReference.Value.Replace("http://", ""), "json"));
-
-            var tableDefinitions = ReadTableDefinitions(moduleDefinition);
-
-            var filingIndicators = ReadFilingIndicatorInfo("EBA32_finrep_FilingIndicators.csv");
-
-            var csvReport = Report.FromXml(xmlReport, tableDefinitions, filingIndicators);
-
-            csvReport.Export(Path.ChangeExtension(reportName, ".zip"));
-        }
 
 
         [Theory]

@@ -273,7 +273,7 @@
 
             var baseCurrency = report.Parameters["baseCurrency"];
             var baseCurrencyRef = $"u{baseCurrency.Split(':').Last()}";
-            instance.Units.Add(baseCurrencyRef, baseCurrency);
+            instance.Units.Add(baseCurrencyRef, $"iso4217:{baseCurrency}");
 
             instance.SetTypedDomainNamespace(typedDomainNamespace.Key, typedDomainNamespace.Value);
 
