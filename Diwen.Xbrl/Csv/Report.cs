@@ -59,13 +59,13 @@
             return package;
         }
 
-        private void WriteStreamToFile(Stream stream, string path)
+        private static void WriteStreamToFile(Stream stream, string path)
         {
             using (var fileStream = new FileStream(path, FileMode.Create, FileAccess.Write))
                 stream.CopyTo(fileStream);
         }
 
-        private Stream CreateZip(Dictionary<string, Stream> package, string packagename)
+        private static Stream CreateZip(Dictionary<string, Stream> package, string packagename)
         {
             var stream = new MemoryStream();
             using (var zip = new ZipArchive(stream, ZipArchiveMode.Create, true))
@@ -82,7 +82,7 @@
             return stream;
         }
 
-        private Stream CreatePackageInfo()
+        private static Stream CreatePackageInfo()
         {
             var stream = new MemoryStream();
             var writer = new StreamWriter(stream);
