@@ -261,20 +261,24 @@
         public static Instance ToXml(Report report, Dictionary<string, TableDefinition> tableDefinitions, Dictionary<string, string> dimensionDomain, KeyValuePair<string, string> typedDomainNamespace, Dictionary<string, string> filingIndicators, HashSet<string> typedDomains, ModuleDefinition moduleDefinition)
         {
             var instance = new Instance();
+
             foreach (var ns in moduleDefinition.documentInfo.namespaces)
                 instance.Namespaces.AddNamespace(ns.Key, ns.Value);
 
             var idParts = report.Parameters["entityID"].Split(':');
             var idNs = instance.Namespaces.LookupNamespace(idParts.First());
             instance.Entity = new Entity(idNs, idParts.Last());
+
             instance.Period = new Period(DateTime.ParseExact(report.Parameters["refPeriod"], "yyyy-MM-dd", CultureInfo.InvariantCulture));
 
             var baseCurrency = report.Parameters["baseCurrency"];
             var baseCurrencyRef = $"u{baseCurrency.Split(':').Last()}";
             instance.Units.Add(baseCurrencyRef, baseCurrency);
+
             instance.SetTypedDomainNamespace(typedDomainNamespace.Key, typedDomainNamespace.Value);
 
-
+            foreach (var fi in report.FilingIndicators)
+                instance.AddFilingIndicator(fi.Key, fi.Value);
 
             var filed = report.FilingIndicators.Where(i => i.Value).Select(i => i.Key).ToHashSet();
 
@@ -284,7 +288,6 @@
                 GroupBy(d => d.Table).
                 Where(t => filed.Contains(filingIndicators[t.Key])).
                 ToDictionary(d => d.Key, d => d.ToArray());
-
 
             foreach (var table in tabledata)
             {
