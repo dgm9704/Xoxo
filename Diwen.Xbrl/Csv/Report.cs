@@ -38,22 +38,22 @@
 
         public void Export(string packagename)
         {
-            var package = CreatePackage();
+            var package = CreatePackage(DocumentType, Entrypoint, Parameters, FilingIndicators, Data);
             var zip = CreateZip(package, packagename);
             WriteStreamToFile(zip, Path.ChangeExtension(packagename, "zip"));
         }
 
-        private Dictionary<string, Stream> CreatePackage()
+        private static Dictionary<string, Stream> CreatePackage(string documentType, string entrypoint, Dictionary<string, string> parameters, Dictionary<string, bool> filingIndicators, List<ReportData> data)
         {
             var metafolder = "META-INF";
             var reportfolder = "reports";
             var package = new Dictionary<string, Stream>();
 
             package.Add(Path.Combine(metafolder, "reports.json"), CreatePackageInfo());
-            package.Add(Path.Combine(reportfolder, "report.json"), CreateReportInfo());
-            package.Add(Path.Combine(reportfolder, "parameters.csv"), CreateParameters());
-            package.Add(Path.Combine(reportfolder, "FilingIndicators.csv"), CreateFilingIndicators());
-            foreach ((string path, Stream stream) in CreateReportData(reportfolder))
+            package.Add(Path.Combine(reportfolder, "report.json"), CreateReportInfo(documentType, entrypoint));
+            package.Add(Path.Combine(reportfolder, "parameters.csv"), CreateParameters(parameters));
+            package.Add(Path.Combine(reportfolder, "FilingIndicators.csv"), CreateFilingIndicators(filingIndicators));
+            foreach ((string path, Stream stream) in CreateReportData(reportfolder, filingIndicators, data))
                 package.Add(path, stream);
 
             return package;
@@ -92,7 +92,7 @@
             return stream;
         }
 
-        private Stream CreateReportInfo()
+        private static Stream CreateReportInfo(string documentType, string entrypoint)
         {
             AssemblyName assembly = Assembly.GetExecutingAssembly().GetName();
             Version version = assembly.Version;
@@ -101,21 +101,21 @@
 
             var stream = new MemoryStream();
             var writer = new StreamWriter(stream);
-            writer.WriteLine($"{{\"documentInfo\":{{\"documentType\":\"{DocumentType}\",\"extends\":[\"{Entrypoint}\"]}},");
+            writer.WriteLine($"{{\"documentInfo\":{{\"documentType\":\"{documentType}\",\"extends\":[\"{entrypoint}\"]}},");
             writer.WriteLine($"\"eba:generatingSoftwareInformation\": {{\"eba:softwareId\": \"{id}\",\"eba:softwareVersion\": \"{version}\",\"eba:softwareCreationDate\": \"{compileTime.Date:yyyy-MM-dd}\",\"eba:softwareAdditionalInfo\": \"https://github.com/dgm9704/Xoxo\"}}}}");
             writer.Flush();
             stream.Position = 0;
             return stream;
         }
 
-        private Stream CreateParameters()
+        private static Stream CreateParameters(Dictionary<string, string> parameters)
         {
             var stream = new MemoryStream();
             var writer = new StreamWriter(stream);
 
             var builder = new StringBuilder();
             builder.AppendLine("name,value");
-            foreach (var p in Parameters)
+            foreach (var p in parameters)
                 builder.AppendLine($"{p.Key},{p.Value}");
             writer.Write(builder.ToString());
             writer.Flush();
@@ -123,14 +123,14 @@
             return stream;
         }
 
-        private Stream CreateFilingIndicators()
+        private static Stream CreateFilingIndicators(Dictionary<string, bool> filingIndicators)
         {
             var stream = new MemoryStream();
             var writer = new StreamWriter(stream);
 
             var builder = new StringBuilder();
             builder.AppendLine("templateId,reported");
-            foreach (var fi in FilingIndicators)
+            foreach (var fi in filingIndicators)
                 builder.AppendLine($"{fi.Key},{fi.Value.ToString().ToLower()}");
             writer.Write(builder.ToString());
             writer.Flush();
@@ -138,13 +138,13 @@
             return stream;
         }
 
-        private List<(string, Stream)> CreateReportData(string folderpath)
+        private static List<(string, Stream)> CreateReportData(string folderpath, Dictionary<string, bool> filingIndicators, List<ReportData> data)
         {
             var reportdata = new List<(string, Stream)>();
 
-            foreach (var template in FilingIndicators.Where(fi => fi.Value))
+            foreach (var template in filingIndicators.Where(fi => fi.Value))
             {
-                var tabledata = Data.Where(d => d.Table == template.Key);
+                var tabledata = data.Where(d => d.Table == template.Key);
                 if (tabledata.Any())
                 {
                     var filename = template.Key + ".csv";
