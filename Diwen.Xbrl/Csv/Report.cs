@@ -273,8 +273,6 @@
             var baseCurrencyRef = $"u{baseCurrency.Split(':').Last()}";
             instance.Units.Add(baseCurrencyRef, $"iso4217:{baseCurrency}");
 
-
-
             instance.SetTypedDomainNamespace(typedDomainNamespace.Key, typedDomainNamespace.Value);
 
             foreach (var fi in report.FilingIndicators)
@@ -343,13 +341,15 @@
 
         }
 
-        public static Report FromXml(Instance xmlReport, Dictionary<string, TableDefinition> tableDefinitions, Dictionary<string, string> filingIndicators)
+        public static Report FromXml(Instance xmlReport, Dictionary<string, TableDefinition> tableDefinitions, Dictionary<string, string> filingIndicators, ModuleDefinition moduleDefinition)
         {
             var report = new Report();
 
             report.Entrypoint = Path.ChangeExtension(xmlReport.SchemaReference.Value, ".json");
 
-            report.Parameters.Add("entityID", xmlReport.Entity.Identifier.Value);
+            var prefix = moduleDefinition.documentInfo.namespaces.FirstOrDefault(ns=> ns.Value == xmlReport.Entity.Identifier.Scheme).Key;
+            var identifier = xmlReport.Entity.Identifier.Value;
+            report.Parameters.Add("entityID", $"{prefix}:{identifier}");
             report.Parameters.Add("refPeriod", xmlReport.Period.Instant.ToString("yyyy-MM-dd"));
             report.Parameters.Add("baseCurrency", xmlReport.Units.First(u => u.Measure.Namespace == "http://www.xbrl.org/2003/iso4217").Measure.LocalName());
             report.Parameters.Add("decimalsInteger", "0");

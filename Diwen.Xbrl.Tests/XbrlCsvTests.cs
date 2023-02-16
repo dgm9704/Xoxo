@@ -133,7 +133,7 @@ namespace Diwen.XbrlCsv.Tests
 
             var filingIndicators = ReadFilingIndicatorInfo("EBA32_finrep_FilingIndicators.csv");
 
-            var csvReport = Report.FromXml(xmlReport, tableDefinitions, filingIndicators);
+            var csvReport = Report.FromXml(xmlReport, tableDefinitions, filingIndicators, moduleDefinition);
 
             var csvReportPath = Path.ChangeExtension(Path.GetFileName(reportPath), ".zip");
             csvReport.Export(csvReportPath);
