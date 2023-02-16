@@ -259,6 +259,7 @@
         public static Instance ToXml(Report report, Dictionary<string, TableDefinition> tableDefinitions, Dictionary<string, string> dimensionDomain, KeyValuePair<string, string> typedDomainNamespace, Dictionary<string, string> filingIndicators, HashSet<string> typedDomains, ModuleDefinition moduleDefinition)
         {
             var instance = new Instance();
+            instance.SchemaReference = new SchemaReference("simple", moduleDefinition.documentInfo.taxonomy.FirstOrDefault());
 
             foreach (var ns in moduleDefinition.documentInfo.namespaces)
                 instance.Namespaces.AddNamespace(ns.Key, ns.Value);
@@ -347,7 +348,7 @@
 
             report.Entrypoint = Path.ChangeExtension(xmlReport.SchemaReference.Value, ".json");
 
-            var prefix = moduleDefinition.documentInfo.namespaces.FirstOrDefault(ns=> ns.Value == xmlReport.Entity.Identifier.Scheme).Key;
+            var prefix = moduleDefinition.documentInfo.namespaces.FirstOrDefault(ns => ns.Value == xmlReport.Entity.Identifier.Scheme).Key;
             var identifier = xmlReport.Entity.Identifier.Value;
             report.Parameters.Add("entityID", $"{prefix}:{identifier}");
             report.Parameters.Add("refPeriod", xmlReport.Period.Instant.ToString("yyyy-MM-dd"));
@@ -383,22 +384,6 @@
 
             return report;
         }
-
-        // "tableTemplates": {
-        //         "S_00-01": {
-        //             "columns": {
-        //                 "datapoint": {
-        //                     "propertyGroups": {
-        //                         "dp31870": {
-        //                             "dimensions": {
-        //                                 "concept": "eba_met:ei4",
-        //                                 "eba_dim:BAS": "eba_BA:x17"
-        //                             },
-        //                             "eba:documentation": {
-        //                                 "CellCode": "{S 00.01, r0010, c0010}",
-        //                                 "DataPointVersionId": "31870"
-        //                             }
-        //                         },
 
         private static Dictionary<string, string[]> GetTableDatapoints(Fact fact, Dictionary<string, TableDefinition> tabledefinitions, string dimNsPrefix)
         {
