@@ -53,8 +53,8 @@
             package.Add(Path.Combine(reportfolder, "report.json"), CreateReportInfo(documentType, entrypoint));
             package.Add(Path.Combine(reportfolder, "parameters.csv"), CreateParameters(parameters));
             package.Add(Path.Combine(reportfolder, "FilingIndicators.csv"), CreateFilingIndicators(filingIndicators));
-            foreach ((string path, Stream stream) in CreateReportData(reportfolder, filingIndicators, data))
-                package.Add(path, stream);
+            foreach (var tableStream in CreateReportData(reportfolder, data))
+                package.Add(tableStream.Key, tableStream.Value);
 
             return package;
         }
@@ -138,37 +138,35 @@
             return stream;
         }
 
-        private static List<(string, Stream)> CreateReportData(string folderpath, Dictionary<string, bool> filingIndicators, List<ReportData> data)
+        private static Dictionary<string, Stream> CreateReportData(string folderpath, List<ReportData> data)
         {
-            var reportdata = new List<(string, Stream)>();
+            var reportdata = new Dictionary<string, Stream>();
 
-            foreach (var template in filingIndicators.Where(fi => fi.Value))
+            var tabledata = data.GroupBy(d => d.Table);
+            foreach (var table in tabledata)
             {
-                var tabledata = data.Where(d => d.Table == template.Key);
-                if (tabledata.Any())
+                var filename = table.Key + ".csv";
+                var filepath = Path.Combine(folderpath, filename);
+                var builder = new StringBuilder("datapoint,factvalue");
+                foreach (var dimension in table.First().Dimensions.Keys)
+                    builder.Append($",{dimension}");
+                builder.AppendLine();
+
+                foreach (var item in table)
                 {
-                    var filename = template.Key + ".csv";
-                    var filepath = Path.Combine(folderpath, filename);
-                    var builder = new StringBuilder("datapoint,factvalue");
-                    foreach (var dimension in tabledata.First().Dimensions.Keys)
+                    builder.AppendFormat($"{item.Datapoint},{item.Value}");
+                    foreach (var dimension in item.Dimensions.Values)
                         builder.Append($",{dimension}");
                     builder.AppendLine();
-
-                    foreach (var item in tabledata)
-                    {
-                        builder.AppendFormat($"{item.Datapoint},{item.Value}");
-                        foreach (var dimension in item.Dimensions.Values)
-                            builder.Append($",{dimension}");
-                        builder.AppendLine();
-                    }
-                    var stream = new MemoryStream();
-                    var writer = new StreamWriter(stream);
-                    writer.Write(builder.ToString());
-                    writer.Flush();
-                    stream.Position = 0;
-                    reportdata.Add((filepath, stream));
                 }
+                var stream = new MemoryStream();
+                var writer = new StreamWriter(stream);
+                writer.Write(builder.ToString());
+                writer.Flush();
+                stream.Position = 0;
+                reportdata[filepath] = stream;
             }
+
             return reportdata;
         }
 
@@ -275,6 +273,8 @@
             var baseCurrencyRef = $"u{baseCurrency.Split(':').Last()}";
             instance.Units.Add(baseCurrencyRef, $"iso4217:{baseCurrency}");
 
+
+
             instance.SetTypedDomainNamespace(typedDomainNamespace.Key, typedDomainNamespace.Value);
 
             foreach (var fi in report.FilingIndicators)
@@ -307,8 +307,9 @@
                 var tableDatapoints = jsonTable.tableTemplates.First().Value.columns.datapoint.propertyGroups;
                 foreach (var fact in table.Value.Where(f => !string.IsNullOrWhiteSpace(f.Value)))
                 {
+                    var datapoint = tableDatapoints[fact.Datapoint];
                     var scenario = new Scenario();
-                    var dimensions = tableDatapoints[fact.Datapoint].dimensions;
+                    var dimensions = datapoint.dimensions;
                     string metric = string.Empty;
                     string unit = string.Empty;
 
@@ -329,8 +330,11 @@
                             scenario.AddExplicitMember(d.Key, d.Value);
 
                     var unitRef = unit.Replace("$baseCurrency", baseCurrencyRef);
+                    var decimals = !string.IsNullOrEmpty(datapoint.decimals)
+                         ? report.Parameters.GetValueOrDefault(datapoint.decimals.TrimStart('$'), string.Empty)
+                         : string.Empty;
 
-                    instance.AddFact(scenario, metric, unitRef, "", fact.Value);
+                    instance.AddFact(scenario, metric, unitRef, decimals, fact.Value);
 
                 }
 
@@ -377,40 +381,6 @@
 
             }
 
-
-            // //datapoint,factValue
-            // report.AddData("S_00.01", "dp31870", "eba_AS:x1");
-            // report.AddData("S_00.01", "dp37969", "eba_SC:x6");
-
-            // // datapoint,factValue,IRN
-            // report.AddData("C_105.03", "dp434188", "grarenmw", "IRN", "36");
-            // report.AddData("C_105.03", "dp434189", "eba_GA:AL", "IRN", "36");
-            // report.AddData("C_105.03", "dp434188", "grarenmw2", "IRN", "8");
-            // report.AddData("C_105.03", "dp434189", "eba_GA:AL", "IRN", "8");
-
-            // // datapoint,factValue,IMI,PBE
-            // report.AddData("C_105.02", "dp439585", "250238.28", ("IMI", "ksnpfnwn"), ("PBI", "ksnpfnwn"));
-            // report.AddData("C_105.02", "dp439586", "247370.72", ("IMI", "ksnpfnwn"), ("PBI", "ksnpfnwn"));
-            // report.AddData("C_105.02", "dp439585", "250238.28", ("IMI", "kotnyngp"), ("PBI", "kotnyngp"));
-            // report.AddData("C_105.02", "dp439586", "247370.72", ("IMI", "kotnyngp"), ("PBI", "kotnyngp"));
-
-
-            // // datapoint,factValue,FTY,INC
-            // report.AddData("C_113.00", "dp439732", "304132.94", ("FTY", "htkaaxvr"), ("INC", "htkaaxvr"));
-            // report.AddData("C_113.00", "dp439750", "eba_IM:x33", ("FTY", "htkaaxvr"), ("INC", "htkaaxvr"));
-            // report.AddData("C_113.00", "dp439744", "0.1", ("FTY", "htkaaxvr"), ("INC", "htkaaxvr"));
-            // report.AddData("C_113.00", "dp439745", "0.72", ("FTY", "htkaaxvr"), ("INC", "htkaaxvr"));
-            // report.AddData("C_113.00", "dp439751", "0.34", ("FTY", "htkaaxvr"), ("INC", "htkaaxvr"));
-            // report.AddData("C_113.00", "dp439752", "0.46", ("FTY", "htkaaxvr"), ("INC", "htkaaxvr"));
-            // report.AddData("C_113.00", "dp439753", "eba_ZZ:x409", ("FTY", "htkaaxvr"), ("INC", "htkaaxvr"));
-            // report.AddData("C_113.00", "dp439732", "304132.94", ("FTY", "ynqtbutq"), ("INC", "ynqtbutq"));
-            // report.AddData("C_113.00", "dp439750", "eba_IM:x33", ("FTY", "ynqtbutq"), ("INC", "ynqtbutq"));
-            // report.AddData("C_113.00", "dp439744", "0.1", ("FTY", "ynqtbutq"), ("INC", "ynqtbutq"));
-            // report.AddData("C_113.00", "dp439745", "0.72", ("FTY", "ynqtbutq"), ("INC", "ynqtbutq"));
-            // report.AddData("C_113.00", "dp439751", "0.34", ("FTY", "ynqtbutq"), ("INC", "ynqtbutq"));
-            // report.AddData("C_113.00", "dp439752", "0.46", ("FTY", "ynqtbutq"), ("INC", "ynqtbutq"));
-            // report.AddData("C_113.00", "dp439753", "eba_ZZ:x409", ("FTY", "ynqtbutq"), ("INC", "ynqtbutq"));
-
             return report;
         }
 
@@ -449,15 +419,30 @@
                 // filter by matching explicit members
                 candidateDatapoints =
                 candidateDatapoints.
-                    Where(pg => fact.Context.Scenario.ExplicitMembers.
-                    All(m => pg.Value.dimensions.GetValueOrDefault($"{dimNsPrefix}:{m.Dimension.Name}", string.Empty) == m.MemberCode))
-                    .ToArray();
+                    Where(pg => DatapointMatchesFact(pg.Value.dimensions, fact.Context.Scenario.ExplicitMembers)).
+                    ToArray();
 
                 if (candidateDatapoints.Any())
                     result[td.Key] = candidateDatapoints.Select(dp => dp.Key).ToArray();
             }
 
             return result;
+        }
+
+        private static bool DatapointMatchesFact(Dictionary<string, string> propertyGroupDimensions, ExplicitMemberCollection scenario)
+        {
+            var csv =
+                propertyGroupDimensions.
+                Where(d => d.Key != "concept" && d.Key != "unit").
+                Select(d => $"{d.Key.Split(':').Last()}={d.Value.Split(':').Last()}").
+                Join(",");
+
+            var xml =
+                scenario.
+                Select(m => $"{m.Dimension.Name}={m.Value.Name}").
+                Join(",");
+
+            return csv == xml;
         }
     }
 }
