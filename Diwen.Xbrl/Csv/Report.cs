@@ -374,6 +374,7 @@
             {
                 var value = fact.Value;
                 var dimensions = fact.Context.Scenario.TypedMembers.ToDictionary(m => m.Dimension.LocalName(), m => m.Value);
+
                 var scenario = fact.Context.Scenario;
                 var datapoints = GetTableDatapoints(fact, reportedTables, dimNsPrefix);
                 foreach (var table in datapoints)
@@ -401,10 +402,21 @@
                                 Where(pg => pg.Value.dimensions["concept"] == metric).
                                 ToArray();
 
+                var tableOpenDimensions = td.Value.tableTemplates.First().Value.columns.factValue.dimensions.Select(d => d.Key.Split(':').Last()).ToHashSet();
+                var factExplicitMembers = fact.Context.Scenario.ExplicitMembers.ToDictionary(m => m.Dimension.Name, m => m.Value.Name);
+                var factTypedMembers = fact.Context.Scenario.TypedMembers.Select(m => m.Dimension.Name).ToHashSet();
+
                 // filter by matching explicit members
                 candidateDatapoints =
                 candidateDatapoints.
-                    Where(pg => DatapointMatchesFact(pg.Value.dimensions, fact.Context.Scenario.ExplicitMembers)).
+                    Where(pg =>
+                        DatapointMatchesFact(
+                            pg.Value.dimensions.
+                                Where(d => d.Key != "concept" && d.Key != "unit").
+                                ToDictionary(d => d.Key.Split(':').Last(), d => d.Value.Split(':').Last()),
+                            tableOpenDimensions,
+                            factExplicitMembers,
+                            factTypedMembers)).
                     ToArray();
 
                 if (candidateDatapoints.Any())
@@ -412,6 +424,18 @@
             }
 
             return result;
+        }
+
+        private static bool DatapointMatchesFact(Dictionary<string, string> datapointDimensions, HashSet<string> tableOpenDimensions, Dictionary<string, string> factExplicitMembers, HashSet<string> factTypedMembers)
+        {
+            return
+                factExplicitMembers.Count + factTypedMembers.Count == tableOpenDimensions.Count + datapointDimensions.Count
+                &&
+                factExplicitMembers.
+                All(m => datapointDimensions.GetValueOrDefault(m.Key, "") == m.Value
+                    || tableOpenDimensions.Contains(m.Key))
+                &&
+                factTypedMembers.All(m => tableOpenDimensions.Contains(m));
         }
 
         private static bool DatapointMatchesFact(Dictionary<string, string> propertyGroupDimensions, ExplicitMemberCollection scenario)
