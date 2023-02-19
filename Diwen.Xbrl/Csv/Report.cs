@@ -289,6 +289,8 @@
                 Where(t => filed.Contains(filingIndicators[t.Key])).
                 ToDictionary(d => d.Key, d => d.ToArray());
 
+            var dimensionPrefix = "";
+
             foreach (var table in tabledata)
             {
                 var tablecode = table.Key;
@@ -297,7 +299,10 @@
                 foreach (var ns in jsonTable.documentInfo.namespaces)
                 {
                     if (ns.Key.EndsWith("_dim"))
+                    {
+                        dimensionPrefix = ns.Key;
                         instance.SetDimensionNamespace(ns.Key, ns.Value);
+                    }
                     else if (ns.Key.EndsWith("_met"))
                         instance.SetMetricNamespace(ns.Key, ns.Value);
                     else
@@ -325,7 +330,9 @@
 
                     foreach (var d in fact.Dimensions)
                         if (typedDomains.Contains(dimensionDomain[d.Key]))
-                            scenario.AddTypedMember(d.Key, dimensionDomain[d.Key], d.Value);
+                        // HACK: For some reason the prefixes aren't found during normal operation so we have to add them here
+                        // Find why the prefixs are dropped and remove this
+                            scenario.AddTypedMember($"{dimensionPrefix}:{d.Key}", $"{typedDomainNamespace.Key}:{dimensionDomain[d.Key]}", d.Value);
                         else
                             scenario.AddExplicitMember(d.Key, d.Value);
 
@@ -393,7 +400,7 @@
                 var openDimensions = fact.Context.Scenario.TypedMembers.ToDictionary(m => m.Dimension.LocalName(), m => m.Value);
 
                 var factExplicitMembers = fact.Context.Scenario.ExplicitMembers.ToDictionary(m => m.Dimension.Name, m => m.Value.Name);
-                var factTypedMembers = fact.Context.Scenario.TypedMembers.Select(m => m.Dimension.Name).ToHashSet();
+                var factTypedMembers = fact.Context.Scenario.TypedMembers.Select(m => m.Dimension.LocalName()).ToHashSet();
 
                 var datapoints = GetTableDatapoints(fact, reportedTables, dimNsPrefix, tablesOpendimensions, factExplicitMembers, factTypedMembers);
                 foreach (var table in datapoints)

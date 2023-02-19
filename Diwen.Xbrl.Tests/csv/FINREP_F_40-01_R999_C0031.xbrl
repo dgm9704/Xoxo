@@ -1,0 +1,52 @@
+<?xml version='1.0' encoding='UTF-8'?>
+
+<xbrli:xbrl 
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+  xmlns:xbrli="http://www.xbrl.org/2003/instance" 
+  xmlns:link="http://www.xbrl.org/2003/linkbase" 
+  xmlns:xlink="http://www.w3.org/1999/xlink" 
+  xmlns:xbrldi="http://xbrl.org/2006/xbrldi" 
+  xmlns:iso4217="http://www.xbrl.org/2003/iso4217" 
+  xmlns:find="http://www.eurofiling.info/xbrl/ext/filing-indicators" 
+  xmlns:eba_dim="http://www.eba.europa.eu/xbrl/crr/dict/dim" 
+  xmlns:eba_met="http://www.eba.europa.eu/xbrl/crr/dict/met" 
+  xmlns:eba_BT="http://www.eba.europa.eu/xbrl/crr/dict/dom/BT"  
+  xmlns:eba_typ="http://www.eba.europa.eu/xbrl/crr/dict/typ">
+
+  <link:schemaRef xlink:type="simple" xlink:href="http://www.eba.europa.eu/eu/fr/xbrl/crr/fws/finrep/its-005-2020/2022-06-01/mod/finrep9.xsd"/>
+
+  <xbrli:unit id="uPURE">
+    <xbrli:measure>xbrli:pure</xbrli:measure>
+  </xbrli:unit>
+  
+  <xbrli:context id="c1">
+    <xbrli:entity>
+      <xbrli:identifier scheme="https://eurofiling.info/eu/rs">DUMMYLEI123456789012.CON</xbrli:identifier>
+    </xbrli:entity>
+    <xbrli:period>
+      <xbrli:instant>2022-12-31</xbrli:instant>
+    </xbrli:period>
+  </xbrli:context>
+
+  <find:fIndicators>
+    <find:filingIndicator contextRef="c1">F_40.01</find:filingIndicator>
+  </find:fIndicators>
+
+  <xbrli:context id="c12299">
+    <xbrli:entity>
+      <xbrli:identifier scheme="https://eurofiling.info/eu/rs">DUMMYLEI123456789012.CON</xbrli:identifier>
+    </xbrli:entity>
+    <xbrli:period>
+      <xbrli:instant>2022-12-31</xbrli:instant>
+    </xbrli:period>
+    <xbrli:scenario>
+      <xbrldi:explicitMember dimension="eba_dim:TYC">eba_BT:x15</xbrldi:explicitMember>
+      <xbrldi:typedMember dimension="eba_dim:LIN">
+        <eba_typ:LE>2</eba_typ:LE>
+      </xbrldi:typedMember>
+    </xbrli:scenario>
+  </xbrli:context>
+
+  <eba_met:si475 contextRef="c12299">4683</eba_met:si475>
+
+</xbrli:xbrl>
