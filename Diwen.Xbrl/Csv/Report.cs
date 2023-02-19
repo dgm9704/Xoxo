@@ -273,6 +273,7 @@
             var baseCurrency = report.Parameters["baseCurrency"];
             var baseCurrencyRef = $"u{baseCurrency.Split(':').Last()}";
             instance.Units.Add(baseCurrencyRef, $"iso4217:{baseCurrency}");
+            instance.Units.Add("uPURE", "xbrli:pure");
 
             instance.SetTypedDomainNamespace(typedDomainNamespace.Key, typedDomainNamespace.Value);
 
@@ -328,7 +329,11 @@
                         else
                             scenario.AddExplicitMember(d.Key, d.Value);
 
-                    var unitRef = unit.Replace("$baseCurrency", baseCurrencyRef);
+                    var unitRef =
+                        !string.IsNullOrEmpty(unit)
+                        ? unit.Replace("$baseCurrency", baseCurrencyRef)
+                        : "uPURE";
+
                     var decimals = !string.IsNullOrEmpty(datapoint.decimals)
                          ? report.Parameters.GetValueOrDefault(datapoint.decimals.TrimStart('$'), string.Empty)
                          : string.Empty;
@@ -338,6 +343,9 @@
                 }
 
             }
+
+            instance.RemoveUnusedUnits();
+
             return instance;
 
         }
@@ -352,7 +360,7 @@
             var identifier = xmlReport.Entity.Identifier.Value;
             report.Parameters.Add("entityID", $"{prefix}:{identifier}");
             report.Parameters.Add("refPeriod", xmlReport.Period.Instant.ToString("yyyy-MM-dd"));
-            report.Parameters.Add("baseCurrency", xmlReport.Units.First(u => u.Measure.Namespace == "http://www.xbrl.org/2003/iso4217").Measure.LocalName());
+            report.Parameters.Add("baseCurrency", xmlReport.Units.FirstOrDefault(u => u.Measure.Namespace == "http://www.xbrl.org/2003/iso4217")?.Measure?.LocalName() ?? "EUR");
             report.Parameters.Add("decimalsInteger", "0");
             report.Parameters.Add("decimalsMonetary", "-3");
             report.Parameters.Add("decimalsPercentage", "4");
@@ -367,7 +375,7 @@
 
             var reportedTables =
                 tableDefinitions.
-                Where(table => report.FilingIndicators[filingIndicators[table.Key]]).
+                Where(table => report.FilingIndicators.GetValueOrDefault(filingIndicators[table.Key], false)).
                 ToDictionary(t => t.Key, t => t.Value);
 
             var tablesOpendimensions =
@@ -380,7 +388,9 @@
             foreach (var fact in xmlReport.Facts)
             {
                 var value = fact.Value;
-                var dimensions = fact.Context.Scenario.TypedMembers.ToDictionary(m => m.Dimension.LocalName(), m => m.Value);
+
+                // Typed members are all open
+                var openDimensions = fact.Context.Scenario.TypedMembers.ToDictionary(m => m.Dimension.LocalName(), m => m.Value);
 
                 var factExplicitMembers = fact.Context.Scenario.ExplicitMembers.ToDictionary(m => m.Dimension.Name, m => m.Value.Name);
                 var factTypedMembers = fact.Context.Scenario.TypedMembers.Select(m => m.Dimension.Name).ToHashSet();
@@ -388,7 +398,15 @@
                 var datapoints = GetTableDatapoints(fact, reportedTables, dimNsPrefix, tablesOpendimensions, factExplicitMembers, factTypedMembers);
                 foreach (var table in datapoints)
                     foreach (var datapoint in table.Value)
-                        report.AddData(table.Key.Replace('-', '.'), datapoint, fact.Value, dimensions);
+                    {
+                        foreach (var dim in tablesOpendimensions[table.Key])
+                            if (!openDimensions.ContainsKey(dim))
+                                // Some explicit members might be open, depending on the table
+                                openDimensions[dim] = factExplicitMembers[dim];
+
+                        report.AddData(table.Key, datapoint, fact.Value, openDimensions);
+
+                    }
 
             }
 
@@ -438,7 +456,7 @@
 
         private static bool DatapointMatchesFact(Dictionary<string, string> datapointDimensions, HashSet<string> tableOpenDimensions, Dictionary<string, string> factExplicitMembers, HashSet<string> factTypedMembers)
         {
-            var match = 
+            var match =
                 factExplicitMembers.Count + factTypedMembers.Count == tableOpenDimensions.Count + datapointDimensions.Count
                 &&
                 factExplicitMembers.
