@@ -169,9 +169,9 @@ namespace Diwen.XbrlCsv.Tests
         }
 
         [Theory]
-        //[InlineData("csv/DUMMYLEI123456789012.CON_FR_FINREP030100_FINREP9_2022-12-31_20220411141600000.xbrl")]
+        [InlineData("csv/DUMMYLEI123456789012.CON_FR_FINREP030100_FINREP9_2022-12-31_20220411141600000.xbrl")]
         //[InlineData("csv/FINREP_F_23-01_R0080_C0010.xbrl")]
-        [InlineData("csv/FINREP_F_40-01_R999_C0031.xbrl")]
+        //[InlineData("csv/FINREP_F_40-01_R999_C0031.xbrl")]
         public static void XmlToCsvToXml(string xmlInPath)
         {
             var csvPath = XmlToCsv(xmlInPath);
