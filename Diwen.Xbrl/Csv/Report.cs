@@ -330,20 +330,23 @@
 
                     foreach (var d in fact.Dimensions)
                         if (typedDomains.Contains(dimensionDomain[d.Key]))
-                        // HACK: For some reason the prefixes aren't found during normal operation so we have to add them here
-                        // Find why the prefixs are dropped and remove this
+                            // HACK: For some reason the prefixes aren't found during normal operation so we have to add them here
+                            // Find why the prefixs are dropped and remove this
                             scenario.AddTypedMember($"{dimensionPrefix}:{d.Key}", $"{typedDomainNamespace.Key}:{dimensionDomain[d.Key]}", d.Value);
                         else
                             scenario.AddExplicitMember(d.Key, d.Value);
 
-                    var unitRef =
-                        !string.IsNullOrEmpty(unit)
-                        ? unit.Replace("$baseCurrency", baseCurrencyRef)
-                        : "uPURE";
-
                     var decimals = !string.IsNullOrEmpty(datapoint.decimals)
                          ? report.Parameters.GetValueOrDefault(datapoint.decimals.TrimStart('$'), string.Empty)
                          : string.Empty;
+
+                    // Unit for only numeric values, ie. those that have decimals specified
+                    var unitRef =
+                        string.IsNullOrEmpty(decimals)
+                            ? string.Empty
+                            : !string.IsNullOrEmpty(unit)
+                                ? unit.Replace("$baseCurrency", baseCurrencyRef)
+                                : "uPURE";
 
                     instance.AddFact(scenario, metric, unitRef, decimals, fact.Value);
 
