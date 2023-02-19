@@ -308,7 +308,7 @@
                 foreach (var fact in table.Value.Where(f => !string.IsNullOrWhiteSpace(f.Value)))
                 {
                     var datapoint = tableDatapoints[fact.Datapoint];
-                    var scenario = new Scenario();
+                    var scenario = new Scenario(instance);
                     var dimensions = datapoint.dimensions;
                     string metric = string.Empty;
                     string unit = string.Empty;
@@ -402,7 +402,8 @@
                         foreach (var dim in tablesOpendimensions[table.Key])
                             if (!openDimensions.ContainsKey(dim))
                                 // Some explicit members might be open, depending on the table
-                                openDimensions[dim] = factExplicitMembers[dim];
+                                openDimensions[dim] = fact.Context.Scenario.ExplicitMembers.First(m => m.Dimension.Name == dim).MemberCode;
+                        // factExplicitMembers[dim];
 
                         report.AddData(table.Key, datapoint, fact.Value, openDimensions);
 
