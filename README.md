@@ -1,33 +1,9 @@
 [![.NET](https://github.com/dgm9704/Xoxo/actions/workflows/dotnet.yml/badge.svg)](https://github.com/dgm9704/Xoxo/actions/workflows/dotnet.yml)
 [![nuget](https://img.shields.io/nuget/v/Diwen.Xbrl.svg)](https://www.nuget.org/packages/Diwen.Xbrl/)
 
-# Default branch has been renamed
-Use these commands to update:
-```
-git branch -m master main
-git fetch origin
-git branch -u origin/main main
-git remote set-head origin -a
-```
-
 # Xoxo
 Container for the Diwen.Xbrl library and any related stuff
 
-## Ways get in touch
-If you have any questions, comments, suggestions, problems, bugreports/fixes, etc
-
-### create an issue 
-It's always ok to create one even if you're not sure
-
-https://github.com/dgm9704/Xoxo/issues/new
-
-### send a message through the NuGet package page
-This might be the best way if you have a complicated issue or something you don't want share publicly
-
-https://www.nuget.org/packages/Diwen.Xbrl/1.2.0/ContactOwners
-
-### twitter: @DiwenXbrl
-https://twitter.com/DiwenXbrl
 
 ## Diwen.Xbrl
 A .NET library for reading, writing and comparing XBRL documents (instances)
@@ -39,11 +15,10 @@ Supports:
 
 - Parsing of Inline XBRL to "normal" instance (from ESMA ESEF)
 
-- Bare-bones implementation of reading and writing xBRL-csv (no connection to "normal" XBRL yet)
+- Bare-bones implementation of reading and writing xBRL-CSV and converting to/from xBRL-XML
 
 
 ### License:
-
 
 GNU Lesser General Public License v3.0
 
@@ -78,5 +53,28 @@ and test code is targeting [.NET 6](https://docs.microsoft.com/en-us/dotnet/)
 I use [Visual Studio Code](https://code.visualstudio.com/) 
 on [Arch Linux](https://www.archlinux.org/)
 
+## Ways get in touch
+If you have any questions, comments, suggestions, problems, bugreports/fixes, etc
+
+### create an issue 
+It's always ok to create one even if you're not sure
+
+https://github.com/dgm9704/Xoxo/issues/new
+
+### send a message through the NuGet package page
+This might be the best way if you have a complicated issue or something you don't want share publicly
+
+https://www.nuget.org/packages/Diwen.Xbrl/1.2.0/ContactOwners
+
+### twitter: @DiwenXbrl
+https://twitter.com/DiwenXbrl
 
 
+# (old news) Default branch has been renamed
+Use these commands to update:
+```
+git branch -m master main
+git fetch origin
+git branch -u origin/main main
+git remote set-head origin -a
+```
