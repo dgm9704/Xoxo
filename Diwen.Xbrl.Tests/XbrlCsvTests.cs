@@ -127,6 +127,8 @@ namespace Diwen.XbrlCsv.Tests
         {
             var xmlReport = Instance.FromFile(reportPath);
 
+            xmlReport.RemoveDuplicateFacts();
+
             var moduleDefinition = ReadModuleDefinition(Path.ChangeExtension(xmlReport.SchemaReference.Value.Replace("http://", ""), "json"));
 
             var tableDefinitions = ReadTableDefinitions(moduleDefinition);
@@ -179,7 +181,7 @@ namespace Diwen.XbrlCsv.Tests
             var result = InstanceComparer.Report(xmlInPath, xmlOutPath);
             if (!result.Result)
                 File.WriteAllLines(Path.ChangeExtension(Path.GetFileName(xmlOutPath), ".report"), result.Messages);
-                
+
             Assert.True(result.Result);
         }
 

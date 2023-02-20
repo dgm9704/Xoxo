@@ -292,6 +292,18 @@ namespace Diwen.Xbrl
             }
         }
 
+        public void RemoveDuplicateFacts()
+        {
+            var duplicates = Facts.
+                GroupBy(f => f).
+                Where(g => g.Skip(1).Any()).
+                ToArray();
+
+            foreach (var group in duplicates)
+                foreach (var duplicate in group.Skip(1))
+                    Facts.Remove(duplicate);
+        }
+
         public void RemoveUnusedContexts()
         {
             var usedIds = new HashSet<string>();
@@ -717,6 +729,9 @@ namespace Diwen.Xbrl
 
             if (options.HasFlag(InstanceOptions.CollapseDuplicateContexts))
                 instance.CollapseDuplicateContexts();
+
+            //if(options.HasFlag(InstanceOptions.CollapseDuplicateFacts))
+            //instance.CollapseDuplicateFacts();
 
             if (options.HasFlag(InstanceOptions.RemoveUnusedObjects))
                 instance.RemoveUnusedObjects();
