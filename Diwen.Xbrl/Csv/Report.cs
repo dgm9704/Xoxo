@@ -478,21 +478,5 @@
 
             return match;
         }
-
-        private static bool DatapointMatchesFact(Dictionary<string, string> propertyGroupDimensions, ExplicitMemberCollection scenario)
-        {
-            var csv =
-                propertyGroupDimensions.
-                Where(d => d.Key != "concept" && d.Key != "unit").
-                Select(d => $"{d.Key.Split(':').Last()}={d.Value.Split(':').Last()}").
-                Join(",");
-
-            var xml =
-                scenario.
-                Select(m => $"{m.Dimension.Name}={m.Value.Name}").
-                Join(",");
-
-            return csv == xml;
-        }
     }
 }
