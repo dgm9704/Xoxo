@@ -151,7 +151,7 @@ namespace Diwen.Xbrl.Tests
 			instance.RemoveUnusedObjects();
 
 			var referencePath = Path.Combine("data", "reference.xbrl");
-			var referenceInstance = Instance.FromFile(referencePath, true);
+			var referenceInstance = Instance.FromFile(referencePath);
 
 			// Instances are functionally equivalent:
 			// They have the same number of contexts and scenarios of the contexts match member-by-member
@@ -164,7 +164,7 @@ namespace Diwen.Xbrl.Tests
 			string tempFile = "temp.xbrl";
 			instance.ToFile(tempFile);
 
-			var newInstance = Instance.FromFile(tempFile, true);
+			var newInstance = Instance.FromFile(tempFile);
 
 			// Assert.True(newInstance.Equals(instance));
 			var report = InstanceComparer.Report(instance, newInstance);
@@ -235,7 +235,7 @@ namespace Diwen.Xbrl.Tests
 			var inputPath = Path.Combine("data", "duplicate_context.xbrl");
 			Instance instance = null;
 			using (var stream = new FileStream(inputPath, FileMode.Open))
-				instance = Instance.FromStream(stream, removeUnusedObjects: false, collapseDuplicateContexts: false);
+				instance = Instance.FromStream(stream, removeUnusedObjects: false, collapseDuplicateContexts: false, removeDuplicateFacts: false);
 
 			Assert.Equal(2, instance.Contexts.Count);
 

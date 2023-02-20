@@ -730,8 +730,8 @@ namespace Diwen.Xbrl
             if (options.HasFlag(InstanceOptions.CollapseDuplicateContexts))
                 instance.CollapseDuplicateContexts();
 
-            //if(options.HasFlag(InstanceOptions.CollapseDuplicateFacts))
-            //instance.CollapseDuplicateFacts();
+            if (options.HasFlag(InstanceOptions.RemoveDuplicateFacts))
+                instance.RemoveDuplicateFacts();
 
             if (options.HasFlag(InstanceOptions.RemoveUnusedObjects))
                 instance.RemoveUnusedObjects();
@@ -842,9 +842,9 @@ namespace Diwen.Xbrl
         => FromStream(stream, true);
 
         public static Instance FromStream(Stream stream, bool removeUnusedObjects)
-        => FromStream(stream, removeUnusedObjects, true);
+        => FromStream(stream, removeUnusedObjects, true, true);
 
-        public static Instance FromStream(Stream stream, bool removeUnusedObjects, bool collapseDuplicateContexts)
+        public static Instance FromStream(Stream stream, bool removeUnusedObjects, bool collapseDuplicateContexts, bool removeDuplicateFacts)
         {
             stream.Position = 0;
 
@@ -857,6 +857,10 @@ namespace Diwen.Xbrl
                 xbrl = (Instance)Serializer.Deserialize(reader);
 
             var options = InstanceOptions.None;
+
+            if (removeDuplicateFacts)
+                options |= InstanceOptions.RemoveDuplicateFacts;
+
             if (removeUnusedObjects)
                 options |= InstanceOptions.RemoveUnusedObjects;
 
@@ -878,14 +882,14 @@ namespace Diwen.Xbrl
         }
 
         public static Instance FromFile(string path)
-        => FromFile(path, false);
+        => FromFile(path, true, true, true);
 
-        public static Instance FromFile(string path, bool removeUnusedObjects)
+        public static Instance FromFile(string path, bool removeUnusedObjects, bool collapseDuplicateContexts, bool removeDuplicateFacts)
         {
             Instance xbrl;
 
             using (var stream = new FileStream(path, FileMode.Open, FileAccess.Read))
-                xbrl = FromStream(stream, removeUnusedObjects);
+                xbrl = FromStream(stream, removeUnusedObjects, collapseDuplicateContexts, removeDuplicateFacts);
 
             return xbrl;
         }

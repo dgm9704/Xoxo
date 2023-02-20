@@ -128,9 +128,6 @@ namespace Diwen.XbrlCsv.Tests
         {
             var xmlReport = Instance.FromFile(reportPath);
 
-            xmlReport.RemoveDuplicateFacts();
-            xmlReport.RemoveUnusedContexts();
-
             var moduleDefinition = ReadModuleDefinition(Path.ChangeExtension(xmlReport.SchemaReference.Value.Replace("http://", ""), "json"));
 
             var tableDefinitions = ReadTableDefinitions(moduleDefinition);

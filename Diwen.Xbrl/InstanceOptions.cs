@@ -8,6 +8,6 @@
         None = 0,
         RemoveUnusedObjects = 1 << 0,
         CollapseDuplicateContexts = 1 << 1,
-        //CollapseDuplicateFacts = 1 << 2,
+        RemoveDuplicateFacts = 1 << 2,
     }
 }
