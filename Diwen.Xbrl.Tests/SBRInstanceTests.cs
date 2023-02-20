@@ -232,7 +232,7 @@ namespace Diwen.Xbrl.Tests
 			instance.RemoveUnusedObjects();
 
 			var referencePath = Path.Combine("data", "sbr_reference.xbrl");
-			var referenceInstance = Instance.FromFile(referencePath);
+			var referenceInstance = Instance.FromFile(referencePath, removeUnusedObjects: false, collapseDuplicateContexts: false, removeDuplicateFacts: false);
 
 			// Instances are functionally equivalent:
 			// They have the same number of contexts and scenarios of the contexts match member-by-member
@@ -245,7 +245,7 @@ namespace Diwen.Xbrl.Tests
 			string tempFile = "sbr_temp.xbrl";
 			instance.ToFile(tempFile);
 
-			var newInstance = Instance.FromFile(tempFile);
+			var newInstance = Instance.FromFile(tempFile,  removeUnusedObjects: false, collapseDuplicateContexts: false, removeDuplicateFacts: false);
 
 			Assert.True(newInstance.Equals(instance));
 
