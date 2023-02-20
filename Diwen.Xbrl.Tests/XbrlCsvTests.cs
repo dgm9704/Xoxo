@@ -1,5 +1,6 @@
 namespace Diwen.XbrlCsv.Tests
 {
+    using System;
     using System.Collections.Generic;
     using System.IO;
     using System.Linq;
@@ -182,7 +183,7 @@ namespace Diwen.XbrlCsv.Tests
             if (!result.Result)
                 File.WriteAllLines(Path.ChangeExtension(Path.GetFileName(xmlOutPath), ".report"), result.Messages);
 
-            Assert.True(result.Result);
+            Assert.True(result.Result, string.Join(Environment.NewLine, result.Messages));
         }
 
         [Theory]
