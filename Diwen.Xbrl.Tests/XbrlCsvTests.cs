@@ -133,6 +133,7 @@ namespace Diwen.XbrlCsv.Tests
 
         [Theory]
         [InlineData("csv/DUMMYLEI123456789012.CON_FR_FINREP030100_FINREP9_2022-12-31_20220411141600000.xbrl")]
+        [InlineData("csv/F_18-00-a.xbrl")]
         public static string XmlToCsv(string reportPath)
         {
             var xmlReport = Instance.FromFile(reportPath);
@@ -142,9 +143,11 @@ namespace Diwen.XbrlCsv.Tests
             var tableDefinitions = ReadTableDefinitions(moduleDefinition);
 
             var filingIndicators = ReadFilingIndicatorInfo("EBA32_finrep_FilingIndicators.csv");
-
+            var sw = Stopwatch.StartNew();
             var csvReport = Report.FromXml(xmlReport, tableDefinitions, filingIndicators, moduleDefinition);
-
+            sw.Stop();
+            Console.WriteLine($"FromXml {sw.Elapsed}");
+            
             var csvReportPath = Path.ChangeExtension(Path.GetFileName(reportPath), ".zip");
             csvReport.Export(csvReportPath);
             return csvReportPath;
@@ -155,7 +158,7 @@ namespace Diwen.XbrlCsv.Tests
         //[InlineData("csv/F_18-00-a.zip")]
         public string CsvToXml(string reportPath)
         {
-            
+
             var csvReport = Report.Import(reportPath);
 
             var entrypoint = csvReport.Entrypoint.Replace(@"http://", "");
