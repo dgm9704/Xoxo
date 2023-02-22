@@ -7,7 +7,6 @@ namespace Diwen.Xbrl.Csv.Taxonomy
     {
         public string decimals { get; set; }
         public Dictionary<string, string> dimensions { get; set; }
-
         private Dictionary<string, string> dimensionsField;
         private readonly HashSet<string> excludeDimensions = new HashSet<string>(new string[] { "concept", "unit" });
         public Dictionary<string, string> Dimensions
@@ -15,11 +14,11 @@ namespace Diwen.Xbrl.Csv.Taxonomy
             get
             {
                 if (dimensionsField == null)
-                    dimensionsField = 
+                    dimensionsField =
                         dimensions.
                         Where(d => !excludeDimensions.Contains(d.Key)).
                         ToDictionary(
-                            d => d.Key.Split(':').Last(), 
+                            d => d.Key.Split(':').Last(),
                             d => d.Value.Split(':').Last());
 
                 return dimensionsField;

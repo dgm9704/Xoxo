@@ -2,6 +2,7 @@ namespace Diwen.XbrlCsv.Tests
 {
     using System;
     using System.Collections.Generic;
+    using System.Diagnostics;
     using System.IO;
     using System.Linq;
     using System.Text.Json;
@@ -10,9 +11,17 @@ namespace Diwen.XbrlCsv.Tests
     using Diwen.Xbrl.Csv;
     using Diwen.Xbrl.Csv.Taxonomy;
     using Xunit;
+    using Xunit.Abstractions;
 
     public class XbrlCsvTests
     {
+        private readonly ITestOutputHelper output;
+
+        public XbrlCsvTests(ITestOutputHelper output)
+        {
+            this.output = output;
+        }
+
         [Fact]
         public void ExportTests()
         {
@@ -142,9 +151,11 @@ namespace Diwen.XbrlCsv.Tests
         }
 
         [Theory]
-        [InlineData("csv/DUMMYLEI123456789012.CON_FR_FINREP030100_FINREP9_2022-12-31_20220411141600000.zip")]
-        public static string CsvToXml(string reportPath)
+        //[InlineData("csv/DUMMYLEI123456789012.CON_FR_FINREP030100_FINREP9_2022-12-31_20220411141600000.zip")]
+        [InlineData("csv/F_18-00-a.zip")]
+        public string CsvToXml(string reportPath)
         {
+            
             var csvReport = Report.Import(reportPath);
 
             var entrypoint = csvReport.Entrypoint.Replace(@"http://", "");
@@ -161,7 +172,10 @@ namespace Diwen.XbrlCsv.Tests
 
             var filingIndicators = ReadFilingIndicatorInfo("EBA32_finrep_FilingIndicators.csv");
 
+            var sw = Stopwatch.StartNew();
             var xmlReport = csvReport.ToXml(tableDefinitions, dimensionDomainInfo, typedDomainNamespace, filingIndicators, typedDomains, moduleDefinition);
+            sw.Stop();
+            output.WriteLine($"ToXml {sw.Elapsed}");
 
             var xmlReportPath = Path.ChangeExtension(Path.GetFileName(reportPath), ".xbrl");
             xmlReport.ToFile(xmlReportPath);
@@ -173,7 +187,7 @@ namespace Diwen.XbrlCsv.Tests
         [InlineData("csv/DUMMYLEI123456789012.CON_FR_FINREP030100_FINREP9_2022-12-31_20220411141600000.xbrl")]
         [InlineData("csv/FINREP_F_23-01_R0080_C0010.xbrl")]
         [InlineData("csv/FINREP_F_40-01_R999_C0031.xbrl")]
-        public static void XmlToCsvToXml(string xmlInPath)
+        public void XmlToCsvToXml(string xmlInPath)
         {
             var csvPath = XmlToCsv(xmlInPath);
             var xmlOutPath = CsvToXml(csvPath);

@@ -2,6 +2,7 @@
 {
     using System;
     using System.Collections.Generic;
+    using System.Diagnostics;
     using System.Globalization;
     using System.IO;
     using System.IO.Compression;
@@ -217,7 +218,7 @@
 
         private static Dictionary<string, bool> ReadFilingIndicators(string data)
         => data.
-            Split(new string[] { Environment.NewLine }, StringSplitOptions.RemoveEmptyEntries).
+            Split(new string[] { "\r", "\n", "\r\n" }, StringSplitOptions.RemoveEmptyEntries).
             Skip(1).
             Select(line => line.Split(',')).
             ToDictionary(
@@ -293,71 +294,102 @@
 
             foreach (var table in tabledata)
             {
-                var tablecode = table.Key;
-                var jsonTable = tableDefinitions[tablecode];
-
-                foreach (var ns in jsonTable.documentInfo.namespaces)
-                {
-                    if (ns.Key.EndsWith("_dim"))
-                    {
-                        dimensionPrefix = ns.Key;
-                        instance.SetDimensionNamespace(ns.Key, ns.Value);
-                    }
-                    else if (ns.Key.EndsWith("_met"))
-                        instance.SetMetricNamespace(ns.Key, ns.Value);
-                    else
-                        instance.AddDomainNamespace(ns.Key, ns.Value);
-                }
-
-                var tableDatapoints = jsonTable.tableTemplates.First().Value.columns.datapoint.propertyGroups;
-                foreach (var fact in table.Value.Where(f => !string.IsNullOrWhiteSpace(f.Value)))
-                {
-                    var datapoint = tableDatapoints[fact.Datapoint];
-                    var scenario = new Scenario(instance);
-                    var dimensions = datapoint.dimensions;
-                    string metric = string.Empty;
-                    string unit = string.Empty;
-
-                    foreach (var dimension in dimensions)
-                    {
-                        if (dimension.Key == "concept")
-                            metric = dimension.Value.Split(':').Last();
-                        else if (dimension.Key == "unit")
-                            unit = dimension.Value;
-                        else
-                            scenario.AddExplicitMember(dimension.Key, dimension.Value);
-                    }
-
-                    foreach (var d in fact.Dimensions)
-                        if (typedDomains.Contains(dimensionDomain[d.Key]))
-                            // HACK: For some reason the prefixes aren't found during normal operation so we have to add them here
-                            // Find why the prefixs are dropped and remove this
-                            scenario.AddTypedMember($"{dimensionPrefix}:{d.Key}", $"{typedDomainNamespace.Key}:{dimensionDomain[d.Key]}", d.Value);
-                        else
-                            scenario.AddExplicitMember(d.Key, d.Value);
-
-                    var decimals = !string.IsNullOrEmpty(datapoint.decimals)
-                         ? report.Parameters.GetValueOrDefault(datapoint.decimals.TrimStart('$'), string.Empty)
-                         : string.Empty;
-
-                    // Unit for only numeric values, ie. those that have decimals specified
-                    var unitRef =
-                        string.IsNullOrEmpty(decimals)
-                            ? string.Empty
-                            : !string.IsNullOrEmpty(unit)
-                                ? unit.Replace("$baseCurrency", baseCurrencyRef)
-                                : "uPURE";
-
-                    instance.AddFact(scenario, metric, unitRef, decimals, fact.Value);
-
-                }
-
+                var sw = Stopwatch.StartNew();
+                var tableDefinition = tableDefinitions[table.Key];
+                dimensionPrefix = AddFactsForTable(report.Parameters, tableDefinition, dimensionDomain, typedDomainNamespace, typedDomains, instance, baseCurrencyRef, dimensionPrefix, table);
+                sw.Stop();
+                Console.WriteLine($"AddFactsForTable {table.Key} {sw.Elapsed}");
             }
 
             instance.RemoveUnusedUnits();
 
             return instance;
 
+        }
+
+        private static string AddFactsForTable(
+            Dictionary<string, string> parameters,
+            TableDefinition tableDefinition,
+            Dictionary<string, string> dimensionDomain,
+            KeyValuePair<string, string> typedDomainNamespace,
+            HashSet<string> typedDomains,
+            Instance instance,
+            string baseCurrencyRef,
+            string dimensionPrefix,
+            KeyValuePair<string, ReportData[]> table)
+        {
+            foreach (var ns in tableDefinition.documentInfo.namespaces)
+            {
+                if (ns.Key.EndsWith("_dim"))
+                {
+                    dimensionPrefix = ns.Key;
+                    instance.SetDimensionNamespace(ns.Key, ns.Value);
+                }
+                else if (ns.Key.EndsWith("_met"))
+                    instance.SetMetricNamespace(ns.Key, ns.Value);
+                else
+                    instance.AddDomainNamespace(ns.Key, ns.Value);
+            }
+
+            var tableDatapoints = tableDefinition.tableTemplates.First().Value.columns.datapoint.propertyGroups;
+            foreach (var fact in table.Value.Where(f => !string.IsNullOrWhiteSpace(f.Value)))
+            {
+                AddFact(parameters, dimensionDomain, typedDomainNamespace, typedDomains, instance, baseCurrencyRef, dimensionPrefix, tableDatapoints, fact);
+            }
+
+            return dimensionPrefix;
+        }
+
+        private static void AddFact(
+            Dictionary<string, string> parameters,
+            Dictionary<string, string> dimensionDomain,
+            KeyValuePair<string, string> typedDomainNamespace,
+            HashSet<string> typedDomains,
+            Instance instance,
+            string baseCurrencyRef,
+            string dimensionPrefix,
+            Dictionary<string, PropertyGroup> tableDatapoints,
+            ReportData fact)
+        {
+            var datapoint = tableDatapoints[fact.Datapoint];
+            var scenario = new Scenario(instance);
+            var dimensions = datapoint.dimensions;
+            string metric = string.Empty;
+            string unit = string.Empty;
+
+            foreach (var dimension in dimensions)
+            {
+                if (dimension.Key == "concept")
+                    metric = dimension.Value.Split(':').Last();
+                else if (dimension.Key == "unit")
+                    unit = dimension.Value;
+                else
+                    scenario.AddExplicitMember(dimension.Key, dimension.Value);
+            }
+
+            foreach (var d in fact.Dimensions)
+                if (typedDomains.Contains(dimensionDomain[d.Key]))
+                    // HACK: For some reason the prefixes aren't found during normal operation so we have to add them here
+                    // Find why the prefixs are dropped and remove this
+                    scenario.AddTypedMember($"{dimensionPrefix}:{d.Key}", $"{typedDomainNamespace.Key}:{dimensionDomain[d.Key]}", d.Value);
+                else
+                    scenario.AddExplicitMember(d.Key, d.Value);
+
+            // var decimals = !string.IsNullOrEmpty(datapoint.decimals)
+            //      ? parameters.GetValueOrDefault(datapoint.decimals.TrimStart('$'), string.Empty)
+            //      : string.Empty;
+
+            var decimals = parameters.GetValueOrDefault(datapoint.decimals?.TrimStart('$'), string.Empty);
+
+            // Unit for only numeric values, ie. those that have decimals specified
+            var unitRef =
+                string.IsNullOrEmpty(decimals)
+                    ? string.Empty
+                    : !string.IsNullOrEmpty(unit)
+                        ? unit.Replace("$baseCurrency", baseCurrencyRef)
+                        : "uPURE";
+
+            instance.AddFact(scenario, metric, unitRef, decimals, fact.Value);
         }
 
         public static Report FromXml(Instance xmlReport, Dictionary<string, TableDefinition> tableDefinitions, Dictionary<string, string> filingIndicators, ModuleDefinition moduleDefinition)
