@@ -294,10 +294,9 @@
                 report.
                 Data.
                 Where(d => !string.IsNullOrEmpty(d.Value)).
+                Where(d => filed.Contains(filingIndicators[d.Table])).
                 GroupBy(d => d.Table).
-                Where(t => filed.Contains(filingIndicators[t.Key])).
                 ToDictionary(d => d.Key, d => d.ToArray());
-
 
             foreach (var table in tabledata)
             {
@@ -325,7 +324,7 @@
             KeyValuePair<string, ReportData[]> table)
         {
             string dimensionPrefix = string.Empty;
-            
+
             foreach (var ns in tableDefinition.documentInfo.namespaces)
             {
                 if (ns.Key.EndsWith("_dim"))
@@ -339,7 +338,7 @@
                     instance.AddDomainNamespace(ns.Key, ns.Value);
             }
 
-            var tableDatapoints = tableDefinition.tableTemplates.First().Value.columns.datapoint.propertyGroups;
+            var tableDatapoints = tableDefinition.Datapoints;
             foreach (var fact in table.Value)
                 AddFact(parameters, dimensionDomain, typedDomainNamespace, typedDomains, instance, baseCurrencyRef, dimensionPrefix, tableDatapoints, fact);
 
