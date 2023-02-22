@@ -258,12 +258,12 @@
         => ToXml(this, tableDefinitions, dimensionDomain, typedDomainNamespace, filingIndicators, typedDomains, moduleDefinition);
 
         public static Instance ToXml(
-            Report report, 
-            Dictionary<string, TableDefinition> tableDefinitions, 
-            Dictionary<string, string> dimensionDomain, 
-            KeyValuePair<string, string> typedDomainNamespace, 
-            Dictionary<string, string> filingIndicators, 
-            HashSet<string> typedDomains, 
+            Report report,
+            Dictionary<string, TableDefinition> tableDefinitions,
+            Dictionary<string, string> dimensionDomain,
+            KeyValuePair<string, string> typedDomainNamespace,
+            Dictionary<string, string> filingIndicators,
+            HashSet<string> typedDomains,
             ModuleDefinition moduleDefinition)
         {
             var instance = new Instance();
@@ -293,17 +293,17 @@
             var tabledata =
                 report.
                 Data.
+                Where(d => !string.IsNullOrEmpty(d.Value)).
                 GroupBy(d => d.Table).
                 Where(t => filed.Contains(filingIndicators[t.Key])).
                 ToDictionary(d => d.Key, d => d.ToArray());
 
-            var dimensionPrefix = "";
 
             foreach (var table in tabledata)
             {
                 var sw = Stopwatch.StartNew();
                 var tableDefinition = tableDefinitions[table.Key];
-                dimensionPrefix = AddFactsForTable(report.Parameters, tableDefinition, dimensionDomain, typedDomainNamespace, typedDomains, instance, baseCurrencyRef, dimensionPrefix, table);
+                AddFactsForTable(report.Parameters, tableDefinition, dimensionDomain, typedDomainNamespace, typedDomains, instance, baseCurrencyRef, table);
                 sw.Stop();
                 Console.WriteLine($"AddFactsForTable {table.Key} {sw.Elapsed}");
             }
@@ -322,9 +322,10 @@
             HashSet<string> typedDomains,
             Instance instance,
             string baseCurrencyRef,
-            string dimensionPrefix,
             KeyValuePair<string, ReportData[]> table)
         {
+            string dimensionPrefix = string.Empty;
+            
             foreach (var ns in tableDefinition.documentInfo.namespaces)
             {
                 if (ns.Key.EndsWith("_dim"))
@@ -339,10 +340,8 @@
             }
 
             var tableDatapoints = tableDefinition.tableTemplates.First().Value.columns.datapoint.propertyGroups;
-            foreach (var fact in table.Value.Where(f => !string.IsNullOrWhiteSpace(f.Value)))
-            {
+            foreach (var fact in table.Value)
                 AddFact(parameters, dimensionDomain, typedDomainNamespace, typedDomains, instance, baseCurrencyRef, dimensionPrefix, tableDatapoints, fact);
-            }
 
             return dimensionPrefix;
         }

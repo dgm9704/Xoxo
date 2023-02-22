@@ -151,8 +151,8 @@ namespace Diwen.XbrlCsv.Tests
         }
 
         [Theory]
-        //[InlineData("csv/DUMMYLEI123456789012.CON_FR_FINREP030100_FINREP9_2022-12-31_20220411141600000.zip")]
-        [InlineData("csv/F_18-00-a.zip")]
+        [InlineData("csv/DUMMYLEI123456789012.CON_FR_FINREP030100_FINREP9_2022-12-31_20220411141600000.zip")]
+        //[InlineData("csv/F_18-00-a.zip")]
         public string CsvToXml(string reportPath)
         {
             
