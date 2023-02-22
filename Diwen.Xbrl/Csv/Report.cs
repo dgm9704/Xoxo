@@ -257,7 +257,14 @@
         public Instance ToXml(Dictionary<string, TableDefinition> tableDefinitions, Dictionary<string, string> dimensionDomain, KeyValuePair<string, string> typedDomainNamespace, Dictionary<string, string> filingIndicators, HashSet<string> typedDomains, ModuleDefinition moduleDefinition)
         => ToXml(this, tableDefinitions, dimensionDomain, typedDomainNamespace, filingIndicators, typedDomains, moduleDefinition);
 
-        public static Instance ToXml(Report report, Dictionary<string, TableDefinition> tableDefinitions, Dictionary<string, string> dimensionDomain, KeyValuePair<string, string> typedDomainNamespace, Dictionary<string, string> filingIndicators, HashSet<string> typedDomains, ModuleDefinition moduleDefinition)
+        public static Instance ToXml(
+            Report report, 
+            Dictionary<string, TableDefinition> tableDefinitions, 
+            Dictionary<string, string> dimensionDomain, 
+            KeyValuePair<string, string> typedDomainNamespace, 
+            Dictionary<string, string> filingIndicators, 
+            HashSet<string> typedDomains, 
+            ModuleDefinition moduleDefinition)
         {
             var instance = new Instance();
             instance.SchemaReference = new SchemaReference("simple", moduleDefinition.documentInfo.taxonomy.FirstOrDefault());
@@ -353,11 +360,10 @@
         {
             var datapoint = tableDatapoints[fact.Datapoint];
             var scenario = new Scenario(instance);
-            var dimensions = datapoint.dimensions;
             string metric = string.Empty;
             string unit = string.Empty;
 
-            foreach (var dimension in dimensions)
+            foreach (var dimension in datapoint.dimensions)
             {
                 if (dimension.Key == "concept")
                     metric = dimension.Value.Split(':').Last();
@@ -375,11 +381,9 @@
                 else
                     scenario.AddExplicitMember(d.Key, d.Value);
 
-            // var decimals = !string.IsNullOrEmpty(datapoint.decimals)
-            //      ? parameters.GetValueOrDefault(datapoint.decimals.TrimStart('$'), string.Empty)
-            //      : string.Empty;
-
-            var decimals = parameters.GetValueOrDefault(datapoint.decimals?.TrimStart('$'), string.Empty);
+            var decimals = !string.IsNullOrEmpty(datapoint.decimals)
+                 ? parameters.GetValueOrDefault(datapoint.decimals.TrimStart('$'), string.Empty)
+                 : string.Empty;
 
             // Unit for only numeric values, ie. those that have decimals specified
             var unitRef =
