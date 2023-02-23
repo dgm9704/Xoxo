@@ -288,7 +288,12 @@
             foreach (var fi in report.FilingIndicators)
                 instance.AddFilingIndicator(fi.Key, fi.Value);
 
-            var filed = report.FilingIndicators.Where(i => i.Value).Select(i => i.Key).ToHashSet();
+            var filed = 
+                report.
+                FilingIndicators.
+                Where(i => i.Value).
+                Select(i => i.Key).
+                ToHashSet();
 
             var tabledata =
                 report.
@@ -300,11 +305,11 @@
 
             foreach (var table in tabledata)
             {
-                var sw = Stopwatch.StartNew();
+                //var sw = Stopwatch.StartNew();
                 var tableDefinition = tableDefinitions[table.Key];
                 AddFactsForTable(report.Parameters, tableDefinition, dimensionDomain, typedDomainNamespace, typedDomains, instance, baseCurrencyRef, table);
-                sw.Stop();
-                Console.WriteLine($"AddFactsForTable {table.Key} {sw.Elapsed}");
+                //sw.Stop();
+                //Console.WriteLine($"AddFactsForTable {table.Key} {sw.Elapsed}");
             }
 
             instance.RemoveUnusedUnits();
@@ -340,8 +345,10 @@
 
             var tableDatapoints = tableDefinition.Datapoints;
             foreach (var fact in table.Value)
-                AddFact(parameters, dimensionDomain, typedDomainNamespace, typedDomains, instance, baseCurrencyRef, dimensionPrefix, tableDatapoints, fact);
-
+            {
+                var datapoint = tableDatapoints[fact.Datapoint];
+                AddFact(parameters, dimensionDomain, typedDomainNamespace, typedDomains, instance, baseCurrencyRef, dimensionPrefix, datapoint, fact);
+            }
             return dimensionPrefix;
         }
 
@@ -353,10 +360,9 @@
             Instance instance,
             string baseCurrencyRef,
             string dimensionPrefix,
-            Dictionary<string, PropertyGroup> tableDatapoints,
+            PropertyGroup datapoint,
             ReportData fact)
         {
-            var datapoint = tableDatapoints[fact.Datapoint];
             var scenario = new Scenario(instance);
             string metric = string.Empty;
             string unit = string.Empty;
