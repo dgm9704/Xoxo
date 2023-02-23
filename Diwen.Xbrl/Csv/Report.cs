@@ -288,7 +288,7 @@
             foreach (var fi in report.FilingIndicators)
                 instance.AddFilingIndicator(fi.Key, fi.Value);
 
-            var filed = 
+            var filed =
                 report.
                 FilingIndicators.
                 Where(i => i.Value).
@@ -477,11 +477,13 @@
 
             foreach (var td in tableDefinitions)
             {
-                // filter by metric
-                var candidateDatapoints =
-                td.Value.Datapoints.
-                        Where(pg => pg.Value.dimensions["concept"] == metric).
-                        ToArray();
+                var candidateDatapoints = td.Value.GetDatapointsByMetric(metric);
+
+                // // filter by metric
+                // var candidateDatapoints =
+                // td.Value.Datapoints.
+                //         Where(pg => pg.Value.dimensions["concept"] == metric).
+                //         ToArray();
 
                 if (candidateDatapoints.Any())
                 {
