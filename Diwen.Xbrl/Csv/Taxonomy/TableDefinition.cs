@@ -9,7 +9,18 @@ namespace Diwen.Xbrl.Csv.Taxonomy
         public DocumentInfo documentInfo { get; set; }
         public Dictionary<string, TableTemplate> tableTemplates { get; set; }
 
-        public Dictionary<string, PropertyGroup> Datapoints => tableTemplates.First().Value.columns.datapoint.propertyGroups;
+        private Dictionary<string, PropertyGroup> datapoints;
+        public Dictionary<string, PropertyGroup> Datapoints
+        {
+            get
+            {
+                if (datapoints == null)
+                    datapoints = tableTemplates.First().Value.columns.datapoint.propertyGroups;
+
+                return datapoints;
+            }
+        }
+
         private Dictionary<string, KeyValuePair<string, PropertyGroup>[]> datapointsByMetric;
         private static KeyValuePair<string, PropertyGroup>[] noCandidates = new KeyValuePair<string, PropertyGroup>[] { };
 

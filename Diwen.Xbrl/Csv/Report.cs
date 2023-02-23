@@ -305,11 +305,11 @@
 
             foreach (var table in tabledata)
             {
-                //var sw = Stopwatch.StartNew();
+                var sw = Stopwatch.StartNew();
                 var tableDefinition = tableDefinitions[table.Key];
                 AddFactsForTable(report.Parameters, tableDefinition, dimensionDomain, typedDomainNamespace, typedDomains, instance, baseCurrencyRef, table);
-                //sw.Stop();
-                //Console.WriteLine($"AddFactsForTable {table.Key} {sw.Elapsed}");
+                sw.Stop();
+                Console.WriteLine($"AddFactsForTable {table.Key} {sw.Elapsed}");
             }
 
             instance.RemoveUnusedUnits();
@@ -343,10 +343,9 @@
                     instance.AddDomainNamespace(ns.Key, ns.Value);
             }
 
-            var tableDatapoints = tableDefinition.Datapoints;
             foreach (var fact in table.Value)
             {
-                var datapoint = tableDatapoints[fact.Datapoint];
+                var datapoint = tableDefinition.Datapoints[fact.Datapoint];
                 AddFact(parameters, dimensionDomain, typedDomainNamespace, typedDomains, instance, baseCurrencyRef, dimensionPrefix, datapoint, fact);
             }
             return dimensionPrefix;
@@ -478,12 +477,6 @@
             foreach (var td in tableDefinitions)
             {
                 var candidateDatapoints = td.Value.GetDatapointsByMetric(metric);
-
-                // // filter by metric
-                // var candidateDatapoints =
-                // td.Value.Datapoints.
-                //         Where(pg => pg.Value.dimensions["concept"] == metric).
-                //         ToArray();
 
                 if (candidateDatapoints.Any())
                 {
