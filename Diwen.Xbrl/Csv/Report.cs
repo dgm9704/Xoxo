@@ -303,13 +303,16 @@
                 GroupBy(d => d.Table).
                 ToDictionary(d => d.Key, d => d.ToArray());
 
+            var usedContexts = new Dictionary<string, Context>();
+            var usedDatapoints = new HashSet<string>();
+
             foreach (var table in tabledata)
             {
-                var sw = Stopwatch.StartNew();
+                // var sw = Stopwatch.StartNew();
                 var tableDefinition = tableDefinitions[table.Key];
-                AddFactsForTable(report.Parameters, tableDefinition, dimensionDomain, typedDomainNamespace, typedDomains, instance, baseCurrencyRef, table);
-                sw.Stop();
-                Console.WriteLine($"AddFactsForTable {table.Key} {sw.Elapsed}");
+                AddFactsForTable(report.Parameters, tableDefinition, dimensionDomain, typedDomainNamespace, typedDomains, instance, baseCurrencyRef, table, usedContexts, usedDatapoints);
+                // sw.Stop();
+                // Console.WriteLine($"AddFactsForTable {table.Key} {sw.Elapsed}");
             }
 
             instance.RemoveUnusedUnits();
@@ -326,7 +329,9 @@
             HashSet<string> typedDomains,
             Instance instance,
             string baseCurrencyRef,
-            KeyValuePair<string, ReportData[]> table)
+            KeyValuePair<string, ReportData[]> table,
+            Dictionary<string, Context> usedContexts,
+            HashSet<string> usedDatapoints)
         {
             string dimensionPrefix = string.Empty;
 
@@ -343,8 +348,6 @@
                     instance.AddDomainNamespace(ns.Key, ns.Value);
             }
 
-            var usedContexts = new Dictionary<string, Context>();
-            var usedDatapoints = new HashSet<string>();
             foreach (var fact in table.Value)
             {
                 var datapoint = tableDefinition.Datapoints[fact.Datapoint];
@@ -405,7 +408,7 @@
             var datapointKey = $"{scenarioKey}+{metric}";
             if (usedContexts.ContainsKey(scenarioKey))
             {
-                if (usedDatapoints.Contains(datapointKey))
+                if (!usedDatapoints.Contains(datapointKey))
                 {
                     instance.AddFact(usedContexts[scenarioKey], metric, unitRef, decimals, fact.Value);
                     usedDatapoints.Add(datapointKey);
