@@ -343,10 +343,12 @@
                     instance.AddDomainNamespace(ns.Key, ns.Value);
             }
 
+            var usedContexts = new Dictionary<string, Context>();
+            var usedDatapoints = new HashSet<string>();
             foreach (var fact in table.Value)
             {
                 var datapoint = tableDefinition.Datapoints[fact.Datapoint];
-                AddFact(parameters, dimensionDomain, typedDomainNamespace, typedDomains, instance, baseCurrencyRef, dimensionPrefix, datapoint, fact);
+                AddFact(parameters, dimensionDomain, typedDomainNamespace, typedDomains, instance, baseCurrencyRef, dimensionPrefix, datapoint, fact, usedContexts, usedDatapoints);
             }
             return dimensionPrefix;
         }
@@ -360,7 +362,9 @@
             string baseCurrencyRef,
             string dimensionPrefix,
             PropertyGroup datapoint,
-            ReportData fact)
+            ReportData fact, 
+            Dictionary<string, Context> usedContexts, 
+            HashSet<string> usedDatapoints)
         {
             var scenario = new Scenario(instance);
             string metric = string.Empty;
@@ -396,7 +400,24 @@
                         ? unit.Replace("$baseCurrency", baseCurrencyRef)
                         : "uPURE";
 
-            instance.AddFact(scenario, metric, unitRef, decimals, fact.Value);
+            // scenario.Instance = instance;
+            var scenarioKey = scenario.ToString();
+            var datapointKey = $"{scenarioKey}+{metric}";
+            if (usedContexts.ContainsKey(scenarioKey))
+            {
+                if (usedDatapoints.Contains(datapointKey))
+                {
+                    instance.AddFact(usedContexts[scenarioKey], metric, unitRef, decimals, fact.Value);
+                    usedDatapoints.Add(datapointKey);
+                }
+            }
+            else
+            {
+                var context = instance.CreateContext(scenario);
+                usedContexts[scenarioKey] = context;
+                instance.AddFact(context, metric, unitRef, decimals, fact.Value);
+                usedDatapoints.Add(datapointKey);
+            }
         }
 
         public static Report FromXml(Instance xmlReport, Dictionary<string, TableDefinition> tableDefinitions, Dictionary<string, string> filingIndicators, ModuleDefinition moduleDefinition)
