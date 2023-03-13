@@ -85,15 +85,15 @@
             return stream;
         }
 
-        private static Stream CreatePackageInfoString()
-        {
-            var stream = new MemoryStream();
-            var writer = new StreamWriter(stream);
-            writer.Write("{\"documentInfo\":{\"documentType\":\"http://xbrl.org/PWD/2020-12-09/report-package\"}}");
-            writer.Flush();
-            stream.Position = 0;
-            return stream;
-        }
+        // private static Stream CreatePackageInfoString()
+        // {
+        //     var stream = new MemoryStream();
+        //     var writer = new StreamWriter(stream);
+        //     writer.Write("{\"documentInfo\":{\"documentType\":\"http://xbrl.org/PWD/2020-12-09/report-package\"}}");
+        //     writer.Flush();
+        //     stream.Position = 0;
+        //     return stream;
+        // }
 
         private static Stream CreatePackageInfo()
         {
