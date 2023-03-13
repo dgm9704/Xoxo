@@ -9,6 +9,8 @@
     using System.Linq;
     using System.Reflection;
     using System.Text;
+    using System.Text.Json;
+    using System.Text.Json.Serialization;
     using System.Text.RegularExpressions;
     using Diwen.Xbrl.Csv.Taxonomy;
     using Diwen.Xbrl.Extensions;
@@ -83,12 +85,22 @@
             return stream;
         }
 
-        private static Stream CreatePackageInfo()
+        private static Stream CreatePackageInfoString()
         {
             var stream = new MemoryStream();
             var writer = new StreamWriter(stream);
             writer.Write("{\"documentInfo\":{\"documentType\":\"http://xbrl.org/PWD/2020-12-09/report-package\"}}");
             writer.Flush();
+            stream.Position = 0;
+            return stream;
+        }
+
+        private static Stream CreatePackageInfo()
+        {
+            var info = new DocumentInfo();
+            info.documentType = "http://xbrl.org/PWD/2020-12-09/report-package";
+            var stream = new MemoryStream();
+            JsonSerializer.Serialize<DocumentInfo>(stream, info);
             stream.Position = 0;
             return stream;
         }
@@ -108,6 +120,25 @@
             stream.Position = 0;
             return stream;
         }
+
+        // private static Stream CreateReportInfoJson(string documentType, string entrypoint)
+        // {
+        //     AssemblyName assembly = Assembly.GetExecutingAssembly().GetName();
+        //     Version version = assembly.Version;
+        //     string id = assembly.Name;
+        //     var compileTime = new DateTime(Builtin.CompileTime, DateTimeKind.Utc);
+
+        //     var stream = new MemoryStream();
+        //     var info = new ReportInfo();
+        //     info.documentInfo.documentType = documentType;
+        //     info.extends = entrypoint;
+        //     //info
+        //     writer.WriteLine($"{{\"documentInfo\":{{\"documentType\":\"{documentType}\",\"extends\":[\"{entrypoint}\"]}},");
+        //     writer.WriteLine($"\"eba:generatingSoftwareInformation\": {{\"eba:softwareId\": \"{id}\",\"eba:softwareVersion\": \"{version}\",\"eba:softwareCreationDate\": \"{compileTime.Date:yyyy-MM-dd}\",\"eba:softwareAdditionalInfo\": \"https://github.com/dgm9704/Xoxo\"}}}}");
+        //     writer.Flush();
+        //     stream.Position = 0;
+        //     return stream;
+        // }
 
         private static Stream CreateParameters(Dictionary<string, string> parameters)
         {
@@ -365,8 +396,8 @@
             string baseCurrencyRef,
             string dimensionPrefix,
             PropertyGroup datapoint,
-            ReportData fact, 
-            Dictionary<string, Context> usedContexts, 
+            ReportData fact,
+            Dictionary<string, Context> usedContexts,
             HashSet<string> usedDatapoints)
         {
             var scenario = new Scenario(instance);
