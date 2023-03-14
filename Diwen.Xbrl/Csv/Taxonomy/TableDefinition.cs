@@ -3,6 +3,7 @@ namespace Diwen.Xbrl.Csv.Taxonomy
     using System.Collections.Generic;
     using System.Linq;
     using Diwen.Xbrl.Extensions;
+    using Diwen.Xbrl.Package;
 
     public class TableDefinition
     {

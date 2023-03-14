@@ -1,6 +1,7 @@
 namespace Diwen.Xbrl.Csv.Taxonomy
 {
     using System.Collections.Generic;
+    using Diwen.Xbrl.Package;
 
     public class ModuleDefinition
     {

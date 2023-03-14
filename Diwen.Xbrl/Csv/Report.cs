@@ -2,7 +2,6 @@
 {
     using System;
     using System.Collections.Generic;
-    using System.Diagnostics;
     using System.Globalization;
     using System.IO;
     using System.IO.Compression;
@@ -13,6 +12,7 @@
     using System.Text.RegularExpressions;
     using Diwen.Xbrl.Csv.Taxonomy;
     using Diwen.Xbrl.Extensions;
+    using Diwen.Xbrl.Package;
 
     public partial class Report
     {
@@ -201,13 +201,19 @@
             return report;
         }
 
-        private static string ReadEntryPoint(string data)
+        private static string ReadEntryPointString(string data)
         {
             var expression = new Regex(@"[^\""]*\.json", RegexOptions.Compiled);
             var match = expression.Match(data);
             return match.Value;
         }
 
+        private static string ReadEntryPoint(string data)
+        {
+            var documentInfo = JsonSerializer.Deserialize<DocumentInfo>(data);
+            return documentInfo.extends.First();
+        }
+        
         private static IEnumerable<ReportData> ReadTableData(string table, string data)
         {
             var result = new List<ReportData>();

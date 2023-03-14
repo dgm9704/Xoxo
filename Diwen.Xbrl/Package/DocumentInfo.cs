@@ -1,8 +1,6 @@
-namespace Diwen.Xbrl.Csv.Taxonomy
+namespace Diwen.Xbrl.Package
 {
     using System.Collections.Generic;
-    using System.Text.Json.Serialization;
-
 
     public class DocumentInfo
     {
