@@ -85,22 +85,33 @@
             return stream;
         }
 
-        private static Stream CreatePackageInfo()
+        // private static Stream CreatePackageInfo()
+        // {
+        //     var stream = new MemoryStream();
+        //     var writer = new StreamWriter(stream);
+        //     writer.Write("{\"documentInfo\":{\"documentType\":\"http://xbrl.org/PWD/2020-12-09/report-package\"}}");
+        //     writer.Flush();
+        //     stream.Position = 0;
+        //     return stream;
+        // }
+
+        public class DocumentInfo
         {
-            var stream = new MemoryStream();
-            var writer = new StreamWriter(stream);
-            writer.Write("{\"documentInfo\":{\"documentType\":\"http://xbrl.org/PWD/2020-12-09/report-package\"}}");
-            writer.Flush();
-            stream.Position = 0;
-            return stream;
+            public string documentType { get; set; }
+        }
+
+        public class PackageInfo
+        {
+            public DocumentInfo documentInfo { get; set; }
         }
 
         private static Stream CreatePackageInfo()
         {
-            var info = new DocumentInfo();
-            info.documentType = "http://xbrl.org/PWD/2020-12-09/report-package";
+            var info = new PackageInfo();
+            info.documentInfo = new DocumentInfo();
+            info.documentInfo.documentType = "http://xbrl.org/PWD/2020-12-09/report-package";
             var stream = new MemoryStream();
-            JsonSerializer.Serialize<DocumentInfo>(stream, info);
+            JsonSerializer.Serialize<PackageInfo>(stream, info);
             stream.Position = 0;
             return stream;
         }
