@@ -1,6 +1,11 @@
 [![.NET](https://github.com/dgm9704/Xoxo/actions/workflows/dotnet.yml/badge.svg)](https://github.com/dgm9704/Xoxo/actions/workflows/dotnet.yml)
 [![nuget](https://img.shields.io/nuget/v/Diwen.Xbrl.svg)](https://www.nuget.org/packages/Diwen.Xbrl/)
 
+# Branched!
+The library code is now in two branches:
+- main: .NET 6+ version that will get new features etc. (version 2 upwards)
+- legacy: .NET Standard 2.0 version that will only get critical bug fixes (versions 1.x)
+
 # Xoxo
 Container for the Diwen.Xbrl library and any related stuff
 
@@ -45,7 +50,7 @@ Tests for exercising Diwen.Xbrl code, also serving as documentation and samples
 
 # Environment
 Code is written in [C#](https://docs.microsoft.com/en-us/dotnet/csharp/index), targeting 
-[.NET Standard 2.0](https://github.com/dotnet/standard/blob/v2.1.0/docs/versions/netstandard2.0.md)
+[.NET 6](https://learn.microsoft.com/en-us/dotnet/api/?view=net-6.0)
 
 Test framework is [xUnit](https://xunit.net/)
 and test code is targeting [.NET 6](https://docs.microsoft.com/en-us/dotnet/)

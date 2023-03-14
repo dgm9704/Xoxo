@@ -85,19 +85,33 @@
             return stream;
         }
 
-        // private static Stream CreatePackageInfo()
-        // {
-        //     var stream = new MemoryStream();
-        //     var writer = new StreamWriter(stream);
-        //     writer.Write("{\"documentInfo\":{\"documentType\":\"http://xbrl.org/PWD/2020-12-09/report-package\"}}");
-        //     writer.Flush();
-        //     stream.Position = 0;
-        //     return stream;
-        // }
-
         public class DocumentInfo
         {
             public string documentType { get; set; }
+            public List<string> extends { get; set; }
+        }
+
+        public class EbaGeneratingSoftwareInformation
+        {
+            [JsonPropertyName("eba:softwareId")]
+            public string ebasoftwareId { get; set; }
+
+            [JsonPropertyName("eba:softwareVersion")]
+            public string ebasoftwareVersion { get; set; }
+
+            [JsonPropertyName("eba:softwareCreationDate")]
+            public string ebasoftwareCreationDate { get; set; }
+
+            [JsonPropertyName("eba:softwareAdditionalInfo")]
+            public string ebasoftwareAdditionalInfo { get; set; }
+        }
+
+        public class ReportInfo
+        {
+            public DocumentInfo documentInfo { get; set; }
+
+            [JsonPropertyName("eba:generatingSoftwareInformation")]
+            public EbaGeneratingSoftwareInformation ebageneratingSoftwareInformation { get; set; }
         }
 
         public class PackageInfo
@@ -123,14 +137,26 @@
             string id = assembly.Name;
             var compileTime = new DateTime(Builtin.CompileTime, DateTimeKind.Utc);
 
+            var documentInfo = new DocumentInfo();
+            documentInfo.documentType = documentType;
+            documentInfo.extends = new List<string> { entrypoint };
+
+            var softwareInfo = new EbaGeneratingSoftwareInformation();
+            softwareInfo.ebasoftwareId = id;
+            softwareInfo.ebasoftwareVersion = version.ToString();
+            softwareInfo.ebasoftwareCreationDate = $"{compileTime.Date:yyyy-MM-dd}";
+            softwareInfo.ebasoftwareAdditionalInfo = "https://github.com/dgm9704/Xoxo";
+
             var stream = new MemoryStream();
-            var writer = new StreamWriter(stream);
-            writer.WriteLine($"{{\"documentInfo\":{{\"documentType\":\"{documentType}\",\"extends\":[\"{entrypoint}\"]}},");
-            writer.WriteLine($"\"eba:generatingSoftwareInformation\": {{\"eba:softwareId\": \"{id}\",\"eba:softwareVersion\": \"{version}\",\"eba:softwareCreationDate\": \"{compileTime.Date:yyyy-MM-dd}\",\"eba:softwareAdditionalInfo\": \"https://github.com/dgm9704/Xoxo\"}}}}");
-            writer.Flush();
+            var reportInfo = new ReportInfo();
+            reportInfo.documentInfo = documentInfo;
+            reportInfo.ebageneratingSoftwareInformation = softwareInfo;
+
+            JsonSerializer.Serialize<ReportInfo>(stream, reportInfo);
             stream.Position = 0;
             return stream;
         }
+
 
         private static Stream CreateParameters(Dictionary<string, string> parameters)
         {
