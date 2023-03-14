@@ -38,25 +38,26 @@
         public void AddData(string table, string datapoint, string value, Dictionary<string, string> dimensions)
         => Data.Add(new ReportData(table, datapoint, value, dimensions));
 
-        public void Export(string packagename)
+        public void Export(string packagePath)
         {
-            var package = CreatePackage(DocumentType, Entrypoint, Parameters, FilingIndicators, Data);
-            var zip = CreateZip(package, packagename);
-            WriteStreamToFile(zip, Path.ChangeExtension(packagename, "zip"));
+            var packageName = Path.GetFileNameWithoutExtension(packagePath);
+            var package = CreatePackage(packageName, DocumentType, Entrypoint, Parameters, FilingIndicators, Data);
+            var zip = CreateZip(package);
+            WriteStreamToFile(zip, Path.ChangeExtension(packagePath, "zip"));
         }
 
-        private static Dictionary<string, Stream> CreatePackage(string documentType, string entrypoint, Dictionary<string, string> parameters, Dictionary<string, bool> filingIndicators, List<ReportData> data)
+        private static Dictionary<string, Stream> CreatePackage(string packageName, string documentType, string entrypoint, Dictionary<string, string> parameters, Dictionary<string, bool> filingIndicators, List<ReportData> data)
         {
             var metafolder = "META-INF";
             var reportfolder = "reports";
             var package = new Dictionary<string, Stream>();
 
-            package.Add(Path.Combine(metafolder, "reports.json"), CreatePackageInfo());
-            package.Add(Path.Combine(reportfolder, "report.json"), CreateReportInfo(documentType, entrypoint));
-            package.Add(Path.Combine(reportfolder, "parameters.csv"), CreateParameters(parameters));
-            package.Add(Path.Combine(reportfolder, "FilingIndicators.csv"), CreateFilingIndicators(filingIndicators));
-            foreach (var tableStream in CreateReportData(reportfolder, data))
-                package.Add(tableStream.Key, tableStream.Value);
+            package.Add(Path.Combine(packageName, metafolder, "reports.json"), CreatePackageInfo());
+            package.Add(Path.Combine(packageName, reportfolder, "report.json"), CreateReportInfo(documentType, entrypoint));
+            package.Add(Path.Combine(packageName, reportfolder, "parameters.csv"), CreateParameters(parameters));
+            package.Add(Path.Combine(packageName, reportfolder, "FilingIndicators.csv"), CreateFilingIndicators(filingIndicators));
+            foreach (var tableStream in CreateReportData(data))
+                package.Add(Path.Combine(packageName, reportfolder, tableStream.Key), tableStream.Value);
 
             return package;
         }
@@ -67,7 +68,7 @@
                 stream.CopyTo(fileStream);
         }
 
-        private static Stream CreateZip(Dictionary<string, Stream> package, string packagename)
+        private static Stream CreateZip(Dictionary<string, Stream> package)
         {
             var stream = new MemoryStream();
             using (var zip = new ZipArchive(stream, ZipArchiveMode.Create, true))
@@ -153,7 +154,7 @@
             return stream;
         }
 
-        private static Dictionary<string, Stream> CreateReportData(string folderpath, List<ReportData> data)
+        private static Dictionary<string, Stream> CreateReportData(List<ReportData> data)
         {
             var reportdata = new Dictionary<string, Stream>();
 
@@ -161,7 +162,6 @@
             foreach (var table in tabledata)
             {
                 var filename = table.Key + ".csv";
-                var filepath = Path.Combine(folderpath, filename);
                 var builder = new StringBuilder("datapoint,factvalue");
                 foreach (var dimension in table.First().Dimensions.Keys)
                     builder.Append($",{dimension}");
@@ -179,7 +179,7 @@
                 writer.Write(builder.ToString());
                 writer.Flush();
                 stream.Position = 0;
-                reportdata[filepath] = stream;
+                reportdata[filename] = stream;
             }
 
             return reportdata;
@@ -213,7 +213,7 @@
             var documentInfo = JsonSerializer.Deserialize<DocumentInfo>(data);
             return documentInfo.extends.First();
         }
-        
+
         private static IEnumerable<ReportData> ReadTableData(string table, string data)
         {
             var result = new List<ReportData>();
