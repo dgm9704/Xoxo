@@ -10,12 +10,11 @@
     using System.Reflection;
     using System.Text;
     using System.Text.Json;
-    using System.Text.Json.Serialization;
     using System.Text.RegularExpressions;
     using Diwen.Xbrl.Csv.Taxonomy;
     using Diwen.Xbrl.Extensions;
 
-    public class Report
+    public partial class Report
     {
         public string DocumentType { get; set; } = "https://xbrl.org/CR/2021-02-03/xbrl-csv";
 
@@ -83,40 +82,6 @@
             stream.Flush();
             stream.Position = 0;
             return stream;
-        }
-
-        public class DocumentInfo
-        {
-            public string documentType { get; set; }
-            public List<string> extends { get; set; }
-        }
-
-        public class EbaGeneratingSoftwareInformation
-        {
-            [JsonPropertyName("eba:softwareId")]
-            public string ebasoftwareId { get; set; }
-
-            [JsonPropertyName("eba:softwareVersion")]
-            public string ebasoftwareVersion { get; set; }
-
-            [JsonPropertyName("eba:softwareCreationDate")]
-            public string ebasoftwareCreationDate { get; set; }
-
-            [JsonPropertyName("eba:softwareAdditionalInfo")]
-            public string ebasoftwareAdditionalInfo { get; set; }
-        }
-
-        public class ReportInfo
-        {
-            public DocumentInfo documentInfo { get; set; }
-
-            [JsonPropertyName("eba:generatingSoftwareInformation")]
-            public EbaGeneratingSoftwareInformation ebageneratingSoftwareInformation { get; set; }
-        }
-
-        public class PackageInfo
-        {
-            public DocumentInfo documentInfo { get; set; }
         }
 
         private static Stream CreatePackageInfo()
