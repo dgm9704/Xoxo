@@ -85,7 +85,7 @@
             return stream;
         }
 
-        private static Stream CreatePackageInfoString()
+        private static Stream CreatePackageInfo()
         {
             var stream = new MemoryStream();
             var writer = new StreamWriter(stream);
@@ -105,7 +105,7 @@
             return stream;
         }
 
-        private static Stream CreateReportInfoString(string documentType, string entrypoint)
+        private static Stream CreateReportInfo(string documentType, string entrypoint)
         {
             AssemblyName assembly = Assembly.GetExecutingAssembly().GetName();
             Version version = assembly.Version;
@@ -117,25 +117,6 @@
             writer.WriteLine($"{{\"documentInfo\":{{\"documentType\":\"{documentType}\",\"extends\":[\"{entrypoint}\"]}},");
             writer.WriteLine($"\"eba:generatingSoftwareInformation\": {{\"eba:softwareId\": \"{id}\",\"eba:softwareVersion\": \"{version}\",\"eba:softwareCreationDate\": \"{compileTime.Date:yyyy-MM-dd}\",\"eba:softwareAdditionalInfo\": \"https://github.com/dgm9704/Xoxo\"}}}}");
             writer.Flush();
-            stream.Position = 0;
-            return stream;
-        }
-
-        private static Stream CreateReportInfoJson(string documentType, string entrypoint)
-        {
-            AssemblyName assembly = Assembly.GetExecutingAssembly().GetName();
-            Version version = assembly.Version;
-            string id = assembly.Name;
-            var compileTime = new DateTime(Builtin.CompileTime, DateTimeKind.Utc);
-
-            var stream = new MemoryStream();
-            var info = new ReportInfo();
-            info.documentInfo.documentType = documentType;
-            info.extends = entrypoint;
-            //info
-            // writer.WriteLine($"{{\"documentInfo\":{{\"documentType\":\"{documentType}\",\"extends\":[\"{entrypoint}\"]}},");
-            // writer.WriteLine($"\"eba:generatingSoftwareInformation\": {{\"eba:softwareId\": \"{id}\",\"eba:softwareVersion\": \"{version}\",\"eba:softwareCreationDate\": \"{compileTime.Date:yyyy-MM-dd}\",\"eba:softwareAdditionalInfo\": \"https://github.com/dgm9704/Xoxo\"}}}}");
-            // writer.Flush();
             stream.Position = 0;
             return stream;
         }
