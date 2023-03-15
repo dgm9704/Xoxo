@@ -201,17 +201,10 @@
             return report;
         }
 
-        private static string ReadEntryPointString(string data)
-        {
-            var expression = new Regex(@"[^\""]*\.json", RegexOptions.Compiled);
-            var match = expression.Match(data);
-            return match.Value;
-        }
-
         private static string ReadEntryPoint(string data)
         {
-            var documentInfo = JsonSerializer.Deserialize<DocumentInfo>(data);
-            return documentInfo.extends.First();
+            var reportInfo = JsonSerializer.Deserialize<ReportInfo>(data);
+            return reportInfo.documentInfo.extends.First();
         }
 
         private static IEnumerable<ReportData> ReadTableData(string table, string data)
