@@ -50,10 +50,10 @@ Tests for exercising Diwen.Xbrl code, also serving as documentation and samples
 
 # Environment
 Code is written in [C#](https://docs.microsoft.com/en-us/dotnet/csharp/index), targeting 
-[.NET 6](https://learn.microsoft.com/en-us/dotnet/api/?view=net-6.0)
+[.NET 8](https://learn.microsoft.com/en-us/dotnet/api/?view=net-6.0)
 
 Test framework is [xUnit](https://xunit.net/)
-and test code is targeting [.NET 6](https://docs.microsoft.com/en-us/dotnet/)
+and test code is targeting [.NET 8](https://docs.microsoft.com/en-us/dotnet/)
 
 I use [Visual Studio Code](https://code.visualstudio.com/) 
 on [Arch Linux](https://www.archlinux.org/)
