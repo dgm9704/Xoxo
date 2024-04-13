@@ -77,6 +77,9 @@ https://twitter.com/DiwenXbrl
 ### mastodon: @diwen@techhub.social
 https://techhub.social/@diwen
 
+### bluesky: @diwen@bsky.social
+https://bsky.app/profile/diwen.bsky.social
+
 
 # (old news) Default branch has been renamed
 Use these commands to update:
