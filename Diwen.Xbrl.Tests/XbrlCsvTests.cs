@@ -133,6 +133,9 @@ namespace Diwen.XbrlCsv.Tests
         [Theory]
         [InlineData("csv/DUMMYLEI123456789012.CON_FR_FINREP030100_FINREP9_2022-12-31_20220411141600000.xbrl")]
         [InlineData("csv/F_18-00-a.xbrl")]
+        public void XmlToCsvTest(string reportPath)
+        => XmlToCsv(reportPath);
+
         public string XmlToCsv(string reportPath)
         {
             var xmlReport = Instance.FromFile(reportPath);
@@ -147,7 +150,7 @@ namespace Diwen.XbrlCsv.Tests
             // sw.Stop();
             // output.WriteLine($"FromXml {sw.Elapsed}");
             // Console.WriteLine($"FromXml {sw.Elapsed}");
-            
+
             var csvReportPath = Path.ChangeExtension(Path.GetFileName(reportPath), ".zip");
             csvReport.Export(csvReportPath);
             return csvReportPath;
@@ -156,6 +159,9 @@ namespace Diwen.XbrlCsv.Tests
         [Theory]
         [InlineData("csv/DUMMYLEI123456789012.CON_FR_FINREP030100_FINREP9_2022-12-31_20220411141600000.zip")]
         [InlineData("csv/F_18-00-a.zip")]
+        public void CsvToXmlTest(string reportPath)
+        => CsvToXml(reportPath);
+
         public string CsvToXml(string reportPath)
         {
 
@@ -204,12 +210,18 @@ namespace Diwen.XbrlCsv.Tests
 
         [Theory]
         [InlineData("EBA32_TypedDomain.csv")]
-        private static HashSet<string> ReadTypedDomainInfo(string path)
+        public void ReadTypedDomainInfoTest(string path)
+        => ReadTypedDomainInfo(path);
+
+        public static HashSet<string> ReadTypedDomainInfo(string path)
         => File.ReadAllLines(Path.Combine("csv", path)).ToHashSet();
 
 
         [Theory]
         [InlineData("EBA32_finrep_FilingIndicators.csv")]
+        public void ReadFilingIndicatorInfoTest(string file)
+        => ReadFilingIndicatorInfo(file);
+
         public static Dictionary<string, string> ReadFilingIndicatorInfo(string file)
         => File.ReadAllLines(Path.Combine("csv", file)).
             Select(l => l.Split(',')).
@@ -217,13 +229,16 @@ namespace Diwen.XbrlCsv.Tests
 
         [Theory]
         [InlineData("www.eba.europa.eu/eu/fr/xbrl/crr/fws/finrep/its-005-2020/2022-06-01/mod/finrep9.json")]
+        public static void ReadModuleDefinitionTest(string entrypoint)
+        => ReadModuleDefinition(entrypoint);
+
         public static ModuleDefinition ReadModuleDefinition(string entrypoint)
         {
             using (var stream = new FileStream(entrypoint, FileMode.Open, FileAccess.Read))
                 return (ModuleDefinition)JsonSerializer.Deserialize(stream, typeof(ModuleDefinition));
         }
 
-        private static Dictionary<string, TableDefinition> ReadTableDefinitions(ModuleDefinition module)
+        public static Dictionary<string, TableDefinition> ReadTableDefinitions(ModuleDefinition module)
         {
             var modfolder = Path.GetDirectoryName(module.documentInfo.taxonomy.First().Replace("http://", ""));
             var jsonTables = new Dictionary<string, TableDefinition>();
@@ -245,6 +260,9 @@ namespace Diwen.XbrlCsv.Tests
 
         [Theory]
         [InlineData("EBA32_DimensionDomain.csv")]
+        public static void ReadDimensionDomainInfoTest(string file)
+        => ReadDimensionDomainInfo(file);
+
         public static Dictionary<string, string> ReadDimensionDomainInfo(string file)
         => File.ReadAllLines(Path.Combine("csv", file)).
             Select(l => l.Split(',')).
@@ -252,6 +270,9 @@ namespace Diwen.XbrlCsv.Tests
 
         [Theory]
         [InlineData("www.eba.europa.eu/eu/fr/xbrl/crr/fws/sbp/cir-2070-2016/2022-06-01/mod/sbp_cr.json")]
+        public static void DeserializeModuleFromJsonTest(string path)
+        => DeserializeModuleFromJson(path);
+
         public static ModuleDefinition DeserializeModuleFromJson(string path)
         {
             using (var stream = new FileStream(path, FileMode.Open, FileAccess.Read))
@@ -264,6 +285,9 @@ namespace Diwen.XbrlCsv.Tests
 
         [Theory]
         [InlineData("www.eba.europa.eu/eu/fr/xbrl/crr/fws/sbp/cir-2070-2016/2022-06-01/tab/c_101.00/c_101.00.json")]
+        public static void DeserializeTableFromJsonTest(string path)
+        => DeserializeTableFromJson(path);
+
         public static TableDefinition DeserializeTableFromJson(string path)
         {
             using (var stream = new FileStream(path, FileMode.Open, FileAccess.Read))

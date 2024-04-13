@@ -4,30 +4,29 @@
     <IsPackable>false</IsPackable>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.1.0"/>
-    <PackageReference Include="xunit" Version="2.4.1"/>
-    <PackageReference Include="xunit.runner.visualstudio" Version="2.4.3">
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.9.0"/>
+    <PackageReference Include="xunit" Version="2.7.1"/>
+    <PackageReference Include="xunit.runner.visualstudio" Version="2.5.8">
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>
-    <PackageReference Include="coverlet.collector" Version="3.1.2">
+    <PackageReference Include="coverlet.collector" Version="6.0.2">
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>
-    <PackageReference Include="System.Text.Json" Version="7.0.0"/>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Diwen.Xbrl\Diwen.Xbrl.csproj"/>
   </ItemGroup>
   <ItemGroup>
     <Content Include="www.eba.europa.eu/**" CopyToOutputDirectory="Always"/>
-    <Content Include="data/*.xbrl" CopyToOutputDirectory="PreserveNewest"/>
-    <Content Include="eba/*.*" CopyToOutputDirectory="PreserveNewest"/>
-    <Content Include="eiopa/*.*" CopyToOutputDirectory="PreserveNewest"/>
-    <Content Include="esma/*.*" CopyToOutputDirectory="PreserveNewest"/>
-    <Content Include="csv/*.*" CopyToOutputDirectory="PreserveNewest"/>
+    <Content Include="data/*.xbrl" CopyToOutputDirectory="Always"/>
+    <Content Include="eba/*.*" CopyToOutputDirectory="Always"/>
+    <Content Include="eiopa/*.*" CopyToOutputDirectory="Always"/>
+    <Content Include="esma/*.*" CopyToOutputDirectory="Always"/>
+    <Content Include="csv/*.*" CopyToOutputDirectory="Always"/>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="xunit.runner.json" CopyToOutputDirectory="PreserveNewest"/>
+    <Content Include="xunit.runner.json" CopyToOutputDirectory="Always"/>
   </ItemGroup>
 </Project>
