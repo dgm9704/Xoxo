@@ -74,6 +74,9 @@ https://www.nuget.org/packages/Diwen.Xbrl/1.2.0/ContactOwners
 ### twitter: @DiwenXbrl
 https://twitter.com/DiwenXbrl
 
+### mastodon: @diwen@techhub.social
+https://techhub.social/@diwen
+
 
 # (old news) Default branch has been renamed
 Use these commands to update:
