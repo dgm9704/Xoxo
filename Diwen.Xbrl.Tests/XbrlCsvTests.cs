@@ -8,6 +8,7 @@ namespace Diwen.Xbrl.Csv.Tests
     using Diwen.Xbrl.Comparison;
     using Diwen.Xbrl.Csv;
     using Diwen.Xbrl.Csv.Taxonomy;
+    using Diwen.Xbrl.Extensions;
     using Xunit;
     using Xunit.Abstractions;
 
@@ -199,11 +200,8 @@ namespace Diwen.Xbrl.Csv.Tests
             var tableDefinitions = moduleDefinition.TableDefinitions();
 
             var filingIndicators = ReadFilingIndicatorInfo("EBA32_finrep_FilingIndicators.csv");
-            // var sw = Stopwatch.StartNew();
-            var csvReport = Report.FromXml(xmlReport, tableDefinitions, filingIndicators, moduleDefinition);
-            // sw.Stop();
-            // output.WriteLine($"FromXml {sw.Elapsed}");
-            // Console.WriteLine($"FromXml {sw.Elapsed}");
+
+            var csvReport = xmlReport.ToXbrlCsv(tableDefinitions, filingIndicators, moduleDefinition);
 
             var csvReportPath = Path.ChangeExtension(Path.GetFileName(reportPath), ".zip");
             csvReport.Export(csvReportPath);
@@ -229,11 +227,7 @@ namespace Diwen.Xbrl.Csv.Tests
 
             var filingIndicators = ReadFilingIndicatorInfo("EBA32_finrep_FilingIndicators.csv");
 
-            //var sw = Stopwatch.StartNew();
-            var xmlReport = csvReport.ToXml(tableDefinitions, dimensionDomainInfo, typedDomainNamespace, filingIndicators, typedDomains, moduleDefinition);
-            //sw.Stop();
-            // output.WriteLine($"ToXml {sw.Elapsed}");
-            // Console.WriteLine($"ToXml {sw.Elapsed}");
+            var xmlReport = csvReport.ToXbrlXml(tableDefinitions, dimensionDomainInfo, typedDomainNamespace, filingIndicators, typedDomains, moduleDefinition);
 
             var xmlReportPath = Path.ChangeExtension(Path.GetFileName(reportPath), ".xbrl");
             xmlReport.ToFile(xmlReportPath);
