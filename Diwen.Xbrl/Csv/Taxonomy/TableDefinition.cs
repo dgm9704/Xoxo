@@ -1,7 +1,9 @@
 namespace Diwen.Xbrl.Csv.Taxonomy
 {
     using System.Collections.Generic;
+    using System.IO;
     using System.Linq;
+    using System.Text.Json;
     using System.Text.Json.Serialization;
     using Diwen.Xbrl.Extensions;
     using Diwen.Xbrl.Package;
@@ -43,6 +45,12 @@ namespace Diwen.Xbrl.Csv.Taxonomy
             }
 
             return datapointsByMetric.GetValueOrDefault(metric, noCandidates);
+        }
+
+        public static TableDefinition FromFile(string path)
+        {
+            using (var stream = new FileStream(path, FileMode.Open, FileAccess.Read))
+                return JsonSerializer.Deserialize<TableDefinition>(stream);
         }
     }
 }

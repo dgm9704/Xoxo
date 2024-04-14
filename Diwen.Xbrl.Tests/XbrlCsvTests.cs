@@ -4,7 +4,6 @@ namespace Diwen.Xbrl.Csv.Tests
     using System.Collections.Generic;
     using System.IO;
     using System.Linq;
-    using System.Text.Json;
     using Diwen.Xbrl;
     using Diwen.Xbrl.Comparison;
     using Diwen.Xbrl.Csv;
@@ -16,7 +15,7 @@ namespace Diwen.Xbrl.Csv.Tests
     {
         private readonly ITestOutputHelper output;
 
-        public XbrlCsvTests(ITestOutputHelper output) 
+        public XbrlCsvTests(ITestOutputHelper output)
         => this.output = output;
 
         [Fact]
@@ -173,7 +172,7 @@ namespace Diwen.Xbrl.Csv.Tests
         [Theory]
         [InlineData("www.eba.europa.eu/eu/fr/xbrl/crr/fws/finrep/its-005-2020/2022-06-01/mod/finrep9.json")]
         public static void ReadModuleDefinitionTest(string entrypoint)
-        => ReadModuleDefinition(entrypoint);
+        => ModuleDefinition.FromFile(entrypoint);
 
         [Theory]
         [InlineData("EBA32_DimensionDomain.csv")]
@@ -183,20 +182,21 @@ namespace Diwen.Xbrl.Csv.Tests
         [Theory]
         [InlineData("www.eba.europa.eu/eu/fr/xbrl/crr/fws/sbp/cir-2070-2016/2022-06-01/mod/sbp_cr.json")]
         public static void DeserializeModuleFromJsonTest(string path)
-        => DeserializeModuleFromJson(path);
+        => ModuleDefinition.FromFile(path);
 
         [Theory]
         [InlineData("www.eba.europa.eu/eu/fr/xbrl/crr/fws/sbp/cir-2070-2016/2022-06-01/tab/c_101.00/c_101.00.json")]
         public static void DeserializeTableFromJsonTest(string path)
-        => DeserializeTableFromJson(path);
+        => TableDefinition.FromFile(path);
 
         public string XmlToCsv(string reportPath)
         {
             var xmlReport = Instance.FromFile(reportPath);
 
-            var moduleDefinition = ReadModuleDefinition(Path.ChangeExtension(xmlReport.SchemaReference.Value.Replace("http://", ""), "json"));
+            var entrypoint = Path.ChangeExtension(xmlReport.SchemaReference.Value.Replace("http://", ""), "json");
+            var moduleDefinition = ModuleDefinition.FromFile(entrypoint);
 
-            var tableDefinitions = ReadTableDefinitions(moduleDefinition);
+            var tableDefinitions = moduleDefinition.TableDefinitions();
 
             var filingIndicators = ReadFilingIndicatorInfo("EBA32_finrep_FilingIndicators.csv");
             // var sw = Stopwatch.StartNew();
@@ -217,9 +217,9 @@ namespace Diwen.Xbrl.Csv.Tests
 
             var entrypoint = csvReport.Entrypoint.Replace(@"http://", "");
 
-            var moduleDefinition = ReadModuleDefinition(entrypoint);
+            var moduleDefinition = ModuleDefinition.FromFile(entrypoint);
 
-            var tableDefinitions = ReadTableDefinitions(moduleDefinition);
+            var tableDefinitions = moduleDefinition.TableDefinitions();
 
             var dimensionDomainInfo = ReadDimensionDomainInfo("EBA32_DimensionDomain.csv");
 
@@ -244,47 +244,10 @@ namespace Diwen.Xbrl.Csv.Tests
         public static HashSet<string> ReadTypedDomainInfo(string path)
         => File.ReadAllLines(Path.Combine("csv", path)).ToHashSet();
 
-        public static ModuleDefinition ReadModuleDefinition(string entrypoint)
-        {
-            using (var stream = new FileStream(entrypoint, FileMode.Open, FileAccess.Read))
-                return JsonSerializer.Deserialize<ModuleDefinition>(stream);
-        }
-
-        public static Dictionary<string, TableDefinition> ReadTableDefinitions(ModuleDefinition module)
-        {
-            var modfolder = Path.GetDirectoryName(module.DocumentInfo.taxonomy.First().Replace("http://", ""));
-            var jsonTables = new Dictionary<string, TableDefinition>();
-
-            foreach (var moduleTable in module.DocumentInfo.extends)
-            {
-                var tabfile = Path.GetFullPath(Path.Combine(modfolder, moduleTable));
-                if (File.Exists(tabfile))
-                    using (var stream = new FileStream(tabfile, FileMode.Open, FileAccess.Read))
-                    {
-                        var jsonTable = JsonSerializer.Deserialize<TableDefinition>(stream);
-                        var tablecode = Path.GetFileNameWithoutExtension(tabfile);
-                        jsonTables.Add(tablecode, jsonTable);
-                    }
-            }
-
-            return jsonTables;
-        }
-
         public static Dictionary<string, string> ReadDimensionDomainInfo(string file)
         => File.ReadAllLines(Path.Combine("csv", file)).
             Select(l => l.Split(',')).
             ToDictionary(x => x[0], x => x[1]);
 
-        public static TableDefinition DeserializeTableFromJson(string path)
-        {
-            using (var stream = new FileStream(path, FileMode.Open, FileAccess.Read))
-                return JsonSerializer.Deserialize<TableDefinition>(stream);
-        }
-
-        public static ModuleDefinition DeserializeModuleFromJson(string path)
-        {
-            using (var stream = new FileStream(path, FileMode.Open, FileAccess.Read))
-                return JsonSerializer.Deserialize<ModuleDefinition>(stream);
-        }
     }
 }
