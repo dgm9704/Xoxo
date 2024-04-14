@@ -1,4 +1,4 @@
-namespace Diwen.XbrlCsv.Tests
+namespace Diwen.Xbrl.Csv.Tests
 {
     using System;
     using System.Collections.Generic;
@@ -16,10 +16,8 @@ namespace Diwen.XbrlCsv.Tests
     {
         private readonly ITestOutputHelper output;
 
-        public XbrlCsvTests(ITestOutputHelper output)
-        {
-            this.output = output;
-        }
+        public XbrlCsvTests(ITestOutputHelper output) 
+        => this.output = output;
 
         [Fact]
         public void ExportTests()
@@ -136,6 +134,62 @@ namespace Diwen.XbrlCsv.Tests
         public void XmlToCsvTest(string reportPath)
         => XmlToCsv(reportPath);
 
+        [Theory]
+        [InlineData("csv/DUMMYLEI123456789012.CON_FR_FINREP030100_FINREP9_2022-12-31_20220411141600000.zip")]
+        [InlineData("csv/F_18-00-a.zip")]
+        public void CsvToXmlTest(string reportPath)
+        => CsvToXml(reportPath);
+
+        [Theory]
+        [InlineData("csv/DUMMYLEI123456789012.CON_FR_FINREP030100_FINREP9_2022-12-31_20220411141600000.xbrl")]
+        [InlineData("csv/FINREP_F_23-01_R0080_C0010.xbrl")]
+        [InlineData("csv/FINREP_F_40-01_R999_C0031.xbrl")]
+        public void XmlToCsvToXml(string xmlInPath)
+        {
+            var csvPath = XmlToCsv(xmlInPath);
+            var xmlOutPath = CsvToXml(csvPath);
+            var result = InstanceComparer.Report(xmlInPath, xmlOutPath);
+            if (!result.Result)
+                File.WriteAllLines(Path.ChangeExtension(Path.GetFileName(xmlOutPath), ".report"), result.Messages);
+
+            Assert.True(result.Result, string.Join(Environment.NewLine, result.Messages));
+        }
+
+        [Theory]
+        [InlineData("EBA32_TypedDomain.csv")]
+        public void ReadTypedDomainInfoTest(string path)
+        => ReadTypedDomainInfo(path);
+
+        [Theory]
+        [InlineData("EBA32_finrep_FilingIndicators.csv")]
+        public void ReadFilingIndicatorInfoTest(string file)
+        => ReadFilingIndicatorInfo(file);
+
+        public static Dictionary<string, string> ReadFilingIndicatorInfo(string file)
+        => File.ReadAllLines(Path.Combine("csv", file)).
+            Select(l => l.Split(',')).
+            ToDictionary(x => x[0], x => x[1]);
+
+        [Theory]
+        [InlineData("www.eba.europa.eu/eu/fr/xbrl/crr/fws/finrep/its-005-2020/2022-06-01/mod/finrep9.json")]
+        public static void ReadModuleDefinitionTest(string entrypoint)
+        => ReadModuleDefinition(entrypoint);
+
+        [Theory]
+        [InlineData("EBA32_DimensionDomain.csv")]
+        public static void ReadDimensionDomainInfoTest(string file)
+        => ReadDimensionDomainInfo(file);
+
+        [Theory]
+        [InlineData("www.eba.europa.eu/eu/fr/xbrl/crr/fws/sbp/cir-2070-2016/2022-06-01/mod/sbp_cr.json")]
+        public static void DeserializeModuleFromJsonTest(string path)
+        => DeserializeModuleFromJson(path);
+
+        [Theory]
+        [InlineData("www.eba.europa.eu/eu/fr/xbrl/crr/fws/sbp/cir-2070-2016/2022-06-01/tab/c_101.00/c_101.00.json")]
+        public static void DeserializeTableFromJsonTest(string path)
+        => DeserializeTableFromJson(path);
+
         public string XmlToCsv(string reportPath)
         {
             var xmlReport = Instance.FromFile(reportPath);
@@ -155,12 +209,6 @@ namespace Diwen.XbrlCsv.Tests
             csvReport.Export(csvReportPath);
             return csvReportPath;
         }
-
-        [Theory]
-        [InlineData("csv/DUMMYLEI123456789012.CON_FR_FINREP030100_FINREP9_2022-12-31_20220411141600000.zip")]
-        [InlineData("csv/F_18-00-a.zip")]
-        public void CsvToXmlTest(string reportPath)
-        => CsvToXml(reportPath);
 
         public string CsvToXml(string reportPath)
         {
@@ -193,63 +241,27 @@ namespace Diwen.XbrlCsv.Tests
 
         }
 
-        [Theory]
-        [InlineData("csv/DUMMYLEI123456789012.CON_FR_FINREP030100_FINREP9_2022-12-31_20220411141600000.xbrl")]
-        [InlineData("csv/FINREP_F_23-01_R0080_C0010.xbrl")]
-        [InlineData("csv/FINREP_F_40-01_R999_C0031.xbrl")]
-        public void XmlToCsvToXml(string xmlInPath)
-        {
-            var csvPath = XmlToCsv(xmlInPath);
-            var xmlOutPath = CsvToXml(csvPath);
-            var result = InstanceComparer.Report(xmlInPath, xmlOutPath);
-            if (!result.Result)
-                File.WriteAllLines(Path.ChangeExtension(Path.GetFileName(xmlOutPath), ".report"), result.Messages);
-
-            Assert.True(result.Result, string.Join(Environment.NewLine, result.Messages));
-        }
-
-        [Theory]
-        [InlineData("EBA32_TypedDomain.csv")]
-        public void ReadTypedDomainInfoTest(string path)
-        => ReadTypedDomainInfo(path);
-
         public static HashSet<string> ReadTypedDomainInfo(string path)
         => File.ReadAllLines(Path.Combine("csv", path)).ToHashSet();
-
-
-        [Theory]
-        [InlineData("EBA32_finrep_FilingIndicators.csv")]
-        public void ReadFilingIndicatorInfoTest(string file)
-        => ReadFilingIndicatorInfo(file);
-
-        public static Dictionary<string, string> ReadFilingIndicatorInfo(string file)
-        => File.ReadAllLines(Path.Combine("csv", file)).
-            Select(l => l.Split(',')).
-            ToDictionary(x => x[0], x => x[1]);
-
-        [Theory]
-        [InlineData("www.eba.europa.eu/eu/fr/xbrl/crr/fws/finrep/its-005-2020/2022-06-01/mod/finrep9.json")]
-        public static void ReadModuleDefinitionTest(string entrypoint)
-        => ReadModuleDefinition(entrypoint);
 
         public static ModuleDefinition ReadModuleDefinition(string entrypoint)
         {
             using (var stream = new FileStream(entrypoint, FileMode.Open, FileAccess.Read))
-                return (ModuleDefinition)JsonSerializer.Deserialize(stream, typeof(ModuleDefinition));
+                return JsonSerializer.Deserialize<ModuleDefinition>(stream);
         }
 
         public static Dictionary<string, TableDefinition> ReadTableDefinitions(ModuleDefinition module)
         {
-            var modfolder = Path.GetDirectoryName(module.documentInfo.taxonomy.First().Replace("http://", ""));
+            var modfolder = Path.GetDirectoryName(module.DocumentInfo.taxonomy.First().Replace("http://", ""));
             var jsonTables = new Dictionary<string, TableDefinition>();
 
-            foreach (var moduleTable in module.documentInfo.extends)
+            foreach (var moduleTable in module.DocumentInfo.extends)
             {
                 var tabfile = Path.GetFullPath(Path.Combine(modfolder, moduleTable));
                 if (File.Exists(tabfile))
                     using (var stream = new FileStream(tabfile, FileMode.Open, FileAccess.Read))
                     {
-                        var jsonTable = (TableDefinition)JsonSerializer.Deserialize(stream, typeof(TableDefinition));
+                        var jsonTable = JsonSerializer.Deserialize<TableDefinition>(stream);
                         var tablecode = Path.GetFileNameWithoutExtension(tabfile);
                         jsonTables.Add(tablecode, jsonTable);
                     }
@@ -258,45 +270,21 @@ namespace Diwen.XbrlCsv.Tests
             return jsonTables;
         }
 
-        [Theory]
-        [InlineData("EBA32_DimensionDomain.csv")]
-        public static void ReadDimensionDomainInfoTest(string file)
-        => ReadDimensionDomainInfo(file);
-
         public static Dictionary<string, string> ReadDimensionDomainInfo(string file)
         => File.ReadAllLines(Path.Combine("csv", file)).
             Select(l => l.Split(',')).
             ToDictionary(x => x[0], x => x[1]);
 
-        [Theory]
-        [InlineData("www.eba.europa.eu/eu/fr/xbrl/crr/fws/sbp/cir-2070-2016/2022-06-01/mod/sbp_cr.json")]
-        public static void DeserializeModuleFromJsonTest(string path)
-        => DeserializeModuleFromJson(path);
+        public static TableDefinition DeserializeTableFromJson(string path)
+        {
+            using (var stream = new FileStream(path, FileMode.Open, FileAccess.Read))
+                return JsonSerializer.Deserialize<TableDefinition>(stream);
+        }
 
         public static ModuleDefinition DeserializeModuleFromJson(string path)
         {
             using (var stream = new FileStream(path, FileMode.Open, FileAccess.Read))
-            {
-                var module = (ModuleDefinition)JsonSerializer.Deserialize(stream, typeof(ModuleDefinition));
-                Assert.NotNull(module);
-                return module;
-            }
+                return JsonSerializer.Deserialize<ModuleDefinition>(stream);
         }
-
-        [Theory]
-        [InlineData("www.eba.europa.eu/eu/fr/xbrl/crr/fws/sbp/cir-2070-2016/2022-06-01/tab/c_101.00/c_101.00.json")]
-        public static void DeserializeTableFromJsonTest(string path)
-        => DeserializeTableFromJson(path);
-
-        public static TableDefinition DeserializeTableFromJson(string path)
-        {
-            using (var stream = new FileStream(path, FileMode.Open, FileAccess.Read))
-            {
-                var table = (TableDefinition)JsonSerializer.Deserialize(stream, typeof(TableDefinition));
-                Assert.NotNull(table);
-                return table;
-            }
-        }
-
     }
 }

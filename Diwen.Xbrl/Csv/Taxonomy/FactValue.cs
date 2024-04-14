@@ -1,10 +1,16 @@
 namespace Diwen.Xbrl.Csv.Taxonomy
 {
     using System.Collections.Generic;
+    using System.Text.Json.Serialization;
 
     public class FactValue
     {
-        public Dictionary<string, string> dimensions { get; set; }
-        public IList<string> propertiesFrom { get; set; }
+
+        [JsonPropertyName("dimensions")]
+        public Dictionary<string, string> Dimensions { get; set; }
+
+        [JsonPropertyName("propertiesFrom")]
+        public IList<string> PropertiesFrom { get; set; }
+        
     }
 }

@@ -1,9 +1,18 @@
+using System.Text.Json.Serialization;
+
 namespace Diwen.Xbrl.Csv.Taxonomy
 {
     public class Table
     {
-        public bool optional { get; set; }
-        public string template { get; set; }
-        public string url { get; set; }
+
+        [JsonPropertyName("optional")]
+        public bool Optional { get; set; }
+
+        [JsonPropertyName("template")]
+        public string Template { get; set; }
+
+        [JsonPropertyName("url")]
+        public string Url { get; set; }
+        
     }
 }

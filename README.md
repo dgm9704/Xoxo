@@ -3,7 +3,7 @@
 
 # Branched!
 The library code is now in two branches:
-- main: .NET 6+ version that will get new features etc. (version 2 upwards)
+- main: .NET 5+ version that will get new features etc. (version 2 upwards)
 - legacy: .NET Standard 2.0 version that will only get critical bug fixes (versions 1.x)
 
 # Xoxo
@@ -79,13 +79,3 @@ https://techhub.social/@diwen
 
 ### bluesky: @diwen@bsky.social
 https://bsky.app/profile/diwen.bsky.social
-
-
-# (old news) Default branch has been renamed
-Use these commands to update:
-```
-git branch -m master main
-git fetch origin
-git branch -u origin/main main
-git remote set-head origin -a
-```

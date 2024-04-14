@@ -9,7 +9,6 @@
     using System.Reflection;
     using System.Text;
     using System.Text.Json;
-    using System.Text.RegularExpressions;
     using Diwen.Xbrl.Csv.Taxonomy;
     using Diwen.Xbrl.Extensions;
     using Diwen.Xbrl.Package;
@@ -20,11 +19,11 @@
 
         public string Entrypoint { get; set; }
 
-        public Dictionary<string, bool> FilingIndicators = new Dictionary<string, bool>();
+        public Dictionary<string, bool> FilingIndicators = [];
 
-        public Dictionary<string, string> Parameters = new Dictionary<string, string>();
+        public Dictionary<string, string> Parameters = [];
 
-        public List<ReportData> Data = new List<ReportData>();
+        public List<ReportData> Data = [];
 
         public void AddData(string table, string datapoint, string value)
         => Data.Add(new ReportData(table, datapoint, value));
@@ -50,12 +49,15 @@
         {
             var metafolder = "META-INF";
             var reportfolder = "reports";
-            var package = new Dictionary<string, Stream>();
 
-            package.Add(Path.Combine(packageName, metafolder, "reports.json"), CreatePackageInfo());
-            package.Add(Path.Combine(packageName, reportfolder, "report.json"), CreateReportInfo(documentType, entrypoint));
-            package.Add(Path.Combine(packageName, reportfolder, "parameters.csv"), CreateParameters(parameters));
-            package.Add(Path.Combine(packageName, reportfolder, "FilingIndicators.csv"), CreateFilingIndicators(filingIndicators));
+            var package = new Dictionary<string, Stream>
+            {
+                [Path.Combine(packageName, metafolder, "reports.json")] = CreatePackageInfo(),
+                [Path.Combine(packageName, reportfolder, "report.json")] = CreateReportInfo(documentType, entrypoint),
+                [Path.Combine(packageName, reportfolder, "parameters.csv")] = CreateParameters(parameters),
+                [Path.Combine(packageName, reportfolder, "FilingIndicators.csv")] = CreateFilingIndicators(filingIndicators),
+            };
+
             foreach (var tableStream in CreateReportData(data))
                 package.Add(Path.Combine(packageName, reportfolder, tableStream.Key), tableStream.Value);
 
@@ -87,9 +89,14 @@
 
         private static Stream CreatePackageInfo()
         {
-            var info = new PackageInfo();
-            info.documentInfo = new DocumentInfo();
-            info.documentInfo.documentType = "http://xbrl.org/PWD/2020-12-09/report-package";
+            var info = new PackageInfo
+            {
+                documentInfo = new DocumentInfo
+                {
+                    documentType = "http://xbrl.org/PWD/2020-12-09/report-package"
+                }
+            };
+
             var stream = new MemoryStream();
             JsonSerializer.Serialize<PackageInfo>(stream, info);
             stream.Position = 0;
@@ -98,25 +105,31 @@
 
         private static Stream CreateReportInfo(string documentType, string entrypoint)
         {
-            AssemblyName assembly = Assembly.GetExecutingAssembly().GetName();
-            Version version = assembly.Version;
-            string id = assembly.Name;
+            var assembly = Assembly.GetExecutingAssembly().GetName();
+            var version = assembly.Version;
+            var assemblyName = assembly.Name;
             var compileTime = new DateTime(Builtin.CompileTime, DateTimeKind.Utc);
 
-            var documentInfo = new DocumentInfo();
-            documentInfo.documentType = documentType;
-            documentInfo.extends = new List<string> { entrypoint };
+            var documentInfo = new DocumentInfo
+            {
+                documentType = documentType,
+                extends = new List<string> { entrypoint }
+            };
 
-            var softwareInfo = new EbaGeneratingSoftwareInformation();
-            softwareInfo.ebasoftwareId = id;
-            softwareInfo.ebasoftwareVersion = version.ToString();
-            softwareInfo.ebasoftwareCreationDate = $"{compileTime.Date:yyyy-MM-dd}";
-            softwareInfo.ebasoftwareAdditionalInfo = "https://github.com/dgm9704/Xoxo";
+            var softwareInfo = new EbaGeneratingSoftwareInformation
+            {
+                ebasoftwareId = assemblyName,
+                ebasoftwareVersion = version.ToString(),
+                ebasoftwareCreationDate = $"{compileTime.Date:yyyy-MM-dd}",
+                ebasoftwareAdditionalInfo = "https://github.com/dgm9704/Xoxo"
+            };
 
             var stream = new MemoryStream();
-            var reportInfo = new ReportInfo();
-            reportInfo.documentInfo = documentInfo;
-            reportInfo.ebageneratingSoftwareInformation = softwareInfo;
+            var reportInfo = new ReportInfo
+            {
+                documentInfo = documentInfo,
+                ebageneratingSoftwareInformation = softwareInfo
+            };
 
             JsonSerializer.Serialize<ReportInfo>(stream, reportInfo);
             stream.Position = 0;
@@ -279,10 +292,12 @@
             HashSet<string> typedDomains,
             ModuleDefinition moduleDefinition)
         {
-            var instance = new Instance();
-            instance.SchemaReference = new SchemaReference("simple", moduleDefinition.documentInfo.taxonomy.FirstOrDefault());
+            var instance = new Instance
+            {
+                SchemaReference = new SchemaReference("simple", moduleDefinition.DocumentInfo.taxonomy.FirstOrDefault())
+            };
 
-            foreach (var ns in moduleDefinition.documentInfo.namespaces)
+            foreach (var ns in moduleDefinition.DocumentInfo.namespaces)
                 instance.Namespaces.AddNamespace(ns.Key, ns.Value);
 
             var idParts = report.Parameters["entityID"].Split(':');
@@ -348,7 +363,7 @@
         {
             string dimensionPrefix = string.Empty;
 
-            foreach (var ns in tableDefinition.documentInfo.namespaces)
+            foreach (var ns in tableDefinition.DocumentInfo.namespaces)
             {
                 if (ns.Key.EndsWith("_dim"))
                 {
@@ -356,9 +371,13 @@
                     instance.SetDimensionNamespace(ns.Key, ns.Value);
                 }
                 else if (ns.Key.EndsWith("_met"))
+                {
                     instance.SetMetricNamespace(ns.Key, ns.Value);
+                }
                 else
+                {
                     instance.AddDomainNamespace(ns.Key, ns.Value);
+                }
             }
 
             foreach (var fact in table.Value)
@@ -386,14 +405,22 @@
             string metric = string.Empty;
             string unit = string.Empty;
 
-            foreach (var dimension in datapoint.dimensions)
+            foreach (var dimension in datapoint.Dimensions)
             {
-                if (dimension.Key == "concept")
-                    metric = dimension.Value.Split(':').Last();
-                else if (dimension.Key == "unit")
-                    unit = dimension.Value;
-                else
-                    scenario.AddExplicitMember(dimension.Key, dimension.Value);
+                switch (dimension.Key)
+                {
+                    case "concept":
+                        metric = dimension.Value.Split(':').Last();
+                        break;
+
+                    case "unit":
+                        unit = dimension.Value;
+                        break;
+
+                    default:
+                        scenario.AddExplicitMember(dimension.Key, dimension.Value);
+                        break;
+                }
             }
 
             foreach (var d in fact.Dimensions)
@@ -404,9 +431,10 @@
                 else
                     scenario.AddExplicitMember(d.Key, d.Value);
 
-            var decimals = !string.IsNullOrEmpty(datapoint.decimals)
-                 ? parameters.GetValueOrDefault(datapoint.decimals.TrimStart('$'), string.Empty)
-                 : string.Empty;
+            var decimals =
+                !string.IsNullOrEmpty(datapoint.Decimals)
+                    ? parameters.GetValueOrDefault(datapoint.Decimals.TrimStart('$'), string.Empty)
+                    : string.Empty;
 
             // Unit for only numeric values, ie. those that have decimals specified
             var unitRef =
@@ -419,17 +447,17 @@
             // scenario.Instance = instance;
             var scenarioKey = scenario.ToString();
             var datapointKey = $"{scenarioKey}+{metric}";
-            if (usedContexts.ContainsKey(scenarioKey))
+            if (usedContexts.TryGetValue(scenarioKey, out Context context))
             {
                 if (!usedDatapoints.Contains(datapointKey))
                 {
-                    instance.AddFact(usedContexts[scenarioKey], metric, unitRef, decimals, fact.Value);
+                    instance.AddFact(context, metric, unitRef, decimals, fact.Value);
                     usedDatapoints.Add(datapointKey);
                 }
             }
             else
             {
-                var context = instance.CreateContext(scenario);
+                context = instance.CreateContext(scenario);
                 usedContexts[scenarioKey] = context;
                 instance.AddFact(context, metric, unitRef, decimals, fact.Value);
                 usedDatapoints.Add(datapointKey);
@@ -438,11 +466,12 @@
 
         public static Report FromXml(Instance xmlReport, Dictionary<string, TableDefinition> tableDefinitions, Dictionary<string, string> filingIndicators, ModuleDefinition moduleDefinition)
         {
-            var report = new Report();
+            var report = new Report
+            {
+                Entrypoint = Path.ChangeExtension(xmlReport.SchemaReference.Value, ".json")
+            };
 
-            report.Entrypoint = Path.ChangeExtension(xmlReport.SchemaReference.Value, ".json");
-
-            var prefix = moduleDefinition.documentInfo.namespaces.FirstOrDefault(ns => ns.Value == xmlReport.Entity.Identifier.Scheme).Key;
+            var prefix = moduleDefinition.DocumentInfo.namespaces.FirstOrDefault(ns => ns.Value == xmlReport.Entity.Identifier.Scheme).Key;
             var identifier = xmlReport.Entity.Identifier.Value;
             report.Parameters.Add("entityID", $"{prefix}:{identifier}");
             report.Parameters.Add("refPeriod", xmlReport.Period.Instant.ToString("yyyy-MM-dd"));
@@ -469,7 +498,7 @@
                     Where(t => reportedTables.ContainsKey(t.Key)).
                     ToDictionary(
                         t => t.Key,
-                        t => t.Value.tableTemplates.First().Value.columns.factValue.dimensions.Select(d => d.Key.Split(':').Last()).ToHashSet());
+                        t => t.Value.TableTemplates.First().Value.Columns.FactValue.Dimensions.Select(d => d.Key.Split(':').Last()).ToHashSet());
 
             foreach (var fact in xmlReport.Facts)
             {
@@ -523,7 +552,7 @@
                         candidateDatapoints.
                             Where(pg =>
                                 DatapointMatchesFact(
-                                    pg.Value.Dimensions,
+                                    pg.Value.DimensionValues,
                                     tableOpenDimensions,
                                     factExplicitMembers,
                                     factTypedMembers)).

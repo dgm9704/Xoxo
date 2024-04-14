@@ -7,7 +7,7 @@ namespace Diwen.Xbrl.Csv
 		public string Table { get; set; }
 		public string Datapoint { get; set; }
 		public string Value { get; set; }
-		public Dictionary<string, string> Dimensions { get; set; } = new Dictionary<string, string>();
+		public Dictionary<string, string> Dimensions { get; set; } = [];
 
 		public ReportData(string table, string datapoint, string value)
 		{
