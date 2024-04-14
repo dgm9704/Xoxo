@@ -1,0 +1,35 @@
+{
+    "documentInfo": {
+        "documentType": "https://xbrl.org/2021/xbrl-json",
+        "namespaces": {
+            "eg": "http://example.com/xbrl-json/taxonomy/",
+            "lei": "http://standards.iso.org/iso/17442",
+            "iso4217": "http://www.xbrl.org/2003/iso4217"
+        },
+        "taxonomy": [
+            "http://example.com/xbrl-json/taxonomy/example.xsd"
+        ]
+    },
+    "facts": {
+        "f1": {
+            "value": "1230000",
+            "decimals": 0,
+            "dimensions": {
+                "concept": "eg:Assets",
+                "entity": "lei:00EHHQ2ZHDCFXJCPCL49",
+                "period": "2020-01-01T00:00:00",
+                "unit": "iso4217:EUR"
+            }
+        },
+        "f2": {
+            "value": "230000",
+            "decimals": 0,
+            "dimensions": {
+                "concept": "eg:Equity",
+                "entity": "lei:00EHHQ2ZHDCFXJCPCL49",
+                "period": "2020-01-01T00:00:00",
+                "unit": "iso4217:EUR"
+            }
+        }
+    }
+}

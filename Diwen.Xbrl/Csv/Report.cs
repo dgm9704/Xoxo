@@ -103,7 +103,7 @@
             return stream;
         }
 
-        private static Stream CreateReportInfo(string documentType, string entrypoint)
+        private static MemoryStream CreateReportInfo(string documentType, string entrypoint)
         {
             var assembly = Assembly.GetExecutingAssembly().GetName();
             var version = assembly.Version;
@@ -137,7 +137,7 @@
         }
 
 
-        private static Stream CreateParameters(Dictionary<string, string> parameters)
+        private static MemoryStream CreateParameters(Dictionary<string, string> parameters)
         {
             var stream = new MemoryStream();
             var writer = new StreamWriter(stream);
@@ -152,7 +152,7 @@
             return stream;
         }
 
-        private static Stream CreateFilingIndicators(Dictionary<string, bool> filingIndicators)
+        private static MemoryStream CreateFilingIndicators(Dictionary<string, bool> filingIndicators)
         {
             var stream = new MemoryStream();
             var writer = new StreamWriter(stream);
@@ -198,7 +198,7 @@
             return reportdata;
         }
 
-        public static Report Import(string packagePath)
+        public static Report FromFile(string packagePath)
         {
             var report = new Report();
             var reportFiles = ReadPackage(packagePath);

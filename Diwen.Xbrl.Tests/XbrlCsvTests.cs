@@ -111,7 +111,7 @@ namespace Diwen.Xbrl.Csv.Tests
         public static void ImportTest(string packageName)
         {
             var packagePath = Path.Combine("csv", packageName);
-            var report = Report.Import(packagePath);
+            var report = Report.FromFile(packagePath);
 
             Assert.Equal("http://www.eba.europa.eu/eu/fr/xbrl/crr/fws/sbp/cir-2070-2016/2021-07-15/mod/sbp_cr_con.json", report.Entrypoint);
             Assert.Equal("lei:DUMMYLEI123456789012", report.Parameters["entityID"]);
@@ -217,7 +217,7 @@ namespace Diwen.Xbrl.Csv.Tests
         public string CsvToXml(string reportPath)
         {
 
-            var csvReport = Report.Import(reportPath);
+            var csvReport = Report.FromFile(reportPath);
 
             var entrypoint = csvReport.Entrypoint.Replace(@"http://", "");
 
