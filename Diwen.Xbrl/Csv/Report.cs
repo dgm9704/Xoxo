@@ -70,7 +70,7 @@
                 stream.CopyTo(fileStream);
         }
 
-        private static Stream CreateZip(Dictionary<string, Stream> package)
+        private static MemoryStream CreateZip(Dictionary<string, Stream> package)
         {
             var stream = new MemoryStream();
             using (var zip = new ZipArchive(stream, ZipArchiveMode.Create, true))
@@ -87,7 +87,7 @@
             return stream;
         }
 
-        private static Stream CreatePackageInfo()
+        private static MemoryStream CreatePackageInfo()
         {
             var info = new PackageInfo
             {

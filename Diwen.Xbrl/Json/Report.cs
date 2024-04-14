@@ -18,6 +18,12 @@ namespace Diwen.Xbrl.Json
             using (var stream = new FileStream(path, FileMode.Open, FileAccess.Read))
                 return JsonSerializer.Deserialize<Report>(stream);
         }
+
+        public void ToFile(string path)
+        {
+            using (var stream = new FileStream(path, FileMode.Create, FileAccess.Write))
+                JsonSerializer.Serialize<Report>(stream, this);
+        }
     }
 }
 
