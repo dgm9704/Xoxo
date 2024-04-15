@@ -1,7 +1,6 @@
 namespace Diwen.Xbrl.Csv.Tests
 {
     using System;
-    using System.Collections.Generic;
     using System.Linq;
     using Diwen.Xbrl.Json;
     using Xunit;
@@ -16,7 +15,7 @@ namespace Diwen.Xbrl.Csv.Tests
 
         [Theory]
         [InlineData("json/example.json")]
-        public static void ImportTest(string reportPath)
+        public static void ImportJsonTest(string reportPath)
         {
             var report = Report.FromFile(reportPath);
             Assert.Equal("https://xbrl.org/2021/xbrl-json", report.DocumentInfo.DocumentType);
@@ -24,6 +23,7 @@ namespace Diwen.Xbrl.Csv.Tests
             Assert.Equal(new Uri("http://example.com/xbrl-json/taxonomy/"), report.DocumentInfo.Namespaces["eg"]);
             Assert.Equal(new Uri("http://standards.iso.org/iso/17442"), report.DocumentInfo.Namespaces["lei"]);
             Assert.Equal(new Uri("http://www.xbrl.org/2003/iso4217"), report.DocumentInfo.Namespaces["iso4217"]);
+            Assert.Equal("f4", report.Facts["f3"].Links["footnote"]["_"].Single());
         }
 
         [Theory]
@@ -92,7 +92,7 @@ namespace Diwen.Xbrl.Csv.Tests
                     },
                     ["f4"] = new()
                     {
-                        Value = "This is a second footnote",
+                        Value = "This is a footnote",
                         Dimensions = new()
                         {
                             ["noteId"] = "f4",
