@@ -13,6 +13,7 @@ namespace Diwen.Xbrl.Json
         [JsonPropertyName("documentInfo")]
         public DocumentInfo DocumentInfo { get; set; }
 
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
         [JsonPropertyName("facts")]
         public Dictionary<string, Fact> Facts { get; set; }
 

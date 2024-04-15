@@ -1,6 +1,7 @@
 namespace Diwen.Xbrl.Csv.Tests
 {
     using System;
+    using System.IO;
     using System.Linq;
     using Diwen.Xbrl.Json;
     using Xunit;
@@ -104,6 +105,34 @@ namespace Diwen.Xbrl.Csv.Tests
             };
 
             report.ToFile(reportPath);
+        }
+
+
+        [Theory]
+        [InlineData("data/reference.xbrl")]
+        public static void XmlToJsonTest(string path)
+        {
+            var xmlreport = Instance.FromFile(path);
+            var jsonreport = new Report
+            {
+                DocumentInfo = new()
+                {
+                    DocumentType = "https://xbrl.org/2021/xbrl-json",
+                    Namespaces =
+                        xmlreport.
+                        Namespaces.GetNamespacesInScope(System.Xml.XmlNamespaceScope.ExcludeXml).
+                        ToDictionary(
+                            ns => ns.Key,
+                            ns => new Uri(ns.Value)),
+                    Taxonomy =
+                    [
+                        new Uri(xmlreport.SchemaReference.Value)
+                    ]
+
+                }
+            };
+
+            jsonreport.ToFile(Path.ChangeExtension(path, "json"));
         }
     }
 }
