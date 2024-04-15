@@ -6,10 +6,10 @@ namespace Diwen.Xbrl.Json
     {
 
         [JsonPropertyName("name")]
-        public string Name { get; set; } = string.Empty;
+        public string Name { get; set; }
 
         [JsonPropertyName("value")]
-        public string[] Value { get; set; } = [];
+        public string[] Value { get; set; }
 
     }
 }

@@ -5,16 +5,21 @@ namespace Diwen.Xbrl.Json
 
     public class Fact
     {
+
+        [JsonRequired]
         [JsonPropertyName("value")]
         public string Value { get; set; }
 
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
         [JsonPropertyName("decimals")]
-        public int Decimals { get; set; }
+        public int? Decimals { get; set; }
 
+        [JsonRequired]
         [JsonPropertyName("dimensions")]
-        public Dictionary<string, string> Dimensions { get; set; } = [];
+        public Dictionary<string, string> Dimensions { get; set; }
 
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
         [JsonPropertyName("links")]
-        public Dictionary<string, LinkGroup> Links { get; set; } = [];
+        public Dictionary<string, Dictionary<string, string[]>> Links { get; set; }
     }
 }

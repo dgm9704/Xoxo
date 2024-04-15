@@ -3,9 +3,7 @@ namespace Diwen.Xbrl.Csv.Tests
     using System;
     using System.Collections.Generic;
     using System.Linq;
-    using System.Security.Cryptography;
     using Diwen.Xbrl.Json;
-    using Microsoft.VisualStudio.TestPlatform.Common.Utilities;
     using Xunit;
     using Xunit.Abstractions;
 
@@ -34,47 +32,75 @@ namespace Diwen.Xbrl.Csv.Tests
         {
             var report = new Report
             {
-                DocumentInfo =
+                DocumentInfo = new()
                 {
                     DocumentType = "https://xbrl.org/2021/xbrl-json",
-                    Namespaces =
+                    Namespaces = new()
                     {
-                        ["eg"]= new Uri("http://example.com/xbrl-json/taxonomy/"),
+                        ["eg"] = new Uri("http://example.com/xbrl-json/taxonomy/"),
                         ["lei"] = new Uri("http://standards.iso.org/iso/17442"),
                         ["iso4217"] = new Uri("http://www.xbrl.org/2003/iso4217"),
                     },
                     Taxonomy =
                     [
-                        new Uri("http://example.com/xbrl-json/taxonomy/example.xsd"),
+                        new Uri("http://example.com/xbrl-json/taxonomy/example.xsd")
                     ]
                 },
-                Facts =
+                Facts = new()
                 {
-                     ["f1"] = new Fact
-                     {
-                         Value = "1230000",
-                         Decimals = 0,
-                         Dimensions =
-                         {
-                             ["concept"] = "eg:Assets",
-                             ["entity"] = "lei:00EHHQ2ZHDCFXJCPCL49",
-                             ["period"] = "2020-01-01T00:00:00",
-                             ["unit"] = "iso4217:EUR",
-                         },
-                     },
-                     ["f2"] = new Fact
-                     {
-                         Value = "230000",
-                         Decimals = 0,
-                         Dimensions =
-                         {
-                             ["concept"] = "eg:Equity",
-                             ["entity"] = "lei:00EHHQ2ZHDCFXJCPCL49",
-                             ["period"] = "2020-01-01T00:00:00",
-                             ["unit"] = "iso4217:EUR",
-                         }
-                     },
-                },
+                    ["f1"] = new()
+                    {
+                        Value = "1230000",
+                        Decimals = 0,
+                        Dimensions = new()
+                        {
+                            ["concept"] = "eg:Assets",
+                            ["entity"] = "lei:00EHHQ2ZHDCFXJCPCL49",
+                            ["period"] = "2020-01-01T00:00:00",
+                            ["unit"] = "iso4217:EUR",
+                        },
+                    },
+                    ["f2"] = new()
+                    {
+                        Value = "230000",
+                        Decimals = 0,
+                        Dimensions = new()
+                        {
+                            ["concept"] = "eg:Equity",
+                            ["entity"] = "lei:00EHHQ2ZHDCFXJCPCL49",
+                            ["period"] = "2020-01-01T00:00:00",
+                            ["unit"] = "iso4217:EUR",
+                        }
+                    },
+                    ["f3"] = new()
+                    {
+                        Dimensions = new()
+                        {
+                            ["concept"] = "eg:Equity",
+                            ["entity"] = "lei:00EHHQ2ZHDCFXJCPCL49",
+                            ["period"] = "2020-01-01T00:00:00",
+                            ["unit"] = "iso4217:EUR",
+                            ["language"] = "en-us",
+                        },
+                        Links = new()
+                        {
+                            ["footnote"] = new()
+                            {
+                                ["_"] = ["f4"],
+                            }
+                        },
+                    },
+                    ["f4"] = new()
+                    {
+                        Value = "This is a second footnote",
+                        Dimensions = new()
+                        {
+                            ["noteId"] = "f4",
+                            ["concept"] = "xbrl:note",
+                            ["language"] = "en",
+                        },
+                    },
+                }
             };
 
             report.ToFile(reportPath);
