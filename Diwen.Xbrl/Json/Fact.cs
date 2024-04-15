@@ -13,5 +13,8 @@ namespace Diwen.Xbrl.Json
 
         [JsonPropertyName("dimensions")]
         public Dictionary<string, string> Dimensions { get; set; }
+
+        [JsonPropertyName("links")]
+        public Dictionary<string, LinkGroup> Links { get; set; }
     }
 }

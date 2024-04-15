@@ -1,5 +1,6 @@
 namespace Diwen.Xbrl.Csv.Tests
 {
+    using System;
     using System.Collections.Generic;
     using System.Linq;
     using System.Security.Cryptography;
@@ -21,10 +22,10 @@ namespace Diwen.Xbrl.Csv.Tests
         {
             var report = Report.FromFile(reportPath);
             Assert.Equal("https://xbrl.org/2021/xbrl-json", report.DocumentInfo.DocumentType);
-            Assert.Equal("http://example.com/xbrl-json/taxonomy/example.xsd", report.DocumentInfo.Taxonomy.First());
-            Assert.Equal("http://example.com/xbrl-json/taxonomy/", report.DocumentInfo.Namespaces["eg"]);
-            Assert.Equal("http://standards.iso.org/iso/17442", report.DocumentInfo.Namespaces["lei"]);
-            Assert.Equal("http://www.xbrl.org/2003/iso4217", report.DocumentInfo.Namespaces["iso4217"]);
+            Assert.Equal(new Uri("http://example.com/xbrl-json/taxonomy/example.xsd"), report.DocumentInfo.Taxonomy.First());
+            Assert.Equal(new Uri("http://example.com/xbrl-json/taxonomy/"), report.DocumentInfo.Namespaces["eg"]);
+            Assert.Equal(new Uri("http://standards.iso.org/iso/17442"), report.DocumentInfo.Namespaces["lei"]);
+            Assert.Equal(new Uri("http://www.xbrl.org/2003/iso4217"), report.DocumentInfo.Namespaces["iso4217"]);
         }
 
         [Theory]

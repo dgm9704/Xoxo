@@ -7,11 +7,12 @@ namespace Diwen.Xbrl.Json
 
     public class Report
     {
-        [JsonPropertyName("documentInfo")]
-        public DocumentInfo DocumentInfo { get; set; }
 
         [JsonPropertyName("facts")]
         public Dictionary<string, Fact> Facts { get; set; } = [];
+
+        [JsonPropertyName("documentInfo")]
+        public DocumentInfo DocumentInfo { get; set; } = new();
 
         public static Report FromFile(string path)
         {
