@@ -1,6 +1,7 @@
 namespace Diwen.Xbrl.Csv.Tests
 {
     using System;
+    using System.Collections.Generic;
     using System.IO;
     using System.Linq;
     using Diwen.Xbrl.Extensions;
@@ -136,19 +137,29 @@ namespace Diwen.Xbrl.Csv.Tests
                     {
                         Value = f.Value,
                         Decimals = Convert.ToInt32(f.Decimals),
-                        Dimensions = new()
-                        {
-                            ["concept"] = f.Metric.Name,
-                            //["entity"] = $"{xmlreport.Namespaces.LookupPrefix(f.Context.Entity.Identifier.Scheme)}:{f.Context.Entity.Identifier.Value}",
-                            ["entity"] = $"lei:{xmlreport.Entity.Identifier.Value}",
-                            ["period"] = $"{f.Context.Period.Instant:yyyy-MM-ddTHH:mm:ss}",
-                            ["unit"] = $"{xmlreport.Namespaces.LookupPrefix(f.Unit.Measure.Namespace)}:{f.Unit.Measure.LocalName()}",
-                        },
-                    }
-                ),
+                        Dimensions = GetDimensions(f),
+                    }),
             };
 
             jsonreport.ToFile(Path.ChangeExtension(path, "json"));
+        }
+
+        private static Dictionary<string, string> GetDimensions(Xbrl.Fact fact)
+        {
+            var dimensions = new Dictionary<string, string>
+            {
+                ["concept"] = fact.Metric.Name,
+                ["entity"] = $"lei:{fact.Context.Entity.Identifier.Value}",
+                ["period"] = $"{fact.Context.Period.Instant:yyyy-MM-ddTHH:mm:ss}",
+                ["unit"] = $"iso4217:{fact.Unit.Measure.LocalName()}",
+            };
+            foreach (var member in fact.Context.Scenario.ExplicitMembers)
+                dimensions.Add($"{member.Dimension.Prefix()}:{member.Dimension.LocalName()}", $"{member.Value.Prefix()}:{member.Value.LocalName()}");
+
+            foreach (var member in fact.Context.Scenario.TypedMembers)
+                dimensions.Add($"{member.Dimension.Prefix()}:{member.Dimension.LocalName()}", member.Value);
+
+            return dimensions;
         }
     }
 }
