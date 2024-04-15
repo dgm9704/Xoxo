@@ -3,6 +3,7 @@ namespace Diwen.Xbrl.Csv.Tests
     using System;
     using System.IO;
     using System.Linq;
+    using Diwen.Xbrl.Extensions;
     using Diwen.Xbrl.Json;
     using Xunit;
     using Xunit.Abstractions;
@@ -128,8 +129,23 @@ namespace Diwen.Xbrl.Csv.Tests
                     [
                         new Uri(xmlreport.SchemaReference.Value)
                     ]
-
-                }
+                },
+                Facts = xmlreport.Facts.ToDictionary(
+                    f => $"{f.Context.Id}_{f.Metric.LocalName()}",
+                    f => new Fact()
+                    {
+                        Value = f.Value,
+                        Decimals = Convert.ToInt32(f.Decimals),
+                        Dimensions = new()
+                        {
+                            ["concept"] = f.Metric.Name,
+                            //["entity"] = $"{xmlreport.Namespaces.LookupPrefix(f.Context.Entity.Identifier.Scheme)}:{f.Context.Entity.Identifier.Value}",
+                            ["entity"] = $"lei:{xmlreport.Entity.Identifier.Value}",
+                            ["period"] = $"{f.Context.Period.Instant:yyyy-MM-ddTHH:mm:ss}",
+                            ["unit"] = $"{xmlreport.Namespaces.LookupPrefix(f.Unit.Measure.Namespace)}:{f.Unit.Measure.LocalName()}",
+                        },
+                    }
+                ),
             };
 
             jsonreport.ToFile(Path.ChangeExtension(path, "json"));
