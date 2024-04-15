@@ -12,9 +12,9 @@ namespace Diwen.Xbrl.Json
         public int Decimals { get; set; }
 
         [JsonPropertyName("dimensions")]
-        public Dictionary<string, string> Dimensions { get; set; }
+        public Dictionary<string, string> Dimensions { get; set; } = [];
 
         [JsonPropertyName("links")]
-        public Dictionary<string, LinkGroup> Links { get; set; }
+        public Dictionary<string, LinkGroup> Links { get; set; } = [];
     }
 }

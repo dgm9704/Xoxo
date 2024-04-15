@@ -30,35 +30,54 @@ namespace Diwen.Xbrl.Csv.Tests
 
         [Theory]
         [InlineData("example_output.json")]
-        public static void ExportTest(string reportPath)
+        public static void ExportJsonTest(string reportPath)
         {
-            var facts = new Dictionary<string, Fact>
+            var report = new Report
             {
-                ["f1"] = new Fact
+                DocumentInfo =
                 {
-                    Value = "1230000",
-                    Decimals = 0,
-                    Dimensions = new Dictionary<string, string>
+                    DocumentType = "https://xbrl.org/2021/xbrl-json",
+                    Namespaces =
                     {
-                        ["concept"] = "eg:Assets",
-                        ["entity"] = "lei:00EHHQ2ZHDCFXJCPCL49",
-                        ["period"] = "2020-01-01T00:00:00",
-                        ["unit"] = "iso4217:EUR",
-                    }
+                        ["eg"]= new Uri("http://example.com/xbrl-json/taxonomy/"),
+                        ["lei"] = new Uri("http://standards.iso.org/iso/17442"),
+                        ["iso4217"] = new Uri("http://www.xbrl.org/2003/iso4217"),
+                    },
+                    Taxonomy =
+                    [
+                        new Uri("http://example.com/xbrl-json/taxonomy/example.xsd"),
+                    ]
                 },
-                ["f2"] = new Fact
+                Facts =
                 {
-                    Value = "230000",
-                    Decimals = 0,
-                    Dimensions = new Dictionary<string, string>
-                    {
-                        ["concept"] = "eg:Equity",
-                        ["entity"] = "lei:00EHHQ2ZHDCFXJCPCL49",
-                        ["period"] = "2020-01-01T00:00:00",
-                        ["unit"] = "iso4217:EUR",
-                    }
+                     ["f1"] = new Fact
+                     {
+                         Value = "1230000",
+                         Decimals = 0,
+                         Dimensions =
+                         {
+                             ["concept"] = "eg:Assets",
+                             ["entity"] = "lei:00EHHQ2ZHDCFXJCPCL49",
+                             ["period"] = "2020-01-01T00:00:00",
+                             ["unit"] = "iso4217:EUR",
+                         },
+                     },
+                     ["f2"] = new Fact
+                     {
+                         Value = "230000",
+                         Decimals = 0,
+                         Dimensions =
+                         {
+                             ["concept"] = "eg:Equity",
+                             ["entity"] = "lei:00EHHQ2ZHDCFXJCPCL49",
+                             ["period"] = "2020-01-01T00:00:00",
+                             ["unit"] = "iso4217:EUR",
+                         }
+                     },
                 },
             };
+
+            report.ToFile(reportPath);
         }
     }
 }
