@@ -5,7 +5,6 @@ namespace Diwen.Xbrl.Csv.Taxonomy
     using System.Linq;
     using System.Text.Json;
     using System.Text.Json.Serialization;
-    using Diwen.Xbrl.Package;
 
     public class ModuleDefinition
     {

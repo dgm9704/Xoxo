@@ -6,7 +6,6 @@ namespace Diwen.Xbrl.Csv.Taxonomy
     using System.Text.Json;
     using System.Text.Json.Serialization;
     using Diwen.Xbrl.Extensions;
-    using Diwen.Xbrl.Package;
 
     public class TableDefinition
     {

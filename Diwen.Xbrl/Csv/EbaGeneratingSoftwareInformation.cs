@@ -1,4 +1,4 @@
-namespace Diwen.Xbrl.Package
+namespace Diwen.Xbrl.Csv
 {
     using System.Text.Json.Serialization;
 

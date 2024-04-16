@@ -11,7 +11,6 @@
     using System.Text.Json;
     using Diwen.Xbrl.Csv.Taxonomy;
     using Diwen.Xbrl.Extensions;
-    using Diwen.Xbrl.Package;
     using Diwen.Xbrl.Xml;
 
     public partial class Report
@@ -126,13 +125,13 @@
             };
 
             var stream = new MemoryStream();
-            var reportInfo = new Package.ReportInfo
+            var reportInfo = new ReportInfo
             {
                 DocumentInfo = documentInfo,
                 EbaGeneratingSoftwareInformation = softwareInfo
             };
 
-            JsonSerializer.Serialize<Package.ReportInfo>(stream, reportInfo);
+            JsonSerializer.Serialize<ReportInfo>(stream, reportInfo);
             stream.Position = 0;
             return stream;
         }
@@ -217,7 +216,7 @@
 
         private static string ReadEntryPoint(string data)
         {
-            var reportInfo = JsonSerializer.Deserialize<Package.ReportInfo>(data);
+            var reportInfo = JsonSerializer.Deserialize<ReportInfo>(data);
             return reportInfo.DocumentInfo.Extends.First();
         }
 

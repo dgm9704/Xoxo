@@ -1,7 +1,7 @@
-using System.Text.Json.Serialization;
-
-namespace Diwen.Xbrl.Package
+namespace Diwen.Xbrl.Csv
 {
+    using System.Text.Json.Serialization;
+
     public class PackageInfo
     {
 
