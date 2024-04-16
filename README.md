@@ -1,6 +1,26 @@
 [![.NET](https://github.com/dgm9704/Xoxo/actions/workflows/dotnet.yml/badge.svg)](https://github.com/dgm9704/Xoxo/actions/workflows/dotnet.yml)
 [![nuget](https://img.shields.io/nuget/v/Diwen.Xbrl.svg)](https://www.nuget.org/packages/Diwen.Xbrl/)
 
+# Breaking changes!
+After starting to add support for xBRL-JSON it became obvious that the code needed restructuring.
+
+So 3.0.0 comes with breaking changes to the naming and organizing of code. 
+
+Different flavors are now in their namespaces Diwen.Xbrl.Xml, .Inline, .Csv, .Json, 
+
+Diwen.Xbrl.Instance is now Diwen.Xbrl.Xml.Report and so on.
+
+Test code was also similarly shuffled.
+
+Functionally everything is still the same, performance wasn't affected etc.
+
+Please get in touch if you can't find something, or if have questions or comments.
+
+With regards to xBRL-JSON, I would be grateful for any actual "real world" samples! 
+
+(of course it must be either publicly available or anonymized/fuzzed etc)
+
+
 # Branched!
 The library code is now in two branches:
 - main: .NET 5+ version that will get new features etc. (version 2 upwards)
@@ -11,16 +31,18 @@ Container for the Diwen.Xbrl library and any related stuff
 
 
 ## Diwen.Xbrl
-A .NET library for reading, writing and comparing XBRL documents (instances)
+A .NET library for reading, writing, comparing and converting XBRL reports
 Supports:
 
 - EBA and EIOPA ITS reporting (eg COREP, FINREP, AE, FP, SBP, Solvency II, Pension Funds, etc.)
 
 - Australian and Finnish SBR message structures
 
-- Parsing of Inline XBRL to "normal" instance (from ESMA ESEF)
+- Parsing of iXBRL to xBRL-XML (from ESMA ESEF)
 
-- Bare-bones implementation of reading and writing xBRL-CSV and converting to/from xBRL-XML
+- Reading and writing xBRL-CSV and converting to/from xBRL-XML
+
+- Reading and writing xBRL-JSON and converting from xBRL-XML
 
 
 ### License:
@@ -43,17 +65,16 @@ If you modify the source code and distribute it, you need to license the softwar
 ## Diwen.Xbrl.Tests
 Tests for exercising Diwen.Xbrl code, also serving as documentation and samples
 
-### License
-
+### Test code license 
 [Free Public License 1.0.0](https://opensource.org/licenses/FPL-1.0.0)
 
 
-# Environment
-Code is written in [C#](https://docs.microsoft.com/en-us/dotnet/csharp/index), targeting 
-[.NET 8](https://learn.microsoft.com/en-us/dotnet/api/?view=net-6.0)
+# My environment
+Code is written in [C#](https://docs.microsoft.com/en-us/dotnet/csharp/index), 
+
+targeting [.NET 8](https://learn.microsoft.com/en-us/dotnet/api/?view=net-8.0)
 
 Test framework is [xUnit](https://xunit.net/)
-and test code is targeting [.NET 8](https://docs.microsoft.com/en-us/dotnet/)
 
 I use [Visual Studio Code](https://code.visualstudio.com/) 
 on [Arch Linux](https://www.archlinux.org/)
@@ -67,9 +88,9 @@ It's always ok to create one even if you're not sure
 https://github.com/dgm9704/Xoxo/issues/new
 
 ### send a message through the NuGet package page
-This might be the best way if you have a complicated issue or something you don't want share publicly
+This might be the best way if you have something you don't want share publicly
 
-https://www.nuget.org/packages/Diwen.Xbrl/1.2.0/ContactOwners
+https://www.nuget.org/packages/Diwen.Xbrl/2.0.0/ContactOwners
 
 ### twitter: @DiwenXbrl
 https://twitter.com/DiwenXbrl
