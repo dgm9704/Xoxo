@@ -4,6 +4,7 @@ namespace Diwen.Xbrl.Csv.Tests
     using System.Collections.Generic;
     using System.IO;
     using System.Linq;
+    using System.Xml;
     using Diwen.Xbrl.Extensions;
     using Diwen.Xbrl.Json;
     using Xunit;
@@ -112,49 +113,68 @@ namespace Diwen.Xbrl.Csv.Tests
 
         [Theory]
         [InlineData("data/reference.xbrl")]
-        public static void XmlToJsonTest(string path)
+        [InlineData("data/ars.xbrl")]
+        [InlineData("data/fp_ind_new_correct.xbrl")]
+        public void XmlToJsonTest(string path)
         {
+            //var xmlreport = Instance.FromFile(path, removeUnusedObjects: false, collapseDuplicateContexts: false, removeDuplicateFacts: false);
+            //output.WriteLine($"{path}: {xmlreport.Facts.Count}");
             var xmlreport = Instance.FromFile(path);
+
+            var dimensionPrefix = xmlreport.Namespaces.LookupPrefix(xmlreport.DimensionNamespace);
+
             var jsonreport = new Report
             {
                 DocumentInfo = new()
                 {
                     DocumentType = "https://xbrl.org/2021/xbrl-json",
-                    Namespaces =
-                        xmlreport.
-                        Namespaces.GetNamespacesInScope(System.Xml.XmlNamespaceScope.ExcludeXml).
-                        ToDictionary(
-                            ns => ns.Key,
-                            ns => new Uri(ns.Value)),
+                    Namespaces = new(GetNamespaces(xmlreport))
+                    {
+                        ["lei"] = new Uri("http://standards.iso.org/iso/17442"),
+                        ["iso4217"] = new Uri("http://www.xbrl.org/2003/iso4217")
+                    },
                     Taxonomy =
                     [
                         new Uri(xmlreport.SchemaReference.Value)
                     ]
                 },
-                Facts = xmlreport.Facts.ToDictionary(
-                    f => $"{f.Context.Id}_{f.Metric.LocalName()}",
+                Facts = xmlreport.Facts.
+                    Select((fact, index) => (fact, index)).
+                    ToDictionary(
+                    f => $"f{f.index + 1}",
                     f => new Fact()
                     {
-                        Value = f.Value,
-                        Decimals = Convert.ToInt32(f.Decimals),
-                        Dimensions = GetDimensions(f),
-                    }),
+                        Value = f.fact.Value,
+                        Decimals = string.IsNullOrEmpty(f.fact.Decimals) ? null : Convert.ToInt32(f.fact.Decimals),
+                        Dimensions = GetDimensions(f.fact, dimensionPrefix),
+                    }
+                    ),
             };
 
             jsonreport.ToFile(Path.ChangeExtension(path, "json"));
         }
 
-        private static Dictionary<string, string> GetDimensions(Xbrl.Fact fact)
+        private static Dictionary<string, Uri> GetNamespaces(Instance xmlreport)
+        => xmlreport.Namespaces.
+            GetNamespacesInScope(XmlNamespaceScope.ExcludeXml).
+            ToDictionary(
+                ns => ns.Key,
+                ns => new Uri(ns.Value));
+
+        private static Dictionary<string, string> GetDimensions(Xbrl.Fact fact, string dimensionPrefix)
         {
             var dimensions = new Dictionary<string, string>
             {
                 ["concept"] = fact.Metric.Name,
                 ["entity"] = $"lei:{fact.Context.Entity.Identifier.Value}",
                 ["period"] = $"{fact.Context.Period.Instant:yyyy-MM-ddTHH:mm:ss}",
-                ["unit"] = $"iso4217:{fact.Unit.Measure.LocalName()}",
+
             };
+            if (fact.Unit != null)
+                dimensions["unit"] = $"iso4217:{fact.Unit.Measure.LocalName()}";
+
             foreach (var member in fact.Context.Scenario.ExplicitMembers)
-                dimensions.Add($"{member.Dimension.Prefix()}:{member.Dimension.LocalName()}", $"{member.Value.Prefix()}:{member.Value.LocalName()}");
+                dimensions.Add($"{dimensionPrefix}:{member.Dimension.LocalName()}", $"{member.MemberCode}");
 
             foreach (var member in fact.Context.Scenario.TypedMembers)
                 dimensions.Add($"{member.Dimension.Prefix()}:{member.Dimension.LocalName()}", member.Value);
