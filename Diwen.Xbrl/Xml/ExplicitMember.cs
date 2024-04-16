@@ -19,7 +19,7 @@
 //  You should have received a copy of the GNU Lesser General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-namespace Diwen.Xbrl
+namespace Diwen.Xbrl.Xml
 {
 
     using System;
@@ -119,7 +119,7 @@ namespace Diwen.Xbrl
         {
             if (writer == null)
                 throw new ArgumentNullException(nameof(writer));
-                
+
             var prefix = writer.LookupPrefix(Dimension.Namespace);
             var dim = $"{prefix}:{Dimension.LocalName()}";
             writer.WriteAttributeString("dimension", dim);

@@ -19,7 +19,7 @@
 //  You should have received a copy of the GNU Lesser General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-namespace Diwen.Xbrl
+namespace Diwen.Xbrl.Xml
 {
     using System;
     using System.Collections.Generic;
@@ -99,8 +99,8 @@ namespace Diwen.Xbrl
 
         public bool Equals(Scenario other)
         => other != null
-        	&& ExplicitMembers.Equals(other.ExplicitMembers)
-        	&& TypedMembers.Equals(other.TypedMembers);
+            && ExplicitMembers.Equals(other.ExplicitMembers)
+            && TypedMembers.Equals(other.TypedMembers);
 
         #endregion
     }

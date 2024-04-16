@@ -19,86 +19,86 @@
 //  You should have received a copy of the GNU Lesser General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-namespace Diwen.Xbrl
+namespace Diwen.Xbrl.Xml
 {
-	using System;
-	using System.Xml.Serialization;
+    using System;
+    using System.Xml.Serialization;
 
-	[Serializable]
-	[XmlRoot(ElementName = "period", Namespace = "http://www.xbrl.org/2003/instance")]
-	public class Period : IEquatable<Period>
-	{
+    [Serializable]
+    [XmlRoot(ElementName = "period", Namespace = "http://www.xbrl.org/2003/instance")]
+    public class Period : IEquatable<Period>
+    {
 
-		[XmlElement(ElementName = "instant", DataType = "date", Namespace = "http://www.xbrl.org/2003/instance")]
-		public DateTime Instant { get; set; }
+        [XmlElement(ElementName = "instant", DataType = "date", Namespace = "http://www.xbrl.org/2003/instance")]
+        public DateTime Instant { get; set; }
 
-		[XmlElement(ElementName = "startDate", DataType = "date", Namespace = "http://www.xbrl.org/2003/instance")]
-		public DateTime StartDate { get; set; }
+        [XmlElement(ElementName = "startDate", DataType = "date", Namespace = "http://www.xbrl.org/2003/instance")]
+        public DateTime StartDate { get; set; }
 
-		[XmlElement(ElementName = "endDate", DataType = "date", Namespace = "http://www.xbrl.org/2003/instance")]
-		public DateTime EndDate { get; set; }
+        [XmlElement(ElementName = "endDate", DataType = "date", Namespace = "http://www.xbrl.org/2003/instance")]
+        public DateTime EndDate { get; set; }
 
-		public Period()
-		{
+        public Period()
+        {
 
-		}
+        }
 
-		public Period(DateTime instant)
-			: this()
-		{
-			Instant = instant;
-		}
+        public Period(DateTime instant)
+            : this()
+        {
+            Instant = instant;
+        }
 
-		public Period(int year, int month, int day)
-			: this()
-		{
-			Instant = new DateTime(year, month, day);
-		}
+        public Period(int year, int month, int day)
+            : this()
+        {
+            Instant = new DateTime(year, month, day);
+        }
 
-		public Period(DateTime startDate, DateTime endDate)
-			: this()
-		{
-			StartDate = startDate;
-			EndDate = endDate;
-		}
+        public Period(DateTime startDate, DateTime endDate)
+            : this()
+        {
+            StartDate = startDate;
+            EndDate = endDate;
+        }
 
-		public Period(int startYear, int startMonth, int startDay, int endYear, int endMonth, int endDay)
-			: this()
-		{
-			StartDate = new DateTime(startYear, startMonth, startDay);
-			EndDate = new DateTime(endYear, endMonth, endDay);
-		}
+        public Period(int startYear, int startMonth, int startDay, int endYear, int endMonth, int endDay)
+            : this()
+        {
+            StartDate = new DateTime(startYear, startMonth, startDay);
+            EndDate = new DateTime(endYear, endMonth, endDay);
+        }
 
-		public bool ShouldSerializeInstant()
-		=> Instant != DateTime.MinValue;
+        public bool ShouldSerializeInstant()
+        => Instant != DateTime.MinValue;
 
-		public bool ShouldSerializeStartDate()
-		=> StartDate != DateTime.MinValue;
+        public bool ShouldSerializeStartDate()
+        => StartDate != DateTime.MinValue;
 
-		public bool ShouldSerializeEndDate()
-		=> EndDate != DateTime.MinValue;
+        public bool ShouldSerializeEndDate()
+        => EndDate != DateTime.MinValue;
 
-		public override bool Equals(object obj)
-		=> Equals(obj as Period);
+        public override bool Equals(object obj)
+        => Equals(obj as Period);
 
-		public override string ToString()
-		=> ShouldSerializeInstant()
-		 ?  $"Instant={Instant:yyyy-MM-dd}"
-		 :  $"StartDate={StartDate:yyyy-MM-dd}, EndDate={EndDate:yyyy-MM-dd}";
+        public override string ToString()
+        => ShouldSerializeInstant()
+         ? $"Instant={Instant:yyyy-MM-dd}"
+         : $"StartDate={StartDate:yyyy-MM-dd}, EndDate={EndDate:yyyy-MM-dd}";
 
-		#region IEquatable implementation
+        #region IEquatable implementation
 
-		public bool Equals(Period other)
-		=> other != null
-			&& Instant.Equals(other.Instant)
-			&& StartDate.Equals(other.StartDate)
-			&& EndDate.Equals(other.EndDate);
+        public bool Equals(Period other)
+        => other != null
+            && Instant.Equals(other.Instant)
+            && StartDate.Equals(other.StartDate)
+            && EndDate.Equals(other.EndDate);
 
-		public override int GetHashCode()
-		=> Instant.Date.GetHashCode() 
-          + 7 * StartDate.GetHashCode() 
+        public override int GetHashCode()
+        => Instant.Date.GetHashCode()
+          + 7 * StartDate.GetHashCode()
           + 31 * EndDate.GetHashCode();
 
-		#endregion
-	}
+        #endregion
+    }
 }

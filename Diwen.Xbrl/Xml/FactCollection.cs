@@ -19,66 +19,66 @@
 //  You should have received a copy of the GNU Lesser General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-namespace Diwen.Xbrl
+namespace Diwen.Xbrl.Xml
 {
-	using System;
-	using System.Collections.Generic;
-	using System.Collections.ObjectModel;
+    using System;
+    using System.Collections.Generic;
+    using System.Collections.ObjectModel;
     using Diwen.Xbrl.Extensions;
 
     public class FactCollection : Collection<Fact>, IEquatable<IList<Fact>>
-	{
-		public Instance Instance;
+    {
+        public Instance Instance;
 
-		public FactCollection(Instance instance)
-		{
-			Instance = instance;
-		}
+        public FactCollection(Instance instance)
+        {
+            Instance = instance;
+        }
 
-		public Fact Add(Context context, string metric, string unitRef, string decimals, string value)
-		{
-			var ns = Instance.FactNamespace;
-			var prefix = Instance.Namespaces.LookupPrefix(ns);
-			if (prefix == null && metric.Contains(":"))
-			{
-				prefix = metric.Substring(0, metric.IndexOf(':'));
-				metric = metric.Substring(metric.IndexOf(':') + 1);
-			}
-			
-			if (ns == null)
-				ns = Instance.Namespaces.LookupNamespace(prefix);
+        public Fact Add(Context context, string metric, string unitRef, string decimals, string value)
+        {
+            var ns = Instance.FactNamespace;
+            var prefix = Instance.Namespaces.LookupPrefix(ns);
+            if (prefix == null && metric.Contains(":"))
+            {
+                prefix = metric.Substring(0, metric.IndexOf(':'));
+                metric = metric.Substring(metric.IndexOf(':') + 1);
+            }
 
-			Unit unit = null;
-			if (!string.IsNullOrEmpty(unitRef))
-			{
-				if (!Instance.Units.Contains(unitRef))
-					throw new KeyNotFoundException($"Referenced unit '{unitRef}' does not exist");
+            if (ns == null)
+                ns = Instance.Namespaces.LookupNamespace(prefix);
 
-				unit = Instance.Units[unitRef];
-			}
+            Unit unit = null;
+            if (!string.IsNullOrEmpty(unitRef))
+            {
+                if (!Instance.Units.Contains(unitRef))
+                    throw new KeyNotFoundException($"Referenced unit '{unitRef}' does not exist");
 
-			var fact = new Fact(context, metric, unit, decimals, value, ns, prefix);
-			Add(fact);
-			return fact;
-		}
+                unit = Instance.Units[unitRef];
+            }
 
-		public Fact Add(Scenario scenario, string metric, string unitRef, string decimals, string value)
-		=> Add(Instance.GetContext(scenario), metric, unitRef, decimals, value);
+            var fact = new Fact(context, metric, unit, decimals, value, ns, prefix);
+            Add(fact);
+            return fact;
+        }
 
-		public Fact Add(Segment segment, string metric, string unitRef, string decimals, string value)
-		=> Add(Instance.GetContext(segment), metric, unitRef, decimals, value);
+        public Fact Add(Scenario scenario, string metric, string unitRef, string decimals, string value)
+        => Add(Instance.GetContext(scenario), metric, unitRef, decimals, value);
 
-		public void AddRange(IEnumerable<Fact> facts)
-		{
-			foreach (var fact in facts)
-				Add(fact);
-		}
+        public Fact Add(Segment segment, string metric, string unitRef, string decimals, string value)
+        => Add(Instance.GetContext(segment), metric, unitRef, decimals, value);
 
-		#region IEquatable implementation
+        public void AddRange(IEnumerable<Fact> facts)
+        {
+            foreach (var fact in facts)
+                Add(fact);
+        }
 
-		public bool Equals(IList<Fact> other)
-		=> this.ContentCompare(other);
+        #region IEquatable implementation
 
-		#endregion
-	}
+        public bool Equals(IList<Fact> other)
+        => this.ContentCompare(other);
+
+        #endregion
+    }
 }

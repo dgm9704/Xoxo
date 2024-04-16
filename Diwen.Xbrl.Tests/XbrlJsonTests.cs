@@ -7,6 +7,7 @@ namespace Diwen.Xbrl.Csv.Tests
     using System.Xml;
     using Diwen.Xbrl.Extensions;
     using Diwen.Xbrl.Json;
+    using Diwen.Xbrl.Xml;
     using Xunit;
     using Xunit.Abstractions;
 

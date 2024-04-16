@@ -15,15 +15,16 @@
 
 namespace Diwen.Xbrl.Tests
 {
-	using Xunit;
+    using Diwen.Xbrl.Xml;
+    using Xunit;
 
-	public static class FactTests
-	{
-		[Fact]
-		public static void FactWithNullPropertiesToString()
-		{
-			var fact = new Fact();
-			Assert.NotEmpty(fact.ToString());
-		}
-	}
+    public static class FactTests
+    {
+        [Fact]
+        public static void FactWithNullPropertiesToString()
+        {
+            var fact = new Fact();
+            Assert.NotEmpty(fact.ToString());
+        }
+    }
 }

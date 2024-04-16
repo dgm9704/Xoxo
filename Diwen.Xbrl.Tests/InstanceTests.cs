@@ -22,7 +22,8 @@ namespace Diwen.Xbrl.Tests
     using Xunit;
     using Xbrl;
     using Xunit.Abstractions;
-    using Diwen.Xbrl.Comparison;
+    using Diwen.Xbrl.Xml.Comparison;
+    using Diwen.Xbrl.Xml;
 
     public class InstanceTests
     {
@@ -262,8 +263,8 @@ namespace Diwen.Xbrl.Tests
                 second = Instance.FromStream(stream, removeUnusedObjects: false, collapseDuplicateContexts: false, removeDuplicateFacts: false);
             }
 
-            var  report = InstanceComparer.Report(first, second);
-			Assert.True(report.Result, string.Join(Environment.NewLine, report.Messages));
+            var report = InstanceComparer.Report(first, second);
+            Assert.True(report.Result, string.Join(Environment.NewLine, report.Messages));
         }
 
         [Fact]

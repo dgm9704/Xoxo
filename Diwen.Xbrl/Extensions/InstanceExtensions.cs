@@ -24,6 +24,7 @@ namespace Diwen.Xbrl.Extensions
     using System.Collections.Generic;
     using Diwen.Xbrl.Csv;
     using Diwen.Xbrl.Csv.Taxonomy;
+    using Diwen.Xbrl.Xml;
 
     public static class InstanceExtensions
     {

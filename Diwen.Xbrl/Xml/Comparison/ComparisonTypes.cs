@@ -1,4 +1,4 @@
-﻿////
+﻿//
 //  This file is part of Diwen.xbrl.
 //
 //  Author:
@@ -19,23 +19,25 @@
 //  You should have received a copy of the GNU Lesser General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-namespace Diwen.Xbrl.Comparison
+namespace Diwen.Xbrl.Xml.Comparison
 {
-	using System;
+    using System;
 
-	[Flags, Serializable]
-	public enum BasicComparisons
-	{
-		None = 0,
-		NullInstances = 1 << 0,
-		SchemaReference = 1 << 1,
-		Units = 1 << 2,
-		FilingIndicators = 1 << 3,
-		ContextCount = 1 << 4,
-		FactCount = 1 << 5,
-		DomainNamespaces = 1 << 6,
-		Entity = 1 << 7,
-		Period = 1 << 8,
-		All = 0xFFFFFFF
-	}
+    [Flags, Serializable]
+    public enum ComparisonTypes
+    {
+        None = 0,
+        Basic = 1 << 0,
+        Contexts = 1 << 1,
+        Facts = 1 << 2,
+        DomainNamespaces = 1 << 3,
+        Units = 1 << 4,
+        Entity = 1 << 5,
+        Period = 1 << 6,
+        FilingIndicators = 1 << 7,
+        TaxonomyVersion = 1 << 8,
+        SchemaReference = 1 << 9,
+        All = 0xFFFFFFF
+    }
 }
+

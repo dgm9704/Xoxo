@@ -5,12 +5,13 @@ namespace Diwen.Xbrl.Csv.Tests
     using System.IO;
     using System.Linq;
     using Diwen.Xbrl;
-    using Diwen.Xbrl.Comparison;
+    using Diwen.Xbrl.Xml.Comparison;
     using Diwen.Xbrl.Csv;
     using Diwen.Xbrl.Csv.Taxonomy;
     using Diwen.Xbrl.Extensions;
     using Xunit;
     using Xunit.Abstractions;
+    using Diwen.Xbrl.Xml;
 
     public class XbrlCsvTests
     {

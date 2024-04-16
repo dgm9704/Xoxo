@@ -19,25 +19,25 @@
 //  You should have received a copy of the GNU Lesser General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-namespace Diwen.Xbrl
+namespace Diwen.Xbrl.Xml
 {
-	using System.Collections.Generic;
+    using System.Collections.Generic;
 
-	struct InstanceInfo
-	{
-		public string TaxonomyVersion { get; }
+    struct InstanceInfo
+    {
+        public string TaxonomyVersion { get; }
 
-		public string InstanceGenerator { get; }
+        public string InstanceGenerator { get; }
 
-		public List<string> Comments { get; }
+        public List<string> Comments { get; }
 
-		public InstanceInfo(string taxonomyVersion, string instanceGenerator, List<string> comments)
-			: this()
-		{
-			TaxonomyVersion = taxonomyVersion;
-			InstanceGenerator = instanceGenerator;
-			Comments = comments;
-		}
-	}
+        public InstanceInfo(string taxonomyVersion, string instanceGenerator, List<string> comments)
+            : this()
+        {
+            TaxonomyVersion = taxonomyVersion;
+            InstanceGenerator = instanceGenerator;
+            Comments = comments;
+        }
+    }
 }
 

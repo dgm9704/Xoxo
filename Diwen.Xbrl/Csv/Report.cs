@@ -12,6 +12,7 @@
     using Diwen.Xbrl.Csv.Taxonomy;
     using Diwen.Xbrl.Extensions;
     using Diwen.Xbrl.Package;
+    using Diwen.Xbrl.Xml;
 
     public partial class Report
     {

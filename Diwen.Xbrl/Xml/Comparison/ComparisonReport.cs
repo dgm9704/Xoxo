@@ -19,31 +19,31 @@
 //  You should have received a copy of the GNU Lesser General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-namespace Diwen.Xbrl.Comparison
+namespace Diwen.Xbrl.Xml.Comparison
 {
-	using System;
-	using System.Collections.Generic;
-	using System.Collections.ObjectModel;
+    using System;
+    using System.Collections.Generic;
+    using System.Collections.ObjectModel;
 
-	public class ComparisonReport
-	{
-		public bool Result { get; }
+    public class ComparisonReport
+    {
+        public bool Result { get; }
 
-		public ReadOnlyCollection<string> Messages { get; }
+        public ReadOnlyCollection<string> Messages { get; }
 
-		internal ComparisonReport(bool result, IList<string> messages)
-		{
-			Result = result;
-			Messages = new ReadOnlyCollection<string>(messages);
-		}
+        internal ComparisonReport(bool result, IList<string> messages)
+        {
+            Result = result;
+            Messages = new ReadOnlyCollection<string>(messages);
+        }
 
-		public override string ToString()
-		{
-			return $"result: {Result}" + (
-				Result
-				? string.Empty
-				: Environment.NewLine + string.Join(Environment.NewLine, Messages));
-		}
-	}
+        public override string ToString()
+        {
+            return $"result: {Result}" + (
+                Result
+                ? string.Empty
+                : Environment.NewLine + string.Join(Environment.NewLine, Messages));
+        }
+    }
 }
 

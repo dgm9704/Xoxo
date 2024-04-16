@@ -24,6 +24,7 @@ namespace Diwen.Xbrl.Extensions
     using System;
     using System.Collections.Generic;
     using System.Linq;
+    using Diwen.Xbrl.Xml;
 
     public static class ListExtensions
     {

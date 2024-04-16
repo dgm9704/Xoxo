@@ -15,78 +15,79 @@
 
 namespace Diwen.Xbrl.Tests
 {
-	using Diwen.Xbrl;
-	using Xunit;
+    using Diwen.Xbrl;
+    using Diwen.Xbrl.Xml;
+    using Xunit;
 
-	public class FilingIndicatorTests
-	{
-		[Fact]
-		public void PositiveFilingIndicatorsMatchExactly()
-		{
-			var ctx = new Context();
-			var a = new FilingIndicatorCollection();
-			a.Add(ctx, "A.00.01", true);
-			var b = new FilingIndicatorCollection();
-			b.Add(ctx, "A.00.01", true);
-			Assert.Equal(a, b);
-		}
+    public class FilingIndicatorTests
+    {
+        [Fact]
+        public void PositiveFilingIndicatorsMatchExactly()
+        {
+            var ctx = new Context();
+            var a = new FilingIndicatorCollection();
+            a.Add(ctx, "A.00.01", true);
+            var b = new FilingIndicatorCollection();
+            b.Add(ctx, "A.00.01", true);
+            Assert.Equal(a, b);
+        }
 
-		[Fact]
-		public void NegativeFilingIndicatorsMatchExactly()
-		{
-			var ctx = new Context();
-			var a = new FilingIndicatorCollection();
-			a.Add(ctx, "A.00.01", false);
-			var b = new FilingIndicatorCollection();
-			b.Add(ctx, "A.00.01", false);
-			Assert.Equal(a, b);
-		}
+        [Fact]
+        public void NegativeFilingIndicatorsMatchExactly()
+        {
+            var ctx = new Context();
+            var a = new FilingIndicatorCollection();
+            a.Add(ctx, "A.00.01", false);
+            var b = new FilingIndicatorCollection();
+            b.Add(ctx, "A.00.01", false);
+            Assert.Equal(a, b);
+        }
 
-		[Fact]
-		public void PositiveFilingIndicatorsMatchImplicitly()
-		{
-			var ctx = new Context();
-			var a = new FilingIndicatorCollection();
-			a.Add(ctx, "A.00.01", true);
-			var b = new FilingIndicatorCollection();
-			b.Add(ctx, "A.00.01");
-			Assert.Equal(a, b);
-		}
+        [Fact]
+        public void PositiveFilingIndicatorsMatchImplicitly()
+        {
+            var ctx = new Context();
+            var a = new FilingIndicatorCollection();
+            a.Add(ctx, "A.00.01", true);
+            var b = new FilingIndicatorCollection();
+            b.Add(ctx, "A.00.01");
+            Assert.Equal(a, b);
+        }
 
-		[Fact]
-		public void FilingIndicatorCollectionsMatchFunctionally()
-		{
-			var c0 = new Context();
-			var a = new FilingIndicatorCollection();
-			a.Add(c0, "A", true);
-			a.Add(c0, "B", true);
-			a.Add(c0, "C", false);
+        [Fact]
+        public void FilingIndicatorCollectionsMatchFunctionally()
+        {
+            var c0 = new Context();
+            var a = new FilingIndicatorCollection();
+            a.Add(c0, "A", true);
+            a.Add(c0, "B", true);
+            a.Add(c0, "C", false);
 
-			var c1 = new Context();
-			var b = new FilingIndicatorCollection();
-			b.Add(c1, "B");
-			b.Add(c1, "A");
+            var c1 = new Context();
+            var b = new FilingIndicatorCollection();
+            b.Add(c1, "B");
+            b.Add(c1, "A");
 
-			Assert.True(a.Equals(b));
-		}
+            Assert.True(a.Equals(b));
+        }
 
-		[Fact]
-		public void FilingIndicatorCollectionsDoNotMatchFunctionally()
-		{
-			var c0 = new Context();
-			var a = new FilingIndicatorCollection();
-			a.Add(c0, "A", true);
-			a.Add(c0, "B", true);
-			a.Add(c0, "C", false);
+        [Fact]
+        public void FilingIndicatorCollectionsDoNotMatchFunctionally()
+        {
+            var c0 = new Context();
+            var a = new FilingIndicatorCollection();
+            a.Add(c0, "A", true);
+            a.Add(c0, "B", true);
+            a.Add(c0, "C", false);
 
-			var c1 = new Context();
-			var b = new FilingIndicatorCollection();
-			b.Add(c1, "A");
-			b.Add(c1, "B");
-			b.Add(c1, "C");
+            var c1 = new Context();
+            var b = new FilingIndicatorCollection();
+            b.Add(c1, "A");
+            b.Add(c1, "B");
+            b.Add(c1, "C");
 
-			Assert.False(a.Equals(b));
-		}
-	}
+            Assert.False(a.Equals(b));
+        }
+    }
 }
 

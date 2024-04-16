@@ -8,6 +8,7 @@ namespace Diwen.Xbrl.Json
     using System.Text.Json.Serialization;
     using System.Xml;
     using Diwen.Xbrl.Extensions;
+    using Diwen.Xbrl.Xml;
 
     public class Report
     {
@@ -39,7 +40,7 @@ namespace Diwen.Xbrl.Json
                         ns => ns.Key,
                         ns => new Uri(ns.Value));
 
-        private static Dictionary<string, string> GetDimensions(Xbrl.Fact fact, string dimensionPrefix)
+        private static Dictionary<string, string> GetDimensions(Xml.Fact fact, string dimensionPrefix)
         {
             var dimensions = new Dictionary<string, string>
             {

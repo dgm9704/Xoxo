@@ -15,26 +15,27 @@
 
 namespace Diwen.Xbrl.Tests
 {
-	using System;
-	using System.IO;
-	using Xunit;
-	using Diwen.Xbrl;
-	using Diwen.Xbrl.Comparison;
+    using System;
+    using System.IO;
+    using Xunit;
+    using Diwen.Xbrl;
+    using Diwen.Xbrl.Xml.Comparison;
+    using Diwen.Xbrl.Xml;
 
-	public static class ScenarioTests
-	{
-		[Fact]
-		public static void CompareScenarioMemberOrderDifferent()
-		{
-			var left = Instance.FromFile(Path.Combine("data", "memberorder0.xbrl"));
-			var right = Instance.FromFile(Path.Combine("data", "memberorder1.xbrl"));
+    public static class ScenarioTests
+    {
+        [Fact]
+        public static void CompareScenarioMemberOrderDifferent()
+        {
+            var left = Instance.FromFile(Path.Combine("data", "memberorder0.xbrl"));
+            var right = Instance.FromFile(Path.Combine("data", "memberorder1.xbrl"));
 
-			Assert.Equal(left, right);
+            Assert.Equal(left, right);
 
-			var report = InstanceComparer.Report(left, right);
+            var report = InstanceComparer.Report(left, right);
 
-			Assert.True(report.Result, string.Join(Environment.NewLine, report.Messages));
+            Assert.True(report.Result, string.Join(Environment.NewLine, report.Messages));
 
-		}
-	}
+        }
+    }
 }

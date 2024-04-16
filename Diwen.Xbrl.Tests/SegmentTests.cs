@@ -17,6 +17,7 @@ namespace Diwen.Xbrl.Tests
 {
     using Xunit;
     using Diwen.Xbrl;
+    using Diwen.Xbrl.Xml;
 
     public static class SegmentTests
     {

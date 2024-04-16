@@ -1,4 +1,4 @@
-﻿namespace Diwen.Xbrl
+﻿namespace Diwen.Xbrl.Xml
 {
     using System;
 
