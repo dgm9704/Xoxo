@@ -17,6 +17,7 @@ namespace Diwen.Xbrl.Tests.Xml
 {
     using System;
     using System.Diagnostics;
+    using Diwen.Xbrl.Xml;
     using Diwen.Xbrl.Xml.Comparison;
     using Xunit;
     using Xunit.Abstractions;
@@ -44,10 +45,14 @@ namespace Diwen.Xbrl.Tests.Xml
         public void CompareContextsWithSameEntity()
         {
             var entity = new Entity("http://www.xbrl.fi", "1234567-1");
-            var left = new Context();
-            left.Entity = entity;
-            var right = new Context();
-            right.Entity = entity;
+            var left = new Context
+            {
+                Entity = entity
+            };
+            var right = new Context
+            {
+                Entity = entity
+            };
 
             Assert.Equal(left, right);
         }
@@ -57,10 +62,14 @@ namespace Diwen.Xbrl.Tests.Xml
         {
             var leftentity = new Entity("http://www.xbrl.fi", "1234567-1");
             var rightentity = new Entity("http://www.xbrl.fi", "0123456-7");
-            var left = new Context();
-            left.Entity = leftentity;
-            var right = new Context();
-            right.Entity = rightentity;
+            var left = new Context
+            {
+                Entity = leftentity
+            };
+            var right = new Context
+            {
+                Entity = rightentity
+            };
 
             Assert.NotEqual(left, right);
         }
@@ -71,13 +80,17 @@ namespace Diwen.Xbrl.Tests.Xml
             var entity = new Entity("http://www.xbrl.fi", "1234567-1");
             var period = new Period(2014, 12, 31);
 
-            var left = new Context();
-            left.Entity = entity;
-            left.Period = period;
+            var left = new Context
+            {
+                Entity = entity,
+                Period = period
+            };
 
-            var right = new Context();
-            right.Entity = entity;
-            right.Period = period;
+            var right = new Context
+            {
+                Entity = entity,
+                Period = period
+            };
 
             Assert.Equal(left, right);
         }
@@ -89,13 +102,17 @@ namespace Diwen.Xbrl.Tests.Xml
             var leftperiod = new Period(2014, 12, 31);
             var rightperiod = new Period(2014, 11, 30);
 
-            var left = new Context();
-            left.Entity = entity;
-            left.Period = leftperiod;
+            var left = new Context
+            {
+                Entity = entity,
+                Period = leftperiod
+            };
 
-            var right = new Context();
-            right.Entity = entity;
-            right.Period = rightperiod;
+            var right = new Context
+            {
+                Entity = entity,
+                Period = rightperiod
+            };
 
             Assert.NotEqual(left, right);
         }
@@ -106,13 +123,17 @@ namespace Diwen.Xbrl.Tests.Xml
             var entity = new Entity("http://www.xbrl.fi", "1234567-1");
             var period = new Period(2014, 12, 01, 2014, 12, 31);
 
-            var left = new Context();
-            left.Entity = entity;
-            left.Period = period;
+            var left = new Context
+            {
+                Entity = entity,
+                Period = period
+            };
 
-            var right = new Context();
-            right.Entity = entity;
-            right.Period = period;
+            var right = new Context
+            {
+                Entity = entity,
+                Period = period
+            };
 
             Assert.Equal(left, right);
         }
@@ -124,13 +145,17 @@ namespace Diwen.Xbrl.Tests.Xml
             var leftperiod = new Period(2014, 12, 01, 2014, 12, 31);
             var rightperiod = new Period(2014, 11, 01, 2014, 11, 30);
 
-            var left = new Context();
-            left.Entity = entity;
-            left.Period = leftperiod;
+            var left = new Context
+            {
+                Entity = entity,
+                Period = leftperiod
+            };
 
-            var right = new Context();
-            right.Entity = entity;
-            right.Period = rightperiod;
+            var right = new Context
+            {
+                Entity = entity,
+                Period = rightperiod
+            };
 
             Assert.NotEqual(left, right);
         }
@@ -142,13 +167,17 @@ namespace Diwen.Xbrl.Tests.Xml
             var leftperiod = new Period(2014, 12, 31);
             var rightperiod = new Period(2014, 12, 1, 2014, 12, 31);
 
-            var left = new Context();
-            left.Entity = entity;
-            left.Period = leftperiod;
+            var left = new Context
+            {
+                Entity = entity,
+                Period = leftperiod
+            };
 
-            var right = new Context();
-            right.Entity = entity;
-            right.Period = rightperiod;
+            var right = new Context
+            {
+                Entity = entity,
+                Period = rightperiod
+            };
 
             Assert.NotEqual(left, right);
         }
@@ -175,15 +204,19 @@ namespace Diwen.Xbrl.Tests.Xml
             segment.AddExplicitMember("dimPrefix:dimCode", "valuePrefix:valueCode");
             entity.Segment = segment;
 
-            var left = new Context();
-            left.Entity = entity;
-            left.Period = period;
+            var left = new Context
+            {
+                Entity = entity,
+                Period = period
+            };
 
 
 
-            var right = new Context();
-            right.Entity = entity;
-            right.Period = period;
+            var right = new Context
+            {
+                Entity = entity,
+                Period = period
+            };
 
             Assert.Equal(left, right);
         }
@@ -198,9 +231,11 @@ namespace Diwen.Xbrl.Tests.Xml
             leftsegment.AddExplicitMember("dimPrefix:dimCode", "valuePrefix:valueCode");
             leftentity.Segment = leftsegment;
 
-            var left = new Context();
-            left.Entity = leftentity;
-            left.Period = period;
+            var left = new Context
+            {
+                Entity = leftentity,
+                Period = period
+            };
 
 
             var rightentity = new Entity("http://www.xbrl.fi", "1234567-1");
@@ -208,9 +243,11 @@ namespace Diwen.Xbrl.Tests.Xml
             rightsegment.AddExplicitMember("dimPrefix:dimOtherCode", "valuePrefix:valueOtherCode");
             rightentity.Segment = rightsegment;
 
-            var right = new Context();
-            right.Entity = rightentity;
-            right.Period = period;
+            var right = new Context
+            {
+                Entity = rightentity,
+                Period = period
+            };
 
             Assert.NotEqual(left, right);
         }
@@ -230,13 +267,13 @@ namespace Diwen.Xbrl.Tests.Xml
 
             var numberOfRuns = 5000;
             Report report;
-            Context context = null;
             Scenario scenario;
 
             Stopwatch sw;
 
             report = CreateTestReport();
             sw = Stopwatch.StartNew();
+            Context context;
             for (int i = 0; i < numberOfRuns; i++)
             {
                 scenario = new Scenario();
@@ -308,11 +345,13 @@ namespace Diwen.Xbrl.Tests.Xml
 
         private static Report CreateTestReport()
         {
-            var report = new Report();
-            report.SchemaReference = new SchemaReference("simple", "http://eiopa.europa.eu/eu/xbrl/s2md/fws/solvency/solvency2/2014-12-23/mod/ars.xsd");
-            report.TaxonomyVersion = "1.2.3";
-            report.Entity = new Entity("http://standards.iso.org/iso/17442", "1234567890ABCDEFGHIJ");
-            report.Period = new Period(2014, 12, 31);
+            var report = new Report
+            {
+                SchemaReference = new SchemaReference("simple", "http://eiopa.europa.eu/eu/xbrl/s2md/fws/solvency/solvency2/2014-12-23/mod/ars.xsd"),
+                TaxonomyVersion = "1.2.3",
+                Entity = new Entity("http://standards.iso.org/iso/17442", "1234567890ABCDEFGHIJ"),
+                Period = new Period(2014, 12, 31)
+            };
 
             report.Units.Add("uEUR", "iso4217:EUR");
             report.Units.Add("uPURE", "xbrli:pure");

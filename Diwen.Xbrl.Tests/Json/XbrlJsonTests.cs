@@ -13,11 +13,12 @@
 //  OR ANY DAMAGES WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN AN ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS 
 //  ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 
-namespace Diwen.Xbrl.Tests.Csv
+namespace Diwen.Xbrl.Tests.Json
 {
     using System;
     using System.IO;
     using System.Linq;
+    using Diwen.Xbrl.Json;
     using Xunit;
     using Xunit.Abstractions;
 
@@ -32,7 +33,7 @@ namespace Diwen.Xbrl.Tests.Csv
         [InlineData("data/json/example.json")]
         public static void ImportJsonTest(string reportPath)
         {
-            var report = Json.Report.FromFile(reportPath);
+            var report = Report.FromFile(reportPath);
             Assert.Equal("https://xbrl.org/2021/xbrl-json", report.DocumentInfo.DocumentType);
             Assert.Equal(new Uri("http://example.com/xbrl-json/taxonomy/example.xsd"), report.DocumentInfo.Taxonomy.First());
             Assert.Equal(new Uri("http://example.com/xbrl-json/taxonomy/"), report.DocumentInfo.Namespaces["eg"]);
@@ -45,7 +46,7 @@ namespace Diwen.Xbrl.Tests.Csv
         [InlineData("data/example_output.json")]
         public static void ExportJsonTest(string reportPath)
         {
-            var report = new Json.Report
+            var report = new Report
             {
                 DocumentInfo = new()
                 {
@@ -131,9 +132,9 @@ namespace Diwen.Xbrl.Tests.Csv
             //var xmlreport = Instance.FromFile(path, removeUnusedObjects: false, collapseDuplicateContexts: false, removeDuplicateFacts: false);
             // my test data is awful
             //output.WriteLine($"{path}: {xmlreport.Facts.Count}");
-            var xmlreport = Xml.Report.FromFile(path);
+            var xmlreport = Xbrl.Xml.Report.FromFile(path);
 
-            var jsonreport = Json.Report.FromXbrlXml(xmlreport);
+            var jsonreport = Report.FromXbrlXml(xmlreport);
 
             jsonreport.ToFile(Path.ChangeExtension(path, "json"));
         }

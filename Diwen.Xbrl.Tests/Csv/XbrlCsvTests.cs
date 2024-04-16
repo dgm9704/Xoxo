@@ -24,7 +24,7 @@ namespace Diwen.Xbrl.Tests.Csv
     using Diwen.Xbrl.Extensions;
     using Xunit;
     using Xunit.Abstractions;
-    using Diwen.Xbrl.Xml;
+    using Diwen.Xbrl.Csv;
 
     public class XbrlCsvTests
     {
@@ -36,7 +36,7 @@ namespace Diwen.Xbrl.Tests.Csv
         [Fact]
         public void ExportTests()
         {
-            var report = new Csv.Report
+            var report = new Report
             {
                 Entrypoint = "http://www.eba.europa.eu/eu/fr/xbrl/crr/fws/sbp/cir-2070-2016/2021-07-15/mod/sbp_cr_con.json",
                 Parameters = new Dictionary<string, string>
@@ -105,7 +105,7 @@ namespace Diwen.Xbrl.Tests.Csv
         public static void ReadPackageTest(string packageName)
         {
             var packagePath = Path.Combine("data/csv", packageName);
-            var reportFiles = Csv.Report.ReadPackage(packagePath);
+            var reportFiles = Report.ReadPackage(packagePath);
 
             var metafolder = "META-INF";
             var reportfolder = "reports";
@@ -125,7 +125,7 @@ namespace Diwen.Xbrl.Tests.Csv
         public static void ImportTest(string packageName)
         {
             var packagePath = Path.Combine("data/csv", packageName);
-            var report = Csv.Report.FromFile(packagePath);
+            var report = Report.FromFile(packagePath);
 
             Assert.Equal("http://www.eba.europa.eu/eu/fr/xbrl/crr/fws/sbp/cir-2070-2016/2021-07-15/mod/sbp_cr_con.json", report.Entrypoint);
             Assert.Equal("lei:DUMMYLEI123456789012", report.Parameters["entityID"]);
@@ -212,7 +212,7 @@ namespace Diwen.Xbrl.Tests.Csv
 
         public static string XmlToCsv(string reportPath)
         {
-            var xmlReport = Xml.Report.FromFile(reportPath);
+            var xmlReport = Xbrl.Xml.Report.FromFile(reportPath);
 
             var entrypoint = Path.ChangeExtension(xmlReport.SchemaReference.Value.Replace("http://", ""), "json");
             var moduleDefinition = ModuleDefinition.FromFile(entrypoint);
@@ -231,7 +231,7 @@ namespace Diwen.Xbrl.Tests.Csv
         public static string CsvToXml(string reportPath)
         {
 
-            var csvReport = Csv.Report.FromFile(reportPath);
+            var csvReport = Report.FromFile(reportPath);
 
             var entrypoint = csvReport.Entrypoint.Replace(@"http://", "");
 
