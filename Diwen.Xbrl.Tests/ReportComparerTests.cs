@@ -1,5 +1,5 @@
 ﻿//
-//  InstanceComparerTests.cs
+//  ReportComparerTests.cs
 //
 //  Author:
 //       John Nordberg <john.nordberg@gmail.com>
@@ -117,13 +117,13 @@ namespace Diwen.Xbrl.Tests
         }
 
         [Fact]
-        public static void CompareDomainNamespacesOfTotallyDifferentInstances()
+        public static void CompareDomainNamespacesOfTotallyDifferentReports()
         {
             var firstPath = Path.Combine("data", "reference.xbrl");
             var secondPath = Path.Combine("data", "ars.xbrl");
-            var report = ReportComparer.Report(firstPath, secondPath, ComparisonTypes.DomainNamespaces);
-            Assert.False(report.Result);
-            Assert.NotEmpty(report.Messages);
+            var comparisonReport = ReportComparer.Report(firstPath, secondPath, ComparisonTypes.DomainNamespaces);
+            Assert.False(comparisonReport.Result);
+            Assert.NotEmpty(comparisonReport.Messages);
         }
 
         //[Fact]
@@ -407,7 +407,7 @@ namespace Diwen.Xbrl.Tests
         }
 
         [Fact]
-        public static void InstancesAreComparableAfterCreation()
+        public static void ReportsAreComparableAfterCreation()
         {
             var first = new Report();
             var second = new Report();

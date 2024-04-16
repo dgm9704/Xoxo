@@ -4,7 +4,7 @@
 //  Author:
 //       John Nordberg <john.nordberg@gmail.com>
 //
-//  Copyright (c) 2015-2020 John Nordberg
+//  Copyright (c) 2015-2024 John Nordberg
 //
 //  Free Public License 1.0.0
 //  Permission to use, copy, modify, and/or distribute this software for any purpose with or without fee is hereby granted.
@@ -17,10 +17,9 @@ namespace Diwen.Xbrl.Tests
 {
     using System.IO;
     using Xunit;
-    using Xbrl;
     using Diwen.Xbrl.Xml;
 
-    public static class SBRInstanceTests
+    public static class SBRReportTests
     {
         static Report CreatePaymentSummaryInstance()
         {

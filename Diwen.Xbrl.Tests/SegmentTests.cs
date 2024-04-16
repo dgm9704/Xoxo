@@ -16,7 +16,6 @@
 namespace Diwen.Xbrl.Tests
 {
     using Xunit;
-    using Diwen.Xbrl;
     using Diwen.Xbrl.Xml;
 
     public static class SegmentTests
@@ -25,25 +24,25 @@ namespace Diwen.Xbrl.Tests
         public static void Bug_76()
         {
             string schemaPath = "http://tempuri.org/schema.xsd";
-            var instance = new Report();
-            instance.SchemaReference = new SchemaReference("schema", schemaPath);
-            instance.TaxonomyVersion = "1.0";
+            var report = new Report();
+            report.SchemaReference = new SchemaReference("schema", schemaPath);
+            report.TaxonomyVersion = "1.0";
 
-            instance.SetDimensionNamespace("ns1", "http://tempuri.org/xbrl/dim");
-            instance.AddDomainNamespace("ns2", "http://tempuri.org/xbrl/dom");
-            instance.AddDomainNamespace("ns3", "http://tempuri.org/xbrl/fact");
+            report.SetDimensionNamespace("ns1", "http://tempuri.org/xbrl/dim");
+            report.AddDomainNamespace("ns2", "http://tempuri.org/xbrl/dom");
+            report.AddDomainNamespace("ns3", "http://tempuri.org/xbrl/fact");
 
-            instance.Entity = new Entity("http://tempuri.org/id", "12345678");
-            instance.Period = new Period(2022, 09, 30);
+            report.Entity = new Entity("http://tempuri.org/id", "12345678");
+            report.Period = new Period(2022, 09, 30);
 
             var segment = new Segment();
             segment.AddExplicitMember("ns1:AA", "ns1:aaa"); // Ok ("ns1" is used in the same segment as dimension)
             segment.AddExplicitMember("ns1:BB", "ns2:bbb"); // Exception ("ns2" is not used anywhere else but here)
             segment.AddExplicitMember("ns1:BB", "ns3:ccc"); // Ok ("ns3" is used in the fact name)                 
 
-            instance.AddFact(segment, "ns3:metric", "", "2", "12345");
+            report.AddFact(segment, "ns3:metric", "", "2", "12345");
 
-            instance.ToFile("output_segment_namespace.xbrl");
+            report.ToFile("output_segment_namespace.xbrl");
         }
 
     }

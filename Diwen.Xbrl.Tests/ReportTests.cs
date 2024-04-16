@@ -1,5 +1,5 @@
 ﻿//
-//  InstanceTests.cs
+//  ReportTests.cs
 //
 //  Author:
 //       John Nordberg <john.nordberg@gmail.com>
@@ -25,12 +25,12 @@ namespace Diwen.Xbrl.Tests
     using Diwen.Xbrl.Xml.Comparison;
     using Diwen.Xbrl.Xml;
 
-    public class InstanceTests
+    public class ReportTests
     {
 
         private readonly ITestOutputHelper output;
 
-        public InstanceTests(ITestOutputHelper output)
+        public ReportTests(ITestOutputHelper output)
         {
             this.output = output;
         }
