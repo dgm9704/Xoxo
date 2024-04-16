@@ -220,7 +220,7 @@
             return reportInfo.documentInfo.extends.First();
         }
 
-        private static IEnumerable<ReportData> ReadTableData(string table, string data)
+        private static List<ReportData> ReadTableData(string table, string data)
         {
             var result = new List<ReportData>();
             var records =
@@ -278,75 +278,6 @@
                 }
             }
             return reportFiles;
-        }
-
-        public Instance ToXbrlXml(Dictionary<string, TableDefinition> tableDefinitions, Dictionary<string, string> dimensionDomain, KeyValuePair<string, string> typedDomainNamespace, Dictionary<string, string> filingIndicators, HashSet<string> typedDomains, ModuleDefinition moduleDefinition)
-        => ToXbrlXml(this, tableDefinitions, dimensionDomain, typedDomainNamespace, filingIndicators, typedDomains, moduleDefinition);
-
-        public static Instance ToXbrlXml(
-            Report report,
-            Dictionary<string, TableDefinition> tableDefinitions,
-            Dictionary<string, string> dimensionDomain,
-            KeyValuePair<string, string> typedDomainNamespace,
-            Dictionary<string, string> filingIndicators,
-            HashSet<string> typedDomains,
-            ModuleDefinition moduleDefinition)
-        {
-            var instance = new Instance
-            {
-                SchemaReference = new SchemaReference("simple", moduleDefinition.DocumentInfo.taxonomy.FirstOrDefault())
-            };
-
-            foreach (var ns in moduleDefinition.DocumentInfo.namespaces)
-                instance.Namespaces.AddNamespace(ns.Key, ns.Value);
-
-            var idParts = report.Parameters["entityID"].Split(':');
-            var idNs = instance.Namespaces.LookupNamespace(idParts.First());
-            instance.Entity = new Entity(idNs, idParts.Last());
-
-            instance.Period = new Period(DateTime.ParseExact(report.Parameters["refPeriod"], "yyyy-MM-dd", CultureInfo.InvariantCulture));
-
-            var baseCurrency = report.Parameters["baseCurrency"];
-            var baseCurrencyRef = $"u{baseCurrency.Split(':').Last()}";
-            instance.Units.Add(baseCurrencyRef, $"iso4217:{baseCurrency}");
-            instance.Units.Add("uPURE", "xbrli:pure");
-
-            instance.SetTypedDomainNamespace(typedDomainNamespace.Key, typedDomainNamespace.Value);
-
-            foreach (var fi in report.FilingIndicators)
-                instance.AddFilingIndicator(fi.Key, fi.Value);
-
-            var filed =
-                report.
-                FilingIndicators.
-                Where(i => i.Value).
-                Select(i => i.Key).
-                ToHashSet();
-
-            var tabledata =
-                report.
-                Data.
-                Where(d => !string.IsNullOrEmpty(d.Value)).
-                Where(d => filed.Contains(filingIndicators[d.Table])).
-                GroupBy(d => d.Table).
-                ToDictionary(d => d.Key, d => d.ToArray());
-
-            var usedContexts = new Dictionary<string, Context>();
-            var usedDatapoints = new HashSet<string>();
-
-            foreach (var table in tabledata)
-            {
-                // var sw = Stopwatch.StartNew();
-                var tableDefinition = tableDefinitions[table.Key];
-                AddFactsForTable(report.Parameters, tableDefinition, dimensionDomain, typedDomainNamespace, typedDomains, instance, baseCurrencyRef, table, usedContexts, usedDatapoints);
-                // sw.Stop();
-                // Console.WriteLine($"AddFactsForTable {table.Key} {sw.Elapsed}");
-            }
-
-            instance.RemoveUnusedUnits();
-
-            return instance;
-
         }
 
         private static string AddFactsForTable(
@@ -464,7 +395,58 @@
             }
         }
 
-        public static Report FromXml(Instance xmlReport, Dictionary<string, TableDefinition> tableDefinitions, Dictionary<string, string> filingIndicators, ModuleDefinition moduleDefinition)
+        private static Dictionary<string, string[]> GetTableDatapoints(
+            Fact fact,
+            Dictionary<string, TableDefinition> tableDefinitions,
+            string dimNsPrefix,
+            Dictionary<string, HashSet<string>> tablesOpenDimensions,
+            Dictionary<string, string> factExplicitMembers,
+            HashSet<string> factTypedMembers)
+        {
+            var metric = fact.Metric.Name;
+            var result = new Dictionary<string, string[]>();
+
+            foreach (var td in tableDefinitions)
+            {
+                var candidateDatapoints = td.Value.GetDatapointsByMetric(metric);
+
+                if (candidateDatapoints.Any())
+                {
+                    var tableOpenDimensions = tablesOpenDimensions[td.Key];
+                    // filter by matching explicit members
+                    var matchingDatapoints =
+                        candidateDatapoints.
+                            Where(pg =>
+                                DatapointMatchesFact(
+                                    pg.Value.DimensionValues,
+                                    tableOpenDimensions,
+                                    factExplicitMembers,
+                                    factTypedMembers)).
+                            ToArray();
+
+                    if (matchingDatapoints.Any())
+                        result[td.Key] = matchingDatapoints.Select(dp => dp.Key).ToArray();
+                }
+            }
+
+            return result;
+        }
+
+        private static bool DatapointMatchesFact(Dictionary<string, string> datapointDimensions, HashSet<string> tableOpenDimensions, Dictionary<string, string> factExplicitMembers, HashSet<string> factTypedMembers)
+        {
+            var match =
+                factExplicitMembers.Count + factTypedMembers.Count == tableOpenDimensions.Count + datapointDimensions.Count
+                &&
+                factExplicitMembers.
+                All(m => datapointDimensions.GetValueOrDefault(m.Key, "") == m.Value
+                    || tableOpenDimensions.Contains(m.Key))
+                &&
+                factTypedMembers.All(m => tableOpenDimensions.Contains(m));
+
+            return match;
+        }
+
+        public static Report FromXbrlXml(Instance xmlReport, Dictionary<string, TableDefinition> tableDefinitions, Dictionary<string, string> filingIndicators, ModuleDefinition moduleDefinition)
         {
             var report = new Report
             {
@@ -529,55 +511,73 @@
             return report;
         }
 
-        private static Dictionary<string, string[]> GetTableDatapoints(
-            Fact fact,
+        public Instance ToXbrlXml(Dictionary<string, TableDefinition> tableDefinitions, Dictionary<string, string> dimensionDomain, KeyValuePair<string, string> typedDomainNamespace, Dictionary<string, string> filingIndicators, HashSet<string> typedDomains, ModuleDefinition moduleDefinition)
+        => ToXbrlXml(this, tableDefinitions, dimensionDomain, typedDomainNamespace, filingIndicators, typedDomains, moduleDefinition);
+
+        public static Instance ToXbrlXml(
+            Report report,
             Dictionary<string, TableDefinition> tableDefinitions,
-            string dimNsPrefix,
-            Dictionary<string, HashSet<string>> tablesOpenDimensions,
-            Dictionary<string, string> factExplicitMembers,
-            HashSet<string> factTypedMembers)
+            Dictionary<string, string> dimensionDomain,
+            KeyValuePair<string, string> typedDomainNamespace,
+            Dictionary<string, string> filingIndicators,
+            HashSet<string> typedDomains,
+            ModuleDefinition moduleDefinition)
         {
-            var metric = fact.Metric.Name;
-            var result = new Dictionary<string, string[]>();
-
-            foreach (var td in tableDefinitions)
+            var instance = new Instance
             {
-                var candidateDatapoints = td.Value.GetDatapointsByMetric(metric);
+                SchemaReference = new SchemaReference("simple", moduleDefinition.DocumentInfo.taxonomy.FirstOrDefault())
+            };
 
-                if (candidateDatapoints.Any())
-                {
-                    var tableOpenDimensions = tablesOpenDimensions[td.Key];
-                    // filter by matching explicit members
-                    var matchingDatapoints =
-                        candidateDatapoints.
-                            Where(pg =>
-                                DatapointMatchesFact(
-                                    pg.Value.DimensionValues,
-                                    tableOpenDimensions,
-                                    factExplicitMembers,
-                                    factTypedMembers)).
-                            ToArray();
+            foreach (var ns in moduleDefinition.DocumentInfo.namespaces)
+                instance.Namespaces.AddNamespace(ns.Key, ns.Value);
 
-                    if (matchingDatapoints.Any())
-                        result[td.Key] = matchingDatapoints.Select(dp => dp.Key).ToArray();
-                }
+            var idParts = report.Parameters["entityID"].Split(':');
+            var idNs = instance.Namespaces.LookupNamespace(idParts.First());
+            instance.Entity = new Entity(idNs, idParts.Last());
+
+            instance.Period = new Period(DateTime.ParseExact(report.Parameters["refPeriod"], "yyyy-MM-dd", CultureInfo.InvariantCulture));
+
+            var baseCurrency = report.Parameters["baseCurrency"];
+            var baseCurrencyRef = $"u{baseCurrency.Split(':').Last()}";
+            instance.Units.Add(baseCurrencyRef, $"iso4217:{baseCurrency}");
+            instance.Units.Add("uPURE", "xbrli:pure");
+
+            instance.SetTypedDomainNamespace(typedDomainNamespace.Key, typedDomainNamespace.Value);
+
+            foreach (var fi in report.FilingIndicators)
+                instance.AddFilingIndicator(fi.Key, fi.Value);
+
+            var filed =
+                report.
+                FilingIndicators.
+                Where(i => i.Value).
+                Select(i => i.Key).
+                ToHashSet();
+
+            var tabledata =
+                report.
+                Data.
+                Where(d => !string.IsNullOrEmpty(d.Value)).
+                Where(d => filed.Contains(filingIndicators[d.Table])).
+                GroupBy(d => d.Table).
+                ToDictionary(d => d.Key, d => d.ToArray());
+
+            var usedContexts = new Dictionary<string, Context>();
+            var usedDatapoints = new HashSet<string>();
+
+            foreach (var table in tabledata)
+            {
+                // var sw = Stopwatch.StartNew();
+                var tableDefinition = tableDefinitions[table.Key];
+                AddFactsForTable(report.Parameters, tableDefinition, dimensionDomain, typedDomainNamespace, typedDomains, instance, baseCurrencyRef, table, usedContexts, usedDatapoints);
+                // sw.Stop();
+                // Console.WriteLine($"AddFactsForTable {table.Key} {sw.Elapsed}");
             }
 
-            return result;
-        }
+            instance.RemoveUnusedUnits();
 
-        private static bool DatapointMatchesFact(Dictionary<string, string> datapointDimensions, HashSet<string> tableOpenDimensions, Dictionary<string, string> factExplicitMembers, HashSet<string> factTypedMembers)
-        {
-            var match =
-                factExplicitMembers.Count + factTypedMembers.Count == tableOpenDimensions.Count + datapointDimensions.Count
-                &&
-                factExplicitMembers.
-                All(m => datapointDimensions.GetValueOrDefault(m.Key, "") == m.Value
-                    || tableOpenDimensions.Contains(m.Key))
-                &&
-                factTypedMembers.All(m => tableOpenDimensions.Contains(m));
+            return instance;
 
-            return match;
         }
     }
 }

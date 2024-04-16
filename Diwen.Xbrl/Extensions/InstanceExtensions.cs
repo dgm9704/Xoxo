@@ -28,11 +28,11 @@ namespace Diwen.Xbrl.Extensions
     public static class InstanceExtensions
     {
         public static Report ToXbrlCsv(
-            this Instance instance, 
-            Dictionary<string, TableDefinition> tableDefinitions, 
-            Dictionary<string, string> filingIndicators, 
+            this Instance instance,
+            Dictionary<string, TableDefinition> tableDefinitions,
+            Dictionary<string, string> filingIndicators,
             ModuleDefinition moduleDefinition)
-        => Report.FromXml(instance, tableDefinitions, filingIndicators, moduleDefinition);
+        => Report.FromXbrlXml(instance, tableDefinitions, filingIndicators, moduleDefinition);
 
     }
 }
