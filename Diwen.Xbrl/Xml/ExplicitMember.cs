@@ -4,7 +4,7 @@
 //  Author:
 //       John Nordberg <john.nordberg@gmail.com>
 //
-//  Copyright (c) 2015-2020 John Nordberg
+//  Copyright (c) 2015-2024 John Nordberg
 //
 //  This program is free software: you can redistribute it and/or modify
 //  it under the terms of the GNU Lesser General Public License as published by
@@ -19,7 +19,7 @@
 //  You should have received a copy of the GNU Lesser General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-namespace Diwen.Xbrl
+namespace Diwen.Xbrl.Xml
 {
 
     using System;
@@ -31,7 +31,7 @@ namespace Diwen.Xbrl
     [XmlRoot(ElementName = "explicitMember", Namespace = "http://xbrl.org/2006/xbrldi")]
     public struct ExplicitMember : IXmlSerializable, IEquatable<ExplicitMember>, IComparable<ExplicitMember>
     {
-        internal Instance Instance { get; set; }
+        internal Report Report { get; set; }
 
         [XmlIgnore]
         public XmlQualifiedName Dimension { get; set; }
@@ -46,7 +46,7 @@ namespace Diwen.Xbrl
             Value = value;
         }
 
-        public string MemberCode
+        public readonly string MemberCode
         {
             get
             {
@@ -54,19 +54,19 @@ namespace Diwen.Xbrl
                 var localname = Value.LocalName();
 
                 if (string.IsNullOrEmpty(prefix))
-                    prefix = Instance?.Namespaces?.LookupPrefix(Value.Namespace) ?? "";
+                    prefix = Report?.Namespaces?.LookupPrefix(Value.Namespace) ?? "";
 
                 return string.Join(":", prefix, localname);
             }
         }
 
-        public override int GetHashCode()
+        public override readonly int GetHashCode()
         => Value != null ? Value.GetHashCode() : 0;
 
         public override bool Equals(object obj)
         => Equals((ExplicitMember)obj);
 
-        public override string ToString()
+        public override readonly string ToString()
         => $"{Dimension.LocalName()}={MemberCode}";
 
         public int Compare(ExplicitMember other)
@@ -95,8 +95,7 @@ namespace Diwen.Xbrl
 
         public void ReadXml(XmlReader reader)
         {
-            if (reader == null)
-                throw new ArgumentNullException(nameof(reader));
+            ArgumentNullException.ThrowIfNull(reader);
 
             reader.MoveToContent();
             var content = reader.GetAttribute("dimension");
@@ -117,9 +116,8 @@ namespace Diwen.Xbrl
 
         public void WriteXml(XmlWriter writer)
         {
-            if (writer == null)
-                throw new ArgumentNullException(nameof(writer));
-                
+            ArgumentNullException.ThrowIfNull(writer);
+
             var prefix = writer.LookupPrefix(Dimension.Namespace);
             var dim = $"{prefix}:{Dimension.LocalName()}";
             writer.WriteAttributeString("dimension", dim);

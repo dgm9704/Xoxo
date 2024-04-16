@@ -4,7 +4,7 @@
 //  Author:
 //       John Nordberg <john.nordberg@gmail.com>
 //
-//  Copyright (c) 2015-2020 John Nordberg
+//  Copyright (c) 2015-2024 John Nordberg
 //
 //  This program is free software: you can redistribute it and/or modify
 //  it under the terms of the GNU Lesser General Public License as published by
@@ -19,7 +19,7 @@
 //  You should have received a copy of the GNU Lesser General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-namespace Diwen.Xbrl
+namespace Diwen.Xbrl.Xml
 {
     using System;
     using System.Collections.Generic;
@@ -30,17 +30,17 @@ namespace Diwen.Xbrl
     [XmlRoot(ElementName = "scenario", Namespace = "http://www.xbrl.org/2003/instance")]
     public class Scenario : IEquatable<Scenario>
     {
-        Instance instance;
+        Report report;
 
         [XmlIgnore]
-        public Instance Instance
+        public Report Report
         {
-            get => instance;
+            get => report;
             set
             {
-                instance = value;
-                ExplicitMembers.Instance = value;
-                TypedMembers.Instance = value;
+                report = value;
+                ExplicitMembers.Report = value;
+                TypedMembers.Report = value;
             }
         }
 
@@ -56,14 +56,14 @@ namespace Diwen.Xbrl
 
         public Scenario()
         {
-            ExplicitMembers = new ExplicitMemberCollection();
-            TypedMembers = new TypedMemberCollection();
+            ExplicitMembers = [];
+            TypedMembers = [];
         }
 
-        public Scenario(Instance instance)
+        public Scenario(Report report)
         {
-            ExplicitMembers = new ExplicitMemberCollection(instance);
-            TypedMembers = new TypedMemberCollection(instance);
+            ExplicitMembers = new ExplicitMemberCollection(report);
+            TypedMembers = new TypedMemberCollection(report);
         }
 
         public override string ToString()
@@ -99,8 +99,8 @@ namespace Diwen.Xbrl
 
         public bool Equals(Scenario other)
         => other != null
-        	&& ExplicitMembers.Equals(other.ExplicitMembers)
-        	&& TypedMembers.Equals(other.TypedMembers);
+            && ExplicitMembers.Equals(other.ExplicitMembers)
+            && TypedMembers.Equals(other.TypedMembers);
 
         #endregion
     }

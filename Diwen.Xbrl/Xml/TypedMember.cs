@@ -4,7 +4,7 @@
 //  Author:
 //       John Nordberg <john.nordberg@gmail.com>
 //
-//  Copyright (c) 2015-2020 John Nordberg
+//  Copyright (c) 2015-2024 John Nordberg
 //
 //  This program is free software: you can redistribute it and/or modify
 //  it under the terms of the GNU Lesser General Public License as published by
@@ -19,7 +19,7 @@
 //  You should have received a copy of the GNU Lesser General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-namespace Diwen.Xbrl
+namespace Diwen.Xbrl.Xml
 {
     using System;
     using System.Xml;
@@ -30,7 +30,7 @@ namespace Diwen.Xbrl
     [XmlRoot(ElementName = "typedMember", Namespace = "http://xbrl.org/2006/xbrldi")]
     public struct TypedMember : IXmlSerializable, IEquatable<TypedMember>, IComparable<TypedMember>
     {
-        internal Instance Instance { get; set; }
+        internal Report Report { get; set; }
 
         [XmlIgnore]
         public XmlQualifiedName Dimension { get; set; }
@@ -84,8 +84,7 @@ namespace Diwen.Xbrl
 
         public void ReadXml(XmlReader reader)
         {
-            if (reader == null)
-                throw new ArgumentNullException(nameof(reader));
+            ArgumentNullException.ThrowIfNull(reader);
 
             reader.MoveToContent();
             var dim = reader.GetAttribute("dimension");
@@ -101,8 +100,7 @@ namespace Diwen.Xbrl
 
         public void WriteXml(XmlWriter writer)
         {
-            if (writer == null)
-                throw new ArgumentNullException(nameof(writer));
+            ArgumentNullException.ThrowIfNull(writer);
 
             writer.WriteAttributeString("dimension", Dimension.Name);
 
@@ -135,7 +133,7 @@ namespace Diwen.Xbrl
         {
             int result;
             result = string.Compare(Dimension.Name, other.Dimension.Name, StringComparison.Ordinal);
-            
+
             if (result == 0)
                 result = string.Compare(Domain.Name, other.Domain.Name, StringComparison.Ordinal);
 

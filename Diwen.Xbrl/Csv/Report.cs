@@ -11,7 +11,7 @@
     using System.Text.Json;
     using Diwen.Xbrl.Csv.Taxonomy;
     using Diwen.Xbrl.Extensions;
-    using Diwen.Xbrl.Package;
+    using Diwen.Xbrl.Xml;
 
     public partial class Report
     {
@@ -24,6 +24,7 @@
         public Dictionary<string, string> Parameters = [];
 
         public List<ReportData> Data = [];
+        private static readonly string[] separator = ["\r", "\n", "\r\n"];
 
         public void AddData(string table, string datapoint, string value)
         => Data.Add(new ReportData(table, datapoint, value));
@@ -32,7 +33,7 @@
         => Data.Add(new ReportData(table, datapoint, value, pairs));
 
         public void AddData(string table, string datapoint, string value, string dimensionKey, string dimensionValue)
-        => Data.Add(new ReportData(table, datapoint, value));
+        => Data.Add(new ReportData(table, datapoint, value, dimensionKey, dimensionValue));
 
         public void AddData(string table, string datapoint, string value, Dictionary<string, string> dimensions)
         => Data.Add(new ReportData(table, datapoint, value, dimensions));
@@ -91,9 +92,9 @@
         {
             var info = new PackageInfo
             {
-                documentInfo = new DocumentInfo
+                DocumentInfo = new DocumentInfo
                 {
-                    documentType = "http://xbrl.org/PWD/2020-12-09/report-package"
+                    DocumentType = "http://xbrl.org/PWD/2020-12-09/report-package"
                 }
             };
 
@@ -112,23 +113,23 @@
 
             var documentInfo = new DocumentInfo
             {
-                documentType = documentType,
-                extends = new List<string> { entrypoint }
+                DocumentType = documentType,
+                Extends = new List<string> { entrypoint }
             };
 
             var softwareInfo = new EbaGeneratingSoftwareInformation
             {
-                ebasoftwareId = assemblyName,
-                ebasoftwareVersion = version.ToString(),
-                ebasoftwareCreationDate = $"{compileTime.Date:yyyy-MM-dd}",
-                ebasoftwareAdditionalInfo = "https://github.com/dgm9704/Xoxo"
+                EbaSoftwareId = assemblyName,
+                EbaSoftwareVersion = version.ToString(),
+                EbaSoftwareCreationDate = $"{compileTime.Date:yyyy-MM-dd}",
+                EbaSoftwareAdditionalInfo = "https://github.com/dgm9704/Xoxo"
             };
 
             var stream = new MemoryStream();
             var reportInfo = new ReportInfo
             {
-                documentInfo = documentInfo,
-                ebageneratingSoftwareInformation = softwareInfo
+                DocumentInfo = documentInfo,
+                EbaGeneratingSoftwareInformation = softwareInfo
             };
 
             JsonSerializer.Serialize<ReportInfo>(stream, reportInfo);
@@ -217,7 +218,7 @@
         private static string ReadEntryPoint(string data)
         {
             var reportInfo = JsonSerializer.Deserialize<ReportInfo>(data);
-            return reportInfo.documentInfo.extends.First();
+            return reportInfo.DocumentInfo.Extends.First();
         }
 
         private static List<ReportData> ReadTableData(string table, string data)
@@ -244,7 +245,7 @@
 
         private static Dictionary<string, bool> ReadFilingIndicators(string data)
         => data.
-            Split(new string[] { "\r", "\n", "\r\n" }, StringSplitOptions.RemoveEmptyEntries).
+            Split(separator, StringSplitOptions.RemoveEmptyEntries).
             Skip(1).
             Select(line => line.Split(',')).
             ToDictionary(
@@ -286,7 +287,7 @@
             Dictionary<string, string> dimensionDomain,
             KeyValuePair<string, string> typedDomainNamespace,
             HashSet<string> typedDomains,
-            Instance instance,
+            Xml.Report xmlreport,
             string baseCurrencyRef,
             KeyValuePair<string, ReportData[]> table,
             Dictionary<string, Context> usedContexts,
@@ -294,27 +295,27 @@
         {
             string dimensionPrefix = string.Empty;
 
-            foreach (var ns in tableDefinition.DocumentInfo.namespaces)
+            foreach (var ns in tableDefinition.DocumentInfo.Namespaces)
             {
                 if (ns.Key.EndsWith("_dim"))
                 {
                     dimensionPrefix = ns.Key;
-                    instance.SetDimensionNamespace(ns.Key, ns.Value);
+                    xmlreport.SetDimensionNamespace(ns.Key, ns.Value);
                 }
                 else if (ns.Key.EndsWith("_met"))
                 {
-                    instance.SetMetricNamespace(ns.Key, ns.Value);
+                    xmlreport.SetMetricNamespace(ns.Key, ns.Value);
                 }
                 else
                 {
-                    instance.AddDomainNamespace(ns.Key, ns.Value);
+                    xmlreport.AddDomainNamespace(ns.Key, ns.Value);
                 }
             }
 
             foreach (var fact in table.Value)
             {
                 var datapoint = tableDefinition.Datapoints[fact.Datapoint];
-                AddFact(parameters, dimensionDomain, typedDomainNamespace, typedDomains, instance, baseCurrencyRef, dimensionPrefix, datapoint, fact, usedContexts, usedDatapoints);
+                AddFact(parameters, dimensionDomain, typedDomainNamespace, typedDomains, xmlreport, baseCurrencyRef, dimensionPrefix, datapoint, fact, usedContexts, usedDatapoints);
             }
             return dimensionPrefix;
         }
@@ -324,7 +325,7 @@
             Dictionary<string, string> dimensionDomain,
             KeyValuePair<string, string> typedDomainNamespace,
             HashSet<string> typedDomains,
-            Instance instance,
+            Xml.Report xmlreport,
             string baseCurrencyRef,
             string dimensionPrefix,
             PropertyGroup datapoint,
@@ -332,7 +333,7 @@
             Dictionary<string, Context> usedContexts,
             HashSet<string> usedDatapoints)
         {
-            var scenario = new Scenario(instance);
+            var scenario = new Scenario(xmlreport);
             string metric = string.Empty;
             string unit = string.Empty;
 
@@ -382,15 +383,15 @@
             {
                 if (!usedDatapoints.Contains(datapointKey))
                 {
-                    instance.AddFact(context, metric, unitRef, decimals, fact.Value);
+                    xmlreport.AddFact(context, metric, unitRef, decimals, fact.Value);
                     usedDatapoints.Add(datapointKey);
                 }
             }
             else
             {
-                context = instance.CreateContext(scenario);
+                context = xmlreport.CreateContext(scenario);
                 usedContexts[scenarioKey] = context;
-                instance.AddFact(context, metric, unitRef, decimals, fact.Value);
+                xmlreport.AddFact(context, metric, unitRef, decimals, fact.Value);
                 usedDatapoints.Add(datapointKey);
             }
         }
@@ -398,7 +399,6 @@
         private static Dictionary<string, string[]> GetTableDatapoints(
             Fact fact,
             Dictionary<string, TableDefinition> tableDefinitions,
-            string dimNsPrefix,
             Dictionary<string, HashSet<string>> tablesOpenDimensions,
             Dictionary<string, string> factExplicitMembers,
             HashSet<string> factTypedMembers)
@@ -446,14 +446,14 @@
             return match;
         }
 
-        public static Report FromXbrlXml(Instance xmlReport, Dictionary<string, TableDefinition> tableDefinitions, Dictionary<string, string> filingIndicators, ModuleDefinition moduleDefinition)
+        public static Report FromXbrlXml(Xml.Report xmlReport, Dictionary<string, TableDefinition> tableDefinitions, Dictionary<string, string> filingIndicators, ModuleDefinition moduleDefinition)
         {
             var report = new Report
             {
                 Entrypoint = Path.ChangeExtension(xmlReport.SchemaReference.Value, ".json")
             };
 
-            var prefix = moduleDefinition.DocumentInfo.namespaces.FirstOrDefault(ns => ns.Value == xmlReport.Entity.Identifier.Scheme).Key;
+            var prefix = moduleDefinition.DocumentInfo.Namespaces.FirstOrDefault(ns => ns.Value == xmlReport.Entity.Identifier.Scheme).Key;
             var identifier = xmlReport.Entity.Identifier.Value;
             report.Parameters.Add("entityID", $"{prefix}:{identifier}");
             report.Parameters.Add("refPeriod", xmlReport.Period.Instant.ToString("yyyy-MM-dd"));
@@ -492,7 +492,7 @@
                 var factExplicitMembers = fact.Context.Scenario.ExplicitMembers.ToDictionary(m => m.Dimension.Name, m => m.Value.Name);
                 var factTypedMembers = fact.Context.Scenario.TypedMembers.Select(m => m.Dimension.LocalName()).ToHashSet();
 
-                var datapoints = GetTableDatapoints(fact, reportedTables, dimNsPrefix, tablesOpendimensions, factExplicitMembers, factTypedMembers);
+                var datapoints = GetTableDatapoints(fact, reportedTables, tablesOpendimensions, factExplicitMembers, factTypedMembers);
                 foreach (var table in datapoints)
                     foreach (var datapoint in table.Value)
                     {
@@ -511,10 +511,10 @@
             return report;
         }
 
-        public Instance ToXbrlXml(Dictionary<string, TableDefinition> tableDefinitions, Dictionary<string, string> dimensionDomain, KeyValuePair<string, string> typedDomainNamespace, Dictionary<string, string> filingIndicators, HashSet<string> typedDomains, ModuleDefinition moduleDefinition)
+        public Xml.Report ToXbrlXml(Dictionary<string, TableDefinition> tableDefinitions, Dictionary<string, string> dimensionDomain, KeyValuePair<string, string> typedDomainNamespace, Dictionary<string, string> filingIndicators, HashSet<string> typedDomains, ModuleDefinition moduleDefinition)
         => ToXbrlXml(this, tableDefinitions, dimensionDomain, typedDomainNamespace, filingIndicators, typedDomains, moduleDefinition);
 
-        public static Instance ToXbrlXml(
+        public static Xml.Report ToXbrlXml(
             Report report,
             Dictionary<string, TableDefinition> tableDefinitions,
             Dictionary<string, string> dimensionDomain,
@@ -523,29 +523,29 @@
             HashSet<string> typedDomains,
             ModuleDefinition moduleDefinition)
         {
-            var instance = new Instance
+            var xmlreport = new Xml.Report
             {
-                SchemaReference = new SchemaReference("simple", moduleDefinition.DocumentInfo.taxonomy.FirstOrDefault())
+                SchemaReference = new SchemaReference("simple", moduleDefinition.DocumentInfo.Taxonomy.FirstOrDefault())
             };
 
-            foreach (var ns in moduleDefinition.DocumentInfo.namespaces)
-                instance.Namespaces.AddNamespace(ns.Key, ns.Value);
+            foreach (var ns in moduleDefinition.DocumentInfo.Namespaces)
+                xmlreport.Namespaces.AddNamespace(ns.Key, ns.Value);
 
             var idParts = report.Parameters["entityID"].Split(':');
-            var idNs = instance.Namespaces.LookupNamespace(idParts.First());
-            instance.Entity = new Entity(idNs, idParts.Last());
+            var idNs = xmlreport.Namespaces.LookupNamespace(idParts.First());
+            xmlreport.Entity = new Entity(idNs, idParts.Last());
 
-            instance.Period = new Period(DateTime.ParseExact(report.Parameters["refPeriod"], "yyyy-MM-dd", CultureInfo.InvariantCulture));
+            xmlreport.Period = new Period(DateTime.ParseExact(report.Parameters["refPeriod"], "yyyy-MM-dd", CultureInfo.InvariantCulture));
 
             var baseCurrency = report.Parameters["baseCurrency"];
             var baseCurrencyRef = $"u{baseCurrency.Split(':').Last()}";
-            instance.Units.Add(baseCurrencyRef, $"iso4217:{baseCurrency}");
-            instance.Units.Add("uPURE", "xbrli:pure");
+            xmlreport.Units.Add(baseCurrencyRef, $"iso4217:{baseCurrency}");
+            xmlreport.Units.Add("uPURE", "xbrli:pure");
 
-            instance.SetTypedDomainNamespace(typedDomainNamespace.Key, typedDomainNamespace.Value);
+            xmlreport.SetTypedDomainNamespace(typedDomainNamespace.Key, typedDomainNamespace.Value);
 
             foreach (var fi in report.FilingIndicators)
-                instance.AddFilingIndicator(fi.Key, fi.Value);
+                xmlreport.AddFilingIndicator(fi.Key, fi.Value);
 
             var filed =
                 report.
@@ -569,14 +569,14 @@
             {
                 // var sw = Stopwatch.StartNew();
                 var tableDefinition = tableDefinitions[table.Key];
-                AddFactsForTable(report.Parameters, tableDefinition, dimensionDomain, typedDomainNamespace, typedDomains, instance, baseCurrencyRef, table, usedContexts, usedDatapoints);
+                AddFactsForTable(report.Parameters, tableDefinition, dimensionDomain, typedDomainNamespace, typedDomains, xmlreport, baseCurrencyRef, table, usedContexts, usedDatapoints);
                 // sw.Stop();
                 // Console.WriteLine($"AddFactsForTable {table.Key} {sw.Elapsed}");
             }
 
-            instance.RemoveUnusedUnits();
+            xmlreport.RemoveUnusedUnits();
 
-            return instance;
+            return xmlreport;
 
         }
     }

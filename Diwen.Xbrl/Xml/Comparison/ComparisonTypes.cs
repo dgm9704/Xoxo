@@ -4,7 +4,7 @@
 //  Author:
 //       John Nordberg <john.nordberg@gmail.com>
 //
-//  Copyright (c) 2015-2020 John Nordberg
+//  Copyright (c) 2015-2024 John Nordberg
 //
 //  This program is free software: you can redistribute it and/or modify
 //  it under the terms of the GNU Lesser General Public License as published by
@@ -19,31 +19,25 @@
 //  You should have received a copy of the GNU Lesser General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-namespace Diwen.Xbrl.Comparison
+namespace Diwen.Xbrl.Xml.Comparison
 {
-	using System;
-	using System.Collections.Generic;
-	using System.Collections.ObjectModel;
+    using System;
 
-	public class ComparisonReport
-	{
-		public bool Result { get; }
-
-		public ReadOnlyCollection<string> Messages { get; }
-
-		internal ComparisonReport(bool result, IList<string> messages)
-		{
-			Result = result;
-			Messages = new ReadOnlyCollection<string>(messages);
-		}
-
-		public override string ToString()
-		{
-			return $"result: {Result}" + (
-				Result
-				? string.Empty
-				: Environment.NewLine + string.Join(Environment.NewLine, Messages));
-		}
-	}
+    [Flags, Serializable]
+    public enum ComparisonTypes
+    {
+        None = 0,
+        Basic = 1 << 0,
+        Contexts = 1 << 1,
+        Facts = 1 << 2,
+        DomainNamespaces = 1 << 3,
+        Units = 1 << 4,
+        Entity = 1 << 5,
+        Period = 1 << 6,
+        FilingIndicators = 1 << 7,
+        TaxonomyVersion = 1 << 8,
+        SchemaReference = 1 << 9,
+        All = 0xFFFFFFF
+    }
 }
 

@@ -4,7 +4,7 @@
 //  Author:
 //       John Nordberg <john.nordberg@gmail.com>
 //
-//  Copyright (c) 2015-2020 John Nordberg
+//  Copyright (c) 2015-2024 John Nordberg
 //
 //  This program is free software: you can redistribute it and/or modify
 //  it under the terms of the GNU Lesser General Public License as published by
@@ -21,15 +21,15 @@
 
 namespace Diwen.Xbrl.Inline
 {
-	public class EsefResult
-	{
-		public string Conclusion { get; }
-		public string[] Errors { get; }
+    public class EsefResult
+    {
+        public string Conclusion { get; }
+        public string[] Errors { get; }
 
-		public EsefResult(string conclusion, string[] errors)
-		{
-			this.Conclusion = conclusion;
-			this.Errors = errors;
-		}
-	}
+        public EsefResult(string conclusion, string[] errors)
+        {
+            this.Conclusion = conclusion;
+            this.Errors = errors;
+        }
+    }
 }

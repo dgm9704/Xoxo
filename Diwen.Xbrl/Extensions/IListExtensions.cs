@@ -4,7 +4,7 @@
 //  Author:
 //       John Nordberg <john.nordberg@gmail.com>
 //
-//  Copyright (c) 2015-2020 John Nordberg
+//  Copyright (c) 2015-2024 John Nordberg
 //
 //  This program is free software: you can redistribute it and/or modify
 //  it under the terms of the GNU Lesser General Public License as published by
@@ -24,6 +24,7 @@ namespace Diwen.Xbrl.Extensions
     using System;
     using System.Collections.Generic;
     using System.Linq;
+    using Diwen.Xbrl.Xml;
 
     public static class ListExtensions
     {
@@ -73,7 +74,7 @@ namespace Diwen.Xbrl.Extensions
         }
 
         internal static Tuple<List<T>, List<T>> ContentCompareReport<T>(this IList<T> left, IList<T> right)
-        => new Tuple<List<T>, List<T>>(
+        => new(
                 left.AsParallel().Except(right.AsParallel()).ToList(),
                 right.AsParallel().Except(left.AsParallel()).ToList());
 

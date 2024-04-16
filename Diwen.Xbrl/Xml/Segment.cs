@@ -2,9 +2,9 @@
 //  This file is part of Diwen.Xbrl.
 //
 //  Author:
-//       Asro Ltd <service@kwikpay.com.au>
+//       John Nordberg <john.nordberg@gmail.com>
 //
-//  Copyright (c) 2016 Asro Ltd
+//  Copyright (c) 2015-2024 John Nordberg
 //
 //  This program is free software: you can redistribute it and/or modify
 //  it under the terms of the GNU Lesser General Public License as published by
@@ -19,7 +19,7 @@
 //  You should have received a copy of the GNU Lesser General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-namespace Diwen.Xbrl
+namespace Diwen.Xbrl.Xml
 {
     using System;
     using System.Collections.Generic;
@@ -30,17 +30,17 @@ namespace Diwen.Xbrl
     [XmlRoot(ElementName = "segment", Namespace = "http://www.xbrl.org/2003/instance")]
     public class Segment : IEquatable<Segment>
     {
-        Instance instance;
+        Report report;
 
         [XmlIgnore]
-        public Instance Instance
+        public Report Report
         {
-            get => instance;
+            get => report;
             set
             {
-                instance = value;
-                ExplicitMembers.Instance = value;
-                TypedMembers.Instance = value;
+                report = value;
+                ExplicitMembers.Report = value;
+                TypedMembers.Report = value;
             }
         }
 
@@ -54,14 +54,14 @@ namespace Diwen.Xbrl
 
         public Segment()
         {
-            ExplicitMembers = new ExplicitMemberCollection();
-            TypedMembers = new TypedMemberCollection();
+            ExplicitMembers = [];
+            TypedMembers = [];
         }
 
-        public Segment(Instance instance)
+        public Segment(Report report)
         {
-            ExplicitMembers = new ExplicitMemberCollection(instance);
-            TypedMembers = new TypedMemberCollection(instance);
+            ExplicitMembers = new ExplicitMemberCollection(report);
+            TypedMembers = new TypedMemberCollection(report);
         }
 
         public override string ToString()
@@ -94,7 +94,7 @@ namespace Diwen.Xbrl
 
         public bool Equals(Segment other)
         => other != null
-        	&& ExplicitMembers.Equals(other.ExplicitMembers)
+            && ExplicitMembers.Equals(other.ExplicitMembers)
             && TypedMembers.Equals(other.TypedMembers);
 
         #endregion

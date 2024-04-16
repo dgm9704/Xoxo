@@ -1,7 +1,7 @@
-using System.Text.Json.Serialization;
-
 namespace Diwen.Xbrl.Csv.Taxonomy
 {
+    using System.Text.Json.Serialization;
+
     public class Table
     {
 
@@ -13,6 +13,6 @@ namespace Diwen.Xbrl.Csv.Taxonomy
 
         [JsonPropertyName("url")]
         public string Url { get; set; }
-        
+
     }
 }

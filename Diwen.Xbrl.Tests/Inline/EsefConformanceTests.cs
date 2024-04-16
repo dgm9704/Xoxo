@@ -4,7 +4,7 @@
 // //  Author:
 // //       John Nordberg <john.nordberg@gmail.com>
 // //
-// //  Copyright (c) 2015-2020 John Nordberg
+// //  Copyright (c) 2015-2024 John Nordberg
 // //
 // //  Free Public License 1.0.0
 // //  Permission to use, copy, modify, and/or distribute this software for any purpose with or without fee is hereby granted.
@@ -13,7 +13,7 @@
 // //  OR ANY DAMAGES WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN AN ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS 
 // //  ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 
-// namespace Diwen.Xbrl.Tests
+// namespace Diwen.Xbrl.Tests.Inline
 // {
 //     using System;
 //     using System.Collections.Generic;

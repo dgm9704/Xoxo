@@ -1,5 +1,5 @@
-//
-//  This file is part of Diwen.Xbrl.
+﻿//
+//  This file is part of Diwen.xbrl.
 //
 //  Author:
 //       John Nordberg <john.nordberg@gmail.com>
@@ -18,16 +18,17 @@
 //
 //  You should have received a copy of the GNU Lesser General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
-namespace Diwen.Xbrl.Inline
+
+namespace Diwen.Xbrl.Xml
 {
-    public readonly struct ReportFile
+    using System;
+
+    [Flags]
+    public enum ReportOptions
     {
-        public string Filename { get; }
-        public object Content { get; }
-        public ReportFile(string filename, object content)
-        {
-            Filename = filename;
-            Content = content;
-        }
+        None = 0,
+        RemoveUnusedObjects = 1 << 0,
+        CollapseDuplicateContexts = 1 << 1,
+        RemoveDuplicateFacts = 1 << 2,
     }
 }

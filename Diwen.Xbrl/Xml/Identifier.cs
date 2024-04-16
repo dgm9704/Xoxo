@@ -4,7 +4,7 @@
 //  Author:
 //       John Nordberg <john.nordberg@gmail.com>
 //
-//  Copyright (c) 2015-2020 John Nordberg
+//  Copyright (c) 2015-2024 John Nordberg
 //
 //  This program is free software: you can redistribute it and/or modify
 //  it under the terms of the GNU Lesser General Public License as published by
@@ -19,47 +19,47 @@
 //  You should have received a copy of the GNU Lesser General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-namespace Diwen.Xbrl
+namespace Diwen.Xbrl.Xml
 {
-	using System;
-	using System.Xml.Serialization;
+    using System;
+    using System.Xml.Serialization;
 
-	[Serializable]
-	public class Identifier : IEquatable<Identifier>
-	{
-		[XmlAttribute("scheme", Namespace = "http://www.xbrl.org/2003/instance")]
-		public string Scheme { get; set; }
+    [Serializable]
+    public class Identifier : IEquatable<Identifier>
+    {
+        [XmlAttribute("scheme", Namespace = "http://www.xbrl.org/2003/instance")]
+        public string Scheme { get; set; }
 
-		[XmlText]
-		public string Value { get; set; }
+        [XmlText]
+        public string Value { get; set; }
 
-		public Identifier()
-		{
-		}
+        public Identifier()
+        {
+        }
 
-		public Identifier(string scheme, string value)
-			: this()
-		{
-			Scheme = scheme;
-			Value = value;
-		}
+        public Identifier(string scheme, string value)
+            : this()
+        {
+            Scheme = scheme;
+            Value = value;
+        }
 
-		public override string ToString()
-		=> $"{Scheme}:{Value}";
+        public override string ToString()
+        => $"{Scheme}:{Value}";
 
-		#region IEquatable implementation
+        #region IEquatable implementation
 
-		public bool Equals(Identifier other)
-		=> other != null
-			&& ((Scheme == null && other.Scheme == null) || Scheme.Equals(other.Scheme, StringComparison.Ordinal))
-			&& ((Value == null && other.Value == null) || Value.Equals(other.Value, StringComparison.Ordinal));
+        public bool Equals(Identifier other)
+        => other != null
+            && ((Scheme == null && other.Scheme == null) || Scheme.Equals(other.Scheme, StringComparison.Ordinal))
+            && ((Value == null && other.Value == null) || Value.Equals(other.Value, StringComparison.Ordinal));
 
-		public override int GetHashCode()
-		=> Scheme == null ? 0 : Scheme.GetHashCode() + 7 * (Value == null ? 0 : Value.GetHashCode());
+        public override int GetHashCode()
+        => Scheme == null ? 0 : Scheme.GetHashCode() + 7 * (Value == null ? 0 : Value.GetHashCode());
 
-		#endregion
+        #endregion
 
-		public override bool Equals(object obj)
-		=> Equals(obj as Identifier);
-	}
+        public override bool Equals(object obj)
+        => Equals(obj as Identifier);
+    }
 }

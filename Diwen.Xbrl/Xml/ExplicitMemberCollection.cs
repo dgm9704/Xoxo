@@ -4,7 +4,7 @@
 //  Author:
 //       John Nordberg <john.nordberg@gmail.com>
 //
-//  Copyright (c) 2015-2020 John Nordberg
+//  Copyright (c) 2015-2024 John Nordberg
 //
 //  This program is free software: you can redistribute it and/or modify
 //  it under the terms of the GNU Lesser General Public License as published by
@@ -19,7 +19,7 @@
 //  You should have received a copy of the GNU Lesser General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-namespace Diwen.Xbrl
+namespace Diwen.Xbrl.Xml
 {
     using System;
     using System.Collections.Generic;
@@ -31,38 +31,38 @@ namespace Diwen.Xbrl
 
     public class ExplicitMemberCollection : Collection<ExplicitMember>, IEquatable<IList<ExplicitMember>>
     {
-        Instance instanceField;
+        Report reportField;
 
         [XmlIgnore]
-        public Instance Instance
+        public Report Report
         {
-            get { return instanceField; }
+            get { return reportField; }
             set
             {
-                instanceField = value;
+                reportField = value;
 
                 for (int i = 0; i < this.Count; i++)
                 {
                     var item = this[i];
 
-                    item.Instance = value;
+                    item.Report = value;
 
                     if (string.IsNullOrEmpty(item.Dimension.Namespace))
                     {
-                        var dimensionNs = instanceField.DimensionNamespace;
+                        var dimensionNs = reportField.DimensionNamespace;
                         item.Dimension = new XmlQualifiedName(item.Dimension.LocalName(), dimensionNs);
                     }
 
                     if (string.IsNullOrEmpty(item.Value.Namespace))
                     {
-                        string valNs = Instance.Namespaces.LookupNamespace(item.Value.Prefix());
+                        string valNs = Report.Namespaces.LookupNamespace(item.Value.Prefix());
 
                         if (!string.IsNullOrEmpty(valNs))
                         {
                             if (item.Value.Namespace != valNs)
                                 item.Value = new XmlQualifiedName(item.Value.LocalName(), valNs);
                         }
-                        else if (Instance.CheckExplicitMemberDomainExists)
+                        else if (Report.CheckExplicitMemberDomainExists)
                         {
                             throw new InvalidOperationException($"No namespace declared for domain '{item.Value.Prefix()}'");
                         }
@@ -76,10 +76,10 @@ namespace Diwen.Xbrl
         {
         }
 
-        public ExplicitMemberCollection(Instance instance)
+        public ExplicitMemberCollection(Report report)
             : this()
         {
-            Instance = instance;
+            Report = report;
         }
 
 
@@ -94,13 +94,13 @@ namespace Diwen.Xbrl
             XmlQualifiedName dim;
             XmlQualifiedName val;
 
-            if (Instance != null)
+            if (Report != null)
             {
-                string dimNs = Instance.DimensionNamespace;
+                string dimNs = Report.DimensionNamespace;
                 var valPrefix = value.Substring(0, value.IndexOf(':'));
-                var valNs = Instance.Namespaces.LookupNamespace(valPrefix);
+                var valNs = Report.Namespaces.LookupNamespace(valPrefix);
                 value = value.Substring(value.IndexOf(':') + 1);
-                if (Instance.CheckExplicitMemberDomainExists)
+                if (Report.CheckExplicitMemberDomainExists)
                     if (string.IsNullOrEmpty(valNs))
                         throw new InvalidOperationException($"No namespace declared for domain '{valPrefix}'");
 

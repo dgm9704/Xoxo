@@ -4,7 +4,7 @@
 //  Author:
 //       John Nordberg <john.nordberg@gmail.com>
 //
-//  Copyright (c) 2015-2020 John Nordberg
+//  Copyright (c) 2015-2024 John Nordberg
 //
 //  This program is free software: you can redistribute it and/or modify
 //  it under the terms of the GNU Lesser General Public License as published by
@@ -19,99 +19,96 @@
 //  You should have received a copy of the GNU Lesser General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-namespace Diwen.Xbrl
+namespace Diwen.Xbrl.Xml
 {
-	using System;
-	using System.Collections.Generic;
-	using System.Collections.ObjectModel;
-	using System.Globalization;
+    using System;
+    using System.Collections.Generic;
+    using System.Collections.ObjectModel;
+    using System.Globalization;
     using Diwen.Xbrl.Extensions;
 
     public class ContextCollection : KeyedCollection<string, Context>, IEquatable<IList<Context>>
-	{
-		static IFormatProvider ic = CultureInfo.InvariantCulture;
+    {
+        static readonly IFormatProvider ic = CultureInfo.InvariantCulture;
 
-		Instance Instance;
+        Report report;
 
-		public string IdFormat { get; set; }
+        public string IdFormat { get; set; }
 
-		public ContextCollection()
-		{
-			IdFormat = "A{0}";
-		}
+        public ContextCollection()
+        {
+            IdFormat = "A{0}";
+        }
 
-		public ContextCollection(Instance instance)
-			: this()
-		{
-			Instance = instance;
-		}
+        public ContextCollection(Report report)
+            : this()
+        {
+            this.report = report;
+        }
 
-		public new Context Add(Context context)
-		{
-			if (context == null)
-				throw new ArgumentNullException(nameof(context));
+        public new Context Add(Context context)
+        {
+            ArgumentNullException.ThrowIfNull(context);
 
-			if (context.Entity == null)
-				context.Entity = Instance.Entity;
+            if (context.Entity == null)
+                context.Entity = report.Entity;
 
-			if (context.Period == null)
-				context.Period = Instance.Period;
+            if (context.Period == null)
+                context.Period = report.Period;
 
-			if (string.IsNullOrEmpty(context.Id))
-			{
-				var exists = false;
-				foreach (var oldContext in this)
-				{
-					if (context.Equals(oldContext))
-					{
-						exists = true;
-						context = oldContext;
-						break;
-					}
-				}
+            if (string.IsNullOrEmpty(context.Id))
+            {
+                var exists = false;
+                foreach (var oldContext in this)
+                {
+                    if (context.Equals(oldContext))
+                    {
+                        exists = true;
+                        context = oldContext;
+                        break;
+                    }
+                }
 
-				if (!exists)
-				{
-					context.Id = NextId();
-					base.Add(context);
-				}
-			}
-			else
-			{
-				base.Add(context);
-			}
+                if (!exists)
+                {
+                    context.Id = NextId();
+                    base.Add(context);
+                }
+            }
+            else
+            {
+                base.Add(context);
+            }
 
-			return context;
-		}
+            return context;
+        }
 
-		public string NextId()
-		{
-			var counter = Count;
-			string id;
-			do
-				id = string.Format(ic, IdFormat, counter++);
-			while (Contains(id));
+        public string NextId()
+        {
+            var counter = Count;
+            string id;
+            do
+                id = string.Format(ic, IdFormat, counter++);
+            while (Contains(id));
 
-			return id;
-		}
+            return id;
+        }
 
-		public void AddRange(IEnumerable<Context> values)
-		{
-			if (values != null)
-				foreach (var item in values)
-					Add(item);
-		}
+        public void AddRange(IEnumerable<Context> values)
+        {
+            if (values != null)
+                foreach (var item in values)
+                    Add(item);
+        }
 
-		protected override string GetKeyForItem(Context item)
-		=> item != null
-				? item.Id
-				: null;
+        protected override string GetKeyForItem(Context item)
+        => item?.Id;
 
-		#region IEquatable implementation
+        #region IEquatable implementation
 
-		public bool Equals(IList<Context> other)
-		=> this.ContentCompare(other);
+        public bool Equals(IList<Context> other)
+        => this.ContentCompare(other);
 
-		#endregion
-	}
+        #endregion
+    }
 }

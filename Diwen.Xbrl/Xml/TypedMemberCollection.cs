@@ -4,7 +4,7 @@
 //  Author:
 //       John Nordberg <john.nordberg@gmail.com>
 //
-//  Copyright (c) 2015-2020 John Nordberg
+//  Copyright (c) 2015-2024 John Nordberg
 //
 //  This program is free software: you can redistribute it and/or modify
 //  it under the terms of the GNU Lesser General Public License as published by
@@ -19,107 +19,106 @@
 //  You should have received a copy of the GNU Lesser General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-namespace Diwen.Xbrl
+namespace Diwen.Xbrl.Xml
 {
-	using System;
-	using System.Collections.Generic;
-	using System.Collections.ObjectModel;
-	using System.Linq;
-	using System.Xml;
-	using System.Xml.Serialization;
+    using System;
+    using System.Collections.Generic;
+    using System.Collections.ObjectModel;
+    using System.Linq;
+    using System.Xml;
+    using System.Xml.Serialization;
     using Diwen.Xbrl.Extensions;
 
     public class TypedMemberCollection : Collection<TypedMember>, IEquatable<IList<TypedMember>>
-	{
-		Instance instanceField;
+    {
+        Report reportField;
 
-		[XmlIgnore]
-		public Instance Instance
-		{
-			get { return instanceField; }
-			set
-			{
-				if (value == null)
-					throw new ArgumentNullException();
+        [XmlIgnore]
+        public Report Report
+        {
+            get { return reportField; }
+            set
+            {
+                ArgumentNullException.ThrowIfNull(value);
 
-				instanceField = value;
-				var dimNs = instanceField.DimensionNamespace;
-				var dimPrefix = instanceField.Namespaces.LookupPrefix(dimNs);
-				var domNs = instanceField.TypedDomainNamespace;
-				var domprefix = instanceField.Namespaces.LookupPrefix(domNs);
+                reportField = value;
+                var dimNs = reportField.DimensionNamespace;
+                var dimPrefix = reportField.Namespaces.LookupPrefix(dimNs);
+                var domNs = reportField.TypedDomainNamespace;
+                var domprefix = reportField.Namespaces.LookupPrefix(domNs);
 
-				for (int i = 0; i < this.Count; i++)
-				{
-					var item = this[i];
-					var dirty = false;
-					item.Instance = value;
-					if (item.Dimension.Namespace != instanceField.DimensionNamespace)
-					{
-						item.Dimension = new XmlQualifiedName($"{dimPrefix}:{item.Dimension.Name}", dimNs);
-						dirty = true;
-					}
+                for (int i = 0; i < this.Count; i++)
+                {
+                    var item = this[i];
+                    var dirty = false;
+                    item.Report = value;
+                    if (item.Dimension.Namespace != reportField.DimensionNamespace)
+                    {
+                        item.Dimension = new XmlQualifiedName($"{dimPrefix}:{item.Dimension.Name}", dimNs);
+                        dirty = true;
+                    }
 
-					if (item.Domain.Namespace != instanceField.TypedDomainNamespace)
-					{
-						item.Domain = new XmlQualifiedName($"{domprefix}:{item.Domain.Name}", domNs);
-						dirty = true;
-					}
+                    if (item.Domain.Namespace != reportField.TypedDomainNamespace)
+                    {
+                        item.Domain = new XmlQualifiedName($"{domprefix}:{item.Domain.Name}", domNs);
+                        dirty = true;
+                    }
 
-					if (dirty)
-						this[i] = item;
-				}
-			}
-		}
+                    if (dirty)
+                        this[i] = item;
+                }
+            }
+        }
 
-		public TypedMemberCollection()
-		{
-		}
+        public TypedMemberCollection()
+        {
+        }
 
-		public TypedMemberCollection(Instance instance)
-			: this()
-		{
-			Instance = instance;
-		}
+        public TypedMemberCollection(Report report)
+            : this()
+        {
+            Report = report;
+        }
 
-		public TypedMember Add(string dimension, string domain, string value)
-		{
+        public TypedMember Add(string dimension, string domain, string value)
+        {
 
-			XmlQualifiedName dim;
-			XmlQualifiedName dom;
-			if (Instance != null)
-			{
-				dim = new XmlQualifiedName(dimension, Instance.DimensionNamespace);
-				dom = new XmlQualifiedName(domain, Instance.TypedDomainNamespace);
-			}
-			else
-			{
-				dim = new XmlQualifiedName(dimension);
-				dom = new XmlQualifiedName(domain);
-			}
+            XmlQualifiedName dim;
+            XmlQualifiedName dom;
+            if (Report != null)
+            {
+                dim = new XmlQualifiedName(dimension, Report.DimensionNamespace);
+                dom = new XmlQualifiedName(domain, Report.TypedDomainNamespace);
+            }
+            else
+            {
+                dim = new XmlQualifiedName(dimension);
+                dom = new XmlQualifiedName(domain);
+            }
 
-			var typedMember = new TypedMember(dim, dom, value);
-			Add(typedMember);
-			return typedMember;
-		}
+            var typedMember = new TypedMember(dim, dom, value);
+            Add(typedMember);
+            return typedMember;
+        }
 
-		#region IEquatable implementation
+        #region IEquatable implementation
 
-		public bool Equals(IList<TypedMember> other)
-		=> this.ContentCompare(other);
+        public bool Equals(IList<TypedMember> other)
+        => this.ContentCompare(other);
 
-		#endregion
+        #endregion
 
-		int hashCode = -1;
+        int hashCode = -1;
 
-		public override int GetHashCode()
-		{
-			if (hashCode == -1)
-				hashCode = this.Select(m => m.Value ?? "").
-					OrderBy(m => m).
-					Join("").
-					GetHashCode();
+        public override int GetHashCode()
+        {
+            if (hashCode == -1)
+                hashCode = this.Select(m => m.Value ?? "").
+                    OrderBy(m => m).
+                    Join("").
+                    GetHashCode();
 
-			return hashCode;
-		}
-	}
+            return hashCode;
+        }
+    }
 }

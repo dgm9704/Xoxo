@@ -4,7 +4,7 @@
 //  Author:
 //       John Nordberg <john.nordberg@gmail.com>
 //
-//  Copyright (c) 2015-2020 John Nordberg
+//  Copyright (c) 2015-2024 John Nordberg
 //
 //  This program is free software: you can redistribute it and/or modify
 //  it under the terms of the GNU Lesser General Public License as published by
@@ -21,15 +21,15 @@
 
 namespace Diwen.Xbrl.Extensions
 {
-	using System.Collections.Generic;
-	using System.Xml;
+    using System.Collections.Generic;
+    using System.Xml;
 
-	public static class XmlElementExtensions
-	{
-		public static void AppendChildren(this XmlElement element, IEnumerable<XmlElement> children)
-		{
-			foreach (var item in children)
-				element.AppendChild(item);
-		}
-	}
+    public static class XmlElementExtensions
+    {
+        public static void AppendChildren(this XmlElement element, IEnumerable<XmlElement> children)
+        {
+            foreach (var item in children)
+                element.AppendChild(item);
+        }
+    }
 }

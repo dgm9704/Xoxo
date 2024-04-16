@@ -1,10 +1,10 @@
 ﻿//
-//  ScenarioTests.cs
+//  FactTests.cs
 //
 //  Author:
 //       John Nordberg <john.nordberg@gmail.com>
 //
-//  Copyright (c) 2015-2020 John Nordberg
+//  Copyright (c) 2015-2024 John Nordberg
 //
 //  Free Public License 1.0.0
 //  Permission to use, copy, modify, and/or distribute this software for any purpose with or without fee is hereby granted.
@@ -13,28 +13,18 @@
 //  OR ANY DAMAGES WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN AN ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS 
 //  ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 
-namespace Diwen.Xbrl.Tests
+namespace Diwen.Xbrl.Tests.Xml
 {
-	using System;
-	using System.IO;
-	using Xunit;
-	using Diwen.Xbrl;
-	using Diwen.Xbrl.Comparison;
+    using Diwen.Xbrl.Xml;
+    using Xunit;
 
-	public static class ScenarioTests
-	{
-		[Fact]
-		public static void CompareScenarioMemberOrderDifferent()
-		{
-			var left = Instance.FromFile(Path.Combine("data", "memberorder0.xbrl"));
-			var right = Instance.FromFile(Path.Combine("data", "memberorder1.xbrl"));
-
-			Assert.Equal(left, right);
-
-			var report = InstanceComparer.Report(left, right);
-
-			Assert.True(report.Result, string.Join(Environment.NewLine, report.Messages));
-
-		}
-	}
+    public static class FactTests
+    {
+        [Fact]
+        public static void FactWithNullPropertiesToString()
+        {
+            var fact = new Fact();
+            Assert.NotEmpty(fact.ToString());
+        }
+    }
 }

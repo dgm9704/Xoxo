@@ -4,7 +4,7 @@
 //  Author:
 //       John Nordberg <john.nordberg@gmail.com>
 //
-//  Copyright (c) 2015-2020 John Nordberg
+//  Copyright (c) 2015-2024 John Nordberg
 //
 //  This program is free software: you can redistribute it and/or modify
 //  it under the terms of the GNU Lesser General Public License as published by
@@ -19,49 +19,49 @@
 //  You should have received a copy of the GNU Lesser General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-namespace Diwen.Xbrl
+namespace Diwen.Xbrl.Xml
 {
-	using System;
-	using System.Collections.Generic;
-	using System.Collections.ObjectModel;
-	using System.Linq;
+    using System;
+    using System.Collections.Generic;
+    using System.Collections.ObjectModel;
+    using System.Linq;
     using Diwen.Xbrl.Extensions;
 
     public class FilingIndicatorCollection : Collection<FilingIndicator>, IEquatable<IList<FilingIndicator>>
-	{
-		public FilingIndicator Add(Context context, string value)
-		=> Add(context, value, true);
+    {
+        public FilingIndicator Add(Context context, string value)
+        => Add(context, value, true);
 
-		public FilingIndicator Add(Context context, string value, bool filed)
-		{
-			var filingIndicator = new FilingIndicator(context, value, filed);
-			Add(filingIndicator);
-			return filingIndicator;
-		}
+        public FilingIndicator Add(Context context, string value, bool filed)
+        {
+            var filingIndicator = new FilingIndicator(context, value, filed);
+            Add(filingIndicator);
+            return filingIndicator;
+        }
 
-		#region IEquatable implementation
+        #region IEquatable implementation
 
-		public bool Equals(IList<FilingIndicator> other)
-		{
-			bool result;
+        public bool Equals(IList<FilingIndicator> other)
+        {
+            bool result;
 
-			if (this == null && other == null)
-				// if both are null then consider equal
-				result = true;
-			else if (this == null ^ other == null)
-				// if just one is null then not equal
-				result = false;
-			else
-				result = this.
-					Where(i => i.Filed).
-					ToList().
-					ContentCompare(other.
-						Where(i => i.Filed).
-						ToList());
+            if (this == null && other == null)
+                // if both are null then consider equal
+                result = true;
+            else if (this == null ^ other == null)
+                // if just one is null then not equal
+                result = false;
+            else
+                result = this.
+                    Where(i => i.Filed).
+                    ToList().
+                    ContentCompare(other.
+                        Where(i => i.Filed).
+                        ToList());
 
-			return result;
-		}
+            return result;
+        }
 
-		#endregion
-	}
+        #endregion
+    }
 }

@@ -4,7 +4,7 @@
 //  Author:
 //       John Nordberg <john.nordberg@gmail.com>
 //
-//  Copyright (c) 2015-2020 John Nordberg
+//  Copyright (c) 2015-2024 John Nordberg
 //
 //  This program is free software: you can redistribute it and/or modify
 //  it under the terms of the GNU Lesser General Public License as published by
@@ -21,13 +21,13 @@
 
 namespace Diwen.Xbrl.Extensions
 {
-	using System.Collections.Generic;
+    using System.Collections.Generic;
 
-	public static class DictionaryExtensions
-	{
-		public static TValue GetValueOrDefault<TKey, TValue>(this Dictionary<TKey, TValue> dictionary, TKey key, TValue defaultValue)
-		=> dictionary.ContainsKey(key)
-			 ? dictionary[key]
-			 : defaultValue;
-	}
+    public static class DictionaryExtensions
+    {
+        public static TValue GetValueOrDefault<TKey, TValue>(this Dictionary<TKey, TValue> dictionary, TKey key, TValue defaultValue)
+        => dictionary.ContainsKey(key)
+             ? dictionary[key]
+             : defaultValue;
+    }
 }
