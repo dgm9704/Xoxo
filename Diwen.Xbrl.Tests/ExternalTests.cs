@@ -4,7 +4,7 @@
 //  Author:
 //       John Nordberg <john.nordberg@gmail.com>
 //
-//  Copyright (c) 2015-2020 John Nordberg
+//  Copyright (c) 2015-2024 John Nordberg
 //
 //  Free Public License 1.0.0
 //  Permission to use, copy, modify, and/or distribute this software for any purpose with or without fee is hereby granted.
@@ -37,7 +37,7 @@ namespace Diwen.Xbrl.Tests
         [Fact]
         public void EBA()
         {
-            var folder = "eba";
+            var folder = "data/eba";
             foreach (var zip in Directory.GetFiles(folder, "*.zip"))
                 TestZippedFiles(zip, folder);
 
@@ -46,7 +46,7 @@ namespace Diwen.Xbrl.Tests
         [Fact]
         public void EIOPA()
         {
-            var folder = "eiopa";
+            var folder = "data/eiopa";
             foreach (var zip in Directory.GetFiles(folder, "*.zip"))
                 TestZippedFiles(zip, folder);
 

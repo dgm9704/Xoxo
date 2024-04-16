@@ -4,7 +4,7 @@
 //  Author:
 //       John Nordberg <john.nordberg@gmail.com>
 //
-//  Copyright (c) 2015-2020 John Nordberg
+//  Copyright (c) 2015-2024 John Nordberg
 //
 //  This program is free software: you can redistribute it and/or modify
 //  it under the terms of the GNU Lesser General Public License as published by
@@ -21,41 +21,41 @@
 
 namespace Diwen.Xbrl.Extensions
 {
-	using System;
-	using System.Xml;
+    using System;
+    using System.Xml;
 
-	public static class XmlQualifiedNameExtensions
-	{
-		public static string LocalName(this XmlQualifiedName value)
-		{
-			if (value == null)
-				throw new ArgumentNullException(nameof(value));
+    public static class XmlQualifiedNameExtensions
+    {
+        public static string LocalName(this XmlQualifiedName value)
+        {
+            if (value == null)
+                throw new ArgumentNullException(nameof(value));
 
-			var result = string.Empty;
+            var result = string.Empty;
 
-			string name = value.Name;
-			if (!string.IsNullOrEmpty(name))
-				result = name.Substring(name.IndexOf(':') + 1);
+            string name = value.Name;
+            if (!string.IsNullOrEmpty(name))
+                result = name.Substring(name.IndexOf(':') + 1);
 
-			return result;
-		}
+            return result;
+        }
 
-		public static string Prefix(this XmlQualifiedName value)
-		{
-			if (value == null)
-				throw new ArgumentNullException(nameof(value));
+        public static string Prefix(this XmlQualifiedName value)
+        {
+            if (value == null)
+                throw new ArgumentNullException(nameof(value));
 
-			var result = string.Empty;
+            var result = string.Empty;
 
-			string name = value.Name;
-			if (!string.IsNullOrEmpty(name))
-			{
-				var idx = name.IndexOf(':');
-				if (idx != -1)
-					result = name.Substring(0, idx);
-			}
+            string name = value.Name;
+            if (!string.IsNullOrEmpty(name))
+            {
+                var idx = name.IndexOf(':');
+                if (idx != -1)
+                    result = name.Substring(0, idx);
+            }
 
-			return result;
-		}
-	}
+            return result;
+        }
+    }
 }

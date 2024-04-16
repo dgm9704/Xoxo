@@ -12,7 +12,7 @@ namespace Diwen.Xbrl.Tests
         [Fact]
         public static void ReadGLEIFAnnualReport()
         {
-            var reportPackage = Path.Combine("esma", "gleif-19ar.zip");
+            var reportPackage = Path.Combine("data/esma", "gleif-19ar.zip");
             XDocument reportDocument;
             using (var reportStream = File.OpenRead(reportPackage))
             using (var reportArchive = new ZipArchive(reportStream, ZipArchiveMode.Read))

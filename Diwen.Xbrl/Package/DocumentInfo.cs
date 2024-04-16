@@ -1,16 +1,32 @@
 namespace Diwen.Xbrl.Package
 {
     using System.Collections.Generic;
+    using System.Text.Json.Serialization;
 
     public class DocumentInfo
     {
-        public string documentType { get; set; }
-        public List<string> extends { get; set; }
-        public Dictionary<string, string> features { get; set; }
-        public Dictionary<string, bool> final { get; set; }
-        public Dictionary<string, string> linkGroups { get; set; }
-        public Dictionary<string, string> linkTypes { get; set; }
-        public Dictionary<string, string> namespaces { get; set; }
-        public List<string> taxonomy { get; set; }
+        [JsonPropertyName("documentType")]
+        public string DocumentType { get; set; }
+
+        [JsonPropertyName("extends")]
+        public List<string> Extends { get; set; }
+
+        [JsonPropertyName("features")]
+        public Dictionary<string, string> Features { get; set; }
+
+        [JsonPropertyName("final")]
+        public Dictionary<string, bool> Final { get; set; }
+
+        [JsonPropertyName("linkGroups")]
+        public Dictionary<string, string> LinkGroups { get; set; }
+
+        [JsonPropertyName("linkTypes")]
+        public Dictionary<string, string> LinkTypes { get; set; }
+
+        [JsonPropertyName("namespaces")]
+        public Dictionary<string, string> Namespaces { get; set; }
+
+        [JsonPropertyName("taxonomy")]
+        public List<string> Taxonomy { get; set; }
     }
 }

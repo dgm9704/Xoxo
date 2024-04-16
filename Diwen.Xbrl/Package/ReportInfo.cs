@@ -4,9 +4,10 @@ namespace Diwen.Xbrl.Package
 
     public class ReportInfo
     {
-        public DocumentInfo documentInfo { get; set; }
+        [JsonPropertyName("documentInfo")]
+        public DocumentInfo DocumentInfo { get; set; }
 
         [JsonPropertyName("eba:generatingSoftwareInformation")]
-        public EbaGeneratingSoftwareInformation ebageneratingSoftwareInformation { get; set; }
+        public EbaGeneratingSoftwareInformation EbaGeneratingSoftwareInformation { get; set; }
     }
 }

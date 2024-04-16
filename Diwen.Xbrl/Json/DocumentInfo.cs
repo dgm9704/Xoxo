@@ -2,8 +2,6 @@ namespace Diwen.Xbrl.Json
 {
     using System;
     using System.Collections.Generic;
-    using System.Dynamic;
-    using System.Formats.Asn1;
     using System.Text.Json.Serialization;
 
     public class DocumentInfo

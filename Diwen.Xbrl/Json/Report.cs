@@ -8,7 +8,6 @@ namespace Diwen.Xbrl.Json
     using System.Text.Json.Serialization;
     using System.Xml;
     using Diwen.Xbrl.Extensions;
-    using Diwen.Xbrl.Xml;
 
     public class Report
     {

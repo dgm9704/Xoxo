@@ -92,9 +92,9 @@
         {
             var info = new PackageInfo
             {
-                documentInfo = new DocumentInfo
+                DocumentInfo = new DocumentInfo
                 {
-                    documentType = "http://xbrl.org/PWD/2020-12-09/report-package"
+                    DocumentType = "http://xbrl.org/PWD/2020-12-09/report-package"
                 }
             };
 
@@ -113,23 +113,23 @@
 
             var documentInfo = new DocumentInfo
             {
-                documentType = documentType,
-                extends = new List<string> { entrypoint }
+                DocumentType = documentType,
+                Extends = new List<string> { entrypoint }
             };
 
             var softwareInfo = new EbaGeneratingSoftwareInformation
             {
-                ebasoftwareId = assemblyName,
-                ebasoftwareVersion = version.ToString(),
-                ebasoftwareCreationDate = $"{compileTime.Date:yyyy-MM-dd}",
-                ebasoftwareAdditionalInfo = "https://github.com/dgm9704/Xoxo"
+                EbaSoftwareId = assemblyName,
+                EbaSoftwareVersion = version.ToString(),
+                EbaSoftwareCreationDate = $"{compileTime.Date:yyyy-MM-dd}",
+                EbaSoftwareAdditionalInfo = "https://github.com/dgm9704/Xoxo"
             };
 
             var stream = new MemoryStream();
             var reportInfo = new Package.ReportInfo
             {
-                documentInfo = documentInfo,
-                ebageneratingSoftwareInformation = softwareInfo
+                DocumentInfo = documentInfo,
+                EbaGeneratingSoftwareInformation = softwareInfo
             };
 
             JsonSerializer.Serialize<Package.ReportInfo>(stream, reportInfo);
@@ -218,7 +218,7 @@
         private static string ReadEntryPoint(string data)
         {
             var reportInfo = JsonSerializer.Deserialize<Package.ReportInfo>(data);
-            return reportInfo.documentInfo.extends.First();
+            return reportInfo.DocumentInfo.Extends.First();
         }
 
         private static List<ReportData> ReadTableData(string table, string data)
@@ -295,7 +295,7 @@
         {
             string dimensionPrefix = string.Empty;
 
-            foreach (var ns in tableDefinition.DocumentInfo.namespaces)
+            foreach (var ns in tableDefinition.DocumentInfo.Namespaces)
             {
                 if (ns.Key.EndsWith("_dim"))
                 {
@@ -453,7 +453,7 @@
                 Entrypoint = Path.ChangeExtension(xmlReport.SchemaReference.Value, ".json")
             };
 
-            var prefix = moduleDefinition.DocumentInfo.namespaces.FirstOrDefault(ns => ns.Value == xmlReport.Entity.Identifier.Scheme).Key;
+            var prefix = moduleDefinition.DocumentInfo.Namespaces.FirstOrDefault(ns => ns.Value == xmlReport.Entity.Identifier.Scheme).Key;
             var identifier = xmlReport.Entity.Identifier.Value;
             report.Parameters.Add("entityID", $"{prefix}:{identifier}");
             report.Parameters.Add("refPeriod", xmlReport.Period.Instant.ToString("yyyy-MM-dd"));
@@ -525,10 +525,10 @@
         {
             var xmlreport = new Xml.Report
             {
-                SchemaReference = new SchemaReference("simple", moduleDefinition.DocumentInfo.taxonomy.FirstOrDefault())
+                SchemaReference = new SchemaReference("simple", moduleDefinition.DocumentInfo.Taxonomy.FirstOrDefault())
             };
 
-            foreach (var ns in moduleDefinition.DocumentInfo.namespaces)
+            foreach (var ns in moduleDefinition.DocumentInfo.Namespaces)
                 xmlreport.Namespaces.AddNamespace(ns.Key, ns.Value);
 
             var idParts = report.Parameters["entityID"].Split(':');

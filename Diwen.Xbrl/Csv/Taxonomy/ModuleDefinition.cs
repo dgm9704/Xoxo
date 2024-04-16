@@ -38,9 +38,9 @@ namespace Diwen.Xbrl.Csv.Taxonomy
             if (tableDefinitions == null)
             {
                 tableDefinitions = [];
-                var modfolder = Path.GetDirectoryName(DocumentInfo.taxonomy.First().Replace("http://", ""));
+                var modfolder = Path.GetDirectoryName(DocumentInfo.Taxonomy.First().Replace("http://", ""));
 
-                foreach (var moduleTable in DocumentInfo.extends)
+                foreach (var moduleTable in DocumentInfo.Extends)
                 {
                     var tabfile = Path.GetFullPath(Path.Combine(modfolder, moduleTable));
                     if (File.Exists(tabfile))

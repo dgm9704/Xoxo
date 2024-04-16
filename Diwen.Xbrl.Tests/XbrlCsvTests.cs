@@ -1,12 +1,25 @@
+//
+//  ScenarioTests.cs
+//
+//  Author:
+//       John Nordberg <john.nordberg@gmail.com>
+//
+//  Copyright (c) 2015-2024 John Nordberg
+//
+//  Free Public License 1.0.0
+//  Permission to use, copy, modify, and/or distribute this software for any purpose with or without fee is hereby granted.
+//  THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES WITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES 
+//  OF MERCHANTABILITY AND FITNESS.IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR ANY SPECIAL, DIRECT, INDIRECT, OR CONSEQUENTIAL DAMAGES 
+//  OR ANY DAMAGES WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN AN ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS 
+//  ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
+
 namespace Diwen.Xbrl.Csv.Tests
 {
     using System;
     using System.Collections.Generic;
     using System.IO;
     using System.Linq;
-    using Diwen.Xbrl;
     using Diwen.Xbrl.Xml.Comparison;
-    using Diwen.Xbrl.Csv;
     using Diwen.Xbrl.Csv.Taxonomy;
     using Diwen.Xbrl.Extensions;
     using Xunit;
@@ -91,7 +104,7 @@ namespace Diwen.Xbrl.Csv.Tests
         [InlineData("DUMMYLEI123456789012_GB_SBP010200_SBPCRCON_2021-12-31_20210623163233000.zip")]
         public static void ReadPackageTest(string packageName)
         {
-            var packagePath = Path.Combine("csv", packageName);
+            var packagePath = Path.Combine("data/csv", packageName);
             var reportFiles = Csv.Report.ReadPackage(packagePath);
 
             var metafolder = "META-INF";
@@ -111,7 +124,7 @@ namespace Diwen.Xbrl.Csv.Tests
         [InlineData("DUMMYLEI123456789012_GB_SBP010200_SBPCRCON_2021-12-31_20210623163233000.zip")]
         public static void ImportTest(string packageName)
         {
-            var packagePath = Path.Combine("csv", packageName);
+            var packagePath = Path.Combine("data/csv", packageName);
             var report = Csv.Report.FromFile(packagePath);
 
             Assert.Equal("http://www.eba.europa.eu/eu/fr/xbrl/crr/fws/sbp/cir-2070-2016/2021-07-15/mod/sbp_cr_con.json", report.Entrypoint);
@@ -136,21 +149,21 @@ namespace Diwen.Xbrl.Csv.Tests
         }
 
         [Theory]
-        [InlineData("csv/DUMMYLEI123456789012.CON_FR_FINREP030100_FINREP9_2022-12-31_20220411141600000.xbrl")]
-        [InlineData("csv/F_18-00-a.xbrl")]
+        [InlineData("data/csv/DUMMYLEI123456789012.CON_FR_FINREP030100_FINREP9_2022-12-31_20220411141600000.xbrl")]
+        [InlineData("data/csv/F_18-00-a.xbrl")]
         public void XmlToCsvTest(string reportPath)
         => XmlToCsv(reportPath);
 
         [Theory]
-        [InlineData("csv/DUMMYLEI123456789012.CON_FR_FINREP030100_FINREP9_2022-12-31_20220411141600000.zip")]
-        [InlineData("csv/F_18-00-a.zip")]
+        [InlineData("data/csv/DUMMYLEI123456789012.CON_FR_FINREP030100_FINREP9_2022-12-31_20220411141600000.zip")]
+        [InlineData("data/csv/F_18-00-a.zip")]
         public void CsvToXmlTest(string reportPath)
         => CsvToXml(reportPath);
 
         [Theory]
-        [InlineData("csv/DUMMYLEI123456789012.CON_FR_FINREP030100_FINREP9_2022-12-31_20220411141600000.xbrl")]
-        [InlineData("csv/FINREP_F_23-01_R0080_C0010.xbrl")]
-        [InlineData("csv/FINREP_F_40-01_R999_C0031.xbrl")]
+        [InlineData("data/csv/DUMMYLEI123456789012.CON_FR_FINREP030100_FINREP9_2022-12-31_20220411141600000.xbrl")]
+        [InlineData("data/csv/FINREP_F_23-01_R0080_C0010.xbrl")]
+        [InlineData("data/csv/FINREP_F_40-01_R999_C0031.xbrl")]
         public void XmlToCsvToXml(string xmlInPath)
         {
             var csvPath = XmlToCsv(xmlInPath);
@@ -173,7 +186,7 @@ namespace Diwen.Xbrl.Csv.Tests
         => ReadFilingIndicatorInfo(file);
 
         public static Dictionary<string, string> ReadFilingIndicatorInfo(string file)
-        => File.ReadAllLines(Path.Combine("csv", file)).
+        => File.ReadAllLines(Path.Combine("data/csv", file)).
             Select(l => l.Split(',')).
             ToDictionary(x => x[0], x => x[1]);
 
@@ -243,10 +256,10 @@ namespace Diwen.Xbrl.Csv.Tests
         }
 
         public static HashSet<string> ReadTypedDomainInfo(string path)
-        => File.ReadAllLines(Path.Combine("csv", path)).ToHashSet();
+        => File.ReadAllLines(Path.Combine("data/csv", path)).ToHashSet();
 
         public static Dictionary<string, string> ReadDimensionDomainInfo(string file)
-        => File.ReadAllLines(Path.Combine("csv", file)).
+        => File.ReadAllLines(Path.Combine("data/csv", file)).
             Select(l => l.Split(',')).
             ToDictionary(x => x[0], x => x[1]);
 

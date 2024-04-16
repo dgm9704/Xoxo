@@ -4,7 +4,7 @@
 //  Author:
 //       John Nordberg <john.nordberg@gmail.com>
 //
-//  Copyright (c) 2015-2020 John Nordberg
+//  Copyright (c) 2015-2024 John Nordberg
 //
 //  This program is free software: you can redistribute it and/or modify
 //  it under the terms of the GNU Lesser General Public License as published by
@@ -22,9 +22,7 @@
 namespace Diwen.Xbrl.Extensions
 {
     using System.Collections.Generic;
-    using Diwen.Xbrl.Csv;
     using Diwen.Xbrl.Csv.Taxonomy;
-    using Diwen.Xbrl.Xml;
 
     public static class ReportExtensions
     {
