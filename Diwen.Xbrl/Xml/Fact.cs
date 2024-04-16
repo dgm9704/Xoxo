@@ -107,7 +107,7 @@ namespace Diwen.Xbrl.Xml
         {
             if (scenario != null)
             {
-                Facts.Instance = scenario.Instance;
+                Facts.Report = scenario.Report;
 
                 if (!scenario.ExplicitMembers.Any() && !scenario.TypedMembers.Any())
                     scenario = null;
@@ -119,7 +119,7 @@ namespace Diwen.Xbrl.Xml
         {
             if (segment != null)
             {
-                Facts.Instance = segment.Instance;
+                Facts.Report = segment.Report;
 
                 if (!segment.HasMembers)
                     segment = null;

@@ -28,17 +28,17 @@ namespace Diwen.Xbrl.Xml
 
     public class FactCollection : Collection<Fact>, IEquatable<IList<Fact>>
     {
-        public Instance Instance;
+        public Report Report;
 
-        public FactCollection(Instance instance)
+        public FactCollection(Report report)
         {
-            Instance = instance;
+            Report = report;
         }
 
         public Fact Add(Context context, string metric, string unitRef, string decimals, string value)
         {
-            var ns = Instance.FactNamespace;
-            var prefix = Instance.Namespaces.LookupPrefix(ns);
+            var ns = Report.FactNamespace;
+            var prefix = Report.Namespaces.LookupPrefix(ns);
             if (prefix == null && metric.Contains(":"))
             {
                 prefix = metric.Substring(0, metric.IndexOf(':'));
@@ -46,15 +46,15 @@ namespace Diwen.Xbrl.Xml
             }
 
             if (ns == null)
-                ns = Instance.Namespaces.LookupNamespace(prefix);
+                ns = Report.Namespaces.LookupNamespace(prefix);
 
             Unit unit = null;
             if (!string.IsNullOrEmpty(unitRef))
             {
-                if (!Instance.Units.Contains(unitRef))
+                if (!Report.Units.Contains(unitRef))
                     throw new KeyNotFoundException($"Referenced unit '{unitRef}' does not exist");
 
-                unit = Instance.Units[unitRef];
+                unit = Report.Units[unitRef];
             }
 
             var fact = new Fact(context, metric, unit, decimals, value, ns, prefix);
@@ -63,10 +63,10 @@ namespace Diwen.Xbrl.Xml
         }
 
         public Fact Add(Scenario scenario, string metric, string unitRef, string decimals, string value)
-        => Add(Instance.GetContext(scenario), metric, unitRef, decimals, value);
+        => Add(Report.GetContext(scenario), metric, unitRef, decimals, value);
 
         public Fact Add(Segment segment, string metric, string unitRef, string decimals, string value)
-        => Add(Instance.GetContext(segment), metric, unitRef, decimals, value);
+        => Add(Report.GetContext(segment), metric, unitRef, decimals, value);
 
         public void AddRange(IEnumerable<Fact> facts)
         {

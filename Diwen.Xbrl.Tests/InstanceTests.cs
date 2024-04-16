@@ -35,10 +35,10 @@ namespace Diwen.Xbrl.Tests
             this.output = output;
         }
 
-        internal Instance CreateSolvencyInstance()
+        internal Report CreateSolvencyInstance()
         {
             // Sets default namespaces and units PURE, EUR
-            var instance = new Instance();
+            var instance = new Report();
 
             // When an explicit member is added, check that the namespace for the domain has been set
             instance.CheckExplicitMemberDomainExists = true;
@@ -138,7 +138,7 @@ namespace Diwen.Xbrl.Tests
         public void ReadSolvencyReferenceInstance()
         {
             var path = Path.Combine("data", "reference.xbrl");
-            var referenceInstance = Instance.FromFile(path);
+            var referenceInstance = Report.FromFile(path);
             Assert.NotNull(referenceInstance);
         }
 
@@ -152,7 +152,7 @@ namespace Diwen.Xbrl.Tests
             instance.RemoveUnusedObjects();
 
             var referencePath = Path.Combine("data", "reference.xbrl");
-            var referenceInstance = Instance.FromFile(referencePath);
+            var referenceInstance = Report.FromFile(referencePath);
 
             // Instances are functionally equivalent:
             // They have the same number of contexts and scenarios of the contexts match member-by-member
@@ -165,10 +165,10 @@ namespace Diwen.Xbrl.Tests
             string tempFile = "temp.xbrl";
             instance.ToFile(tempFile);
 
-            var newInstance = Instance.FromFile(tempFile);
+            var newInstance = Report.FromFile(tempFile);
 
             // Assert.True(newInstance.Equals(instance));
-            var report = InstanceComparer.Report(instance, newInstance);
+            var report = ReportComparer.Report(instance, newInstance);
             if (!report.Result)
                 Console.WriteLine(report);
             Assert.Empty(report.Messages);
@@ -188,7 +188,7 @@ namespace Diwen.Xbrl.Tests
             var inputPath = Path.Combine("data", "ars.xbrl");
 
             sw.Start();
-            var firstRead = Instance.FromFile(inputPath);
+            var firstRead = Report.FromFile(inputPath);
             sw.Stop();
             output.WriteLine("Read took {0}", sw.Elapsed);
 
@@ -200,7 +200,7 @@ namespace Diwen.Xbrl.Tests
             output.WriteLine("Write took {0}", sw.Elapsed);
 
             sw.Restart();
-            var secondRead = Instance.FromFile(outputPath);
+            var secondRead = Report.FromFile(outputPath);
             sw.Stop();
             output.WriteLine("Read took {0}", sw.Elapsed);
 
@@ -234,16 +234,16 @@ namespace Diwen.Xbrl.Tests
         public void CollapseDuplicateContexts()
         {
             var inputPath = Path.Combine("data", "duplicate_context.xbrl");
-            Instance instance = null;
+            Report instance = null;
             using (var stream = new FileStream(inputPath, FileMode.Open))
-                instance = Instance.FromStream(stream, removeUnusedObjects: false, collapseDuplicateContexts: false, removeDuplicateFacts: false);
+                instance = Report.FromStream(stream, removeUnusedObjects: false, collapseDuplicateContexts: false, removeDuplicateFacts: false);
 
             Assert.Equal(2, instance.Contexts.Count);
 
             instance.CollapseDuplicateContexts();
             Assert.Single(instance.Contexts);
 
-            instance = Instance.FromFile(inputPath);
+            instance = Report.FromFile(inputPath);
             Assert.Single(instance.Contexts);
         }
 
@@ -251,19 +251,19 @@ namespace Diwen.Xbrl.Tests
         public void ReadExampleInstanceFPInd()
         {
             var inputPath = Path.Combine("data", "fp_ind_new_correct.xbrl");
-            var first = Instance.FromFile(inputPath, removeUnusedObjects: false, collapseDuplicateContexts: false, removeDuplicateFacts: false);
+            var first = Report.FromFile(inputPath, removeUnusedObjects: false, collapseDuplicateContexts: false, removeDuplicateFacts: false);
             Assert.Equal(7051, first.Contexts.Count);
             Assert.Equal(7091, first.Facts.Count);
 
-            Instance second;
+            Report second;
             using (var stream = new MemoryStream())
             {
                 first.ToStream(stream);
                 stream.Seek(0, SeekOrigin.Begin);
-                second = Instance.FromStream(stream, removeUnusedObjects: false, collapseDuplicateContexts: false, removeDuplicateFacts: false);
+                second = Report.FromStream(stream, removeUnusedObjects: false, collapseDuplicateContexts: false, removeDuplicateFacts: false);
             }
 
-            var report = InstanceComparer.Report(first, second);
+            var report = ReportComparer.Report(first, second);
             Assert.True(report.Result, string.Join(Environment.NewLine, report.Messages));
         }
 
@@ -271,7 +271,7 @@ namespace Diwen.Xbrl.Tests
         public void RemoveUnusedObjectsPerformance()
         {
             var inputPath = Path.Combine("data", "fp_ind_new_correct.xbrl");
-            var xi = Instance.FromFile(inputPath);
+            var xi = Report.FromFile(inputPath);
 
             var sw = new Stopwatch();
             sw.Start();
@@ -302,7 +302,7 @@ namespace Diwen.Xbrl.Tests
         [Fact]
         public void NoMembers()
         {
-            var instance = new Instance();
+            var instance = new Report();
             instance.SchemaReference = new SchemaReference("simple", "http://eiopa.europa.eu/eu/xbrl/s2md/fws/solvency/solvency2/2014-12-23/mod/ars.xsd");
             instance.TaxonomyVersion = "1.5.2.c";
             instance.SetMetricNamespace("s2md_met", "http://eiopa.europa.eu/xbrl/s2md/dict/met");
@@ -334,7 +334,7 @@ namespace Diwen.Xbrl.Tests
         [Fact]
         public void FiledOrNot()
         {
-            var instance = new Instance();
+            var instance = new Report();
             instance.SchemaReference = new SchemaReference("simple", "http://eiopa.europa.eu/eu/xbrl/s2md/fws/solvency/solvency2/2014-12-23/mod/ars.xsd");
             instance.TaxonomyVersion = "1.5.2.c";
             instance.SetMetricNamespace("s2md_met", "http://eiopa.europa.eu/xbrl/s2md/dict/met");
@@ -351,7 +351,7 @@ namespace Diwen.Xbrl.Tests
         public void EnumeratedFactValueNamespace()
         {
             // Create a minimal test instance
-            var instance = new Instance();
+            var instance = new Report();
             instance.SchemaReference = new SchemaReference("simple", "http://eiopa.europa.eu/eu/xbrl/s2md/fws/solvency/solvency2/2014-12-23/mod/ars.xsd");
             instance.TaxonomyVersion = "1.5.2.c";
             instance.SetMetricNamespace("s2md_met", "http://eiopa.europa.eu/xbrl/s2md/dict/met");
@@ -367,7 +367,7 @@ namespace Diwen.Xbrl.Tests
             // write the instance to file and read it back
             string file = "EnumeratedFactValueNamespace.xbrl";
             instance.ToFile(file);
-            instance = Instance.FromFile(file);
+            instance = Report.FromFile(file);
 
             // instance should still contain the namespace for the domain
             Assert.Equal("http://eiopa.europa.eu/xbrl/s2c/dict/dom/CN", instance.Namespaces.LookupNamespace("s2c_CN"));
@@ -378,21 +378,21 @@ namespace Diwen.Xbrl.Tests
         {
             // read a test instance with a comment
             var inputPath = Path.Combine("data", "comments.xbrl");
-            var xbrl = Instance.FromFile(inputPath);
+            var xbrl = Report.FromFile(inputPath);
             Assert.Contains("foo", xbrl.Comments);
 
             // add a new comment
             xbrl.Comments.Add("bar");
             var outputPath = Path.Combine("data", "morecomments.xbrl");
             xbrl.ToFile(outputPath);
-            xbrl = Instance.FromFile(outputPath);
+            xbrl = Report.FromFile(outputPath);
             Assert.Contains("bar", xbrl.Comments);
         }
 
         [Fact]
         public void NoExtraNamespaces()
         {
-            var instance = Instance.FromFile(Path.Combine("data", "comments.xbrl"));
+            var instance = Report.FromFile(Path.Combine("data", "comments.xbrl"));
             instance.SetDimensionNamespace("s2c_dim", "http://eiopa.europa.eu/xbrl/s2c/dict/dim");
             instance.SetTypedDomainNamespace("s2c_typ", "http://eiopa.europa.eu/xbrl/s2c/dict/typ");
             instance.ToFile("ns.out");
@@ -402,7 +402,7 @@ namespace Diwen.Xbrl.Tests
         public void EmptyInstance()
         {
             // should load ok
-            var instance = Instance.FromFile(Path.Combine("data", "empty_instance.xbrl"));
+            var instance = Report.FromFile(Path.Combine("data", "empty_instance.xbrl"));
             Assert.NotNull(instance);
             instance.ToFile("empty_instance_out.xbrl");
         }
@@ -411,7 +411,7 @@ namespace Diwen.Xbrl.Tests
         public void InstanceFromString()
         {
             var input = File.ReadAllText(Path.Combine("data", "comments.xbrl"));
-            var instance = Instance.FromXml(input);
+            var instance = Report.FromXml(input);
             var output = instance.ToXml();
             Assert.NotEmpty(output);
             // Most probably wont't match due to differences in casing or apostrophe vs. quotation etc.
@@ -422,7 +422,7 @@ namespace Diwen.Xbrl.Tests
         public void SerializedInstanceWithNoMonetaryUnitShouldNotHaveUnusedNamespace()
         {
             var inFile = Path.Combine("data", "minimal.xbrl");
-            var instance = Instance.FromFile(inFile);
+            var instance = Report.FromFile(inFile);
             var outFile = "minimal.out";
             instance.ToFile(outFile);
             var filecontent = File.ReadAllText(outFile);
@@ -433,7 +433,7 @@ namespace Diwen.Xbrl.Tests
         public void ExplicitMembersWithSurroundingWhitespaceShouldNotBork()
         {
             var infile = Path.Combine("data", "example_erst_dcca.xbrl");
-            var instance = Instance.FromFile(infile);
+            var instance = Report.FromFile(infile);
             Assert.NotNull(instance);
         }
 
@@ -441,15 +441,15 @@ namespace Diwen.Xbrl.Tests
         public void FactWithNullContextShouldNotThrow_71()
         {
             var infile = Path.Combine("data", "71.xbrl");
-            var instance = Instance.FromFile(infile);
+            var instance = Report.FromFile(infile);
             Assert.NotNull(instance);
         }
 
         [Fact]
         public void ExplicitMemberNamespaceOverwriting_72()
         {
-            var instance = new Instance();
-            var intermediaryEntity = new Entity("http://www.ato.gov.au/abn", "123456789") { Instance = instance };
+            var instance = new Report();
+            var intermediaryEntity = new Entity("http://www.ato.gov.au/abn", "123456789") { Report = instance };
             instance.SetDimensionNamespace("h04", "http://sbr.gov.au/dims/RprtPyType.02.00.dims");
             intermediaryEntity.AddExplicitMember("ReportPartyTypeDimension", "h04:Intermediary");
             instance.SetDimensionNamespace("h05", "http://sbr.gov.au/dims/TaxOblgtn.02.00.dims");
@@ -467,7 +467,7 @@ namespace Diwen.Xbrl.Tests
             // set up a report that has no facts and therefore no contexts with scenarios containing any explicit or typed members
             // this means that the namespace "http://xbrl.org/2006/xbrldi" with the canonical prefix "xbrldi" is not used and should not be declared
             var inputfile = Path.Combine("data", "minimal.xbrl");
-            var instance = Instance.FromFile(inputfile);
+            var instance = Report.FromFile(inputfile);
             instance.Facts.RemoveAt(0);
             var xml = instance.ToXmlDocument();
             Assert.False(xml.DocumentElement.HasAttribute("xmlns:xbrldi"));
@@ -481,7 +481,7 @@ namespace Diwen.Xbrl.Tests
             // and second has it as default namespace 
             var first = Path.Combine("data", "reference.xbrl");
             var second = Path.Combine("data", "reference_defaultns.xbrl");
-            var report = InstanceComparer.Report(first, second);
+            var report = ReportComparer.Report(first, second);
             if (!report.Result)
                 Console.WriteLine(report);
             Assert.True(report.Result);

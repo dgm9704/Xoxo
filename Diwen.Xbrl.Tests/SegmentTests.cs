@@ -25,7 +25,7 @@ namespace Diwen.Xbrl.Tests
         public static void Bug_76()
         {
             string schemaPath = "http://tempuri.org/schema.xsd";
-            var instance = new Instance();
+            var instance = new Report();
             instance.SchemaReference = new SchemaReference("schema", schemaPath);
             instance.TaxonomyVersion = "1.0";
 

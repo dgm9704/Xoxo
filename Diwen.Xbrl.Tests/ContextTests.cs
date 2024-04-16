@@ -229,13 +229,13 @@ namespace Diwen.Xbrl.Xml.Tests
             // that does not check for duplicates
 
             var numberOfRuns = 5000;
-            Instance instance;
+            Report report;
             Context context = null;
             Scenario scenario;
 
             Stopwatch sw;
 
-            instance = CreateTestInstance();
+            report = CreateTestReport();
             sw = Stopwatch.StartNew();
             for (int i = 0; i < numberOfRuns; i++)
             {
@@ -247,14 +247,14 @@ namespace Diwen.Xbrl.Xml.Tests
                 scenario.ExplicitMembers.Add("VG", "s2c_AM:x80");
                 scenario.TypedMembers.Add("XX", "ID", "12345");
                 scenario.ExplicitMembers.Add("VL", $"s2c_VM:x{i}"); // <- change one member slightly so each context is different
-                scenario.Instance = instance;
+                scenario.Report = report;
 
                 // GetContext compares the scenario to existing ones 
                 // and returns the match if found
                 // creates and returns a new one if not found
-                context = instance.GetContext(scenario);
+                context = report.GetContext(scenario);
 
-                instance.AddFact(context, "mi363", "uEUR", "-3", $"{i}");
+                report.AddFact(context, "mi363", "uEUR", "-3", $"{i}");
             }
 
             //output.WriteLine($"instance made with GetContext has {instance.Contexts.Count} contexts");
@@ -262,15 +262,15 @@ namespace Diwen.Xbrl.Xml.Tests
             // removing duplicates should not be needed but 
             // make sure we do the same cleanup for both methods
             // so any timing is comparable
-            instance.CollapseDuplicateContexts();
-            instance.RemoveUnusedObjects();
+            report.CollapseDuplicateContexts();
+            report.RemoveUnusedObjects();
             sw.Stop();
             output.WriteLine($"GetContext {sw.Elapsed}");
-            instance.ToFile("GetContext.xbrl");
+            report.ToFile("GetContext.xbrl");
 
             // load a minimal instance to work with
             // and setup a scenario to add
-            instance = CreateTestInstance();
+            report = CreateTestReport();
             sw = Stopwatch.StartNew();
             for (int i = 0; i < numberOfRuns; i++)
             {
@@ -282,51 +282,51 @@ namespace Diwen.Xbrl.Xml.Tests
                 scenario.ExplicitMembers.Add("VG", "s2c_AM:x80");
                 scenario.TypedMembers.Add("XX", "ID", "12345");
                 scenario.ExplicitMembers.Add("VL", $"s2c_VM:x{i}"); // <- change one member slightly so each context is different
-                scenario.Instance = instance;
+                scenario.Report = report;
                 // CreateContext always creates and returns a new context 
                 // without overhead of checking existing ones for duplicates
-                context = instance.CreateContext(scenario);
+                context = report.CreateContext(scenario);
 
-                instance.AddFact(context, "mi363", "uEUR", "-3", $"{i}");
+                report.AddFact(context, "mi363", "uEUR", "-3", $"{i}");
             }
 
             //output.WriteLine($"instance made with CreateContext has {instance.Contexts.Count} contexts");
 
             // since we didn't check for existing matching scenarios
             // there can be duplicates that need to be cleaned up
-            instance.CollapseDuplicateContexts();
-            instance.RemoveUnusedObjects();
+            report.CollapseDuplicateContexts();
+            report.RemoveUnusedObjects();
             sw.Stop();
             output.WriteLine($"CreateContext {sw.Elapsed}");
-            instance.ToFile("CreateContext.xbrl");
+            report.ToFile("CreateContext.xbrl");
 
             // both methods should produce same result
-            var result = InstanceComparer.Report("GetContext.xbrl", "CreateContext.xbrl");
+            var result = ReportComparer.Report("GetContext.xbrl", "CreateContext.xbrl");
             Assert.True(result.Result, string.Join(Environment.NewLine, result.Messages));
 
         }
 
-        private static Instance CreateTestInstance()
+        private static Report CreateTestReport()
         {
-            var instance = new Instance();
-            instance.SchemaReference = new SchemaReference("simple", "http://eiopa.europa.eu/eu/xbrl/s2md/fws/solvency/solvency2/2014-12-23/mod/ars.xsd");
-            instance.TaxonomyVersion = "1.2.3";
-            instance.Entity = new Entity("http://standards.iso.org/iso/17442", "1234567890ABCDEFGHIJ");
-            instance.Period = new Period(2014, 12, 31);
+            var report = new Report();
+            report.SchemaReference = new SchemaReference("simple", "http://eiopa.europa.eu/eu/xbrl/s2md/fws/solvency/solvency2/2014-12-23/mod/ars.xsd");
+            report.TaxonomyVersion = "1.2.3";
+            report.Entity = new Entity("http://standards.iso.org/iso/17442", "1234567890ABCDEFGHIJ");
+            report.Period = new Period(2014, 12, 31);
 
-            instance.Units.Add("uEUR", "iso4217:EUR");
-            instance.Units.Add("uPURE", "xbrli:pure");
+            report.Units.Add("uEUR", "iso4217:EUR");
+            report.Units.Add("uPURE", "xbrli:pure");
 
-            instance.SetMetricNamespace("s2md_met", "http://eiopa.europa.eu/xbrl/s2md/dict/met");
-            instance.SetTypedDomainNamespace("s2c_typ", "http://eiopa.europa.eu/xbrl/s2c/dict/typ");
-            instance.SetDimensionNamespace("s2c_dim", "http://eiopa.europa.eu/xbrl/s2c/dict/dim");
-            instance.AddDomainNamespace("s2c_LB", "http://eiopa.europa.eu/xbrl/s2c/dict/dom/LB");
-            instance.AddDomainNamespace("s2c_CS", "http://eiopa.europa.eu/xbrl/s2c/dict/dom/CS");
-            instance.AddDomainNamespace("s2c_GA", "http://eiopa.europa.eu/xbrl/s2c/dict/dom/GA");
-            instance.AddDomainNamespace("s2c_PI", "http://eiopa.europa.eu/xbrl/s2c/dict/dom/PI");
-            instance.AddDomainNamespace("s2c_AM", "http://eiopa.europa.eu/xbrl/s2c/dict/dom/AM");
-            instance.AddDomainNamespace("s2c_VM", "http://eiopa.europa.eu/xbrl/s2c/dict/dom/VM");
-            return instance;
+            report.SetMetricNamespace("s2md_met", "http://eiopa.europa.eu/xbrl/s2md/dict/met");
+            report.SetTypedDomainNamespace("s2c_typ", "http://eiopa.europa.eu/xbrl/s2c/dict/typ");
+            report.SetDimensionNamespace("s2c_dim", "http://eiopa.europa.eu/xbrl/s2c/dict/dim");
+            report.AddDomainNamespace("s2c_LB", "http://eiopa.europa.eu/xbrl/s2c/dict/dom/LB");
+            report.AddDomainNamespace("s2c_CS", "http://eiopa.europa.eu/xbrl/s2c/dict/dom/CS");
+            report.AddDomainNamespace("s2c_GA", "http://eiopa.europa.eu/xbrl/s2c/dict/dom/GA");
+            report.AddDomainNamespace("s2c_PI", "http://eiopa.europa.eu/xbrl/s2c/dict/dom/PI");
+            report.AddDomainNamespace("s2c_AM", "http://eiopa.europa.eu/xbrl/s2c/dict/dom/AM");
+            report.AddDomainNamespace("s2c_VM", "http://eiopa.europa.eu/xbrl/s2c/dict/dom/VM");
+            return report;
         }
     }
 }

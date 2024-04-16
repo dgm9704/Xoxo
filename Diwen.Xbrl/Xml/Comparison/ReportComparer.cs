@@ -27,27 +27,27 @@ namespace Diwen.Xbrl.Xml.Comparison
     using System.Linq;
     using Diwen.Xbrl.Extensions;
 
-    public static class InstanceComparer
+    public static class ReportComparer
     {
         public static ComparisonReport Report(string a, string b)
-        => Report(Instance.FromFile(a), Instance.FromFile(b), ComparisonTypes.All);
+        => Report(Xml.Report.FromFile(a), Xml.Report.FromFile(b), ComparisonTypes.All);
 
         public static ComparisonReport Report(string a, string b, ComparisonTypes comparisonTypes)
-        => Report(Instance.FromFile(a), Instance.FromFile(b), comparisonTypes);
+        => Report(Xml.Report.FromFile(a), Xml.Report.FromFile(b), comparisonTypes);
 
         public static ComparisonReport Report(Stream a, Stream b)
-        => Report(Instance.FromStream(a), Instance.FromStream(b), ComparisonTypes.All);
+        => Report(Xml.Report.FromStream(a), Xml.Report.FromStream(b), ComparisonTypes.All);
 
         public static ComparisonReport Report(Stream a, Stream b, ComparisonTypes comparisonTypes)
-        => Report(Instance.FromStream(a), Instance.FromStream(b), comparisonTypes);
+        => Report(Xml.Report.FromStream(a), Xml.Report.FromStream(b), comparisonTypes);
 
-        public static ComparisonReport Report(Instance a, Instance b)
+        public static ComparisonReport Report(Report a, Report b)
         => Report(a, b, ComparisonTypes.All);
 
-        public static ComparisonReport Report(Instance a, Instance b, ComparisonTypes comparisonTypes)
+        public static ComparisonReport Report(Report a, Report b, ComparisonTypes comparisonTypes)
         => Report(a, b, comparisonTypes, BasicComparisons.All);
 
-        public static ComparisonReport Report(Instance a, Instance b, ComparisonTypes comparisonTypes, BasicComparisons basicComparisons)
+        public static ComparisonReport Report(Report a, Report b, ComparisonTypes comparisonTypes, BasicComparisons basicComparisons)
         {
             var messages = new List<string>();
 
@@ -62,9 +62,9 @@ namespace Diwen.Xbrl.Xml.Comparison
         }
 
         public static ComparisonReportObjects ReportObjects(string a, string b)
-        => ReportObjects(Instance.FromFile(a), Instance.FromFile(b), ComparisonTypes.All, BasicComparisons.All);
+        => ReportObjects(Xml.Report.FromFile(a), Xml.Report.FromFile(b), ComparisonTypes.All, BasicComparisons.All);
 
-        public static ComparisonReportObjects ReportObjects(Instance a, Instance b, ComparisonTypes comparisons, BasicComparisons basicSelection)
+        public static ComparisonReportObjects ReportObjects(Report a, Report b, ComparisonTypes comparisons, BasicComparisons basicSelection)
         {
             var report = new ComparisonReportObjects();
 
@@ -117,8 +117,8 @@ namespace Diwen.Xbrl.Xml.Comparison
                 || (report.FilingIndicators != null && (report.FilingIndicators.Item1.Any() || report.FilingIndicators.Item2.Any()))
                 );
 
-        static Dictionary<ComparisonTypes, Func<Instance, Instance, IEnumerable<string>>> ComparisonMethods
-            = new Dictionary<ComparisonTypes, Func<Instance, Instance, IEnumerable<string>>>
+        static Dictionary<ComparisonTypes, Func<Report, Report, IEnumerable<string>>> ComparisonMethods
+            = new Dictionary<ComparisonTypes, Func<Report, Report, IEnumerable<string>>>
             {
                 [ComparisonTypes.Contexts] = ScenarioComparisonMessages,
                 [ComparisonTypes.Facts] = FactComparisonMessages,
@@ -133,41 +133,41 @@ namespace Diwen.Xbrl.Xml.Comparison
 
         #region SimpleChecks
 
-        static Dictionary<BasicComparisons, Tuple<string, Func<Instance, Instance, bool>>> SimpleCheckMethods
-        = new Dictionary<BasicComparisons, Tuple<string, Func<Instance, Instance, bool>>>
+        static Dictionary<BasicComparisons, Tuple<string, Func<Report, Report, bool>>> SimpleCheckMethods
+        = new Dictionary<BasicComparisons, Tuple<string, Func<Report, Report, bool>>>
         {
-            [BasicComparisons.NullInstances] = Tuple.Create<string, Func<Instance, Instance, bool>>("At least one the instances is null", CheckNullInstances),
-            [BasicComparisons.SchemaReference] = Tuple.Create<string, Func<Instance, Instance, bool>>("Different SchemaReference", CheckSchemaReference),
-            [BasicComparisons.Units] = Tuple.Create<string, Func<Instance, Instance, bool>>("Different Units", CheckUnits),
-            [BasicComparisons.FilingIndicators] = Tuple.Create<string, Func<Instance, Instance, bool>>("Different FilingIndicators", CheckFilingIndicators),
-            [BasicComparisons.ContextCount] = Tuple.Create<string, Func<Instance, Instance, bool>>("Different number of Contexts", CheckContextCount),
-            [BasicComparisons.FactCount] = Tuple.Create<string, Func<Instance, Instance, bool>>("Different number of Facts", CheckFactCount),
-            [BasicComparisons.DomainNamespaces] = Tuple.Create<string, Func<Instance, Instance, bool>>("Different domain namespaces", CheckDomainNamespaces),
-            [BasicComparisons.Entity] = Tuple.Create<string, Func<Instance, Instance, bool>>("Different Entity", CheckEntity),
-            [BasicComparisons.Period] = Tuple.Create<string, Func<Instance, Instance, bool>>("Different Period", CheckPeriod)
+            [BasicComparisons.NullReports] = Tuple.Create<string, Func<Report, Report, bool>>("At least one the reports is null", CheckNullReports),
+            [BasicComparisons.SchemaReference] = Tuple.Create<string, Func<Report, Report, bool>>("Different SchemaReference", CheckSchemaReference),
+            [BasicComparisons.Units] = Tuple.Create<string, Func<Report, Report, bool>>("Different Units", CheckUnits),
+            [BasicComparisons.FilingIndicators] = Tuple.Create<string, Func<Report, Report, bool>>("Different FilingIndicators", CheckFilingIndicators),
+            [BasicComparisons.ContextCount] = Tuple.Create<string, Func<Report, Report, bool>>("Different number of Contexts", CheckContextCount),
+            [BasicComparisons.FactCount] = Tuple.Create<string, Func<Report, Report, bool>>("Different number of Facts", CheckFactCount),
+            [BasicComparisons.DomainNamespaces] = Tuple.Create<string, Func<Report, Report, bool>>("Different domain namespaces", CheckDomainNamespaces),
+            [BasicComparisons.Entity] = Tuple.Create<string, Func<Report, Report, bool>>("Different Entity", CheckEntity),
+            [BasicComparisons.Period] = Tuple.Create<string, Func<Report, Report, bool>>("Different Period", CheckPeriod)
         };
 
-        static IEnumerable<string> BasicComparison(Instance a, Instance b, BasicComparisons selection)
+        static IEnumerable<string> BasicComparison(Report a, Report b, BasicComparisons selection)
         => SimpleCheckMethods.
                 Where(c => selection.HasFlag(c.Key)).
                 Where(c => !c.Value.Item2(a, b)).
                 Select(c => c.Value.Item1);
 
-        static bool CheckNullInstances(object a, object b)
+        static bool CheckNullReports(object a, object b)
         => (a != null && b != null);
 
-        static bool CheckTaxonomyVersion(Instance a, Instance b)
+        static bool CheckTaxonomyVersion(Report a, Report b)
         => a.TaxonomyVersion != null && b.TaxonomyVersion != null
             ? a.TaxonomyVersion.Equals(b.TaxonomyVersion, StringComparison.Ordinal)
             : a.TaxonomyVersion == null && b.TaxonomyVersion == null;
 
-        static bool CheckSchemaReference(Instance a, Instance b)
+        static bool CheckSchemaReference(Report a, Report b)
         => a.SchemaReference == null ? b.SchemaReference == null : a.SchemaReference.Equals(b.SchemaReference);
 
-        static bool CheckUnits(Instance a, Instance b)
+        static bool CheckUnits(Report a, Report b)
         => a.Units.Equals(b.Units);
 
-        static bool CheckFilingIndicators(Instance a, Instance b)
+        static bool CheckFilingIndicators(Report a, Report b)
         => a.FilingIndicators.Equals(b.FilingIndicators);
 
         static bool CheckCount<T>(ICollection<T> a, ICollection<T> b)
@@ -175,17 +175,17 @@ namespace Diwen.Xbrl.Xml.Comparison
                 ? a.Count == b.Count
                 : a == null && b == null;
 
-        static bool CheckContextCount(Instance a, Instance b)
+        static bool CheckContextCount(Report a, Report b)
         => CheckCount(a.Contexts, b.Contexts);
 
-        static bool CheckFactCount(Instance a, Instance b)
+        static bool CheckFactCount(Report a, Report b)
         => CheckCount(a.Facts, b.Facts);
 
-        static bool CheckDomainNamespaces(Instance a, Instance b)
+        static bool CheckDomainNamespaces(Report a, Report b)
         => a.GetUsedDomainNamespaces().
                 ContentCompare(b.GetUsedDomainNamespaces());
 
-        static bool CheckEntity(Instance a, Instance b)
+        static bool CheckEntity(Report a, Report b)
         {
             Entity entityA = null;
             Entity entityB = null;
@@ -201,7 +201,7 @@ namespace Diwen.Xbrl.Xml.Comparison
             || (entityA != null && entityA.Equals(entityB));
         }
 
-        static bool CheckPeriod(Instance a, Instance b)
+        static bool CheckPeriod(Report a, Report b)
         {
             Period periodA = null;
             Period periodB = null;
@@ -221,17 +221,17 @@ namespace Diwen.Xbrl.Xml.Comparison
 
         #region DetailedChecks
 
-        static Tuple<List<Context>, List<Context>> ContextComparison(Instance a, Instance b)
+        static Tuple<List<Context>, List<Context>> ContextComparison(Report a, Report b)
         => a.Contexts.ContentCompareReport(b.Contexts);
 
-        static IEnumerable<string> ContextComparisonMessages(Instance a, Instance b)
+        static IEnumerable<string> ContextComparisonMessages(Report a, Report b)
         => ContextComparisonMessages(ContextComparison(a, b));
 
         static IEnumerable<string> ContextComparisonMessages(Tuple<List<Context>, List<Context>> differences)
         => differences.Item1.Select(item => $"(a) {item.Id}:" + (item.Scenario?.ToString() ?? "")).Concat(
             differences.Item2.Select(item => $"(b) {item.Id}:" + (item.Scenario?.ToString() ?? "")));
 
-        static Tuple<List<Scenario>, List<Scenario>> ScenarioComparison(Instance a, Instance b)
+        static Tuple<List<Scenario>, List<Scenario>> ScenarioComparison(Report a, Report b)
         {
             var aList = a.
              Contexts.
@@ -247,7 +247,7 @@ namespace Diwen.Xbrl.Xml.Comparison
         }
 
 
-        static IEnumerable<string> ScenarioComparisonMessages(Instance a, Instance b)
+        static IEnumerable<string> ScenarioComparisonMessages(Report a, Report b)
         {
             var differences = ScenarioComparison(a, b);
             var notInB = differences.Item1;
@@ -277,7 +277,7 @@ namespace Diwen.Xbrl.Xml.Comparison
         static string ScenarioComparisonMessage(Dictionary<string, string> contexts, Scenario item, string label)
         => $"({label}) {contexts[item?.ToString() ?? ""]}: {item}";
 
-        static Dictionary<string, string> GetScenarios(Instance instance)
+        static Dictionary<string, string> GetScenarios(Report instance)
         {
             var scenarios = new Dictionary<string, string>();
             foreach (var c in instance.Contexts)
@@ -286,10 +286,10 @@ namespace Diwen.Xbrl.Xml.Comparison
             return scenarios;
         }
 
-        static Tuple<List<Fact>, List<Fact>> FactComparison(Instance a, Instance b)
+        static Tuple<List<Fact>, List<Fact>> FactComparison(Report a, Report b)
         => a.Facts.ContentCompareReport(b.Facts);
 
-        static IEnumerable<string> FactComparisonMessages(Instance a, Instance b)
+        static IEnumerable<string> FactComparisonMessages(Report a, Report b)
         => FactComparisonMesssages(FactComparison(a, b));
 
         static IEnumerable<string> FactComparisonMesssages(Tuple<List<Fact>, List<Fact>> differences)
@@ -299,20 +299,20 @@ namespace Diwen.Xbrl.Xml.Comparison
         static string FactComparisonMessage(Fact fact, string label)
         => $"({label}) {fact} ({fact.Context.Scenario})";
 
-        static Tuple<List<string>, List<string>> DomainNamespaceComparison(Instance a, Instance b)
+        static Tuple<List<string>, List<string>> DomainNamespaceComparison(Report a, Report b)
         => a.GetUsedDomainNamespaces().
                 ContentCompareReport(b.GetUsedDomainNamespaces());
 
-        static IEnumerable<string> DomainNamespaceComparisonMessages(Instance a, Instance b)
+        static IEnumerable<string> DomainNamespaceComparisonMessages(Report a, Report b)
         => ComparisonMessages(DomainNamespaceComparison(a, b));
 
-        static Tuple<List<Unit>, List<Unit>> UnitComparison(Instance a, Instance b)
+        static Tuple<List<Unit>, List<Unit>> UnitComparison(Report a, Report b)
         => a.Units.ContentCompareReport(b.Units);
 
-        static IEnumerable<string> UnitComparisonMessages(Instance a, Instance b)
+        static IEnumerable<string> UnitComparisonMessages(Report a, Report b)
         => ComparisonMessages(a.Units.ContentCompareReport(b.Units));
 
-        static Tuple<List<Identifier>, List<Identifier>> EntityComparison(Instance a, Instance b)
+        static Tuple<List<Identifier>, List<Identifier>> EntityComparison(Report a, Report b)
         {
             var aList = new List<Identifier>();
             var bList = new List<Identifier>();
@@ -326,14 +326,14 @@ namespace Diwen.Xbrl.Xml.Comparison
             return aList.ContentCompareReport(bList);
         }
 
-        static IEnumerable<string> EntityComparisonMessages(Instance a, Instance b)
+        static IEnumerable<string> EntityComparisonMessages(Report a, Report b)
         => EntityComparisonMessages(EntityComparison(a, b));
 
         static IEnumerable<string> EntityComparisonMessages(Tuple<List<Identifier>, List<Identifier>> differences)
         => differences.Item1.Select(item => $"(a) Identifier={item}").Concat(
             differences.Item2.Select(item => $"(b) Identifier={item}"));
 
-        static Tuple<List<Period>, List<Period>> PeriodComparison(Instance a, Instance b)
+        static Tuple<List<Period>, List<Period>> PeriodComparison(Report a, Report b)
         {
             var aList = new List<Period>();
             var bList = new List<Period>();
@@ -347,10 +347,10 @@ namespace Diwen.Xbrl.Xml.Comparison
             return aList.ContentCompareReport(bList);
         }
 
-        static IEnumerable<string> PeriodComparisonMessages(Instance a, Instance b)
+        static IEnumerable<string> PeriodComparisonMessages(Report a, Report b)
         => ComparisonMessages(PeriodComparison(a, b));
 
-        static Tuple<List<string>, List<string>> TaxonomyVersionComparison(Instance a, Instance b)
+        static Tuple<List<string>, List<string>> TaxonomyVersionComparison(Report a, Report b)
         {
             var aList = new List<string>();
             var bList = new List<string>();
@@ -361,14 +361,14 @@ namespace Diwen.Xbrl.Xml.Comparison
             return aList.ContentCompareReport(bList);
         }
 
-        static IEnumerable<string> TaxonomyVersionComparisonMessages(Instance a, Instance b)
+        static IEnumerable<string> TaxonomyVersionComparisonMessages(Report a, Report b)
         => TaxonomyVersionComparisonMessages(TaxonomyVersionComparison(a, b));
 
         static IEnumerable<string> TaxonomyVersionComparisonMessages(Tuple<List<string>, List<string>> differences)
         => differences.Item1.Select(item => $"(a) taxonomy-version: {item}").Concat(
             differences.Item2.Select(item => $"(b) taxonomy-version: {item}"));
 
-        static Tuple<List<SchemaReference>, List<SchemaReference>> SchemaReferenceComparison(Instance a, Instance b)
+        static Tuple<List<SchemaReference>, List<SchemaReference>> SchemaReferenceComparison(Report a, Report b)
         {
             var aList = new List<SchemaReference>();
             var bList = new List<SchemaReference>();
@@ -379,14 +379,14 @@ namespace Diwen.Xbrl.Xml.Comparison
             return aList.ContentCompareReport(bList);
         }
 
-        static IEnumerable<string> SchemaReferenceComparisonMessages(Instance a, Instance b)
+        static IEnumerable<string> SchemaReferenceComparisonMessages(Report a, Report b)
         => ComparisonMessages(SchemaReferenceComparison(a, b));
 
-        static Tuple<List<FilingIndicator>, List<FilingIndicator>> FilingIndicatorComparison(Instance a, Instance b)
+        static Tuple<List<FilingIndicator>, List<FilingIndicator>> FilingIndicatorComparison(Report a, Report b)
         => a.FilingIndicators.Where(fi => fi.Filed).ToList().
             ContentCompareReport(b.FilingIndicators.Where(fi => fi.Filed).ToList());
 
-        static IEnumerable<string> FilingIndicatorComparisonMessages(Instance a, Instance b)
+        static IEnumerable<string> FilingIndicatorComparisonMessages(Report a, Report b)
         => ComparisonMessages(FilingIndicatorComparison(a, b));
 
         static IEnumerable<string> ComparisonMessages<T>(Tuple<List<T>, List<T>> differences)

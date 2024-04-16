@@ -75,8 +75,8 @@ namespace Diwen.Xbrl.Tests
         ComparisonReport TestFile(string inputFile, string outputFile, string reportFile)
         {
             output.WriteLine(Path.GetFileName(inputFile));
-            Instance.FromFile(inputFile).ToFile(outputFile);
-            var report = InstanceComparer.Report(inputFile, outputFile);
+            Report.FromFile(inputFile).ToFile(outputFile);
+            var report = ReportComparer.Report(inputFile, outputFile);
             File.WriteAllLines(reportFile, report.Messages);
             return report;
         }
@@ -97,11 +97,11 @@ namespace Diwen.Xbrl.Tests
                     using (var zipStream = entry.Open())
                         zipStream.CopyTo(memoryStream);
 
-                    var instance = Instance.FromStream(memoryStream);
-                    instance.ToFile(outputFile);
-                    var report = InstanceComparer.Report(instance, Instance.FromFile(outputFile));
-                    File.WriteAllLines(Path.Combine(outputFolder, Path.ChangeExtension(entry.Name, "log")), report.Messages);
-                    result.Add(report);
+                    var report = Report.FromStream(memoryStream);
+                    report.ToFile(outputFile);
+                    var comparisonReport = ReportComparer.Report(report, Report.FromFile(outputFile));
+                    File.WriteAllLines(Path.Combine(outputFolder, Path.ChangeExtension(entry.Name, "log")), comparisonReport.Messages);
+                    result.Add(comparisonReport);
 
                 }
             }

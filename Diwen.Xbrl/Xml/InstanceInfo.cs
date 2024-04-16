@@ -23,7 +23,7 @@ namespace Diwen.Xbrl.Xml
 {
     using System.Collections.Generic;
 
-    struct InstanceInfo
+    struct ReportInfo
     {
         public string TaxonomyVersion { get; }
 
@@ -31,7 +31,7 @@ namespace Diwen.Xbrl.Xml
 
         public List<string> Comments { get; }
 
-        public InstanceInfo(string taxonomyVersion, string instanceGenerator, List<string> comments)
+        public ReportInfo(string taxonomyVersion, string instanceGenerator, List<string> comments)
             : this()
         {
             TaxonomyVersion = taxonomyVersion;

@@ -23,7 +23,7 @@ namespace Diwen.Xbrl.Csv.Tests
         [Fact]
         public void ExportTests()
         {
-            var report = new Report
+            var report = new Csv.Report
             {
                 Entrypoint = "http://www.eba.europa.eu/eu/fr/xbrl/crr/fws/sbp/cir-2070-2016/2021-07-15/mod/sbp_cr_con.json",
                 Parameters = new Dictionary<string, string>
@@ -92,7 +92,7 @@ namespace Diwen.Xbrl.Csv.Tests
         public static void ReadPackageTest(string packageName)
         {
             var packagePath = Path.Combine("csv", packageName);
-            var reportFiles = Report.ReadPackage(packagePath);
+            var reportFiles = Csv.Report.ReadPackage(packagePath);
 
             var metafolder = "META-INF";
             var reportfolder = "reports";
@@ -112,7 +112,7 @@ namespace Diwen.Xbrl.Csv.Tests
         public static void ImportTest(string packageName)
         {
             var packagePath = Path.Combine("csv", packageName);
-            var report = Report.FromFile(packagePath);
+            var report = Csv.Report.FromFile(packagePath);
 
             Assert.Equal("http://www.eba.europa.eu/eu/fr/xbrl/crr/fws/sbp/cir-2070-2016/2021-07-15/mod/sbp_cr_con.json", report.Entrypoint);
             Assert.Equal("lei:DUMMYLEI123456789012", report.Parameters["entityID"]);
@@ -155,7 +155,7 @@ namespace Diwen.Xbrl.Csv.Tests
         {
             var csvPath = XmlToCsv(xmlInPath);
             var xmlOutPath = CsvToXml(csvPath);
-            var result = InstanceComparer.Report(xmlInPath, xmlOutPath);
+            var result = ReportComparer.Report(xmlInPath, xmlOutPath);
             if (!result.Result)
                 File.WriteAllLines(Path.ChangeExtension(Path.GetFileName(xmlOutPath), ".report"), result.Messages);
 
@@ -199,7 +199,7 @@ namespace Diwen.Xbrl.Csv.Tests
 
         public string XmlToCsv(string reportPath)
         {
-            var xmlReport = Instance.FromFile(reportPath);
+            var xmlReport = Xml.Report.FromFile(reportPath);
 
             var entrypoint = Path.ChangeExtension(xmlReport.SchemaReference.Value.Replace("http://", ""), "json");
             var moduleDefinition = ModuleDefinition.FromFile(entrypoint);
@@ -218,7 +218,7 @@ namespace Diwen.Xbrl.Csv.Tests
         public string CsvToXml(string reportPath)
         {
 
-            var csvReport = Report.FromFile(reportPath);
+            var csvReport = Csv.Report.FromFile(reportPath);
 
             var entrypoint = csvReport.Entrypoint.Replace(@"http://", "");
 

@@ -34,7 +34,7 @@ namespace Diwen.Xbrl.Xml
     public class Unit : IXmlSerializable, IEquatable<Unit>, IXbrlObject
     {
 
-        internal Instance Instance { get; set; }
+        internal Report Report { get; set; }
 
         [XmlIgnore]
         public string Id { get; set; }
@@ -119,7 +119,7 @@ namespace Diwen.Xbrl.Xml
             writer.WriteAttributeString("id", Id);
             var prefix = Measure.Prefix();
             if (string.IsNullOrEmpty(prefix))
-                prefix = Instance.Namespaces.LookupPrefix(Measure.Namespace);
+                prefix = Report.Namespaces.LookupPrefix(Measure.Namespace);
 
             var value = $"{prefix}:{Measure.LocalName()}";
             writer.WriteElementString("measure", "http://www.xbrl.org/2003/instance", value);

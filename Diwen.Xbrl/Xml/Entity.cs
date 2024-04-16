@@ -28,16 +28,16 @@ namespace Diwen.Xbrl.Xml
     [Serializable]
     public class Entity : IEquatable<Entity>
     {
-        Instance instanceField;
+        Report reportField;
 
         [XmlIgnore]
-        public Instance Instance
+        public Report Report
         {
-            get { return instanceField; }
+            get { return reportField; }
             set
             {
-                instanceField = value;
-                Segment.Instance = value;
+                reportField = value;
+                Segment.Report = value;
             }
         }
 

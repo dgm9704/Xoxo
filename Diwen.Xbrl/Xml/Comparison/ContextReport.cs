@@ -36,11 +36,11 @@ namespace Diwen.Xbrl.Xml.Comparison
             foreach (var left in report.Contexts.Item1)
             {
                 Scenario right = null;
-                var leftFacts = left.Instance.Facts.Where(f => f.Context.Scenario == left);
+                var leftFacts = left.Report.Facts.Where(f => f.Context.Scenario == left);
 
                 foreach (var r in report.Contexts.Item2)
                 {
-                    var rightFacts = r.Instance.Facts.Where(f => f.Context.Scenario == r);
+                    var rightFacts = r.Report.Facts.Where(f => f.Context.Scenario == r);
                     if (rightFacts.Count() == leftFacts.Count())
                     {
                         right = r;

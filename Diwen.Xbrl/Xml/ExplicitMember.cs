@@ -31,7 +31,7 @@ namespace Diwen.Xbrl.Xml
     [XmlRoot(ElementName = "explicitMember", Namespace = "http://xbrl.org/2006/xbrldi")]
     public struct ExplicitMember : IXmlSerializable, IEquatable<ExplicitMember>, IComparable<ExplicitMember>
     {
-        internal Instance Instance { get; set; }
+        internal Report Report { get; set; }
 
         [XmlIgnore]
         public XmlQualifiedName Dimension { get; set; }
@@ -54,7 +54,7 @@ namespace Diwen.Xbrl.Xml
                 var localname = Value.LocalName();
 
                 if (string.IsNullOrEmpty(prefix))
-                    prefix = Instance?.Namespaces?.LookupPrefix(Value.Namespace) ?? "";
+                    prefix = Report?.Namespaces?.LookupPrefix(Value.Namespace) ?? "";
 
                 return string.Join(":", prefix, localname);
             }

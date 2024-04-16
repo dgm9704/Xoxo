@@ -3,7 +3,7 @@
     using System;
 
     [Flags]
-    public enum InstanceOptions
+    public enum ReportOptions
     {
         None = 0,
         RemoveUnusedObjects = 1 << 0,

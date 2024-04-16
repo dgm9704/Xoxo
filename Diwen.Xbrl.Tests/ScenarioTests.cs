@@ -27,12 +27,12 @@ namespace Diwen.Xbrl.Tests
         [Fact]
         public static void CompareScenarioMemberOrderDifferent()
         {
-            var left = Instance.FromFile(Path.Combine("data", "memberorder0.xbrl"));
-            var right = Instance.FromFile(Path.Combine("data", "memberorder1.xbrl"));
+            var left = Report.FromFile(Path.Combine("data", "memberorder0.xbrl"));
+            var right = Report.FromFile(Path.Combine("data", "memberorder1.xbrl"));
 
             Assert.Equal(left, right);
 
-            var report = InstanceComparer.Report(left, right);
+            var report = ReportComparer.Report(left, right);
 
             Assert.True(report.Result, string.Join(Environment.NewLine, report.Messages));
 

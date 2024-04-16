@@ -34,53 +34,53 @@ namespace Diwen.Xbrl.Inline
     {
         private static IFormatProvider ic = CultureInfo.InvariantCulture;
 
-        public static Instance ParseReportFiles(params ReportFile[] reportFiles)
+        public static Report ParseReportFiles(params ReportFile[] reportFiles)
         => ParseXDocuments(
             reportFiles.
                 Select(f => f.Content as XDocument).
                 Where(r => r != null).
                 ToArray());
 
-        public static Instance ParseFiles(params string[] files)
+        public static Report ParseFiles(params string[] files)
         => ParseXDocuments(
             files.
                 Select(file => XDocument.Load(file)).
                 ToArray());
 
-        public static Instance ParseXDocuments(params XDocument[] documents)
+        public static Report ParseXDocuments(params XDocument[] documents)
         {
-            var instance = new Instance();
+            var report = new Report();
 
             foreach (var document in documents)
             {
-                ParseNamespaces(document, instance);
+                ParseNamespaces(document, report);
 
-                ParseSchemaReference(document, instance);
+                ParseSchemaReference(document, report);
 
-                ParseContexts(document, instance);
+                ParseContexts(document, report);
 
-                ParseUnits(document, instance);
+                ParseUnits(document, report);
 
-                ParseFacts(document, instance);
+                ParseFacts(document, report);
             }
 
-            foreach (var item in instance.Namespaces.GetNamespacesInScope(XmlNamespaceScope.All))
-                instance.XmlSerializerNamespaces.Add(item.Key, item.Value);
+            foreach (var item in report.Namespaces.GetNamespacesInScope(XmlNamespaceScope.All))
+                report.XmlSerializerNamespaces.Add(item.Key, item.Value);
 
-            Instance.CleanupAfterDeserialization(instance, InstanceOptions.None);
+            Report.CleanupAfterDeserialization(report, ReportOptions.None);
 
-            return instance;
+            return report;
         }
 
-        public static void ParseFacts(XDocument report, Instance instance)
+        public static void ParseFacts(XDocument document, Report report)
         {
-            var factElements = FindFacts(report);
-            var facts = new FactCollection(instance);
+            var factElements = FindFacts(document);
+            var facts = new FactCollection(report);
             foreach (var factElement in factElements)
             {
                 var name = factElement.Attribute("name").Value;
                 var prefix = name.Split(':').First();
-                var ns = report.Root.GetNamespaceOfPrefix(prefix).ToString();
+                var ns = document.Root.GetNamespaceOfPrefix(prefix).ToString();
                 var unitRef = factElement.Attribute("unitRef")?.Value;
                 var decimals = factElement.Attribute("decimals")?.Value;
                 var value = factElement.Value;
@@ -100,7 +100,7 @@ namespace Diwen.Xbrl.Inline
                 facts.Add(fact);
             }
             foreach (var fact in facts)
-                instance.Facts.Add(fact);
+                report.Facts.Add(fact);
         }
 
         public static IEnumerable<XElement> FindFacts(XDocument document)
@@ -109,60 +109,60 @@ namespace Diwen.Xbrl.Inline
             return document.Root.Descendants().Where(d => d.Attribute("contextRef") != null);
         }
 
-        public static void ParseUnits(XDocument document, Instance instance)
+        public static void ParseUnits(XDocument document, Report report)
         {
             // parse units and add to instance
             // ix:header/ix:resources/xbrli:unit
             var unitNs = document.Root.GetNamespaceOfPrefix("xbrli");
             var unitElements = document.Root.Descendants(unitNs + "unit");
             var unitSerializer = new XmlSerializer(typeof(Unit));
-            var units = new UnitCollection(instance);
+            var units = new UnitCollection(report);
             foreach (var unitElement in unitElements)
             {
                 var unitReader = unitElement.CreateReader();
                 var unit = (Unit)unitSerializer.Deserialize(unitReader);
                 units.Add(unit);
             }
-            instance.Units = units;
+            report.Units = units;
         }
 
-        public static void ParseContexts(XDocument report, Instance instance)
+        public static void ParseContexts(XDocument document, Report report)
         {
             // parse contexts and add to instance
             // ix:header/ix:resources/xbrli:context
-            var contextNs = report.Root.GetNamespaceOfPrefix("xbrli");
-            var contextElements = report.Root.Descendants(contextNs + "context");
+            var contextNs = document.Root.GetNamespaceOfPrefix("xbrli");
+            var contextElements = document.Root.Descendants(contextNs + "context");
             var contextSerializer = new XmlSerializer(typeof(Context));
 
-            var contexts = new ContextCollection(instance);
+            var contexts = new ContextCollection(report);
             foreach (var contextElement in contextElements)
             {
                 var contextReader = contextElement.CreateReader();
                 var context = (Context)contextSerializer.Deserialize(contextReader);
                 contexts.Add(context);
             }
-            instance.Contexts = contexts;
+            report.Contexts = contexts;
         }
 
-        public static void ParseSchemaReference(XDocument report, Instance instance)
+        public static void ParseSchemaReference(XDocument document, Report report)
         {
             // parse schemaRef and add to instance
             // ix:header/ix:references/link:schemaRef
-            var link = report.Root.GetNamespaceOfPrefix("link");
+            var link = document.Root.GetNamespaceOfPrefix("link");
             // there can be only one
-            var schemaRefElements = report.Root.Descendants(link + "schemaRef");
+            var schemaRefElements = document.Root.Descendants(link + "schemaRef");
             var schemaRefSerializer = new XmlSerializer(typeof(SchemaReference));
             var schemaRefElement = schemaRefElements.Single();
             var schemaReader = schemaRefElement.CreateReader();
             var schemaRef = (SchemaReference)schemaRefSerializer.Deserialize(schemaReader);
-            instance.SchemaReference = schemaRef;
+            report.SchemaReference = schemaRef;
         }
 
-        public static void ParseNamespaces(XDocument report, Instance instance)
+        public static void ParseNamespaces(XDocument document, Report report)
         {
             // parse namespaces from xhtml and add to instance
             var namespaces =
-                report.
+                document.
                 Root.
                 Attributes().
                 Where(a => a.IsNamespaceDeclaration).
@@ -172,7 +172,7 @@ namespace Diwen.Xbrl.Inline
                     g => g.Value);
 
             foreach (var ns in namespaces)
-                instance.Namespaces.AddNamespace(ns.Key, ns.Value);
+                report.Namespaces.AddNamespace(ns.Key, ns.Value);
         }
     }
 }

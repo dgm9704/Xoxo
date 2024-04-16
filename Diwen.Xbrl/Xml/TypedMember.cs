@@ -30,7 +30,7 @@ namespace Diwen.Xbrl.Xml
     [XmlRoot(ElementName = "typedMember", Namespace = "http://xbrl.org/2006/xbrldi")]
     public struct TypedMember : IXmlSerializable, IEquatable<TypedMember>, IComparable<TypedMember>
     {
-        internal Instance Instance { get; set; }
+        internal Report Report { get; set; }
 
         [XmlIgnore]
         public XmlQualifiedName Dimension { get; set; }

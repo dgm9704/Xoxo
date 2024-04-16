@@ -30,14 +30,14 @@ namespace Diwen.Xbrl.Xml
 
     public class UnitCollection : KeyedCollection<string, Unit>, IEquatable<IList<Unit>>
     {
-        Instance Instance;
+        Report Report;
 
         public UnitCollection() { }
 
-        public UnitCollection(Instance instance)
+        public UnitCollection(Report Report)
             : this()
         {
-            Instance = instance;
+            this.Report = Report;
         }
 
         public UnitCollection(IEnumerable<Unit> units)
@@ -49,7 +49,7 @@ namespace Diwen.Xbrl.Xml
         {
             foreach (var unit in units)
             {
-                unit.Instance = this.Instance;
+                unit.Report = this.Report;
                 Add(unit);
             }
         }
@@ -58,16 +58,16 @@ namespace Diwen.Xbrl.Xml
         {
             var idx = value.IndexOf(':');
             var prefix = value.Substring(0, idx);
-            var ns = Instance.Namespaces.LookupNamespace(prefix);
+            var ns = Report.Namespaces.LookupNamespace(prefix);
             var localname = value.Substring(idx + 1);
             var measure = new XmlQualifiedName(localname, ns);
             var unit = new Unit(id, measure);
-            unit.Instance = this.Instance;
+            unit.Report = this.Report;
             Add(unit);
         }
 
         public UnitCollection UsedUnits()
-        => new UnitCollection(this.Where(u => Instance.Facts.Any(f => f.Unit == u)));
+        => new UnitCollection(this.Where(u => Report.Facts.Any(f => f.Unit == u)));
 
         protected override string GetKeyForItem(Unit item)
         => item != null ? item.Id : null;

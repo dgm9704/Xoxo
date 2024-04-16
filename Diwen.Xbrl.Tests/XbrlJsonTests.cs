@@ -22,7 +22,7 @@ namespace Diwen.Xbrl.Csv.Tests
         [InlineData("json/example.json")]
         public static void ImportJsonTest(string reportPath)
         {
-            var report = Report.FromFile(reportPath);
+            var report = Json.Report.FromFile(reportPath);
             Assert.Equal("https://xbrl.org/2021/xbrl-json", report.DocumentInfo.DocumentType);
             Assert.Equal(new Uri("http://example.com/xbrl-json/taxonomy/example.xsd"), report.DocumentInfo.Taxonomy.First());
             Assert.Equal(new Uri("http://example.com/xbrl-json/taxonomy/"), report.DocumentInfo.Namespaces["eg"]);
@@ -35,7 +35,7 @@ namespace Diwen.Xbrl.Csv.Tests
         [InlineData("example_output.json")]
         public static void ExportJsonTest(string reportPath)
         {
-            var report = new Report
+            var report = new Json.Report
             {
                 DocumentInfo = new()
                 {
@@ -121,9 +121,9 @@ namespace Diwen.Xbrl.Csv.Tests
             //var xmlreport = Instance.FromFile(path, removeUnusedObjects: false, collapseDuplicateContexts: false, removeDuplicateFacts: false);
             // my test data is awful
             //output.WriteLine($"{path}: {xmlreport.Facts.Count}");
-            var xmlreport = Instance.FromFile(path);
+            var xmlreport = Xml.Report.FromFile(path);
 
-            var jsonreport = Report.FromXbrlXml(xmlreport);
+            var jsonreport = Json.Report.FromXbrlXml(xmlreport);
 
             jsonreport.ToFile(Path.ChangeExtension(path, "json"));
         }

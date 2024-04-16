@@ -34,7 +34,7 @@ namespace Diwen.Xbrl.Xml
 
     [Serializable]
     [XmlRoot(ElementName = "xbrl", Namespace = "http://www.xbrl.org/2003/instance")]
-    public class Instance : IEquatable<Instance>
+    public class Report : IEquatable<Report>
     {
         static AssemblyName assembly = Assembly.GetExecutingAssembly().GetName();
         static Version version = assembly.Version;
@@ -74,7 +74,7 @@ namespace Diwen.Xbrl.Xml
             set
             {
                 entityField = value;
-                entityField.Instance = this;
+                entityField.Report = this;
             }
         }
 
@@ -330,7 +330,7 @@ namespace Diwen.Xbrl.Xml
                     usedIds.Add(fact.Context.Id);
         }
 
-        public Instance()
+        public Report()
         {
             XmlSerializerNamespaces = new XmlSerializerNamespaces();
             Namespaces = new XmlNamespaceManager(new NameTable());
@@ -343,7 +343,7 @@ namespace Diwen.Xbrl.Xml
 
         #region IEquatable implementation
 
-        public bool Equals(Instance other)
+        public bool Equals(Report other)
         {
             var result = false;
             if (other != null)
@@ -364,7 +364,7 @@ namespace Diwen.Xbrl.Xml
         #endregion
 
         public override bool Equals(object obj)
-        => Equals(obj as Instance);
+        => Equals(obj as Report);
 
         void RebuildNamespacesAfterRead()
         {
@@ -568,7 +568,7 @@ namespace Diwen.Xbrl.Xml
         {
             if (scenario != null)
             {
-                scenario.Instance = this;
+                scenario.Report = this;
 
                 if (!scenario.HasMembers)
                     scenario = null;
@@ -580,12 +580,12 @@ namespace Diwen.Xbrl.Xml
         {
             if (segment != null)
             {
-                segment.Instance = this;
+                segment.Report = this;
 
                 if (!segment.HasMembers)
                     segment = null;
             }
-            Facts.Instance = this;
+            Facts.Report = this;
             return Facts.Add(segment, metric, unitRef, decimals, value);
         }
 
@@ -648,7 +648,7 @@ namespace Diwen.Xbrl.Xml
 
         #region serialization
 
-        static XmlSerializer Serializer = new XmlSerializer(typeof(Instance));
+        static XmlSerializer Serializer = new XmlSerializer(typeof(Report));
 
         static XmlReaderSettings XmlReaderSettings = new XmlReaderSettings
         {
@@ -667,7 +667,7 @@ namespace Diwen.Xbrl.Xml
             Encoding = Encoding.UTF8
         };
 
-        static InstanceInfo GetInstanceInfo(Stream stream)
+        static ReportInfo GetReportInfo(Stream stream)
         {
             string taxonomyVersion = null;
             string instanceGenerator = null;
@@ -706,66 +706,66 @@ namespace Diwen.Xbrl.Xml
                 }
                 while (!content);
             }
-            return new InstanceInfo(taxonomyVersion, instanceGenerator, comments);
+            return new ReportInfo(taxonomyVersion, instanceGenerator, comments);
         }
 
-        static void SetInstanceInfo(Instance instance, InstanceInfo info)
+        static void SetReportInfo(Report report, ReportInfo info)
         {
             if (!string.IsNullOrEmpty(info.TaxonomyVersion))
-                instance.TaxonomyVersion = info.TaxonomyVersion;
+                report.TaxonomyVersion = info.TaxonomyVersion;
 
             if (!string.IsNullOrEmpty(info.InstanceGenerator))
-                instance.InstanceGenerator = info.InstanceGenerator;
+                report.InstanceGenerator = info.InstanceGenerator;
 
-            instance.Comments = new Collection<string>(info.Comments);
+            report.Comments = new Collection<string>(info.Comments);
         }
 
-        internal static void CleanupAfterDeserialization(Instance instance, InstanceOptions options)
+        internal static void CleanupAfterDeserialization(Report report, ReportOptions options)
         {
-            instance.RebuildNamespacesAfterRead();
+            report.RebuildNamespacesAfterRead();
 
-            instance.SetContextReferences(instance.Facts);
-            instance.SetUnitReferences(instance.Facts);
+            report.SetContextReferences(report.Facts);
+            report.SetUnitReferences(report.Facts);
 
-            if (options.HasFlag(InstanceOptions.CollapseDuplicateContexts))
-                instance.CollapseDuplicateContexts();
+            if (options.HasFlag(ReportOptions.CollapseDuplicateContexts))
+                report.CollapseDuplicateContexts();
 
-            if (options.HasFlag(InstanceOptions.RemoveDuplicateFacts))
-                instance.RemoveDuplicateFacts();
+            if (options.HasFlag(ReportOptions.RemoveDuplicateFacts))
+                report.RemoveDuplicateFacts();
 
-            if (options.HasFlag(InstanceOptions.RemoveUnusedObjects))
-                instance.RemoveUnusedObjects();
+            if (options.HasFlag(ReportOptions.RemoveUnusedObjects))
+                report.RemoveUnusedObjects();
 
-            if (instance.Contexts.Any())
+            if (report.Contexts.Any())
             {
-                instance.Entity = instance.Contexts.First().Entity;
-                instance.Period = instance.Contexts.First().Period;
+                report.Entity = report.Contexts.First().Entity;
+                report.Period = report.Contexts.First().Period;
             }
 
 
-            instance.SetInstanceReferences();
+            report.SetReportReferences();
         }
 
-        void SetInstanceReferences()
+        void SetReportReferences()
         {
             foreach (var context in Contexts)
             {
                 var s = context.Scenario;
                 if (s != null)
-                    if (s.Instance == null)
-                        s.Instance = this;
+                    if (s.Report == null)
+                        s.Report = this;
             }
 
             if (Entity != null)
             {
                 var seg = Entity.Segment;
                 if (seg != null)
-                    if (seg.Instance == null)
-                        seg.Instance = this;
+                    if (seg.Report == null)
+                        seg.Report = this;
             }
 
             foreach (var unit in Units)
-                unit.Instance = this;
+                unit.Report = this;
         }
 
         XmlSerializerNamespaces GetXmlSerializerNamespaces()
@@ -838,38 +838,38 @@ namespace Diwen.Xbrl.Xml
             return result;
         }
 
-        public static Instance FromStream(Stream stream)
+        public static Report FromStream(Stream stream)
         => FromStream(stream, true);
 
-        public static Instance FromStream(Stream stream, bool removeUnusedObjects)
+        public static Report FromStream(Stream stream, bool removeUnusedObjects)
         => FromStream(stream, removeUnusedObjects, true, true);
 
-        public static Instance FromStream(Stream stream, bool removeUnusedObjects, bool collapseDuplicateContexts, bool removeDuplicateFacts)
+        public static Report FromStream(Stream stream, bool removeUnusedObjects, bool collapseDuplicateContexts, bool removeDuplicateFacts)
         {
             stream.Position = 0;
 
-            var info = GetInstanceInfo(stream);
+            var info = GetReportInfo(stream);
 
             stream.Position = 0;
 
-            Instance xbrl;
+            Report xbrl;
             using (var reader = XmlReader.Create(stream, XmlReaderSettings))
-                xbrl = (Instance)Serializer.Deserialize(reader);
+                xbrl = (Report)Serializer.Deserialize(reader);
 
-            var options = InstanceOptions.None;
+            var options = ReportOptions.None;
 
             if (removeDuplicateFacts)
-                options |= InstanceOptions.RemoveDuplicateFacts;
+                options |= ReportOptions.RemoveDuplicateFacts;
 
             if (removeUnusedObjects)
-                options |= InstanceOptions.RemoveUnusedObjects;
+                options |= ReportOptions.RemoveUnusedObjects;
 
             if (collapseDuplicateContexts)
-                options |= InstanceOptions.CollapseDuplicateContexts;
+                options |= ReportOptions.CollapseDuplicateContexts;
 
             CleanupAfterDeserialization(xbrl, options);
 
-            SetInstanceInfo(xbrl, info);
+            SetReportInfo(xbrl, info);
 
             return xbrl;
 
@@ -881,12 +881,12 @@ namespace Diwen.Xbrl.Xml
                 ToXmlWriter(writer);
         }
 
-        public static Instance FromFile(string path)
+        public static Report FromFile(string path)
         => FromFile(path, true, true, true);
 
-        public static Instance FromFile(string path, bool removeUnusedObjects, bool collapseDuplicateContexts, bool removeDuplicateFacts)
+        public static Report FromFile(string path, bool removeUnusedObjects, bool collapseDuplicateContexts, bool removeDuplicateFacts)
         {
-            Instance xbrl;
+            Report xbrl;
 
             using (var stream = new FileStream(path, FileMode.Open, FileAccess.Read))
                 xbrl = FromStream(stream, removeUnusedObjects, collapseDuplicateContexts, removeDuplicateFacts);
@@ -930,7 +930,7 @@ namespace Diwen.Xbrl.Xml
             return document;
         }
 
-        public static Instance FromXml(string content)
+        public static Report FromXml(string content)
         {
             using (var stream = new MemoryStream())
             using (var writer = new StreamWriter(stream))

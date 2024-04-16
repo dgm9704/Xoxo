@@ -26,14 +26,14 @@ namespace Diwen.Xbrl.Extensions
     using Diwen.Xbrl.Csv.Taxonomy;
     using Diwen.Xbrl.Xml;
 
-    public static class InstanceExtensions
+    public static class ReportExtensions
     {
-        public static Report ToXbrlCsv(
-            this Instance instance,
+        public static Csv.Report ToXbrlCsv(
+            this Xml.Report xmlreport,
             Dictionary<string, TableDefinition> tableDefinitions,
             Dictionary<string, string> filingIndicators,
             ModuleDefinition moduleDefinition)
-        => Report.FromXbrlXml(instance, tableDefinitions, filingIndicators, moduleDefinition);
+        => Csv.Report.FromXbrlXml(xmlreport, tableDefinitions, filingIndicators, moduleDefinition);
 
     }
 }

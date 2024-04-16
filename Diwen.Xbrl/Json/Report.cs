@@ -33,7 +33,7 @@ namespace Diwen.Xbrl.Json
                 JsonSerializer.Serialize<Report>(stream, this);
         }
 
-        private static Dictionary<string, Uri> GetNamespaces(Instance xmlreport)
+        private static Dictionary<string, Uri> GetNamespaces(Xml.Report xmlreport)
                 => xmlreport.Namespaces.
                     GetNamespacesInScope(XmlNamespaceScope.ExcludeXml).
                     ToDictionary(
@@ -61,7 +61,7 @@ namespace Diwen.Xbrl.Json
             return dimensions;
         }
 
-        public static Report FromXbrlXml(Instance xmlreport)
+        public static Report FromXbrlXml(Xml.Report xmlreport)
         {
             var dimensionPrefix = xmlreport.Namespaces.LookupPrefix(xmlreport.DimensionNamespace);
 

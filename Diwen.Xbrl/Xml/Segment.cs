@@ -30,17 +30,17 @@ namespace Diwen.Xbrl.Xml
     [XmlRoot(ElementName = "segment", Namespace = "http://www.xbrl.org/2003/instance")]
     public class Segment : IEquatable<Segment>
     {
-        Instance instance;
+        Report report;
 
         [XmlIgnore]
-        public Instance Instance
+        public Report Report
         {
-            get => instance;
+            get => report;
             set
             {
-                instance = value;
-                ExplicitMembers.Instance = value;
-                TypedMembers.Instance = value;
+                report = value;
+                ExplicitMembers.Report = value;
+                TypedMembers.Report = value;
             }
         }
 
@@ -58,10 +58,10 @@ namespace Diwen.Xbrl.Xml
             TypedMembers = new TypedMemberCollection();
         }
 
-        public Segment(Instance instance)
+        public Segment(Report report)
         {
-            ExplicitMembers = new ExplicitMemberCollection(instance);
-            TypedMembers = new TypedMemberCollection(instance);
+            ExplicitMembers = new ExplicitMemberCollection(report);
+            TypedMembers = new TypedMemberCollection(report);
         }
 
         public override string ToString()

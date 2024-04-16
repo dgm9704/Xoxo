@@ -21,17 +21,17 @@ namespace Diwen.Xbrl.Tests
     using Diwen.Xbrl.Xml.Comparison;
     using Xunit;
 
-    public static class InstanceComparerTests
+    public static class ReportComparerTests
     {
 
         [Fact]
-        public static void CompareInstanceToItself()
+        public static void CompareReportToItself()
         {
             // load same instance twice and compare
             var path = Path.Combine("data", "reference.xbrl");
-            var firstInstance = Instance.FromFile(path);
-            var secondInstance = Instance.FromFile(path);
-            var report = InstanceComparer.Report(firstInstance, secondInstance);
+            var firstReport = Report.FromFile(path);
+            var secondReport = Report.FromFile(path);
+            var report = ReportComparer.Report(firstReport, secondReport);
             // comparison should find the instances equivalent
             Assert.True(report.Result);
             // there should be no differences reported
@@ -39,11 +39,11 @@ namespace Diwen.Xbrl.Tests
         }
 
         [Fact]
-        public static void CompareInstanceToItselfWithPath()
+        public static void CompareReportToItselfWithPath()
         {
             // load same instance twice and compare
             var path = Path.Combine("data", "reference.xbrl");
-            var report = InstanceComparer.Report(path, path);
+            var report = ReportComparer.Report(path, path);
             // comparison should find the instances equivalent
             Assert.True(report.Result);
             // there should be no differences reported
@@ -55,20 +55,20 @@ namespace Diwen.Xbrl.Tests
         {
             // load same instance twice
             var path = Path.Combine("data", "reference.xbrl");
-            var firstInstance = Instance.FromFile(path);
-            var secondInstance = Instance.FromFile(path);
+            var firstReport = Report.FromFile(path);
+            var secondReport = Report.FromFile(path);
 
             // modify other one so they produce differences to report 
-            foreach (var context in secondInstance.Contexts)
+            foreach (var context in secondReport.Contexts)
             {
                 context.Entity.Identifier.Value = "00000000000000000098";
             }
 
-            var report = InstanceComparer.Report(firstInstance, secondInstance);
+            var comparisonReport = ReportComparer.Report(firstReport, secondReport);
             // comparison should find the instances different and not crash
-            Assert.False(report.Result);
+            Assert.False(comparisonReport.Result);
             // there should be some differences reported
-            Assert.NotEmpty(report.Messages);//, report.Messages.Join(Environment.NewLine));
+            Assert.NotEmpty(comparisonReport.Messages);//, report.Messages.Join(Environment.NewLine));
         }
 
         [Fact]
@@ -76,16 +76,16 @@ namespace Diwen.Xbrl.Tests
         {
             // load same instance twice and compare
             var path = Path.Combine("data", "reference.xbrl");
-            var firstInstance = Instance.FromFile(path);
-            var secondInstance = Instance.FromFile(path);
+            var firstReport = Report.FromFile(path);
+            var secondReport = Report.FromFile(path);
 
-            secondInstance.TaxonomyVersion = null;
-            secondInstance.SchemaReference = null;
+            secondReport.TaxonomyVersion = null;
+            secondReport.SchemaReference = null;
 
-            var report = InstanceComparer.Report(firstInstance, secondInstance, ComparisonTypes.Basic);
+            var comparisonReport = ReportComparer.Report(firstReport, secondReport, ComparisonTypes.Basic);
             // comparison should find the instances different and not throw
-            Assert.False(report.Result);
-            Assert.NotEmpty(report.Messages);//, report.Messages.Join(Environment.NewLine));
+            Assert.False(comparisonReport.Result);
+            Assert.NotEmpty(comparisonReport.Messages);//, report.Messages.Join(Environment.NewLine));
         }
 
         [Fact]
@@ -93,27 +93,27 @@ namespace Diwen.Xbrl.Tests
         {
             // load same instance twice and compare
             var path = Path.Combine("data", "reference.xbrl");
-            var firstInstance = Instance.FromFile(path);
-            var secondInstance = Instance.FromFile(path);
+            var firstReport = Report.FromFile(path);
+            var secondReport = Report.FromFile(path);
 
-            secondInstance.Facts[0].Value = "0";
-            secondInstance.Facts[1].Value = "0";
+            secondReport.Facts[0].Value = "0";
+            secondReport.Facts[1].Value = "0";
 
-            var report = InstanceComparer.Report(firstInstance, secondInstance, ComparisonTypes.Facts);
+            var comparisonReport = ReportComparer.Report(firstReport, secondReport, ComparisonTypes.Facts);
             // comparison should find the instances different and not throw
-            Assert.False(report.Result);
-            Assert.NotEmpty(report.Messages);
-            Assert.Equal(4, report.Messages.Count); // report.Messages.Join(Environment.NewLine));
+            Assert.False(comparisonReport.Result);
+            Assert.NotEmpty(comparisonReport.Messages);
+            Assert.Equal(4, comparisonReport.Messages.Count); // report.Messages.Join(Environment.NewLine));
         }
 
         [Fact]
-        public static void CompareTotallyDifferentInstances()
+        public static void CompareTotallyDifferentReports()
         {
             var firstPath = Path.Combine("data", "reference.xbrl");
             var secondPath = Path.Combine("data", "ars.xbrl");
-            var report = InstanceComparer.Report(firstPath, secondPath, ComparisonTypes.All);
-            Assert.False(report.Result);
-            Assert.NotEmpty(report.Messages);
+            var comparisonReport = ReportComparer.Report(firstPath, secondPath, ComparisonTypes.All);
+            Assert.False(comparisonReport.Result);
+            Assert.NotEmpty(comparisonReport.Messages);
         }
 
         [Fact]
@@ -121,7 +121,7 @@ namespace Diwen.Xbrl.Tests
         {
             var firstPath = Path.Combine("data", "reference.xbrl");
             var secondPath = Path.Combine("data", "ars.xbrl");
-            var report = InstanceComparer.Report(firstPath, secondPath, ComparisonTypes.DomainNamespaces);
+            var report = ReportComparer.Report(firstPath, secondPath, ComparisonTypes.DomainNamespaces);
             Assert.False(report.Result);
             Assert.NotEmpty(report.Messages);
         }
@@ -164,23 +164,23 @@ namespace Diwen.Xbrl.Tests
         //}
 
         [Fact]
-        public static void CompareLargeInstanceMinorDifferenceInFact()
+        public static void CompareLargeReportMinorDifferenceInFact()
         {
             // load same instance twice
             var path = Path.Combine("data", "ars.xbrl");
-            var firstInstance = Instance.FromFile(path, removeUnusedObjects: false, collapseDuplicateContexts: false, removeDuplicateFacts: false);
-            var secondInstance = Instance.FromFile(path, removeUnusedObjects: false, collapseDuplicateContexts: false, removeDuplicateFacts: false);
+            var firstReport = Report.FromFile(path, removeUnusedObjects: false, collapseDuplicateContexts: false, removeDuplicateFacts: false);
+            var secondReport = Report.FromFile(path, removeUnusedObjects: false, collapseDuplicateContexts: false, removeDuplicateFacts: false);
             // change one fact in both instances
             // original is 0
-            firstInstance.Facts[33099].Value = "FOOBAR";
-            secondInstance.Facts[33099].Value = "DEADBEEF";
-            var report = InstanceComparer.Report(firstInstance, secondInstance, ComparisonTypes.Facts);
+            firstReport.Facts[33099].Value = "FOOBAR";
+            secondReport.Facts[33099].Value = "DEADBEEF";
+            var comparisonReport = ReportComparer.Report(firstReport, secondReport, ComparisonTypes.Facts);
             // not the same anymore
-            Assert.False(report.Result);
+            Assert.False(comparisonReport.Result);
             // should contain some differences
-            Assert.NotEmpty(report.Messages);
+            Assert.NotEmpty(comparisonReport.Messages);
             // one fact is different, report should reflect this once per instance
-            Assert.Equal(2, report.Messages.Count);// report.Messages.Join(Environment.NewLine));
+            Assert.Equal(2, comparisonReport.Messages.Count);// report.Messages.Join(Environment.NewLine));
         }
 
         [Fact]
@@ -188,21 +188,21 @@ namespace Diwen.Xbrl.Tests
         {
             // load same instance twice
             var path = Path.Combine("data", "reference.xbrl");
-            var report = InstanceComparer.Report(path, path, ComparisonTypes.Contexts);
+            var report = ReportComparer.Report(path, path, ComparisonTypes.Contexts);
             Assert.True(report.Result, string.Join(Environment.NewLine, report.Messages));
         }
 
         [Fact]
         public static void CompareEntityWithNoEntity()
         {
-            var first = Instance.FromFile(Path.Combine("data", "empty_instance.xbrl"));
-            var second = Instance.FromFile(Path.Combine("data", "empty_instance.xbrl"));
+            var first = Report.FromFile(Path.Combine("data", "empty_instance.xbrl"));
+            var second = Report.FromFile(Path.Combine("data", "empty_instance.xbrl"));
 
             second.Entity = new Entity("LEI", "00000000000000000098");
             second.Period = new Period(2016, 05, 31);
             second.AddFilingIndicator("foo", false);
             // should not throw 
-            Assert.NotNull(InstanceComparer.Report(first, second));
+            Assert.NotNull(ReportComparer.Report(first, second));
         }
 
         [Fact]
@@ -211,7 +211,7 @@ namespace Diwen.Xbrl.Tests
             var path = Path.Combine("data", "reference.xbrl");
             var path2 = Path.Combine("data", "reference2.xbrl");
 
-            var report = InstanceComparer.Report(path, path2);
+            var report = ReportComparer.Report(path, path2);
             Assert.False(report.Result);
             string[] expectedMessages = {
                 "Different Entity",
@@ -229,29 +229,29 @@ namespace Diwen.Xbrl.Tests
         public static void CompareFactWithMissingUnit()
         {
             var path = Path.Combine("data", "reference.xbrl");
-            var firstInstance = Instance.FromFile(path);
-            var secondInstance = Instance.FromFile(path);
+            var firstReport = Report.FromFile(path);
+            var secondReport = Report.FromFile(path);
 
             // comparing this should not throw
-            secondInstance.Facts[0].Unit = null;
+            secondReport.Facts[0].Unit = null;
 
-            var report = InstanceComparer.Report(firstInstance, secondInstance);
-            Assert.False(report.Result);
-            Assert.Equal(2, report.Messages.Count); //, report.Messages.Join(Environment.NewLine));
+            var comparisonReport = ReportComparer.Report(firstReport, secondReport);
+            Assert.False(comparisonReport.Result);
+            Assert.Equal(2, comparisonReport.Messages.Count); //, report.Messages.Join(Environment.NewLine));
         }
 
         [Fact]
         public static void BypassTaxonomyVersion()
         {
             var path = Path.Combine("data", "reference.xbrl");
-            var firstInstance = Instance.FromFile(path);
-            var secondInstance = Instance.FromFile(path);
-            secondInstance.TaxonomyVersion = null;
+            var firstReport = Report.FromFile(path);
+            var secondReport = Report.FromFile(path);
+            secondReport.TaxonomyVersion = null;
 
             var types = ComparisonTypes.All & ~ComparisonTypes.TaxonomyVersion;
 
-            var report = InstanceComparer.Report(firstInstance, secondInstance, types);
-            Assert.True(report.Result);
+            var comparisonReport = ReportComparer.Report(firstReport, secondReport, types);
+            Assert.True(comparisonReport.Result);
         }
 
         [Fact]
@@ -264,8 +264,8 @@ namespace Diwen.Xbrl.Tests
             var path = Path.Combine("data", "minimal.xbrl");
             var tempPath = Path.GetTempFileName();
 
-            var first = Instance.FromFile(path);
-            var second = Instance.FromFile(path);
+            var first = Report.FromFile(path);
+            var second = Report.FromFile(path);
 
             var period = new Period(2050, 12, 31);
             var entity = new Entity("foo", "bar");
@@ -277,14 +277,14 @@ namespace Diwen.Xbrl.Tests
             }
 
             second.ToFile(tempPath);
-            second = Instance.FromFile(tempPath);
+            second = Report.FromFile(tempPath);
 
             ComparisonReport report = null;
             string[] expectedMessages = null;
             BasicComparisons basicSelection;
 
             // Full comparison outputs both Entity and Period from basic and detailed comparion
-            report = InstanceComparer.Report(first, second, ComparisonTypes.All);
+            report = ReportComparer.Report(first, second, ComparisonTypes.All);
             Assert.False(report.Result);
             expectedMessages = new string[] {
                 "Different Entity",
@@ -298,7 +298,7 @@ namespace Diwen.Xbrl.Tests
 
             // basic comparison with all flags reports Entity and Period
             basicSelection = BasicComparisons.All;
-            report = InstanceComparer.Report(first, second, ComparisonTypes.Basic);
+            report = ReportComparer.Report(first, second, ComparisonTypes.Basic);
             Assert.False(report.Result);
             expectedMessages = new string[] {
                 "Different Entity",
@@ -311,7 +311,7 @@ namespace Diwen.Xbrl.Tests
             basicSelection &= ~BasicComparisons.Entity;
             basicSelection &= ~BasicComparisons.Period;
 
-            report = InstanceComparer.Report(first, second, ComparisonTypes.Basic, basicSelection);
+            report = ReportComparer.Report(first, second, ComparisonTypes.Basic, basicSelection);
             Assert.True(report.Result);
         }
 
@@ -320,7 +320,7 @@ namespace Diwen.Xbrl.Tests
         {
             var firstPath = Path.Combine("data", "reference.xbrl");
             var secondPath = Path.Combine("data", "ars.xbrl");
-            var report = InstanceComparer.ReportObjects(firstPath, secondPath);
+            var report = ReportComparer.ReportObjects(firstPath, secondPath);
             Assert.False(report.Result);
         }
 
@@ -329,20 +329,20 @@ namespace Diwen.Xbrl.Tests
         {
             // load same instance twice
             var path = Path.Combine("data", "ars.xbrl");
-            var firstInstance = Instance.FromFile(path, removeUnusedObjects: false, collapseDuplicateContexts: false, removeDuplicateFacts: false);
-            var secondInstance = Instance.FromFile(path, removeUnusedObjects: false, collapseDuplicateContexts: false, removeDuplicateFacts: false);
+            var firstReport = Report.FromFile(path, removeUnusedObjects: false, collapseDuplicateContexts: false, removeDuplicateFacts: false);
+            var secondReport = Report.FromFile(path, removeUnusedObjects: false, collapseDuplicateContexts: false, removeDuplicateFacts: false);
             // change one fact in both instances
             // original is 0
-            firstInstance.Facts[33099].Value = "FOOBAR";
-            secondInstance.Facts[33099].Value = "DEADBEEF";
-            var report = InstanceComparer.ReportObjects(firstInstance, secondInstance, ComparisonTypes.All, BasicComparisons.All);
+            firstReport.Facts[33099].Value = "FOOBAR";
+            secondReport.Facts[33099].Value = "DEADBEEF";
+            var comparisonReport = ReportComparer.ReportObjects(firstReport, secondReport, ComparisonTypes.All, BasicComparisons.All);
 
             // not the same anymore
-            Assert.False(report.Result);
+            Assert.False(comparisonReport.Result);
 
             // one fact is different, report should reflect this once per instance
-            Assert.Single(report.Facts.Item1);
-            Assert.Single(report.Facts.Item2);
+            Assert.Single(comparisonReport.Facts.Item1);
+            Assert.Single(comparisonReport.Facts.Item2);
         }
 
         [Fact]
@@ -350,30 +350,30 @@ namespace Diwen.Xbrl.Tests
         {
             // load same instance twice
             var path = Path.Combine("data", "ars.xbrl");
-            var firstInstance = Instance.FromFile(path);
-            var secondInstance = Instance.FromFile(path);
+            var firstReport = Report.FromFile(path);
+            var secondReport = Report.FromFile(path);
 
             // change some facts  on the second instance
-            firstInstance.Facts[0].Value = "DEADBEED";
-            firstInstance.Facts[1].Decimals = "16";
+            firstReport.Facts[0].Value = "DEADBEED";
+            firstReport.Facts[1].Decimals = "16";
 
-            secondInstance.Facts[0].Value = "FOOBAR";
-            secondInstance.Facts[1].Decimals = "9";
+            secondReport.Facts[0].Value = "FOOBAR";
+            secondReport.Facts[1].Decimals = "9";
 
             // change some context members
-            secondInstance.Contexts[4].AddExplicitMember("AO", "s2c_AO:x0");
-            secondInstance.Contexts[5].AddExplicitMember("RT", "s2c_RT:x52");
+            secondReport.Contexts[4].AddExplicitMember("AO", "s2c_AO:x0");
+            secondReport.Contexts[5].AddExplicitMember("RT", "s2c_RT:x52");
 
             // generate raw differences
-            var report = InstanceComparer.ReportObjects(firstInstance, secondInstance, ComparisonTypes.All, BasicComparisons.All);
+            var comparisonReport = ReportComparer.ReportObjects(firstReport, secondReport, ComparisonTypes.All, BasicComparisons.All);
             // should give negative result because differences were found
-            Assert.False(report.Result);
+            Assert.False(comparisonReport.Result);
             // should report both facts for both instances
-            Assert.Equal(2, report.Facts.Item1.Count);
-            Assert.Equal(2, report.Facts.Item2.Count);
+            Assert.Equal(2, comparisonReport.Facts.Item1.Count);
+            Assert.Equal(2, comparisonReport.Facts.Item2.Count);
 
             // try to match the facts
-            var factReport = FactReport.FromReport(report);
+            var factReport = FactReport.FromReport(comparisonReport);
             Assert.NotNull(factReport.Matches);
         }
 
@@ -381,8 +381,8 @@ namespace Diwen.Xbrl.Tests
         public static void CompareDifferentUnits()
         {
             var path = Path.Combine("data", "reference.xbrl");
-            var first = Instance.FromFile(path);
-            var second = Instance.FromFile(path);
+            var first = Report.FromFile(path);
+            var second = Report.FromFile(path);
 
             var unit = new Unit("uUSD", "iso4217:USD");
             second.Units.Add(unit);
@@ -392,9 +392,9 @@ namespace Diwen.Xbrl.Tests
             // write+read just to make sure all references are updated internally :(
             var tmpfile = Path.GetTempFileName();
             second.ToFile(tmpfile);
-            second = Instance.FromFile(tmpfile);
+            second = Report.FromFile(tmpfile);
 
-            var report = InstanceComparer.Report(first, second, ComparisonTypes.All);
+            var report = ReportComparer.Report(first, second, ComparisonTypes.All);
             Assert.False(report.Result);
             var expectedMessages = new string[] {
                 "Different Units",
@@ -409,10 +409,10 @@ namespace Diwen.Xbrl.Tests
         [Fact]
         public static void InstancesAreComparableAfterCreation()
         {
-            var first = new Instance();
-            var second = new Instance();
+            var first = new Report();
+            var second = new Report();
 
-            var comparison = InstanceComparer.Report(first, second);
+            var comparison = ReportComparer.Report(first, second);
 
             Assert.True(comparison.Result, string.Join(Environment.NewLine, comparison.Messages));
         }

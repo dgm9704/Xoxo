@@ -31,35 +31,35 @@ namespace Diwen.Xbrl.Xml
 
     public class TypedMemberCollection : Collection<TypedMember>, IEquatable<IList<TypedMember>>
     {
-        Instance instanceField;
+        Report reportField;
 
         [XmlIgnore]
-        public Instance Instance
+        public Report Report
         {
-            get { return instanceField; }
+            get { return reportField; }
             set
             {
                 if (value == null)
                     throw new ArgumentNullException();
 
-                instanceField = value;
-                var dimNs = instanceField.DimensionNamespace;
-                var dimPrefix = instanceField.Namespaces.LookupPrefix(dimNs);
-                var domNs = instanceField.TypedDomainNamespace;
-                var domprefix = instanceField.Namespaces.LookupPrefix(domNs);
+                reportField = value;
+                var dimNs = reportField.DimensionNamespace;
+                var dimPrefix = reportField.Namespaces.LookupPrefix(dimNs);
+                var domNs = reportField.TypedDomainNamespace;
+                var domprefix = reportField.Namespaces.LookupPrefix(domNs);
 
                 for (int i = 0; i < this.Count; i++)
                 {
                     var item = this[i];
                     var dirty = false;
-                    item.Instance = value;
-                    if (item.Dimension.Namespace != instanceField.DimensionNamespace)
+                    item.Report = value;
+                    if (item.Dimension.Namespace != reportField.DimensionNamespace)
                     {
                         item.Dimension = new XmlQualifiedName($"{dimPrefix}:{item.Dimension.Name}", dimNs);
                         dirty = true;
                     }
 
-                    if (item.Domain.Namespace != instanceField.TypedDomainNamespace)
+                    if (item.Domain.Namespace != reportField.TypedDomainNamespace)
                     {
                         item.Domain = new XmlQualifiedName($"{domprefix}:{item.Domain.Name}", domNs);
                         dirty = true;
@@ -75,10 +75,10 @@ namespace Diwen.Xbrl.Xml
         {
         }
 
-        public TypedMemberCollection(Instance instance)
+        public TypedMemberCollection(Report report)
             : this()
         {
-            Instance = instance;
+            Report = report;
         }
 
         public TypedMember Add(string dimension, string domain, string value)
@@ -86,10 +86,10 @@ namespace Diwen.Xbrl.Xml
 
             XmlQualifiedName dim;
             XmlQualifiedName dom;
-            if (Instance != null)
+            if (Report != null)
             {
-                dim = new XmlQualifiedName(dimension, Instance.DimensionNamespace);
-                dom = new XmlQualifiedName(domain, Instance.TypedDomainNamespace);
+                dim = new XmlQualifiedName(dimension, Report.DimensionNamespace);
+                dom = new XmlQualifiedName(domain, Report.TypedDomainNamespace);
             }
             else
             {

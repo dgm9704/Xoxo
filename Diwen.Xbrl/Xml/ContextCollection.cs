@@ -31,7 +31,7 @@ namespace Diwen.Xbrl.Xml
     {
         static IFormatProvider ic = CultureInfo.InvariantCulture;
 
-        Instance Instance;
+        Report report;
 
         public string IdFormat { get; set; }
 
@@ -40,10 +40,10 @@ namespace Diwen.Xbrl.Xml
             IdFormat = "A{0}";
         }
 
-        public ContextCollection(Instance instance)
+        public ContextCollection(Report report)
             : this()
         {
-            Instance = instance;
+            this.report = report;
         }
 
         public new Context Add(Context context)
@@ -52,10 +52,10 @@ namespace Diwen.Xbrl.Xml
                 throw new ArgumentNullException(nameof(context));
 
             if (context.Entity == null)
-                context.Entity = Instance.Entity;
+                context.Entity = report.Entity;
 
             if (context.Period == null)
-                context.Period = Instance.Period;
+                context.Period = report.Period;
 
             if (string.IsNullOrEmpty(context.Id))
             {

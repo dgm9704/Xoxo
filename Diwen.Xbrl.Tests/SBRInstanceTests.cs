@@ -22,10 +22,10 @@ namespace Diwen.Xbrl.Tests
 
     public static class SBRInstanceTests
     {
-        static Instance CreatePaymentSummaryInstance()
+        static Report CreatePaymentSummaryInstance()
         {
             // Sets default namespaces
-            var instance = new Instance();
+            var instance = new Report();
 
             // When an explicit member is added, check that the namespace for the domain has been set
             instance.CheckExplicitMemberDomainExists = true;
@@ -100,7 +100,7 @@ namespace Diwen.Xbrl.Tests
 
             // A scenario contains the dimensions and their values for a datapoint
             var rp_segment = new Segment();
-            rp_segment.Instance = instance;
+            rp_segment.Report = instance;
 
             // Dimensions and domains can be given with or without namespaces
             // The namespace prefixes are added internally if needed
@@ -233,7 +233,7 @@ namespace Diwen.Xbrl.Tests
             instance.RemoveUnusedObjects();
 
             var referencePath = Path.Combine("data", "sbr_reference.xbrl");
-            var referenceInstance = Instance.FromFile(referencePath, removeUnusedObjects: false, collapseDuplicateContexts: false, removeDuplicateFacts: false);
+            var referenceInstance = Report.FromFile(referencePath, removeUnusedObjects: false, collapseDuplicateContexts: false, removeDuplicateFacts: false);
 
             // Instances are functionally equivalent:
             // They have the same number of contexts and scenarios of the contexts match member-by-member
@@ -246,7 +246,7 @@ namespace Diwen.Xbrl.Tests
             string tempFile = "sbr_temp.xbrl";
             instance.ToFile(tempFile);
 
-            var newInstance = Instance.FromFile(tempFile, removeUnusedObjects: false, collapseDuplicateContexts: false, removeDuplicateFacts: false);
+            var newInstance = Report.FromFile(tempFile, removeUnusedObjects: false, collapseDuplicateContexts: false, removeDuplicateFacts: false);
 
             Assert.True(newInstance.Equals(instance));
 

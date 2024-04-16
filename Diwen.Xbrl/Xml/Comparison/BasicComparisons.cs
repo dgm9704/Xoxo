@@ -27,7 +27,7 @@ namespace Diwen.Xbrl.Xml.Comparison
     public enum BasicComparisons
     {
         None = 0,
-        NullInstances = 1 << 0,
+        NullReports = 1 << 0,
         SchemaReference = 1 << 1,
         Units = 1 << 2,
         FilingIndicators = 1 << 3,
