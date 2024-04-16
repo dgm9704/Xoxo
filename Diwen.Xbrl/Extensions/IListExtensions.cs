@@ -74,7 +74,7 @@ namespace Diwen.Xbrl.Extensions
         }
 
         internal static Tuple<List<T>, List<T>> ContentCompareReport<T>(this IList<T> left, IList<T> right)
-        => new Tuple<List<T>, List<T>>(
+        => new(
                 left.AsParallel().Except(right.AsParallel()).ToList(),
                 right.AsParallel().Except(left.AsParallel()).ToList());
 

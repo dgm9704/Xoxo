@@ -48,8 +48,7 @@ namespace Diwen.Xbrl.Xml
 
         public new Context Add(Context context)
         {
-            if (context == null)
-                throw new ArgumentNullException(nameof(context));
+            ArgumentNullException.ThrowIfNull(context);
 
             if (context.Entity == null)
                 context.Entity = report.Entity;
@@ -103,9 +102,7 @@ namespace Diwen.Xbrl.Xml
         }
 
         protected override string GetKeyForItem(Context item)
-        => item != null
-                ? item.Id
-                : null;
+        => item?.Id;
 
         #region IEquatable implementation
 

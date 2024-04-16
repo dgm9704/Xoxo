@@ -30,7 +30,7 @@ namespace Diwen.Xbrl.Xml
 
     public class UnitCollection : KeyedCollection<string, Unit>, IEquatable<IList<Unit>>
     {
-        Report Report;
+        readonly Report Report;
 
         public UnitCollection() { }
 
@@ -67,10 +67,10 @@ namespace Diwen.Xbrl.Xml
         }
 
         public UnitCollection UsedUnits()
-        => new UnitCollection(this.Where(u => Report.Facts.Any(f => f.Unit == u)));
+        => new(this.Where(u => Report.Facts.Any(f => f.Unit == u)));
 
         protected override string GetKeyForItem(Unit item)
-        => item != null ? item.Id : null;
+        => item?.Id;
 
         public override bool Equals(object obj)
         => Equals(obj as UnitCollection);

@@ -54,8 +54,8 @@ namespace Diwen.Xbrl.Xml
 
         public Segment()
         {
-            ExplicitMembers = new ExplicitMemberCollection();
-            TypedMembers = new TypedMemberCollection();
+            ExplicitMembers = [];
+            TypedMembers = [];
         }
 
         public Segment(Report report)

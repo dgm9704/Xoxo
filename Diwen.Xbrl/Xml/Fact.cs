@@ -29,7 +29,7 @@ namespace Diwen.Xbrl.Xml
 
     public class Fact : IEquatable<Fact>
     {
-        static XmlDocument doc = new XmlDocument();
+        static readonly XmlDocument doc = new();
 
         [XmlIgnore]
         public Unit Unit { get; set; }
@@ -87,11 +87,9 @@ namespace Diwen.Xbrl.Xml
 
         public Fact(Context context, string metric, Unit unit, string decimals, string value, Uri namespaceUri, string prefix) : this()
         {
-            if (context == null)
-                throw new ArgumentNullException(nameof(context));
+            ArgumentNullException.ThrowIfNull(context);
 
-            if (namespaceUri == null)
-                throw new ArgumentNullException(nameof(namespaceUri));
+            ArgumentNullException.ThrowIfNull(namespaceUri);
 
             Metric = new XmlQualifiedName($"{prefix}:{metric}", namespaceUri.ToString());
             Unit = unit;
@@ -181,8 +179,7 @@ namespace Diwen.Xbrl.Xml
         public override bool Equals(object obj)
         {
             var result = false;
-            var other = obj as Fact;
-            if (other != null && Equals(other))
+            if (obj is Fact other && Equals(other))
                 result |= Facts.Equals(other.Facts);
 
             return result;

@@ -32,7 +32,7 @@ namespace Diwen.Xbrl.Inline
 
     public static class InlineXbrl
     {
-        private static IFormatProvider ic = CultureInfo.InvariantCulture;
+        private static readonly IFormatProvider ic = CultureInfo.InvariantCulture;
 
         public static Report ParseReportFiles(params ReportFile[] reportFiles)
         => ParseXDocuments(

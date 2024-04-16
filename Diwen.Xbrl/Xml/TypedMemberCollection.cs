@@ -39,8 +39,7 @@ namespace Diwen.Xbrl.Xml
             get { return reportField; }
             set
             {
-                if (value == null)
-                    throw new ArgumentNullException();
+                ArgumentNullException.ThrowIfNull(value);
 
                 reportField = value;
                 var dimNs = reportField.DimensionNamespace;

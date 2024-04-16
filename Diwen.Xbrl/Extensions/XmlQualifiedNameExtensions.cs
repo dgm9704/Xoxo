@@ -28,8 +28,7 @@ namespace Diwen.Xbrl.Extensions
     {
         public static string LocalName(this XmlQualifiedName value)
         {
-            if (value == null)
-                throw new ArgumentNullException(nameof(value));
+            ArgumentNullException.ThrowIfNull(value);
 
             var result = string.Empty;
 
@@ -42,8 +41,7 @@ namespace Diwen.Xbrl.Extensions
 
         public static string Prefix(this XmlQualifiedName value)
         {
-            if (value == null)
-                throw new ArgumentNullException(nameof(value));
+            ArgumentNullException.ThrowIfNull(value);
 
             var result = string.Empty;
 

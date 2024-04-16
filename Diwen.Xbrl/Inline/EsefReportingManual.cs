@@ -29,9 +29,8 @@ namespace Diwen.Xbrl.Inline
     public static class EsefReportingManual
     {
 
-        private static List<Func<IEnumerable<ReportFile>, string>> EsefValidations =
-        new List<Func<IEnumerable<ReportFile>, string>>
-        {
+        private static readonly List<Func<IEnumerable<ReportFile>, string>> EsefValidations =
+        [
             G2_1_2,
             G2_1_3_1,
             G2_1_3_2,
@@ -72,7 +71,7 @@ namespace Diwen.Xbrl.Inline
             G3_4_5_1,
             G3_4_5_2,
             G3_5_1
-        };
+        ];
 
         public static EsefResult Validate(IEnumerable<ReportFile> reportFiles)
         {
@@ -91,14 +90,13 @@ namespace Diwen.Xbrl.Inline
             var errors = new HashSet<string>();
             foreach (var reportFile in reportFiles.Where(f => f.Content is XDocument))
             {
-                var document = reportFile.Content as XDocument;
-                if (document != null)
+                if (reportFile.Content is XDocument document)
                 {
                     var xbrli = document.Root.GetNamespaceOfPrefix("xbrli");
                     var periodElements = document.Root.Descendants(xbrli + "period");
                     var dates = periodElements.SelectMany(p => p.Descendants().Select(d => d.Value));
 
-                    if (dates.Any(d => d.IndexOf('T') != -1))
+                    if (dates.Any(d => d.Contains('T')))
                         errors.Add("periodWithTimeContent");
 
                     var zones = new char[] { 'Z', '+', '-' };
@@ -326,7 +324,7 @@ namespace Diwen.Xbrl.Inline
                 var ix = document.Root.GetNamespaceOfPrefix("ix");
                 var tuples = document.Root.Descendants(ix + "tuple");
 
-                if (tuples.Any(t => (t.Attribute("name")?.Value ?? "").IndexOf(':') != -1))
+                if (tuples.Any(t => (t.Attribute("name")?.Value ?? "").Contains(':')))
                     errors.Add("tupleDefinedInExtensionTaxonomy");
 
                 if (tuples.Any())
@@ -346,7 +344,7 @@ namespace Diwen.Xbrl.Inline
                 var ix = document.Root.GetNamespaceOfPrefix("ix");
                 var fractions = document.Root.Descendants(ix + "fraction");
 
-                if (fractions.Any(t => (t.Attribute("name")?.Value ?? "").IndexOf(':') != -1))
+                if (fractions.Any(t => (t.Attribute("name")?.Value ?? "").Contains(':')))
                     errors.Add("fractionDefinedInExtensionTaxonomy");
 
                 if (fractions.Any())
@@ -396,7 +394,7 @@ namespace Diwen.Xbrl.Inline
                     Descendants(html + "img").
                     Select(i => i.Attribute("src").Value).
                     Where(src => !src.StartsWith("http")). // external reference handled elsewhere
-                    Any(src => !src.StartsWith("data:") || src.IndexOf(";base64,") == -1))
+                    Any(src => !src.StartsWith("data:") || !src.Contains(";base64,", StringComparison.InvariantCulture)))
                     errors.Add("embeddedImageNotUsingBase64Encoding");
             }
             return errors.Join(",");
@@ -427,7 +425,7 @@ namespace Diwen.Xbrl.Inline
 
                 if (string.IsNullOrEmpty(reportLanguage))
                 {
-                    if (textFactLanguages.Any(l => string.IsNullOrEmpty(l)))
+                    if (textFactLanguages.Any(string.IsNullOrEmpty))
                         errors.Add("undefinedLanguageForTextFact");
                 }
                 else

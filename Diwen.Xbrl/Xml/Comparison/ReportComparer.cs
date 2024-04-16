@@ -117,8 +117,8 @@ namespace Diwen.Xbrl.Xml.Comparison
                 || (report.FilingIndicators != null && (report.FilingIndicators.Item1.Any() || report.FilingIndicators.Item2.Any()))
                 );
 
-        static Dictionary<ComparisonTypes, Func<Report, Report, IEnumerable<string>>> ComparisonMethods
-            = new Dictionary<ComparisonTypes, Func<Report, Report, IEnumerable<string>>>
+        static readonly Dictionary<ComparisonTypes, Func<Report, Report, IEnumerable<string>>> ComparisonMethods
+            = new()
             {
                 [ComparisonTypes.Contexts] = ScenarioComparisonMessages,
                 [ComparisonTypes.Facts] = FactComparisonMessages,
@@ -133,18 +133,18 @@ namespace Diwen.Xbrl.Xml.Comparison
 
         #region SimpleChecks
 
-        static Dictionary<BasicComparisons, Tuple<string, Func<Report, Report, bool>>> SimpleCheckMethods
-        = new Dictionary<BasicComparisons, Tuple<string, Func<Report, Report, bool>>>
+        static readonly Dictionary<BasicComparisons, Tuple<string, Func<Report, Report, bool>>> SimpleCheckMethods
+        = new()
         {
-            [BasicComparisons.NullReports] = Tuple.Create<string, Func<Report, Report, bool>>("At least one the reports is null", CheckNullReports),
-            [BasicComparisons.SchemaReference] = Tuple.Create<string, Func<Report, Report, bool>>("Different SchemaReference", CheckSchemaReference),
-            [BasicComparisons.Units] = Tuple.Create<string, Func<Report, Report, bool>>("Different Units", CheckUnits),
-            [BasicComparisons.FilingIndicators] = Tuple.Create<string, Func<Report, Report, bool>>("Different FilingIndicators", CheckFilingIndicators),
-            [BasicComparisons.ContextCount] = Tuple.Create<string, Func<Report, Report, bool>>("Different number of Contexts", CheckContextCount),
-            [BasicComparisons.FactCount] = Tuple.Create<string, Func<Report, Report, bool>>("Different number of Facts", CheckFactCount),
-            [BasicComparisons.DomainNamespaces] = Tuple.Create<string, Func<Report, Report, bool>>("Different domain namespaces", CheckDomainNamespaces),
-            [BasicComparisons.Entity] = Tuple.Create<string, Func<Report, Report, bool>>("Different Entity", CheckEntity),
-            [BasicComparisons.Period] = Tuple.Create<string, Func<Report, Report, bool>>("Different Period", CheckPeriod)
+            [BasicComparisons.NullReports] = Tuple.Create("At least one the reports is null", CheckNullReports),
+            [BasicComparisons.SchemaReference] = Tuple.Create("Different SchemaReference", CheckSchemaReference),
+            [BasicComparisons.Units] = Tuple.Create("Different Units", CheckUnits),
+            [BasicComparisons.FilingIndicators] = Tuple.Create("Different FilingIndicators", CheckFilingIndicators),
+            [BasicComparisons.ContextCount] = Tuple.Create("Different number of Contexts", CheckContextCount),
+            [BasicComparisons.FactCount] = Tuple.Create("Different number of Facts", CheckFactCount),
+            [BasicComparisons.DomainNamespaces] = Tuple.Create("Different domain namespaces", CheckDomainNamespaces),
+            [BasicComparisons.Entity] = Tuple.Create("Different Entity", CheckEntity),
+            [BasicComparisons.Period] = Tuple.Create("Different Period", CheckPeriod),
         };
 
         static IEnumerable<string> BasicComparison(Report a, Report b, BasicComparisons selection)
@@ -153,8 +153,8 @@ namespace Diwen.Xbrl.Xml.Comparison
                 Where(c => !c.Value.Item2(a, b)).
                 Select(c => c.Value.Item1);
 
-        static bool CheckNullReports(object a, object b)
-        => (a != null && b != null);
+        static bool CheckNullReports(Report a, Report b)
+        => a != null && b != null;
 
         static bool CheckTaxonomyVersion(Report a, Report b)
         => a.TaxonomyVersion != null && b.TaxonomyVersion != null
@@ -247,7 +247,7 @@ namespace Diwen.Xbrl.Xml.Comparison
         }
 
 
-        static IEnumerable<string> ScenarioComparisonMessages(Report a, Report b)
+        static List<string> ScenarioComparisonMessages(Report a, Report b)
         {
             var differences = ScenarioComparison(a, b);
             var notInB = differences.Item1;

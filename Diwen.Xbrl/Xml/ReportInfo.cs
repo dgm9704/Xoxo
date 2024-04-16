@@ -23,7 +23,7 @@ namespace Diwen.Xbrl.Xml
 {
     using System.Collections.Generic;
 
-    struct ReportInfo
+    readonly struct ReportInfo
     {
         public string TaxonomyVersion { get; }
 

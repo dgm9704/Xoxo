@@ -26,7 +26,7 @@ namespace Diwen.Xbrl.Xml.Comparison
 
     public class FactReport
     {
-        public List<Tuple<Fact, Fact>> Matches { get; set; } = new List<Tuple<Fact, Fact>>();
+        public List<Tuple<Fact, Fact>> Matches { get; set; } = [];
 
         public static FactReport FromReport(ComparisonReportObjects report)
         {

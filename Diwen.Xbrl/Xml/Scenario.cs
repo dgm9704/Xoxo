@@ -56,8 +56,8 @@ namespace Diwen.Xbrl.Xml
 
         public Scenario()
         {
-            ExplicitMembers = new ExplicitMemberCollection();
-            TypedMembers = new TypedMemberCollection();
+            ExplicitMembers = [];
+            TypedMembers = [];
         }
 
         public Scenario(Report report)

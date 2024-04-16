@@ -24,6 +24,7 @@
         public Dictionary<string, string> Parameters = [];
 
         public List<ReportData> Data = [];
+        private static readonly string[] separator = ["\r", "\n", "\r\n"];
 
         public void AddData(string table, string datapoint, string value)
         => Data.Add(new ReportData(table, datapoint, value));
@@ -32,7 +33,7 @@
         => Data.Add(new ReportData(table, datapoint, value, pairs));
 
         public void AddData(string table, string datapoint, string value, string dimensionKey, string dimensionValue)
-        => Data.Add(new ReportData(table, datapoint, value));
+        => Data.Add(new ReportData(table, datapoint, value, dimensionKey, dimensionValue));
 
         public void AddData(string table, string datapoint, string value, Dictionary<string, string> dimensions)
         => Data.Add(new ReportData(table, datapoint, value, dimensions));
@@ -244,7 +245,7 @@
 
         private static Dictionary<string, bool> ReadFilingIndicators(string data)
         => data.
-            Split(new string[] { "\r", "\n", "\r\n" }, StringSplitOptions.RemoveEmptyEntries).
+            Split(separator, StringSplitOptions.RemoveEmptyEntries).
             Skip(1).
             Select(line => line.Split(',')).
             ToDictionary(

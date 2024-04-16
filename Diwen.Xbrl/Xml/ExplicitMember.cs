@@ -46,7 +46,7 @@ namespace Diwen.Xbrl.Xml
             Value = value;
         }
 
-        public string MemberCode
+        public readonly string MemberCode
         {
             get
             {
@@ -60,13 +60,13 @@ namespace Diwen.Xbrl.Xml
             }
         }
 
-        public override int GetHashCode()
+        public override readonly int GetHashCode()
         => Value != null ? Value.GetHashCode() : 0;
 
         public override bool Equals(object obj)
         => Equals((ExplicitMember)obj);
 
-        public override string ToString()
+        public override readonly string ToString()
         => $"{Dimension.LocalName()}={MemberCode}";
 
         public int Compare(ExplicitMember other)
@@ -95,8 +95,7 @@ namespace Diwen.Xbrl.Xml
 
         public void ReadXml(XmlReader reader)
         {
-            if (reader == null)
-                throw new ArgumentNullException(nameof(reader));
+            ArgumentNullException.ThrowIfNull(reader);
 
             reader.MoveToContent();
             var content = reader.GetAttribute("dimension");
@@ -117,8 +116,7 @@ namespace Diwen.Xbrl.Xml
 
         public void WriteXml(XmlWriter writer)
         {
-            if (writer == null)
-                throw new ArgumentNullException(nameof(writer));
+            ArgumentNullException.ThrowIfNull(writer);
 
             var prefix = writer.LookupPrefix(Dimension.Namespace);
             var dim = $"{prefix}:{Dimension.LocalName()}";

@@ -86,8 +86,7 @@ namespace Diwen.Xbrl.Xml
 
         public void ReadXml(XmlReader reader)
         {
-            if (reader == null)
-                throw new ArgumentNullException(nameof(reader));
+            ArgumentNullException.ThrowIfNull(reader);
 
             reader.MoveToContent();
             Id = reader.GetAttribute("id");
@@ -113,8 +112,7 @@ namespace Diwen.Xbrl.Xml
 
         public void WriteXml(XmlWriter writer)
         {
-            if (writer == null)
-                throw new ArgumentNullException(nameof(writer));
+            ArgumentNullException.ThrowIfNull(writer);
 
             writer.WriteAttributeString("id", Id);
             var prefix = Measure.Prefix();

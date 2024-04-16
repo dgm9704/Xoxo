@@ -36,11 +36,11 @@ namespace Diwen.Xbrl.Xml
     [XmlRoot(ElementName = "xbrl", Namespace = "http://www.xbrl.org/2003/instance")]
     public class Report : IEquatable<Report>
     {
-        static AssemblyName assembly = Assembly.GetExecutingAssembly().GetName();
-        static Version version = assembly.Version;
-        static string id = assembly.Name;
+        static readonly AssemblyName assembly = Assembly.GetExecutingAssembly().GetName();
+        static readonly Version version = assembly.Version;
+        static readonly string id = assembly.Name;
 
-        internal static Dictionary<string, string> DefaultXbrlNamespaces = new Dictionary<string, string>
+        internal static Dictionary<string, string> DefaultXbrlNamespaces = new()
         {
             ["xsi"] = "http://www.w3.org/2001/XMLSchema-instance",
             ["xbrli"] = "http://www.xbrl.org/2003/instance",
@@ -49,12 +49,12 @@ namespace Diwen.Xbrl.Xml
             ["xbrldi"] = "http://xbrl.org/2006/xbrldi"
         };
 
-        internal static Dictionary<string, string> DefaultUnitNamespaces = new Dictionary<string, string>
+        internal static Dictionary<string, string> DefaultUnitNamespaces = new()
         {
             ["iso4217"] = "http://www.xbrl.org/2003/iso4217",
         };
 
-        internal static Dictionary<string, string> DefaultIndicatorNamespaces = new Dictionary<string, string>
+        internal static Dictionary<string, string> DefaultIndicatorNamespaces = new()
         {
             ["find"] = "http://www.eurofiling.info/xbrl/ext/filing-indicators",
         };
@@ -65,7 +65,7 @@ namespace Diwen.Xbrl.Xml
         [XmlIgnore]
         public XmlNamespaceManager Namespaces { get; set; }
 
-        Entity entityField = new Entity();
+        Entity entityField = new();
 
         [XmlIgnore]
         public Entity Entity
@@ -79,7 +79,7 @@ namespace Diwen.Xbrl.Xml
         }
 
         [XmlIgnore]
-        public Period Period { get; set; } = new Period();
+        public Period Period { get; set; } = new();
 
         [XmlIgnore]
         public string TaxonomyVersion { get; set; }
@@ -148,8 +148,7 @@ namespace Diwen.Xbrl.Xml
 
         public void SetDimensionNamespace(string prefix, Uri namespaceUri)
         {
-            if (namespaceUri == null)
-                throw new ArgumentNullException(nameof(namespaceUri));
+            ArgumentNullException.ThrowIfNull(namespaceUri);
 
             SetDimensionNamespace(prefix, namespaceUri.ToString());
         }
@@ -162,8 +161,7 @@ namespace Diwen.Xbrl.Xml
 
         public void SetMetricNamespace(string prefix, Uri namespaceUri)
         {
-            if (namespaceUri == null)
-                throw new ArgumentNullException(nameof(namespaceUri));
+            ArgumentNullException.ThrowIfNull(namespaceUri);
 
             SetMetricNamespace(prefix, namespaceUri.ToString());
         }
@@ -176,8 +174,7 @@ namespace Diwen.Xbrl.Xml
 
         public void SetTypedDomainNamespace(string prefix, Uri namespaceUri)
         {
-            if (namespaceUri == null)
-                throw new ArgumentNullException(nameof(namespaceUri));
+            ArgumentNullException.ThrowIfNull(namespaceUri);
 
             SetTypedDomainNamespace(prefix, namespaceUri.ToString());
         }
@@ -190,8 +187,7 @@ namespace Diwen.Xbrl.Xml
 
         public void AddDomainNamespace(string prefix, Uri namespaceUri)
         {
-            if (namespaceUri == null)
-                throw new ArgumentNullException(nameof(namespaceUri));
+            ArgumentNullException.ThrowIfNull(namespaceUri);
 
             AddDomainNamespace(prefix, namespaceUri.ToString());
         }
@@ -321,7 +317,7 @@ namespace Diwen.Xbrl.Xml
             Contexts.RemoveUnusedItems(usedIds);
         }
 
-        internal void GetUsedContexts(FactCollection facts, HashSet<string> usedIds)
+        internal static void GetUsedContexts(FactCollection facts, HashSet<string> usedIds)
         {
             foreach (var fact in facts.Where(f => f.Context != null || f.Facts.Any()))
                 if (fact.Facts.Any())
@@ -474,7 +470,7 @@ namespace Diwen.Xbrl.Xml
             }
         }
 
-        void UpdateUnitNamespaces(IXmlNamespaceResolver namespaces, IEnumerable<Unit> units)
+        static void UpdateUnitNamespaces(XmlNamespaceManager namespaces, IEnumerable<Unit> units)
         {
             foreach (var unit in units)
             {
@@ -510,7 +506,7 @@ namespace Diwen.Xbrl.Xml
             }
         }
 
-        void DimensionFromTypedMembers(IXmlNamespaceResolver namespaces, IEnumerable<Context> contextsWithMembers)
+        void DimensionFromTypedMembers(XmlNamespaceManager namespaces, IEnumerable<Context> contextsWithMembers)
         {
             var contextWithTypedMembers = contextsWithMembers.FirstOrDefault(c => c.Scenario.TypedMembers.Any());
             if (contextWithTypedMembers != null)
@@ -531,7 +527,7 @@ namespace Diwen.Xbrl.Xml
             }
         }
 
-        void DimensionFromExplicitMembers(IXmlNamespaceResolver namespaces, IEnumerable<Context> contextsWithMembers)
+        void DimensionFromExplicitMembers(XmlNamespaceManager namespaces, IEnumerable<Context> contextsWithMembers)
         {
             if (string.IsNullOrEmpty(DimensionNamespace))
             {
@@ -648,9 +644,9 @@ namespace Diwen.Xbrl.Xml
 
         #region serialization
 
-        static XmlSerializer Serializer = new XmlSerializer(typeof(Report));
+        static readonly XmlSerializer Serializer = new(typeof(Report));
 
-        static XmlReaderSettings XmlReaderSettings = new XmlReaderSettings
+        static readonly XmlReaderSettings XmlReaderSettings = new()
         {
             IgnoreWhitespace = true,
             IgnoreProcessingInstructions = false,
@@ -659,7 +655,7 @@ namespace Diwen.Xbrl.Xml
             ValidationType = ValidationType.None
         };
 
-        static XmlWriterSettings XmlWriterSettings = new XmlWriterSettings
+        static readonly XmlWriterSettings XmlWriterSettings = new()
         {
             Indent = true,
             IndentChars = "\t",
