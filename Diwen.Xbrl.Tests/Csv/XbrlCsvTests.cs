@@ -13,7 +13,7 @@
 //  OR ANY DAMAGES WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN AN ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS 
 //  ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 
-namespace Diwen.Xbrl.Csv.Tests
+namespace Diwen.Xbrl.Tests.Csv
 {
     using System;
     using System.Collections.Generic;
@@ -210,7 +210,7 @@ namespace Diwen.Xbrl.Csv.Tests
         public static void DeserializeTableFromJsonTest(string path)
         => TableDefinition.FromFile(path);
 
-        public string XmlToCsv(string reportPath)
+        public static string XmlToCsv(string reportPath)
         {
             var xmlReport = Xml.Report.FromFile(reportPath);
 
@@ -228,7 +228,7 @@ namespace Diwen.Xbrl.Csv.Tests
             return csvReportPath;
         }
 
-        public string CsvToXml(string reportPath)
+        public static string CsvToXml(string reportPath)
         {
 
             var csvReport = Csv.Report.FromFile(reportPath);

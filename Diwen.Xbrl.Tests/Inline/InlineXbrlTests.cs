@@ -1,4 +1,4 @@
-namespace Diwen.Xbrl.Tests
+namespace Diwen.Xbrl.Tests.Inline
 {
     using System.IO;
     using System.IO.Compression;
