@@ -158,8 +158,8 @@ namespace Diwen.Xbrl.Json
                     var unit = new Unit(unitRef, unitValue);
                     xmlreport.Units.Add(unit);
                 }
-                var decimals = fact.Dimensions.GetValueOrDefault("decimals");
-                var value = fact.Dimensions.GetValueOrDefault("value");
+                var decimals = fact.Decimals?.ToString();
+                var value = fact.Value;
 
                 xmlreport.AddFact(context, metric, unitRef, decimals, value);
             }
