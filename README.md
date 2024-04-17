@@ -38,11 +38,12 @@ Supports:
 
 - Australian and Finnish SBR message structures
 
-- Parsing of iXBRL to xBRL-XML (from ESMA ESEF)
-
-- Reading and writing xBRL-CSV and converting to/from xBRL-XML
-
-- Reading and writing xBRL-JSON and converting from xBRL-XML
+| format    | read/write | convert to          |
+| --------  | --------   | -------             |
+| xBRL-XML  | read+write | xBRL-CSV, xBRL-JSON |
+| xBRL-CSV  | read+write | xBRL-XML            |
+| xBRL-JSON | read+write | xBRL-XML            |
+| iXBRL     | read       | xBRL-XML            |
 
 
 ### License:
