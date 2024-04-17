@@ -141,7 +141,7 @@ namespace Diwen.Xbrl.Tests.Json
         }
 
         [Theory]
-        [InlineData("data/reference.json")]
+        [InlineData("data/json/reference.json")]
         public void JsonToXmlTest(string path)
         {
 
