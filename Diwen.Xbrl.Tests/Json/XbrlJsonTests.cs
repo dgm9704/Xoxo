@@ -139,6 +139,17 @@ namespace Diwen.Xbrl.Tests.Json
             jsonreport.ToFile(Path.ChangeExtension(path, "json"));
         }
 
+        [Theory]
+        [InlineData("data/reference.json")]
+        public void JsonToXmlTest(string path)
+        {
+            var jsonreport = Report.FromFile(path);
+
+            var xmlreport = jsonreport.ToXbrlXml();
+
+            xmlreport.ToFile(Path.ChangeExtension(Path.GetFileName(path), ".xbrl"));
+        }
+
 
     }
 }

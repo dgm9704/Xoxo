@@ -8,6 +8,7 @@ namespace Diwen.Xbrl.Json
     using System.Text.Json.Serialization;
     using System.Xml;
     using Diwen.Xbrl.Extensions;
+    using Diwen.Xbrl.Xml;
 
     public class Report
     {
@@ -93,6 +94,55 @@ namespace Diwen.Xbrl.Json
             };
 
             return report;
+        }
+
+        public Xml.Report ToXbrlXml()
+        => ToXbrlXml(this);
+
+        public static Xml.Report ToXbrlXml(Report report)
+        {
+            var xmlreport = new Xml.Report
+            {
+                SchemaReference = new SchemaReference("simple", report.DocumentInfo.Taxonomy.Single().ToString())
+            };
+
+            foreach (var ns in report.DocumentInfo.Namespaces)
+                xmlreport.Namespaces.AddNamespace(ns.Key, ns.Value.ToString());
+
+            foreach (var fact in report.Facts.Values)
+            {
+                var entity = new Entity("lei", fact.Dimensions["entity"].Split(':').First());
+                var scenario = new Scenario(xmlreport);
+                foreach (var dimension in fact.Dimensions.Where(d => d.Key.Contains(':')))
+                { //"Taxonomy dimensions"
+                    if (dimension.Value.Contains(':'))
+                        scenario.AddExplicitMember(dimension.Key, dimension.Value);
+                    else
+                        scenario.AddTypedMember(dimension.Key, "", dimension.Value);
+                }
+
+                var period = new Period(DateTime.Parse(fact.Dimensions["period"]));
+
+                var context = xmlreport.CreateContext(scenario);
+                context.Entity = entity;
+                context.Period = period;
+
+                var metric = fact.Dimensions["concept"];
+                var unitValue = fact.Dimensions.GetValueOrDefault("unit");
+                string unitRef = null;
+                if (unitValue != null)
+                {
+                    unitRef = $"u{unitValue.Split(':').Last().ToUpperInvariant()}";
+                    var unit = new Unit(unitRef, unitValue);
+                    xmlreport.Units.Add(unit);
+                }
+                var decimals = fact.Dimensions.GetValueOrDefault("decimals");
+                var value = fact.Dimensions.GetValueOrDefault("value");
+
+                xmlreport.AddFact(context, metric, unitRef, decimals, value);
+            }
+
+            return xmlreport;
         }
     }
 }
