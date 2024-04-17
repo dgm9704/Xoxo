@@ -96,29 +96,51 @@ namespace Diwen.Xbrl.Json
             return report;
         }
 
-        public Xml.Report ToXbrlXml()
-        => ToXbrlXml(this);
+        public Xml.Report ToXbrlXml(Dictionary<string, string> dimensionDomain, KeyValuePair<string, string> typedDomainNamespace, HashSet<string> typedDomains)
+        => ToXbrlXml(this, dimensionDomain, typedDomainNamespace, typedDomains);
 
-        public static Xml.Report ToXbrlXml(Report report)
+        public static Xml.Report ToXbrlXml(Report report, Dictionary<string, string> dimensionDomain, KeyValuePair<string, string> typedDomainNamespace, HashSet<string> typedDomains)
         {
             var xmlreport = new Xml.Report
             {
                 SchemaReference = new SchemaReference("simple", report.DocumentInfo.Taxonomy.Single().ToString())
             };
 
+            string dimensionPrefix = string.Empty;
+
             foreach (var ns in report.DocumentInfo.Namespaces)
-                xmlreport.Namespaces.AddNamespace(ns.Key, ns.Value.ToString());
+            {
+                if (ns.Key.EndsWith("_dim"))
+                {
+                    dimensionPrefix = ns.Key;
+                    xmlreport.SetDimensionNamespace(ns.Key, ns.Value);
+                }
+                else if (ns.Key.EndsWith("_met"))
+                {
+                    xmlreport.SetMetricNamespace(ns.Key, ns.Value);
+                }
+                else
+                {
+                    xmlreport.AddDomainNamespace(ns.Key, ns.Value);
+                }
+            }
+
+            xmlreport.SetTypedDomainNamespace(typedDomainNamespace.Key, typedDomainNamespace.Value);
 
             foreach (var fact in report.Facts.Values)
             {
-                var entity = new Entity("lei", fact.Dimensions["entity"].Split(':').First());
+                var entityParts = fact.Dimensions["entity"].Split(':');
+                var entityNamespace = report.DocumentInfo.Namespaces[entityParts.First()].ToString();
+                var entity = new Entity(entityNamespace, entityParts.Last());
                 var scenario = new Scenario(xmlreport);
                 foreach (var dimension in fact.Dimensions.Where(d => d.Key.Contains(':')))
-                { //"Taxonomy dimensions"
-                    if (dimension.Value.Contains(':'))
-                        scenario.AddExplicitMember(dimension.Key, dimension.Value);
+                {
+                    //"Taxonomy dimensions"
+                    var dimensionCode = dimension.Key.Split(':').Last();
+                    if (typedDomains.Contains(dimensionDomain[dimensionCode]))
+                        scenario.AddTypedMember(dimension.Key, $"{typedDomainNamespace.Key}:{dimensionDomain[dimensionCode]}", dimension.Value);
                     else
-                        scenario.AddTypedMember(dimension.Key, "", dimension.Value);
+                        scenario.AddExplicitMember(dimension.Key, dimension.Value);
                 }
 
                 var period = new Period(DateTime.Parse(fact.Dimensions["period"]));
@@ -127,7 +149,7 @@ namespace Diwen.Xbrl.Json
                 context.Entity = entity;
                 context.Period = period;
 
-                var metric = fact.Dimensions["concept"];
+                var metric = fact.Dimensions["concept"].Split(':').Last();
                 var unitValue = fact.Dimensions.GetValueOrDefault("unit");
                 string unitRef = null;
                 if (unitValue != null)

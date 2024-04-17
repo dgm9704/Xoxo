@@ -16,6 +16,7 @@
 namespace Diwen.Xbrl.Tests.Json
 {
     using System;
+    using System.Collections.Generic;
     using System.IO;
     using System.Linq;
     using Diwen.Xbrl.Json;
@@ -143,9 +144,24 @@ namespace Diwen.Xbrl.Tests.Json
         [InlineData("data/reference.json")]
         public void JsonToXmlTest(string path)
         {
+
+            var dimensionDomainInfo = new Dictionary<string, string>
+            {
+                ["CS"] = "CS",
+                ["CE"] = "ID",
+            };
+
+            var typedDomains = new HashSet<string> 
+            {
+                "ID"
+            };
+
+            var typedDomainNamespace = KeyValuePair.Create("eba_typ", "http://www.eba.europa.eu/xbrl/crr/dict/typ");
+
+
             var jsonreport = Report.FromFile(path);
 
-            var xmlreport = jsonreport.ToXbrlXml();
+            var xmlreport = jsonreport.ToXbrlXml(dimensionDomainInfo,typedDomainNamespace,typedDomains);
 
             xmlreport.ToFile(Path.ChangeExtension(Path.GetFileName(path), ".xbrl"));
         }

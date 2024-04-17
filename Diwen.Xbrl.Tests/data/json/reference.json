@@ -1,0 +1,53 @@
+{
+    "documentInfo": {
+        "documentType": "https://xbrl.org/2021/xbrl-json",
+        "namespaces": {
+            "link": "http://www.xbrl.org/2003/linkbase",
+            "xlink": "http://www.w3.org/1999/xlink",
+            "iso4217": "http://www.xbrl.org/2003/iso4217",
+            "find": "http://www.eurofiling.info/xbrl/ext/filing-indicators",
+            "xbrldi": "http://xbrl.org/2006/xbrldi",
+            "s2c_CS": "http://eiopa.europa.eu/xbrl/s2c/dict/dom/CS",
+            "s2c_dim": "http://eiopa.europa.eu/xbrl/s2c/dict/dim",
+            "s2c_typ": "http://eiopa.europa.eu/xbrl/s2c/dict/typ",
+            "s2md_met": "http://eiopa.europa.eu/xbrl/s2md/dict/met",
+            "s2c_CU": "http://eiopa.europa.eu/xbrl/s2c/dict/dom/CU",
+            "s2c_AM": "http://eiopa.europa.eu/xbrl/s2c/dict/dom/AM",
+            "s2c_SE": "http://eiopa.europa.eu/xbrl/s2c/dict/dom/SE",
+            "s2c_AP": "http://eiopa.europa.eu/xbrl/s2c/dict/dom/AP",
+            "s2c_PU": "http://eiopa.europa.eu/xbrl/s2c/dict/dom/PU",
+            "s2c_GA": "http://eiopa.europa.eu/xbrl/s2c/dict/dom/GA",
+            "xbrli": "http://www.xbrl.org/2003/instance",
+            "lei": "http://standards.iso.org/iso/17442"
+        },
+        "taxonomy": [
+            "http://eiopa.europa.eu/eu/xbrl/s2md/fws/solvency/solvency2/2014-12-23/mod/ars.xsd"
+        ]
+    },
+    "facts": {
+        "f1": {
+            "value": "0.2547",
+            "decimals": 4,
+            "dimensions": {
+                "concept": "s2md_met:pi545",
+                "entity": "lei:1234567890ABCDEFGHIJ",
+                "period": "2014-12-31T00:00:00",
+                "unit": "iso4217:pure",
+                "s2c_dim:CS": "s2c_CS:x26",
+                "s2c_dim:CE": "abc"
+            }
+        },
+        "f2": {
+            "value": "45345",
+            "decimals": -3,
+            "dimensions": {
+                "concept": "s2md_met:mi363",
+                "entity": "lei:1234567890ABCDEFGHIJ",
+                "period": "2014-12-31T00:00:00",
+                "unit": "iso4217:EUR",
+                "s2c_dim:CS": "s2c_CS:x26",
+                "s2c_dim:CE": "abc"
+            }
+        }
+    }
+}
