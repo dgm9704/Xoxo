@@ -24,8 +24,10 @@ namespace Diwen.Xbrl.Extensions
     using System.Collections.Generic;
     using System.Xml;
 
+    /// <summary/>
     public static class XmlElementExtensions
     {
+        /// <summary/>
         public static void AppendChildren(this XmlElement element, IEnumerable<XmlElement> children)
         {
             foreach (var item in children)

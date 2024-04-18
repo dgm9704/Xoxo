@@ -26,23 +26,28 @@ namespace Diwen.Xbrl.Xml
     using System.Xml.Schema;
     using System.Xml.Serialization;
 
+    /// <summary/>
     [DebuggerDisplay("{Value} : {Filed}")]
     [Serializable]
     [XmlRoot("filingIndicator", Namespace = "http://www.eurofiling.info/xbrl/ext/filing-indicators")]
     public class FilingIndicator : IEquatable<FilingIndicator>
     {
+        /// <summary/>
         [XmlAttribute("contextRef")]
         public string ContextRef { get; set; }
 
+        /// <summary/>
         [XmlAttribute(AttributeName = "filed", Form = XmlSchemaForm.Qualified,
             Namespace = "http://www.eurofiling.info/xbrl/ext/filing-indicators")]
         public bool Filed { get; set; }
 
+        /// <summary/>
         [XmlText]
         public string Value { get; set; }
 
         Context contextField;
 
+        /// <summary/>
         [XmlIgnore]
         public Context Context
         {
@@ -54,16 +59,19 @@ namespace Diwen.Xbrl.Xml
             }
         }
 
+        /// <summary/>
         public FilingIndicator()
         {
             Filed = true;
         }
 
+        /// <summary/>
         public FilingIndicator(Context context, string value)
             : this(context, value, true)
         {
         }
 
+        /// <summary/>
         public FilingIndicator(Context context, string value, bool filed)
             : this()
         {
@@ -74,17 +82,21 @@ namespace Diwen.Xbrl.Xml
             Filed = filed;
         }
 
+        /// <summary/>
         public override bool Equals(object obj)
         => Equals(obj as FilingIndicator);
 
+        /// <summary/>
         public override int GetHashCode()
         => Value.GetHashCode();
 
+        /// <summary/>
         public override string ToString()
         => $"Value={Value}, Filed={Filed}, Context={ContextRef}";
 
         #region IEquatable implementation
 
+        /// <summary/>
         public bool Equals(FilingIndicator other)
         => other != null
             && Filed == other.Filed

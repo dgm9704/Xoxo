@@ -26,23 +26,29 @@ namespace Diwen.Xbrl.Xml
     using System.Linq;
     using System.Xml.Serialization;
 
+    /// <summary/>
     [DebuggerDisplay("{Id}")]
     [Serializable]
     [XmlRoot(ElementName = "context", Namespace = "http://www.xbrl.org/2003/instance")]
     public class Context : IEquatable<Context>, IXbrlObject
     {
+        /// <summary/>
         [XmlAttribute("id", Namespace = "http://www.xbrl.org/2003/instance")]
         public string Id { get; set; }
 
+        /// <summary/>
         [XmlElement("entity", Namespace = "http://www.xbrl.org/2003/instance")]
         public Entity Entity { get; set; }
 
+        /// <summary/>
         [XmlElement("period", Namespace = "http://www.xbrl.org/2003/instance")]
         public Period Period { get; set; }
 
+        /// <summary/>
         [XmlElement("scenario", Namespace = "http://www.xbrl.org/2003/instance")]
         public Scenario Scenario { get; set; }
 
+        /// <summary/>
         public bool ShouldSerializeScenario()
         {
             var result = false;
@@ -53,23 +59,30 @@ namespace Diwen.Xbrl.Xml
             return result;
         }
 
+        /// <summary/>
         public Context() { }
 
+        /// <summary/>
         public Context(Scenario scenario)
         => Scenario = scenario;
 
+        /// <summary/>
         public Context(Entity entity, Segment segment)
         => entity.Segment = segment;
 
+        /// <summary/>
         public ExplicitMember AddExplicitMember(string dimension, string value)
         => Scenario.ExplicitMembers.Add(dimension, value);
 
+        /// <summary/>
         public TypedMember AddTypedMember(string dimension, string domain, string value)
         => Scenario.TypedMembers.Add(dimension, domain, value);
 
+        /// <summary/>
         public override bool Equals(object obj)
         => Equals(obj as Context);
 
+        /// <summary/>
         public override int GetHashCode()
         => (Period != null ? Period.GetHashCode() : 0)
             + 7 * (Entity != null ? Entity.GetHashCode() : 0)
@@ -77,6 +90,7 @@ namespace Diwen.Xbrl.Xml
 
         #region IEquatable implementation
 
+        /// <summary/>
         public bool Equals(Context other)
         {
             var result = false;

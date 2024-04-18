@@ -25,11 +25,13 @@ namespace Diwen.Xbrl.Xml
     using System.Linq;
     using System.Xml.Serialization;
 
+    /// <summary/>
     [Serializable]
     public class Entity : IEquatable<Entity>
     {
         Report reportField;
 
+        /// <summary/>
         [XmlIgnore]
         public Report Report
         {
@@ -41,12 +43,15 @@ namespace Diwen.Xbrl.Xml
             }
         }
 
+        /// <summary/>
         [XmlElement("identifier", Namespace = "http://www.xbrl.org/2003/instance")]
         public Identifier Identifier { get; set; }
 
+        /// <summary/>
         [XmlElement("segment", Namespace = "http://www.xbrl.org/2003/instance")]
         public Segment Segment { get; set; }
 
+        /// <summary/>
         public bool ShouldSerializeSegment()
         {
             var result = false;
@@ -56,33 +61,39 @@ namespace Diwen.Xbrl.Xml
             return result;
         }
 
+        /// <summary/>
         public Entity()
         {
             Identifier = new Identifier();
             Segment = new Segment();
         }
 
+        /// <summary/>
         public Entity(string identifierScheme, string identifierValue)
             : this()
         {
             Identifier = new Identifier(identifierScheme, identifierValue);
         }
 
+        /// <summary/>
         public ExplicitMember AddExplicitMember(string dimension, string value)
         => Segment.ExplicitMembers.Add(dimension, value);
 
+        /// <summary/>
         public override string ToString()
         => $"Identifier={Identifier}";
 
         #region IEquatable implementation
 
+        /// <summary/>
         public override int GetHashCode()
         => Identifier.GetHashCode() + 7 * Segment.GetHashCode();
 
-
+        /// <summary/>
         public override bool Equals(object obj)
         => Equals(obj as Entity);
 
+        /// <summary/>
         public bool Equals(Entity other)
         {
             var result = false;

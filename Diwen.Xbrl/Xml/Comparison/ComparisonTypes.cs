@@ -23,20 +23,44 @@ namespace Diwen.Xbrl.Xml.Comparison
 {
     using System;
 
+/// <summary/>
     [Flags, Serializable]
     public enum ComparisonTypes
     {
+        /// <summary/>
         None = 0,
+
+        /// <summary/>
         Basic = 1 << 0,
+
+        /// <summary/>
         Contexts = 1 << 1,
+
+        /// <summary/>
         Facts = 1 << 2,
+
+        /// <summary/>
         DomainNamespaces = 1 << 3,
+
+        /// <summary/>
         Units = 1 << 4,
+
+        /// <summary/>
         Entity = 1 << 5,
+
+        /// <summary/>
         Period = 1 << 6,
+
+        /// <summary/>
         FilingIndicators = 1 << 7,
+
+        /// <summary/>
         TaxonomyVersion = 1 << 8,
+
+        /// <summary/>
         SchemaReference = 1 << 9,
+
+        /// <summary/>
         All = 0xFFFFFFF
     }
 }

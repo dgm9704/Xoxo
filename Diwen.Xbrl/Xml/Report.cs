@@ -32,6 +32,7 @@ namespace Diwen.Xbrl.Xml
     using System.Xml.Serialization;
     using Diwen.Xbrl.Extensions;
 
+    /// <summary/>
     [Serializable]
     [XmlRoot(ElementName = "xbrl", Namespace = "http://www.xbrl.org/2003/instance")]
     public class Report : IEquatable<Report>
@@ -59,14 +60,17 @@ namespace Diwen.Xbrl.Xml
             ["find"] = "http://www.eurofiling.info/xbrl/ext/filing-indicators",
         };
 
+        /// <summary/>
         [XmlNamespaceDeclarations]
         public XmlSerializerNamespaces XmlSerializerNamespaces { get; set; }
 
+        /// <summary/>
         [XmlIgnore]
         public XmlNamespaceManager Namespaces { get; set; }
 
         Entity entityField = new();
 
+        /// <summary/>
         [XmlIgnore]
         public Entity Entity
         {
@@ -78,44 +82,57 @@ namespace Diwen.Xbrl.Xml
             }
         }
 
+        /// <summary/>
         [XmlIgnore]
         public Period Period { get; set; } = new();
 
+        /// <summary/>
         [XmlIgnore]
         public string TaxonomyVersion { get; set; }
 
+        /// <summary/>
         [XmlIgnore]
         public string InstanceGenerator { get; private set; }
 
+        /// <summary/>
         [XmlIgnore]
         public string FactNamespace { get; private set; }
 
+        /// <summary/>
         [XmlIgnore]
         public string DimensionNamespace { get; private set; }
 
+        /// <summary/>
         [XmlIgnore]
         public string TypedDomainNamespace { get; private set; }
 
+        /// <summary/>
         [XmlElement("schemaRef", Namespace = "http://www.xbrl.org/2003/linkbase")]
         public SchemaReference SchemaReference { get; set; } = new SchemaReference();
 
+        /// <summary/>
         [XmlElement("unit", Namespace = "http://www.xbrl.org/2003/instance")]
         public UnitCollection Units { get; set; }
 
+        /// <summary/>
         [XmlArray("fIndicators", Namespace = "http://www.eurofiling.info/xbrl/ext/filing-indicators")]
         [XmlArrayItem("filingIndicator", Namespace = "http://www.eurofiling.info/xbrl/ext/filing-indicators")]
         public FilingIndicatorCollection FilingIndicators { get; set; } = new FilingIndicatorCollection();
 
+        /// <summary/>
         [XmlIgnore]
         public bool FilingIndicatorsSpecified
         => FilingIndicators != null && FilingIndicators.Any();
 
+        /// <summary/>
         [XmlElement("context", Namespace = "http://www.xbrl.org/2003/instance")]
         public ContextCollection Contexts { get; set; }
 
+        /// <summary/>
         [XmlIgnore]
         public FactCollection Facts { get; private set; }
 
+        /// <summary/>
         [XmlAnyElement]
         public XmlElement[] FactItems
         {
@@ -140,12 +157,15 @@ namespace Diwen.Xbrl.Xml
             }
         }
 
+        /// <summary/>
         [XmlIgnore]
         public Collection<string> Comments { get; private set; }
 
+        /// <summary/>
         [XmlIgnore]
         public bool CheckExplicitMemberDomainExists { get; set; }
 
+        /// <summary/>
         public void SetDimensionNamespace(string prefix, Uri namespaceUri)
         {
             ArgumentNullException.ThrowIfNull(namespaceUri);
@@ -153,12 +173,13 @@ namespace Diwen.Xbrl.Xml
             SetDimensionNamespace(prefix, namespaceUri.ToString());
         }
 
+        /// <summary/>
         public void SetDimensionNamespace(string prefix, string namespaceUri)
         {
             Namespaces.AddNamespace(prefix, namespaceUri);
             DimensionNamespace = namespaceUri;
         }
-
+        /// <summary/>
         public void SetMetricNamespace(string prefix, Uri namespaceUri)
         {
             ArgumentNullException.ThrowIfNull(namespaceUri);
@@ -166,12 +187,14 @@ namespace Diwen.Xbrl.Xml
             SetMetricNamespace(prefix, namespaceUri.ToString());
         }
 
+        /// <summary/>
         public void SetMetricNamespace(string prefix, string namespaceUri)
         {
             Namespaces.AddNamespace(prefix, namespaceUri);
             FactNamespace = namespaceUri;
         }
 
+        /// <summary/>
         public void SetTypedDomainNamespace(string prefix, Uri namespaceUri)
         {
             ArgumentNullException.ThrowIfNull(namespaceUri);
@@ -179,12 +202,14 @@ namespace Diwen.Xbrl.Xml
             SetTypedDomainNamespace(prefix, namespaceUri.ToString());
         }
 
+        /// <summary/>
         public void SetTypedDomainNamespace(string prefix, string namespaceUri)
         {
             Namespaces.AddNamespace(prefix, namespaceUri);
             TypedDomainNamespace = namespaceUri;
         }
 
+        /// <summary/>
         public void AddDomainNamespace(string prefix, Uri namespaceUri)
         {
             ArgumentNullException.ThrowIfNull(namespaceUri);
@@ -192,9 +217,11 @@ namespace Diwen.Xbrl.Xml
             AddDomainNamespace(prefix, namespaceUri.ToString());
         }
 
+        /// <summary/>
         public void AddDomainNamespace(string prefix, string namespaceUri)
         => Namespaces.AddNamespace(prefix, namespaceUri);
 
+        /// <summary/>
         public Context GetContext(Scenario scenario)
         {
             Context context;
@@ -212,9 +239,11 @@ namespace Diwen.Xbrl.Xml
             return context;
         }
 
+        /// <summary/>
         public Context CreateContext(Scenario scenario)
         => Contexts.Add(new Context(scenario) { Id = Contexts.NextId() });
 
+        /// <summary/>
         public Context GetContext(Segment segment)
         {
             Context context;
@@ -244,6 +273,7 @@ namespace Diwen.Xbrl.Xml
                 Namespaces.AddNamespace(item.Key, item.Value);
         }
 
+        /// <summary/>
         public void RemoveUnusedUnits()
         {
             var usedIds = new HashSet<string>();
@@ -263,12 +293,14 @@ namespace Diwen.Xbrl.Xml
                     GetUsedUnits(fact.Facts, usedIds);
         }
 
+        /// <summary/>
         public void RemoveUnusedObjects()
         {
             RemoveUnusedUnits();
             RemoveUnusedContexts();
         }
 
+        /// <summary/>
         public void CollapseDuplicateContexts()
         {
             var duplicates = Contexts.
@@ -288,6 +320,7 @@ namespace Diwen.Xbrl.Xml
             }
         }
 
+        /// <summary/>
         public void RemoveDuplicateFacts()
         {
             var duplicates = Facts.
@@ -300,6 +333,7 @@ namespace Diwen.Xbrl.Xml
                     Facts.Remove(duplicate);
         }
 
+        /// <summary/>
         public void RemoveUnusedContexts()
         {
             var usedIds = new HashSet<string>();
@@ -326,6 +360,7 @@ namespace Diwen.Xbrl.Xml
                     usedIds.Add(fact.Context.Id);
         }
 
+        /// <summary/>
         public Report()
         {
             XmlSerializerNamespaces = new XmlSerializerNamespaces();
@@ -339,6 +374,7 @@ namespace Diwen.Xbrl.Xml
 
         #region IEquatable implementation
 
+        /// <summary/>
         public bool Equals(Report other)
         {
             var result = false;
@@ -352,6 +388,7 @@ namespace Diwen.Xbrl.Xml
             return result;
         }
 
+        /// <summary/>
         public override int GetHashCode()
         => SchemaReference.GetHashCode()
             ^ Units.GetHashCode()
@@ -359,6 +396,7 @@ namespace Diwen.Xbrl.Xml
 
         #endregion
 
+        /// <summary/>
         public override bool Equals(object obj)
         => Equals(obj as Report);
 
@@ -545,21 +583,27 @@ namespace Diwen.Xbrl.Xml
             }
         }
 
+        /// <summary/>
         public FilingIndicator AddFilingIndicator(string value)
         => AddFilingIndicator(value, true);
 
+        /// <summary/>
         public FilingIndicator AddFilingIndicator(Context context, string value)
         => AddFilingIndicator(context, value, true);
 
+        /// <summary/>
         public FilingIndicator AddFilingIndicator(string value, bool filed)
         => AddFilingIndicator(GetContext((Scenario)null), value, filed);
 
+        /// <summary/>
         public FilingIndicator AddFilingIndicator(Context context, string value, bool filed)
         => FilingIndicators.Add(context, value, filed);
 
+        /// <summary/>
         public Fact AddFact(Context context, string metric, string unitRef, string decimals, string value)
         => Facts.Add(context, metric, unitRef, decimals, value);
 
+        /// <summary/>
         public Fact AddFact(Scenario scenario, string metric, string unitRef, string decimals, string value)
         {
             if (scenario != null)
@@ -572,6 +616,7 @@ namespace Diwen.Xbrl.Xml
             return Facts.Add(scenario, metric, unitRef, decimals, value);
         }
 
+        /// <summary/>
         public Fact AddFact(Segment segment, string metric, string unitRef, string decimals, string value)
         {
             if (segment != null)
@@ -834,12 +879,15 @@ namespace Diwen.Xbrl.Xml
             return result;
         }
 
+        /// <summary/>
         public static Report FromStream(Stream stream)
         => FromStream(stream, true);
 
+        /// <summary/>
         public static Report FromStream(Stream stream, bool removeUnusedObjects)
         => FromStream(stream, removeUnusedObjects, true, true);
 
+        /// <summary/>
         public static Report FromStream(Stream stream, bool removeUnusedObjects, bool collapseDuplicateContexts, bool removeDuplicateFacts)
         {
             stream.Position = 0;
@@ -871,15 +919,18 @@ namespace Diwen.Xbrl.Xml
 
         }
 
+        /// <summary/>
         public void ToStream(Stream stream)
         {
             using (var writer = XmlWriter.Create(stream, XmlWriterSettings))
                 ToXmlWriter(writer);
         }
 
+        /// <summary/>
         public static Report FromFile(string path)
         => FromFile(path, true, true, true);
 
+        /// <summary/>
         public static Report FromFile(string path, bool removeUnusedObjects, bool collapseDuplicateContexts, bool removeDuplicateFacts)
         {
             Report xbrl;
@@ -890,6 +941,7 @@ namespace Diwen.Xbrl.Xml
             return xbrl;
         }
 
+        /// <summary/>
         public void ToFile(string path)
         {
             using (var writer = XmlWriter.Create(path, XmlWriterSettings))
@@ -913,6 +965,7 @@ namespace Diwen.Xbrl.Xml
             Serializer.Serialize(writer, this, ns);
         }
 
+        /// <summary/>
         public XmlDocument ToXmlDocument()
         {
             var document = new XmlDocument();
@@ -926,6 +979,7 @@ namespace Diwen.Xbrl.Xml
             return document;
         }
 
+        /// <summary/>
         public static Report FromXml(string content)
         {
             using (var stream = new MemoryStream())
@@ -940,6 +994,7 @@ namespace Diwen.Xbrl.Xml
             }
         }
 
+        /// <summary/>
         public string ToXml()
         => ToXmlDocument().OuterXml;
 

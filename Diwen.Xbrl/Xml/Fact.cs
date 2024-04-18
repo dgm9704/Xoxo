@@ -27,28 +27,36 @@ namespace Diwen.Xbrl.Xml
     using System.Xml.Serialization;
     using Diwen.Xbrl.Extensions;
 
+    /// <summary/>
     public class Fact : IEquatable<Fact>
     {
         static readonly XmlDocument doc = new();
 
+        /// <summary/>
         [XmlIgnore]
         public Unit Unit { get; set; }
 
+        /// <summary/>
         [XmlIgnore]
         public string Decimals { get; set; }
 
+        /// <summary/>
         [XmlIgnore]
         public Context Context { get; set; }
 
+        /// <summary/>
         [XmlIgnore]
         public XmlQualifiedName Metric { get; set; }
 
+        /// <summary/>
         [XmlIgnore]
         public string Value { get; set; }
 
+        /// <summary/>
         [XmlIgnore]
         public FactCollection Facts { get; private set; }
 
+        /// <summary/>
         [XmlAnyElement]
         public XmlElement[] FactItems
         {
@@ -66,11 +74,13 @@ namespace Diwen.Xbrl.Xml
         internal string ContextRef;
         internal string UnitRef;
 
+        /// <summary/>
         public Fact()
         {
             Facts = new FactCollection(null);
         }
 
+        /// <summary/>
         public Fact(string name, string namespaceURI, string unitRef, string decimals, string contextRef, string value) : this()
         {
             Metric = new XmlQualifiedName(name, namespaceURI);
@@ -80,11 +90,13 @@ namespace Diwen.Xbrl.Xml
             Value = value ?? "";
         }
 
+        /// <summary/>
         public Fact(Context context, string metric, Unit unit, string decimals, string value, string namespaceUri, string prefix)
             : this(context, metric, unit, decimals, value, new Uri(namespaceUri), prefix)
         {
         }
 
+        /// <summary/>
         public Fact(Context context, string metric, Unit unit, string decimals, string value, Uri namespaceUri, string prefix) : this()
         {
             ArgumentNullException.ThrowIfNull(context);
@@ -98,9 +110,11 @@ namespace Diwen.Xbrl.Xml
             Value = value;
         }
 
+        /// <summary/>
         public Fact AddFact(Context context, string metric, string unitRef, string decimals, string value)
         => Facts.Add(context, metric, unitRef, decimals, value);
 
+        /// <summary/>
         public Fact AddFact(Scenario scenario, string metric, string unitRef, string decimals, string value)
         {
             if (scenario != null)
@@ -113,6 +127,7 @@ namespace Diwen.Xbrl.Xml
             return Facts.Add(scenario, metric, unitRef, decimals, value);
         }
 
+        /// <summary/>
         public Fact AddFact(Segment segment, string metric, string unitRef, string decimals, string value)
         {
             if (segment != null)
@@ -126,6 +141,7 @@ namespace Diwen.Xbrl.Xml
             return Facts.Add(segment, metric, unitRef, decimals, value);
         }
 
+        /// <summary/>
         public override string ToString()
         {
             var metric = Metric != null ? Metric.LocalName() : string.Empty;
@@ -176,6 +192,7 @@ namespace Diwen.Xbrl.Xml
             return new Fact(element.Name, element.NamespaceURI, unitRef, decimals, contextRef, value);
         }
 
+        /// <summary/>
         public override bool Equals(object obj)
         {
             var result = false;
@@ -185,11 +202,13 @@ namespace Diwen.Xbrl.Xml
             return result;
         }
 
+        /// <summary/>
         public override int GetHashCode()
         => Value.GetHashCode();
 
         #region IEquatable implementation
 
+        /// <summary/>
         public bool Equals(Fact other)
         {
             var result = other != null

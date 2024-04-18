@@ -17,6 +17,10 @@
 		<PackageTags>XBRL iXBRL XBRL-XML XBRL-CSV XBRL-JSON</PackageTags>
 	</PropertyGroup>
 
+	<PropertyGroup>
+		<GenerateDocumentationFile>true</GenerateDocumentationFile>
+	  </PropertyGroup>
+
 	<Target Name="Date" BeforeTargets="BeforeBuild">
 		<WriteLinesToFile File="$(IntermediateOutputPath)gen.cs"
 			Lines="static partial class Builtin { public static long CompileTime = $([System.DateTime]::UtcNow.Ticks) %3B }"

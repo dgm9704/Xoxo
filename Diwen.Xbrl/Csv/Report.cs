@@ -13,31 +13,42 @@
     using Diwen.Xbrl.Extensions;
     using Diwen.Xbrl.Xml;
 
+        /// <summary/>
     public partial class Report
     {
+                /// <summary/>
         public string DocumentType { get; set; } = "https://xbrl.org/CR/2021-02-03/xbrl-csv";
 
+        /// <summary/>
         public string Entrypoint { get; set; }
 
+        /// <summary/>
         public Dictionary<string, bool> FilingIndicators = [];
 
+        /// <summary/>
         public Dictionary<string, string> Parameters = [];
 
+        /// <summary/>
         public List<ReportData> Data = [];
         private static readonly string[] separator = ["\r", "\n", "\r\n"];
 
+        /// <summary/>
         public void AddData(string table, string datapoint, string value)
         => Data.Add(new ReportData(table, datapoint, value));
 
+        /// <summary/>
         public void AddData(string table, string datapoint, string value, params (string key, string value)[] pairs)
         => Data.Add(new ReportData(table, datapoint, value, pairs));
 
+        /// <summary/>
         public void AddData(string table, string datapoint, string value, string dimensionKey, string dimensionValue)
         => Data.Add(new ReportData(table, datapoint, value, dimensionKey, dimensionValue));
 
+        /// <summary/>
         public void AddData(string table, string datapoint, string value, Dictionary<string, string> dimensions)
         => Data.Add(new ReportData(table, datapoint, value, dimensions));
 
+        /// <summary/>
         public void Export(string packagePath)
         {
             var packageName = Path.GetFileNameWithoutExtension(packagePath);
@@ -137,7 +148,6 @@
             return stream;
         }
 
-
         private static MemoryStream CreateParameters(Dictionary<string, string> parameters)
         {
             var stream = new MemoryStream();
@@ -199,6 +209,7 @@
             return reportdata;
         }
 
+        /// <summary/>
         public static Report FromFile(string packagePath)
         {
             var report = new Report();
@@ -261,6 +272,7 @@
                 p => p[0],
                 p => p[1]);
 
+        /// <summary/>
         public static Dictionary<string, string> ReadPackage(string packagePath)
         {
             var reportFiles = new Dictionary<string, string>();
@@ -446,6 +458,7 @@
             return match;
         }
 
+        /// <summary/>
         public static Report FromXbrlXml(Xml.Report xmlReport, Dictionary<string, TableDefinition> tableDefinitions, Dictionary<string, string> filingIndicators, ModuleDefinition moduleDefinition)
         {
             var report = new Report
@@ -511,9 +524,11 @@
             return report;
         }
 
+        /// <summary/>
         public Xml.Report ToXbrlXml(Dictionary<string, TableDefinition> tableDefinitions, Dictionary<string, string> dimensionDomain, KeyValuePair<string, string> typedDomainNamespace, Dictionary<string, string> filingIndicators, HashSet<string> typedDomains, ModuleDefinition moduleDefinition)
         => ToXbrlXml(this, tableDefinitions, dimensionDomain, typedDomainNamespace, filingIndicators, typedDomains, moduleDefinition);
 
+        /// <summary/>
         public static Xml.Report ToXbrlXml(
             Report report,
             Dictionary<string, TableDefinition> tableDefinitions,

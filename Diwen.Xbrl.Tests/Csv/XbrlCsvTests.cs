@@ -254,7 +254,7 @@ namespace Diwen.Xbrl.Tests.Csv
             return xmlReportPath;
 
         }
-
+        
         public static HashSet<string> ReadTypedDomainInfo(string path)
         => File.ReadAllLines(Path.Combine("data/csv", path)).ToHashSet();
 

@@ -26,6 +26,7 @@ namespace Diwen.Xbrl.Inline
     using System.Xml.Linq;
     using Diwen.Xbrl.Extensions;
 
+    /// <summary/>
     public static class EsefReportingManual
     {
 
@@ -73,6 +74,7 @@ namespace Diwen.Xbrl.Inline
             G3_5_1
         ];
 
+        /// <summary/>
         public static EsefResult Validate(IEnumerable<ReportFile> reportFiles)
         {
             var errors =

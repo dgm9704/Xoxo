@@ -4,12 +4,14 @@ namespace Diwen.Xbrl.Csv.Taxonomy
     using System.Linq;
     using System.Text.Json.Serialization;
 
+        /// <summary/>
     public class PropertyGroup
     {
-
+        /// <summary/>
         [JsonPropertyName("decimals")]
         public string Decimals { get; set; }
 
+        /// <summary/>
         [JsonPropertyName("dimensions")]
         public Dictionary<string, string> Dimensions { get; set; }
 
@@ -17,6 +19,7 @@ namespace Diwen.Xbrl.Csv.Taxonomy
 
         private Dictionary<string, string> dimensionValues;
 
+        /// <summary/>
         public Dictionary<string, string> DimensionValues
         {
             get

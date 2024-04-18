@@ -24,20 +24,25 @@ namespace Diwen.Xbrl.Xml
     using System;
     using System.Xml.Serialization;
 
+    /// <summary/>
     [Serializable]
     [XmlRoot(ElementName = "schemaRef", Namespace = "http://www.xbrl.org/2003/linkbase")]
     public class SchemaReference : IEquatable<SchemaReference>
     {
+        /// <summary/>
         [XmlAttribute("type", Namespace = "http://www.w3.org/1999/xlink")]
         public string Type { get; set; }
 
+        /// <summary/>
         [XmlAttribute("href", Namespace = "http://www.w3.org/1999/xlink")]
         public string Value { get; set; }
 
+        /// <summary/>
         public SchemaReference()
         {
         }
 
+        /// <summary/>
         public SchemaReference(string type, string value)
             : this()
         {
@@ -45,19 +50,23 @@ namespace Diwen.Xbrl.Xml
             Value = value;
         }
 
+        /// <summary/>
         public override bool Equals(object obj)
         => Equals(obj as SchemaReference);
 
+        /// <summary/>
         public override string ToString()
         => $"SchemaReference: Type={Type}, Value={Value}";
 
         #region IEquatable implementation
 
+        /// <summary/>
         public bool Equals(SchemaReference other)
         => other != null
         && (Type == null ? other.Type == null : other.Type != null && Type.Equals(other.Type, StringComparison.Ordinal))
         && (Value == null ? other.Value == null : other.Value != null && Value.Equals(other.Value, StringComparison.Ordinal));
 
+        /// <summary/>
         public override int GetHashCode()
         => Value != null ? Value.GetHashCode() : 0;
 

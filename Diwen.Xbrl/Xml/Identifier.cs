@@ -24,19 +24,24 @@ namespace Diwen.Xbrl.Xml
     using System;
     using System.Xml.Serialization;
 
+    /// <summary/>
     [Serializable]
     public class Identifier : IEquatable<Identifier>
     {
+        /// <summary/>
         [XmlAttribute("scheme", Namespace = "http://www.xbrl.org/2003/instance")]
         public string Scheme { get; set; }
 
+        /// <summary/>
         [XmlText]
         public string Value { get; set; }
 
+        /// <summary/>
         public Identifier()
         {
         }
 
+        /// <summary/>
         public Identifier(string scheme, string value)
             : this()
         {
@@ -44,21 +49,25 @@ namespace Diwen.Xbrl.Xml
             Value = value;
         }
 
+        /// <summary/>
         public override string ToString()
         => $"{Scheme}:{Value}";
 
         #region IEquatable implementation
 
+        /// <summary/>
         public bool Equals(Identifier other)
         => other != null
             && ((Scheme == null && other.Scheme == null) || Scheme.Equals(other.Scheme, StringComparison.Ordinal))
             && ((Value == null && other.Value == null) || Value.Equals(other.Value, StringComparison.Ordinal));
 
+        /// <summary/>
         public override int GetHashCode()
         => Scheme == null ? 0 : Scheme.GetHashCode() + 7 * (Value == null ? 0 : Value.GetHashCode());
 
         #endregion
 
+        /// <summary/>
         public override bool Equals(object obj)
         => Equals(obj as Identifier);
     }

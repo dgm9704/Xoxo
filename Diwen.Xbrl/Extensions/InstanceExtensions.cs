@@ -24,8 +24,10 @@ namespace Diwen.Xbrl.Extensions
     using System.Collections.Generic;
     using Diwen.Xbrl.Csv.Taxonomy;
 
+    /// <summary/>
     public static class ReportExtensions
     {
+        /// <summary/>
         public static Csv.Report ToXbrlCsv(
             this Xml.Report xmlreport,
             Dictionary<string, TableDefinition> tableDefinitions,

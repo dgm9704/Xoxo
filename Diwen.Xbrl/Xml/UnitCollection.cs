@@ -28,23 +28,28 @@ namespace Diwen.Xbrl.Xml
     using System.Xml;
     using Diwen.Xbrl.Extensions;
 
+    /// <summary/>
     public class UnitCollection : KeyedCollection<string, Unit>, IEquatable<IList<Unit>>
     {
         readonly Report Report;
 
+        /// <summary/>
         public UnitCollection() { }
 
+        /// <summary/>
         public UnitCollection(Report Report)
             : this()
         {
             this.Report = Report;
         }
 
+        /// <summary/>
         public UnitCollection(IEnumerable<Unit> units)
         {
             AddRange(units);
         }
 
+        /// <summary/>
         public void AddRange(IEnumerable<Unit> units)
         {
             foreach (var unit in units)
@@ -54,6 +59,7 @@ namespace Diwen.Xbrl.Xml
             }
         }
 
+        /// <summary/>
         public void Add(string id, string value)
         {
             var idx = value.IndexOf(':');
@@ -66,15 +72,19 @@ namespace Diwen.Xbrl.Xml
             Add(unit);
         }
 
+        /// <summary/>
         public UnitCollection UsedUnits()
         => new(this.Where(u => Report.Facts.Any(f => f.Unit == u)));
 
+        /// <summary/>
         protected override string GetKeyForItem(Unit item)
         => item?.Id;
 
+        /// <summary/>
         public override bool Equals(object obj)
         => Equals(obj as UnitCollection);
 
+        /// <summary/>
         public override int GetHashCode()
         {
             int hashCode = 0;
@@ -86,6 +96,7 @@ namespace Diwen.Xbrl.Xml
 
         #region IEquatable implementation
 
+        /// <summary/>
         public bool Equals(IList<Unit> other)
         => this.ContentCompare(other);
 

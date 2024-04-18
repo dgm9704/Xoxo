@@ -28,17 +28,21 @@ namespace Diwen.Xbrl.Xml
     using System.Xml.Serialization;
     using Diwen.Xbrl.Extensions;
 
+    /// <summary/>
     [XmlRoot(ElementName = "explicitMember", Namespace = "http://xbrl.org/2006/xbrldi")]
     public struct ExplicitMember : IXmlSerializable, IEquatable<ExplicitMember>, IComparable<ExplicitMember>
     {
         internal Report Report { get; set; }
 
+        /// <summary/>
         [XmlIgnore]
         public XmlQualifiedName Dimension { get; set; }
 
+        /// <summary/>
         [XmlIgnore]
         public XmlQualifiedName Value { get; set; }
 
+        /// <summary/>
         public ExplicitMember(XmlQualifiedName dimension, XmlQualifiedName value)
             : this()
         {
@@ -46,6 +50,7 @@ namespace Diwen.Xbrl.Xml
             Value = value;
         }
 
+        /// <summary/>
         public readonly string MemberCode
         {
             get
@@ -60,29 +65,37 @@ namespace Diwen.Xbrl.Xml
             }
         }
 
+        /// <summary/>
         public override readonly int GetHashCode()
         => Value != null ? Value.GetHashCode() : 0;
 
+        /// <summary/>
         public override bool Equals(object obj)
         => Equals((ExplicitMember)obj);
 
+        /// <summary/>
         public override readonly string ToString()
         => $"{Dimension.LocalName()}={MemberCode}";
 
+        /// <summary/>
         public int Compare(ExplicitMember other)
         => CompareTo(other);
 
         #region operator overloads
 
+        /// <summary/>
         public static bool operator ==(ExplicitMember left, ExplicitMember right)
         => left.Equals(right);
 
+        /// <summary/>
         public static bool operator !=(ExplicitMember left, ExplicitMember right)
         => !left.Equals(right);
 
+        /// <summary/>
         public static bool operator >(ExplicitMember left, ExplicitMember right)
         => left.CompareTo(right) > 0;
 
+        /// <summary/>
         public static bool operator <(ExplicitMember left, ExplicitMember right)
         => right > left;
 
@@ -90,9 +103,11 @@ namespace Diwen.Xbrl.Xml
 
         #region IXmlSerializable implementation
 
+        /// <summary/>
         public XmlSchema GetSchema()
         => null;
 
+        /// <summary/>
         public void ReadXml(XmlReader reader)
         {
             ArgumentNullException.ThrowIfNull(reader);
@@ -114,6 +129,7 @@ namespace Diwen.Xbrl.Xml
             reader.ReadEndElement();
         }
 
+        /// <summary/>
         public void WriteXml(XmlWriter writer)
         {
             ArgumentNullException.ThrowIfNull(writer);
@@ -128,6 +144,7 @@ namespace Diwen.Xbrl.Xml
 
         #region IEquatable implementation
 
+        /// <summary/>
         public bool Equals(ExplicitMember other)
         => Dimension == other.Dimension && Value == other.Value;
 
@@ -135,6 +152,7 @@ namespace Diwen.Xbrl.Xml
 
         #region IComparable implementation
 
+        /// <summary/>
         public int CompareTo(ExplicitMember other)
         {
             int result;

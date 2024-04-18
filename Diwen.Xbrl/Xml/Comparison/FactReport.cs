@@ -24,10 +24,13 @@ namespace Diwen.Xbrl.Xml.Comparison
     using System;
     using System.Collections.Generic;
 
+    /// <summary/>
     public class FactReport
     {
+        /// <summary/>
         public List<Tuple<Fact, Fact>> Matches { get; set; } = [];
 
+        /// <summary/>
         public static FactReport FromReport(ComparisonReportObjects report)
         {
             var result = new FactReport();

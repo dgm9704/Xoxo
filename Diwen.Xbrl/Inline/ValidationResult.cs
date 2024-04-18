@@ -21,11 +21,16 @@
 
 namespace Diwen.Xbrl.Inline
 {
+    /// <summary/>
     public class EsefResult
     {
+        /// <summary/>
         public string Conclusion { get; }
+
+        /// <summary/>
         public string[] Errors { get; }
 
+        /// <summary/>
         public EsefResult(string conclusion, string[] errors)
         {
             this.Conclusion = conclusion;

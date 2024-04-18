@@ -24,8 +24,10 @@ namespace Diwen.Xbrl.Extensions
     using System;
     using System.Xml;
 
+    /// <summary/>
     public static class XmlQualifiedNameExtensions
     {
+        /// <summary/>
         public static string LocalName(this XmlQualifiedName value)
         {
             ArgumentNullException.ThrowIfNull(value);
@@ -39,6 +41,7 @@ namespace Diwen.Xbrl.Extensions
             return result;
         }
 
+        /// <summary/>
         public static string Prefix(this XmlQualifiedName value)
         {
             ArgumentNullException.ThrowIfNull(value);

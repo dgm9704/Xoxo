@@ -26,12 +26,14 @@ namespace Diwen.Xbrl.Xml
     using System.Linq;
     using System.Xml.Serialization;
 
+    /// <summary/>
     [Serializable]
     [XmlRoot(ElementName = "scenario", Namespace = "http://www.xbrl.org/2003/instance")]
     public class Scenario : IEquatable<Scenario>
     {
         Report report;
 
+        /// <summary/>
         [XmlIgnore]
         public Report Report
         {
@@ -44,28 +46,34 @@ namespace Diwen.Xbrl.Xml
             }
         }
 
+        /// <summary/>
         [XmlElement("explicitMember", Namespace = "http://xbrl.org/2006/xbrldi")]
         public ExplicitMemberCollection ExplicitMembers { get; set; }
 
+        /// <summary/>
         [XmlElement("typedMember", Namespace = "http://xbrl.org/2006/xbrldi")]
         public TypedMemberCollection TypedMembers { get; set; }
 
+        /// <summary/>
         [XmlIgnore]
         public bool HasMembers
         => ExplicitMembers.Any() || TypedMembers.Any();
 
+        /// <summary/>
         public Scenario()
         {
             ExplicitMembers = [];
             TypedMembers = [];
         }
 
+        /// <summary/>
         public Scenario(Report report)
         {
             ExplicitMembers = new ExplicitMemberCollection(report);
             TypedMembers = new TypedMemberCollection(report);
         }
 
+        /// <summary/>
         public override string ToString()
         {
             var members = new List<string>();
@@ -80,23 +88,28 @@ namespace Diwen.Xbrl.Xml
             return string.Join(", ", members);
         }
 
+        /// <summary/>
         public override bool Equals(object obj)
         => Equals(obj as Scenario);
 
+        /// <summary/>
         public override int GetHashCode()
         => TypedMembers.GetHashCode() + 31 * ExplicitMembers.GetHashCode();
 
         // public override int GetHashCode()
         // => Key.GetHashCode();
 
+        /// <summary/>
         public ExplicitMember AddExplicitMember(string dimension, string value)
         => ExplicitMembers.Add(dimension, value);
 
+        /// <summary/>
         public TypedMember AddTypedMember(string dimension, string domain, string value)
         => TypedMembers.Add(dimension, domain, value);
 
         #region IEquatable implementation
 
+        /// <summary/>
         public bool Equals(Scenario other)
         => other != null
             && ExplicitMembers.Equals(other.ExplicitMembers)

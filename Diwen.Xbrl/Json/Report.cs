@@ -10,23 +10,28 @@ namespace Diwen.Xbrl.Json
     using Diwen.Xbrl.Extensions;
     using Diwen.Xbrl.Xml;
 
+        /// <summary/>
     public class Report
     {
 
+        /// <summary/>
         [JsonRequired]
         [JsonPropertyName("documentInfo")]
         public DocumentInfo DocumentInfo { get; set; }
 
+        /// <summary/>
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
         [JsonPropertyName("facts")]
         public Dictionary<string, Fact> Facts { get; set; }
 
+        /// <summary/>
         public static Report FromFile(string path)
         {
             using (var stream = new FileStream(path, FileMode.Open, FileAccess.Read))
                 return JsonSerializer.Deserialize<Report>(stream);
         }
 
+        /// <summary/>
         public void ToFile(string path)
         {
             using (var stream = new FileStream(path, FileMode.Create, FileAccess.Write))
@@ -34,11 +39,11 @@ namespace Diwen.Xbrl.Json
         }
 
         private static Dictionary<string, Uri> GetNamespaces(Xml.Report xmlreport)
-                => xmlreport.Namespaces.
-                    GetNamespacesInScope(XmlNamespaceScope.ExcludeXml).
-                    ToDictionary(
-                        ns => ns.Key,
-                        ns => new Uri(ns.Value));
+        => xmlreport.Namespaces.
+            GetNamespacesInScope(XmlNamespaceScope.ExcludeXml).
+            ToDictionary(
+                ns => ns.Key,
+                ns => new Uri(ns.Value));
 
         private static Dictionary<string, string> GetDimensions(Xml.Fact fact, string dimensionPrefix)
         {
@@ -61,6 +66,7 @@ namespace Diwen.Xbrl.Json
             return dimensions;
         }
 
+        /// <summary/>
         public static Report FromXbrlXml(Xml.Report xmlreport)
         {
             var dimensionPrefix = xmlreport.Namespaces.LookupPrefix(xmlreport.DimensionNamespace);
@@ -96,9 +102,11 @@ namespace Diwen.Xbrl.Json
             return report;
         }
 
+        /// <summary/>
         public Xml.Report ToXbrlXml(Dictionary<string, string> dimensionDomain, KeyValuePair<string, string> typedDomainNamespace, HashSet<string> typedDomains)
         => ToXbrlXml(this, dimensionDomain, typedDomainNamespace, typedDomains);
 
+        /// <summary/>
         public static Xml.Report ToXbrlXml(Report report, Dictionary<string, string> dimensionDomain, KeyValuePair<string, string> typedDomainNamespace, HashSet<string> typedDomains)
         {
             var xmlreport = new Xml.Report

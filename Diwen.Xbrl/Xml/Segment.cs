@@ -26,12 +26,14 @@ namespace Diwen.Xbrl.Xml
     using System.Linq;
     using System.Xml.Serialization;
 
+    /// <summary/>
     [Serializable]
     [XmlRoot(ElementName = "segment", Namespace = "http://www.xbrl.org/2003/instance")]
     public class Segment : IEquatable<Segment>
     {
         Report report;
 
+        /// <summary/>
         [XmlIgnore]
         public Report Report
         {
@@ -44,26 +46,32 @@ namespace Diwen.Xbrl.Xml
             }
         }
 
+        /// <summary/>
         [XmlElement("explicitMember", Namespace = "http://xbrl.org/2006/xbrldi")]
         public ExplicitMemberCollection ExplicitMembers { get; set; }
 
+        /// <summary/>
         [XmlElement("typedMember", Namespace = "http://xbrl.org/2006/xbrldi")]
         public TypedMemberCollection TypedMembers { get; set; }
 
+        /// <summary/>
         public bool HasMembers => ExplicitMembers.Any() || TypedMembers.Any();
 
+        /// <summary/>
         public Segment()
         {
             ExplicitMembers = [];
             TypedMembers = [];
         }
 
+        /// <summary/>
         public Segment(Report report)
         {
             ExplicitMembers = new ExplicitMemberCollection(report);
             TypedMembers = new TypedMemberCollection(report);
         }
 
+        /// <summary/>
         public override string ToString()
         {
             var members = new List<string>();
@@ -78,20 +86,25 @@ namespace Diwen.Xbrl.Xml
             return string.Join(", ", members);
         }
 
+        /// <summary/>
         public override bool Equals(object obj)
         => Equals(obj as Segment);
 
+        /// <summary/>
         public override int GetHashCode()
         => TypedMembers.GetHashCode() + 31 * ExplicitMembers.GetHashCode();
 
+        /// <summary/>
         public ExplicitMember AddExplicitMember(string dimension, string value)
         => ExplicitMembers.Add(dimension, value);
 
+        /// <summary/>
         public TypedMember AddTypedMember(string dimension, string domain, string value)
         => TypedMembers.Add(dimension, domain, value);
 
         #region IEquatable implementation
 
+        /// <summary/>
         public bool Equals(Segment other)
         => other != null
             && ExplicitMembers.Equals(other.ExplicitMembers)

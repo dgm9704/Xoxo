@@ -28,6 +28,7 @@ namespace Diwen.Xbrl.Xml
     using System.Xml.Serialization;
     using Diwen.Xbrl.Extensions;
 
+    /// <summary/>
     [DebuggerDisplay("{Id}")]
     [Serializable]
     [XmlRoot(ElementName = "unit", Namespace = "http://www.xbrl.org/2003/instance")]
@@ -36,14 +37,18 @@ namespace Diwen.Xbrl.Xml
 
         internal Report Report { get; set; }
 
+        /// <summary/>
         [XmlIgnore]
         public string Id { get; set; }
 
+        /// <summary/>
         [XmlIgnore]
         public XmlQualifiedName Measure { get; set; }
 
+        /// <summary/>
         public Unit() { }
 
+        /// <summary/>
         public Unit(string id, string value)
             : this()
         {
@@ -51,6 +56,7 @@ namespace Diwen.Xbrl.Xml
             Measure = new XmlQualifiedName(value);
         }
 
+        /// <summary/>
         public Unit(string id, XmlQualifiedName measure)
             : this()
         {
@@ -58,22 +64,27 @@ namespace Diwen.Xbrl.Xml
             Measure = measure;
         }
 
+        /// <summary/>
         public override string ToString()
         => $"{Measure.Namespace}:{Measure.LocalName()}";
 
+        /// <summary/>
         public override bool Equals(object obj)
         => Equals(obj as Unit);
 
         #region IEquatable implementation
 
+        /// <summary/>
         public bool Equals(Unit other)
         => other != null
             && Measure.LocalName().Equals(other.Measure.LocalName(), StringComparison.Ordinal)
             && Measure.Namespace.Equals(other.Measure.Namespace, StringComparison.Ordinal);
 
+        /// <summary/>
         public override int GetHashCode()
         => Measure != null ? Measure.Namespace.GetHashCode() * Measure.LocalName().GetHashCode() : 0;
 
+        /// <summary/>
         public string ComparisonMessage()
         => ToString();
 
@@ -81,9 +92,11 @@ namespace Diwen.Xbrl.Xml
 
         #region IXmlSerializable implementation
 
+        /// <summary/>
         public XmlSchema GetSchema()
         => null;
 
+        /// <summary/>
         public void ReadXml(XmlReader reader)
         {
             ArgumentNullException.ThrowIfNull(reader);
@@ -110,6 +123,7 @@ namespace Diwen.Xbrl.Xml
             reader.ReadEndElement();
         }
 
+        /// <summary/>
         public void WriteXml(XmlWriter writer)
         {
             ArgumentNullException.ThrowIfNull(writer);

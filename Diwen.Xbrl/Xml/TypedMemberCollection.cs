@@ -29,10 +29,12 @@ namespace Diwen.Xbrl.Xml
     using System.Xml.Serialization;
     using Diwen.Xbrl.Extensions;
 
+    /// <summary/>
     public class TypedMemberCollection : Collection<TypedMember>, IEquatable<IList<TypedMember>>
     {
         Report reportField;
 
+        /// <summary/>
         [XmlIgnore]
         public Report Report
         {
@@ -70,16 +72,19 @@ namespace Diwen.Xbrl.Xml
             }
         }
 
+        /// <summary/>
         public TypedMemberCollection()
         {
         }
 
+        /// <summary/>
         public TypedMemberCollection(Report report)
             : this()
         {
             Report = report;
         }
 
+        /// <summary/>
         public TypedMember Add(string dimension, string domain, string value)
         {
 
@@ -103,6 +108,7 @@ namespace Diwen.Xbrl.Xml
 
         #region IEquatable implementation
 
+        /// <summary/>
         public bool Equals(IList<TypedMember> other)
         => this.ContentCompare(other);
 
@@ -110,6 +116,7 @@ namespace Diwen.Xbrl.Xml
 
         int hashCode = -1;
 
+        /// <summary/>
         public override int GetHashCode()
         {
             if (hashCode == -1)

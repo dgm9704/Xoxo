@@ -27,11 +27,14 @@ namespace Diwen.Xbrl.Xml
     using System.Linq;
     using Diwen.Xbrl.Extensions;
 
+    /// <summary/>
     public class FilingIndicatorCollection : Collection<FilingIndicator>, IEquatable<IList<FilingIndicator>>
     {
+        /// <summary/>
         public FilingIndicator Add(Context context, string value)
         => Add(context, value, true);
 
+        /// <summary/>
         public FilingIndicator Add(Context context, string value, bool filed)
         {
             var filingIndicator = new FilingIndicator(context, value, filed);
@@ -41,6 +44,7 @@ namespace Diwen.Xbrl.Xml
 
         #region IEquatable implementation
 
+        /// <summary/>
         public bool Equals(IList<FilingIndicator> other)
         {
             bool result;

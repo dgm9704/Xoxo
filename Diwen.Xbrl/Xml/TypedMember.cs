@@ -27,20 +27,25 @@ namespace Diwen.Xbrl.Xml
     using System.Xml.Serialization;
     using Diwen.Xbrl.Extensions;
 
+    /// <summary/>
     [XmlRoot(ElementName = "typedMember", Namespace = "http://xbrl.org/2006/xbrldi")]
     public struct TypedMember : IXmlSerializable, IEquatable<TypedMember>, IComparable<TypedMember>
     {
         internal Report Report { get; set; }
 
+        /// <summary/>
         [XmlIgnore]
         public XmlQualifiedName Dimension { get; set; }
 
+        /// <summary/>
         [XmlIgnore]
         public XmlQualifiedName Domain { get; set; }
 
+        /// <summary/>
         [XmlIgnore]
         public string Value { get; set; }
 
+        /// <summary/>
         public TypedMember(XmlQualifiedName dimension, XmlQualifiedName domain, string value)
                     : this()
         {
@@ -49,29 +54,37 @@ namespace Diwen.Xbrl.Xml
             Value = value;
         }
 
+        /// <summary/>
         public override string ToString()
         => $"{Dimension.LocalName()}={Value}";
 
+        /// <summary/>
         public override bool Equals(object obj)
         => Equals((TypedMember)obj);
 
+        /// <summary/>
         public override int GetHashCode()
         => Value != null ? Value.GetHashCode() : 0;
 
         #region operator overloads
 
+        /// <summary/>
         public static bool operator ==(TypedMember left, TypedMember right)
         => left.Equals(right);
 
+        /// <summary/>
         public static bool operator !=(TypedMember left, TypedMember right)
         => !left.Equals(right);
 
+        /// <summary/>
         public static bool operator >(TypedMember left, TypedMember right)
         => left.CompareTo(right) > 0;
 
+        /// <summary/>
         public static bool operator <(TypedMember left, TypedMember right)
         => right > left;
 
+        /// <summary/>
         public int Compare(TypedMember other)
         => CompareTo(other);
 
@@ -79,9 +92,11 @@ namespace Diwen.Xbrl.Xml
 
         #region IXmlSerializable implementation
 
+        /// <summary/>
         public XmlSchema GetSchema()
         => null;
 
+        /// <summary/>
         public void ReadXml(XmlReader reader)
         {
             ArgumentNullException.ThrowIfNull(reader);
@@ -98,6 +113,7 @@ namespace Diwen.Xbrl.Xml
             reader.ReadEndElement();
         }
 
+        /// <summary/>
         public void WriteXml(XmlWriter writer)
         {
             ArgumentNullException.ThrowIfNull(writer);
@@ -120,6 +136,7 @@ namespace Diwen.Xbrl.Xml
 
         #region IEquatable implementation
 
+        /// <summary/>
         public bool Equals(TypedMember other)
         => Dimension == other.Dimension
                         && Domain == other.Domain
@@ -129,6 +146,7 @@ namespace Diwen.Xbrl.Xml
 
         #region IComparable implementation
 
+        /// <summary/>
         public int CompareTo(TypedMember other)
         {
             int result;

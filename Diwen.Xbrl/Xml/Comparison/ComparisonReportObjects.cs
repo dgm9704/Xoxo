@@ -24,18 +24,40 @@ namespace Diwen.Xbrl.Xml.Comparison
     using System;
     using System.Collections.Generic;
 
+/// <summary/>
     public class ComparisonReportObjects
     {
+        /// <summary/>
         public bool Result { get; internal set; }
+
+        /// <summary/>
         public List<string> Basics { get; internal set; }
+
+        /// <summary/>
         public Tuple<List<Scenario>, List<Scenario>> Contexts { get; internal set; }
+
+        /// <summary/>
         public Tuple<List<Fact>, List<Fact>> Facts { get; internal set; }
+
+        /// <summary/>
         public Tuple<List<string>, List<string>> DomainNamespaces { get; internal set; }
+
+        /// <summary/>
         public Tuple<List<Unit>, List<Unit>> Units { get; internal set; }
+
+        /// <summary/>
         public Tuple<List<Identifier>, List<Identifier>> Entities { get; internal set; }
+
+        /// <summary/>
         public Tuple<List<Period>, List<Period>> Periods { get; internal set; }
+
+        /// <summary/>
         public Tuple<List<string>, List<string>> TaxonomyVersions { get; internal set; }
+
+        /// <summary/>
         public Tuple<List<SchemaReference>, List<SchemaReference>> SchemaReferences { get; internal set; }
+
+        /// <summary/>
         public Tuple<List<FilingIndicator>, List<FilingIndicator>> FilingIndicators { get; internal set; }
     }
 }

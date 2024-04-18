@@ -23,12 +23,20 @@ namespace Diwen.Xbrl.Xml
 {
     using System;
 
+/// <summary/>
     [Flags]
     public enum ReportOptions
     {
+        /// <summary/>
         None = 0,
+
+        /// <summary/>
         RemoveUnusedObjects = 1 << 0,
+
+        /// <summary/>
         CollapseDuplicateContexts = 1 << 1,
+
+        /// <summary/>
         RemoveDuplicateFacts = 1 << 2,
     }
 }

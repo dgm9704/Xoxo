@@ -29,10 +29,12 @@ namespace Diwen.Xbrl.Xml
     using System.Xml.Serialization;
     using Diwen.Xbrl.Extensions;
 
+    /// <summary/>
     public class ExplicitMemberCollection : Collection<ExplicitMember>, IEquatable<IList<ExplicitMember>>
     {
         Report reportField;
 
+        /// <summary/>
         [XmlIgnore]
         public Report Report
         {
@@ -72,17 +74,19 @@ namespace Diwen.Xbrl.Xml
             }
         }
 
+        /// <summary/>
         public ExplicitMemberCollection()
         {
         }
 
+        /// <summary/>
         public ExplicitMemberCollection(Report report)
             : this()
         {
             Report = report;
         }
 
-
+        /// <summary/>
         public ExplicitMember Add(string dimension, string value)
         {
             if (string.IsNullOrEmpty(dimension))
@@ -120,6 +124,7 @@ namespace Diwen.Xbrl.Xml
 
         int hashCode = -1;
 
+        /// <summary/>
         public override int GetHashCode()
         {
             if (hashCode == -1)
@@ -134,6 +139,7 @@ namespace Diwen.Xbrl.Xml
 
         #region IEquatable implementation
 
+        /// <summary/>
         public bool Equals(IList<ExplicitMember> other)
         => this.ContentCompare(other);
 

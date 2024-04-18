@@ -26,7 +26,7 @@ namespace Diwen.Xbrl.Extensions
     using System.Linq;
     using Diwen.Xbrl.Xml;
 
-    public static class ListExtensions
+    internal static class ListExtensions
     {
         internal static bool ContentCompare<T>(this IList<T> left, IList<T> right)
         {

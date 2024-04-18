@@ -23,13 +23,16 @@ namespace Diwen.Xbrl.Extensions
 {
     using System.Collections.Generic;
 
+        /// <summary/>
     public static class IEnumerableOfStringExtensions
     {
+                /// <summary/>
         public static string Join(this IEnumerable<string> values, string separator)
         => values != null
             ? string.Join(separator ?? "", values)
             : string.Empty;
 
+        /// <summary/>
         public static HashSet<string> ToHashSet(this IEnumerable<string> values)
         => new HashSet<string>(values);
     }

@@ -7,16 +7,21 @@ namespace Diwen.Xbrl.Csv.Taxonomy
     using System.Text.Json.Serialization;
     using Diwen.Xbrl.Extensions;
 
+    /// <summary/>
     public class TableDefinition
     {
 
+        /// <summary/>
         [JsonPropertyName("documentInfo")]
         public DocumentInfo DocumentInfo { get; set; }
 
+        /// <summary/>
         [JsonPropertyName("tableTemplates")]
         public Dictionary<string, TableTemplate> TableTemplates { get; set; }
 
         private Dictionary<string, PropertyGroup> datapoints;
+
+        /// <summary/>
         public Dictionary<string, PropertyGroup> Datapoints
         {
             get
@@ -31,6 +36,7 @@ namespace Diwen.Xbrl.Csv.Taxonomy
         private Dictionary<string, KeyValuePair<string, PropertyGroup>[]> datapointsByMetric;
         private static readonly KeyValuePair<string, PropertyGroup>[] noCandidates = [];
 
+        /// <summary/>
         public KeyValuePair<string, PropertyGroup>[] GetDatapointsByMetric(string metric)
         {
             if (datapointsByMetric == null)
@@ -46,6 +52,7 @@ namespace Diwen.Xbrl.Csv.Taxonomy
             return datapointsByMetric.GetValueOrDefault(metric, noCandidates);
         }
 
+        /// <summary/>
         public static TableDefinition FromFile(string path)
         {
             using (var stream = new FileStream(path, FileMode.Open, FileAccess.Read))

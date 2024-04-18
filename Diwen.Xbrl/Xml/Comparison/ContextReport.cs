@@ -25,10 +25,13 @@ namespace Diwen.Xbrl.Xml.Comparison
     using System.Collections.Generic;
     using System.Linq;
 
+    /// <summary/>
     public class ContextReport
     {
+        /// <summary/>
         public List<Tuple<Scenario, Scenario>> Matches { get; set; } = new List<Tuple<Scenario, Scenario>>();
 
+        /// <summary/>
         public static ContextReport FromReport(ComparisonReportObjects report)
         {
             var result = new ContextReport();

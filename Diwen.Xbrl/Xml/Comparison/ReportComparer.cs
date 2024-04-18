@@ -27,26 +27,34 @@ namespace Diwen.Xbrl.Xml.Comparison
     using System.Linq;
     using Diwen.Xbrl.Extensions;
 
+    /// <summary/>
     public static class ReportComparer
     {
+        /// <summary/>
         public static ComparisonReport Report(string a, string b)
         => Report(Xml.Report.FromFile(a), Xml.Report.FromFile(b), ComparisonTypes.All);
 
+        /// <summary/>
         public static ComparisonReport Report(string a, string b, ComparisonTypes comparisonTypes)
         => Report(Xml.Report.FromFile(a), Xml.Report.FromFile(b), comparisonTypes);
 
+        /// <summary/>
         public static ComparisonReport Report(Stream a, Stream b)
         => Report(Xml.Report.FromStream(a), Xml.Report.FromStream(b), ComparisonTypes.All);
 
+        /// <summary/>
         public static ComparisonReport Report(Stream a, Stream b, ComparisonTypes comparisonTypes)
         => Report(Xml.Report.FromStream(a), Xml.Report.FromStream(b), comparisonTypes);
 
+        /// <summary/>
         public static ComparisonReport Report(Report a, Report b)
         => Report(a, b, ComparisonTypes.All);
 
+        /// <summary/>
         public static ComparisonReport Report(Report a, Report b, ComparisonTypes comparisonTypes)
         => Report(a, b, comparisonTypes, BasicComparisons.All);
 
+        /// <summary/>
         public static ComparisonReport Report(Report a, Report b, ComparisonTypes comparisonTypes, BasicComparisons basicComparisons)
         {
             var messages = new List<string>();
@@ -61,9 +69,11 @@ namespace Diwen.Xbrl.Xml.Comparison
             return new ComparisonReport(!messages.Any(), messages);
         }
 
+        /// <summary/>
         public static ComparisonReportObjects ReportObjects(string a, string b)
         => ReportObjects(Xml.Report.FromFile(a), Xml.Report.FromFile(b), ComparisonTypes.All, BasicComparisons.All);
 
+        /// <summary/>
         public static ComparisonReportObjects ReportObjects(Report a, Report b, ComparisonTypes comparisons, BasicComparisons basicSelection)
         {
             var report = new ComparisonReportObjects();
@@ -246,7 +256,6 @@ namespace Diwen.Xbrl.Xml.Comparison
             return aList.ContentCompareReport(bList);
         }
 
-
         static List<string> ScenarioComparisonMessages(Report a, Report b)
         {
             var differences = ScenarioComparison(a, b);
@@ -396,4 +405,3 @@ namespace Diwen.Xbrl.Xml.Comparison
         #endregion
     }
 }
-

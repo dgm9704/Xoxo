@@ -27,25 +27,30 @@ namespace Diwen.Xbrl.Xml
     using System.Globalization;
     using Diwen.Xbrl.Extensions;
 
+    /// <summary/>
     public class ContextCollection : KeyedCollection<string, Context>, IEquatable<IList<Context>>
     {
         static readonly IFormatProvider ic = CultureInfo.InvariantCulture;
 
         Report report;
 
+        /// <summary/>
         public string IdFormat { get; set; }
 
+        /// <summary/>
         public ContextCollection()
         {
             IdFormat = "A{0}";
         }
 
+        /// <summary/>
         public ContextCollection(Report report)
             : this()
         {
             this.report = report;
         }
 
+        /// <summary/>
         public new Context Add(Context context)
         {
             ArgumentNullException.ThrowIfNull(context);
@@ -83,6 +88,7 @@ namespace Diwen.Xbrl.Xml
             return context;
         }
 
+        /// <summary/>
         public string NextId()
         {
             var counter = Count;
@@ -94,6 +100,7 @@ namespace Diwen.Xbrl.Xml
             return id;
         }
 
+        /// <summary/>
         public void AddRange(IEnumerable<Context> values)
         {
             if (values != null)
@@ -101,11 +108,13 @@ namespace Diwen.Xbrl.Xml
                     Add(item);
         }
 
+        /// <summary/>
         protected override string GetKeyForItem(Context item)
         => item?.Id;
 
         #region IEquatable implementation
 
+        /// <summary/>
         public bool Equals(IList<Context> other)
         => this.ContentCompare(other);
 

@@ -25,10 +25,13 @@ namespace Diwen.Xbrl.Xml.Comparison
     using System.Collections.Generic;
     using System.Collections.ObjectModel;
 
+    /// <summary/>
     public class ComparisonReport
     {
+        /// <summary/>
         public bool Result { get; }
 
+        /// <summary/>
         public ReadOnlyCollection<string> Messages { get; }
 
         internal ComparisonReport(bool result, IList<string> messages)
@@ -37,6 +40,7 @@ namespace Diwen.Xbrl.Xml.Comparison
             Messages = new ReadOnlyCollection<string>(messages);
         }
 
+        /// <summary/>
         public override string ToString()
         {
             return $"result: {Result}" + (

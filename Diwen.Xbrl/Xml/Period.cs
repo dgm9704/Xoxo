@@ -24,37 +24,44 @@ namespace Diwen.Xbrl.Xml
     using System;
     using System.Xml.Serialization;
 
+    /// <summary/>
     [Serializable]
     [XmlRoot(ElementName = "period", Namespace = "http://www.xbrl.org/2003/instance")]
     public class Period : IEquatable<Period>
     {
-
+        /// <summary/>
         [XmlElement(ElementName = "instant", DataType = "date", Namespace = "http://www.xbrl.org/2003/instance")]
         public DateTime Instant { get; set; }
 
+        /// <summary/>
         [XmlElement(ElementName = "startDate", DataType = "date", Namespace = "http://www.xbrl.org/2003/instance")]
         public DateTime StartDate { get; set; }
 
+        /// <summary/>
         [XmlElement(ElementName = "endDate", DataType = "date", Namespace = "http://www.xbrl.org/2003/instance")]
         public DateTime EndDate { get; set; }
 
+        /// <summary/>
         public Period()
         {
 
         }
 
+        /// <summary/>
         public Period(DateTime instant)
             : this()
         {
             Instant = instant;
         }
 
+        /// <summary/>
         public Period(int year, int month, int day)
             : this()
         {
             Instant = new DateTime(year, month, day);
         }
 
+        /// <summary/>
         public Period(DateTime startDate, DateTime endDate)
             : this()
         {
@@ -62,6 +69,7 @@ namespace Diwen.Xbrl.Xml
             EndDate = endDate;
         }
 
+        /// <summary/>
         public Period(int startYear, int startMonth, int startDay, int endYear, int endMonth, int endDay)
             : this()
         {
@@ -69,18 +77,23 @@ namespace Diwen.Xbrl.Xml
             EndDate = new DateTime(endYear, endMonth, endDay);
         }
 
+        /// <summary/>
         public bool ShouldSerializeInstant()
         => Instant != DateTime.MinValue;
 
+        /// <summary/>
         public bool ShouldSerializeStartDate()
         => StartDate != DateTime.MinValue;
 
+        /// <summary/>
         public bool ShouldSerializeEndDate()
         => EndDate != DateTime.MinValue;
 
+        /// <summary/>
         public override bool Equals(object obj)
         => Equals(obj as Period);
 
+        /// <summary/>
         public override string ToString()
         => ShouldSerializeInstant()
          ? $"Instant={Instant:yyyy-MM-dd}"
@@ -88,12 +101,14 @@ namespace Diwen.Xbrl.Xml
 
         #region IEquatable implementation
 
+        /// <summary/>
         public bool Equals(Period other)
         => other != null
             && Instant.Equals(other.Instant)
             && StartDate.Equals(other.StartDate)
             && EndDate.Equals(other.EndDate);
 
+        /// <summary/>
         public override int GetHashCode()
         => Instant.Date.GetHashCode()
           + 7 * StartDate.GetHashCode()

@@ -26,15 +26,19 @@ namespace Diwen.Xbrl.Xml
     using System.Collections.ObjectModel;
     using Diwen.Xbrl.Extensions;
 
+    /// <summary/>
     public class FactCollection : Collection<Fact>, IEquatable<IList<Fact>>
     {
+        /// <summary/>
         public Report Report;
 
+        /// <summary/>
         public FactCollection(Report report)
         {
             Report = report;
         }
 
+        /// <summary/>
         public Fact Add(Context context, string metric, string unitRef, string decimals, string value)
         {
             var ns = Report.FactNamespace;
@@ -62,12 +66,15 @@ namespace Diwen.Xbrl.Xml
             return fact;
         }
 
+        /// <summary/>
         public Fact Add(Scenario scenario, string metric, string unitRef, string decimals, string value)
         => Add(Report.GetContext(scenario), metric, unitRef, decimals, value);
 
+        /// <summary/>
         public Fact Add(Segment segment, string metric, string unitRef, string decimals, string value)
         => Add(Report.GetContext(segment), metric, unitRef, decimals, value);
 
+        /// <summary/>
         public void AddRange(IEnumerable<Fact> facts)
         {
             foreach (var fact in facts)
@@ -76,6 +83,7 @@ namespace Diwen.Xbrl.Xml
 
         #region IEquatable implementation
 
+        /// <summary/>
         public bool Equals(IList<Fact> other)
         => this.ContentCompare(other);
 

@@ -20,10 +20,16 @@
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 namespace Diwen.Xbrl.Inline
 {
+    /// <summary/>
     public readonly struct ReportFile
     {
+        /// <summary/>
         public string Filename { get; }
+
+        /// <summary/>
         public object Content { get; }
+
+        /// <summary/>
         public ReportFile(string filename, object content)
         {
             Filename = filename;

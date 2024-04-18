@@ -30,10 +30,12 @@ namespace Diwen.Xbrl.Inline
     using System.Xml.Serialization;
     using Diwen.Xbrl.Xml;
 
+        /// <summary/>
     public static class InlineXbrl
     {
         private static readonly IFormatProvider ic = CultureInfo.InvariantCulture;
 
+        /// <summary/>
         public static Report ParseReportFiles(params ReportFile[] reportFiles)
         => ParseXDocuments(
             reportFiles.
@@ -41,12 +43,14 @@ namespace Diwen.Xbrl.Inline
                 Where(r => r != null).
                 ToArray());
 
+        /// <summary/>
         public static Report ParseFiles(params string[] files)
         => ParseXDocuments(
             files.
                 Select(file => XDocument.Load(file)).
                 ToArray());
 
+        /// <summary/>
         public static Report ParseXDocuments(params XDocument[] documents)
         {
             var report = new Report();
@@ -72,6 +76,7 @@ namespace Diwen.Xbrl.Inline
             return report;
         }
 
+        /// <summary/>
         public static void ParseFacts(XDocument document, Report report)
         {
             var factElements = FindFacts(document);
@@ -103,12 +108,14 @@ namespace Diwen.Xbrl.Inline
                 report.Facts.Add(fact);
         }
 
+        /// <summary/>
         public static IEnumerable<XElement> FindFacts(XDocument document)
         {
             // parse facts and add to instance
             return document.Root.Descendants().Where(d => d.Attribute("contextRef") != null);
         }
 
+        /// <summary/>
         public static void ParseUnits(XDocument document, Report report)
         {
             // parse units and add to instance
@@ -126,6 +133,7 @@ namespace Diwen.Xbrl.Inline
             report.Units = units;
         }
 
+        /// <summary/>
         public static void ParseContexts(XDocument document, Report report)
         {
             // parse contexts and add to instance
@@ -144,6 +152,7 @@ namespace Diwen.Xbrl.Inline
             report.Contexts = contexts;
         }
 
+        /// <summary/>
         public static void ParseSchemaReference(XDocument document, Report report)
         {
             // parse schemaRef and add to instance
@@ -158,6 +167,7 @@ namespace Diwen.Xbrl.Inline
             report.SchemaReference = schemaRef;
         }
 
+        /// <summary/>
         public static void ParseNamespaces(XDocument document, Report report)
         {
             // parse namespaces from xhtml and add to instance

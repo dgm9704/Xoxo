@@ -1,13 +1,16 @@
 namespace Diwen.Xbrl.Csv.Taxonomy
 {
     using System.Text.Json.Serialization;
-    
+
+    /// <summary/>
     public class Columns
     {
-        [JsonPropertyName("datapoint")] 
+        /// <summary/>
+        [JsonPropertyName("datapoint")]
         public Datapoint Datapoint { get; set; }
 
-        [JsonPropertyName("factValue")] 
+        /// <summary/>
+        [JsonPropertyName("factValue")]
         public FactValue FactValue { get; set; }
     }
 }

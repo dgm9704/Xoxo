@@ -23,8 +23,10 @@ namespace Diwen.Xbrl.Extensions
 {
     using System.Collections.Generic;
 
+    /// <summary/>
     public static class DictionaryExtensions
     {
+        /// <summary/>
         public static TValue GetValueOrDefault<TKey, TValue>(this Dictionary<TKey, TValue> dictionary, TKey key, TValue defaultValue)
         => dictionary.ContainsKey(key)
              ? dictionary[key]

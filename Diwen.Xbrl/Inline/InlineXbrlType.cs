@@ -23,8 +23,10 @@ namespace Diwen.Xbrl.Inline
 {
     using System.ComponentModel;
 
+    /// <summary/>
     public enum InlineXbrlType
     {
+        /// <summary/>
         [Description("ESMA ESEF")]
         Esef,
     }
