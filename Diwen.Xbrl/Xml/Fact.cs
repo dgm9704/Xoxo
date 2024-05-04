@@ -74,6 +74,8 @@ namespace Diwen.Xbrl.Xml
         internal string ContextRef;
         internal string UnitRef;
 
+        internal Report Report;
+
         /// <summary/>
         public Fact()
         {
@@ -221,10 +223,48 @@ namespace Diwen.Xbrl.Xml
                     ? other.Unit == null
                     : Unit.Equals(other.Unit);
 
-            // if (result)
-            //     result = Context == null
-            //         ? other.Context == null
-            //         : Context.Equals(other.Context);
+            if (result)
+            {
+                if (Facts != null)
+                {
+                    result = Facts.Equals(other.Facts);
+                }
+                else
+                {
+                    if (Report == other.Report
+                        && !string.IsNullOrEmpty(ContextRef) && !string.IsNullOrEmpty(other.ContextRef)
+                        && ContextRef.Equals(other.ContextRef, StringComparison.Ordinal))
+                    {   // the same actual context
+                        result = true;
+                    }
+                    else // different reports
+                    {
+                        if (Context == null && other.Context == null)
+                        {   // nothing to make a difference
+                            result = true;
+                        }
+                        else if (Context != null && other.Context != null)
+                        {
+                            if (Context.Scenario == null && other.Context.Scenario == null)
+                            {   // nothing to make a difference
+                                result = true;
+                            }
+                            else if (Context.Scenario != null && other.Context.Scenario != null)
+                            {   // something to compare
+                                result = Context.Scenario.Equals(other.Context.Scenario);
+                            }
+                            else  // one has a scenario other doesn't
+                            {
+                                result = false;
+                            }
+                        }
+                        else  // one has a context other doesn't
+                        {
+                            result = false;
+                        }
+                    }
+                }
+            }
 
             return result;
         }

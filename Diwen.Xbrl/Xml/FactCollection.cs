@@ -62,6 +62,7 @@ namespace Diwen.Xbrl.Xml
             }
 
             var fact = new Fact(context, metric, unit, decimals, value, ns, prefix);
+            fact.Report = Report;
             Add(fact);
             return fact;
         }

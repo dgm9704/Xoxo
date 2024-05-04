@@ -299,9 +299,9 @@ namespace Diwen.Xbrl.Xml.Comparison
         => a.Facts.ContentCompareReport(b.Facts);
 
         static IEnumerable<string> FactComparisonMessages(Report a, Report b)
-        => FactComparisonMesssages(FactComparison(a, b));
+        => FactComparisonMessages(FactComparison(a, b));
 
-        static IEnumerable<string> FactComparisonMesssages(Tuple<List<Fact>, List<Fact>> differences)
+        static IEnumerable<string> FactComparisonMessages(Tuple<List<Fact>, List<Fact>> differences)
         => differences.Item1.Select(f => FactComparisonMessage(f, "a")).
             Concat(differences.Item2.Select(f => FactComparisonMessage(f, "b")));
 

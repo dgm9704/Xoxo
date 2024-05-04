@@ -422,9 +422,9 @@ namespace Diwen.Xbrl.Xml
             XmlSerializerNamespaces = new XmlSerializerNamespaces();
         }
 
-        void SetContextReferences(FactCollection facts)
+        void SetContextReferences(FilingIndicatorCollection filingIndicators)
         {
-            foreach (var filingIndicator in FilingIndicators.Where(i => i.Context == null))
+            foreach (var filingIndicator in filingIndicators.Where(i => i.Context == null))
             {
                 var contextRef = filingIndicator.ContextRef;
                 if (!string.IsNullOrEmpty(contextRef))
@@ -435,7 +435,10 @@ namespace Diwen.Xbrl.Xml
                     filingIndicator.Context = Contexts[contextRef];
                 }
             }
+        }
 
+        void SetContextReferences(FactCollection facts)
+        {
             foreach (var fact in facts)
             {
                 if (fact.Context == null)
@@ -764,7 +767,7 @@ namespace Diwen.Xbrl.Xml
         internal static void CleanupAfterDeserialization(Report report, ReportOptions options)
         {
             report.RebuildNamespacesAfterRead();
-
+            report.SetContextReferences(report.FilingIndicators);
             report.SetContextReferences(report.Facts);
             report.SetUnitReferences(report.Facts);
 
@@ -796,6 +799,9 @@ namespace Diwen.Xbrl.Xml
                     if (s.Report == null)
                         s.Report = this;
             }
+
+            foreach (var fact in Facts)
+                fact.Report = this;
 
             if (Entity != null)
             {
