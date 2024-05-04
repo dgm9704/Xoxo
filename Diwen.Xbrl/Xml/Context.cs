@@ -97,7 +97,7 @@ namespace Diwen.Xbrl.Xml
             if (other != null)
                 if ((Period == null && other.Period == null) || (Period != null && Period.Equals(other.Period)))
                     if ((Entity == null && other.Entity == null) || Entity.Equals(other.Entity))
-                        result |= (Scenario == null && other.Scenario == null) || Scenario.Equals(other.Scenario);
+                        result |= (Scenario == null && other.Scenario == null) || (Scenario != null && Scenario.Equals(other.Scenario));
 
             return result;
         }

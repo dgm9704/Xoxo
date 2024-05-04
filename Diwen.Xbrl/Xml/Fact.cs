@@ -221,6 +221,11 @@ namespace Diwen.Xbrl.Xml
                     ? other.Unit == null
                     : Unit.Equals(other.Unit);
 
+            // if (result)
+            //     result = Context == null
+            //         ? other.Context == null
+            //         : Context.Equals(other.Context);
+
             return result;
         }
 
