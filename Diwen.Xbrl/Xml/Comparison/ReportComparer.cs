@@ -306,7 +306,7 @@ namespace Diwen.Xbrl.Xml.Comparison
             Concat(differences.Item2.Select(f => FactComparisonMessage(f, "b")));
 
         static string FactComparisonMessage(Fact fact, string label)
-        => $"({label}) {fact} ({fact.Context.Scenario})";
+        => $"({label}) {fact} ({fact?.Context?.Scenario})";
 
         static Tuple<List<string>, List<string>> DomainNamespaceComparison(Report a, Report b)
         => a.GetUsedDomainNamespaces().

@@ -18,6 +18,9 @@ namespace Diwen.Xbrl.Tests.Xml
     using System.IO;
     using Xunit;
     using Diwen.Xbrl.Xml;
+    using Diwen.Xbrl.Xml.Comparison;
+    using System.Linq;
+    using Diwen.Xbrl.Extensions;
 
     public static class SBRReportTests
     {
@@ -138,8 +141,8 @@ namespace Diwen.Xbrl.Tests.Xml
             node.AddFact(rp_segment, "pyde.02.00:AddressDetails.Line4.Text", "", "", "");
             node.AddFact(rp_segment, "pyde.02.00:AddressDetails.LocalityName.Text", "", "", "Illinois");
             // Postcode and State are mandatory, but message accepted if missing or element has attribute xsi:nil="true"
-            //node.AddFact(rp_segment, "pyde.02.00:AddressDetails.Postcode.Text", "", "", "");
-            //node.AddFact(rp_segment, "pyde.02.00:AddressDetails.StateOrTerritory.Code", "", "", "");
+            node.AddFact(rp_segment, "pyde.02.00:AddressDetails.Postcode.Text", "", "", "");
+            node.AddFact(rp_segment, "pyde.02.00:AddressDetails.StateOrTerritory.Code", "", "", "");
             node.AddFact(rp_segment, "pyde.02.08:AddressDetails.CountryName.Text", "", "", "UNITED STATES");
             node.AddFact(rp_segment, "pyde.02.08:AddressDetails.Country.Code", "", "", "us");
 
@@ -155,13 +158,13 @@ namespace Diwen.Xbrl.Tests.Xml
             node.AddFact(rp_segment, "pyde.02.00:AddressDetails.Postcode.Text", "", "", "2600");
             node.AddFact(rp_segment, "pyde.02.00:AddressDetails.StateOrTerritory.Code", "", "", "ACT");
             node.AddFact(rp_segment, "pyde.02.08:AddressDetails.CountryName.Text", "", "", "AUSTRALIA");
-            //node.AddFact(rp_segment, "pyde.02.08:AddressDetails.Country.Code", "", "", "");
+            node.AddFact(rp_segment, "pyde.02.08:AddressDetails.Country.Code", "", "", "");
 
             report.AddFact(rp_segment, "pyde.02.00:OrganisationDetails.OrganisationBranch.Code", "", "", "101");
 
             node = report.AddFact(rp_segment, "ps.0003.lodge.req.02.00:Payee", "", "", "");
             node.AddFact(rp_segment, "pyid.02.00:Identifiers.TaxFileNumber.Identifier", "", "", "32989432");
-            //node.AddFact(rp_segment, "pyid.02.00:IdentificationExemptionDetails.TFNExemptionType.Code", "", "", "");
+            node.AddFact(rp_segment, "pyid.02.00:IdentificationExemptionDetails.TFNExemptionType.Code", "", "", "");
             node.AddFact(rp_segment, "pyid.02.00:Identifiers.AustralianBusinessNumber.Identifier", "", "", "76089884284");
             node.AddFact(rp_segment, "pyde.02.00:PersonDemographicDetails.Birth.Date", "", "", "1958-09-28");
 
@@ -184,7 +187,7 @@ namespace Diwen.Xbrl.Tests.Xml
             subnode.AddFact(rp_segment, "pyde.02.00:AddressDetails.Postcode.Text", "", "", "2601");
             subnode.AddFact(rp_segment, "pyde.02.00:AddressDetails.StateOrTerritory.Code", "", "", "ACT");
             subnode.AddFact(rp_segment, "pyde.02.08:AddressDetails.CountryName.Text", "", "", "AUSTRALIA");
-            //subnode.AddFact(rp_segment, "pyde.02.08:AddressDetails.Country.Code", "", "", "");
+            subnode.AddFact(rp_segment, "pyde.02.08:AddressDetails.Country.Code", "", "", "");
 
             subnode = node.AddFact(rp_segment, "ps.0003.lodge.req.02.00:IndividualNonBusinessWithholdingPaymentDetails", "", "", "");
             subnode.AddFact(rp_segment, "lrla.02.00:Remuneration.WithholdingPaymentIncomeType.Code", "", "", "006");
@@ -248,6 +251,9 @@ namespace Diwen.Xbrl.Tests.Xml
             var newReport = Report.FromFile(tempFile, removeUnusedObjects: false, collapseDuplicateContexts: false, removeDuplicateFacts: false);
 
             Assert.True(newReport.Equals(report));
+
+            var comparison = ReportComparer.Report(newReport, referenceReport);
+            Assert.True(comparison.Result, comparison.Messages.Join("\n"));
 
             Assert.True(newReport.Equals(referenceReport));
 
