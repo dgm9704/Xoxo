@@ -20,7 +20,6 @@ namespace Diwen.Xbrl.Tests.Xml
     using System.Diagnostics;
     using System.IO;
     using Xunit;
-    using Xbrl;
     using Xunit.Abstractions;
     using Diwen.Xbrl.Xml.Comparison;
     using Diwen.Xbrl.Xml;
@@ -35,48 +34,48 @@ namespace Diwen.Xbrl.Tests.Xml
             this.output = output;
         }
 
-        internal Report CreateSolvencyInstance()
+        internal Report CreateSolvencyReport()
         {
             // Sets default namespaces and units PURE, EUR
-            var instance = new Report();
+            var report = new Report();
 
             // When an explicit member is added, check that the namespace for the domain has been set
-            instance.CheckExplicitMemberDomainExists = true;
+            report.CheckExplicitMemberDomainExists = true;
 
             // Initialize to the correct framework, module, taxonomy
             // The content is NOT validated against taxonomy or module schema
             // set module
-            instance.SchemaReference = new SchemaReference("simple", "http://eiopa.europa.eu/eu/xbrl/s2md/fws/solvency/solvency2/2014-12-23/mod/ars.xsd");
+            report.SchemaReference = new SchemaReference("simple", "http://eiopa.europa.eu/eu/xbrl/s2md/fws/solvency/solvency2/2014-12-23/mod/ars.xsd");
 
             // set taxonomy
-            instance.TaxonomyVersion = "1.5.2.c";
+            report.TaxonomyVersion = "1.5.2.c";
 
             // "basic" namespaces
             // These are used for adding correct prefixes for different elements
-            instance.SetMetricNamespace("s2md_met", "http://eiopa.europa.eu/xbrl/s2md/dict/met");
-            instance.SetDimensionNamespace("s2c_dim", "http://eiopa.europa.eu/xbrl/s2c/dict/dim");
-            instance.SetTypedDomainNamespace("s2c_typ", "http://eiopa.europa.eu/xbrl/s2c/dict/typ");
+            report.SetMetricNamespace("s2md_met", "http://eiopa.europa.eu/xbrl/s2md/dict/met");
+            report.SetDimensionNamespace("s2c_dim", "http://eiopa.europa.eu/xbrl/s2c/dict/dim");
+            report.SetTypedDomainNamespace("s2c_typ", "http://eiopa.europa.eu/xbrl/s2c/dict/typ");
 
             // Namespaces for actual reported values that belong to a domain (explicit members)
-            instance.AddDomainNamespace("s2c_CS", "http://eiopa.europa.eu/xbrl/s2c/dict/dom/CS");
-            instance.AddDomainNamespace("s2c_AM", "http://eiopa.europa.eu/xbrl/s2c/dict/dom/AM");
+            report.AddDomainNamespace("s2c_CS", "http://eiopa.europa.eu/xbrl/s2c/dict/dom/CS");
+            report.AddDomainNamespace("s2c_AM", "http://eiopa.europa.eu/xbrl/s2c/dict/dom/AM");
 
             // Add reporter and period
             // These will be reused across all contexts by default
             // Scheme or value are NOT validated
-            instance.Entity = new Entity("http://standards.iso.org/iso/17442", "1234567890ABCDEFGHIJ");
-            instance.Period = new Period(2014, 12, 31);
+            report.Entity = new Entity("http://standards.iso.org/iso/17442", "1234567890ABCDEFGHIJ");
+            report.Period = new Period(2014, 12, 31);
 
             // Any units that aren't used will be excluded during serialization
             // So it's safe to add extra units if needed
-            instance.Units.Add("uEUR", "iso4217:EUR");
-            instance.Units.Add("uPURE", "xbrli:pure");
-            instance.Units.Add("uFOO", "foo:bar");
+            report.Units.Add("uEUR", "iso4217:EUR");
+            report.Units.Add("uPURE", "xbrli:pure");
+            report.Units.Add("uFOO", "foo:bar");
 
             // Add filing indicators
             // These are NOT validated against actual reported values
-            instance.AddFilingIndicator("S.01.01");
-            instance.AddFilingIndicator("S.02.02");
+            report.AddFilingIndicator("S.01.01");
+            report.AddFilingIndicator("S.02.02");
 
             // A scenario contains the dimensions and their values for a datapoint
             var scenario = new Scenario();
@@ -90,16 +89,16 @@ namespace Diwen.Xbrl.Tests.Xml
             // Metrics can also be given with or without namespace
             // Metric names, values or decimals are NOT validated
             // Unit is NOT checked to exist
-            instance.AddFact(scenario, "pi545", "uPURE", "4", "0.2547");
+            report.AddFact(scenario, "pi545", "uPURE", "4", "0.2547");
 
             // if a scenario with the given values already exists in the instance, it will be reused
             // you don't have to check for duplicates
-            instance.AddFact(scenario, "mi363", "uEUR", "-3", "45345");
+            report.AddFact(scenario, "mi363", "uEUR", "-3", "45345");
 
             // Non - existing unit throws KeyNotFoundException
             try
             {
-                instance.AddFact(scenario, "mi363", "uSEK", "-3", "45345");
+                report.AddFact(scenario, "mi363", "uSEK", "-3", "45345");
             }
             catch (KeyNotFoundException ex)
             {
@@ -114,45 +113,45 @@ namespace Diwen.Xbrl.Tests.Xml
             {
                 // This can only be observed when the scenario is attached to the instance
                 // ie. previous line is ok but this one throws
-                instance.AddFact(invalidScenario, "mi252", "uEUR", "4", "123456");
+                report.AddFact(invalidScenario, "mi252", "uEUR", "4", "123456");
             }
             catch (InvalidOperationException ex)
             {
                 output.WriteLine(ex.Message);
             }
 
-            return instance;
+            return report;
         }
 
         [Fact]
-        public void WriteSolvencyInstance()
+        public void WriteSolvencyReport()
         {
-            var instance = CreateSolvencyInstance();
-            instance.AddDomainNamespace("s2c_XX", "http://eiopa.europa.eu/xbrl/s2c/dict/dom/XX");
+            var report = CreateSolvencyReport();
+            report.AddDomainNamespace("s2c_XX", "http://eiopa.europa.eu/xbrl/s2c/dict/dom/XX");
             // Write the instace to a file
             string path = "output.xbrl.xml";
-            instance.ToFile(path);
+            report.ToFile(path);
         }
 
         [Fact]
-        public void ReadSolvencyReferenceInstance()
+        public void ReadSolvencyReferenceReport()
         {
             var path = Path.Combine("data", "reference.xbrl");
-            var referenceInstance = Report.FromFile(path);
-            Assert.NotNull(referenceInstance);
+            var referenceReport = Report.FromFile(path);
+            Assert.NotNull(referenceReport);
         }
 
         [Fact]
-        public void CompareSolvencyReferenceInstance()
+        public void CompareSolvencyReferenceReport()
         {
-            var instance = CreateSolvencyInstance();
+            var report = CreateSolvencyReport();
 
             // unless done when loading, duplicate objects 
             // aren't automatically removed until serialization so do it before comparisons
-            instance.RemoveUnusedObjects();
+            report.RemoveUnusedObjects();
 
             var referencePath = Path.Combine("data", "reference.xbrl");
-            var referenceInstance = Report.FromFile(referencePath);
+            var referenceReport = Report.FromFile(referencePath);
 
             // Instances are functionally equivalent:
             // They have the same number of contexts and scenarios of the contexts match member-by-member
@@ -163,25 +162,25 @@ namespace Diwen.Xbrl.Tests.Xml
             //Assert.Equal(instance, referenceInstance);
 
             string tempFile = "temp.xbrl";
-            instance.ToFile(tempFile);
+            report.ToFile(tempFile);
 
-            var newInstance = Report.FromFile(tempFile);
+            var newReport = Report.FromFile(tempFile);
 
             // Assert.True(newInstance.Equals(instance));
-            var report = ReportComparer.Report(instance, newInstance);
-            if (!report.Result)
+            var comparison = ReportComparer.Report(report, newReport);
+            if (!comparison.Result)
                 Console.WriteLine(report);
-            Assert.Empty(report.Messages);
+            Assert.Empty(comparison.Messages);
 
-            Assert.True(newInstance.Equals(referenceInstance));
+            Assert.True(newReport.Equals(referenceReport));
 
-            newInstance.Contexts[1].AddExplicitMember("AM", "s2c_AM:x1");
+            newReport.Contexts[1].AddExplicitMember("AM", "s2c_AM:x1");
 
-            Assert.False(newInstance.Equals(referenceInstance));
+            Assert.False(newReport.Equals(referenceReport));
         }
 
         [Fact]
-        public void RoundtripCompareExampleInstanceArs()
+        public void RoundtripCompareExampleReportArs()
         {
             var sw = new Stopwatch();
 
@@ -234,21 +233,21 @@ namespace Diwen.Xbrl.Tests.Xml
         public void CollapseDuplicateContexts()
         {
             var inputPath = Path.Combine("data", "duplicate_context.xbrl");
-            Report instance = null;
+            Report report = null;
             using (var stream = new FileStream(inputPath, FileMode.Open))
-                instance = Report.FromStream(stream, removeUnusedObjects: false, collapseDuplicateContexts: false, removeDuplicateFacts: false);
+                report = Report.FromStream(stream, removeUnusedObjects: false, collapseDuplicateContexts: false, removeDuplicateFacts: false);
 
-            Assert.Equal(2, instance.Contexts.Count);
+            Assert.Equal(2, report.Contexts.Count);
 
-            instance.CollapseDuplicateContexts();
-            Assert.Single(instance.Contexts);
+            report.CollapseDuplicateContexts();
+            Assert.Single(report.Contexts);
 
-            instance = Report.FromFile(inputPath);
-            Assert.Single(instance.Contexts);
+            report = Report.FromFile(inputPath);
+            Assert.Single(report.Contexts);
         }
 
         [Fact]
-        public void ReadExampleInstanceFPInd()
+        public void ReadExampleReportFPInd()
         {
             var inputPath = Path.Combine("data", "fp_ind_new_correct.xbrl");
             var first = Report.FromFile(inputPath, removeUnusedObjects: false, collapseDuplicateContexts: false, removeDuplicateFacts: false);
@@ -263,8 +262,8 @@ namespace Diwen.Xbrl.Tests.Xml
                 second = Report.FromStream(stream, removeUnusedObjects: false, collapseDuplicateContexts: false, removeDuplicateFacts: false);
             }
 
-            var report = ReportComparer.Report(first, second);
-            Assert.True(report.Result, string.Join(Environment.NewLine, report.Messages));
+            var comparison = ReportComparer.Report(first, second);
+            Assert.True(comparison.Result, string.Join(Environment.NewLine, comparison.Messages));
         }
 
         [Fact]
@@ -283,94 +282,94 @@ namespace Diwen.Xbrl.Tests.Xml
         [Fact]
         public void WriteEmptyTypedMember()
         {
-            var instance = CreateSolvencyInstance();
-            instance.CheckExplicitMemberDomainExists = true;
+            var report = CreateSolvencyReport();
+            report.CheckExplicitMemberDomainExists = true;
 
             var scenario = new Scenario();
             scenario.AddTypedMember("CE", "ID", null);
-            instance.AddFact(scenario, "mi1234", null, null, "123");
-            instance.RemoveUnusedObjects();
-            instance.ToFile("typedmembernil.xbrl.xml");
+            report.AddFact(scenario, "mi1234", null, null, "123");
+            report.RemoveUnusedObjects();
+            report.ToFile("typedmembernil.xbrl.xml");
         }
 
         [Fact]
         public void WriteToXmlDocument()
-        => CreateSolvencyInstance().
+        => CreateSolvencyReport().
                                    ToXmlDocument().
                                    Save("xbrl2doc.xml");
 
         [Fact]
         public void NoMembers()
         {
-            var instance = new Report();
-            instance.SchemaReference = new SchemaReference("simple", "http://eiopa.europa.eu/eu/xbrl/s2md/fws/solvency/solvency2/2014-12-23/mod/ars.xsd");
-            instance.TaxonomyVersion = "1.5.2.c";
-            instance.SetMetricNamespace("s2md_met", "http://eiopa.europa.eu/xbrl/s2md/dict/met");
-            instance.SetDimensionNamespace("s2c_dim", "http://eiopa.europa.eu/xbrl/s2c/dict/dim");
-            instance.SetTypedDomainNamespace("s2c_typ", "http://eiopa.europa.eu/xbrl/s2c/dict/typ");
-            instance.Entity = new Entity("http://standards.iso.org/iso/17442", "00000000000000000098");
-            instance.Period = new Period(2015, 12, 31);
+            var report = new Report();
+            report.SchemaReference = new SchemaReference("simple", "http://eiopa.europa.eu/eu/xbrl/s2md/fws/solvency/solvency2/2014-12-23/mod/ars.xsd");
+            report.TaxonomyVersion = "1.5.2.c";
+            report.SetMetricNamespace("s2md_met", "http://eiopa.europa.eu/xbrl/s2md/dict/met");
+            report.SetDimensionNamespace("s2c_dim", "http://eiopa.europa.eu/xbrl/s2c/dict/dim");
+            report.SetTypedDomainNamespace("s2c_typ", "http://eiopa.europa.eu/xbrl/s2c/dict/typ");
+            report.Entity = new Entity("http://standards.iso.org/iso/17442", "00000000000000000098");
+            report.Period = new Period(2015, 12, 31);
 
             Scenario nullScenario = null;
-            instance.AddFact(nullScenario, "foo0", null, null, "alice");
+            report.AddFact(nullScenario, "foo0", null, null, "alice");
 
             //Context nullContext = null;
             //instance.AddFact(nullContext, "foo1", null, null, "bob"); // Sorry bob
 
             var contextWithNullScenario = new Context();
-            instance.AddFact(contextWithNullScenario, "foo2", null, null, "carol");
+            report.AddFact(contextWithNullScenario, "foo2", null, null, "carol");
 
             var contextWithNoMembers = new Context();
             contextWithNoMembers.Scenario = new Scenario();
-            instance.AddFact(contextWithNoMembers, "foo3", null, null, "dave");
+            report.AddFact(contextWithNoMembers, "foo3", null, null, "dave");
 
             var scenarioWithNoMembers = new Scenario();
-            instance.AddFact(scenarioWithNoMembers, "foo4", null, null, "erin");
+            report.AddFact(scenarioWithNoMembers, "foo4", null, null, "erin");
 
-            Assert.Single(instance.Contexts);
-            Assert.Equal(4, instance.Facts.Count);
+            Assert.Single(report.Contexts);
+            Assert.Equal(4, report.Facts.Count);
         }
 
         [Fact]
         public void FiledOrNot()
         {
-            var instance = new Report();
-            instance.SchemaReference = new SchemaReference("simple", "http://eiopa.europa.eu/eu/xbrl/s2md/fws/solvency/solvency2/2014-12-23/mod/ars.xsd");
-            instance.TaxonomyVersion = "1.5.2.c";
-            instance.SetMetricNamespace("s2md_met", "http://eiopa.europa.eu/xbrl/s2md/dict/met");
-            instance.SetDimensionNamespace("s2c_dim", "http://eiopa.europa.eu/xbrl/s2c/dict/dim");
-            instance.SetTypedDomainNamespace("s2c_typ", "http://eiopa.europa.eu/xbrl/s2c/dict/typ");
-            instance.Entity = new Entity("http://standards.iso.org/iso/17442", "00000000000000000098");
-            instance.Period = new Period(2015, 12, 31);
+            var report = new Report();
+            report.SchemaReference = new SchemaReference("simple", "http://eiopa.europa.eu/eu/xbrl/s2md/fws/solvency/solvency2/2014-12-23/mod/ars.xsd");
+            report.TaxonomyVersion = "1.5.2.c";
+            report.SetMetricNamespace("s2md_met", "http://eiopa.europa.eu/xbrl/s2md/dict/met");
+            report.SetDimensionNamespace("s2c_dim", "http://eiopa.europa.eu/xbrl/s2c/dict/dim");
+            report.SetTypedDomainNamespace("s2c_typ", "http://eiopa.europa.eu/xbrl/s2c/dict/typ");
+            report.Entity = new Entity("http://standards.iso.org/iso/17442", "00000000000000000098");
+            report.Period = new Period(2015, 12, 31);
 
-            instance.AddFilingIndicator("foo", true);
-            instance.AddFilingIndicator("bar", false);
+            report.AddFilingIndicator("foo", true);
+            report.AddFilingIndicator("bar", false);
         }
 
         [Fact]
         public void EnumeratedFactValueNamespace()
         {
             // Create a minimal test instance
-            var instance = new Report();
-            instance.SchemaReference = new SchemaReference("simple", "http://eiopa.europa.eu/eu/xbrl/s2md/fws/solvency/solvency2/2014-12-23/mod/ars.xsd");
-            instance.TaxonomyVersion = "1.5.2.c";
-            instance.SetMetricNamespace("s2md_met", "http://eiopa.europa.eu/xbrl/s2md/dict/met");
-            instance.Entity = new Entity("http://standards.iso.org/iso/17442", "00000000000000000098");
-            instance.Period = new Period(2015, 12, 31);
+            var report = new Report();
+            report.SchemaReference = new SchemaReference("simple", "http://eiopa.europa.eu/eu/xbrl/s2md/fws/solvency/solvency2/2014-12-23/mod/ars.xsd");
+            report.TaxonomyVersion = "1.5.2.c";
+            report.SetMetricNamespace("s2md_met", "http://eiopa.europa.eu/xbrl/s2md/dict/met");
+            report.Entity = new Entity("http://standards.iso.org/iso/17442", "00000000000000000098");
+            report.Period = new Period(2015, 12, 31);
 
             // add a fact with enumerated value 
-            instance.AddFact((Scenario)null, "ei1643", null, null, "s2c_CN:x1");
+            report.AddFact((Scenario)null, "ei1643", null, null, "s2c_CN:x1");
 
             // add the namespace for the domain
-            instance.AddDomainNamespace("s2c_CN", "http://eiopa.europa.eu/xbrl/s2c/dict/dom/CN");
+            report.AddDomainNamespace("s2c_CN", "http://eiopa.europa.eu/xbrl/s2c/dict/dom/CN");
 
             // write the instance to file and read it back
             string file = "EnumeratedFactValueNamespace.xbrl";
-            instance.ToFile(file);
-            instance = Report.FromFile(file);
+            report.ToFile(file);
+            report = Report.FromFile(file);
 
             // instance should still contain the namespace for the domain
-            Assert.Equal("http://eiopa.europa.eu/xbrl/s2c/dict/dom/CN", instance.Namespaces.LookupNamespace("s2c_CN"));
+            Assert.Equal("http://eiopa.europa.eu/xbrl/s2c/dict/dom/CN", report.Namespaces.LookupNamespace("s2c_CN"));
         }
 
         [Fact]
@@ -378,53 +377,53 @@ namespace Diwen.Xbrl.Tests.Xml
         {
             // read a test instance with a comment
             var inputPath = Path.Combine("data", "comments.xbrl");
-            var xbrl = Report.FromFile(inputPath);
-            Assert.Contains("foo", xbrl.Comments);
+            var report = Report.FromFile(inputPath);
+            Assert.Contains("foo", report.Comments);
 
             // add a new comment
-            xbrl.Comments.Add("bar");
+            report.Comments.Add("bar");
             var outputPath = Path.Combine("data", "morecomments.xbrl");
-            xbrl.ToFile(outputPath);
-            xbrl = Report.FromFile(outputPath);
-            Assert.Contains("bar", xbrl.Comments);
+            report.ToFile(outputPath);
+            report = Report.FromFile(outputPath);
+            Assert.Contains("bar", report.Comments);
         }
 
         [Fact]
         public void NoExtraNamespaces()
         {
-            var instance = Report.FromFile(Path.Combine("data", "comments.xbrl"));
-            instance.SetDimensionNamespace("s2c_dim", "http://eiopa.europa.eu/xbrl/s2c/dict/dim");
-            instance.SetTypedDomainNamespace("s2c_typ", "http://eiopa.europa.eu/xbrl/s2c/dict/typ");
-            instance.ToFile("ns.out");
+            var report = Report.FromFile(Path.Combine("data", "comments.xbrl"));
+            report.SetDimensionNamespace("s2c_dim", "http://eiopa.europa.eu/xbrl/s2c/dict/dim");
+            report.SetTypedDomainNamespace("s2c_typ", "http://eiopa.europa.eu/xbrl/s2c/dict/typ");
+            report.ToFile("ns.out");
         }
 
         [Fact]
         public void EmptyInstance()
         {
             // should load ok
-            var instance = Report.FromFile(Path.Combine("data", "empty_instance.xbrl"));
-            Assert.NotNull(instance);
-            instance.ToFile("empty_instance_out.xbrl");
+            var report = Report.FromFile(Path.Combine("data", "empty_instance.xbrl"));
+            Assert.NotNull(report);
+            report.ToFile("empty_instance_out.xbrl");
         }
 
         [Fact]
-        public void InstanceFromString()
+        public void ReportFromString()
         {
             var input = File.ReadAllText(Path.Combine("data", "comments.xbrl"));
-            var instance = Report.FromXml(input);
-            var output = instance.ToXml();
+            var report = Report.FromXml(input);
+            var output = report.ToXml();
             Assert.NotEmpty(output);
             // Most probably wont't match due to differences in casing or apostrophe vs. quotation etc.
-            // Assert.Equal(input, output);
+            Assert.Equal(input, output);
         }
 
         [Fact]
-        public void SerializedInstanceWithNoMonetaryUnitShouldNotHaveUnusedNamespace()
+        public void SerializedReportWithNoMonetaryUnitShouldNotHaveUnusedNamespace()
         {
             var inFile = Path.Combine("data", "minimal.xbrl");
-            var instance = Report.FromFile(inFile);
+            var report = Report.FromFile(inFile);
             var outFile = "minimal.out";
-            instance.ToFile(outFile);
+            report.ToFile(outFile);
             var filecontent = File.ReadAllText(outFile);
             Assert.DoesNotContain("iso4217", filecontent);
         }
@@ -433,43 +432,43 @@ namespace Diwen.Xbrl.Tests.Xml
         public void ExplicitMembersWithSurroundingWhitespaceShouldNotBork()
         {
             var infile = Path.Combine("data", "example_erst_dcca.xbrl");
-            var instance = Report.FromFile(infile);
-            Assert.NotNull(instance);
+            var report = Report.FromFile(infile);
+            Assert.NotNull(report);
         }
 
         [Fact]
         public void FactWithNullContextShouldNotThrow_71()
         {
             var infile = Path.Combine("data", "71.xbrl");
-            var instance = Report.FromFile(infile);
-            Assert.NotNull(instance);
+            var report = Report.FromFile(infile);
+            Assert.NotNull(report);
         }
 
         [Fact]
         public void ExplicitMemberNamespaceOverwriting_72()
         {
-            var instance = new Report();
-            var intermediaryEntity = new Entity("http://www.ato.gov.au/abn", "123456789") { Report = instance };
-            instance.SetDimensionNamespace("h04", "http://sbr.gov.au/dims/RprtPyType.02.00.dims");
+            var report = new Report();
+            var intermediaryEntity = new Entity("http://www.ato.gov.au/abn", "123456789") { Report = report };
+            report.SetDimensionNamespace("h04", "http://sbr.gov.au/dims/RprtPyType.02.00.dims");
             intermediaryEntity.AddExplicitMember("ReportPartyTypeDimension", "h04:Intermediary");
-            instance.SetDimensionNamespace("h05", "http://sbr.gov.au/dims/TaxOblgtn.02.00.dims");
+            report.SetDimensionNamespace("h05", "http://sbr.gov.au/dims/TaxOblgtn.02.00.dims");
             intermediaryEntity.AddExplicitMember("TaxObligationTypeDimension", "h05:PAYGI");
             var intermediaryEntityCtx = new Context { Entity = intermediaryEntity };
-            instance.Contexts.Add(intermediaryEntityCtx);
-            instance.SetMetricNamespace("pyid", "http://sbr.gov.au/icls/py/pyid/pyid.02.00.data");
-            instance.AddFact(intermediaryEntityCtx.Entity.Segment, "Identifiers.TaxAgentNumber.Identifier", null, null, "123456789");
-            output.WriteLine(instance.ToXml());
+            report.Contexts.Add(intermediaryEntityCtx);
+            report.SetMetricNamespace("pyid", "http://sbr.gov.au/icls/py/pyid/pyid.02.00.data");
+            report.AddFact(intermediaryEntityCtx.Entity.Segment, "Identifiers.TaxAgentNumber.Identifier", null, null, "123456789");
+            output.WriteLine(report.ToXml());
         }
 
         [Fact]
-        public void InstanceWithNoScenarioMemberShouldNotHaveunusedNamespaces()
+        public void ReportWithNoScenarioMemberShouldNotHaveunusedNamespaces()
         {
             // set up a report that has no facts and therefore no contexts with scenarios containing any explicit or typed members
             // this means that the namespace "http://xbrl.org/2006/xbrldi" with the canonical prefix "xbrldi" is not used and should not be declared
             var inputfile = Path.Combine("data", "minimal.xbrl");
-            var instance = Report.FromFile(inputfile);
-            instance.Facts.RemoveAt(0);
-            var xml = instance.ToXmlDocument();
+            var report = Report.FromFile(inputfile);
+            report.Facts.RemoveAt(0);
+            var xml = report.ToXmlDocument();
             Assert.False(xml.DocumentElement.HasAttribute("xmlns:xbrldi"));
         }
 

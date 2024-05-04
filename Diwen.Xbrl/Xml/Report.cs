@@ -933,12 +933,12 @@ namespace Diwen.Xbrl.Xml
         /// <summary/>
         public static Report FromFile(string path, bool removeUnusedObjects, bool collapseDuplicateContexts, bool removeDuplicateFacts)
         {
-            Report xbrl;
+            Report report;
 
             using (var stream = new FileStream(path, FileMode.Open, FileAccess.Read))
-                xbrl = FromStream(stream, removeUnusedObjects, collapseDuplicateContexts, removeDuplicateFacts);
+                report = FromStream(stream, removeUnusedObjects, collapseDuplicateContexts, removeDuplicateFacts);
 
-            return xbrl;
+            return report;
         }
 
         /// <summary/>
@@ -980,8 +980,10 @@ namespace Diwen.Xbrl.Xml
         }
 
         /// <summary/>
-        public static Report FromXml(string content)
+        public static Report FromXml(string content, bool removeUnusedObjects, bool collapseDuplicateContexts, bool removeDuplicateFacts)
         {
+            Report report;
+
             using (var stream = new MemoryStream())
             using (var writer = new StreamWriter(stream))
             {
@@ -990,9 +992,15 @@ namespace Diwen.Xbrl.Xml
 
                 stream.Position = 0;
 
-                return FromStream(stream);
+                report = FromStream(stream, removeUnusedObjects, collapseDuplicateContexts, removeDuplicateFacts);
             }
+
+            return report;
         }
+
+        /// <summary/>
+        public static Report FromXml(string content)
+        => FromXml(content, true, true, true);
 
         /// <summary/>
         public string ToXml()

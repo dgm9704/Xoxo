@@ -21,13 +21,13 @@ namespace Diwen.Xbrl.Tests.Xml
 
     public static class SBRReportTests
     {
-        static Report CreatePaymentSummaryInstance()
+        static Report CreatePaymentSummaryReport()
         {
             // Sets default namespaces
-            var instance = new Report();
+            var report = new Report();
 
             // When an explicit member is added, check that the namespace for the domain has been set
-            instance.CheckExplicitMemberDomainExists = true;
+            report.CheckExplicitMemberDomainExists = true;
 
             // Set fact attribute nil=true when value is empty string
             //instance.FactsNillable = true;
@@ -35,71 +35,71 @@ namespace Diwen.Xbrl.Tests.Xml
             // Initialize to the correct framework, module, taxonomy
             // The content is NOT validated against taxonomy or module schema
             // set module
-            instance.SchemaReference = new SchemaReference("simple", "http://sbr.gov.au/taxonomy/sbr_au_reports/ato/ps/ps_0003/ps.0003.lodge.request.02.00.report.xsd");
+            report.SchemaReference = new SchemaReference("simple", "http://sbr.gov.au/taxonomy/sbr_au_reports/ato/ps/ps_0003/ps.0003.lodge.request.02.00.report.xsd");
 
             // set taxonomy
-            instance.TaxonomyVersion = "ps_0003";
+            report.TaxonomyVersion = "ps_0003";
 
             // "basic" namespaces
             // These are used for adding correct prefixes for different elements
-            instance.SetDimensionNamespace("RprtPyType.02.05", "http://sbr.gov.au/dims/RprtPyType.02.05.dims");
+            report.SetDimensionNamespace("RprtPyType.02.05", "http://sbr.gov.au/dims/RprtPyType.02.05.dims");
 
             // Namespaces for actual reported values that belong to a domain (explicit members)
-            instance.AddDomainNamespace("ps.0003.lodge.req.02.00", "http://sbr.gov.au/rprt/ato/ps/ps.0003.lodge.request.02.00.report");
+            report.AddDomainNamespace("ps.0003.lodge.req.02.00", "http://sbr.gov.au/rprt/ato/ps/ps.0003.lodge.request.02.00.report");
             //instance.AddDomainNamespace("RprtPyType.02.05", "http://sbr.gov.au/dims/RprtPyType.02.05.dims");
 
-            instance.AddDomainNamespace("dtyp.02.18", "http://sbr.gov.au/fdtn/sbr.02.18.dtyp");
-            instance.AddDomainNamespace("dtyp.02.08", "http://sbr.gov.au/fdtn/sbr.02.08.dtyp");
-            instance.AddDomainNamespace("tech.01.02", "http://sbr.gov.au/fdtn/sbr.01.02.tech");
-            instance.AddDomainNamespace("pyde.02.01", "http://sbr.gov.au/icls/py/pyde/pyde.02.01.data");
-            instance.AddDomainNamespace("pyde.02.05", "http://sbr.gov.au/icls/py/pyde/pyde.02.05.data");
-            instance.AddDomainNamespace("pyin.02.00", "http://sbr.gov.au/icls/py/pyin/pyin.02.00.data");
-            instance.AddDomainNamespace("lrla.02.01", "http://sbr.gov.au/icls/lr/lrla/lrla.02.01.data");
-            instance.AddDomainNamespace("bafpr1.02.00", "http://sbr.gov.au/icls/baf/bafpr/bafpr1.02.00.data");
-            instance.AddDomainNamespace("ps.0003.prv.02.00", "http://sbr.gov.au/rprt/ato/ps/ps.0003.private.02.00.module");
-            instance.AddDomainNamespace("period1.02.01", "http://sbr.gov.au/comnmdle/comnmdle.perioddetails1.02.01.module");
-            instance.AddDomainNamespace("rvctc2.02.11", "http://sbr.gov.au/icls/rvc/rvctc/rvctc2.02.11.data");
-            instance.AddDomainNamespace("rvctc2.02.03", "http://sbr.gov.au/icls/rvc/rvctc/rvctc2.02.03.data");
-            instance.AddDomainNamespace("crigi.02.00", "http://sbr.gov.au/icls/cri/crigi/crigi.02.00.data");
-            instance.AddDomainNamespace("gfati.02.00", "http://sbr.gov.au/icls/gfa/gfati/gfati.02.00.data");
-            instance.AddDomainNamespace("dtyp.02.13", "http://sbr.gov.au/fdtn/sbr.02.13.dtyp");
-            instance.AddDomainNamespace("gfati.02.00", "http://sbr.gov.au/icls/gfa/gfati/gfati.02.00.data");
-            instance.AddDomainNamespace("dtyp.02.03", "http://sbr.gov.au/fdtn/sbr.02.03.dtyp");
-            instance.AddDomainNamespace("email1.02.00", "http://sbr.gov.au/comnmdle/comnmdle.electroniccontactelectronicmail1.02.00.module");
-            instance.AddDomainNamespace("fax1.02.00", "http://sbr.gov.au/comnmdle/comnmdle.electroniccontactfacsimile1.02.00.module");
-            instance.AddDomainNamespace("pyde.02.00", "http://sbr.gov.au/icls/py/pyde/pyde.02.00.data");
-            instance.AddDomainNamespace("tech.01.03", "http://sbr.gov.au/fdtn/sbr.01.03.tech");
-            instance.AddDomainNamespace("pyde.02.08", "http://sbr.gov.au/icls/py/pyde/pyde.02.08.data");
-            instance.AddDomainNamespace("prsnunstrcnm1.02.01", "http://sbr.gov.au/comnmdle/comnmdle.personunstructuredname1.02.01.module");
-            instance.AddDomainNamespace("lrla.02.00", "http://sbr.gov.au/icls/lr/lrla/lrla.02.00.data");
-            instance.AddDomainNamespace("rvctc2.02.10", "http://sbr.gov.au/icls/rvc/rvctc/rvctc2.02.10.data");
-            instance.AddDomainNamespace("rvctc2.02.00", "http://sbr.gov.au/icls/rvc/rvctc/rvctc2.02.00.data");
-            instance.AddDomainNamespace("pyin.02.05", "http://sbr.gov.au/icls/py/pyin/pyin.02.05.data");
-            instance.AddDomainNamespace("prsnstrcnm2.02.00", "http://sbr.gov.au/comnmdle/comnmdle.personstructuredname2.02.00.module");
-            instance.AddDomainNamespace("rvctc2.02.02", "http://sbr.gov.au/icls/rvc/rvctc/rvctc2.02.02.data");
-            instance.AddDomainNamespace("orgname1.02.00", "http://sbr.gov.au/comnmdle/comnmdle.organisationname1.02.00.module");
-            instance.AddDomainNamespace("pyin.02.07", "http://sbr.gov.au/icls/py/pyin/pyin.02.07.data");
-            instance.AddDomainNamespace("phone1.02.00", "http://sbr.gov.au/comnmdle/comnmdle.electroniccontacttelephone1.02.00.module");
-            instance.AddDomainNamespace("address1.02.02", "http://sbr.gov.au/comnmdle/comnmdle.addressdetails1.02.02.module");
-            instance.AddDomainNamespace("pyid.02.00", "http://sbr.gov.au/icls/py/pyid/pyid.02.00.data");
-            instance.AddDomainNamespace("dtyp.02.04", "http://sbr.gov.au/fdtn/sbr.02.04.dtyp");
-            instance.AddDomainNamespace("dtyp.02.16", "http://sbr.gov.au/fdtn/sbr.02.16.dtyp");
-            instance.AddDomainNamespace("dtyp.02.06", "http://sbr.gov.au/fdtn/sbr.02.06.dtyp");
-            instance.AddDomainNamespace("emsup.02.02", "http://sbr.gov.au/icls/em/emsup/emsup.02.02.data");
+            report.AddDomainNamespace("dtyp.02.18", "http://sbr.gov.au/fdtn/sbr.02.18.dtyp");
+            report.AddDomainNamespace("dtyp.02.08", "http://sbr.gov.au/fdtn/sbr.02.08.dtyp");
+            report.AddDomainNamespace("tech.01.02", "http://sbr.gov.au/fdtn/sbr.01.02.tech");
+            report.AddDomainNamespace("pyde.02.01", "http://sbr.gov.au/icls/py/pyde/pyde.02.01.data");
+            report.AddDomainNamespace("pyde.02.05", "http://sbr.gov.au/icls/py/pyde/pyde.02.05.data");
+            report.AddDomainNamespace("pyin.02.00", "http://sbr.gov.au/icls/py/pyin/pyin.02.00.data");
+            report.AddDomainNamespace("lrla.02.01", "http://sbr.gov.au/icls/lr/lrla/lrla.02.01.data");
+            report.AddDomainNamespace("bafpr1.02.00", "http://sbr.gov.au/icls/baf/bafpr/bafpr1.02.00.data");
+            report.AddDomainNamespace("ps.0003.prv.02.00", "http://sbr.gov.au/rprt/ato/ps/ps.0003.private.02.00.module");
+            report.AddDomainNamespace("period1.02.01", "http://sbr.gov.au/comnmdle/comnmdle.perioddetails1.02.01.module");
+            report.AddDomainNamespace("rvctc2.02.11", "http://sbr.gov.au/icls/rvc/rvctc/rvctc2.02.11.data");
+            report.AddDomainNamespace("rvctc2.02.03", "http://sbr.gov.au/icls/rvc/rvctc/rvctc2.02.03.data");
+            report.AddDomainNamespace("crigi.02.00", "http://sbr.gov.au/icls/cri/crigi/crigi.02.00.data");
+            report.AddDomainNamespace("gfati.02.00", "http://sbr.gov.au/icls/gfa/gfati/gfati.02.00.data");
+            report.AddDomainNamespace("dtyp.02.13", "http://sbr.gov.au/fdtn/sbr.02.13.dtyp");
+            report.AddDomainNamespace("gfati.02.00", "http://sbr.gov.au/icls/gfa/gfati/gfati.02.00.data");
+            report.AddDomainNamespace("dtyp.02.03", "http://sbr.gov.au/fdtn/sbr.02.03.dtyp");
+            report.AddDomainNamespace("email1.02.00", "http://sbr.gov.au/comnmdle/comnmdle.electroniccontactelectronicmail1.02.00.module");
+            report.AddDomainNamespace("fax1.02.00", "http://sbr.gov.au/comnmdle/comnmdle.electroniccontactfacsimile1.02.00.module");
+            report.AddDomainNamespace("pyde.02.00", "http://sbr.gov.au/icls/py/pyde/pyde.02.00.data");
+            report.AddDomainNamespace("tech.01.03", "http://sbr.gov.au/fdtn/sbr.01.03.tech");
+            report.AddDomainNamespace("pyde.02.08", "http://sbr.gov.au/icls/py/pyde/pyde.02.08.data");
+            report.AddDomainNamespace("prsnunstrcnm1.02.01", "http://sbr.gov.au/comnmdle/comnmdle.personunstructuredname1.02.01.module");
+            report.AddDomainNamespace("lrla.02.00", "http://sbr.gov.au/icls/lr/lrla/lrla.02.00.data");
+            report.AddDomainNamespace("rvctc2.02.10", "http://sbr.gov.au/icls/rvc/rvctc/rvctc2.02.10.data");
+            report.AddDomainNamespace("rvctc2.02.00", "http://sbr.gov.au/icls/rvc/rvctc/rvctc2.02.00.data");
+            report.AddDomainNamespace("pyin.02.05", "http://sbr.gov.au/icls/py/pyin/pyin.02.05.data");
+            report.AddDomainNamespace("prsnstrcnm2.02.00", "http://sbr.gov.au/comnmdle/comnmdle.personstructuredname2.02.00.module");
+            report.AddDomainNamespace("rvctc2.02.02", "http://sbr.gov.au/icls/rvc/rvctc/rvctc2.02.02.data");
+            report.AddDomainNamespace("orgname1.02.00", "http://sbr.gov.au/comnmdle/comnmdle.organisationname1.02.00.module");
+            report.AddDomainNamespace("pyin.02.07", "http://sbr.gov.au/icls/py/pyin/pyin.02.07.data");
+            report.AddDomainNamespace("phone1.02.00", "http://sbr.gov.au/comnmdle/comnmdle.electroniccontacttelephone1.02.00.module");
+            report.AddDomainNamespace("address1.02.02", "http://sbr.gov.au/comnmdle/comnmdle.addressdetails1.02.02.module");
+            report.AddDomainNamespace("pyid.02.00", "http://sbr.gov.au/icls/py/pyid/pyid.02.00.data");
+            report.AddDomainNamespace("dtyp.02.04", "http://sbr.gov.au/fdtn/sbr.02.04.dtyp");
+            report.AddDomainNamespace("dtyp.02.16", "http://sbr.gov.au/fdtn/sbr.02.16.dtyp");
+            report.AddDomainNamespace("dtyp.02.06", "http://sbr.gov.au/fdtn/sbr.02.06.dtyp");
+            report.AddDomainNamespace("emsup.02.02", "http://sbr.gov.au/icls/em/emsup/emsup.02.02.data");
 
             // Add reporter and period
             // These will be reused across all contexts by default
             // Scheme or value are NOT validated
-            instance.Entity = new Entity("http://www.ato.gov.au/abn", "14088411787");
-            instance.Period = new Period(2012, 7, 1, 2013, 6, 30);
+            report.Entity = new Entity("http://www.ato.gov.au/abn", "14088411787");
+            report.Period = new Period(2012, 7, 1, 2013, 6, 30);
 
             // Any units that aren't used will be excluded during serialization
             // So it's safe to add extra units if needed
-            instance.Units.Add("U1", "iso4217:AUD");
+            report.Units.Add("U1", "iso4217:AUD");
 
             // A scenario contains the dimensions and their values for a datapoint
             var rp_segment = new Segment();
-            rp_segment.Report = instance;
+            rp_segment.Report = report;
 
             // Dimensions and domains can be given with or without namespaces
             // The namespace prefixes are added internally if needed
@@ -107,28 +107,28 @@ namespace Diwen.Xbrl.Tests.Xml
             rp_segment.AddExplicitMember("ReportPartyTypeDimension", "RprtPyType.02.05:ReportingParty");
 
             // set context id
-            var context = instance.GetContext(rp_segment);
+            var context = report.GetContext(rp_segment);
             context.Id = "RP";
 
-            var node = instance.AddFact(rp_segment, "orgname1.02.00:OrganisationNameDetails", "", "", "");
+            var node = report.AddFact(rp_segment, "orgname1.02.00:OrganisationNameDetails", "", "", "");
             node.AddFact(rp_segment, "pyde.02.00:OrganisationNameDetails.OrganisationalNameType.Code", "", "", "MN");
             node.AddFact(rp_segment, "pyde.02.00:OrganisationNameDetails.OrganisationalName.Text", "", "", "RP OrganisationalNameText");
 
-            node = instance.AddFact(rp_segment, "orgname1.02.00:OrganisationNameDetails", "", "", "");
+            node = report.AddFact(rp_segment, "orgname1.02.00:OrganisationNameDetails", "", "", "");
             node.AddFact(rp_segment, "pyde.02.00:OrganisationNameDetails.OrganisationalNameType.Code", "", "", "MTR");
             node.AddFact(rp_segment, "pyde.02.00:OrganisationNameDetails.OrganisationalName.Text", "", "", "RP OrganisationalTradeNameText");
 
-            node = instance.AddFact(rp_segment, "prsnunstrcnm1.02.01:PersonUnstructuredName", "", "", "");
+            node = report.AddFact(rp_segment, "prsnunstrcnm1.02.01:PersonUnstructuredName", "", "", "");
             node.AddFact(rp_segment, "pyde.02.05:PersonUnstructuredName.Usage.Code", "", "", "Contact");
             node.AddFact(rp_segment, "pyde.02.00:PersonUnstructuredName.FullName.Text", "", "", "RPPersonUnstructuredNameFullNameText");
 
-            node = instance.AddFact(rp_segment, "phone1.02.00:ElectronicContactTelephone", "", "", "");
+            node = report.AddFact(rp_segment, "phone1.02.00:ElectronicContactTelephone", "", "", "");
             node.AddFact(rp_segment, "pyde.02.00:ElectronicContact.Telephone.Usage.Code", "", "", "03");
             node.AddFact(rp_segment, "pyde.02.00:ElectronicContact.Telephone.ServiceLine.Code", "", "", "02");
             node.AddFact(rp_segment, "pyde.02.00:ElectronicContact.Telephone.Area.Code", "", "", "02");
             node.AddFact(rp_segment, "pyde.02.00:ElectronicContact.Telephone.Minimal.Number", "", "", "85263425");
 
-            node = instance.AddFact(rp_segment, "address1.02.02:AddressDetails", "", "", "");
+            node = report.AddFact(rp_segment, "address1.02.02:AddressDetails", "", "", "");
             node.AddFact(rp_segment, "pyde.02.00:AddressDetails.OverseasAddress.Indicator", "", "", "true");
             node.AddFact(rp_segment, "pyde.02.01:AddressDetails.Usage.Code", "", "", "POS");
             node.AddFact(rp_segment, "pyde.02.00:AddressDetails.AttentionTo.Text", "", "", "Mr Tugnait");
@@ -143,7 +143,7 @@ namespace Diwen.Xbrl.Tests.Xml
             node.AddFact(rp_segment, "pyde.02.08:AddressDetails.CountryName.Text", "", "", "UNITED STATES");
             node.AddFact(rp_segment, "pyde.02.08:AddressDetails.Country.Code", "", "", "us");
 
-            node = instance.AddFact(rp_segment, "address1.02.02:AddressDetails", "", "", "");
+            node = report.AddFact(rp_segment, "address1.02.02:AddressDetails", "", "", "");
             node.AddFact(rp_segment, "pyde.02.00:AddressDetails.OverseasAddress.Indicator", "", "", "false");
             node.AddFact(rp_segment, "pyde.02.01:AddressDetails.Usage.Code", "", "", "BUS");
             node.AddFact(rp_segment, "pyde.02.00:AddressDetails.AttentionTo.Text", "", "", "Mr Tugnait");
@@ -157,9 +157,9 @@ namespace Diwen.Xbrl.Tests.Xml
             node.AddFact(rp_segment, "pyde.02.08:AddressDetails.CountryName.Text", "", "", "AUSTRALIA");
             //node.AddFact(rp_segment, "pyde.02.08:AddressDetails.Country.Code", "", "", "");
 
-            instance.AddFact(rp_segment, "pyde.02.00:OrganisationDetails.OrganisationBranch.Code", "", "", "101");
+            report.AddFact(rp_segment, "pyde.02.00:OrganisationDetails.OrganisationBranch.Code", "", "", "101");
 
-            node = instance.AddFact(rp_segment, "ps.0003.lodge.req.02.00:Payee", "", "", "");
+            node = report.AddFact(rp_segment, "ps.0003.lodge.req.02.00:Payee", "", "", "");
             node.AddFact(rp_segment, "pyid.02.00:Identifiers.TaxFileNumber.Identifier", "", "", "32989432");
             //node.AddFact(rp_segment, "pyid.02.00:IdentificationExemptionDetails.TFNExemptionType.Code", "", "", "");
             node.AddFact(rp_segment, "pyid.02.00:Identifiers.AustralianBusinessNumber.Identifier", "", "", "76089884284");
@@ -209,30 +209,30 @@ namespace Diwen.Xbrl.Tests.Xml
             subnode.AddFact(rp_segment, "rvctc2.02.03:IncomeTax.Deduction.PensionOrAnnuityPurchasePriceUndeducted.Amount", "U1", "0", "450");
             subnode.AddFact(rp_segment, "pyin.02.07:Report.Amendment.Indicator", "", "", "false");
 
-            return instance;
+            return report;
         }
 
         [Fact]
-        public static void WritePaymentSummaryInstance()
+        public static void WritePaymentSummaryReport()
         {
-            var instance = CreatePaymentSummaryInstance();
+            var report = CreatePaymentSummaryReport();
 
             // Write the instace to a file
             var path = "output.sbr.xml";
-            instance.ToFile(path);
+            report.ToFile(path);
         }
 
         [Fact]
-        public static void ComparePaymentSummaryInstance()
+        public static void ComparePaymentSummaryReport()
         {
-            var instance = CreatePaymentSummaryInstance();
+            var report = CreatePaymentSummaryReport();
 
             // unless done when loading, duplicate objects 
             // aren't automatically removed until serialization so do it before comparisons
-            instance.RemoveUnusedObjects();
+            report.RemoveUnusedObjects();
 
             var referencePath = Path.Combine("data", "sbr_reference.xbrl");
-            var referenceInstance = Report.FromFile(referencePath, removeUnusedObjects: false, collapseDuplicateContexts: false, removeDuplicateFacts: false);
+            var referenceReport = Report.FromFile(referencePath, removeUnusedObjects: false, collapseDuplicateContexts: false, removeDuplicateFacts: false);
 
             // Instances are functionally equivalent:
             // They have the same number of contexts and scenarios of the contexts match member-by-member
@@ -243,17 +243,17 @@ namespace Diwen.Xbrl.Tests.Xml
             //Assert.Equal(instance, referenceInstance);
 
             string tempFile = "sbr_temp.xbrl";
-            instance.ToFile(tempFile);
+            report.ToFile(tempFile);
 
-            var newInstance = Report.FromFile(tempFile, removeUnusedObjects: false, collapseDuplicateContexts: false, removeDuplicateFacts: false);
+            var newReport = Report.FromFile(tempFile, removeUnusedObjects: false, collapseDuplicateContexts: false, removeDuplicateFacts: false);
 
-            Assert.True(newInstance.Equals(instance));
+            Assert.True(newReport.Equals(report));
 
-            Assert.True(newInstance.Equals(referenceInstance));
+            Assert.True(newReport.Equals(referenceReport));
 
-            newInstance.Contexts[0].Entity.AddExplicitMember("AM", "s2c_AM:x1");
+            newReport.Contexts[0].Entity.AddExplicitMember("AM", "s2c_AM:x1");
 
-            Assert.False(newInstance.Equals(referenceInstance));
+            Assert.False(newReport.Equals(referenceReport));
         }
 
     }
