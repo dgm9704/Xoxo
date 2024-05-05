@@ -66,7 +66,6 @@ namespace Diwen.Xbrl.Tests.Xml
             report.AddDomainNamespace("crigi.02.00", "http://sbr.gov.au/icls/cri/crigi/crigi.02.00.data");
             report.AddDomainNamespace("gfati.02.00", "http://sbr.gov.au/icls/gfa/gfati/gfati.02.00.data");
             report.AddDomainNamespace("dtyp.02.13", "http://sbr.gov.au/fdtn/sbr.02.13.dtyp");
-            report.AddDomainNamespace("gfati.02.00", "http://sbr.gov.au/icls/gfa/gfati/gfati.02.00.data");
             report.AddDomainNamespace("dtyp.02.03", "http://sbr.gov.au/fdtn/sbr.02.03.dtyp");
             report.AddDomainNamespace("email1.02.00", "http://sbr.gov.au/comnmdle/comnmdle.electroniccontactelectronicmail1.02.00.module");
             report.AddDomainNamespace("fax1.02.00", "http://sbr.gov.au/comnmdle/comnmdle.electroniccontactfacsimile1.02.00.module");
@@ -166,7 +165,7 @@ namespace Diwen.Xbrl.Tests.Xml
             node.AddFact(rp_segment, "pyid.02.00:Identifiers.TaxFileNumber.Identifier", "", "", "32989432");
             node.AddFact(rp_segment, "pyid.02.00:IdentificationExemptionDetails.TFNExemptionType.Code", "", "", "");
             node.AddFact(rp_segment, "pyid.02.00:Identifiers.AustralianBusinessNumber.Identifier", "", "", "76089884284");
-            node.AddFact(rp_segment, "pyde.02.00:PersonDemographicDetails.Birth.Date", "", "", "1958-09-28");
+            node.AddFact(rp_segment, "pyid.02.00:PersonDemographicDetails.Birth.Date", "", "", "1958-09-28");
 
             var subnode = node.AddFact(rp_segment, "prsnstrcnm2.02.00:PersonNameDetails", "", "", "");
             subnode.AddFact(rp_segment, "pyde.02.00:PersonNameDetails.PersonNameType.Code", "", "", "LGL");
@@ -250,12 +249,15 @@ namespace Diwen.Xbrl.Tests.Xml
 
             var newReport = Report.FromFile(tempFile, removeUnusedObjects: false, collapseDuplicateContexts: false, removeDuplicateFacts: false);
 
-            Assert.True(newReport.Equals(report));
+            //Assert.True(newReport.Equals(report));
 
-            var comparison = ReportComparer.Report(newReport, referenceReport);
+            var comparison = ReportComparer.Report(newReport, report);
             Assert.True(comparison.Result, comparison.Messages.Join("\n"));
 
-            Assert.True(newReport.Equals(referenceReport));
+            comparison = ReportComparer.Report(newReport, referenceReport);
+            Assert.True(comparison.Result, comparison.Messages.Join("\n"));
+
+            //Assert.True(newReport.Equals(referenceReport));
 
             newReport.Contexts[0].Entity.AddExplicitMember("AM", "s2c_AM:x1");
 
