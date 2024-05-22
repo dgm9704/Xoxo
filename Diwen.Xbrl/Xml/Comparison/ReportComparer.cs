@@ -22,6 +22,7 @@
 namespace Diwen.Xbrl.Xml.Comparison
 {
     using System;
+    using System.Collections.Concurrent;
     using System.Collections.Generic;
     using System.IO;
     using System.Linq;
@@ -57,6 +58,8 @@ namespace Diwen.Xbrl.Xml.Comparison
         /// <summary/>
         public static ComparisonReport Report(Report a, Report b, ComparisonTypes comparisonTypes, BasicComparisons basicComparisons)
         {
+            a.ContextComparisonCache = new ConcurrentDictionary<(string, string), bool>();
+            b.ContextComparisonCache = new ConcurrentDictionary<(string, string), bool>();
             var messages = new List<string>();
 
             if (comparisonTypes.HasFlag(ComparisonTypes.Basic))
@@ -66,6 +69,8 @@ namespace Diwen.Xbrl.Xml.Comparison
                             Where(c => comparisonTypes.HasFlag(c.Key)).
                               SelectMany(c => c.Value(a, b)));
 
+            a.ContextComparisonCache = null;
+            b.ContextComparisonCache = null;
             return new ComparisonReport(!messages.Any(), messages);
         }
 

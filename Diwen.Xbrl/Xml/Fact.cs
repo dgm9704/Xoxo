@@ -225,13 +225,14 @@ namespace Diwen.Xbrl.Xml
 
             if (result)
             {
-                if (Facts != null)
+                if (Facts != null && Facts.Any())
                 {
                     result = Facts.Equals(other.Facts);
                 }
                 else
                 {
-                    if (Report == other.Report
+                    if (Report != null
+                        && object.ReferenceEquals(Report, other.Report)
                         && !string.IsNullOrEmpty(ContextRef) && !string.IsNullOrEmpty(other.ContextRef)
                         && ContextRef.Equals(other.ContextRef, StringComparison.Ordinal))
                     {   // the same actual context
@@ -245,18 +246,37 @@ namespace Diwen.Xbrl.Xml
                         }
                         else if (Context != null && other.Context != null)
                         {
-                            if (Context.Scenario == null && other.Context.Scenario == null)
-                            {   // nothing to make a difference
-                                result = true;
-                            }
-                            else if (Context.Scenario != null && other.Context.Scenario != null)
-                            {   // something to compare
-                                result = Context.Scenario.Equals(other.Context.Scenario);
-                            }
-                            else  // one has a scenario other doesn't
-                            {
-                                result = false;
-                            }
+                            result = Context.Equals(other.Context);
+
+                            // if (Context.Scenario == null && other.Context.Scenario == null)
+                            // {   // nothing to make a difference
+                            //     result = true;
+                            // }
+                            // else if (Context.Scenario != null && other.Context.Scenario != null)
+                            // {   // something to compare
+                            //     if (Report.ContextComparisonCache != null)
+                            //     {
+                            //         var key = (Context.Id, other.Context.Id);
+                            //         if (!Report.ContextComparisonCache.ContainsKey(key))
+                            //         {
+                            //             result = Context.Scenario.Equals(other.Context.Scenario);
+                            //             Report.ContextComparisonCache[key] = result;
+                            //         }
+                            //         else
+                            //         {
+                            //             // cache hit
+                            //         }
+                            //         result = Report.ContextComparisonCache[key];
+                            //     }
+                            //     else
+                            //     {
+                            //         result = Context.Scenario.Equals(other.Context.Scenario);
+                            //     }
+                            // }
+                            // else  // one has a scenario other doesn't
+                            // {
+                            //     result = false;
+                            // }
                         }
                         else  // one has a context other doesn't
                         {

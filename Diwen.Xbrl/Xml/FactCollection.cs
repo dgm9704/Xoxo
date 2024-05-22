@@ -89,5 +89,14 @@ namespace Diwen.Xbrl.Xml
         => this.ContentCompare(other);
 
         #endregion
+
+        internal void SetReport(Report report)
+        {
+            foreach (var fact in this)
+            {
+                fact.Report = report;
+                fact.Facts.SetReport(report);
+            }
+        }
     }
 }

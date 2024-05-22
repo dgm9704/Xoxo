@@ -22,6 +22,7 @@
 namespace Diwen.Xbrl.Xml
 {
     using System;
+    using System.Collections.Concurrent;
     using System.Collections.Generic;
     using System.Collections.ObjectModel;
     using System.IO;
@@ -69,6 +70,8 @@ namespace Diwen.Xbrl.Xml
         public XmlNamespaceManager Namespaces { get; set; }
 
         Entity entityField = new();
+
+        internal ConcurrentDictionary<(string, string), bool> ContextComparisonCache;
 
         /// <summary/>
         [XmlIgnore]
@@ -377,6 +380,9 @@ namespace Diwen.Xbrl.Xml
         /// <summary/>
         public bool Equals(Report other)
         {
+            this.ContextComparisonCache = new ConcurrentDictionary<(string, string), bool>();
+            other.ContextComparisonCache = new ConcurrentDictionary<(string, string), bool>();
+
             var result = false;
             if (other != null)
                 if (SchemaReference.Equals(other.SchemaReference))
@@ -384,6 +390,9 @@ namespace Diwen.Xbrl.Xml
                         if (FilingIndicators.Equals(other.FilingIndicators))
                             if (Contexts.Equals(other.Contexts))
                                 result |= Facts.Equals(other.Facts);
+
+            this.ContextComparisonCache = null;
+            other.ContextComparisonCache = null;
 
             return result;
         }
@@ -785,8 +794,6 @@ namespace Diwen.Xbrl.Xml
                 report.Entity = report.Contexts.First().Entity;
                 report.Period = report.Contexts.First().Period;
             }
-
-
             report.SetReportReferences();
         }
 
@@ -796,23 +803,20 @@ namespace Diwen.Xbrl.Xml
             {
                 var s = context.Scenario;
                 if (s != null)
-                    if (s.Report == null)
-                        s.Report = this;
+                    s.Report = this;
             }
-
-            foreach (var fact in Facts)
-                fact.Report = this;
 
             if (Entity != null)
             {
                 var seg = Entity.Segment;
                 if (seg != null)
-                    if (seg.Report == null)
-                        seg.Report = this;
+                    seg.Report = this;
             }
 
             foreach (var unit in Units)
                 unit.Report = this;
+
+            Facts.SetReport(this);
         }
 
         XmlSerializerNamespaces GetXmlSerializerNamespaces()

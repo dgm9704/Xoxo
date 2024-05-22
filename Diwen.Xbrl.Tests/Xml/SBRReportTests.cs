@@ -249,15 +249,15 @@ namespace Diwen.Xbrl.Tests.Xml
 
             var newReport = Report.FromFile(tempFile, removeUnusedObjects: false, collapseDuplicateContexts: false, removeDuplicateFacts: false);
 
-            //Assert.True(newReport.Equals(report));
+            Assert.True(newReport.Equals(report));
 
-            var comparison = ReportComparer.Report(newReport, report);
-            Assert.True(comparison.Result, comparison.Messages.Join("\n"));
+            // var comparison = ReportComparer.Report(newReport, report);
+            // Assert.True(comparison.Result, comparison.Messages.Join("\n"));
 
-            comparison = ReportComparer.Report(newReport, referenceReport);
-            Assert.True(comparison.Result, comparison.Messages.Join("\n"));
+            // comparison = ReportComparer.Report(newReport, referenceReport);
+            // Assert.True(comparison.Result, comparison.Messages.Join("\n"));
 
-            //Assert.True(newReport.Equals(referenceReport));
+            Assert.True(newReport.Equals(referenceReport));
 
             newReport.Contexts[0].Entity.AddExplicitMember("AM", "s2c_AM:x1");
 
