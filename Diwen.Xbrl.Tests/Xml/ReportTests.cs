@@ -23,6 +23,8 @@ namespace Diwen.Xbrl.Tests.Xml
     using Xunit.Abstractions;
     using Diwen.Xbrl.Xml.Comparison;
     using Diwen.Xbrl.Xml;
+    using System.Xml.Linq;
+    using System.Linq;
 
     public class ReportTests
     {
@@ -484,6 +486,38 @@ namespace Diwen.Xbrl.Tests.Xml
             if (!report.Result)
                 Console.WriteLine(report);
             Assert.True(report.Result);
+        }
+
+        [Fact]
+        public void RemoveDeclarationAndProcessingInstructionsAndComments()
+        {
+            var inputpath = Path.Combine("data", "minimal.xbrl");
+
+            var doc = XDocument.Load(inputpath);
+            Assert.NotNull(doc.Declaration);
+            var processingInstructions = doc.Nodes().OfType<XProcessingInstruction>();
+            Assert.Contains(processingInstructions, pi => pi.Target == "instance-generator");
+            Assert.Contains(processingInstructions, pi => pi.Target == "taxonomy-version");
+            var comments = doc.Nodes().OfType<XComment>();
+            Assert.Contains(comments, c => c.Value == "foo");
+
+            var report = Report.FromFile(inputpath);
+            report.OutputInstanceGenerator = false;
+            report.OutputTaxonomyVersion = false;
+            report.OutputXmlDeclaration = false;
+            report.OutputComments = false;
+
+            var outputpath = "output_nopi.xbrl";
+            report.ToFile(outputpath);
+            doc = XDocument.Load(outputpath);
+
+            Assert.Null(doc.Declaration);
+            processingInstructions = doc.Nodes().OfType<XProcessingInstruction>();
+            Assert.Empty(processingInstructions);
+
+            comments = doc.Nodes().OfType<XComment>();
+            Assert.Empty(comments);
+
         }
     }
 }

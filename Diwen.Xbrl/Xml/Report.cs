@@ -140,6 +140,22 @@ namespace Diwen.Xbrl.Xml
             set => GetElementTree(Facts, value);
         }
 
+        /// <summary />
+        [XmlIgnore]
+        public bool OutputInstanceGenerator { get; set; } = true;
+
+        /// <summary />
+        [XmlIgnore]
+        public bool OutputTaxonomyVersion { get; set; } = true;
+
+        /// <summary />
+        [XmlIgnore]
+        public bool OutputXmlDeclaration { get; set; } = true;
+
+        /// <summary />
+        [XmlIgnore]
+        public bool OutputComments { get; set; } = true;
+
         internal static void GetElementTree(ICollection<Fact> facts, IEnumerable<XmlElement> value)
         {
             if (value != null)
@@ -700,12 +716,13 @@ namespace Diwen.Xbrl.Xml
             ValidationType = ValidationType.None
         };
 
-        static readonly XmlWriterSettings XmlWriterSettings = new()
+        XmlWriterSettings GetXmlWriterSettings() => new()
         {
             Indent = true,
             IndentChars = "\t",
             NamespaceHandling = NamespaceHandling.OmitDuplicates,
-            Encoding = Encoding.UTF8
+            Encoding = Encoding.UTF8,
+            OmitXmlDeclaration = !OutputXmlDeclaration
         };
 
         static ReportInfo GetReportInfo(Stream stream)
@@ -922,7 +939,7 @@ namespace Diwen.Xbrl.Xml
         /// <summary/>
         public void ToStream(Stream stream)
         {
-            using (var writer = XmlWriter.Create(stream, XmlWriterSettings))
+            using (var writer = XmlWriter.Create(stream, GetXmlWriterSettings()))
                 ToXmlWriter(writer);
         }
 
@@ -944,7 +961,7 @@ namespace Diwen.Xbrl.Xml
         /// <summary/>
         public void ToFile(string path)
         {
-            using (var writer = XmlWriter.Create(path, XmlWriterSettings))
+            using (var writer = XmlWriter.Create(path, GetXmlWriterSettings()))
                 ToXmlWriter(writer);
         }
 
@@ -952,15 +969,19 @@ namespace Diwen.Xbrl.Xml
         {
             var ns = GetXmlSerializerNamespaces();
 
-            var info = $"id=\"{id}\" version=\"{version}\" creationdate=\"{DateTime.Now:yyyy-MM-ddTHH:mm:ss:ffzzz}\"";
+            if (OutputInstanceGenerator)
+            {
+                var info = $"id=\"{id}\" version=\"{version}\" creationdate=\"{DateTime.Now:yyyy-MM-ddTHH:mm:ss:ffzzz}\"";
+                writer.WriteProcessingInstruction("instance-generator", info);
+            }
 
-            writer.WriteProcessingInstruction("instance-generator", info);
+            if (OutputTaxonomyVersion)
+                if (!string.IsNullOrEmpty(TaxonomyVersion))
+                    writer.WriteProcessingInstruction("taxonomy-version", TaxonomyVersion);
 
-            if (!string.IsNullOrEmpty(TaxonomyVersion))
-                writer.WriteProcessingInstruction("taxonomy-version", TaxonomyVersion);
-
-            foreach (var item in Comments)
-                writer.WriteComment(item);
+            if (OutputComments)
+                foreach (var item in Comments)
+                    writer.WriteComment(item);
 
             Serializer.Serialize(writer, this, ns);
         }
