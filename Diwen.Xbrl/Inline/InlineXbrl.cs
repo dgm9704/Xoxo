@@ -30,7 +30,7 @@ namespace Diwen.Xbrl.Inline
     using System.Xml.Serialization;
     using Diwen.Xbrl.Xml;
 
-        /// <summary/>
+    /// <summary/>
     public static class InlineXbrl
     {
         private static readonly IFormatProvider ic = CultureInfo.InvariantCulture;
@@ -155,11 +155,11 @@ namespace Diwen.Xbrl.Inline
         /// <summary/>
         public static void ParseSchemaReference(XDocument document, Report report)
         {
-            // parse schemaRef and add to instance
+            // parse schemaRefs and add to instance
             // ix:header/ix:references/link:schemaRef
-            var link = document.Root.GetNamespaceOfPrefix("link");
-            // there can be only one
-            var schemaRefElements = document.Root.Descendants(link + "schemaRef");
+            var linkNs = document.Root.GetNamespaceOfPrefix("link");
+            var schemaRefElements = document.Root.Descendants(linkNs + "schemaRef");
+
             var schemaRefSerializer = new XmlSerializer(typeof(SchemaReference));
             foreach (var schemaRefElement in schemaRefElements)
             {

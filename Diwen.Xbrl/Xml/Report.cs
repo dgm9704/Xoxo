@@ -107,7 +107,6 @@ namespace Diwen.Xbrl.Xml
         public string TypedDomainNamespace { get; private set; }
 
         /// <summary/>
-        //[XmlArray(ElementName = "schemaRef", Namespace = "http://www.xbrl.org/2003/linkbase")]
         [XmlElement(ElementName = "schemaRef", Namespace = "http://www.xbrl.org/2003/linkbase")]
         public Collection<SchemaReference> SchemaReferences { get; set; } = [];
 
