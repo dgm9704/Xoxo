@@ -161,10 +161,14 @@ namespace Diwen.Xbrl.Inline
             // there can be only one
             var schemaRefElements = document.Root.Descendants(link + "schemaRef");
             var schemaRefSerializer = new XmlSerializer(typeof(SchemaReference));
-            var schemaRefElement = schemaRefElements.Single();
-            var schemaReader = schemaRefElement.CreateReader();
-            var schemaRef = (SchemaReference)schemaRefSerializer.Deserialize(schemaReader);
-            report.SchemaReference = schemaRef;
+            foreach (var schemaRefElement in schemaRefElements)
+            {
+                using (var schemaReader = schemaRefElement.CreateReader())
+                {
+                    var schemaRef = (SchemaReference)schemaRefSerializer.Deserialize(schemaReader);
+                    report.SchemaReferences.Add(schemaRef);
+                }
+            }
         }
 
         /// <summary/>

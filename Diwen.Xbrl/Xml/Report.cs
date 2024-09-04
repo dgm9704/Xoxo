@@ -107,8 +107,17 @@ namespace Diwen.Xbrl.Xml
         public string TypedDomainNamespace { get; private set; }
 
         /// <summary/>
-        [XmlElement("schemaRef", Namespace = "http://www.xbrl.org/2003/linkbase")]
-        public SchemaReference SchemaReference { get; set; } = new SchemaReference();
+        //[XmlArray(ElementName = "schemaRef", Namespace = "http://www.xbrl.org/2003/linkbase")]
+        [XmlElement(ElementName = "schemaRef", Namespace = "http://www.xbrl.org/2003/linkbase")]
+        public Collection<SchemaReference> SchemaReferences { get; set; } = [];
+
+        /// <summary/>
+        [XmlIgnore]
+        public SchemaReference SchemaReference
+        {
+            get => SchemaReferences?.FirstOrDefault();
+            set => SchemaReferences = [value];
+        }
 
         /// <summary/>
         [XmlElement("unit", Namespace = "http://www.xbrl.org/2003/instance")]
