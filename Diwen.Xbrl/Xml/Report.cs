@@ -114,7 +114,7 @@ namespace Diwen.Xbrl.Xml
         [XmlIgnore]
         public SchemaReference SchemaReference
         {
-            get => SchemaReferences?.FirstOrDefault();
+            get => SchemaReferences?.FirstOrDefault(new SchemaReference());
             set => SchemaReferences = [value];
         }
 
