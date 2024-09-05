@@ -157,6 +157,7 @@ namespace Diwen.Xbrl.Inline
         {
             // parse schemaRefs and add to instance
             // ix:header/ix:references/link:schemaRef
+
             var linkNs = document.Root.GetNamespaceOfPrefix("link");
             var schemaRefElements = document.Root.Descendants(linkNs + "schemaRef");
 
