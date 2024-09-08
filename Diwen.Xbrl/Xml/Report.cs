@@ -871,7 +871,13 @@ namespace Diwen.Xbrl.Xml
                 foreach (var item in DefaultIndicatorNamespaces)
                     result.Add(item.Key, item.Value);
 
+            // foreach (var unit in Units)
+            //     result.Add(Namespaces.LookupPrefix(unit.Measure.Namespace), unit.Measure.Namespace);
+
             var namespaces = new HashSet<string>();
+
+            foreach (var unit in Units)
+                namespaces.Add(unit.Measure.Namespace);
 
             if (Facts.Any())
                 namespaces.Add(FactNamespace);

@@ -3,9 +3,9 @@ namespace Diwen.Xbrl.Tests.Inline
     using System.IO;
     using System.IO.Compression;
     using System.Linq;
-    using System.Runtime.InteropServices;
     using System.Xml.Linq;
     using Diwen.Xbrl.Inline;
+    using Diwen.Xbrl.Xml;
     using Xunit;
 
     public static class InlineXbrlTests
@@ -36,9 +36,15 @@ namespace Diwen.Xbrl.Tests.Inline
         [Fact]
         public static void InlineXbrlMultipleSchemaRefs()
         {
-            var reportfile = Path.Combine("data", "AR-example.xhtml");
-            var report = InlineXbrl.ParseFiles(reportfile);
-            report.ToFile(Path.ChangeExtension(reportfile, "xbrl"));
+            var inputfile = Path.Combine("data", "AR-example.xhtml");
+            var report = InlineXbrl.ParseFiles(inputfile);
+            Assert.Equal(3, report.SchemaReferences.Count);
+            
+            var outputfile = Path.ChangeExtension(inputfile, "xbrl");
+            report.ToFile(outputfile);
+            var roundtrip = Report.FromFile(outputfile);
+            Assert.Equal(3, roundtrip.SchemaReferences.Count);
+
         }
     }
 }
