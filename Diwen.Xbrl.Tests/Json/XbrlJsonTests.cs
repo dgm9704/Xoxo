@@ -172,6 +172,7 @@ namespace Diwen.Xbrl.Tests.Json
         {
             var report = Report.FromFile(path);
             Assert.NotNull(report.DocumentInfo.Features);
+            report.ToFile(Path.GetFileName(path));
         }
     }
 }

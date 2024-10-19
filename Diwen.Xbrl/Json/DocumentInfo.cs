@@ -15,7 +15,7 @@ namespace Diwen.Xbrl.Json
         /// <summary/>
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
         [JsonPropertyName("features")]
-        public Dictionary<string, string> Features { get; set; }
+        public Features Features { get; set; }
 
         /// <summary/>
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
