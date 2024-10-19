@@ -166,6 +166,12 @@ namespace Diwen.Xbrl.Tests.Json
             xmlreport.ToFile(Path.ChangeExtension(Path.GetFileName(path), ".xbrl"));
         }
 
-
+        [Theory]
+        [InlineData("data/json/5967007LIEEXZXHQPC18-2023-12-31-no.json")]
+        public void DocumentInfoFeaturesTest(string path)
+        {
+            var report = Report.FromFile(path);
+            Assert.NotNull(report.DocumentInfo.Features);
+        }
     }
 }
