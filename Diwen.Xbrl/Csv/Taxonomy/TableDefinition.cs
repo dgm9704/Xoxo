@@ -11,6 +11,13 @@ namespace Diwen.Xbrl.Csv.Taxonomy
     public class TableDefinition
     {
 
+        private static readonly JsonSerializerOptions serializeOptions = new()
+        {
+            PropertyNamingPolicy = JsonNamingPolicy.CamelCase,
+            Converters = { new JsonStringEnumConverter(JsonNamingPolicy.CamelCase, allowIntegerValues: false) },
+            WriteIndented = true
+        };
+
         /// <summary/>
         [JsonPropertyName("documentInfo")]
         public DocumentInfo DocumentInfo { get; set; }
@@ -56,7 +63,7 @@ namespace Diwen.Xbrl.Csv.Taxonomy
         public static TableDefinition FromFile(string path)
         {
             using (var stream = new FileStream(path, FileMode.Open, FileAccess.Read))
-                return JsonSerializer.Deserialize<TableDefinition>(stream);
+                return JsonSerializer.Deserialize<TableDefinition>(stream, serializeOptions);
         }
     }
 }

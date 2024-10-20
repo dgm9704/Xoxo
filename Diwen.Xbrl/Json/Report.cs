@@ -10,9 +10,15 @@ namespace Diwen.Xbrl.Json
     using Diwen.Xbrl.Extensions;
     using Diwen.Xbrl.Xml;
 
-        /// <summary/>
+    /// <summary/>
     public class Report
     {
+        private static readonly JsonSerializerOptions serializeOptions = new()
+        {
+            PropertyNamingPolicy = JsonNamingPolicy.CamelCase,
+            Converters = { new JsonStringEnumConverter(JsonNamingPolicy.CamelCase, allowIntegerValues: false) },
+            WriteIndented = true
+        };
 
         /// <summary/>
         [JsonRequired]
@@ -28,14 +34,14 @@ namespace Diwen.Xbrl.Json
         public static Report FromFile(string path)
         {
             using (var stream = new FileStream(path, FileMode.Open, FileAccess.Read))
-                return JsonSerializer.Deserialize<Report>(stream);
+                return JsonSerializer.Deserialize<Report>(stream, serializeOptions);
         }
 
         /// <summary/>
         public void ToFile(string path)
         {
             using (var stream = new FileStream(path, FileMode.Create, FileAccess.Write))
-                JsonSerializer.Serialize<Report>(stream, this);
+                JsonSerializer.Serialize<Report>(stream, this, serializeOptions);
         }
 
         private static Dictionary<string, Uri> GetNamespaces(Xml.Report xmlreport)

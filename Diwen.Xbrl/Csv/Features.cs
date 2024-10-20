@@ -1,4 +1,4 @@
-namespace Diwen.Xbrl.Json
+namespace Diwen.Xbrl.Csv
 {
     using System.Text.Json.Serialization;
 
@@ -7,13 +7,7 @@ namespace Diwen.Xbrl.Json
     {
         /// <summary/>
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
-        [JsonPropertyName("xbrl:canonicalValues")]
-        public bool? CanonicalValues { get; set; }
-
-        /// <summary/>
-        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
         [JsonPropertyName("xbrl:allowedDuplicates")]
         public AllowedDuplicates? AllowedDuplicates { get; set; }
-
     }
 }

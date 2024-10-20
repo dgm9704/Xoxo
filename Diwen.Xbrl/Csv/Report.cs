@@ -9,6 +9,7 @@
     using System.Reflection;
     using System.Text;
     using System.Text.Json;
+    using System.Text.Json.Serialization;
     using Diwen.Xbrl.Csv.Taxonomy;
     using Diwen.Xbrl.Extensions;
     using Diwen.Xbrl.Xml;
@@ -16,6 +17,14 @@
         /// <summary/>
     public partial class Report
     {
+
+        private static readonly JsonSerializerOptions serializeOptions = new()
+        {
+            PropertyNamingPolicy = JsonNamingPolicy.CamelCase,
+            Converters = { new JsonStringEnumConverter(JsonNamingPolicy.CamelCase, allowIntegerValues: false) },
+            WriteIndented = true
+        };
+
                 /// <summary/>
         public string DocumentType { get; set; } = "https://xbrl.org/CR/2021-02-03/xbrl-csv";
 
@@ -110,7 +119,7 @@
             };
 
             var stream = new MemoryStream();
-            JsonSerializer.Serialize<PackageInfo>(stream, info);
+            JsonSerializer.Serialize<PackageInfo>(stream, info, serializeOptions);
             stream.Position = 0;
             return stream;
         }
@@ -143,7 +152,7 @@
                 EbaGeneratingSoftwareInformation = softwareInfo
             };
 
-            JsonSerializer.Serialize<ReportInfo>(stream, reportInfo);
+            JsonSerializer.Serialize<ReportInfo>(stream, reportInfo, serializeOptions);
             stream.Position = 0;
             return stream;
         }
@@ -228,7 +237,7 @@
 
         private static string ReadEntryPoint(string data)
         {
-            var reportInfo = JsonSerializer.Deserialize<ReportInfo>(data);
+            var reportInfo = JsonSerializer.Deserialize<ReportInfo>(data, serializeOptions);
             return reportInfo.DocumentInfo.Extends.First();
         }
 

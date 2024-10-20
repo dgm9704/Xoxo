@@ -9,6 +9,13 @@ namespace Diwen.Xbrl.Csv.Taxonomy
     /// <summary/>
     public class ModuleDefinition
     {
+        private static readonly JsonSerializerOptions serializeOptions = new()
+        {
+            PropertyNamingPolicy = JsonNamingPolicy.CamelCase,
+            Converters = { new JsonStringEnumConverter(JsonNamingPolicy.CamelCase, allowIntegerValues: false) },
+            WriteIndented = true
+        };
+
         /// <summary/>
         [JsonPropertyName("dimensions")]
         public Dictionary<string, string> Dimensions { get; set; }
@@ -33,7 +40,7 @@ namespace Diwen.Xbrl.Csv.Taxonomy
         public static ModuleDefinition FromFile(string path)
         {
             using (var stream = new FileStream(path, FileMode.Open, FileAccess.Read))
-                return JsonSerializer.Deserialize<ModuleDefinition>(stream);
+                return JsonSerializer.Deserialize<ModuleDefinition>(stream, serializeOptions);
         }
 
         private Dictionary<string, TableDefinition> tableDefinitions;
@@ -52,7 +59,7 @@ namespace Diwen.Xbrl.Csv.Taxonomy
                     if (File.Exists(tabfile))
                         using (var stream = new FileStream(tabfile, FileMode.Open, FileAccess.Read))
                         {
-                            var jsonTable = JsonSerializer.Deserialize<TableDefinition>(stream);
+                            var jsonTable = JsonSerializer.Deserialize<TableDefinition>(stream, serializeOptions);
                             var tablecode = Path.GetFileNameWithoutExtension(tabfile);
                             tableDefinitions.Add(tablecode, jsonTable);
                         }
