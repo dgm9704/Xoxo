@@ -93,9 +93,6 @@ This might be the best way if you have something you don't want share publicly
 
 https://www.nuget.org/packages/Diwen.Xbrl/2.0.0/ContactOwners
 
-### twitter: @DiwenXbrl
-https://twitter.com/DiwenXbrl
-
 ### mastodon: @diwen@techhub.social
 https://techhub.social/@diwen
 
