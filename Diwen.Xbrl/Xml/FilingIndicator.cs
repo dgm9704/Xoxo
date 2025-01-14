@@ -25,6 +25,9 @@ namespace Diwen.Xbrl.Xml
     using System.Diagnostics;
     using System.Xml.Schema;
     using System.Xml.Serialization;
+#if NETSTANDARD2_0
+    using ArgumentNullException = Compat.ArgumentNullException;
+#endif
 
     /// <summary/>
     [DebuggerDisplay("{Value} : {Filed}")]

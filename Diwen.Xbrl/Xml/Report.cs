@@ -31,6 +31,9 @@ namespace Diwen.Xbrl.Xml
     using System.Xml;
     using System.Xml.Serialization;
     using Diwen.Xbrl.Extensions;
+#if NETSTANDARD2_0
+    using ArgumentNullException = Compat.ArgumentNullException;
+#endif
 
     /// <summary/>
     [Serializable]
@@ -114,7 +117,7 @@ namespace Diwen.Xbrl.Xml
         [XmlIgnore]
         public SchemaReference SchemaReference
         {
-            get => SchemaReferences?.FirstOrDefault(new SchemaReference());
+            get => SchemaReferences?.FirstOrDefault() ?? new SchemaReference();
             set => SchemaReferences = [value];
         }
 

@@ -23,6 +23,9 @@ namespace Diwen.Xbrl.Extensions
 {
     using System;
     using System.Xml;
+#if NETSTANDARD2_0
+    using ArgumentNullException = Compat.ArgumentNullException;
+#endif
 
     /// <summary/>
     public static class XmlQualifiedNameExtensions

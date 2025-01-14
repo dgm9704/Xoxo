@@ -1,6 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 	<PropertyGroup>
-		<TargetFramework>net8.0</TargetFramework>
+		<TargetFrameworks>netstandard2.0;net8.0</TargetFrameworks>
+		<LangVersion>latest</LangVersion>
 		<Version>3.4.1</Version>
 	</PropertyGroup>
 
@@ -20,6 +21,14 @@
 	<PropertyGroup>
 		<GenerateDocumentationFile>true</GenerateDocumentationFile>
 	  </PropertyGroup>
+
+	<ItemGroup>
+	  <PackageReference Include="PolySharp" Version="1.15.0">
+	    <PrivateAssets>all</PrivateAssets>
+	    <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+	  </PackageReference>
+	  <PackageReference Include="System.Text.Json" Version="9.0.0" Condition="'$(TargetFramework)' == 'netstandard2.0'" />
+	</ItemGroup>
 
 	<Target Name="Date" BeforeTargets="BeforeBuild">
 		<WriteLinesToFile File="$(IntermediateOutputPath)gen.cs"
