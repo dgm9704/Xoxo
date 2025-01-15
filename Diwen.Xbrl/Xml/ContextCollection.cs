@@ -26,6 +26,9 @@ namespace Diwen.Xbrl.Xml
     using System.Collections.ObjectModel;
     using System.Globalization;
     using Diwen.Xbrl.Extensions;
+#if NETSTANDARD2_0
+    using ArgumentNullException = Compat.ArgumentNullException;
+#endif
 
     /// <summary/>
     public class ContextCollection : KeyedCollection<string, Context>, IEquatable<IList<Context>>

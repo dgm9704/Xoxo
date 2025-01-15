@@ -94,7 +94,7 @@ namespace Diwen.Xbrl.Inline
                 if (!string.IsNullOrWhiteSpace(scale))
                 {
                     var power = int.Parse(scale);
-                    var v = decimal.Parse(value.Replace(" ", ""));
+                    var v = decimal.Parse(value.Replace(" ", ""), CultureInfo.InvariantCulture);
                     var multiplier = (decimal)Math.Pow(10, power);
                     v *= multiplier;
                     value = v.ToString();

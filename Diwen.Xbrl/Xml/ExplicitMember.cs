@@ -27,6 +27,9 @@ namespace Diwen.Xbrl.Xml
     using System.Xml.Schema;
     using System.Xml.Serialization;
     using Diwen.Xbrl.Extensions;
+#if NETSTANDARD2_0
+    using ArgumentNullException = Compat.ArgumentNullException;
+#endif
 
     /// <summary/>
     [XmlRoot(ElementName = "explicitMember", Namespace = "http://xbrl.org/2006/xbrldi")]

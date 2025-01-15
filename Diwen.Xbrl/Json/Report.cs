@@ -158,7 +158,7 @@ namespace Diwen.Xbrl.Json
                 context.Period = period;
 
                 var metric = fact.Dimensions["concept"].Split(':').Last();
-                var unitValue = fact.Dimensions.GetValueOrDefault("unit");
+                var unitValue = fact.Dimensions.GetValueOrDefault("unit", null);
                 string unitRef = null;
                 if (unitValue != null)
                 {

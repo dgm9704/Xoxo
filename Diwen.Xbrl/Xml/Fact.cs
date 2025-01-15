@@ -26,6 +26,9 @@ namespace Diwen.Xbrl.Xml
     using System.Xml;
     using System.Xml.Serialization;
     using Diwen.Xbrl.Extensions;
+#if NETSTANDARD2_0
+    using ArgumentNullException = Compat.ArgumentNullException;
+#endif
 
     /// <summary/>
     public class Fact : IEquatable<Fact>
