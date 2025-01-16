@@ -204,30 +204,17 @@ namespace Diwen.Xbrl.Xml
 
         /// <summary/>
         public override int GetHashCode()
-        => Value.GetHashCode();
+        => Value?.GetHashCode() ?? 0;
 
         #region IEquatable implementation
 
         /// <summary/>
-        public bool Equals(Fact other)
-        {
-            var result = other != null
-                && Value.Equals(other.Value, StringComparison.Ordinal)
-                && Metric.Equals(other.Metric)
-                && Decimals.Equals(other.Decimals, StringComparison.Ordinal);
-
-            if (result)
-                result = Unit == null
-                    ? other.Unit == null
-                    : Unit.Equals(other.Unit);
-
-            // if (result)
-            //     result = Context == null
-            //         ? other.Context == null
-            //         : Context.Equals(other.Context);
-
-            return result;
-        }
+        public bool Equals(Fact other) =>
+            other != null 
+            && string.Equals(Value, other.Value, StringComparison.Ordinal) 
+            && string.Equals(Decimals, other.Decimals, StringComparison.Ordinal)
+            && (Metric?.Equals(other.Metric) ?? other.Unit == null) 
+            && (Unit?.Equals(other.Unit) ?? other.Unit == null);
 
         #endregion
     }
