@@ -210,24 +210,11 @@ namespace Diwen.Xbrl.Xml
 
         /// <summary/>
         public bool Equals(Fact other)
-        {
-            var result = other != null
-                && Value.Equals(other.Value, StringComparison.Ordinal)
-                && Metric.Equals(other.Metric)
-                && Decimals.Equals(other.Decimals, StringComparison.Ordinal);
-
-            if (result)
-                result = Unit == null
-                    ? other.Unit == null
-                    : Unit.Equals(other.Unit);
-
-            // if (result)
-            //     result = Context == null
-            //         ? other.Context == null
-            //         : Context.Equals(other.Context);
-
-            return result;
-        }
+        => other != null
+            && (Value == null ? other.Value == null : Value.Equals(other.Value, StringComparison.Ordinal))
+            && (Metric == null ? other.Metric == null : Metric.Equals(other.Metric))
+            && (Decimals == null ? other.Decimals == null : Decimals.Equals(other.Decimals, StringComparison.Ordinal))
+            && (Unit == null ? other.Unit == null : Unit.Equals(other.Unit));
 
         #endregion
     }

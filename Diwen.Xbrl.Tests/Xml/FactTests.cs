@@ -26,5 +26,19 @@ namespace Diwen.Xbrl.Tests.Xml
             var fact = new Fact();
             Assert.NotEmpty(fact.ToString());
         }
+
+        [Fact]
+        public static void FactWithNullValueRemove()
+        {
+            var fact = new Fact();
+            var facts = new FactCollection(report: null) { fact };
+
+            for (var i = facts.Count - 1; i >= 0; i--)
+            {
+                var f = facts[i];
+                if (string.IsNullOrEmpty(f.Value))
+                    facts.Remove(f);
+            }
+        }
     }
 }
