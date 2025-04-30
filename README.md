@@ -113,5 +113,5 @@ https://www.nuget.org/packages/Diwen.Xbrl/2.0.0/ContactOwners
 ### mastodon: @diwen@techhub.social
 https://techhub.social/@diwen
 
-### bluesky: @diwen@bsky.social
-https://bsky.app/profile/diwen.bsky.social
+### bluesky: @diwen.social
+https://bsky.app/profile/diwen.social
