@@ -1,6 +1,25 @@
 [![.NET](https://github.com/dgm9704/Xoxo/actions/workflows/dotnet.yml/badge.svg)](https://github.com/dgm9704/Xoxo/actions/workflows/dotnet.yml)
 [![nuget](https://img.shields.io/nuget/v/Diwen.Xbrl.svg)](https://www.nuget.org/packages/Diwen.Xbrl/)
 
+# Contributing
+Thank you for your interest in the project!
+
+Due to my old-school and opinionated workflow, I don't accept unsolicited pull requests at the moment.
+
+Please instead create an issue with the following:
+- Relevant details: what is missing, what is wrong, exception details, etc.
+- Link(s) to any related documentation, specification etc. (EBA, EIOPA, ESMA, Eurofiling, xbrl.org, ...)
+- A report or link to a (preferably minimal) report that can be used to reproduce and test the issue
+
+These don't need to be complicated or long.
+
+I will then take a look and we can have discussion about if needed.
+
+If I think the fix/feature/change is something that should be included, 
+
+I will then implement it, taking into consideration any possible suggestions.
+
+
 # Breaking changes!
 After starting to add support for xBRL-JSON it became obvious that the code needed restructuring.
 
