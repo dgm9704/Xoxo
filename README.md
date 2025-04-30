@@ -1,6 +1,23 @@
 [![.NET](https://github.com/dgm9704/Xoxo/actions/workflows/dotnet.yml/badge.svg)](https://github.com/dgm9704/Xoxo/actions/workflows/dotnet.yml)
 [![nuget](https://img.shields.io/nuget/v/Diwen.Xbrl.svg)](https://www.nuget.org/packages/Diwen.Xbrl/)
 
+# Contributing
+Thank you for your interest in the project!
+
+Due to to my old-school opinionated workflow, I don't currently accept unsolicited pull requests.
+
+Please instead create an issue with the following:
+- Details about what is wrong or missing, exception details etc.
+- Link to applicable documentation (taxonomy, Filing Rules, etc )
+- A (preferably minimal) report or link to report that can be used to reproduce and test the issue
+
+I will take a look and we can have a public or private discussion if needed.
+
+If I think that the fix or change is something that should go in the library, 
+
+I will then implement it, taking into consideration any suggestions.
+
+
 # Breaking changes!
 After starting to add support for xBRL-JSON it became obvious that the code needed restructuring.
 
