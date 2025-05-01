@@ -2,9 +2,10 @@ namespace Diwen.Xbrl.Csv.Taxonomy
 {
     using System.Collections.Generic;
     using System.Linq;
+    using System.Text.Json;
     using System.Text.Json.Serialization;
 
-        /// <summary/>
+    /// <summary/>
     public class PropertyGroup
     {
         /// <summary/>
@@ -14,6 +15,10 @@ namespace Diwen.Xbrl.Csv.Taxonomy
         /// <summary/>
         [JsonPropertyName("dimensions")]
         public Dictionary<string, string> Dimensions { get; set; }
+
+        /// <summary/>
+        [JsonPropertyName("eba:documentation")]
+        public EbaDocumentation EbaDocumentation { get; set; }
 
         private readonly HashSet<string> excludeDimensions = new(["concept", "unit"]);
 

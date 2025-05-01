@@ -2,10 +2,10 @@ namespace Diwen.Xbrl.Csv
 {
     using System.Text.Json.Serialization;
 
-        /// <summary/>
+    /// <summary/>
     public class ReportInfo
     {
-                /// <summary/>
+        /// <summary/>
         [JsonPropertyName("documentInfo")]
         public DocumentInfo DocumentInfo { get; set; }
 

@@ -2,10 +2,10 @@ namespace Diwen.Xbrl.Csv
 {
     using System.Text.Json.Serialization;
 
-        /// <summary/>
+    /// <summary/>
     public class EbaGeneratingSoftwareInformation
     {
-                /// <summary/>
+        /// <summary/>
         [JsonPropertyName("eba:softwareId")]
         public string EbaSoftwareId { get; set; }
 

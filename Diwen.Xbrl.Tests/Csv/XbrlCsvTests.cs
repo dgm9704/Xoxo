@@ -210,6 +210,18 @@ namespace Diwen.Xbrl.Tests.Csv
         public static void DeserializeTableFromJsonTest(string path)
         => TableDefinition.FromFile(path);
 
+        [Theory]
+        [InlineData("www.eba.europa.eu/eu/fr/xbrl/crr/fws/finrep/its-005-2020/2022-06-01/tab/f_13.02.1.a/f_13.02.1.a.json")]
+        public static void DeserializePropertyGroupExtensionsFromJsonTest(string path)
+        {
+            var definition = TableDefinition.FromFile(path);
+            var datapoint = definition.Datapoints["dp11924"];
+            var cellcode = "{F 13.02.1.a, r0010, c0020}";
+
+            var ebadocumentation = datapoint.EbaDocumentation;
+            Assert.Equal(cellcode, ebadocumentation.CellCode);
+        }
+
         public static string XmlToCsv(string reportPath)
         {
             var xmlReport = Xbrl.Xml.Report.FromFile(reportPath);
@@ -254,7 +266,7 @@ namespace Diwen.Xbrl.Tests.Csv
             return xmlReportPath;
 
         }
-        
+
         public static HashSet<string> ReadTypedDomainInfo(string path)
         => File.ReadAllLines(Path.Combine("data/csv", path)).ToHashSet();
 
