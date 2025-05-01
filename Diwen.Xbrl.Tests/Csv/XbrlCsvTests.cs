@@ -212,7 +212,7 @@ namespace Diwen.Xbrl.Tests.Csv
 
         [Theory]
         [InlineData("www.eba.europa.eu/eu/fr/xbrl/crr/fws/finrep/its-005-2020/2022-06-01/tab/f_13.02.1.a/f_13.02.1.a.json")]
-        public static void DeserializePropertyGroupExtensionsFromJsonTest(string path)
+        public static void DeserializeEbaDocumentationFromJsonTest(string path)
         {
             var definition = TableDefinition.FromFile(path);
             var datapoint = definition.Datapoints["dp11924"];
