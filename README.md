@@ -55,12 +55,13 @@ Supports:
 
 - Australian and Finnish SBR message structures
 
-| format    | read/write | convert to          |
-| --------  | --------   | -------             |
-| xBRL-XML  | read+write | xBRL-CSV, xBRL-JSON |
-| xBRL-CSV  | read+write | xBRL-XML            |
-| xBRL-JSON | read+write | xBRL-XML            |
-| iXBRL     | read       | xBRL-XML            |
+| format               | read/write    | convert to          |
+| -------------------- | ------------- | -------             |
+| xBRL-XML             | read+write    | xBRL-CSV, xBRL-JSON |
+| xBRL-CSV             | read+write    | xBRL-XML            |
+| xBRL-CSV "Plain-csv" | not supported | not supported       |
+| xBRL-JSON            | read+write    | xBRL-XML            |
+| iXBRL                | read          | xBRL-XML            |
 
 
 ### License:
