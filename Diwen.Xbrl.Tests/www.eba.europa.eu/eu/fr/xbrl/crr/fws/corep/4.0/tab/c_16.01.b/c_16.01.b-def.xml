@@ -1,0 +1,46 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!--(C) EBA-->
+<?officialURI http://www.eba.europa.eu/eu/fr/xbrl/crr/fws/corep/4.0/tab/c_16.01.b/c_16.01.b-def.xml?>
+<?taxonomy-version 4.0?>
+<link:linkbase xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:link="http://www.xbrl.org/2003/linkbase" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xbrldt="http://xbrl.org/2005/xbrldt">
+  <link:arcroleRef arcroleURI="http://xbrl.org/int/dim/arcrole/all" xlink:type="simple" xlink:href="http://www.xbrl.org/2005/xbrldt-2005.xsd#all"/>
+  <link:arcroleRef arcroleURI="http://xbrl.org/int/dim/arcrole/hypercube-dimension" xlink:type="simple" xlink:href="http://www.xbrl.org/2005/xbrldt-2005.xsd#hypercube-dimension"/>
+  <link:arcroleRef arcroleURI="http://xbrl.org/int/dim/arcrole/dimension-domain" xlink:type="simple" xlink:href="http://www.xbrl.org/2005/xbrldt-2005.xsd#dimension-domain"/>
+  <link:arcroleRef arcroleURI="http://xbrl.org/int/dim/arcrole/domain-member" xlink:type="simple" xlink:href="http://www.xbrl.org/2005/xbrldt-2005.xsd#domain-member"/>
+  <link:roleRef roleURI="http://www.eba.europa.eu/xbrl/crr/role/fws/corep/4.0/tab/C_16.01.b/001" xlink:type="simple" xlink:href="c_16.01.b.xsd#role_001"/>
+  <link:roleRef roleURI="http://www.eba.europa.eu/xbrl/crr/role/fws/corep/4.0/tab/C_16.01.b/002" xlink:type="simple" xlink:href="c_16.01.b.xsd#role_002"/>
+  <link:definitionLink xlink:type="extended" xlink:role="http://www.eba.europa.eu/xbrl/crr/role/fws/corep/4.0/tab/C_16.01.b/001">
+    <link:loc xlink:type="locator" xlink:label="loc_hyp" xlink:href="http://www.eurofiling.info/eu/fr/xbrl/ext/model.xsd#hyp"/>
+    <link:loc xlink:type="locator" xlink:label="loc_eba_qNHH" xlink:href="../../../../../dict/met/met.xsd#eba_qNHH"/>
+    <link:definitionArc xlink:type="arc" xlink:to="loc_hyp" xlink:arcrole="http://xbrl.org/int/dim/arcrole/all" xbrldt:closed="true" xbrldt:contextElement="scenario" order="1" xlink:from="loc_eba_qNHH"/>
+    <link:loc xlink:type="locator" xlink:label="loc_eba_qAAJ" xlink:href="../../../../../dict/dim/4.0/dim.xsd#eba_qAAJ"/>
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/hypercube-dimension" xlink:from="loc_hyp" xlink:to="loc_eba_qAAJ" order="1"/>
+    <link:loc xlink:type="locator" xlink:label="loc_eba_qRF" xlink:href="../../../../../dict/dom/exp.xsd#eba_qRF"/>
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/dimension-domain" xbrldt:usable="false" xlink:from="loc_eba_qAAJ" xlink:to="loc_eba_qRF" order="1"/>
+    <link:loc xlink:type="locator" xlink:label="loc_eba_qrf_qx2043" xlink:href="../../../../../dict/dom/qrf/mem.xsd#eba_qx2043"/>
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="loc_eba_qRF" xlink:to="loc_eba_qrf_qx2043" order="1"/>
+    <link:loc xlink:type="locator" xlink:label="loc_eba_qZZZ" xlink:href="../../../../../dict/dim/4.0/dim.xsd#eba_qZZZ"/>
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/hypercube-dimension" xlink:from="loc_hyp" xlink:to="loc_eba_qZZZ" order="2"/>
+    <link:loc xlink:type="locator" xlink:label="loc_eba_qAO" xlink:href="../../../../../dict/dom/exp.xsd#eba_qAO"/>
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/dimension-domain" xbrldt:usable="false" xlink:from="loc_eba_qZZZ" xlink:to="loc_eba_qAO" order="1"/>
+    <link:loc xlink:type="locator" xlink:label="loc_eba_qao_qx2025" xlink:href="../../../../../dict/dom/qao/mem.xsd#eba_qx2025"/>
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="loc_eba_qAO" xlink:to="loc_eba_qao_qx2025" order="1"/>
+    <link:loc xlink:type="locator" xlink:label="loc_eba_qAAI" xlink:href="../../../../../dict/dim/4.0/dim.xsd#eba_qAAI"/>
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/hypercube-dimension" xlink:from="loc_hyp" xlink:to="loc_eba_qAAI" order="3"/>
+    <link:loc xlink:type="locator" xlink:label="loc_eba_qET" xlink:href="../../../../../dict/dom/exp.xsd#eba_qET"/>
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/dimension-domain" xbrldt:usable="false" xlink:from="loc_eba_qAAI" xlink:to="loc_eba_qET" order="1"/>
+    <link:loc xlink:type="locator" xlink:label="loc_eba_qet_qx2026" xlink:href="../../../../../dict/dom/qet/mem.xsd#eba_qx2026"/>
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="loc_eba_qET" xlink:to="loc_eba_qet_qx2026" order="1"/>
+    <link:loc xlink:type="locator" xlink:label="loc_eba_qAAA" xlink:href="../../../../../dict/dim/4.0/dim.xsd#eba_qAAA"/>
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/hypercube-dimension" xlink:from="loc_hyp" xlink:to="loc_eba_qAAA" order="4"/>
+    <link:loc xlink:type="locator" xlink:label="loc_eba_qCM" xlink:href="../../../../../dict/dom/exp.xsd#eba_qCM"/>
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/dimension-domain" xbrldt:usable="false" xlink:from="loc_eba_qAAA" xlink:to="loc_eba_qCM" order="1"/>
+    <link:loc xlink:type="locator" xlink:label="loc_eba_qcm_qx2020" xlink:href="../../../../../dict/dom/qcm/mem.xsd#eba_qx2020"/>
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="loc_eba_qCM" xlink:to="loc_eba_qcm_qx2020" order="1"/>
+  </link:definitionLink>
+  <link:definitionLink xlink:type="extended" xlink:role="http://www.eba.europa.eu/xbrl/crr/role/fws/corep/4.0/tab/C_16.01.b/002">
+    <link:loc xlink:type="locator" xlink:label="loc_hyp" xlink:href="http://www.eurofiling.info/eu/fr/xbrl/ext/model.xsd#hyp"/>
+    <link:loc xlink:type="locator" xlink:label="loc_eba_qAAN" xlink:href="../../../../../dict/met/4.0/met.xsd#eba_qAAN"/>
+    <link:definitionArc xlink:type="arc" xlink:to="loc_hyp" xlink:arcrole="http://xbrl.org/int/dim/arcrole/all" xbrldt:closed="true" xbrldt:contextElement="scenario" order="1" xlink:from="loc_eba_qAAN"/>
+  </link:definitionLink>
+</link:linkbase>

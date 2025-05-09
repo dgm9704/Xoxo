@@ -1,0 +1,64 @@
+{
+    "documentInfo": {
+        "documentType": "https://xbrl.org/2021/xbrl-csv",
+        "namespaces": {
+            "eba": "http://www.eba.europa.eu",
+            "eba_dim_4.0": "http://www.eba.europa.eu/xbrl/crr/dict/dim/4.0",
+            "eba_met": "http://www.eba.europa.eu/xbrl/crr/dict/met",
+            "eba_qOR": "http://www.eba.europa.eu/xbrl/crr/dict/dom/qOR",
+            "tc": "https://xbrl.org/PWD/2024-05-21/tc"
+        }
+    },
+    "tableTemplates": {
+        "C_02-00-b": {
+            "columns": {
+                "datapoint": {
+                    "propertyGroups": {
+                        "dp3294908": {
+                            "decimals": "$decimalsMonetary",
+                            "dimensions": {
+                                "concept": "eba_met:qAAO",
+                                "eba_dim_4.0:qZZX": "eba_qOR:qx2007",
+                                "unit": "$baseCurrency"
+                            },
+                            "eba:documentation": {
+                                "CellID": 304063,
+                                "ColumnVID": 236345,
+                                "FactVariableID": 3294908,
+                                "FactVariableVersionID": 3294908,
+                                "RowVID": 236347,
+                                "SheetVID": null,
+                                "cellcode": "{C_02.00.b, r0036, c0010}",
+                                "type": "m"
+                            }
+                        },
+                        "dp3294912": {
+                            "decimals": "$decimalsMonetary",
+                            "dimensions": {
+                                "concept": "eba_met:qAAP",
+                                "eba_dim_4.0:qZZX": "eba_qOR:qx2007",
+                                "unit": "$baseCurrency"
+                            },
+                            "eba:documentation": {
+                                "CellID": 304062,
+                                "ColumnVID": 236345,
+                                "FactVariableID": 3294912,
+                                "FactVariableVersionID": 3294912,
+                                "RowVID": 236346,
+                                "SheetVID": null,
+                                "cellcode": "{C_02.00.b, r0035, c0010}",
+                                "type": "m"
+                            }
+                        }
+                    }
+                },
+                "factValue": {
+                    "dimensions": {},
+                    "propertiesFrom": [
+                        "datapoint"
+                    ]
+                }
+            }
+        }
+    }
+}

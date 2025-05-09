@@ -1,0 +1,87 @@
+{
+    "documentInfo": {
+        "documentType": "https://xbrl.org/2021/xbrl-csv",
+        "namespaces": {
+            "eba": "http://www.eba.europa.eu",
+            "eba_dim_3.5": "http://www.eba.europa.eu/xbrl/crr/dict/dim/3.5",
+            "eba_dim_4.0": "http://www.eba.europa.eu/xbrl/crr/dict/dim/4.0",
+            "eba_met": "http://www.eba.europa.eu/xbrl/crr/dict/met",
+            "tc": "https://xbrl.org/PWD/2024-05-21/tc"
+        }
+    },
+    "tableTemplates": {
+        "B_03-01": {
+            "columns": {
+                "c0010": {
+                    "eba:documentation": {
+                        "KeyVariableID": "480197",
+                        "KeyVariableVID": "480197",
+                        "PropertyID": "1012401908",
+                        "headerCode": "0010",
+                        "headerDirection": "X",
+                        "headerVID": "218681",
+                        "type": "s"
+                    }
+                },
+                "c0020": {
+                    "eba:documentation": {
+                        "KeyVariableID": "480198",
+                        "KeyVariableVID": "480198",
+                        "PropertyID": "1012401910",
+                        "headerCode": "0020",
+                        "headerDirection": "X",
+                        "headerVID": "218682",
+                        "type": "s"
+                    }
+                },
+                "c0030": {
+                    "dimensions": {
+                        "concept": "eba_met:qAMI"
+                    },
+                    "eba:documentation": {
+                        "CellCode": "{B_03.01, r*, c0030}",
+                        "CellID": 201684,
+                        "ColumnVID": 234451,
+                        "FactVariableID": 480865,
+                        "FactVariableVersionID": 3287587,
+                        "RowVID": null,
+                        "SheetVID": null,
+                        "type": "t"
+                    }
+                }
+            },
+            "dimensions": {
+                "eba_dim_3.5:CRZ": "$c0010",
+                "eba_dim_4.0:qLEA": "$c0020"
+            },
+            "tc:keys": {
+                "primary": {
+                    "fields": [
+                        "c0010",
+                        "c0020"
+                    ]
+                },
+                "reference": [
+                    {
+                        "columns": [
+                            "c0020"
+                        ],
+                        "keyRef": {
+                            "tableTemplate": "B_01-02"
+                        },
+                        "name": "R2 - LEI of the entity must match_B_01.02"
+                    },
+                    {
+                        "columns": [
+                            "c0010"
+                        ],
+                        "keyRef": {
+                            "tableTemplate": "B_02-01"
+                        },
+                        "name": "R10 Contractual arr. reference number must match_B_02.01"
+                    }
+                ]
+            }
+        }
+    }
+}

@@ -1,0 +1,64 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!--(C) EBA-->
+<?officialURI http://www.eba.europa.eu/eu/fr/xbrl/crr/fws/mica/4.0/mod/mica_its-pre.xml?>
+<?taxonomy-version 4.0?>
+<link:linkbase xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:link="http://www.xbrl.org/2003/linkbase" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xbrldt="http://xbrl.org/2005/xbrldt" xmlns:gen="http://xbrl.org/2008/generic" xsi:schemaLocation="http://xbrl.org/2008/generic http://www.xbrl.org/2008/generic-link.xsd">
+  <link:arcroleRef arcroleURI="http://www.eurofiling.info/xbrl/arcrole/group-table" xlink:type="simple" xlink:href="http://www.eurofiling.info/eu/fr/xbrl/ext/model.xsd#group-table"/>
+  <gen:link xlink:type="extended" xlink:role="http://www.xbrl.org/2003/role/link">
+    <link:loc xlink:type="locator" xlink:label="loc_eba_mica_its" xlink:href="mica_its.xsd#eba_mica_its"/>
+    <link:loc xlink:type="locator" xlink:label="loc_eba_tgGI" xlink:href="../tab/tab.xsd#eba_tgGI"/>
+    <gen:arc order="1" xlink:arcrole="http://www.eurofiling.info/xbrl/arcrole/group-table" xlink:from="loc_eba_mica_its" xlink:to="loc_eba_tgGI" xlink:type="arc"/>
+    <link:loc xlink:type="locator" xlink:label="loc_eba_tgQ_00.01" xlink:href="../tab/tab.xsd#eba_tgQ_00.01"/>
+    <gen:arc order="1" xlink:arcrole="http://www.eurofiling.info/xbrl/arcrole/group-table" xlink:from="loc_eba_tgGI" xlink:to="loc_eba_tgQ_00.01" xlink:type="arc"/>
+    <link:loc xlink:type="locator" xlink:label="loc_eba_tQ_00.01" xlink:href="../tab/q_00.01/q_00.01-rend.xml#eba_tQ_00.01"/>
+    <gen:arc order="1" xlink:arcrole="http://www.eurofiling.info/xbrl/arcrole/group-table" xlink:from="loc_eba_tgQ_00.01" xlink:to="loc_eba_tQ_00.01" xlink:type="arc"/>
+    <link:loc xlink:type="locator" xlink:label="loc_eba_tgHolders" xlink:href="../tab/tab.xsd#eba_tgHolders"/>
+    <gen:arc order="2" xlink:arcrole="http://www.eurofiling.info/xbrl/arcrole/group-table" xlink:from="loc_eba_mica_its" xlink:to="loc_eba_tgHolders" xlink:type="arc"/>
+    <link:loc xlink:type="locator" xlink:label="loc_eba_tgQ_01.00" xlink:href="../tab/tab.xsd#eba_tgQ_01.00"/>
+    <gen:arc order="1" xlink:arcrole="http://www.eurofiling.info/xbrl/arcrole/group-table" xlink:from="loc_eba_tgHolders" xlink:to="loc_eba_tgQ_01.00" xlink:type="arc"/>
+    <link:loc xlink:type="locator" xlink:label="loc_eba_tQ_01.00" xlink:href="../tab/q_01.00/q_01.00-rend.xml#eba_tQ_01.00"/>
+    <gen:arc order="1" xlink:arcrole="http://www.eurofiling.info/xbrl/arcrole/group-table" xlink:from="loc_eba_tgQ_01.00" xlink:to="loc_eba_tQ_01.00" xlink:type="arc"/>
+    <link:loc xlink:type="locator" xlink:label="loc_eba_tgReserve_of_assets" xlink:href="../tab/tab.xsd#eba_tgReserve_of_assets"/>
+    <gen:arc order="3" xlink:arcrole="http://www.eurofiling.info/xbrl/arcrole/group-table" xlink:from="loc_eba_mica_its" xlink:to="loc_eba_tgReserve_of_assets" xlink:type="arc"/>
+    <link:loc xlink:type="locator" xlink:label="loc_eba_tgQ_03.01" xlink:href="../tab/tab.xsd#eba_tgQ_03.01"/>
+    <gen:arc order="1" xlink:arcrole="http://www.eurofiling.info/xbrl/arcrole/group-table" xlink:from="loc_eba_tgReserve_of_assets" xlink:to="loc_eba_tgQ_03.01" xlink:type="arc"/>
+    <link:loc xlink:type="locator" xlink:label="loc_eba_tQ_03.01" xlink:href="../tab/q_03.01/q_03.01-rend.xml#eba_tQ_03.01"/>
+    <gen:arc order="1" xlink:arcrole="http://www.eurofiling.info/xbrl/arcrole/group-table" xlink:from="loc_eba_tgQ_03.01" xlink:to="loc_eba_tQ_03.01" xlink:type="arc"/>
+    <link:loc xlink:type="locator" xlink:label="loc_eba_tgQ_03.02" xlink:href="../tab/tab.xsd#eba_tgQ_03.02"/>
+    <gen:arc order="2" xlink:arcrole="http://www.eurofiling.info/xbrl/arcrole/group-table" xlink:from="loc_eba_tgReserve_of_assets" xlink:to="loc_eba_tgQ_03.02" xlink:type="arc"/>
+    <link:loc xlink:type="locator" xlink:label="loc_eba_tQ_03.02.a" xlink:href="../tab/q_03.02.a/q_03.02.a-rend.xml#eba_tQ_03.02.a"/>
+    <gen:arc order="1" xlink:arcrole="http://www.eurofiling.info/xbrl/arcrole/group-table" xlink:from="loc_eba_tgQ_03.02" xlink:to="loc_eba_tQ_03.02.a" xlink:type="arc"/>
+    <link:loc xlink:type="locator" xlink:label="loc_eba_tQ_03.02.b" xlink:href="../tab/q_03.02.b/q_03.02.b-rend.xml#eba_tQ_03.02.b"/>
+    <gen:arc order="2" xlink:arcrole="http://www.eurofiling.info/xbrl/arcrole/group-table" xlink:from="loc_eba_tgQ_03.02" xlink:to="loc_eba_tQ_03.02.b" xlink:type="arc"/>
+    <link:loc xlink:type="locator" xlink:label="loc_eba_tgTokens_and_reserve" xlink:href="../tab/tab.xsd#eba_tgTokens_and_reserve"/>
+    <gen:arc order="4" xlink:arcrole="http://www.eurofiling.info/xbrl/arcrole/group-table" xlink:from="loc_eba_mica_its" xlink:to="loc_eba_tgTokens_and_reserve" xlink:type="arc"/>
+    <link:loc xlink:type="locator" xlink:label="loc_eba_tgQ_02.00" xlink:href="../tab/tab.xsd#eba_tgQ_02.00"/>
+    <gen:arc order="1" xlink:arcrole="http://www.eurofiling.info/xbrl/arcrole/group-table" xlink:from="loc_eba_tgTokens_and_reserve" xlink:to="loc_eba_tgQ_02.00" xlink:type="arc"/>
+    <link:loc xlink:type="locator" xlink:label="loc_eba_tQ_02.00" xlink:href="../tab/q_02.00/q_02.00-rend.xml#eba_tQ_02.00"/>
+    <gen:arc order="1" xlink:arcrole="http://www.eurofiling.info/xbrl/arcrole/group-table" xlink:from="loc_eba_tgQ_02.00" xlink:to="loc_eba_tQ_02.00" xlink:type="arc"/>
+    <link:loc xlink:type="locator" xlink:label="loc_eba_tgTransactions" xlink:href="../tab/tab.xsd#eba_tgTransactions"/>
+    <gen:arc order="5" xlink:arcrole="http://www.eurofiling.info/xbrl/arcrole/group-table" xlink:from="loc_eba_mica_its" xlink:to="loc_eba_tgTransactions" xlink:type="arc"/>
+    <link:loc xlink:type="locator" xlink:label="loc_eba_tgQ_04.01" xlink:href="../tab/tab.xsd#eba_tgQ_04.01"/>
+    <gen:arc order="1" xlink:arcrole="http://www.eurofiling.info/xbrl/arcrole/group-table" xlink:from="loc_eba_tgTransactions" xlink:to="loc_eba_tgQ_04.01" xlink:type="arc"/>
+    <link:loc xlink:type="locator" xlink:label="loc_eba_tQ_04.01" xlink:href="../tab/q_04.01/q_04.01-rend.xml#eba_tQ_04.01"/>
+    <gen:arc order="1" xlink:arcrole="http://www.eurofiling.info/xbrl/arcrole/group-table" xlink:from="loc_eba_tgQ_04.01" xlink:to="loc_eba_tQ_04.01" xlink:type="arc"/>
+    <link:loc xlink:type="locator" xlink:label="loc_eba_tgQ_04.02" xlink:href="../tab/tab.xsd#eba_tgQ_04.02"/>
+    <gen:arc order="2" xlink:arcrole="http://www.eurofiling.info/xbrl/arcrole/group-table" xlink:from="loc_eba_tgTransactions" xlink:to="loc_eba_tgQ_04.02" xlink:type="arc"/>
+    <link:loc xlink:type="locator" xlink:label="loc_eba_tQ_04.02" xlink:href="../tab/q_04.02/q_04.02-rend.xml#eba_tQ_04.02"/>
+    <gen:arc order="1" xlink:arcrole="http://www.eurofiling.info/xbrl/arcrole/group-table" xlink:from="loc_eba_tgQ_04.02" xlink:to="loc_eba_tQ_04.02" xlink:type="arc"/>
+    <link:loc xlink:type="locator" xlink:label="loc_eba_tgQ_04.03" xlink:href="../tab/tab.xsd#eba_tgQ_04.03"/>
+    <gen:arc order="3" xlink:arcrole="http://www.eurofiling.info/xbrl/arcrole/group-table" xlink:from="loc_eba_tgTransactions" xlink:to="loc_eba_tgQ_04.03" xlink:type="arc"/>
+    <link:loc xlink:type="locator" xlink:label="loc_eba_tQ_04.03.a" xlink:href="../tab/q_04.03.a/q_04.03.a-rend.xml#eba_tQ_04.03.a"/>
+    <gen:arc order="1" xlink:arcrole="http://www.eurofiling.info/xbrl/arcrole/group-table" xlink:from="loc_eba_tgQ_04.03" xlink:to="loc_eba_tQ_04.03.a" xlink:type="arc"/>
+    <link:loc xlink:type="locator" xlink:label="loc_eba_tQ_04.03.b" xlink:href="../tab/q_04.03.b/q_04.03.b-rend.xml#eba_tQ_04.03.b"/>
+    <gen:arc order="2" xlink:arcrole="http://www.eurofiling.info/xbrl/arcrole/group-table" xlink:from="loc_eba_tgQ_04.03" xlink:to="loc_eba_tQ_04.03.b" xlink:type="arc"/>
+    <link:loc xlink:type="locator" xlink:label="loc_eba_tgQ_04.04" xlink:href="../tab/tab.xsd#eba_tgQ_04.04"/>
+    <gen:arc order="4" xlink:arcrole="http://www.eurofiling.info/xbrl/arcrole/group-table" xlink:from="loc_eba_tgTransactions" xlink:to="loc_eba_tgQ_04.04" xlink:type="arc"/>
+    <link:loc xlink:type="locator" xlink:label="loc_eba_tQ_04.04" xlink:href="../tab/q_04.04/q_04.04-rend.xml#eba_tQ_04.04"/>
+    <gen:arc order="1" xlink:arcrole="http://www.eurofiling.info/xbrl/arcrole/group-table" xlink:from="loc_eba_tgQ_04.04" xlink:to="loc_eba_tQ_04.04" xlink:type="arc"/>
+    <link:loc xlink:type="locator" xlink:label="loc_eba_tgQ_05.00" xlink:href="../tab/tab.xsd#eba_tgQ_05.00"/>
+    <gen:arc order="5" xlink:arcrole="http://www.eurofiling.info/xbrl/arcrole/group-table" xlink:from="loc_eba_tgTransactions" xlink:to="loc_eba_tgQ_05.00" xlink:type="arc"/>
+    <link:loc xlink:type="locator" xlink:label="loc_eba_tQ_05.00" xlink:href="../tab/q_05.00/q_05.00-rend.xml#eba_tQ_05.00"/>
+    <gen:arc order="1" xlink:arcrole="http://www.eurofiling.info/xbrl/arcrole/group-table" xlink:from="loc_eba_tgQ_05.00" xlink:to="loc_eba_tQ_05.00" xlink:type="arc"/>
+  </gen:link>
+</link:linkbase>

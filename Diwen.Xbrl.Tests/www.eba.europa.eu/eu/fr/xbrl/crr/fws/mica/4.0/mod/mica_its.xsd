@@ -1,0 +1,31 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!--(C) EBA-->
+<?officialURI http://www.eba.europa.eu/eu/fr/xbrl/crr/fws/mica/4.0/mod/mica_its.xsd?>
+<?taxonomy-version 1.0.0?>
+<xs:schema xmlns:eba_mod_mica_its="http://www.eba.europa.eu/xbrl/crr/fws/mica/4.0/mod/mica_its" xmlns:xbrli="http://www.xbrl.org/2003/instance" xmlns:model="http://www.eurofiling.info/xbrl/ext/model" xmlns:link="http://www.xbrl.org/2003/linkbase" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xbrldt="http://xbrl.org/2005/xbrldt" elementFormDefault="qualified" attributeFormDefault="unqualified" targetNamespace="http://www.eba.europa.eu/xbrl/crr/fws/mica/4.0/mod/mica_its" xsi:schemaLocation="http://www.xbrl.org/2003/instance http://www.xbrl.org/2003/xbrl-instance-2003-12-31.xsd http://www.eurofiling.info/xbrl/ext/model http://www.eurofiling.info/eu/fr/xbrl/ext/model.xsd http://www.eurofiling.info/xbrl/ext/filing-indicators http://www.eurofiling.info/eu/fr/xbrl/ext/filing-indicators.xsd">
+  <xs:import namespace="http://www.xbrl.org/2003/instance" schemaLocation="http://www.xbrl.org/2003/xbrl-instance-2003-12-31.xsd"/>
+  <xs:import namespace="http://www.eurofiling.info/xbrl/ext/model" schemaLocation="http://www.eurofiling.info/eu/fr/xbrl/ext/model.xsd"/>
+  <xs:import namespace="http://www.eurofiling.info/xbrl/func" schemaLocation="http://www.eurofiling.info/eu/fr/xbrl/func/func.xsd"/>
+  <xs:import namespace="http://www.xbrl.org/taxonomy/int/filing-indicators/REC/2021-02-03" schemaLocation="http://www.xbrl.org/taxonomy/int/filing-indicators/REC/2021-02-03/filing-indicators.xsd"/>
+  <xs:import namespace ="http://www.eurofiling.info/xbrl/ext/filing-indicators" schemaLocation="http://www.eurofiling.info/eu/fr/xbrl/ext/filing-indicators.xsd"/>
+  <xs:import namespace="http://www.eba.europa.eu/xbrl/crr/fws/mica/4.0/tab/Q_04.03.b" schemaLocation="../tab/q_04.03.b/q_04.03.b.xsd"/>
+  <xs:import namespace="http://www.eba.europa.eu/xbrl/crr/fws/mica/4.0/tab/Q_00.01" schemaLocation="../tab/q_00.01/q_00.01.xsd"/>
+  <xs:import namespace="http://www.eba.europa.eu/xbrl/crr/fws/mica/4.0/tab/Q_05.00" schemaLocation="../tab/q_05.00/q_05.00.xsd"/>
+  <xs:import namespace="http://www.eba.europa.eu/xbrl/crr/fws/mica/4.0/tab/Q_04.04" schemaLocation="../tab/q_04.04/q_04.04.xsd"/>
+  <xs:import namespace="http://www.eba.europa.eu/xbrl/crr/fws/mica/4.0/tab/Q_04.03.a" schemaLocation="../tab/q_04.03.a/q_04.03.a.xsd"/>
+  <xs:import namespace="http://www.eba.europa.eu/xbrl/crr/fws/mica/4.0/tab/Q_04.02" schemaLocation="../tab/q_04.02/q_04.02.xsd"/>
+  <xs:import namespace="http://www.eba.europa.eu/xbrl/crr/fws/mica/4.0/tab/Q_04.01" schemaLocation="../tab/q_04.01/q_04.01.xsd"/>
+  <xs:import namespace="http://www.eba.europa.eu/xbrl/crr/fws/mica/4.0/tab/Q_03.02.b" schemaLocation="../tab/q_03.02.b/q_03.02.b.xsd"/>
+  <xs:import namespace="http://www.eba.europa.eu/xbrl/crr/fws/mica/4.0/tab/Q_03.02.a" schemaLocation="../tab/q_03.02.a/q_03.02.a.xsd"/>
+  <xs:import namespace="http://www.eba.europa.eu/xbrl/crr/fws/mica/4.0/tab/Q_03.01" schemaLocation="../tab/q_03.01/q_03.01.xsd"/>
+  <xs:import namespace="http://www.eba.europa.eu/xbrl/crr/fws/mica/4.0/tab/Q_02.00" schemaLocation="../tab/q_02.00/q_02.00.xsd"/>
+  <xs:import namespace="http://www.eba.europa.eu/xbrl/crr/fws/mica/4.0/tab/Q_01.00" schemaLocation="../tab/q_01.00/q_01.00.xsd"/>
+  <xs:import namespace="http://www.eba.europa.eu/xbrl/crr/fws/mica/4.0/val/MICA_ITS" schemaLocation="../val/mica_its-val.xsd"/>
+  <xs:annotation>
+    <xs:appinfo>
+      <link:linkbaseRef xlink:type="simple" xlink:href="mica_its-lab-en.xml" xlink:arcrole="http://www.w3.org/1999/xlink/properties/linkbase" xlink:role="http://www.xbrl.org/2003/role/labelLinkbaseRef"/>
+      <link:linkbaseRef xlink:type="simple" xlink:href="mica_its-pre.xml" xlink:arcrole="http://www.w3.org/1999/xlink/properties/linkbase"/>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="MICA_ITS" type="model:moduleType" substitutionGroup="xbrli:item" model:version="1.0.0" id="eba_mica_its" nillable="true" abstract="true" xbrli:periodType="instant" model:fromDate="2025-03-31"/>
+</xs:schema>

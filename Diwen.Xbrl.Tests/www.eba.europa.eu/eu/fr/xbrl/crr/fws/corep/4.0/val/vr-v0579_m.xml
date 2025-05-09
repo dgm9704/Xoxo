@@ -1,0 +1,840 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<link:linkbase xmlns:asf="http://xbrl.org/2010/filter/aspect-cover" xmlns:cf="http://xbrl.org/2008/filter/concept" xmlns:df="http://xbrl.org/2008/filter/dimension" xmlns:ea="http://xbrl.org/2008/assertion/existence" xmlns:eba_AP="http://www.eba.europa.eu/xbrl/crr/dict/dom/AP" xmlns:eba_BA="http://www.eba.europa.eu/xbrl/crr/dict/dom/BA" xmlns:eba_BT="http://www.eba.europa.eu/xbrl/crr/dict/dom/BT" xmlns:eba_CG="http://www.eba.europa.eu/xbrl/crr/dict/dom/CG" xmlns:eba_CI="http://www.eba.europa.eu/xbrl/crr/dict/dom/CI" xmlns:eba_CP="http://www.eba.europa.eu/xbrl/crr/dict/dom/CP" xmlns:eba_CQ="http://www.eba.europa.eu/xbrl/crr/dict/dom/CQ" xmlns:eba_CU="http://www.eba.europa.eu/xbrl/crr/dict/dom/CU" xmlns:eba_EN="http://www.eba.europa.eu/xbrl/crr/dict/dom/EN" xmlns:eba_ER="http://www.eba.europa.eu/xbrl/crr/dict/dom/ER" xmlns:eba_ET="http://www.eba.europa.eu/xbrl/crr/dict/dom/ET" xmlns:eba_GA="http://www.eba.europa.eu/xbrl/crr/dict/dom/GA" xmlns:eba_IA="http://www.eba.europa.eu/xbrl/crr/dict/dom/IA" xmlns:eba_IM="http://www.eba.europa.eu/xbrl/crr/dict/dom/IM" xmlns:eba_OF="http://www.eba.europa.eu/xbrl/crr/dict/dom/OF" xmlns:eba_PC="http://www.eba.europa.eu/xbrl/crr/dict/dom/PC" xmlns:eba_PI="http://www.eba.europa.eu/xbrl/crr/dict/dom/PI" xmlns:eba_PU="http://www.eba.europa.eu/xbrl/crr/dict/dom/PU" xmlns:eba_RF="http://www.eba.europa.eu/xbrl/crr/dict/dom/RF" xmlns:eba_RP="http://www.eba.europa.eu/xbrl/crr/dict/dom/RP" xmlns:eba_RS="http://www.eba.europa.eu/xbrl/crr/dict/dom/RS" xmlns:eba_RT="http://www.eba.europa.eu/xbrl/crr/dict/dom/RT" xmlns:eba_SC="http://www.eba.europa.eu/xbrl/crr/dict/dom/SC" xmlns:eba_ST="http://www.eba.europa.eu/xbrl/crr/dict/dom/ST" xmlns:eba_TA="http://www.eba.europa.eu/xbrl/crr/dict/dom/TA" xmlns:eba_TI="http://www.eba.europa.eu/xbrl/crr/dict/dom/TI" xmlns:eba_TR="http://www.eba.europa.eu/xbrl/crr/dict/dom/TR" xmlns:eba_UE="http://www.eba.europa.eu/xbrl/crr/dict/dom/UE" xmlns:eba_dim_3.4="http://www.eba.europa.eu/xbrl/crr/dict/dim/3.4" xmlns:eba_dim_4.0="http://www.eba.europa.eu/xbrl/crr/dict/dim/4.0" xmlns:eba_met="http://www.eba.europa.eu/xbrl/crr/dict/met" xmlns:eba_qAE="http://www.eba.europa.eu/xbrl/crr/dict/dom/qAE" xmlns:eba_qAF="http://www.eba.europa.eu/xbrl/crr/dict/dom/qAF" xmlns:eba_qAI="http://www.eba.europa.eu/xbrl/crr/dict/dom/qAI" xmlns:eba_qAO="http://www.eba.europa.eu/xbrl/crr/dict/dom/qAO" xmlns:eba_qAP="http://www.eba.europa.eu/xbrl/crr/dict/dom/qAP" xmlns:eba_qAZ="http://www.eba.europa.eu/xbrl/crr/dict/dom/qAZ" xmlns:eba_qCG="http://www.eba.europa.eu/xbrl/crr/dict/dom/qCG" xmlns:eba_qCM="http://www.eba.europa.eu/xbrl/crr/dict/dom/qCM" xmlns:eba_qCN="http://www.eba.europa.eu/xbrl/crr/dict/dom/qCN" xmlns:eba_qCP="http://www.eba.europa.eu/xbrl/crr/dict/dom/qCP" xmlns:eba_qCQ="http://www.eba.europa.eu/xbrl/crr/dict/dom/qCQ" xmlns:eba_qCS="http://www.eba.europa.eu/xbrl/crr/dict/dom/qCS" xmlns:eba_qCY="http://www.eba.europa.eu/xbrl/crr/dict/dom/qCY" xmlns:eba_qEC="http://www.eba.europa.eu/xbrl/crr/dict/dom/qEC" xmlns:eba_qEE="http://www.eba.europa.eu/xbrl/crr/dict/dom/qEE" xmlns:eba_qES="http://www.eba.europa.eu/xbrl/crr/dict/dom/qES" xmlns:eba_qET="http://www.eba.europa.eu/xbrl/crr/dict/dom/qET" xmlns:eba_qFF="http://www.eba.europa.eu/xbrl/crr/dict/dom/qFF" xmlns:eba_qFI="http://www.eba.europa.eu/xbrl/crr/dict/dom/qFI" xmlns:eba_qFP="http://www.eba.europa.eu/xbrl/crr/dict/dom/qFP" xmlns:eba_qIM="http://www.eba.europa.eu/xbrl/crr/dict/dom/qIM" xmlns:eba_qMA="http://www.eba.europa.eu/xbrl/crr/dict/dom/qMA" xmlns:eba_qNF="http://www.eba.europa.eu/xbrl/crr/dict/dom/qNF" xmlns:eba_qOI="http://www.eba.europa.eu/xbrl/crr/dict/dom/qOI" xmlns:eba_qOR="http://www.eba.europa.eu/xbrl/crr/dict/dom/qOR" xmlns:eba_qPC="http://www.eba.europa.eu/xbrl/crr/dict/dom/qPC" xmlns:eba_qPI="http://www.eba.europa.eu/xbrl/crr/dict/dom/qPI" xmlns:eba_qPL="http://www.eba.europa.eu/xbrl/crr/dict/dom/qPL" xmlns:eba_qPO="http://www.eba.europa.eu/xbrl/crr/dict/dom/qPO" xmlns:eba_qPR="http://www.eba.europa.eu/xbrl/crr/dict/dom/qPR" xmlns:eba_qRE="http://www.eba.europa.eu/xbrl/crr/dict/dom/qRE" xmlns:eba_qRF="http://www.eba.europa.eu/xbrl/crr/dict/dom/qRF" xmlns:eba_qRP="http://www.eba.europa.eu/xbrl/crr/dict/dom/qRP" xmlns:eba_qSE="http://www.eba.europa.eu/xbrl/crr/dict/dom/qSE" xmlns:eba_qSR="http://www.eba.europa.eu/xbrl/crr/dict/dom/qSR" xmlns:eba_qST="http://www.eba.europa.eu/xbrl/crr/dict/dom/qST" xmlns:eba_qTA="http://www.eba.europa.eu/xbrl/crr/dict/dom/qTA" xmlns:eba_qTE="http://www.eba.europa.eu/xbrl/crr/dict/dom/qTE" xmlns:eba_qTI="http://www.eba.europa.eu/xbrl/crr/dict/dom/qTI" xmlns:eba_qTP="http://www.eba.europa.eu/xbrl/crr/dict/dom/qTP" xmlns:eba_qTR="http://www.eba.europa.eu/xbrl/crr/dict/dom/qTR" xmlns:find="http://www.eurofiling.info/xbrl/ext/filing-indicators" xmlns:fn="http://www.w3.org/2005/xpath-functions" xmlns:generic="http://xbrl.org/2008/generic" xmlns:gf="http://xbrl.org/2008/filter/general" xmlns:iaf="http://www.eurofiling.info/xbrl/func/interval-arithmetics" xmlns:label="http://xbrl.org/2008/label" xmlns:link="http://www.xbrl.org/2003/linkbase" xmlns:mf="http://xbrl.org/2008/filter/match" xmlns:msg="http://xbrl.org/2010/message" xmlns:pvar="http://www.eurofiling.info/xbrl/ext/pivot-variable" xmlns:va="http://xbrl.org/2008/assertion/value" xmlns:validation="http://xbrl.org/2008/validation" xmlns:variable="http://xbrl.org/2008/variable" xmlns:xfi="http://www.xbrl.org/2008/function/instance" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:gen="http://xbrl.org/2008/generic" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.xbrl.org/2003/linkbase http://www.xbrl.org/2003/xbrl-linkbase-2003-12-31.xsd http://www.xbrl.org/2003/linkbase http://www.xbrl.org/2003/xbrl-linkbase-2003-12-31.xsd http://xbrl.org/2008/generic http://www.xbrl.org/2008/generic-link.xsd http://xbrl.org/2008/formula http://www.xbrl.org/2008/formula.xsd http://xbrl.org/2008/assertion/value http://www.xbrl.org/2008/value-assertion.xsd http://xbrl.org/2008/assertion/existence http://www.xbrl.org/2008/existence-assertion.xsd http://xbrl.org/2008/assertion/consistency http://www.xbrl.org/2008/consistency-assertion.xsd http://xbrl.org/2008/variable http://www.xbrl.org/2008/variable.xsd http://xbrl.org/2008/filter/concept http://www.xbrl.org/2008/concept-filter.xsd http://xbrl.org/2008/filter/unit http://www.xbrl.org/2008/unit-filter.xsd http://xbrl.org/2008/filter/dimension http://www.xbrl.org/2008/dimension-filter.xsd http://xbrl.org/2008/filter/general http://www.xbrl.org/2008/general-filter.xsd http://xbrl.org/2008/filter/period http://www.xbrl.org/2008/period-filter.xsd http://xbrl.org/2008/label http://www.xbrl.org/2008/generic-label.xsd http://xbrl.org/2010/filter/aspect-cover http://www.xbrl.org/2010/aspect-cover-filter.xsd http://xbrl.org/2008/filter/match http://www.xbrl.org/2013/match-filter.xsd http://xbrl.org/2010/message http://www.xbrl.org/2010/generic-message.xsd">
+  <link:arcroleRef xlink:type="simple" arcroleURI="http://xbrl.org/arcrole/2008/element-label" xlink:href="http://www.xbrl.org/2008/generic-label.xsd#element-label"/>
+  <link:arcroleRef xlink:type="simple" arcroleURI="http://xbrl.org/arcrole/2010/assertion-unsatisfied-message" xlink:href="http://www.xbrl.org/2010/validation-message.xsd#assertion-unsatisfied-message"/>
+  <link:arcroleRef xlink:type="simple" arcroleURI="http://xbrl.org/arcrole/2008/variable-set" xlink:href="http://www.xbrl.org/2008/variable.xsd#variable-set"/>
+  <link:arcroleRef xlink:type="simple" arcroleURI="http://xbrl.org/arcrole/2008/variable-filter" xlink:href="http://www.xbrl.org/2008/variable.xsd#variable-filter"/>
+  <link:arcroleRef xlink:type="simple" arcroleURI="http://xbrl.org/arcrole/2008/variable-set-filter" xlink:href="http://www.xbrl.org/2008/variable.xsd#variable-set-filter"/>
+  <link:roleRef xlink:type="simple" roleURI="http://www.xbrl.org/2008/role/label" xlink:href="http://www.xbrl.org/2008/generic-label.xsd#standard-label"/>
+  <link:roleRef xlink:type="simple" roleURI="http://www.xbrl.org/2008/role/verboseLabel" xlink:href="http://www.xbrl.org/2008/generic-label.xsd#verbose-label"/>
+  <link:roleRef xlink:type="simple" roleURI="http://www.xbrl.org/2008/role/link" xlink:href="http://www.xbrl.org/2008/generic-link.xsd#standard-link-role"/>
+  <link:roleRef xlink:type="simple" roleURI="http://www.xbrl.org/2010/role/message" xlink:href="http://www.xbrl.org/2010/generic-message.xsd#standard-message"/>
+  <link:roleRef xlink:type="simple" roleURI="http://www.xbrl.org/2010/role/terseMessage" xlink:href="http://www.xbrl.org/2010/generic-message.xsd#terse-message"/>
+  <generic:link xlink:type="extended" xlink:role="http://www.xbrl.org/2003/role/link">
+    <variable:factVariable xlink:type="resource" xlink:label="a_0" id="a_0" bindAsSequence="false" fallbackValue="0"/>
+    <variable:variableFilterArc xlink:arcrole="http://xbrl.org/arcrole/2008/variable-filter" xlink:from="a_0" xlink:to="qABV" xlink:type="arc" complement="false" cover="true" order="1"/>
+    <variable:variableFilterArc xlink:arcrole="http://xbrl.org/arcrole/2008/variable-filter" xlink:from="a_0" xlink:to="qZZW_qOR_qx2041" xlink:type="arc" complement="false" cover="true" order="1"/>
+    <variable:factVariable xlink:type="resource" xlink:label="a_1" id="a_1" bindAsSequence="false" fallbackValue="0"/>
+    <variable:variableFilterArc xlink:arcrole="http://xbrl.org/arcrole/2008/variable-filter" xlink:from="a_1" xlink:to="qABV" xlink:type="arc" complement="false" cover="true" order="1"/>
+    <variable:variableFilterArc xlink:arcrole="http://xbrl.org/arcrole/2008/variable-filter" xlink:from="a_1" xlink:to="qZZW_qOR_qx2041" xlink:type="arc" complement="false" cover="true" order="1"/>
+    <variable:factVariable xlink:type="resource" xlink:label="a_10" id="a_10" bindAsSequence="false" fallbackValue="0"/>
+    <variable:variableFilterArc xlink:arcrole="http://xbrl.org/arcrole/2008/variable-filter" xlink:from="a_10" xlink:to="qABV" xlink:type="arc" complement="false" cover="true" order="1"/>
+    <variable:variableFilterArc xlink:arcrole="http://xbrl.org/arcrole/2008/variable-filter" xlink:from="a_10" xlink:to="qZZW_qOR_qx2041" xlink:type="arc" complement="false" cover="true" order="1"/>
+    <variable:factVariable xlink:type="resource" xlink:label="a_11" id="a_11" bindAsSequence="false" fallbackValue="0"/>
+    <variable:variableFilterArc xlink:arcrole="http://xbrl.org/arcrole/2008/variable-filter" xlink:from="a_11" xlink:to="qABV" xlink:type="arc" complement="false" cover="true" order="1"/>
+    <variable:variableFilterArc xlink:arcrole="http://xbrl.org/arcrole/2008/variable-filter" xlink:from="a_11" xlink:to="qZZW_qOR_qx2041" xlink:type="arc" complement="false" cover="true" order="1"/>
+    <variable:factVariable xlink:type="resource" xlink:label="a_12" id="a_12" bindAsSequence="false" fallbackValue="0"/>
+    <variable:variableFilterArc xlink:arcrole="http://xbrl.org/arcrole/2008/variable-filter" xlink:from="a_12" xlink:to="qABV" xlink:type="arc" complement="false" cover="true" order="1"/>
+    <variable:variableFilterArc xlink:arcrole="http://xbrl.org/arcrole/2008/variable-filter" xlink:from="a_12" xlink:to="qZZW_qOR_qx2041" xlink:type="arc" complement="false" cover="true" order="1"/>
+    <variable:factVariable xlink:type="resource" xlink:label="a_13" id="a_13" bindAsSequence="false" fallbackValue="0"/>
+    <variable:variableFilterArc xlink:arcrole="http://xbrl.org/arcrole/2008/variable-filter" xlink:from="a_13" xlink:to="qABV" xlink:type="arc" complement="false" cover="true" order="1"/>
+    <variable:variableFilterArc xlink:arcrole="http://xbrl.org/arcrole/2008/variable-filter" xlink:from="a_13" xlink:to="qZZW_qOR_qx2041" xlink:type="arc" complement="false" cover="true" order="1"/>
+    <variable:factVariable xlink:type="resource" xlink:label="a_14" id="a_14" bindAsSequence="false" fallbackValue="0"/>
+    <variable:variableFilterArc xlink:arcrole="http://xbrl.org/arcrole/2008/variable-filter" xlink:from="a_14" xlink:to="qABV" xlink:type="arc" complement="false" cover="true" order="1"/>
+    <variable:variableFilterArc xlink:arcrole="http://xbrl.org/arcrole/2008/variable-filter" xlink:from="a_14" xlink:to="qZZW_qOR_qx2041" xlink:type="arc" complement="false" cover="true" order="1"/>
+    <variable:factVariable xlink:type="resource" xlink:label="a_15" id="a_15" bindAsSequence="false" fallbackValue="0"/>
+    <variable:variableFilterArc xlink:arcrole="http://xbrl.org/arcrole/2008/variable-filter" xlink:from="a_15" xlink:to="qABV" xlink:type="arc" complement="false" cover="true" order="1"/>
+    <variable:variableFilterArc xlink:arcrole="http://xbrl.org/arcrole/2008/variable-filter" xlink:from="a_15" xlink:to="qZZW_qOR_qx2041" xlink:type="arc" complement="false" cover="true" order="1"/>
+    <variable:factVariable xlink:type="resource" xlink:label="a_16" id="a_16" bindAsSequence="false" fallbackValue="0"/>
+    <variable:variableFilterArc xlink:arcrole="http://xbrl.org/arcrole/2008/variable-filter" xlink:from="a_16" xlink:to="qABV" xlink:type="arc" complement="false" cover="true" order="1"/>
+    <variable:variableFilterArc xlink:arcrole="http://xbrl.org/arcrole/2008/variable-filter" xlink:from="a_16" xlink:to="qZZW_qOR_qx2041" xlink:type="arc" complement="false" cover="true" order="1"/>
+    <variable:factVariable xlink:type="resource" xlink:label="a_17" id="a_17" bindAsSequence="false" fallbackValue="0"/>
+    <variable:variableFilterArc xlink:arcrole="http://xbrl.org/arcrole/2008/variable-filter" xlink:from="a_17" xlink:to="qABV" xlink:type="arc" complement="false" cover="true" order="1"/>
+    <variable:variableFilterArc xlink:arcrole="http://xbrl.org/arcrole/2008/variable-filter" xlink:from="a_17" xlink:to="qZZW_qOR_qx2041" xlink:type="arc" complement="false" cover="true" order="1"/>
+    <variable:factVariable xlink:type="resource" xlink:label="a_18" id="a_18" bindAsSequence="false" fallbackValue="0"/>
+    <variable:variableFilterArc xlink:arcrole="http://xbrl.org/arcrole/2008/variable-filter" xlink:from="a_18" xlink:to="qABV" xlink:type="arc" complement="false" cover="true" order="1"/>
+    <variable:variableFilterArc xlink:arcrole="http://xbrl.org/arcrole/2008/variable-filter" xlink:from="a_18" xlink:to="qZZW_qOR_qx2041" xlink:type="arc" complement="false" cover="true" order="1"/>
+    <variable:factVariable xlink:type="resource" xlink:label="a_19" id="a_19" bindAsSequence="false" fallbackValue="0"/>
+    <variable:variableFilterArc xlink:arcrole="http://xbrl.org/arcrole/2008/variable-filter" xlink:from="a_19" xlink:to="qABV" xlink:type="arc" complement="false" cover="true" order="1"/>
+    <variable:variableFilterArc xlink:arcrole="http://xbrl.org/arcrole/2008/variable-filter" xlink:from="a_19" xlink:to="qZZW_qOR_qx2041" xlink:type="arc" complement="false" cover="true" order="1"/>
+    <variable:factVariable xlink:type="resource" xlink:label="a_2" id="a_2" bindAsSequence="false" fallbackValue="0"/>
+    <variable:variableFilterArc xlink:arcrole="http://xbrl.org/arcrole/2008/variable-filter" xlink:from="a_2" xlink:to="qABV" xlink:type="arc" complement="false" cover="true" order="1"/>
+    <variable:variableFilterArc xlink:arcrole="http://xbrl.org/arcrole/2008/variable-filter" xlink:from="a_2" xlink:to="qZZW_qOR_qx2041" xlink:type="arc" complement="false" cover="true" order="1"/>
+    <variable:factVariable xlink:type="resource" xlink:label="a_20" id="a_20" bindAsSequence="false" fallbackValue="0"/>
+    <variable:variableFilterArc xlink:arcrole="http://xbrl.org/arcrole/2008/variable-filter" xlink:from="a_20" xlink:to="qABV" xlink:type="arc" complement="false" cover="true" order="1"/>
+    <variable:variableFilterArc xlink:arcrole="http://xbrl.org/arcrole/2008/variable-filter" xlink:from="a_20" xlink:to="qZZW_qOR_qx2041" xlink:type="arc" complement="false" cover="true" order="1"/>
+    <variable:factVariable xlink:type="resource" xlink:label="a_21" id="a_21" bindAsSequence="false" fallbackValue="0"/>
+    <variable:variableFilterArc xlink:arcrole="http://xbrl.org/arcrole/2008/variable-filter" xlink:from="a_21" xlink:to="qABV" xlink:type="arc" complement="false" cover="true" order="1"/>
+    <variable:variableFilterArc xlink:arcrole="http://xbrl.org/arcrole/2008/variable-filter" xlink:from="a_21" xlink:to="qZZW_qOR_qx2041" xlink:type="arc" complement="false" cover="true" order="1"/>
+    <variable:factVariable xlink:type="resource" xlink:label="a_22" id="a_22" bindAsSequence="false" fallbackValue="0"/>
+    <variable:variableFilterArc xlink:arcrole="http://xbrl.org/arcrole/2008/variable-filter" xlink:from="a_22" xlink:to="qABV" xlink:type="arc" complement="false" cover="true" order="1"/>
+    <variable:variableFilterArc xlink:arcrole="http://xbrl.org/arcrole/2008/variable-filter" xlink:from="a_22" xlink:to="qZZW_qOR_qx2041" xlink:type="arc" complement="false" cover="true" order="1"/>
+    <variable:factVariable xlink:type="resource" xlink:label="a_23" id="a_23" bindAsSequence="false" fallbackValue="0"/>
+    <variable:variableFilterArc xlink:arcrole="http://xbrl.org/arcrole/2008/variable-filter" xlink:from="a_23" xlink:to="qABV" xlink:type="arc" complement="false" cover="true" order="1"/>
+    <variable:variableFilterArc xlink:arcrole="http://xbrl.org/arcrole/2008/variable-filter" xlink:from="a_23" xlink:to="qZZW_qOR_qx2041" xlink:type="arc" complement="false" cover="true" order="1"/>
+    <variable:factVariable xlink:type="resource" xlink:label="a_3" id="a_3" bindAsSequence="false" fallbackValue="0"/>
+    <variable:variableFilterArc xlink:arcrole="http://xbrl.org/arcrole/2008/variable-filter" xlink:from="a_3" xlink:to="qABV" xlink:type="arc" complement="false" cover="true" order="1"/>
+    <variable:variableFilterArc xlink:arcrole="http://xbrl.org/arcrole/2008/variable-filter" xlink:from="a_3" xlink:to="qZZW_qOR_qx2041" xlink:type="arc" complement="false" cover="true" order="1"/>
+    <variable:factVariable xlink:type="resource" xlink:label="a_4" id="a_4" bindAsSequence="false" fallbackValue="0"/>
+    <variable:variableFilterArc xlink:arcrole="http://xbrl.org/arcrole/2008/variable-filter" xlink:from="a_4" xlink:to="qABV" xlink:type="arc" complement="false" cover="true" order="1"/>
+    <variable:variableFilterArc xlink:arcrole="http://xbrl.org/arcrole/2008/variable-filter" xlink:from="a_4" xlink:to="qZZW_qOR_qx2041" xlink:type="arc" complement="false" cover="true" order="1"/>
+    <variable:factVariable xlink:type="resource" xlink:label="a_5" id="a_5" bindAsSequence="false" fallbackValue="0"/>
+    <variable:variableFilterArc xlink:arcrole="http://xbrl.org/arcrole/2008/variable-filter" xlink:from="a_5" xlink:to="qABV" xlink:type="arc" complement="false" cover="true" order="1"/>
+    <variable:variableFilterArc xlink:arcrole="http://xbrl.org/arcrole/2008/variable-filter" xlink:from="a_5" xlink:to="qZZW_qOR_qx2041" xlink:type="arc" complement="false" cover="true" order="1"/>
+    <variable:factVariable xlink:type="resource" xlink:label="a_6" id="a_6" bindAsSequence="false" fallbackValue="0"/>
+    <variable:variableFilterArc xlink:arcrole="http://xbrl.org/arcrole/2008/variable-filter" xlink:from="a_6" xlink:to="qABV" xlink:type="arc" complement="false" cover="true" order="1"/>
+    <variable:variableFilterArc xlink:arcrole="http://xbrl.org/arcrole/2008/variable-filter" xlink:from="a_6" xlink:to="qZZW_qOR_qx2041" xlink:type="arc" complement="false" cover="true" order="1"/>
+    <variable:factVariable xlink:type="resource" xlink:label="a_7" id="a_7" bindAsSequence="false" fallbackValue="0"/>
+    <variable:variableFilterArc xlink:arcrole="http://xbrl.org/arcrole/2008/variable-filter" xlink:from="a_7" xlink:to="qABV" xlink:type="arc" complement="false" cover="true" order="1"/>
+    <variable:variableFilterArc xlink:arcrole="http://xbrl.org/arcrole/2008/variable-filter" xlink:from="a_7" xlink:to="qZZW_qOR_qx2041" xlink:type="arc" complement="false" cover="true" order="1"/>
+    <variable:factVariable xlink:type="resource" xlink:label="a_8" id="a_8" bindAsSequence="false" fallbackValue="0"/>
+    <variable:variableFilterArc xlink:arcrole="http://xbrl.org/arcrole/2008/variable-filter" xlink:from="a_8" xlink:to="qABV" xlink:type="arc" complement="false" cover="true" order="1"/>
+    <variable:variableFilterArc xlink:arcrole="http://xbrl.org/arcrole/2008/variable-filter" xlink:from="a_8" xlink:to="qZZW_qOR_qx2041" xlink:type="arc" complement="false" cover="true" order="1"/>
+    <variable:factVariable xlink:type="resource" xlink:label="a_9" id="a_9" bindAsSequence="false" fallbackValue="0"/>
+    <variable:variableFilterArc xlink:arcrole="http://xbrl.org/arcrole/2008/variable-filter" xlink:from="a_9" xlink:to="qABV" xlink:type="arc" complement="false" cover="true" order="1"/>
+    <variable:variableFilterArc xlink:arcrole="http://xbrl.org/arcrole/2008/variable-filter" xlink:from="a_9" xlink:to="qZZW_qOR_qx2041" xlink:type="arc" complement="false" cover="true" order="1"/>
+    <variable:factVariable xlink:type="resource" xlink:label="b_0" id="b_0" bindAsSequence="false" fallbackValue="0"/>
+    <variable:variableFilterArc xlink:arcrole="http://xbrl.org/arcrole/2008/variable-filter" xlink:from="b_0" xlink:to="qIJL" xlink:type="arc" complement="false" cover="true" order="1"/>
+    <variable:variableFilterArc xlink:arcrole="http://xbrl.org/arcrole/2008/variable-filter" xlink:from="b_0" xlink:to="qZZW_qOR_qx0" xlink:type="arc" complement="false" cover="true" order="1"/>
+    <variable:factVariable xlink:type="resource" xlink:label="b_1" id="b_1" bindAsSequence="false" fallbackValue="0"/>
+    <variable:variableFilterArc xlink:arcrole="http://xbrl.org/arcrole/2008/variable-filter" xlink:from="b_1" xlink:to="qIJL" xlink:type="arc" complement="false" cover="true" order="1"/>
+    <variable:variableFilterArc xlink:arcrole="http://xbrl.org/arcrole/2008/variable-filter" xlink:from="b_1" xlink:to="qZZW_qOR_qx0" xlink:type="arc" complement="false" cover="true" order="1"/>
+    <variable:factVariable xlink:type="resource" xlink:label="b_10" id="b_10" bindAsSequence="false" fallbackValue="0"/>
+    <variable:variableFilterArc xlink:arcrole="http://xbrl.org/arcrole/2008/variable-filter" xlink:from="b_10" xlink:to="qIJL" xlink:type="arc" complement="false" cover="true" order="1"/>
+    <variable:variableFilterArc xlink:arcrole="http://xbrl.org/arcrole/2008/variable-filter" xlink:from="b_10" xlink:to="qZZW_qOR_qx0" xlink:type="arc" complement="false" cover="true" order="1"/>
+    <variable:factVariable xlink:type="resource" xlink:label="b_11" id="b_11" bindAsSequence="false" fallbackValue="0"/>
+    <variable:variableFilterArc xlink:arcrole="http://xbrl.org/arcrole/2008/variable-filter" xlink:from="b_11" xlink:to="qIJL" xlink:type="arc" complement="false" cover="true" order="1"/>
+    <variable:variableFilterArc xlink:arcrole="http://xbrl.org/arcrole/2008/variable-filter" xlink:from="b_11" xlink:to="qZZW_qOR_qx0" xlink:type="arc" complement="false" cover="true" order="1"/>
+    <variable:factVariable xlink:type="resource" xlink:label="b_12" id="b_12" bindAsSequence="false" fallbackValue="0"/>
+    <variable:variableFilterArc xlink:arcrole="http://xbrl.org/arcrole/2008/variable-filter" xlink:from="b_12" xlink:to="qIJL" xlink:type="arc" complement="false" cover="true" order="1"/>
+    <variable:variableFilterArc xlink:arcrole="http://xbrl.org/arcrole/2008/variable-filter" xlink:from="b_12" xlink:to="qZZW_qOR_qx0" xlink:type="arc" complement="false" cover="true" order="1"/>
+    <variable:factVariable xlink:type="resource" xlink:label="b_13" id="b_13" bindAsSequence="false" fallbackValue="0"/>
+    <variable:variableFilterArc xlink:arcrole="http://xbrl.org/arcrole/2008/variable-filter" xlink:from="b_13" xlink:to="qIJL" xlink:type="arc" complement="false" cover="true" order="1"/>
+    <variable:variableFilterArc xlink:arcrole="http://xbrl.org/arcrole/2008/variable-filter" xlink:from="b_13" xlink:to="qZZW_qOR_qx0" xlink:type="arc" complement="false" cover="true" order="1"/>
+    <variable:factVariable xlink:type="resource" xlink:label="b_14" id="b_14" bindAsSequence="false" fallbackValue="0"/>
+    <variable:variableFilterArc xlink:arcrole="http://xbrl.org/arcrole/2008/variable-filter" xlink:from="b_14" xlink:to="qIJL" xlink:type="arc" complement="false" cover="true" order="1"/>
+    <variable:variableFilterArc xlink:arcrole="http://xbrl.org/arcrole/2008/variable-filter" xlink:from="b_14" xlink:to="qZZW_qOR_qx0" xlink:type="arc" complement="false" cover="true" order="1"/>
+    <variable:factVariable xlink:type="resource" xlink:label="b_15" id="b_15" bindAsSequence="false" fallbackValue="0"/>
+    <variable:variableFilterArc xlink:arcrole="http://xbrl.org/arcrole/2008/variable-filter" xlink:from="b_15" xlink:to="qIJL" xlink:type="arc" complement="false" cover="true" order="1"/>
+    <variable:variableFilterArc xlink:arcrole="http://xbrl.org/arcrole/2008/variable-filter" xlink:from="b_15" xlink:to="qZZW_qOR_qx0" xlink:type="arc" complement="false" cover="true" order="1"/>
+    <variable:factVariable xlink:type="resource" xlink:label="b_16" id="b_16" bindAsSequence="false" fallbackValue="0"/>
+    <variable:variableFilterArc xlink:arcrole="http://xbrl.org/arcrole/2008/variable-filter" xlink:from="b_16" xlink:to="qIJL" xlink:type="arc" complement="false" cover="true" order="1"/>
+    <variable:variableFilterArc xlink:arcrole="http://xbrl.org/arcrole/2008/variable-filter" xlink:from="b_16" xlink:to="qZZW_qOR_qx0" xlink:type="arc" complement="false" cover="true" order="1"/>
+    <variable:factVariable xlink:type="resource" xlink:label="b_17" id="b_17" bindAsSequence="false" fallbackValue="0"/>
+    <variable:variableFilterArc xlink:arcrole="http://xbrl.org/arcrole/2008/variable-filter" xlink:from="b_17" xlink:to="qIJL" xlink:type="arc" complement="false" cover="true" order="1"/>
+    <variable:variableFilterArc xlink:arcrole="http://xbrl.org/arcrole/2008/variable-filter" xlink:from="b_17" xlink:to="qZZW_qOR_qx0" xlink:type="arc" complement="false" cover="true" order="1"/>
+    <variable:factVariable xlink:type="resource" xlink:label="b_18" id="b_18" bindAsSequence="false" fallbackValue="0"/>
+    <variable:variableFilterArc xlink:arcrole="http://xbrl.org/arcrole/2008/variable-filter" xlink:from="b_18" xlink:to="qIJL" xlink:type="arc" complement="false" cover="true" order="1"/>
+    <variable:variableFilterArc xlink:arcrole="http://xbrl.org/arcrole/2008/variable-filter" xlink:from="b_18" xlink:to="qZZW_qOR_qx0" xlink:type="arc" complement="false" cover="true" order="1"/>
+    <variable:factVariable xlink:type="resource" xlink:label="b_19" id="b_19" bindAsSequence="false" fallbackValue="0"/>
+    <variable:variableFilterArc xlink:arcrole="http://xbrl.org/arcrole/2008/variable-filter" xlink:from="b_19" xlink:to="qIJL" xlink:type="arc" complement="false" cover="true" order="1"/>
+    <variable:variableFilterArc xlink:arcrole="http://xbrl.org/arcrole/2008/variable-filter" xlink:from="b_19" xlink:to="qZZW_qOR_qx0" xlink:type="arc" complement="false" cover="true" order="1"/>
+    <variable:factVariable xlink:type="resource" xlink:label="b_2" id="b_2" bindAsSequence="false" fallbackValue="0"/>
+    <variable:variableFilterArc xlink:arcrole="http://xbrl.org/arcrole/2008/variable-filter" xlink:from="b_2" xlink:to="qIJL" xlink:type="arc" complement="false" cover="true" order="1"/>
+    <variable:variableFilterArc xlink:arcrole="http://xbrl.org/arcrole/2008/variable-filter" xlink:from="b_2" xlink:to="qZZW_qOR_qx0" xlink:type="arc" complement="false" cover="true" order="1"/>
+    <variable:factVariable xlink:type="resource" xlink:label="b_20" id="b_20" bindAsSequence="false" fallbackValue="0"/>
+    <variable:variableFilterArc xlink:arcrole="http://xbrl.org/arcrole/2008/variable-filter" xlink:from="b_20" xlink:to="qIJL" xlink:type="arc" complement="false" cover="true" order="1"/>
+    <variable:variableFilterArc xlink:arcrole="http://xbrl.org/arcrole/2008/variable-filter" xlink:from="b_20" xlink:to="qZZW_qOR_qx0" xlink:type="arc" complement="false" cover="true" order="1"/>
+    <variable:factVariable xlink:type="resource" xlink:label="b_21" id="b_21" bindAsSequence="false" fallbackValue="0"/>
+    <variable:variableFilterArc xlink:arcrole="http://xbrl.org/arcrole/2008/variable-filter" xlink:from="b_21" xlink:to="qIJL" xlink:type="arc" complement="false" cover="true" order="1"/>
+    <variable:variableFilterArc xlink:arcrole="http://xbrl.org/arcrole/2008/variable-filter" xlink:from="b_21" xlink:to="qZZW_qOR_qx0" xlink:type="arc" complement="false" cover="true" order="1"/>
+    <variable:factVariable xlink:type="resource" xlink:label="b_22" id="b_22" bindAsSequence="false" fallbackValue="0"/>
+    <variable:variableFilterArc xlink:arcrole="http://xbrl.org/arcrole/2008/variable-filter" xlink:from="b_22" xlink:to="qIJL" xlink:type="arc" complement="false" cover="true" order="1"/>
+    <variable:variableFilterArc xlink:arcrole="http://xbrl.org/arcrole/2008/variable-filter" xlink:from="b_22" xlink:to="qZZW_qOR_qx0" xlink:type="arc" complement="false" cover="true" order="1"/>
+    <variable:factVariable xlink:type="resource" xlink:label="b_23" id="b_23" bindAsSequence="false" fallbackValue="0"/>
+    <variable:variableFilterArc xlink:arcrole="http://xbrl.org/arcrole/2008/variable-filter" xlink:from="b_23" xlink:to="qIJL" xlink:type="arc" complement="false" cover="true" order="1"/>
+    <variable:variableFilterArc xlink:arcrole="http://xbrl.org/arcrole/2008/variable-filter" xlink:from="b_23" xlink:to="qZZW_qOR_qx0" xlink:type="arc" complement="false" cover="true" order="1"/>
+    <variable:factVariable xlink:type="resource" xlink:label="b_3" id="b_3" bindAsSequence="false" fallbackValue="0"/>
+    <variable:variableFilterArc xlink:arcrole="http://xbrl.org/arcrole/2008/variable-filter" xlink:from="b_3" xlink:to="qIJL" xlink:type="arc" complement="false" cover="true" order="1"/>
+    <variable:variableFilterArc xlink:arcrole="http://xbrl.org/arcrole/2008/variable-filter" xlink:from="b_3" xlink:to="qZZW_qOR_qx0" xlink:type="arc" complement="false" cover="true" order="1"/>
+    <variable:factVariable xlink:type="resource" xlink:label="b_4" id="b_4" bindAsSequence="false" fallbackValue="0"/>
+    <variable:variableFilterArc xlink:arcrole="http://xbrl.org/arcrole/2008/variable-filter" xlink:from="b_4" xlink:to="qIJL" xlink:type="arc" complement="false" cover="true" order="1"/>
+    <variable:variableFilterArc xlink:arcrole="http://xbrl.org/arcrole/2008/variable-filter" xlink:from="b_4" xlink:to="qZZW_qOR_qx0" xlink:type="arc" complement="false" cover="true" order="1"/>
+    <variable:factVariable xlink:type="resource" xlink:label="b_5" id="b_5" bindAsSequence="false" fallbackValue="0"/>
+    <variable:variableFilterArc xlink:arcrole="http://xbrl.org/arcrole/2008/variable-filter" xlink:from="b_5" xlink:to="qIJL" xlink:type="arc" complement="false" cover="true" order="1"/>
+    <variable:variableFilterArc xlink:arcrole="http://xbrl.org/arcrole/2008/variable-filter" xlink:from="b_5" xlink:to="qZZW_qOR_qx0" xlink:type="arc" complement="false" cover="true" order="1"/>
+    <variable:factVariable xlink:type="resource" xlink:label="b_6" id="b_6" bindAsSequence="false" fallbackValue="0"/>
+    <variable:variableFilterArc xlink:arcrole="http://xbrl.org/arcrole/2008/variable-filter" xlink:from="b_6" xlink:to="qIJL" xlink:type="arc" complement="false" cover="true" order="1"/>
+    <variable:variableFilterArc xlink:arcrole="http://xbrl.org/arcrole/2008/variable-filter" xlink:from="b_6" xlink:to="qZZW_qOR_qx0" xlink:type="arc" complement="false" cover="true" order="1"/>
+    <variable:factVariable xlink:type="resource" xlink:label="b_7" id="b_7" bindAsSequence="false" fallbackValue="0"/>
+    <variable:variableFilterArc xlink:arcrole="http://xbrl.org/arcrole/2008/variable-filter" xlink:from="b_7" xlink:to="qIJL" xlink:type="arc" complement="false" cover="true" order="1"/>
+    <variable:variableFilterArc xlink:arcrole="http://xbrl.org/arcrole/2008/variable-filter" xlink:from="b_7" xlink:to="qZZW_qOR_qx0" xlink:type="arc" complement="false" cover="true" order="1"/>
+    <variable:factVariable xlink:type="resource" xlink:label="b_8" id="b_8" bindAsSequence="false" fallbackValue="0"/>
+    <variable:variableFilterArc xlink:arcrole="http://xbrl.org/arcrole/2008/variable-filter" xlink:from="b_8" xlink:to="qIJL" xlink:type="arc" complement="false" cover="true" order="1"/>
+    <variable:variableFilterArc xlink:arcrole="http://xbrl.org/arcrole/2008/variable-filter" xlink:from="b_8" xlink:to="qZZW_qOR_qx0" xlink:type="arc" complement="false" cover="true" order="1"/>
+    <variable:factVariable xlink:type="resource" xlink:label="b_9" id="b_9" bindAsSequence="false" fallbackValue="0"/>
+    <variable:variableFilterArc xlink:arcrole="http://xbrl.org/arcrole/2008/variable-filter" xlink:from="b_9" xlink:to="qIJL" xlink:type="arc" complement="false" cover="true" order="1"/>
+    <variable:variableFilterArc xlink:arcrole="http://xbrl.org/arcrole/2008/variable-filter" xlink:from="b_9" xlink:to="qZZW_qOR_qx0" xlink:type="arc" complement="false" cover="true" order="1"/>
+    <!--Common elements shared in all assertions: Leaf conceptNames-->
+    <cf:conceptName xlink:type="resource" xlink:label="qABV" id="qABV">
+      <cf:concept>
+        <cf:qname>eba_met:qABV</cf:qname>
+      </cf:concept>
+    </cf:conceptName>
+    <cf:conceptName xlink:type="resource" xlink:label="qIJL" id="qIJL">
+      <cf:concept>
+        <cf:qname>eba_met:qIJL</cf:qname>
+      </cf:concept>
+    </cf:conceptName>
+    <!--Common elements shared in all assertions: Global filters-->
+    <df:explicitDimension xlink:type="resource" xlink:label="APR_AP_x8" id="APR_AP_x8">
+      <df:dimension>
+        <df:qname>eba_dim_3.4:APR</df:qname>
+      </df:dimension>
+      <df:member>
+        <df:qname>eba_AP:x8</df:qname>
+      </df:member>
+    </df:explicitDimension>
+    <df:explicitDimension xlink:type="resource" xlink:label="CUE_CU_ALL" id="CUE_CU_ALL">
+      <df:dimension>
+        <df:qname>eba_dim_3.4:CUE</df:qname>
+      </df:dimension>
+      <df:member>
+        <df:qname>eba_CU:ALL</df:qname>
+      </df:member>
+    </df:explicitDimension>
+    <df:explicitDimension xlink:type="resource" xlink:label="CUE_CU_BGN" id="CUE_CU_BGN">
+      <df:dimension>
+        <df:qname>eba_dim_3.4:CUE</df:qname>
+      </df:dimension>
+      <df:member>
+        <df:qname>eba_CU:BGN</df:qname>
+      </df:member>
+    </df:explicitDimension>
+    <df:explicitDimension xlink:type="resource" xlink:label="CUE_CU_CHF" id="CUE_CU_CHF">
+      <df:dimension>
+        <df:qname>eba_dim_3.4:CUE</df:qname>
+      </df:dimension>
+      <df:member>
+        <df:qname>eba_CU:CHF</df:qname>
+      </df:member>
+    </df:explicitDimension>
+    <df:explicitDimension xlink:type="resource" xlink:label="CUE_CU_CZK" id="CUE_CU_CZK">
+      <df:dimension>
+        <df:qname>eba_dim_3.4:CUE</df:qname>
+      </df:dimension>
+      <df:member>
+        <df:qname>eba_CU:CZK</df:qname>
+      </df:member>
+    </df:explicitDimension>
+    <df:explicitDimension xlink:type="resource" xlink:label="CUE_CU_DKK" id="CUE_CU_DKK">
+      <df:dimension>
+        <df:qname>eba_dim_3.4:CUE</df:qname>
+      </df:dimension>
+      <df:member>
+        <df:qname>eba_CU:DKK</df:qname>
+      </df:member>
+    </df:explicitDimension>
+    <df:explicitDimension xlink:type="resource" xlink:label="CUE_CU_EGP" id="CUE_CU_EGP">
+      <df:dimension>
+        <df:qname>eba_dim_3.4:CUE</df:qname>
+      </df:dimension>
+      <df:member>
+        <df:qname>eba_CU:EGP</df:qname>
+      </df:member>
+    </df:explicitDimension>
+    <df:explicitDimension xlink:type="resource" xlink:label="CUE_CU_EUR" id="CUE_CU_EUR">
+      <df:dimension>
+        <df:qname>eba_dim_3.4:CUE</df:qname>
+      </df:dimension>
+      <df:member>
+        <df:qname>eba_CU:EUR</df:qname>
+      </df:member>
+    </df:explicitDimension>
+    <df:explicitDimension xlink:type="resource" xlink:label="CUE_CU_GBP" id="CUE_CU_GBP">
+      <df:dimension>
+        <df:qname>eba_dim_3.4:CUE</df:qname>
+      </df:dimension>
+      <df:member>
+        <df:qname>eba_CU:GBP</df:qname>
+      </df:member>
+    </df:explicitDimension>
+    <df:explicitDimension xlink:type="resource" xlink:label="CUE_CU_HRK" id="CUE_CU_HRK">
+      <df:dimension>
+        <df:qname>eba_dim_3.4:CUE</df:qname>
+      </df:dimension>
+      <df:member>
+        <df:qname>eba_CU:HRK</df:qname>
+      </df:member>
+    </df:explicitDimension>
+    <df:explicitDimension xlink:type="resource" xlink:label="CUE_CU_HUF" id="CUE_CU_HUF">
+      <df:dimension>
+        <df:qname>eba_dim_3.4:CUE</df:qname>
+      </df:dimension>
+      <df:member>
+        <df:qname>eba_CU:HUF</df:qname>
+      </df:member>
+    </df:explicitDimension>
+    <df:explicitDimension xlink:type="resource" xlink:label="CUE_CU_ISK" id="CUE_CU_ISK">
+      <df:dimension>
+        <df:qname>eba_dim_3.4:CUE</df:qname>
+      </df:dimension>
+      <df:member>
+        <df:qname>eba_CU:ISK</df:qname>
+      </df:member>
+    </df:explicitDimension>
+    <df:explicitDimension xlink:type="resource" xlink:label="CUE_CU_JPY" id="CUE_CU_JPY">
+      <df:dimension>
+        <df:qname>eba_dim_3.4:CUE</df:qname>
+      </df:dimension>
+      <df:member>
+        <df:qname>eba_CU:JPY</df:qname>
+      </df:member>
+    </df:explicitDimension>
+    <df:explicitDimension xlink:type="resource" xlink:label="CUE_CU_MKD" id="CUE_CU_MKD">
+      <df:dimension>
+        <df:qname>eba_dim_3.4:CUE</df:qname>
+      </df:dimension>
+      <df:member>
+        <df:qname>eba_CU:MKD</df:qname>
+      </df:member>
+    </df:explicitDimension>
+    <df:explicitDimension xlink:type="resource" xlink:label="CUE_CU_NOK" id="CUE_CU_NOK">
+      <df:dimension>
+        <df:qname>eba_dim_3.4:CUE</df:qname>
+      </df:dimension>
+      <df:member>
+        <df:qname>eba_CU:NOK</df:qname>
+      </df:member>
+    </df:explicitDimension>
+    <df:explicitDimension xlink:type="resource" xlink:label="CUE_CU_PLN" id="CUE_CU_PLN">
+      <df:dimension>
+        <df:qname>eba_dim_3.4:CUE</df:qname>
+      </df:dimension>
+      <df:member>
+        <df:qname>eba_CU:PLN</df:qname>
+      </df:member>
+    </df:explicitDimension>
+    <df:explicitDimension xlink:type="resource" xlink:label="CUE_CU_RON" id="CUE_CU_RON">
+      <df:dimension>
+        <df:qname>eba_dim_3.4:CUE</df:qname>
+      </df:dimension>
+      <df:member>
+        <df:qname>eba_CU:RON</df:qname>
+      </df:member>
+    </df:explicitDimension>
+    <df:explicitDimension xlink:type="resource" xlink:label="CUE_CU_RSD" id="CUE_CU_RSD">
+      <df:dimension>
+        <df:qname>eba_dim_3.4:CUE</df:qname>
+      </df:dimension>
+      <df:member>
+        <df:qname>eba_CU:RSD</df:qname>
+      </df:member>
+    </df:explicitDimension>
+    <df:explicitDimension xlink:type="resource" xlink:label="CUE_CU_RUB" id="CUE_CU_RUB">
+      <df:dimension>
+        <df:qname>eba_dim_3.4:CUE</df:qname>
+      </df:dimension>
+      <df:member>
+        <df:qname>eba_CU:RUB</df:qname>
+      </df:member>
+    </df:explicitDimension>
+    <df:explicitDimension xlink:type="resource" xlink:label="CUE_CU_SEK" id="CUE_CU_SEK">
+      <df:dimension>
+        <df:qname>eba_dim_3.4:CUE</df:qname>
+      </df:dimension>
+      <df:member>
+        <df:qname>eba_CU:SEK</df:qname>
+      </df:member>
+    </df:explicitDimension>
+    <df:explicitDimension xlink:type="resource" xlink:label="CUE_CU_TRY" id="CUE_CU_TRY">
+      <df:dimension>
+        <df:qname>eba_dim_3.4:CUE</df:qname>
+      </df:dimension>
+      <df:member>
+        <df:qname>eba_CU:TRY</df:qname>
+      </df:member>
+    </df:explicitDimension>
+    <df:explicitDimension xlink:type="resource" xlink:label="CUE_CU_UAH" id="CUE_CU_UAH">
+      <df:dimension>
+        <df:qname>eba_dim_3.4:CUE</df:qname>
+      </df:dimension>
+      <df:member>
+        <df:qname>eba_CU:UAH</df:qname>
+      </df:member>
+    </df:explicitDimension>
+    <df:explicitDimension xlink:type="resource" xlink:label="CUE_CU_USD" id="CUE_CU_USD">
+      <df:dimension>
+        <df:qname>eba_dim_3.4:CUE</df:qname>
+      </df:dimension>
+      <df:member>
+        <df:qname>eba_CU:USD</df:qname>
+      </df:member>
+    </df:explicitDimension>
+    <df:explicitDimension xlink:type="resource" xlink:label="CUE_CU_x0" id="CUE_CU_x0">
+      <df:dimension>
+        <df:qname>eba_dim_3.4:CUE</df:qname>
+      </df:dimension>
+      <df:member>
+        <df:qname>eba_CU:x0</df:qname>
+      </df:member>
+    </df:explicitDimension>
+    <df:explicitDimension xlink:type="resource" xlink:label="CUE_CU_x21" id="CUE_CU_x21">
+      <df:dimension>
+        <df:qname>eba_dim_3.4:CUE</df:qname>
+      </df:dimension>
+      <df:member>
+        <df:qname>eba_CU:x21</df:qname>
+      </df:member>
+    </df:explicitDimension>
+    <df:explicitDimension xlink:type="resource" xlink:label="MRW_AP_x0" id="MRW_AP_x0">
+      <df:dimension>
+        <df:qname>eba_dim_3.4:MRW</df:qname>
+      </df:dimension>
+      <df:member>
+        <df:qname>eba_AP:x0</df:qname>
+      </df:member>
+    </df:explicitDimension>
+    <df:explicitDimension xlink:type="resource" xlink:label="RES_TI_x0" id="RES_TI_x0">
+      <df:dimension>
+        <df:qname>eba_dim_3.4:RES</df:qname>
+      </df:dimension>
+      <df:member>
+        <df:qname>eba_TI:x0</df:qname>
+      </df:member>
+    </df:explicitDimension>
+    <df:explicitDimension xlink:type="resource" xlink:label="TRI_TR_x20" id="TRI_TR_x20">
+      <df:dimension>
+        <df:qname>eba_dim_3.4:TRI</df:qname>
+      </df:dimension>
+      <df:member>
+        <df:qname>eba_TR:x20</df:qname>
+      </df:member>
+    </df:explicitDimension>
+    <df:explicitDimension xlink:type="resource" xlink:label="TSL_TA_x0" id="TSL_TA_x0">
+      <df:dimension>
+        <df:qname>eba_dim_3.4:TSL</df:qname>
+      </df:dimension>
+      <df:member>
+        <df:qname>eba_TA:x0</df:qname>
+      </df:member>
+    </df:explicitDimension>
+    <df:explicitDimension xlink:type="resource" xlink:label="qBGD_qPC_qx2026" id="qBGD_qPC_qx2026">
+      <df:dimension>
+        <df:qname>eba_dim_4.0:qBGD</df:qname>
+      </df:dimension>
+      <df:member>
+        <df:qname>eba_qPC:qx2026</df:qname>
+      </df:member>
+    </df:explicitDimension>
+    <df:explicitDimension xlink:type="resource" xlink:label="qCAA_qAI_qx0" id="qCAA_qAI_qx0">
+      <df:dimension>
+        <df:qname>eba_dim_4.0:qCAA</df:qname>
+      </df:dimension>
+      <df:member>
+        <df:qname>eba_qAI:qx0</df:qname>
+      </df:member>
+    </df:explicitDimension>
+    <df:explicitDimension xlink:type="resource" xlink:label="qEEF_qPL_qx2002" id="qEEF_qPL_qx2002">
+      <df:dimension>
+        <df:qname>eba_dim_4.0:qEEF</df:qname>
+      </df:dimension>
+      <df:member>
+        <df:qname>eba_qPL:qx2002</df:qname>
+      </df:member>
+    </df:explicitDimension>
+    <df:explicitDimension xlink:type="resource" xlink:label="qZZX_qOR_qx2007" id="qZZX_qOR_qx2007">
+      <df:dimension>
+        <df:qname>eba_dim_4.0:qZZX</df:qname>
+      </df:dimension>
+      <df:member>
+        <df:qname>eba_qOR:qx2007</df:qname>
+      </df:member>
+    </df:explicitDimension>
+    <!--Common elements shared in all assertions: Leaf explicitDimensions-->
+    <df:explicitDimension xlink:type="resource" xlink:label="qZZW_qOR_qx0" id="qZZW_qOR_qx0">
+      <df:dimension>
+        <df:qname>eba_dim_4.0:qZZW</df:qname>
+      </df:dimension>
+      <df:member>
+        <df:qname>eba_qOR:qx0</df:qname>
+      </df:member>
+    </df:explicitDimension>
+    <df:explicitDimension xlink:type="resource" xlink:label="qZZW_qOR_qx2041" id="qZZW_qOR_qx2041">
+      <df:dimension>
+        <df:qname>eba_dim_4.0:qZZW</df:qname>
+      </df:dimension>
+      <df:member>
+        <df:qname>eba_qOR:qx2041</df:qname>
+      </df:member>
+    </df:explicitDimension>
+    <variable:variableArc xlink:arcrole="http://xbrl.org/arcrole/2008/variable-set" xlink:from="v0579_m_0" xlink:to="a_0" xlink:type="arc" name="a_0"/>
+    <variable:variableArc xlink:arcrole="http://xbrl.org/arcrole/2008/variable-set" xlink:from="v0579_m_0" xlink:to="b_0" xlink:type="arc" name="b_0"/>
+    <variable:variableSetFilterArc xlink:arcrole="http://xbrl.org/arcrole/2008/variable-set-filter" xlink:from="v0579_m_0" xlink:to="APR_AP_x8" xlink:type="arc" complement="false" order="1"/>
+    <variable:variableSetFilterArc xlink:arcrole="http://xbrl.org/arcrole/2008/variable-set-filter" xlink:from="v0579_m_0" xlink:to="CUE_CU_x0" xlink:type="arc" complement="false" order="1"/>
+    <variable:variableSetFilterArc xlink:arcrole="http://xbrl.org/arcrole/2008/variable-set-filter" xlink:from="v0579_m_0" xlink:to="MRW_AP_x0" xlink:type="arc" complement="false" order="1"/>
+    <variable:variableSetFilterArc xlink:arcrole="http://xbrl.org/arcrole/2008/variable-set-filter" xlink:from="v0579_m_0" xlink:to="RES_TI_x0" xlink:type="arc" complement="false" order="1"/>
+    <variable:variableSetFilterArc xlink:arcrole="http://xbrl.org/arcrole/2008/variable-set-filter" xlink:from="v0579_m_0" xlink:to="TRI_TR_x20" xlink:type="arc" complement="false" order="1"/>
+    <variable:variableSetFilterArc xlink:arcrole="http://xbrl.org/arcrole/2008/variable-set-filter" xlink:from="v0579_m_0" xlink:to="TSL_TA_x0" xlink:type="arc" complement="false" order="1"/>
+    <variable:variableSetFilterArc xlink:arcrole="http://xbrl.org/arcrole/2008/variable-set-filter" xlink:from="v0579_m_0" xlink:to="qBGD_qPC_qx2026" xlink:type="arc" complement="false" order="1"/>
+    <variable:variableSetFilterArc xlink:arcrole="http://xbrl.org/arcrole/2008/variable-set-filter" xlink:from="v0579_m_0" xlink:to="qCAA_qAI_qx0" xlink:type="arc" complement="false" order="1"/>
+    <variable:variableSetFilterArc xlink:arcrole="http://xbrl.org/arcrole/2008/variable-set-filter" xlink:from="v0579_m_0" xlink:to="qEEF_qPL_qx2002" xlink:type="arc" complement="false" order="1"/>
+    <variable:variableSetFilterArc xlink:arcrole="http://xbrl.org/arcrole/2008/variable-set-filter" xlink:from="v0579_m_0" xlink:to="qZZX_qOR_qx2007" xlink:type="arc" complement="false" order="1"/>
+    <va:valueAssertion id="v0579_m_0" xlink:label="v0579_m_0" xlink:type="resource" implicitFiltering="true" aspectModel="dimensional" test="iaf:numeric-equal( (iaf:numeric-multiply($a_0,0.12)) , ($b_0) )  "/>
+    <!--Assertion v0579_m_0: Labels and messages-->
+    <label:label xlink:type="resource" xml:lang="en" xlink:role="http://www.xbrl.org/2008/role/label" xlink:label="v0579_m_0_label">v0579_m_0</label:label>
+    <generic:arc xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="v0579_m_0" xlink:to="v0579_m_0_label" xlink:type="arc"/>
+    <label:label xlink:type="resource" xml:lang="en" xlink:role="http://www.xbrl.org/2008/role/verboseLabel" xlink:label="v0579_m_0_label_1">v0579_m_0: {C_18.00,0320,0050,0001} * 0.12 = {C_18.00,0320,0060,0001}</label:label>
+    <generic:arc xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="v0579_m_0" xlink:to="v0579_m_0_label_1" xlink:type="arc"/>
+    <msg:message xlink:type="resource" xml:lang="en" xlink:role="http://www.xbrl.org/2010/role/message" xlink:label="Message_v0579_m_0_notsatisfied">v0579_m_0: {{C_18.00,0320,0050,0001}} * 0.12 = {{C_18.00,0320,0060,0001}} Fails because {$a_0} * 0.12 = {$b_0} is not true.</msg:message>
+    <generic:arc xlink:arcrole="http://xbrl.org/arcrole/2010/assertion-unsatisfied-message" xlink:from="v0579_m_0" xlink:to="Message_v0579_m_0_notsatisfied" xlink:type="arc"/>
+    <variable:variableArc xlink:arcrole="http://xbrl.org/arcrole/2008/variable-set" xlink:from="v0579_m_1" xlink:to="a_1" xlink:type="arc" name="a_1"/>
+    <variable:variableArc xlink:arcrole="http://xbrl.org/arcrole/2008/variable-set" xlink:from="v0579_m_1" xlink:to="b_1" xlink:type="arc" name="b_1"/>
+    <variable:variableSetFilterArc xlink:arcrole="http://xbrl.org/arcrole/2008/variable-set-filter" xlink:from="v0579_m_1" xlink:to="APR_AP_x8" xlink:type="arc" complement="false" order="1"/>
+    <variable:variableSetFilterArc xlink:arcrole="http://xbrl.org/arcrole/2008/variable-set-filter" xlink:from="v0579_m_1" xlink:to="CUE_CU_EUR" xlink:type="arc" complement="false" order="1"/>
+    <variable:variableSetFilterArc xlink:arcrole="http://xbrl.org/arcrole/2008/variable-set-filter" xlink:from="v0579_m_1" xlink:to="TRI_TR_x20" xlink:type="arc" complement="false" order="1"/>
+    <variable:variableSetFilterArc xlink:arcrole="http://xbrl.org/arcrole/2008/variable-set-filter" xlink:from="v0579_m_1" xlink:to="qBGD_qPC_qx2026" xlink:type="arc" complement="false" order="1"/>
+    <variable:variableSetFilterArc xlink:arcrole="http://xbrl.org/arcrole/2008/variable-set-filter" xlink:from="v0579_m_1" xlink:to="qEEF_qPL_qx2002" xlink:type="arc" complement="false" order="1"/>
+    <variable:variableSetFilterArc xlink:arcrole="http://xbrl.org/arcrole/2008/variable-set-filter" xlink:from="v0579_m_1" xlink:to="qZZX_qOR_qx2007" xlink:type="arc" complement="false" order="1"/>
+    <va:valueAssertion id="v0579_m_1" xlink:label="v0579_m_1" xlink:type="resource" implicitFiltering="true" aspectModel="dimensional" test="iaf:numeric-equal( (iaf:numeric-multiply($a_1,0.12)) , ($b_1) )  "/>
+    <!--Assertion v0579_m_1: Labels and messages-->
+    <label:label xlink:type="resource" xml:lang="en" xlink:role="http://www.xbrl.org/2008/role/label" xlink:label="v0579_m_1_label">v0579_m_1</label:label>
+    <generic:arc xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="v0579_m_1" xlink:to="v0579_m_1_label" xlink:type="arc"/>
+    <label:label xlink:type="resource" xml:lang="en" xlink:role="http://www.xbrl.org/2008/role/verboseLabel" xlink:label="v0579_m_1_label_1">v0579_m_1: {C_18.00,0320,0050,0002} * 0.12 = {C_18.00,0320,0060,0002}</label:label>
+    <generic:arc xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="v0579_m_1" xlink:to="v0579_m_1_label_1" xlink:type="arc"/>
+    <msg:message xlink:type="resource" xml:lang="en" xlink:role="http://www.xbrl.org/2010/role/message" xlink:label="Message_v0579_m_1_notsatisfied">v0579_m_1: {{C_18.00,0320,0050,0002}} * 0.12 = {{C_18.00,0320,0060,0002}} Fails because {$a_1} * 0.12 = {$b_1} is not true.</msg:message>
+    <generic:arc xlink:arcrole="http://xbrl.org/arcrole/2010/assertion-unsatisfied-message" xlink:from="v0579_m_1" xlink:to="Message_v0579_m_1_notsatisfied" xlink:type="arc"/>
+    <variable:variableArc xlink:arcrole="http://xbrl.org/arcrole/2008/variable-set" xlink:from="v0579_m_10" xlink:to="a_10" xlink:type="arc" name="a_10"/>
+    <variable:variableArc xlink:arcrole="http://xbrl.org/arcrole/2008/variable-set" xlink:from="v0579_m_10" xlink:to="b_10" xlink:type="arc" name="b_10"/>
+    <variable:variableSetFilterArc xlink:arcrole="http://xbrl.org/arcrole/2008/variable-set-filter" xlink:from="v0579_m_10" xlink:to="APR_AP_x8" xlink:type="arc" complement="false" order="1"/>
+    <variable:variableSetFilterArc xlink:arcrole="http://xbrl.org/arcrole/2008/variable-set-filter" xlink:from="v0579_m_10" xlink:to="CUE_CU_PLN" xlink:type="arc" complement="false" order="1"/>
+    <variable:variableSetFilterArc xlink:arcrole="http://xbrl.org/arcrole/2008/variable-set-filter" xlink:from="v0579_m_10" xlink:to="TRI_TR_x20" xlink:type="arc" complement="false" order="1"/>
+    <variable:variableSetFilterArc xlink:arcrole="http://xbrl.org/arcrole/2008/variable-set-filter" xlink:from="v0579_m_10" xlink:to="qBGD_qPC_qx2026" xlink:type="arc" complement="false" order="1"/>
+    <variable:variableSetFilterArc xlink:arcrole="http://xbrl.org/arcrole/2008/variable-set-filter" xlink:from="v0579_m_10" xlink:to="qEEF_qPL_qx2002" xlink:type="arc" complement="false" order="1"/>
+    <variable:variableSetFilterArc xlink:arcrole="http://xbrl.org/arcrole/2008/variable-set-filter" xlink:from="v0579_m_10" xlink:to="qZZX_qOR_qx2007" xlink:type="arc" complement="false" order="1"/>
+    <va:valueAssertion id="v0579_m_10" xlink:label="v0579_m_10" xlink:type="resource" implicitFiltering="true" aspectModel="dimensional" test="iaf:numeric-equal( (iaf:numeric-multiply($a_10,0.12)) , ($b_10) )  "/>
+    <!--Assertion v0579_m_10: Labels and messages-->
+    <label:label xlink:type="resource" xml:lang="en" xlink:role="http://www.xbrl.org/2008/role/label" xlink:label="v0579_m_10_label">v0579_m_10</label:label>
+    <generic:arc xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="v0579_m_10" xlink:to="v0579_m_10_label" xlink:type="arc"/>
+    <label:label xlink:type="resource" xml:lang="en" xlink:role="http://www.xbrl.org/2008/role/verboseLabel" xlink:label="v0579_m_10_label_1">v0579_m_10: {C_18.00,0320,0050,0013} * 0.12 = {C_18.00,0320,0060,0013}</label:label>
+    <generic:arc xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="v0579_m_10" xlink:to="v0579_m_10_label_1" xlink:type="arc"/>
+    <msg:message xlink:type="resource" xml:lang="en" xlink:role="http://www.xbrl.org/2010/role/message" xlink:label="Message_v0579_m_10_notsatisfied">v0579_m_10: {{C_18.00,0320,0050,0013}} * 0.12 = {{C_18.00,0320,0060,0013}} Fails because {$a_10} * 0.12 = {$b_10} is not true.</msg:message>
+    <generic:arc xlink:arcrole="http://xbrl.org/arcrole/2010/assertion-unsatisfied-message" xlink:from="v0579_m_10" xlink:to="Message_v0579_m_10_notsatisfied" xlink:type="arc"/>
+    <variable:variableArc xlink:arcrole="http://xbrl.org/arcrole/2008/variable-set" xlink:from="v0579_m_11" xlink:to="a_11" xlink:type="arc" name="a_11"/>
+    <variable:variableArc xlink:arcrole="http://xbrl.org/arcrole/2008/variable-set" xlink:from="v0579_m_11" xlink:to="b_11" xlink:type="arc" name="b_11"/>
+    <variable:variableSetFilterArc xlink:arcrole="http://xbrl.org/arcrole/2008/variable-set-filter" xlink:from="v0579_m_11" xlink:to="APR_AP_x8" xlink:type="arc" complement="false" order="1"/>
+    <variable:variableSetFilterArc xlink:arcrole="http://xbrl.org/arcrole/2008/variable-set-filter" xlink:from="v0579_m_11" xlink:to="CUE_CU_RON" xlink:type="arc" complement="false" order="1"/>
+    <variable:variableSetFilterArc xlink:arcrole="http://xbrl.org/arcrole/2008/variable-set-filter" xlink:from="v0579_m_11" xlink:to="TRI_TR_x20" xlink:type="arc" complement="false" order="1"/>
+    <variable:variableSetFilterArc xlink:arcrole="http://xbrl.org/arcrole/2008/variable-set-filter" xlink:from="v0579_m_11" xlink:to="qBGD_qPC_qx2026" xlink:type="arc" complement="false" order="1"/>
+    <variable:variableSetFilterArc xlink:arcrole="http://xbrl.org/arcrole/2008/variable-set-filter" xlink:from="v0579_m_11" xlink:to="qEEF_qPL_qx2002" xlink:type="arc" complement="false" order="1"/>
+    <variable:variableSetFilterArc xlink:arcrole="http://xbrl.org/arcrole/2008/variable-set-filter" xlink:from="v0579_m_11" xlink:to="qZZX_qOR_qx2007" xlink:type="arc" complement="false" order="1"/>
+    <va:valueAssertion id="v0579_m_11" xlink:label="v0579_m_11" xlink:type="resource" implicitFiltering="true" aspectModel="dimensional" test="iaf:numeric-equal( (iaf:numeric-multiply($a_11,0.12)) , ($b_11) )  "/>
+    <!--Assertion v0579_m_11: Labels and messages-->
+    <label:label xlink:type="resource" xml:lang="en" xlink:role="http://www.xbrl.org/2008/role/label" xlink:label="v0579_m_11_label">v0579_m_11</label:label>
+    <generic:arc xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="v0579_m_11" xlink:to="v0579_m_11_label" xlink:type="arc"/>
+    <label:label xlink:type="resource" xml:lang="en" xlink:role="http://www.xbrl.org/2008/role/verboseLabel" xlink:label="v0579_m_11_label_1">v0579_m_11: {C_18.00,0320,0050,0014} * 0.12 = {C_18.00,0320,0060,0014}</label:label>
+    <generic:arc xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="v0579_m_11" xlink:to="v0579_m_11_label_1" xlink:type="arc"/>
+    <msg:message xlink:type="resource" xml:lang="en" xlink:role="http://www.xbrl.org/2010/role/message" xlink:label="Message_v0579_m_11_notsatisfied">v0579_m_11: {{C_18.00,0320,0050,0014}} * 0.12 = {{C_18.00,0320,0060,0014}} Fails because {$a_11} * 0.12 = {$b_11} is not true.</msg:message>
+    <generic:arc xlink:arcrole="http://xbrl.org/arcrole/2010/assertion-unsatisfied-message" xlink:from="v0579_m_11" xlink:to="Message_v0579_m_11_notsatisfied" xlink:type="arc"/>
+    <variable:variableArc xlink:arcrole="http://xbrl.org/arcrole/2008/variable-set" xlink:from="v0579_m_12" xlink:to="a_12" xlink:type="arc" name="a_12"/>
+    <variable:variableArc xlink:arcrole="http://xbrl.org/arcrole/2008/variable-set" xlink:from="v0579_m_12" xlink:to="b_12" xlink:type="arc" name="b_12"/>
+    <variable:variableSetFilterArc xlink:arcrole="http://xbrl.org/arcrole/2008/variable-set-filter" xlink:from="v0579_m_12" xlink:to="APR_AP_x8" xlink:type="arc" complement="false" order="1"/>
+    <variable:variableSetFilterArc xlink:arcrole="http://xbrl.org/arcrole/2008/variable-set-filter" xlink:from="v0579_m_12" xlink:to="CUE_CU_RUB" xlink:type="arc" complement="false" order="1"/>
+    <variable:variableSetFilterArc xlink:arcrole="http://xbrl.org/arcrole/2008/variable-set-filter" xlink:from="v0579_m_12" xlink:to="TRI_TR_x20" xlink:type="arc" complement="false" order="1"/>
+    <variable:variableSetFilterArc xlink:arcrole="http://xbrl.org/arcrole/2008/variable-set-filter" xlink:from="v0579_m_12" xlink:to="qBGD_qPC_qx2026" xlink:type="arc" complement="false" order="1"/>
+    <variable:variableSetFilterArc xlink:arcrole="http://xbrl.org/arcrole/2008/variable-set-filter" xlink:from="v0579_m_12" xlink:to="qEEF_qPL_qx2002" xlink:type="arc" complement="false" order="1"/>
+    <variable:variableSetFilterArc xlink:arcrole="http://xbrl.org/arcrole/2008/variable-set-filter" xlink:from="v0579_m_12" xlink:to="qZZX_qOR_qx2007" xlink:type="arc" complement="false" order="1"/>
+    <va:valueAssertion id="v0579_m_12" xlink:label="v0579_m_12" xlink:type="resource" implicitFiltering="true" aspectModel="dimensional" test="iaf:numeric-equal( (iaf:numeric-multiply($a_12,0.12)) , ($b_12) )  "/>
+    <!--Assertion v0579_m_12: Labels and messages-->
+    <label:label xlink:type="resource" xml:lang="en" xlink:role="http://www.xbrl.org/2008/role/label" xlink:label="v0579_m_12_label">v0579_m_12</label:label>
+    <generic:arc xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="v0579_m_12" xlink:to="v0579_m_12_label" xlink:type="arc"/>
+    <label:label xlink:type="resource" xml:lang="en" xlink:role="http://www.xbrl.org/2008/role/verboseLabel" xlink:label="v0579_m_12_label_1">v0579_m_12: {C_18.00,0320,0050,0015} * 0.12 = {C_18.00,0320,0060,0015}</label:label>
+    <generic:arc xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="v0579_m_12" xlink:to="v0579_m_12_label_1" xlink:type="arc"/>
+    <msg:message xlink:type="resource" xml:lang="en" xlink:role="http://www.xbrl.org/2010/role/message" xlink:label="Message_v0579_m_12_notsatisfied">v0579_m_12: {{C_18.00,0320,0050,0015}} * 0.12 = {{C_18.00,0320,0060,0015}} Fails because {$a_12} * 0.12 = {$b_12} is not true.</msg:message>
+    <generic:arc xlink:arcrole="http://xbrl.org/arcrole/2010/assertion-unsatisfied-message" xlink:from="v0579_m_12" xlink:to="Message_v0579_m_12_notsatisfied" xlink:type="arc"/>
+    <variable:variableArc xlink:arcrole="http://xbrl.org/arcrole/2008/variable-set" xlink:from="v0579_m_13" xlink:to="a_13" xlink:type="arc" name="a_13"/>
+    <variable:variableArc xlink:arcrole="http://xbrl.org/arcrole/2008/variable-set" xlink:from="v0579_m_13" xlink:to="b_13" xlink:type="arc" name="b_13"/>
+    <variable:variableSetFilterArc xlink:arcrole="http://xbrl.org/arcrole/2008/variable-set-filter" xlink:from="v0579_m_13" xlink:to="APR_AP_x8" xlink:type="arc" complement="false" order="1"/>
+    <variable:variableSetFilterArc xlink:arcrole="http://xbrl.org/arcrole/2008/variable-set-filter" xlink:from="v0579_m_13" xlink:to="CUE_CU_RSD" xlink:type="arc" complement="false" order="1"/>
+    <variable:variableSetFilterArc xlink:arcrole="http://xbrl.org/arcrole/2008/variable-set-filter" xlink:from="v0579_m_13" xlink:to="TRI_TR_x20" xlink:type="arc" complement="false" order="1"/>
+    <variable:variableSetFilterArc xlink:arcrole="http://xbrl.org/arcrole/2008/variable-set-filter" xlink:from="v0579_m_13" xlink:to="qBGD_qPC_qx2026" xlink:type="arc" complement="false" order="1"/>
+    <variable:variableSetFilterArc xlink:arcrole="http://xbrl.org/arcrole/2008/variable-set-filter" xlink:from="v0579_m_13" xlink:to="qEEF_qPL_qx2002" xlink:type="arc" complement="false" order="1"/>
+    <variable:variableSetFilterArc xlink:arcrole="http://xbrl.org/arcrole/2008/variable-set-filter" xlink:from="v0579_m_13" xlink:to="qZZX_qOR_qx2007" xlink:type="arc" complement="false" order="1"/>
+    <va:valueAssertion id="v0579_m_13" xlink:label="v0579_m_13" xlink:type="resource" implicitFiltering="true" aspectModel="dimensional" test="iaf:numeric-equal( (iaf:numeric-multiply($a_13,0.12)) , ($b_13) )  "/>
+    <!--Assertion v0579_m_13: Labels and messages-->
+    <label:label xlink:type="resource" xml:lang="en" xlink:role="http://www.xbrl.org/2008/role/label" xlink:label="v0579_m_13_label">v0579_m_13</label:label>
+    <generic:arc xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="v0579_m_13" xlink:to="v0579_m_13_label" xlink:type="arc"/>
+    <label:label xlink:type="resource" xml:lang="en" xlink:role="http://www.xbrl.org/2008/role/verboseLabel" xlink:label="v0579_m_13_label_1">v0579_m_13: {C_18.00,0320,0050,0016} * 0.12 = {C_18.00,0320,0060,0016}</label:label>
+    <generic:arc xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="v0579_m_13" xlink:to="v0579_m_13_label_1" xlink:type="arc"/>
+    <msg:message xlink:type="resource" xml:lang="en" xlink:role="http://www.xbrl.org/2010/role/message" xlink:label="Message_v0579_m_13_notsatisfied">v0579_m_13: {{C_18.00,0320,0050,0016}} * 0.12 = {{C_18.00,0320,0060,0016}} Fails because {$a_13} * 0.12 = {$b_13} is not true.</msg:message>
+    <generic:arc xlink:arcrole="http://xbrl.org/arcrole/2010/assertion-unsatisfied-message" xlink:from="v0579_m_13" xlink:to="Message_v0579_m_13_notsatisfied" xlink:type="arc"/>
+    <variable:variableArc xlink:arcrole="http://xbrl.org/arcrole/2008/variable-set" xlink:from="v0579_m_14" xlink:to="a_14" xlink:type="arc" name="a_14"/>
+    <variable:variableArc xlink:arcrole="http://xbrl.org/arcrole/2008/variable-set" xlink:from="v0579_m_14" xlink:to="b_14" xlink:type="arc" name="b_14"/>
+    <variable:variableSetFilterArc xlink:arcrole="http://xbrl.org/arcrole/2008/variable-set-filter" xlink:from="v0579_m_14" xlink:to="APR_AP_x8" xlink:type="arc" complement="false" order="1"/>
+    <variable:variableSetFilterArc xlink:arcrole="http://xbrl.org/arcrole/2008/variable-set-filter" xlink:from="v0579_m_14" xlink:to="CUE_CU_SEK" xlink:type="arc" complement="false" order="1"/>
+    <variable:variableSetFilterArc xlink:arcrole="http://xbrl.org/arcrole/2008/variable-set-filter" xlink:from="v0579_m_14" xlink:to="TRI_TR_x20" xlink:type="arc" complement="false" order="1"/>
+    <variable:variableSetFilterArc xlink:arcrole="http://xbrl.org/arcrole/2008/variable-set-filter" xlink:from="v0579_m_14" xlink:to="qBGD_qPC_qx2026" xlink:type="arc" complement="false" order="1"/>
+    <variable:variableSetFilterArc xlink:arcrole="http://xbrl.org/arcrole/2008/variable-set-filter" xlink:from="v0579_m_14" xlink:to="qEEF_qPL_qx2002" xlink:type="arc" complement="false" order="1"/>
+    <variable:variableSetFilterArc xlink:arcrole="http://xbrl.org/arcrole/2008/variable-set-filter" xlink:from="v0579_m_14" xlink:to="qZZX_qOR_qx2007" xlink:type="arc" complement="false" order="1"/>
+    <va:valueAssertion id="v0579_m_14" xlink:label="v0579_m_14" xlink:type="resource" implicitFiltering="true" aspectModel="dimensional" test="iaf:numeric-equal( (iaf:numeric-multiply($a_14,0.12)) , ($b_14) )  "/>
+    <!--Assertion v0579_m_14: Labels and messages-->
+    <label:label xlink:type="resource" xml:lang="en" xlink:role="http://www.xbrl.org/2008/role/label" xlink:label="v0579_m_14_label">v0579_m_14</label:label>
+    <generic:arc xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="v0579_m_14" xlink:to="v0579_m_14_label" xlink:type="arc"/>
+    <label:label xlink:type="resource" xml:lang="en" xlink:role="http://www.xbrl.org/2008/role/verboseLabel" xlink:label="v0579_m_14_label_1">v0579_m_14: {C_18.00,0320,0050,0017} * 0.12 = {C_18.00,0320,0060,0017}</label:label>
+    <generic:arc xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="v0579_m_14" xlink:to="v0579_m_14_label_1" xlink:type="arc"/>
+    <msg:message xlink:type="resource" xml:lang="en" xlink:role="http://www.xbrl.org/2010/role/message" xlink:label="Message_v0579_m_14_notsatisfied">v0579_m_14: {{C_18.00,0320,0050,0017}} * 0.12 = {{C_18.00,0320,0060,0017}} Fails because {$a_14} * 0.12 = {$b_14} is not true.</msg:message>
+    <generic:arc xlink:arcrole="http://xbrl.org/arcrole/2010/assertion-unsatisfied-message" xlink:from="v0579_m_14" xlink:to="Message_v0579_m_14_notsatisfied" xlink:type="arc"/>
+    <variable:variableArc xlink:arcrole="http://xbrl.org/arcrole/2008/variable-set" xlink:from="v0579_m_15" xlink:to="a_15" xlink:type="arc" name="a_15"/>
+    <variable:variableArc xlink:arcrole="http://xbrl.org/arcrole/2008/variable-set" xlink:from="v0579_m_15" xlink:to="b_15" xlink:type="arc" name="b_15"/>
+    <variable:variableSetFilterArc xlink:arcrole="http://xbrl.org/arcrole/2008/variable-set-filter" xlink:from="v0579_m_15" xlink:to="APR_AP_x8" xlink:type="arc" complement="false" order="1"/>
+    <variable:variableSetFilterArc xlink:arcrole="http://xbrl.org/arcrole/2008/variable-set-filter" xlink:from="v0579_m_15" xlink:to="CUE_CU_CHF" xlink:type="arc" complement="false" order="1"/>
+    <variable:variableSetFilterArc xlink:arcrole="http://xbrl.org/arcrole/2008/variable-set-filter" xlink:from="v0579_m_15" xlink:to="TRI_TR_x20" xlink:type="arc" complement="false" order="1"/>
+    <variable:variableSetFilterArc xlink:arcrole="http://xbrl.org/arcrole/2008/variable-set-filter" xlink:from="v0579_m_15" xlink:to="qBGD_qPC_qx2026" xlink:type="arc" complement="false" order="1"/>
+    <variable:variableSetFilterArc xlink:arcrole="http://xbrl.org/arcrole/2008/variable-set-filter" xlink:from="v0579_m_15" xlink:to="qEEF_qPL_qx2002" xlink:type="arc" complement="false" order="1"/>
+    <variable:variableSetFilterArc xlink:arcrole="http://xbrl.org/arcrole/2008/variable-set-filter" xlink:from="v0579_m_15" xlink:to="qZZX_qOR_qx2007" xlink:type="arc" complement="false" order="1"/>
+    <va:valueAssertion id="v0579_m_15" xlink:label="v0579_m_15" xlink:type="resource" implicitFiltering="true" aspectModel="dimensional" test="iaf:numeric-equal( (iaf:numeric-multiply($a_15,0.12)) , ($b_15) )  "/>
+    <!--Assertion v0579_m_15: Labels and messages-->
+    <label:label xlink:type="resource" xml:lang="en" xlink:role="http://www.xbrl.org/2008/role/label" xlink:label="v0579_m_15_label">v0579_m_15</label:label>
+    <generic:arc xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="v0579_m_15" xlink:to="v0579_m_15_label" xlink:type="arc"/>
+    <label:label xlink:type="resource" xml:lang="en" xlink:role="http://www.xbrl.org/2008/role/verboseLabel" xlink:label="v0579_m_15_label_1">v0579_m_15: {C_18.00,0320,0050,0018} * 0.12 = {C_18.00,0320,0060,0018}</label:label>
+    <generic:arc xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="v0579_m_15" xlink:to="v0579_m_15_label_1" xlink:type="arc"/>
+    <msg:message xlink:type="resource" xml:lang="en" xlink:role="http://www.xbrl.org/2010/role/message" xlink:label="Message_v0579_m_15_notsatisfied">v0579_m_15: {{C_18.00,0320,0050,0018}} * 0.12 = {{C_18.00,0320,0060,0018}} Fails because {$a_15} * 0.12 = {$b_15} is not true.</msg:message>
+    <generic:arc xlink:arcrole="http://xbrl.org/arcrole/2010/assertion-unsatisfied-message" xlink:from="v0579_m_15" xlink:to="Message_v0579_m_15_notsatisfied" xlink:type="arc"/>
+    <variable:variableArc xlink:arcrole="http://xbrl.org/arcrole/2008/variable-set" xlink:from="v0579_m_16" xlink:to="a_16" xlink:type="arc" name="a_16"/>
+    <variable:variableArc xlink:arcrole="http://xbrl.org/arcrole/2008/variable-set" xlink:from="v0579_m_16" xlink:to="b_16" xlink:type="arc" name="b_16"/>
+    <variable:variableSetFilterArc xlink:arcrole="http://xbrl.org/arcrole/2008/variable-set-filter" xlink:from="v0579_m_16" xlink:to="APR_AP_x8" xlink:type="arc" complement="false" order="1"/>
+    <variable:variableSetFilterArc xlink:arcrole="http://xbrl.org/arcrole/2008/variable-set-filter" xlink:from="v0579_m_16" xlink:to="CUE_CU_TRY" xlink:type="arc" complement="false" order="1"/>
+    <variable:variableSetFilterArc xlink:arcrole="http://xbrl.org/arcrole/2008/variable-set-filter" xlink:from="v0579_m_16" xlink:to="TRI_TR_x20" xlink:type="arc" complement="false" order="1"/>
+    <variable:variableSetFilterArc xlink:arcrole="http://xbrl.org/arcrole/2008/variable-set-filter" xlink:from="v0579_m_16" xlink:to="qBGD_qPC_qx2026" xlink:type="arc" complement="false" order="1"/>
+    <variable:variableSetFilterArc xlink:arcrole="http://xbrl.org/arcrole/2008/variable-set-filter" xlink:from="v0579_m_16" xlink:to="qEEF_qPL_qx2002" xlink:type="arc" complement="false" order="1"/>
+    <variable:variableSetFilterArc xlink:arcrole="http://xbrl.org/arcrole/2008/variable-set-filter" xlink:from="v0579_m_16" xlink:to="qZZX_qOR_qx2007" xlink:type="arc" complement="false" order="1"/>
+    <va:valueAssertion id="v0579_m_16" xlink:label="v0579_m_16" xlink:type="resource" implicitFiltering="true" aspectModel="dimensional" test="iaf:numeric-equal( (iaf:numeric-multiply($a_16,0.12)) , ($b_16) )  "/>
+    <!--Assertion v0579_m_16: Labels and messages-->
+    <label:label xlink:type="resource" xml:lang="en" xlink:role="http://www.xbrl.org/2008/role/label" xlink:label="v0579_m_16_label">v0579_m_16</label:label>
+    <generic:arc xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="v0579_m_16" xlink:to="v0579_m_16_label" xlink:type="arc"/>
+    <label:label xlink:type="resource" xml:lang="en" xlink:role="http://www.xbrl.org/2008/role/verboseLabel" xlink:label="v0579_m_16_label_1">v0579_m_16: {C_18.00,0320,0050,0019} * 0.12 = {C_18.00,0320,0060,0019}</label:label>
+    <generic:arc xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="v0579_m_16" xlink:to="v0579_m_16_label_1" xlink:type="arc"/>
+    <msg:message xlink:type="resource" xml:lang="en" xlink:role="http://www.xbrl.org/2010/role/message" xlink:label="Message_v0579_m_16_notsatisfied">v0579_m_16: {{C_18.00,0320,0050,0019}} * 0.12 = {{C_18.00,0320,0060,0019}} Fails because {$a_16} * 0.12 = {$b_16} is not true.</msg:message>
+    <generic:arc xlink:arcrole="http://xbrl.org/arcrole/2010/assertion-unsatisfied-message" xlink:from="v0579_m_16" xlink:to="Message_v0579_m_16_notsatisfied" xlink:type="arc"/>
+    <variable:variableArc xlink:arcrole="http://xbrl.org/arcrole/2008/variable-set" xlink:from="v0579_m_17" xlink:to="a_17" xlink:type="arc" name="a_17"/>
+    <variable:variableArc xlink:arcrole="http://xbrl.org/arcrole/2008/variable-set" xlink:from="v0579_m_17" xlink:to="b_17" xlink:type="arc" name="b_17"/>
+    <variable:variableSetFilterArc xlink:arcrole="http://xbrl.org/arcrole/2008/variable-set-filter" xlink:from="v0579_m_17" xlink:to="APR_AP_x8" xlink:type="arc" complement="false" order="1"/>
+    <variable:variableSetFilterArc xlink:arcrole="http://xbrl.org/arcrole/2008/variable-set-filter" xlink:from="v0579_m_17" xlink:to="CUE_CU_UAH" xlink:type="arc" complement="false" order="1"/>
+    <variable:variableSetFilterArc xlink:arcrole="http://xbrl.org/arcrole/2008/variable-set-filter" xlink:from="v0579_m_17" xlink:to="TRI_TR_x20" xlink:type="arc" complement="false" order="1"/>
+    <variable:variableSetFilterArc xlink:arcrole="http://xbrl.org/arcrole/2008/variable-set-filter" xlink:from="v0579_m_17" xlink:to="qBGD_qPC_qx2026" xlink:type="arc" complement="false" order="1"/>
+    <variable:variableSetFilterArc xlink:arcrole="http://xbrl.org/arcrole/2008/variable-set-filter" xlink:from="v0579_m_17" xlink:to="qEEF_qPL_qx2002" xlink:type="arc" complement="false" order="1"/>
+    <variable:variableSetFilterArc xlink:arcrole="http://xbrl.org/arcrole/2008/variable-set-filter" xlink:from="v0579_m_17" xlink:to="qZZX_qOR_qx2007" xlink:type="arc" complement="false" order="1"/>
+    <va:valueAssertion id="v0579_m_17" xlink:label="v0579_m_17" xlink:type="resource" implicitFiltering="true" aspectModel="dimensional" test="iaf:numeric-equal( (iaf:numeric-multiply($a_17,0.12)) , ($b_17) )  "/>
+    <!--Assertion v0579_m_17: Labels and messages-->
+    <label:label xlink:type="resource" xml:lang="en" xlink:role="http://www.xbrl.org/2008/role/label" xlink:label="v0579_m_17_label">v0579_m_17</label:label>
+    <generic:arc xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="v0579_m_17" xlink:to="v0579_m_17_label" xlink:type="arc"/>
+    <label:label xlink:type="resource" xml:lang="en" xlink:role="http://www.xbrl.org/2008/role/verboseLabel" xlink:label="v0579_m_17_label_1">v0579_m_17: {C_18.00,0320,0050,0020} * 0.12 = {C_18.00,0320,0060,0020}</label:label>
+    <generic:arc xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="v0579_m_17" xlink:to="v0579_m_17_label_1" xlink:type="arc"/>
+    <msg:message xlink:type="resource" xml:lang="en" xlink:role="http://www.xbrl.org/2010/role/message" xlink:label="Message_v0579_m_17_notsatisfied">v0579_m_17: {{C_18.00,0320,0050,0020}} * 0.12 = {{C_18.00,0320,0060,0020}} Fails because {$a_17} * 0.12 = {$b_17} is not true.</msg:message>
+    <generic:arc xlink:arcrole="http://xbrl.org/arcrole/2010/assertion-unsatisfied-message" xlink:from="v0579_m_17" xlink:to="Message_v0579_m_17_notsatisfied" xlink:type="arc"/>
+    <variable:variableArc xlink:arcrole="http://xbrl.org/arcrole/2008/variable-set" xlink:from="v0579_m_18" xlink:to="a_18" xlink:type="arc" name="a_18"/>
+    <variable:variableArc xlink:arcrole="http://xbrl.org/arcrole/2008/variable-set" xlink:from="v0579_m_18" xlink:to="b_18" xlink:type="arc" name="b_18"/>
+    <variable:variableSetFilterArc xlink:arcrole="http://xbrl.org/arcrole/2008/variable-set-filter" xlink:from="v0579_m_18" xlink:to="APR_AP_x8" xlink:type="arc" complement="false" order="1"/>
+    <variable:variableSetFilterArc xlink:arcrole="http://xbrl.org/arcrole/2008/variable-set-filter" xlink:from="v0579_m_18" xlink:to="CUE_CU_USD" xlink:type="arc" complement="false" order="1"/>
+    <variable:variableSetFilterArc xlink:arcrole="http://xbrl.org/arcrole/2008/variable-set-filter" xlink:from="v0579_m_18" xlink:to="TRI_TR_x20" xlink:type="arc" complement="false" order="1"/>
+    <variable:variableSetFilterArc xlink:arcrole="http://xbrl.org/arcrole/2008/variable-set-filter" xlink:from="v0579_m_18" xlink:to="qBGD_qPC_qx2026" xlink:type="arc" complement="false" order="1"/>
+    <variable:variableSetFilterArc xlink:arcrole="http://xbrl.org/arcrole/2008/variable-set-filter" xlink:from="v0579_m_18" xlink:to="qEEF_qPL_qx2002" xlink:type="arc" complement="false" order="1"/>
+    <variable:variableSetFilterArc xlink:arcrole="http://xbrl.org/arcrole/2008/variable-set-filter" xlink:from="v0579_m_18" xlink:to="qZZX_qOR_qx2007" xlink:type="arc" complement="false" order="1"/>
+    <va:valueAssertion id="v0579_m_18" xlink:label="v0579_m_18" xlink:type="resource" implicitFiltering="true" aspectModel="dimensional" test="iaf:numeric-equal( (iaf:numeric-multiply($a_18,0.12)) , ($b_18) )  "/>
+    <!--Assertion v0579_m_18: Labels and messages-->
+    <label:label xlink:type="resource" xml:lang="en" xlink:role="http://www.xbrl.org/2008/role/label" xlink:label="v0579_m_18_label">v0579_m_18</label:label>
+    <generic:arc xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="v0579_m_18" xlink:to="v0579_m_18_label" xlink:type="arc"/>
+    <label:label xlink:type="resource" xml:lang="en" xlink:role="http://www.xbrl.org/2008/role/verboseLabel" xlink:label="v0579_m_18_label_1">v0579_m_18: {C_18.00,0320,0050,0021} * 0.12 = {C_18.00,0320,0060,0021}</label:label>
+    <generic:arc xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="v0579_m_18" xlink:to="v0579_m_18_label_1" xlink:type="arc"/>
+    <msg:message xlink:type="resource" xml:lang="en" xlink:role="http://www.xbrl.org/2010/role/message" xlink:label="Message_v0579_m_18_notsatisfied">v0579_m_18: {{C_18.00,0320,0050,0021}} * 0.12 = {{C_18.00,0320,0060,0021}} Fails because {$a_18} * 0.12 = {$b_18} is not true.</msg:message>
+    <generic:arc xlink:arcrole="http://xbrl.org/arcrole/2010/assertion-unsatisfied-message" xlink:from="v0579_m_18" xlink:to="Message_v0579_m_18_notsatisfied" xlink:type="arc"/>
+    <variable:variableArc xlink:arcrole="http://xbrl.org/arcrole/2008/variable-set" xlink:from="v0579_m_19" xlink:to="a_19" xlink:type="arc" name="a_19"/>
+    <variable:variableArc xlink:arcrole="http://xbrl.org/arcrole/2008/variable-set" xlink:from="v0579_m_19" xlink:to="b_19" xlink:type="arc" name="b_19"/>
+    <variable:variableSetFilterArc xlink:arcrole="http://xbrl.org/arcrole/2008/variable-set-filter" xlink:from="v0579_m_19" xlink:to="APR_AP_x8" xlink:type="arc" complement="false" order="1"/>
+    <variable:variableSetFilterArc xlink:arcrole="http://xbrl.org/arcrole/2008/variable-set-filter" xlink:from="v0579_m_19" xlink:to="CUE_CU_ISK" xlink:type="arc" complement="false" order="1"/>
+    <variable:variableSetFilterArc xlink:arcrole="http://xbrl.org/arcrole/2008/variable-set-filter" xlink:from="v0579_m_19" xlink:to="TRI_TR_x20" xlink:type="arc" complement="false" order="1"/>
+    <variable:variableSetFilterArc xlink:arcrole="http://xbrl.org/arcrole/2008/variable-set-filter" xlink:from="v0579_m_19" xlink:to="qBGD_qPC_qx2026" xlink:type="arc" complement="false" order="1"/>
+    <variable:variableSetFilterArc xlink:arcrole="http://xbrl.org/arcrole/2008/variable-set-filter" xlink:from="v0579_m_19" xlink:to="qEEF_qPL_qx2002" xlink:type="arc" complement="false" order="1"/>
+    <variable:variableSetFilterArc xlink:arcrole="http://xbrl.org/arcrole/2008/variable-set-filter" xlink:from="v0579_m_19" xlink:to="qZZX_qOR_qx2007" xlink:type="arc" complement="false" order="1"/>
+    <va:valueAssertion id="v0579_m_19" xlink:label="v0579_m_19" xlink:type="resource" implicitFiltering="true" aspectModel="dimensional" test="iaf:numeric-equal( (iaf:numeric-multiply($a_19,0.12)) , ($b_19) )  "/>
+    <!--Assertion v0579_m_19: Labels and messages-->
+    <label:label xlink:type="resource" xml:lang="en" xlink:role="http://www.xbrl.org/2008/role/label" xlink:label="v0579_m_19_label">v0579_m_19</label:label>
+    <generic:arc xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="v0579_m_19" xlink:to="v0579_m_19_label" xlink:type="arc"/>
+    <label:label xlink:type="resource" xml:lang="en" xlink:role="http://www.xbrl.org/2008/role/verboseLabel" xlink:label="v0579_m_19_label_1">v0579_m_19: {C_18.00,0320,0050,0022} * 0.12 = {C_18.00,0320,0060,0022}</label:label>
+    <generic:arc xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="v0579_m_19" xlink:to="v0579_m_19_label_1" xlink:type="arc"/>
+    <msg:message xlink:type="resource" xml:lang="en" xlink:role="http://www.xbrl.org/2010/role/message" xlink:label="Message_v0579_m_19_notsatisfied">v0579_m_19: {{C_18.00,0320,0050,0022}} * 0.12 = {{C_18.00,0320,0060,0022}} Fails because {$a_19} * 0.12 = {$b_19} is not true.</msg:message>
+    <generic:arc xlink:arcrole="http://xbrl.org/arcrole/2010/assertion-unsatisfied-message" xlink:from="v0579_m_19" xlink:to="Message_v0579_m_19_notsatisfied" xlink:type="arc"/>
+    <variable:variableArc xlink:arcrole="http://xbrl.org/arcrole/2008/variable-set" xlink:from="v0579_m_2" xlink:to="a_2" xlink:type="arc" name="a_2"/>
+    <variable:variableArc xlink:arcrole="http://xbrl.org/arcrole/2008/variable-set" xlink:from="v0579_m_2" xlink:to="b_2" xlink:type="arc" name="b_2"/>
+    <variable:variableSetFilterArc xlink:arcrole="http://xbrl.org/arcrole/2008/variable-set-filter" xlink:from="v0579_m_2" xlink:to="APR_AP_x8" xlink:type="arc" complement="false" order="1"/>
+    <variable:variableSetFilterArc xlink:arcrole="http://xbrl.org/arcrole/2008/variable-set-filter" xlink:from="v0579_m_2" xlink:to="CUE_CU_ALL" xlink:type="arc" complement="false" order="1"/>
+    <variable:variableSetFilterArc xlink:arcrole="http://xbrl.org/arcrole/2008/variable-set-filter" xlink:from="v0579_m_2" xlink:to="TRI_TR_x20" xlink:type="arc" complement="false" order="1"/>
+    <variable:variableSetFilterArc xlink:arcrole="http://xbrl.org/arcrole/2008/variable-set-filter" xlink:from="v0579_m_2" xlink:to="qBGD_qPC_qx2026" xlink:type="arc" complement="false" order="1"/>
+    <variable:variableSetFilterArc xlink:arcrole="http://xbrl.org/arcrole/2008/variable-set-filter" xlink:from="v0579_m_2" xlink:to="qEEF_qPL_qx2002" xlink:type="arc" complement="false" order="1"/>
+    <variable:variableSetFilterArc xlink:arcrole="http://xbrl.org/arcrole/2008/variable-set-filter" xlink:from="v0579_m_2" xlink:to="qZZX_qOR_qx2007" xlink:type="arc" complement="false" order="1"/>
+    <va:valueAssertion id="v0579_m_2" xlink:label="v0579_m_2" xlink:type="resource" implicitFiltering="true" aspectModel="dimensional" test="iaf:numeric-equal( (iaf:numeric-multiply($a_2,0.12)) , ($b_2) )  "/>
+    <!--Assertion v0579_m_2: Labels and messages-->
+    <label:label xlink:type="resource" xml:lang="en" xlink:role="http://www.xbrl.org/2008/role/label" xlink:label="v0579_m_2_label">v0579_m_2</label:label>
+    <generic:arc xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="v0579_m_2" xlink:to="v0579_m_2_label" xlink:type="arc"/>
+    <label:label xlink:type="resource" xml:lang="en" xlink:role="http://www.xbrl.org/2008/role/verboseLabel" xlink:label="v0579_m_2_label_1">v0579_m_2: {C_18.00,0320,0050,0003} * 0.12 = {C_18.00,0320,0060,0003}</label:label>
+    <generic:arc xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="v0579_m_2" xlink:to="v0579_m_2_label_1" xlink:type="arc"/>
+    <msg:message xlink:type="resource" xml:lang="en" xlink:role="http://www.xbrl.org/2010/role/message" xlink:label="Message_v0579_m_2_notsatisfied">v0579_m_2: {{C_18.00,0320,0050,0003}} * 0.12 = {{C_18.00,0320,0060,0003}} Fails because {$a_2} * 0.12 = {$b_2} is not true.</msg:message>
+    <generic:arc xlink:arcrole="http://xbrl.org/arcrole/2010/assertion-unsatisfied-message" xlink:from="v0579_m_2" xlink:to="Message_v0579_m_2_notsatisfied" xlink:type="arc"/>
+    <variable:variableArc xlink:arcrole="http://xbrl.org/arcrole/2008/variable-set" xlink:from="v0579_m_20" xlink:to="a_20" xlink:type="arc" name="a_20"/>
+    <variable:variableArc xlink:arcrole="http://xbrl.org/arcrole/2008/variable-set" xlink:from="v0579_m_20" xlink:to="b_20" xlink:type="arc" name="b_20"/>
+    <variable:variableSetFilterArc xlink:arcrole="http://xbrl.org/arcrole/2008/variable-set-filter" xlink:from="v0579_m_20" xlink:to="APR_AP_x8" xlink:type="arc" complement="false" order="1"/>
+    <variable:variableSetFilterArc xlink:arcrole="http://xbrl.org/arcrole/2008/variable-set-filter" xlink:from="v0579_m_20" xlink:to="CUE_CU_NOK" xlink:type="arc" complement="false" order="1"/>
+    <variable:variableSetFilterArc xlink:arcrole="http://xbrl.org/arcrole/2008/variable-set-filter" xlink:from="v0579_m_20" xlink:to="TRI_TR_x20" xlink:type="arc" complement="false" order="1"/>
+    <variable:variableSetFilterArc xlink:arcrole="http://xbrl.org/arcrole/2008/variable-set-filter" xlink:from="v0579_m_20" xlink:to="qBGD_qPC_qx2026" xlink:type="arc" complement="false" order="1"/>
+    <variable:variableSetFilterArc xlink:arcrole="http://xbrl.org/arcrole/2008/variable-set-filter" xlink:from="v0579_m_20" xlink:to="qEEF_qPL_qx2002" xlink:type="arc" complement="false" order="1"/>
+    <variable:variableSetFilterArc xlink:arcrole="http://xbrl.org/arcrole/2008/variable-set-filter" xlink:from="v0579_m_20" xlink:to="qZZX_qOR_qx2007" xlink:type="arc" complement="false" order="1"/>
+    <va:valueAssertion id="v0579_m_20" xlink:label="v0579_m_20" xlink:type="resource" implicitFiltering="true" aspectModel="dimensional" test="iaf:numeric-equal( (iaf:numeric-multiply($a_20,0.12)) , ($b_20) )  "/>
+    <!--Assertion v0579_m_20: Labels and messages-->
+    <label:label xlink:type="resource" xml:lang="en" xlink:role="http://www.xbrl.org/2008/role/label" xlink:label="v0579_m_20_label">v0579_m_20</label:label>
+    <generic:arc xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="v0579_m_20" xlink:to="v0579_m_20_label" xlink:type="arc"/>
+    <label:label xlink:type="resource" xml:lang="en" xlink:role="http://www.xbrl.org/2008/role/verboseLabel" xlink:label="v0579_m_20_label_1">v0579_m_20: {C_18.00,0320,0050,0023} * 0.12 = {C_18.00,0320,0060,0023}</label:label>
+    <generic:arc xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="v0579_m_20" xlink:to="v0579_m_20_label_1" xlink:type="arc"/>
+    <msg:message xlink:type="resource" xml:lang="en" xlink:role="http://www.xbrl.org/2010/role/message" xlink:label="Message_v0579_m_20_notsatisfied">v0579_m_20: {{C_18.00,0320,0050,0023}} * 0.12 = {{C_18.00,0320,0060,0023}} Fails because {$a_20} * 0.12 = {$b_20} is not true.</msg:message>
+    <generic:arc xlink:arcrole="http://xbrl.org/arcrole/2010/assertion-unsatisfied-message" xlink:from="v0579_m_20" xlink:to="Message_v0579_m_20_notsatisfied" xlink:type="arc"/>
+    <variable:variableArc xlink:arcrole="http://xbrl.org/arcrole/2008/variable-set" xlink:from="v0579_m_21" xlink:to="a_21" xlink:type="arc" name="a_21"/>
+    <variable:variableArc xlink:arcrole="http://xbrl.org/arcrole/2008/variable-set" xlink:from="v0579_m_21" xlink:to="b_21" xlink:type="arc" name="b_21"/>
+    <variable:variableSetFilterArc xlink:arcrole="http://xbrl.org/arcrole/2008/variable-set-filter" xlink:from="v0579_m_21" xlink:to="APR_AP_x8" xlink:type="arc" complement="false" order="1"/>
+    <variable:variableSetFilterArc xlink:arcrole="http://xbrl.org/arcrole/2008/variable-set-filter" xlink:from="v0579_m_21" xlink:to="CUE_CU_EGP" xlink:type="arc" complement="false" order="1"/>
+    <variable:variableSetFilterArc xlink:arcrole="http://xbrl.org/arcrole/2008/variable-set-filter" xlink:from="v0579_m_21" xlink:to="TRI_TR_x20" xlink:type="arc" complement="false" order="1"/>
+    <variable:variableSetFilterArc xlink:arcrole="http://xbrl.org/arcrole/2008/variable-set-filter" xlink:from="v0579_m_21" xlink:to="qBGD_qPC_qx2026" xlink:type="arc" complement="false" order="1"/>
+    <variable:variableSetFilterArc xlink:arcrole="http://xbrl.org/arcrole/2008/variable-set-filter" xlink:from="v0579_m_21" xlink:to="qEEF_qPL_qx2002" xlink:type="arc" complement="false" order="1"/>
+    <variable:variableSetFilterArc xlink:arcrole="http://xbrl.org/arcrole/2008/variable-set-filter" xlink:from="v0579_m_21" xlink:to="qZZX_qOR_qx2007" xlink:type="arc" complement="false" order="1"/>
+    <va:valueAssertion id="v0579_m_21" xlink:label="v0579_m_21" xlink:type="resource" implicitFiltering="true" aspectModel="dimensional" test="iaf:numeric-equal( (iaf:numeric-multiply($a_21,0.12)) , ($b_21) )  "/>
+    <!--Assertion v0579_m_21: Labels and messages-->
+    <label:label xlink:type="resource" xml:lang="en" xlink:role="http://www.xbrl.org/2008/role/label" xlink:label="v0579_m_21_label">v0579_m_21</label:label>
+    <generic:arc xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="v0579_m_21" xlink:to="v0579_m_21_label" xlink:type="arc"/>
+    <label:label xlink:type="resource" xml:lang="en" xlink:role="http://www.xbrl.org/2008/role/verboseLabel" xlink:label="v0579_m_21_label_1">v0579_m_21: {C_18.00,0320,0050,0024} * 0.12 = {C_18.00,0320,0060,0024}</label:label>
+    <generic:arc xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="v0579_m_21" xlink:to="v0579_m_21_label_1" xlink:type="arc"/>
+    <msg:message xlink:type="resource" xml:lang="en" xlink:role="http://www.xbrl.org/2010/role/message" xlink:label="Message_v0579_m_21_notsatisfied">v0579_m_21: {{C_18.00,0320,0050,0024}} * 0.12 = {{C_18.00,0320,0060,0024}} Fails because {$a_21} * 0.12 = {$b_21} is not true.</msg:message>
+    <generic:arc xlink:arcrole="http://xbrl.org/arcrole/2010/assertion-unsatisfied-message" xlink:from="v0579_m_21" xlink:to="Message_v0579_m_21_notsatisfied" xlink:type="arc"/>
+    <variable:variableArc xlink:arcrole="http://xbrl.org/arcrole/2008/variable-set" xlink:from="v0579_m_22" xlink:to="a_22" xlink:type="arc" name="a_22"/>
+    <variable:variableArc xlink:arcrole="http://xbrl.org/arcrole/2008/variable-set" xlink:from="v0579_m_22" xlink:to="b_22" xlink:type="arc" name="b_22"/>
+    <variable:variableSetFilterArc xlink:arcrole="http://xbrl.org/arcrole/2008/variable-set-filter" xlink:from="v0579_m_22" xlink:to="APR_AP_x8" xlink:type="arc" complement="false" order="1"/>
+    <variable:variableSetFilterArc xlink:arcrole="http://xbrl.org/arcrole/2008/variable-set-filter" xlink:from="v0579_m_22" xlink:to="CUE_CU_x21" xlink:type="arc" complement="false" order="1"/>
+    <variable:variableSetFilterArc xlink:arcrole="http://xbrl.org/arcrole/2008/variable-set-filter" xlink:from="v0579_m_22" xlink:to="TRI_TR_x20" xlink:type="arc" complement="false" order="1"/>
+    <variable:variableSetFilterArc xlink:arcrole="http://xbrl.org/arcrole/2008/variable-set-filter" xlink:from="v0579_m_22" xlink:to="qBGD_qPC_qx2026" xlink:type="arc" complement="false" order="1"/>
+    <variable:variableSetFilterArc xlink:arcrole="http://xbrl.org/arcrole/2008/variable-set-filter" xlink:from="v0579_m_22" xlink:to="qEEF_qPL_qx2002" xlink:type="arc" complement="false" order="1"/>
+    <variable:variableSetFilterArc xlink:arcrole="http://xbrl.org/arcrole/2008/variable-set-filter" xlink:from="v0579_m_22" xlink:to="qZZX_qOR_qx2007" xlink:type="arc" complement="false" order="1"/>
+    <va:valueAssertion id="v0579_m_22" xlink:label="v0579_m_22" xlink:type="resource" implicitFiltering="true" aspectModel="dimensional" test="iaf:numeric-equal( (iaf:numeric-multiply($a_22,0.12)) , ($b_22) )  "/>
+    <!--Assertion v0579_m_22: Labels and messages-->
+    <label:label xlink:type="resource" xml:lang="en" xlink:role="http://www.xbrl.org/2008/role/label" xlink:label="v0579_m_22_label">v0579_m_22</label:label>
+    <generic:arc xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="v0579_m_22" xlink:to="v0579_m_22_label" xlink:type="arc"/>
+    <label:label xlink:type="resource" xml:lang="en" xlink:role="http://www.xbrl.org/2008/role/verboseLabel" xlink:label="v0579_m_22_label_1">v0579_m_22: {C_18.00,0320,0050,0025} * 0.12 = {C_18.00,0320,0060,0025}</label:label>
+    <generic:arc xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="v0579_m_22" xlink:to="v0579_m_22_label_1" xlink:type="arc"/>
+    <msg:message xlink:type="resource" xml:lang="en" xlink:role="http://www.xbrl.org/2010/role/message" xlink:label="Message_v0579_m_22_notsatisfied">v0579_m_22: {{C_18.00,0320,0050,0025}} * 0.12 = {{C_18.00,0320,0060,0025}} Fails because {$a_22} * 0.12 = {$b_22} is not true.</msg:message>
+    <generic:arc xlink:arcrole="http://xbrl.org/arcrole/2010/assertion-unsatisfied-message" xlink:from="v0579_m_22" xlink:to="Message_v0579_m_22_notsatisfied" xlink:type="arc"/>
+    <variable:variableArc xlink:arcrole="http://xbrl.org/arcrole/2008/variable-set" xlink:from="v0579_m_23" xlink:to="a_23" xlink:type="arc" name="a_23"/>
+    <variable:variableArc xlink:arcrole="http://xbrl.org/arcrole/2008/variable-set" xlink:from="v0579_m_23" xlink:to="b_23" xlink:type="arc" name="b_23"/>
+    <variable:variableSetFilterArc xlink:arcrole="http://xbrl.org/arcrole/2008/variable-set-filter" xlink:from="v0579_m_23" xlink:to="APR_AP_x8" xlink:type="arc" complement="false" order="1"/>
+    <variable:variableSetFilterArc xlink:arcrole="http://xbrl.org/arcrole/2008/variable-set-filter" xlink:from="v0579_m_23" xlink:to="CUE_CU_HRK" xlink:type="arc" complement="false" order="1"/>
+    <variable:variableSetFilterArc xlink:arcrole="http://xbrl.org/arcrole/2008/variable-set-filter" xlink:from="v0579_m_23" xlink:to="TRI_TR_x20" xlink:type="arc" complement="false" order="1"/>
+    <variable:variableSetFilterArc xlink:arcrole="http://xbrl.org/arcrole/2008/variable-set-filter" xlink:from="v0579_m_23" xlink:to="qBGD_qPC_qx2026" xlink:type="arc" complement="false" order="1"/>
+    <variable:variableSetFilterArc xlink:arcrole="http://xbrl.org/arcrole/2008/variable-set-filter" xlink:from="v0579_m_23" xlink:to="qEEF_qPL_qx2002" xlink:type="arc" complement="false" order="1"/>
+    <variable:variableSetFilterArc xlink:arcrole="http://xbrl.org/arcrole/2008/variable-set-filter" xlink:from="v0579_m_23" xlink:to="qZZX_qOR_qx2007" xlink:type="arc" complement="false" order="1"/>
+    <va:valueAssertion id="v0579_m_23" xlink:label="v0579_m_23" xlink:type="resource" implicitFiltering="true" aspectModel="dimensional" test="iaf:numeric-equal( (iaf:numeric-multiply($a_23,0.12)) , ($b_23) )  "/>
+    <!--Assertion v0579_m_23: Labels and messages-->
+    <label:label xlink:type="resource" xml:lang="en" xlink:role="http://www.xbrl.org/2008/role/label" xlink:label="v0579_m_23_label">v0579_m_23</label:label>
+    <generic:arc xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="v0579_m_23" xlink:to="v0579_m_23_label" xlink:type="arc"/>
+    <label:label xlink:type="resource" xml:lang="en" xlink:role="http://www.xbrl.org/2008/role/verboseLabel" xlink:label="v0579_m_23_label_1">v0579_m_23: {C_18.00,0320,0050,0026} * 0.12 = {C_18.00,0320,0060,0026}</label:label>
+    <generic:arc xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="v0579_m_23" xlink:to="v0579_m_23_label_1" xlink:type="arc"/>
+    <msg:message xlink:type="resource" xml:lang="en" xlink:role="http://www.xbrl.org/2010/role/message" xlink:label="Message_v0579_m_23_notsatisfied">v0579_m_23: {{C_18.00,0320,0050,0026}} * 0.12 = {{C_18.00,0320,0060,0026}} Fails because {$a_23} * 0.12 = {$b_23} is not true.</msg:message>
+    <generic:arc xlink:arcrole="http://xbrl.org/arcrole/2010/assertion-unsatisfied-message" xlink:from="v0579_m_23" xlink:to="Message_v0579_m_23_notsatisfied" xlink:type="arc"/>
+    <variable:variableArc xlink:arcrole="http://xbrl.org/arcrole/2008/variable-set" xlink:from="v0579_m_3" xlink:to="a_3" xlink:type="arc" name="a_3"/>
+    <variable:variableArc xlink:arcrole="http://xbrl.org/arcrole/2008/variable-set" xlink:from="v0579_m_3" xlink:to="b_3" xlink:type="arc" name="b_3"/>
+    <variable:variableSetFilterArc xlink:arcrole="http://xbrl.org/arcrole/2008/variable-set-filter" xlink:from="v0579_m_3" xlink:to="APR_AP_x8" xlink:type="arc" complement="false" order="1"/>
+    <variable:variableSetFilterArc xlink:arcrole="http://xbrl.org/arcrole/2008/variable-set-filter" xlink:from="v0579_m_3" xlink:to="CUE_CU_BGN" xlink:type="arc" complement="false" order="1"/>
+    <variable:variableSetFilterArc xlink:arcrole="http://xbrl.org/arcrole/2008/variable-set-filter" xlink:from="v0579_m_3" xlink:to="TRI_TR_x20" xlink:type="arc" complement="false" order="1"/>
+    <variable:variableSetFilterArc xlink:arcrole="http://xbrl.org/arcrole/2008/variable-set-filter" xlink:from="v0579_m_3" xlink:to="qBGD_qPC_qx2026" xlink:type="arc" complement="false" order="1"/>
+    <variable:variableSetFilterArc xlink:arcrole="http://xbrl.org/arcrole/2008/variable-set-filter" xlink:from="v0579_m_3" xlink:to="qEEF_qPL_qx2002" xlink:type="arc" complement="false" order="1"/>
+    <variable:variableSetFilterArc xlink:arcrole="http://xbrl.org/arcrole/2008/variable-set-filter" xlink:from="v0579_m_3" xlink:to="qZZX_qOR_qx2007" xlink:type="arc" complement="false" order="1"/>
+    <va:valueAssertion id="v0579_m_3" xlink:label="v0579_m_3" xlink:type="resource" implicitFiltering="true" aspectModel="dimensional" test="iaf:numeric-equal( (iaf:numeric-multiply($a_3,0.12)) , ($b_3) )  "/>
+    <!--Assertion v0579_m_3: Labels and messages-->
+    <label:label xlink:type="resource" xml:lang="en" xlink:role="http://www.xbrl.org/2008/role/label" xlink:label="v0579_m_3_label">v0579_m_3</label:label>
+    <generic:arc xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="v0579_m_3" xlink:to="v0579_m_3_label" xlink:type="arc"/>
+    <label:label xlink:type="resource" xml:lang="en" xlink:role="http://www.xbrl.org/2008/role/verboseLabel" xlink:label="v0579_m_3_label_1">v0579_m_3: {C_18.00,0320,0050,0004} * 0.12 = {C_18.00,0320,0060,0004}</label:label>
+    <generic:arc xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="v0579_m_3" xlink:to="v0579_m_3_label_1" xlink:type="arc"/>
+    <msg:message xlink:type="resource" xml:lang="en" xlink:role="http://www.xbrl.org/2010/role/message" xlink:label="Message_v0579_m_3_notsatisfied">v0579_m_3: {{C_18.00,0320,0050,0004}} * 0.12 = {{C_18.00,0320,0060,0004}} Fails because {$a_3} * 0.12 = {$b_3} is not true.</msg:message>
+    <generic:arc xlink:arcrole="http://xbrl.org/arcrole/2010/assertion-unsatisfied-message" xlink:from="v0579_m_3" xlink:to="Message_v0579_m_3_notsatisfied" xlink:type="arc"/>
+    <variable:variableArc xlink:arcrole="http://xbrl.org/arcrole/2008/variable-set" xlink:from="v0579_m_4" xlink:to="a_4" xlink:type="arc" name="a_4"/>
+    <variable:variableArc xlink:arcrole="http://xbrl.org/arcrole/2008/variable-set" xlink:from="v0579_m_4" xlink:to="b_4" xlink:type="arc" name="b_4"/>
+    <variable:variableSetFilterArc xlink:arcrole="http://xbrl.org/arcrole/2008/variable-set-filter" xlink:from="v0579_m_4" xlink:to="APR_AP_x8" xlink:type="arc" complement="false" order="1"/>
+    <variable:variableSetFilterArc xlink:arcrole="http://xbrl.org/arcrole/2008/variable-set-filter" xlink:from="v0579_m_4" xlink:to="CUE_CU_CZK" xlink:type="arc" complement="false" order="1"/>
+    <variable:variableSetFilterArc xlink:arcrole="http://xbrl.org/arcrole/2008/variable-set-filter" xlink:from="v0579_m_4" xlink:to="TRI_TR_x20" xlink:type="arc" complement="false" order="1"/>
+    <variable:variableSetFilterArc xlink:arcrole="http://xbrl.org/arcrole/2008/variable-set-filter" xlink:from="v0579_m_4" xlink:to="qBGD_qPC_qx2026" xlink:type="arc" complement="false" order="1"/>
+    <variable:variableSetFilterArc xlink:arcrole="http://xbrl.org/arcrole/2008/variable-set-filter" xlink:from="v0579_m_4" xlink:to="qEEF_qPL_qx2002" xlink:type="arc" complement="false" order="1"/>
+    <variable:variableSetFilterArc xlink:arcrole="http://xbrl.org/arcrole/2008/variable-set-filter" xlink:from="v0579_m_4" xlink:to="qZZX_qOR_qx2007" xlink:type="arc" complement="false" order="1"/>
+    <va:valueAssertion id="v0579_m_4" xlink:label="v0579_m_4" xlink:type="resource" implicitFiltering="true" aspectModel="dimensional" test="iaf:numeric-equal( (iaf:numeric-multiply($a_4,0.12)) , ($b_4) )  "/>
+    <!--Assertion v0579_m_4: Labels and messages-->
+    <label:label xlink:type="resource" xml:lang="en" xlink:role="http://www.xbrl.org/2008/role/label" xlink:label="v0579_m_4_label">v0579_m_4</label:label>
+    <generic:arc xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="v0579_m_4" xlink:to="v0579_m_4_label" xlink:type="arc"/>
+    <label:label xlink:type="resource" xml:lang="en" xlink:role="http://www.xbrl.org/2008/role/verboseLabel" xlink:label="v0579_m_4_label_1">v0579_m_4: {C_18.00,0320,0050,0005} * 0.12 = {C_18.00,0320,0060,0005}</label:label>
+    <generic:arc xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="v0579_m_4" xlink:to="v0579_m_4_label_1" xlink:type="arc"/>
+    <msg:message xlink:type="resource" xml:lang="en" xlink:role="http://www.xbrl.org/2010/role/message" xlink:label="Message_v0579_m_4_notsatisfied">v0579_m_4: {{C_18.00,0320,0050,0005}} * 0.12 = {{C_18.00,0320,0060,0005}} Fails because {$a_4} * 0.12 = {$b_4} is not true.</msg:message>
+    <generic:arc xlink:arcrole="http://xbrl.org/arcrole/2010/assertion-unsatisfied-message" xlink:from="v0579_m_4" xlink:to="Message_v0579_m_4_notsatisfied" xlink:type="arc"/>
+    <variable:variableArc xlink:arcrole="http://xbrl.org/arcrole/2008/variable-set" xlink:from="v0579_m_5" xlink:to="a_5" xlink:type="arc" name="a_5"/>
+    <variable:variableArc xlink:arcrole="http://xbrl.org/arcrole/2008/variable-set" xlink:from="v0579_m_5" xlink:to="b_5" xlink:type="arc" name="b_5"/>
+    <variable:variableSetFilterArc xlink:arcrole="http://xbrl.org/arcrole/2008/variable-set-filter" xlink:from="v0579_m_5" xlink:to="APR_AP_x8" xlink:type="arc" complement="false" order="1"/>
+    <variable:variableSetFilterArc xlink:arcrole="http://xbrl.org/arcrole/2008/variable-set-filter" xlink:from="v0579_m_5" xlink:to="CUE_CU_DKK" xlink:type="arc" complement="false" order="1"/>
+    <variable:variableSetFilterArc xlink:arcrole="http://xbrl.org/arcrole/2008/variable-set-filter" xlink:from="v0579_m_5" xlink:to="TRI_TR_x20" xlink:type="arc" complement="false" order="1"/>
+    <variable:variableSetFilterArc xlink:arcrole="http://xbrl.org/arcrole/2008/variable-set-filter" xlink:from="v0579_m_5" xlink:to="qBGD_qPC_qx2026" xlink:type="arc" complement="false" order="1"/>
+    <variable:variableSetFilterArc xlink:arcrole="http://xbrl.org/arcrole/2008/variable-set-filter" xlink:from="v0579_m_5" xlink:to="qEEF_qPL_qx2002" xlink:type="arc" complement="false" order="1"/>
+    <variable:variableSetFilterArc xlink:arcrole="http://xbrl.org/arcrole/2008/variable-set-filter" xlink:from="v0579_m_5" xlink:to="qZZX_qOR_qx2007" xlink:type="arc" complement="false" order="1"/>
+    <va:valueAssertion id="v0579_m_5" xlink:label="v0579_m_5" xlink:type="resource" implicitFiltering="true" aspectModel="dimensional" test="iaf:numeric-equal( (iaf:numeric-multiply($a_5,0.12)) , ($b_5) )  "/>
+    <!--Assertion v0579_m_5: Labels and messages-->
+    <label:label xlink:type="resource" xml:lang="en" xlink:role="http://www.xbrl.org/2008/role/label" xlink:label="v0579_m_5_label">v0579_m_5</label:label>
+    <generic:arc xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="v0579_m_5" xlink:to="v0579_m_5_label" xlink:type="arc"/>
+    <label:label xlink:type="resource" xml:lang="en" xlink:role="http://www.xbrl.org/2008/role/verboseLabel" xlink:label="v0579_m_5_label_1">v0579_m_5: {C_18.00,0320,0050,0006} * 0.12 = {C_18.00,0320,0060,0006}</label:label>
+    <generic:arc xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="v0579_m_5" xlink:to="v0579_m_5_label_1" xlink:type="arc"/>
+    <msg:message xlink:type="resource" xml:lang="en" xlink:role="http://www.xbrl.org/2010/role/message" xlink:label="Message_v0579_m_5_notsatisfied">v0579_m_5: {{C_18.00,0320,0050,0006}} * 0.12 = {{C_18.00,0320,0060,0006}} Fails because {$a_5} * 0.12 = {$b_5} is not true.</msg:message>
+    <generic:arc xlink:arcrole="http://xbrl.org/arcrole/2010/assertion-unsatisfied-message" xlink:from="v0579_m_5" xlink:to="Message_v0579_m_5_notsatisfied" xlink:type="arc"/>
+    <variable:variableArc xlink:arcrole="http://xbrl.org/arcrole/2008/variable-set" xlink:from="v0579_m_6" xlink:to="a_6" xlink:type="arc" name="a_6"/>
+    <variable:variableArc xlink:arcrole="http://xbrl.org/arcrole/2008/variable-set" xlink:from="v0579_m_6" xlink:to="b_6" xlink:type="arc" name="b_6"/>
+    <variable:variableSetFilterArc xlink:arcrole="http://xbrl.org/arcrole/2008/variable-set-filter" xlink:from="v0579_m_6" xlink:to="APR_AP_x8" xlink:type="arc" complement="false" order="1"/>
+    <variable:variableSetFilterArc xlink:arcrole="http://xbrl.org/arcrole/2008/variable-set-filter" xlink:from="v0579_m_6" xlink:to="CUE_CU_GBP" xlink:type="arc" complement="false" order="1"/>
+    <variable:variableSetFilterArc xlink:arcrole="http://xbrl.org/arcrole/2008/variable-set-filter" xlink:from="v0579_m_6" xlink:to="TRI_TR_x20" xlink:type="arc" complement="false" order="1"/>
+    <variable:variableSetFilterArc xlink:arcrole="http://xbrl.org/arcrole/2008/variable-set-filter" xlink:from="v0579_m_6" xlink:to="qBGD_qPC_qx2026" xlink:type="arc" complement="false" order="1"/>
+    <variable:variableSetFilterArc xlink:arcrole="http://xbrl.org/arcrole/2008/variable-set-filter" xlink:from="v0579_m_6" xlink:to="qEEF_qPL_qx2002" xlink:type="arc" complement="false" order="1"/>
+    <variable:variableSetFilterArc xlink:arcrole="http://xbrl.org/arcrole/2008/variable-set-filter" xlink:from="v0579_m_6" xlink:to="qZZX_qOR_qx2007" xlink:type="arc" complement="false" order="1"/>
+    <va:valueAssertion id="v0579_m_6" xlink:label="v0579_m_6" xlink:type="resource" implicitFiltering="true" aspectModel="dimensional" test="iaf:numeric-equal( (iaf:numeric-multiply($a_6,0.12)) , ($b_6) )  "/>
+    <!--Assertion v0579_m_6: Labels and messages-->
+    <label:label xlink:type="resource" xml:lang="en" xlink:role="http://www.xbrl.org/2008/role/label" xlink:label="v0579_m_6_label">v0579_m_6</label:label>
+    <generic:arc xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="v0579_m_6" xlink:to="v0579_m_6_label" xlink:type="arc"/>
+    <label:label xlink:type="resource" xml:lang="en" xlink:role="http://www.xbrl.org/2008/role/verboseLabel" xlink:label="v0579_m_6_label_1">v0579_m_6: {C_18.00,0320,0050,0007} * 0.12 = {C_18.00,0320,0060,0007}</label:label>
+    <generic:arc xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="v0579_m_6" xlink:to="v0579_m_6_label_1" xlink:type="arc"/>
+    <msg:message xlink:type="resource" xml:lang="en" xlink:role="http://www.xbrl.org/2010/role/message" xlink:label="Message_v0579_m_6_notsatisfied">v0579_m_6: {{C_18.00,0320,0050,0007}} * 0.12 = {{C_18.00,0320,0060,0007}} Fails because {$a_6} * 0.12 = {$b_6} is not true.</msg:message>
+    <generic:arc xlink:arcrole="http://xbrl.org/arcrole/2010/assertion-unsatisfied-message" xlink:from="v0579_m_6" xlink:to="Message_v0579_m_6_notsatisfied" xlink:type="arc"/>
+    <variable:variableArc xlink:arcrole="http://xbrl.org/arcrole/2008/variable-set" xlink:from="v0579_m_7" xlink:to="a_7" xlink:type="arc" name="a_7"/>
+    <variable:variableArc xlink:arcrole="http://xbrl.org/arcrole/2008/variable-set" xlink:from="v0579_m_7" xlink:to="b_7" xlink:type="arc" name="b_7"/>
+    <variable:variableSetFilterArc xlink:arcrole="http://xbrl.org/arcrole/2008/variable-set-filter" xlink:from="v0579_m_7" xlink:to="APR_AP_x8" xlink:type="arc" complement="false" order="1"/>
+    <variable:variableSetFilterArc xlink:arcrole="http://xbrl.org/arcrole/2008/variable-set-filter" xlink:from="v0579_m_7" xlink:to="CUE_CU_HUF" xlink:type="arc" complement="false" order="1"/>
+    <variable:variableSetFilterArc xlink:arcrole="http://xbrl.org/arcrole/2008/variable-set-filter" xlink:from="v0579_m_7" xlink:to="TRI_TR_x20" xlink:type="arc" complement="false" order="1"/>
+    <variable:variableSetFilterArc xlink:arcrole="http://xbrl.org/arcrole/2008/variable-set-filter" xlink:from="v0579_m_7" xlink:to="qBGD_qPC_qx2026" xlink:type="arc" complement="false" order="1"/>
+    <variable:variableSetFilterArc xlink:arcrole="http://xbrl.org/arcrole/2008/variable-set-filter" xlink:from="v0579_m_7" xlink:to="qEEF_qPL_qx2002" xlink:type="arc" complement="false" order="1"/>
+    <variable:variableSetFilterArc xlink:arcrole="http://xbrl.org/arcrole/2008/variable-set-filter" xlink:from="v0579_m_7" xlink:to="qZZX_qOR_qx2007" xlink:type="arc" complement="false" order="1"/>
+    <va:valueAssertion id="v0579_m_7" xlink:label="v0579_m_7" xlink:type="resource" implicitFiltering="true" aspectModel="dimensional" test="iaf:numeric-equal( (iaf:numeric-multiply($a_7,0.12)) , ($b_7) )  "/>
+    <!--Assertion v0579_m_7: Labels and messages-->
+    <label:label xlink:type="resource" xml:lang="en" xlink:role="http://www.xbrl.org/2008/role/label" xlink:label="v0579_m_7_label">v0579_m_7</label:label>
+    <generic:arc xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="v0579_m_7" xlink:to="v0579_m_7_label" xlink:type="arc"/>
+    <label:label xlink:type="resource" xml:lang="en" xlink:role="http://www.xbrl.org/2008/role/verboseLabel" xlink:label="v0579_m_7_label_1">v0579_m_7: {C_18.00,0320,0050,0008} * 0.12 = {C_18.00,0320,0060,0008}</label:label>
+    <generic:arc xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="v0579_m_7" xlink:to="v0579_m_7_label_1" xlink:type="arc"/>
+    <msg:message xlink:type="resource" xml:lang="en" xlink:role="http://www.xbrl.org/2010/role/message" xlink:label="Message_v0579_m_7_notsatisfied">v0579_m_7: {{C_18.00,0320,0050,0008}} * 0.12 = {{C_18.00,0320,0060,0008}} Fails because {$a_7} * 0.12 = {$b_7} is not true.</msg:message>
+    <generic:arc xlink:arcrole="http://xbrl.org/arcrole/2010/assertion-unsatisfied-message" xlink:from="v0579_m_7" xlink:to="Message_v0579_m_7_notsatisfied" xlink:type="arc"/>
+    <variable:variableArc xlink:arcrole="http://xbrl.org/arcrole/2008/variable-set" xlink:from="v0579_m_8" xlink:to="a_8" xlink:type="arc" name="a_8"/>
+    <variable:variableArc xlink:arcrole="http://xbrl.org/arcrole/2008/variable-set" xlink:from="v0579_m_8" xlink:to="b_8" xlink:type="arc" name="b_8"/>
+    <variable:variableSetFilterArc xlink:arcrole="http://xbrl.org/arcrole/2008/variable-set-filter" xlink:from="v0579_m_8" xlink:to="APR_AP_x8" xlink:type="arc" complement="false" order="1"/>
+    <variable:variableSetFilterArc xlink:arcrole="http://xbrl.org/arcrole/2008/variable-set-filter" xlink:from="v0579_m_8" xlink:to="CUE_CU_JPY" xlink:type="arc" complement="false" order="1"/>
+    <variable:variableSetFilterArc xlink:arcrole="http://xbrl.org/arcrole/2008/variable-set-filter" xlink:from="v0579_m_8" xlink:to="TRI_TR_x20" xlink:type="arc" complement="false" order="1"/>
+    <variable:variableSetFilterArc xlink:arcrole="http://xbrl.org/arcrole/2008/variable-set-filter" xlink:from="v0579_m_8" xlink:to="qBGD_qPC_qx2026" xlink:type="arc" complement="false" order="1"/>
+    <variable:variableSetFilterArc xlink:arcrole="http://xbrl.org/arcrole/2008/variable-set-filter" xlink:from="v0579_m_8" xlink:to="qEEF_qPL_qx2002" xlink:type="arc" complement="false" order="1"/>
+    <variable:variableSetFilterArc xlink:arcrole="http://xbrl.org/arcrole/2008/variable-set-filter" xlink:from="v0579_m_8" xlink:to="qZZX_qOR_qx2007" xlink:type="arc" complement="false" order="1"/>
+    <va:valueAssertion id="v0579_m_8" xlink:label="v0579_m_8" xlink:type="resource" implicitFiltering="true" aspectModel="dimensional" test="iaf:numeric-equal( (iaf:numeric-multiply($a_8,0.12)) , ($b_8) )  "/>
+    <!--Assertion v0579_m_8: Labels and messages-->
+    <label:label xlink:type="resource" xml:lang="en" xlink:role="http://www.xbrl.org/2008/role/label" xlink:label="v0579_m_8_label">v0579_m_8</label:label>
+    <generic:arc xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="v0579_m_8" xlink:to="v0579_m_8_label" xlink:type="arc"/>
+    <label:label xlink:type="resource" xml:lang="en" xlink:role="http://www.xbrl.org/2008/role/verboseLabel" xlink:label="v0579_m_8_label_1">v0579_m_8: {C_18.00,0320,0050,0009} * 0.12 = {C_18.00,0320,0060,0009}</label:label>
+    <generic:arc xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="v0579_m_8" xlink:to="v0579_m_8_label_1" xlink:type="arc"/>
+    <msg:message xlink:type="resource" xml:lang="en" xlink:role="http://www.xbrl.org/2010/role/message" xlink:label="Message_v0579_m_8_notsatisfied">v0579_m_8: {{C_18.00,0320,0050,0009}} * 0.12 = {{C_18.00,0320,0060,0009}} Fails because {$a_8} * 0.12 = {$b_8} is not true.</msg:message>
+    <generic:arc xlink:arcrole="http://xbrl.org/arcrole/2010/assertion-unsatisfied-message" xlink:from="v0579_m_8" xlink:to="Message_v0579_m_8_notsatisfied" xlink:type="arc"/>
+    <variable:variableArc xlink:arcrole="http://xbrl.org/arcrole/2008/variable-set" xlink:from="v0579_m_9" xlink:to="a_9" xlink:type="arc" name="a_9"/>
+    <variable:variableArc xlink:arcrole="http://xbrl.org/arcrole/2008/variable-set" xlink:from="v0579_m_9" xlink:to="b_9" xlink:type="arc" name="b_9"/>
+    <variable:variableSetFilterArc xlink:arcrole="http://xbrl.org/arcrole/2008/variable-set-filter" xlink:from="v0579_m_9" xlink:to="APR_AP_x8" xlink:type="arc" complement="false" order="1"/>
+    <variable:variableSetFilterArc xlink:arcrole="http://xbrl.org/arcrole/2008/variable-set-filter" xlink:from="v0579_m_9" xlink:to="CUE_CU_MKD" xlink:type="arc" complement="false" order="1"/>
+    <variable:variableSetFilterArc xlink:arcrole="http://xbrl.org/arcrole/2008/variable-set-filter" xlink:from="v0579_m_9" xlink:to="TRI_TR_x20" xlink:type="arc" complement="false" order="1"/>
+    <variable:variableSetFilterArc xlink:arcrole="http://xbrl.org/arcrole/2008/variable-set-filter" xlink:from="v0579_m_9" xlink:to="qBGD_qPC_qx2026" xlink:type="arc" complement="false" order="1"/>
+    <variable:variableSetFilterArc xlink:arcrole="http://xbrl.org/arcrole/2008/variable-set-filter" xlink:from="v0579_m_9" xlink:to="qEEF_qPL_qx2002" xlink:type="arc" complement="false" order="1"/>
+    <variable:variableSetFilterArc xlink:arcrole="http://xbrl.org/arcrole/2008/variable-set-filter" xlink:from="v0579_m_9" xlink:to="qZZX_qOR_qx2007" xlink:type="arc" complement="false" order="1"/>
+    <va:valueAssertion id="v0579_m_9" xlink:label="v0579_m_9" xlink:type="resource" implicitFiltering="true" aspectModel="dimensional" test="iaf:numeric-equal( (iaf:numeric-multiply($a_9,0.12)) , ($b_9) )  "/>
+    <!--Assertion v0579_m_9: Labels and messages-->
+    <label:label xlink:type="resource" xml:lang="en" xlink:role="http://www.xbrl.org/2008/role/label" xlink:label="v0579_m_9_label">v0579_m_9</label:label>
+    <generic:arc xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="v0579_m_9" xlink:to="v0579_m_9_label" xlink:type="arc"/>
+    <label:label xlink:type="resource" xml:lang="en" xlink:role="http://www.xbrl.org/2008/role/verboseLabel" xlink:label="v0579_m_9_label_1">v0579_m_9: {C_18.00,0320,0050,0012} * 0.12 = {C_18.00,0320,0060,0012}</label:label>
+    <generic:arc xlink:arcrole="http://xbrl.org/arcrole/2008/element-label" xlink:from="v0579_m_9" xlink:to="v0579_m_9_label_1" xlink:type="arc"/>
+    <msg:message xlink:type="resource" xml:lang="en" xlink:role="http://www.xbrl.org/2010/role/message" xlink:label="Message_v0579_m_9_notsatisfied">v0579_m_9: {{C_18.00,0320,0050,0012}} * 0.12 = {{C_18.00,0320,0060,0012}} Fails because {$a_9} * 0.12 = {$b_9} is not true.</msg:message>
+    <generic:arc xlink:arcrole="http://xbrl.org/arcrole/2010/assertion-unsatisfied-message" xlink:from="v0579_m_9" xlink:to="Message_v0579_m_9_notsatisfied" xlink:type="arc"/>
+  </generic:link>
+</link:linkbase>
