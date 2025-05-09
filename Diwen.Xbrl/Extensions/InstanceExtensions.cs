@@ -35,5 +35,13 @@ namespace Diwen.Xbrl.Extensions
             ModuleDefinition moduleDefinition)
         => Csv.Report.FromXbrlXml(xmlreport, tableDefinitions, filingIndicators, moduleDefinition);
 
+        /// <summary/>
+        public static Csv.Report ToXbrlCsvPlain(
+            this Xml.Report xmlreport,
+            Dictionary<string, TableDefinition> tableDefinitions,
+            Dictionary<string, string> filingIndicators,
+            ModuleDefinition moduleDefinition)
+        => Csv.PlainCsvReport.FromXbrlXml(xmlreport, tableDefinitions, filingIndicators, moduleDefinition);
+
     }
 }

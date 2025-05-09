@@ -8,6 +8,6 @@ namespace Diwen.Xbrl.Csv.Taxonomy
     {
         /// <summary/>
         [JsonPropertyName("propertyGroups")]
-        public Dictionary<string, PropertyGroup> PropertyGroups { get; set; }
+        public Dictionary<string, PropertyGroup> PropertyGroups { get; set; } = [];
     }
 }

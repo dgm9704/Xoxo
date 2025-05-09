@@ -149,9 +149,8 @@ namespace Diwen.Xbrl.Tests.Csv
         }
 
         [Theory]
-        [InlineData("data/csv/DUMMYLEI123456789012.CON_FR_DORA010100_DORA_2024-12-31_20241210113351223.xbrl")]
-        // [InlineData("data/csv/DUMMYLEI123456789012.CON_FR_FINREP030100_FINREP9_2022-12-31_20220411141600000.xbrl")]
-        // [InlineData("data/csv/F_18-00-a.xbrl")]
+        [InlineData("data/csv/DUMMYLEI123456789012.CON_FR_FINREP030100_FINREP9_2022-12-31_20220411141600000.xbrl")]
+        [InlineData("data/csv/F_18-00-a.xbrl")]
         public void XmlToCsvTest(string reportPath)
         => XmlToCsv(reportPath);
 
@@ -230,6 +229,30 @@ namespace Diwen.Xbrl.Tests.Csv
             return csvReportPath;
         }
 
+        [Theory]
+        [InlineData("data/csv/DUMMYLEI123456789012.CON_FR_DORA010100_DORA_2024-12-31_20241210113351223.xbrl")]
+        public void XmlToPlainCsvTest(string reportPath)
+        => XmlToPlainCsv(reportPath);
+
+        public static string XmlToPlainCsv(string reportPath)
+        {
+            var xmlReport = Xbrl.Xml.Report.FromFile(reportPath);
+
+            var entrypoint = Path.ChangeExtension(xmlReport.SchemaReference.Value.Replace("http://", ""), "json");
+            var moduleDefinition = ModuleDefinition.FromFile(entrypoint);
+
+            var tableDefinitions = moduleDefinition.TableDefinitions();
+
+            //var filingIndicators = ReadFilingIndicatorInfo("EBA32_finrep_FilingIndicators.csv");
+            var filingIndicators = ReadFilingIndicatorInfo("EBA40_dora_FilingIndicators.csv");
+
+            var csvReport = xmlReport.ToXbrlCsvPlain(tableDefinitions, filingIndicators, moduleDefinition);
+
+            var csvReportPath = Path.ChangeExtension(Path.GetFileName(reportPath), ".zip");
+            csvReport.Export(csvReportPath);
+            return csvReportPath;
+        }
+
         public static string CsvToXml(string reportPath)
         {
 
@@ -256,7 +279,7 @@ namespace Diwen.Xbrl.Tests.Csv
             return xmlReportPath;
 
         }
-        
+
         public static HashSet<string> ReadTypedDomainInfo(string path)
         => File.ReadAllLines(Path.Combine("data/csv", path)).ToHashSet();
 

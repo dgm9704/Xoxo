@@ -26,14 +26,27 @@ namespace Diwen.Xbrl.Csv.Taxonomy
         {
             get
             {
-                if (datapoints == null)
-                    datapoints = TableTemplates.First().Value.Columns.Datapoint.PropertyGroups;
-
+                datapoints ??= TableTemplates.First().Value.Columns.Datapoint.PropertyGroups;
                 return datapoints;
             }
         }
 
+        private Dictionary<string, TableColumn> columns;
+
+        /// <summary/>
+        public Dictionary<string, TableColumn> Columns
+        {
+            get
+            {
+                columns ??= TableTemplates.First().Value.Columns.TableColumns;
+                return columns;
+            }
+        }
+
+
         private Dictionary<string, KeyValuePair<string, PropertyGroup>[]> datapointsByMetric;
+        private Dictionary<string, KeyValuePair<string, TableColumn>[]> columnsByMetric;
+
         private static readonly KeyValuePair<string, PropertyGroup>[] noCandidates = [];
 
         /// <summary/>
@@ -50,6 +63,20 @@ namespace Diwen.Xbrl.Csv.Taxonomy
             }
 
             return datapointsByMetric.GetValueOrDefault(metric, noCandidates);
+        }
+
+        /// <summary/>
+        public KeyValuePair<string, TableColumn>[] GetColumnsByMetric(string metric)
+        {
+            columnsByMetric ??=
+                    Columns.
+                    Where(c => c.Value.Dimensions.ContainsKey("concept")).
+                    GroupBy(c => c.Value.Dimensions["concept"]).
+                    ToDictionary(
+                        g => g.Key,
+                        g => g.ToArray());
+
+            return columnsByMetric.GetValueOrDefault(metric, []);
         }
 
         /// <summary/>

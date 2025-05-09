@@ -14,7 +14,7 @@
     using Diwen.Xbrl.Xml;
 
     /// <summary/>
-    public class Report
+    public class PlainCsvReport
     {
         /// <summary/>
         public string DocumentType { get; set; } = "https://xbrl.org/CR/2021-02-03/xbrl-csv";
@@ -420,14 +420,14 @@
 
             foreach (var td in tableDefinitions)
             {
-                var candidateDatapoints = td.Value.GetDatapointsByMetric(metric);
+                var candidateColumns = td.Value.GetColumnsByMetric(metric);
 
-                if (candidateDatapoints.Any())
+                if (candidateColumns.Any())
                 {
                     var tableOpenDimensions = tablesOpenDimensions[td.Key];
                     // filter by matching explicit members
                     var matchingDatapoints =
-                        candidateDatapoints.
+                        candidateColumns.
                             Where(pg =>
                                 DatapointMatchesFact(
                                     pg.Value.DimensionValues,
@@ -493,7 +493,7 @@
                     Where(t => reportedTables.ContainsKey(t.Key)).
                     ToDictionary(
                         t => t.Key,
-                        t => t.Value.TableTemplates.First().Value.Columns.FactValue.Dimensions.Select(d => d.Key.Split(':').Last()).ToHashSet());
+                        t => t.Value.TableTemplates.First().Value.Dimensions.Select(c => c.Key.Split(':').Last()).ToHashSet());
 
             foreach (var fact in xmlReport.Facts)
             {
@@ -530,7 +530,7 @@
 
         /// <summary/>
         public static Xml.Report ToXbrlXml(
-            Report report,
+            PlainCsvReport report,
             Dictionary<string, TableDefinition> tableDefinitions,
             Dictionary<string, string> dimensionDomain,
             KeyValuePair<string, string> typedDomainNamespace,
