@@ -31,10 +31,10 @@ namespace Diwen.Xbrl.Csv.Taxonomy
             }
         }
 
-        private Dictionary<string, TableColumn> columns;
+        private Dictionary<string, Column> columns;
 
         /// <summary/>
-        public Dictionary<string, TableColumn> Columns
+        public Dictionary<string, Column> Columns
         {
             get
             {
@@ -45,7 +45,7 @@ namespace Diwen.Xbrl.Csv.Taxonomy
 
 
         private Dictionary<string, KeyValuePair<string, PropertyGroup>[]> datapointsByMetric;
-        private Dictionary<string, KeyValuePair<string, TableColumn>[]> columnsByMetric;
+        private Dictionary<string, KeyValuePair<string, Column>[]> columnsByMetric;
 
         private static readonly KeyValuePair<string, PropertyGroup>[] noCandidates = [];
 
@@ -66,7 +66,7 @@ namespace Diwen.Xbrl.Csv.Taxonomy
         }
 
         /// <summary/>
-        public KeyValuePair<string, TableColumn>[] GetColumnsByMetric(string metric)
+        public KeyValuePair<string, Column>[] GetColumnsByMetric(string metric)
         {
             columnsByMetric ??=
                     Columns.

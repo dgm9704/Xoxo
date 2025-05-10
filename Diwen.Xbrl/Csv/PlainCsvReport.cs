@@ -9,6 +9,7 @@
     using System.Reflection;
     using System.Text;
     using System.Text.Json;
+    using System.Windows.Markup;
     using Diwen.Xbrl.Csv.Taxonomy;
     using Diwen.Xbrl.Extensions;
     using Diwen.Xbrl.Xml;
@@ -49,28 +50,35 @@
         => Data.Add(new ReportData(table, datapoint, value, dimensions));
 
         /// <summary/>
-        public void Export(string packagePath)
+        public void Export(string packagePath, Dictionary<string, TableDefinition> tableDefinitions)
         {
             var packageName = Path.GetFileNameWithoutExtension(packagePath);
-            var package = CreatePackage(packageName, DocumentType, Entrypoint, Parameters, FilingIndicators, Data);
+            var package = CreatePackage(packageName, DocumentType, Entrypoint, Parameters, FilingIndicators, tableDefinitions, Data);
             var zip = CreateZip(package);
             WriteStreamToFile(zip, Path.ChangeExtension(packagePath, "zip"));
         }
 
-        private static Dictionary<string, Stream> CreatePackage(string packageName, string documentType, string entrypoint, Dictionary<string, string> parameters, Dictionary<string, bool> filingIndicators, List<ReportData> data)
+        private static Dictionary<string, Stream> CreatePackage(
+            string packageName,
+            string documentType,
+            string entrypoint,
+            Dictionary<string, string> parameters,
+            Dictionary<string, bool> filingIndicators,
+            Dictionary<string, TableDefinition> tableDefinitions,
+            List<ReportData> data)
         {
             var metafolder = "META-INF";
             var reportfolder = "reports";
 
             var package = new Dictionary<string, Stream>
             {
-                [Path.Combine(packageName, metafolder, "reports.json")] = CreatePackageInfo(),
+                [Path.Combine(packageName, metafolder, "reportPackage.json")] = CreatePackageInfo(),
                 [Path.Combine(packageName, reportfolder, "report.json")] = CreateReportInfo(documentType, entrypoint),
                 [Path.Combine(packageName, reportfolder, "parameters.csv")] = CreateParameters(parameters),
                 [Path.Combine(packageName, reportfolder, "FilingIndicators.csv")] = CreateFilingIndicators(filingIndicators),
             };
 
-            foreach (var tableStream in CreateReportData(data))
+            foreach (var tableStream in CreateReportData(data, tableDefinitions))
                 package.Add(Path.Combine(packageName, reportfolder, tableStream.Key), tableStream.Value);
 
             return package;
@@ -169,7 +177,7 @@
             var writer = new StreamWriter(stream);
 
             var builder = new StringBuilder();
-            builder.AppendLine("templateId,reported");
+            builder.AppendLine("templateID,reported");
             foreach (var fi in filingIndicators)
                 builder.AppendLine($"{fi.Key},{fi.Value.ToString().ToLower()}");
             writer.Write(builder.ToString());
@@ -178,7 +186,7 @@
             return stream;
         }
 
-        private static Dictionary<string, Stream> CreateReportData(List<ReportData> data)
+        private static Dictionary<string, Stream> CreateReportData(List<ReportData> data, Dictionary<string, TableDefinition> tableDefinitions)
         {
             var reportdata = new Dictionary<string, Stream>();
 
@@ -186,17 +194,27 @@
             foreach (var table in tabledata)
             {
                 var filename = table.Key + ".csv";
-                var builder = new StringBuilder("datapoint,factvalue");
-                foreach (var dimension in table.First().Dimensions.Keys)
-                    builder.Append($",{dimension}");
+                HashSet<string> headers = [];
+                var tableDefinition = tableDefinitions[table.Key];
+                foreach (var dimension in table.First().Dimensions.Select(d => d.Key).Order())
+                {
+                    var keyColumn = tableDefinition.TableTemplates.First().Value.Dimensions[dimension];
+                    headers.Add(keyColumn);
+                }
+
+                foreach (var column in table.Select(d => d.Datapoint).Order())
+                    headers.Add(column);
+
+                var builder = new StringBuilder(headers.Join(","));
+
                 builder.AppendLine();
 
-                foreach (var item in table)
+                foreach (var keycombination in table.GroupBy(i => i.Dimensions.OrderBy(d => d.Key).Select(d => d.Value).Join(",")))
                 {
-                    builder.AppendFormat($"{item.Datapoint},{item.Value}");
-                    foreach (var dimension in item.Dimensions.Values)
-                        builder.Append($",{dimension}");
-                    builder.AppendLine();
+                    builder.Append(keycombination.Key + ",");
+
+                    var columnvalues = keycombination.OrderBy(i => i.Datapoint).Select(i => i.Value);
+                    builder.AppendLine(columnvalues.Join(","));
                 }
                 var stream = new MemoryStream();
                 var writer = new StreamWriter(stream);
@@ -437,7 +455,7 @@
                             ToArray();
 
                     if (matchingDatapoints.Any())
-                        result[td.Key] = matchingDatapoints.Select(dp => dp.Key).ToArray();
+                        result[td.Key] = [.. matchingDatapoints.Select(dp => dp.Key)];
                 }
             }
 
@@ -459,9 +477,9 @@
         }
 
         /// <summary/>
-        public static Report FromXbrlXml(Xml.Report xmlReport, Dictionary<string, TableDefinition> tableDefinitions, Dictionary<string, string> filingIndicators, ModuleDefinition moduleDefinition)
+        public static PlainCsvReport FromXbrlXml(Xml.Report xmlReport, Dictionary<string, TableDefinition> tableDefinitions, Dictionary<string, string> filingIndicators, ModuleDefinition moduleDefinition)
         {
-            var report = new Report
+            var report = new PlainCsvReport
             {
                 Entrypoint = Path.ChangeExtension(xmlReport.SchemaReference.Value, ".json")
             };
@@ -493,17 +511,18 @@
                     Where(t => reportedTables.ContainsKey(t.Key)).
                     ToDictionary(
                         t => t.Key,
-                        t => t.Value.TableTemplates.First().Value.Dimensions.Select(c => c.Key.Split(':').Last()).ToHashSet());
+                        //t => t.Value.TableTemplates.First().Value.Dimensions.Select(c => c.Key.Split(':').Last()).ToHashSet());
+                        t => t.Value.TableTemplates.First().Value.Dimensions.Select(c => c.Key).ToHashSet());
 
             foreach (var fact in xmlReport.Facts)
             {
                 var value = fact.Value;
 
                 // Typed members are all open
-                var openDimensions = fact.Context.Scenario.TypedMembers.ToDictionary(m => m.Dimension.LocalName(), m => m.Value);
+                var openDimensions = fact.Context.Scenario.TypedMembers.ToDictionary(m => m.Dimension.Name, m => m.Value);
 
                 var factExplicitMembers = fact.Context.Scenario.ExplicitMembers.ToDictionary(m => m.Dimension.Name, m => m.Value.Name);
-                var factTypedMembers = fact.Context.Scenario.TypedMembers.Select(m => m.Dimension.LocalName()).ToHashSet();
+                var factTypedMembers = fact.Context.Scenario.TypedMembers.Select(m => m.Dimension.Name).ToHashSet();
 
                 var datapoints = GetTableDatapoints(fact, reportedTables, tablesOpendimensions, factExplicitMembers, factTypedMembers);
                 foreach (var table in datapoints)
@@ -513,12 +532,9 @@
                             if (!openDimensions.ContainsKey(dim))
                                 // Some explicit members might be open, depending on the table
                                 openDimensions[dim] = fact.Context.Scenario.ExplicitMembers.First(m => m.Dimension.Name == dim).MemberCode;
-                        // factExplicitMembers[dim];
 
                         report.AddData(table.Key, datapoint, fact.Value, openDimensions);
-
                     }
-
             }
 
             return report;
@@ -582,11 +598,8 @@
 
             foreach (var table in tabledata)
             {
-                // var sw = Stopwatch.StartNew();
                 var tableDefinition = tableDefinitions[table.Key];
                 AddFactsForTable(report.Parameters, tableDefinition, dimensionDomain, typedDomainNamespace, typedDomains, xmlreport, baseCurrencyRef, table, usedContexts, usedDatapoints);
-                // sw.Stop();
-                // Console.WriteLine($"AddFactsForTable {table.Key} {sw.Elapsed}");
             }
 
             xmlreport.RemoveUnusedUnits();

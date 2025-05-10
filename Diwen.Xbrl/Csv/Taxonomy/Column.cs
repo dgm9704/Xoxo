@@ -5,7 +5,7 @@ namespace Diwen.Xbrl.Csv.Taxonomy
     using System.Text.Json.Serialization;
 
     /// <summary/>
-    public class TableColumn
+    public class Column
     {
         /// <summary/>
         [JsonPropertyName("dimensions")]
@@ -20,8 +20,7 @@ namespace Diwen.Xbrl.Csv.Taxonomy
         {
             get
             {
-                if (dimensionValues == null)
-                    dimensionValues =
+                dimensionValues ??=
                         Dimensions.
                         Where(d => !excludeDimensions.Contains(d.Key)).
                         ToDictionary(

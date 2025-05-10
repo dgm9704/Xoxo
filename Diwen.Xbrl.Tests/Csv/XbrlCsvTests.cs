@@ -239,17 +239,19 @@ namespace Diwen.Xbrl.Tests.Csv
             var xmlReport = Xbrl.Xml.Report.FromFile(reportPath);
 
             var entrypoint = Path.ChangeExtension(xmlReport.SchemaReference.Value.Replace("http://", ""), "json");
+
             var moduleDefinition = ModuleDefinition.FromFile(entrypoint);
 
             var tableDefinitions = moduleDefinition.TableDefinitions();
 
-            //var filingIndicators = ReadFilingIndicatorInfo("EBA32_finrep_FilingIndicators.csv");
             var filingIndicators = ReadFilingIndicatorInfo("EBA40_dora_FilingIndicators.csv");
 
-            var csvReport = xmlReport.ToXbrlCsvPlain(tableDefinitions, filingIndicators, moduleDefinition);
+            var plainCsvReport = xmlReport.ToXbrlCsvPlain(tableDefinitions, filingIndicators, moduleDefinition);
 
             var csvReportPath = Path.ChangeExtension(Path.GetFileName(reportPath), ".zip");
-            csvReport.Export(csvReportPath);
+
+            plainCsvReport.Export(csvReportPath, tableDefinitions);
+
             return csvReportPath;
         }
 

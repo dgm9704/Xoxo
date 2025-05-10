@@ -8,16 +8,16 @@ namespace Diwen.Xbrl.Csv.Taxonomy
     /// <summary/>
     public class Columns
     {
-        private Dictionary<string, TableColumn> tablecolumns;
+        private Dictionary<string, Column> tablecolumns;
 
         /// <summary/>
-        public Dictionary<string, TableColumn> TableColumns
+        public Dictionary<string, Column> TableColumns
         {
             get
             {
                 tablecolumns ??= DynamicProperties.ToDictionary(
                         p => p.Key,
-                        p => JsonSerializer.Deserialize<TableColumn>(p.Value.GetRawText()));
+                        p => JsonSerializer.Deserialize<Column>(p.Value.GetRawText()));
 
                 return tablecolumns;
             }
@@ -35,6 +35,7 @@ namespace Diwen.Xbrl.Csv.Taxonomy
         [JsonPropertyName("dimensions")]
         public Dictionary<string, string> Dimensions { get; set; } = [];
 
+        /// <summary/>
         [JsonExtensionData]
         public Dictionary<string, JsonElement> DynamicProperties { get; set; }
     }
