@@ -420,10 +420,8 @@
             }
 
             foreach (var d in fact.Dimensions)
-                if (typedDomains.Contains(dimensionDomain[d.Key]))
-                    // HACK: For some reason the prefixes aren't found during normal operation so we have to add them here
-                    // Find why the prefixs are dropped and remove this
-                    scenario.AddTypedMember($"{dimensionPrefix}:{d.Key}", $"{typedDomainNamespace.Key}:{dimensionDomain[d.Key]}", d.Value);
+                if (typedDomains.Contains(dimensionDomain[d.Key.Split(':').Last()]))
+                    scenario.AddTypedMember(d.Key, $"{typedDomainNamespace.Key}:{dimensionDomain[d.Key.Split(':').Last()]}", d.Value);
                 else
                     scenario.AddExplicitMember(d.Key, d.Value);
 

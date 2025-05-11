@@ -52,15 +52,15 @@ namespace Diwen.Xbrl.Tests.Csv
 
             var plainCsvReport = PlainCsvReport.FromFile(reportPath, tableDefinitions);
 
-            //var dimensionDomainInfo = ReadDimensionDomainInfo("EBA40_DimensionDomain.csv");
+            var dimensionDomainInfo = ReadDimensionDomainInfo("EBA40_DimensionDomain.csv");
 
-            //var typedDomains = ReadTypedDomainInfo("EBA40_TypedDomain.csv");
+            var typedDomains = ReadTypedDomainInfo("EBA40_TypedDomain.csv");
 
-            //var typedDomainNamespace = KeyValuePair.Create("eba_typ", "http://www.eba.europa.eu/xbrl/crr/dict/typ");
+            var typedDomainNamespace = KeyValuePair.Create("eba_typ", "http://www.eba.europa.eu/xbrl/crr/dict/typ"); //???
 
             var filingIndicators = ReadFilingIndicatorInfo("EBA40_dora_FilingIndicators.csv");
 
-            var xmlReport = plainCsvReport.ToXbrlXml(tableDefinitions, [], new(), filingIndicators, [], moduleDefinition);
+            var xmlReport = plainCsvReport.ToXbrlXml(tableDefinitions, dimensionDomainInfo, typedDomainNamespace, filingIndicators, typedDomains, moduleDefinition);
 
             var xmlReportPath = Path.ChangeExtension(Path.GetFileName(reportPath), ".xbrl");
             xmlReport.ToFile(xmlReportPath);
@@ -94,5 +94,13 @@ namespace Diwen.Xbrl.Tests.Csv
 
             return csvReportPath;
         }
+
+        public static HashSet<string> ReadTypedDomainInfo(string path)
+       => File.ReadAllLines(Path.Combine("data/csv", path)).ToHashSet();
+
+        public static Dictionary<string, string> ReadDimensionDomainInfo(string file)
+        => File.ReadAllLines(Path.Combine("data/csv", file)).
+            Select(l => l.Split(',')).
+            ToDictionary(x => x[0], x => x[1]);
     }
 }
