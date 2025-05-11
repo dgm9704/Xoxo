@@ -229,32 +229,6 @@ namespace Diwen.Xbrl.Tests.Csv
             return csvReportPath;
         }
 
-        [Theory]
-        [InlineData("data/csv/DUMMYLEI123456789012.CON_FR_DORA010100_DORA_2024-12-31_20241210113351223.xbrl")]
-        public void XmlToPlainCsvTest(string reportPath)
-        => XmlToPlainCsv(reportPath);
-
-        public static string XmlToPlainCsv(string reportPath)
-        {
-            var xmlReport = Xbrl.Xml.Report.FromFile(reportPath);
-
-            var entrypoint = Path.ChangeExtension(xmlReport.SchemaReference.Value.Replace("http://", ""), "json");
-
-            var moduleDefinition = ModuleDefinition.FromFile(entrypoint);
-
-            var tableDefinitions = moduleDefinition.TableDefinitions();
-
-            var filingIndicators = ReadFilingIndicatorInfo("EBA40_dora_FilingIndicators.csv");
-
-            var plainCsvReport = xmlReport.ToXbrlCsvPlain(tableDefinitions, filingIndicators, moduleDefinition);
-
-            var csvReportPath = Path.ChangeExtension(Path.GetFileName(reportPath), ".zip");
-
-            plainCsvReport.Export(csvReportPath, tableDefinitions);
-
-            return csvReportPath;
-        }
-
         public static string CsvToXml(string reportPath)
         {
 

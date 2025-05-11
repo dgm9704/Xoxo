@@ -1,7 +1,5 @@
 namespace Diwen.Xbrl.Json
 {
-    using System;
-    using System.Collections.Generic;
     using System.Text.Json.Serialization;
 
     /// <summary/>

@@ -9,7 +9,6 @@
     using System.Reflection;
     using System.Text;
     using System.Text.Json;
-    using System.Windows.Markup;
     using Diwen.Xbrl.Csv.Taxonomy;
     using Diwen.Xbrl.Extensions;
     using Diwen.Xbrl.Xml;
