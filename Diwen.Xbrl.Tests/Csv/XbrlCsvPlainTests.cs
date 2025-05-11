@@ -44,9 +44,9 @@ namespace Diwen.Xbrl.Tests.Csv
         public static string PlainCsvToXml(string reportPath)
         {
 
-            var csvReport = PlainCsvReport.FromFile(reportPath);
+            var plainCsvReport = PlainCsvReport.FromFile(reportPath);
 
-            var entrypoint = csvReport.Entrypoint.Replace(@"http://", "");
+            var entrypoint = plainCsvReport.Entrypoint.Replace(@"http://", "");
 
             var moduleDefinition = ModuleDefinition.FromFile(entrypoint);
 
@@ -56,11 +56,11 @@ namespace Diwen.Xbrl.Tests.Csv
 
             //var typedDomains = ReadTypedDomainInfo("EBA40_TypedDomain.csv");
 
-            //ar typedDomainNamespace = KeyValuePair.Create("eba_typ", "http://www.eba.europa.eu/xbrl/crr/dict/typ");
+            //var typedDomainNamespace = KeyValuePair.Create("eba_typ", "http://www.eba.europa.eu/xbrl/crr/dict/typ");
 
             var filingIndicators = ReadFilingIndicatorInfo("EBA40_dora_FilingIndicators.csv");
 
-            var xmlReport = csvReport.ToXbrlXml(tableDefinitions, [], new(), filingIndicators, [], moduleDefinition);
+            var xmlReport = plainCsvReport.ToXbrlXml(tableDefinitions, [], new(), filingIndicators, [], moduleDefinition);
 
             var xmlReportPath = Path.ChangeExtension(Path.GetFileName(reportPath), ".xbrl");
             xmlReport.ToFile(xmlReportPath);

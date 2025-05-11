@@ -252,21 +252,28 @@
         private static List<ReportData> ReadTableData(string table, string data)
         {
             var result = new List<ReportData>();
-            var records =
+
+            var rows =
                 data.
-                Split(new string[] { Environment.NewLine, "\r", "\n" }, StringSplitOptions.RemoveEmptyEntries).
+                Split([Environment.NewLine, "\r", "\n"], StringSplitOptions.RemoveEmptyEntries).
                 Select(line => line.Split(','));
 
-            var header = records.First();
-            foreach (var record in records.Skip(1))
-            {
-                var datapoint = record[0];
-                var value = record[1];
-                var item = new ReportData(table, datapoint, value);
-                for (int i = 2; i < header.Length; i++)
-                    item.Dimensions.Add(header[i], record[i]);
+            var columns = rows.First();
 
-                result.Add(item);
+            foreach (var row in rows.Skip(1))
+            {
+                for (int i = 0; i < columns.Length; i++)
+                {
+                    var datapoint = columns[0];
+                    var value = row[i];
+                    var item = new ReportData(table, datapoint, value);
+
+                    // get keycolumns from tabledefinition?
+                    // for (int i = 2; i < columns.Length; i++)
+                    //     item.Dimensions.Add(columns[i], row[i]);
+
+                    result.Add(item);
+                }
             }
             return result;
         }
@@ -343,8 +350,8 @@
 
             foreach (var fact in table.Value)
             {
-                var datapoint = tableDefinition.Datapoints[fact.Datapoint];
-                AddFact(parameters, dimensionDomain, typedDomainNamespace, typedDomains, xmlreport, baseCurrencyRef, dimensionPrefix, datapoint, fact, usedContexts, usedDatapoints);
+                var column = tableDefinition.Columns[fact.Datapoint];
+                AddFact(parameters, dimensionDomain, typedDomainNamespace, typedDomains, xmlreport, baseCurrencyRef, dimensionPrefix, column, fact, usedContexts, usedDatapoints);
             }
             return dimensionPrefix;
         }
@@ -357,7 +364,7 @@
             Xml.Report xmlreport,
             string baseCurrencyRef,
             string dimensionPrefix,
-            PropertyGroup datapoint,
+            Column column,
             ReportData fact,
             Dictionary<string, Context> usedContexts,
             HashSet<string> usedDatapoints)
@@ -366,7 +373,7 @@
             string metric = string.Empty;
             string unit = string.Empty;
 
-            foreach (var dimension in datapoint.Dimensions)
+            foreach (var dimension in column.Dimensions)
             {
                 switch (dimension.Key)
                 {
@@ -392,18 +399,22 @@
                 else
                     scenario.AddExplicitMember(d.Key, d.Value);
 
-            var decimals =
-                !string.IsNullOrEmpty(datapoint.Decimals)
-                    ? parameters.GetValueOrDefault(datapoint.Decimals.TrimStart('$'), string.Empty)
-                    : string.Empty;
+            // var decimals =
+            //     !string.IsNullOrEmpty(column.Decimals)
+            //         ? parameters.GetValueOrDefault(column.Decimals.TrimStart('$'), string.Empty)
+            //         : string.Empty;
 
-            // Unit for only numeric values, ie. those that have decimals specified
-            var unitRef =
-                string.IsNullOrEmpty(decimals)
-                    ? string.Empty
-                    : !string.IsNullOrEmpty(unit)
-                        ? unit.Replace("$baseCurrency", baseCurrencyRef)
-                        : "uPURE";
+            var decimals = string.Empty;
+
+            // // Unit for only numeric values, ie. those that have decimals specified
+            // var unitRef =
+            //     string.IsNullOrEmpty(decimals)
+            //         ? string.Empty
+            //         : !string.IsNullOrEmpty(unit)
+            //             ? unit.Replace("$baseCurrency", baseCurrencyRef)
+            //             : "uPURE";
+
+            var unitRef = string.Empty;
 
             // scenario.Instance = instance;
             var scenarioKey = scenario.ToString();
@@ -572,7 +583,7 @@
             xmlreport.Units.Add(baseCurrencyRef, $"iso4217:{baseCurrency}");
             xmlreport.Units.Add("uPURE", "xbrli:pure");
 
-            xmlreport.SetTypedDomainNamespace(typedDomainNamespace.Key, typedDomainNamespace.Value);
+            //xmlreport.SetTypedDomainNamespace(typedDomainNamespace.Key, typedDomainNamespace.Value);
 
             foreach (var fi in report.FilingIndicators)
                 xmlreport.AddFilingIndicator(fi.Key, fi.Value);
