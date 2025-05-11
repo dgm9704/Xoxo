@@ -44,13 +44,13 @@ namespace Diwen.Xbrl.Tests.Csv
         public static string PlainCsvToXml(string reportPath)
         {
 
-            var plainCsvReport = PlainCsvReport.FromFile(reportPath);
-
-            var entrypoint = plainCsvReport.Entrypoint.Replace(@"http://", "");
+            var entrypoint = PlainCsvReport.GetPackageEntryPoint(reportPath).Replace(@"http://", "");
 
             var moduleDefinition = ModuleDefinition.FromFile(entrypoint);
 
             var tableDefinitions = moduleDefinition.TableDefinitions();
+
+            var plainCsvReport = PlainCsvReport.FromFile(reportPath, tableDefinitions);
 
             //var dimensionDomainInfo = ReadDimensionDomainInfo("EBA40_DimensionDomain.csv");
 

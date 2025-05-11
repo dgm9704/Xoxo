@@ -227,7 +227,7 @@
         }
 
         /// <summary/>
-        public static PlainCsvReport FromFile(string packagePath)
+        public static PlainCsvReport FromFile(string packagePath, Dictionary<string, TableDefinition> tableDefinitions)
         {
             var report = new PlainCsvReport();
             var reportFiles = ReadPackage(packagePath);
@@ -238,9 +238,31 @@
             report.FilingIndicators = ReadFilingIndicators(reportFiles.Single(f => f.Key.EndsWith("reports/FilingIndicators.csv")).Value);
             foreach (var template in report.FilingIndicators.Where(fi => fi.Value).Select(fi => fi.Key))
                 foreach (var tablefile in reportFiles.Where(f => Path.GetFileNameWithoutExtension(f.Key).StartsWith(template, StringComparison.OrdinalIgnoreCase)))
-                    report.Data.AddRange(ReadTableData(Path.GetFileNameWithoutExtension(tablefile.Key), tablefile.Value));
-
+                {
+                    var tablecode = Path.GetFileNameWithoutExtension(tablefile.Key);
+                    report.Data.AddRange(ReadTableData(tablecode, tablefile.Value, tableDefinitions[tablecode]));
+                }
             return report;
+        }
+
+        /// <summary/>
+        public static string GetPackageEntryPoint(string packagePath)
+        {
+            using (var packageStream = File.OpenRead(packagePath))
+            using (var archive = new ZipArchive(packageStream, ZipArchiveMode.Read))
+            {
+                var entry = archive.Entries.First(e => e.FullName.EndsWith("reports/report.json"));
+
+                using (var entryStream = entry.Open())
+                using (var memoryStream = new MemoryStream())
+                {
+                    entryStream.CopyTo(memoryStream);
+                    string content = Encoding.UTF8.GetString(memoryStream.ToArray());
+                    var reportInfo = JsonSerializer.Deserialize<ReportInfo>(content);
+                    return reportInfo.DocumentInfo.Extends.First();
+                }
+
+            }
         }
 
         private static string ReadEntryPoint(string data)
@@ -249,7 +271,7 @@
             return reportInfo.DocumentInfo.Extends.First();
         }
 
-        private static List<ReportData> ReadTableData(string table, string data)
+        private static List<ReportData> ReadTableData(string table, string data, TableDefinition tableDefinition)
         {
             var result = new List<ReportData>();
 
@@ -259,20 +281,26 @@
                 Select(line => line.Split(','));
 
             var columns = rows.First();
+            var keyColumns = tableDefinition.TableTemplates.First().Value.Dimensions;
 
             foreach (var row in rows.Skip(1))
             {
+                Dictionary<string, string> dimensions = [];
+                foreach (var keycolumn in keyColumns)
+                {
+                    var idx = Array.IndexOf(columns, keycolumn.Value.TrimStart('$'));
+                    dimensions.Add(keycolumn.Key, row[idx]);
+                }
+
                 for (int i = 0; i < columns.Length; i++)
                 {
-                    var datapoint = columns[0];
-                    var value = row[i];
-                    var item = new ReportData(table, datapoint, value);
-
-                    // get keycolumns from tabledefinition?
-                    // for (int i = 2; i < columns.Length; i++)
-                    //     item.Dimensions.Add(columns[i], row[i]);
-
-                    result.Add(item);
+                    if (Array.IndexOf([.. keyColumns.Values], $"${columns[i]}") == -1)
+                    {
+                        var datapoint = columns[i];
+                        var value = row[i];
+                        var item = new ReportData(table, datapoint, value, dimensions);
+                        result.Add(item);
+                    }
                 }
             }
             return result;
