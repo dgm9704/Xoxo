@@ -227,9 +227,9 @@
         }
 
         /// <summary/>
-        public static Report FromFile(string packagePath)
+        public static PlainCsvReport FromFile(string packagePath)
         {
-            var report = new Report();
+            var report = new PlainCsvReport();
             var reportFiles = ReadPackage(packagePath);
             var packagename = Path.GetFileNameWithoutExtension(packagePath);
 

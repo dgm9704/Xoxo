@@ -18,6 +18,7 @@ namespace Diwen.Xbrl.Tests.Csv
     using System.Collections.Generic;
     using System.IO;
     using System.Linq;
+    using Diwen.Xbrl.Csv;
     using Diwen.Xbrl.Csv.Taxonomy;
     using Diwen.Xbrl.Extensions;
     using Xunit;
@@ -34,6 +35,39 @@ namespace Diwen.Xbrl.Tests.Csv
         => File.ReadAllLines(Path.Combine("data/csv", file)).
             Select(l => l.Split(',')).
             ToDictionary(x => x[0], x => x[1]);
+
+        [Theory]
+        [InlineData("data/csv/DUMMYLEI123456789012.CON_FR_DORA010100_DORA_2024-12-31_20241213174803429.zip")]
+        public void PlainCsvToXmlTest(string reportPath)
+        => PlainCsvToXml(reportPath);
+
+        public static string PlainCsvToXml(string reportPath)
+        {
+
+            var csvReport = PlainCsvReport.FromFile(reportPath);
+
+            var entrypoint = csvReport.Entrypoint.Replace(@"http://", "");
+
+            var moduleDefinition = ModuleDefinition.FromFile(entrypoint);
+
+            var tableDefinitions = moduleDefinition.TableDefinitions();
+
+            //var dimensionDomainInfo = ReadDimensionDomainInfo("EBA40_DimensionDomain.csv");
+
+            //var typedDomains = ReadTypedDomainInfo("EBA40_TypedDomain.csv");
+
+            //ar typedDomainNamespace = KeyValuePair.Create("eba_typ", "http://www.eba.europa.eu/xbrl/crr/dict/typ");
+
+            var filingIndicators = ReadFilingIndicatorInfo("EBA40_dora_FilingIndicators.csv");
+
+            var xmlReport = csvReport.ToXbrlXml(tableDefinitions, [], new(), filingIndicators, [], moduleDefinition);
+
+            var xmlReportPath = Path.ChangeExtension(Path.GetFileName(reportPath), ".xbrl");
+            xmlReport.ToFile(xmlReportPath);
+            return xmlReportPath;
+
+        }
+
 
         [Theory]
         [InlineData("data/csv/DUMMYLEI123456789012.CON_FR_DORA010100_DORA_2024-12-31_20241210113351223.xbrl")]
