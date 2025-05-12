@@ -799,6 +799,8 @@ namespace Diwen.Xbrl.Xml
         {
             report.RebuildNamespacesAfterRead();
 
+            report.SetReportReferences();
+            
             report.SetContextReferences(report.Facts);
             report.SetUnitReferences(report.Facts);
 
@@ -818,7 +820,6 @@ namespace Diwen.Xbrl.Xml
             }
 
 
-            report.SetReportReferences();
         }
 
         void SetReportReferences()
@@ -841,6 +842,14 @@ namespace Diwen.Xbrl.Xml
 
             foreach (var unit in Units)
                 unit.Report = this;
+
+            foreach (var fact in Facts)
+            {
+                fact.Report = this;
+                foreach (var f in fact.Facts)
+                    f.Report = this;
+            }
+
         }
 
         XmlSerializerNamespaces GetXmlSerializerNamespaces()

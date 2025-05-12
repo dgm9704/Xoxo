@@ -563,10 +563,13 @@
                         //t => t.Value.TableTemplates.First().Value.Dimensions.Select(c => c.Key.Split(':').Last()).ToHashSet());
                         t => t.Value.TableTemplates.First().Value.Dimensions.Select(c => c.Key).ToHashSet());
 
-            foreach (var fact in xmlReport.Facts)
+            foreach (var fact in xmlReport.Facts.ToArray())
             {
                 var value = fact.Value;
+                if (value == "eba_CU:ALL")
+                {
 
+                }
                 // Typed members are all open
                 var openDimensions = fact.Context.Scenario.TypedMembers.ToDictionary(m => $"{xmlReport.Namespaces.LookupPrefix(m.Dimension.Namespace)}:{m.Dimension.Name}", m => m.Value);
 

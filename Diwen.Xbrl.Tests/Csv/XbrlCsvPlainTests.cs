@@ -93,7 +93,7 @@ namespace Diwen.Xbrl.Tests.Csv
         {
             var xmlReport = Xbrl.Xml.Report.FromFile(reportPath);
 
-            //xmlReport.ToFile("debug.xbrl");
+            xmlReport.ToFile("debug.xbrl");
 
             var entrypoint = Path.ChangeExtension(xmlReport.SchemaReference.Value.Replace("http://", ""), "json");
 

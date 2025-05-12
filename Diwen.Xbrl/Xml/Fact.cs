@@ -30,6 +30,9 @@ namespace Diwen.Xbrl.Xml
     /// <summary/>
     public class Fact : IEquatable<Fact>
     {
+
+        internal Report Report { get; set; }
+
         static readonly XmlDocument doc = new();
 
         /// <summary/>
@@ -210,12 +213,21 @@ namespace Diwen.Xbrl.Xml
 
         /// <summary/>
         public bool Equals(Fact other)
-        => other != null
-            && (Value == null ? other.Value == null : Value.Equals(other.Value, StringComparison.Ordinal))
-            && (Metric == null ? other.Metric == null : Metric.Equals(other.Metric))
-            && (Decimals == null ? other.Decimals == null : Decimals.Equals(other.Decimals, StringComparison.Ordinal))
-            && (Unit == null ? other.Unit == null : Unit.Equals(other.Unit));
+        {
+            var result =
+              other != null
+              && (Value == null ? other.Value == null : Value.Equals(other.Value, StringComparison.Ordinal))
+              && (Metric == null ? other.Metric == null : Metric.Equals(other.Metric))
+              && (Decimals == null ? other.Decimals == null : Decimals.Equals(other.Decimals, StringComparison.Ordinal))
+              && (Unit == null ? other.Unit == null : Unit.Equals(other.Unit));
 
+            if (result)
+                if (Report != null && other.Report != null)
+                    if (ReferenceEquals(Report, other.Report))
+                        result = ContextRef.Equals(other.ContextRef);
+
+            return result;
+        }
         #endregion
     }
 }

@@ -53,8 +53,8 @@ namespace Diwen.Xbrl.Xml
         {
             var result = false;
             if (Scenario != null)
-                result = (Scenario.ExplicitMembers.Any())
-                    || (Scenario.TypedMembers.Any());
+                result = Scenario.ExplicitMembers.Any()
+                    || Scenario.TypedMembers.Any();
 
             return result;
         }
