@@ -420,10 +420,18 @@
             }
 
             foreach (var d in fact.Dimensions)
-                if (typedDomains.Contains(dimensionDomain[d.Key.Split(':').Last()]))
-                    scenario.AddTypedMember(d.Key, $"{typedDomainNamespace.Key}:{dimensionDomain[d.Key.Split(':').Last()]}", d.Value);
+            {
+                var domain = dimensionDomain[d.Key.Split(':').Last()];
+                if (typedDomains.Contains(domain))
+                    scenario.AddTypedMember(d.Key, $"{typedDomainNamespace.Key}:{domain}", d.Value);
                 else
-                    scenario.AddExplicitMember(d.Key, d.Value);
+                {
+                    if (d.Value.IndexOf(':') == -1)
+                        scenario.AddExplicitMember(d.Key, $"{domain}:{d.Value}");
+                    else
+                        scenario.AddExplicitMember(d.Key, d.Value);
+                }
+            }
 
             // var decimals =
             //     !string.IsNullOrEmpty(column.Decimals)
@@ -609,7 +617,7 @@
             xmlreport.Units.Add(baseCurrencyRef, $"iso4217:{baseCurrency}");
             xmlreport.Units.Add("uPURE", "xbrli:pure");
 
-            //xmlreport.SetTypedDomainNamespace(typedDomainNamespace.Key, typedDomainNamespace.Value);
+            xmlreport.SetTypedDomainNamespace(typedDomainNamespace.Key, typedDomainNamespace.Value);
 
             foreach (var fi in report.FilingIndicators)
                 xmlreport.AddFilingIndicator(fi.Key, fi.Value);

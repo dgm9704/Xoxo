@@ -68,7 +68,6 @@ namespace Diwen.Xbrl.Tests.Csv
 
         }
 
-
         [Theory]
         [InlineData("data/csv/DUMMYLEI123456789012.CON_FR_DORA010100_DORA_2024-12-31_20241210113351223.xbrl")]
         public void XmlToPlainCsvTest(string reportPath)
