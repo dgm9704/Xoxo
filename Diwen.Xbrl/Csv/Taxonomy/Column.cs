@@ -7,11 +7,16 @@ namespace Diwen.Xbrl.Csv.Taxonomy
     /// <summary/>
     public class Column
     {
+
+        /// <summary/>
+        [JsonPropertyName("decimals")]
+        public string Decimals { get; set; }
+
         /// <summary/>
         [JsonPropertyName("dimensions")]
         public Dictionary<string, string> Dimensions { get; set; } = [];
 
-                private readonly HashSet<string> excludeDimensions = new(["concept", "unit"]);
+        private readonly HashSet<string> excludeDimensions = new(["concept", "unit"]);
 
         private Dictionary<string, string> dimensionValues;
 

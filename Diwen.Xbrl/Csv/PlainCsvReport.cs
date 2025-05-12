@@ -433,23 +433,18 @@
                 }
             }
 
-            // var decimals =
-            //     !string.IsNullOrEmpty(column.Decimals)
-            //         ? parameters.GetValueOrDefault(column.Decimals.TrimStart('$'), string.Empty)
-            //         : string.Empty;
+            var decimals =
+                 !string.IsNullOrEmpty(column.Decimals)
+                     ? parameters.GetValueOrDefault(column.Decimals.TrimStart('$'), string.Empty)
+                     : string.Empty;
 
-            var decimals = string.Empty;
-
-            // // Unit for only numeric values, ie. those that have decimals specified
-            // var unitRef =
-            //     string.IsNullOrEmpty(decimals)
-            //         ? string.Empty
-            //         : !string.IsNullOrEmpty(unit)
-            //             ? unit.Replace("$baseCurrency", baseCurrencyRef)
-            //             : "uPURE";
-
-            var unitRef = string.Empty;
-
+            var unitRef =
+                 string.IsNullOrEmpty(decimals)
+                     ? string.Empty
+                     : !string.IsNullOrEmpty(unit)
+                         ? unit.Replace("$baseCurrency", baseCurrencyRef)
+                         : "uPURE";
+                         
             // scenario.Instance = instance;
             var scenarioKey = scenario.ToString();
             var datapointKey = $"{scenarioKey}+{metric}";
