@@ -169,10 +169,10 @@ namespace Diwen.Xbrl.Tests.Xml
             var newReport = Report.FromFile(tempFile);
 
             // Assert.True(newInstance.Equals(instance));
-            var comparison = ReportComparer.Report(report, newReport);
+            var comparison = ReportComparer.ReportObjects(report, newReport, ComparisonTypes.All, BasicComparisons.All);
             if (!comparison.Result)
                 Console.WriteLine(report);
-            Assert.Empty(comparison.Messages);
+            Assert.True(comparison.Result);
 
             Assert.True(newReport.Equals(referenceReport));
 
