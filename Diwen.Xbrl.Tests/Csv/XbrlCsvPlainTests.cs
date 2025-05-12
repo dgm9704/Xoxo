@@ -79,8 +79,8 @@ namespace Diwen.Xbrl.Tests.Csv
         {
             var plainCsvReportPath = XmlToPlainCsv(inXmlReportPath);
             var outXmlReportPath = PlainCsvToXml(plainCsvReportPath);
-            var report = ReportComparer.ReportObjects(inXmlReportPath, outXmlReportPath);
-            Assert.True(report.Result);
+            var comparison = ReportComparer.ReportObjects(inXmlReportPath, outXmlReportPath);
+            Assert.True(comparison.Result);
             return outXmlReportPath;
         }
 
@@ -92,6 +92,8 @@ namespace Diwen.Xbrl.Tests.Csv
         public static string XmlToPlainCsv(string reportPath)
         {
             var xmlReport = Xbrl.Xml.Report.FromFile(reportPath);
+
+            xmlReport.ToFile("debug.xbrl");
 
             var entrypoint = Path.ChangeExtension(xmlReport.SchemaReference.Value.Replace("http://", ""), "json");
 

@@ -131,7 +131,8 @@ namespace Diwen.Xbrl.Xml
 
             if (!string.IsNullOrEmpty(Value))
             {
-                writer.WriteElementString(Domain.Prefix(), Domain.LocalName(), Domain.Namespace, Value);
+                var prefix = writer.LookupPrefix(Domain.Namespace);
+                writer.WriteElementString(prefix, Domain.LocalName(), Domain.Namespace, Value);
             }
             else
             {

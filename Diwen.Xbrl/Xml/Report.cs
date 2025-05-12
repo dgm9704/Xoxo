@@ -665,6 +665,15 @@ namespace Diwen.Xbrl.Xml
                 Distinct().
                 ToList();
 
+            var fromContextsTyped = Contexts.
+                Where(c => c != null).
+                Where(c => c.Scenario != null).
+                Where(c => c.Scenario.TypedMembers.Any()).
+                SelectMany(c => c.Scenario.TypedMembers).
+                Select(e => e.Domain.Namespace).
+                Distinct().
+                ToList();
+
             var fromSegments = Contexts.
                 Where(c => c != null).
                 Where(c => c.Entity.Segment != null).
@@ -906,6 +915,13 @@ namespace Diwen.Xbrl.Xml
                 Select(c => c.Scenario).
                 SelectMany(s => s.ExplicitMembers).
                 Select(m => m.Dimension.Namespace).
+                ToList().ForEach(ns => namespaces.Add(ns));
+
+            Contexts.
+                Where(c => c.Scenario != null).
+                Select(c => c.Scenario).
+                SelectMany(s => s.TypedMembers).
+                Select(m => m.Domain.Namespace).
                 ToList().ForEach(ns => namespaces.Add(ns));
 
             namespaces.
