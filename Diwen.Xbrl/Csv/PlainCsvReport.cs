@@ -568,10 +568,10 @@
                 var value = fact.Value;
 
                 // Typed members are all open
-                var openDimensions = fact.Context.Scenario.TypedMembers.ToDictionary(m => m.Dimension.Name, m => m.Value);
+                var openDimensions = fact.Context.Scenario.TypedMembers.ToDictionary(m => $"{xmlReport.Namespaces.LookupPrefix(m.Dimension.Namespace)}:{m.Dimension.Name}", m => m.Value);
 
                 var factExplicitMembers = fact.Context.Scenario.ExplicitMembers.ToDictionary(m => m.Dimension.Name, m => m.Value.Name);
-                var factTypedMembers = fact.Context.Scenario.TypedMembers.Select(m => m.Dimension.Name).ToHashSet();
+                var factTypedMembers = fact.Context.Scenario.TypedMembers.Select(m => $"{xmlReport.Namespaces.LookupPrefix(m.Dimension.Namespace)}:{m.Dimension.Name}").ToHashSet();
 
                 var datapoints = GetTableDatapoints(fact, reportedTables, tablesOpendimensions, factExplicitMembers, factTypedMembers);
                 foreach (var table in datapoints)
@@ -622,7 +622,8 @@
             xmlreport.Units.Add(baseCurrencyRef, $"iso4217:{baseCurrency}");
             xmlreport.Units.Add("uPURE", "xbrli:pure");
 
-            xmlreport.SetTypedDomainNamespace(typedDomainNamespace.Key, typedDomainNamespace.Value);
+            if (!string.IsNullOrEmpty(typedDomainNamespace.Key))
+                xmlreport.SetTypedDomainNamespace(typedDomainNamespace.Key, typedDomainNamespace.Value);
 
             foreach (var fi in report.FilingIndicators)
                 xmlreport.AddFilingIndicator(fi.Key, fi.Value);

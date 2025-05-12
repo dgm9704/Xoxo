@@ -90,10 +90,34 @@ namespace Diwen.Xbrl.Xml
 
             XmlQualifiedName dim;
             XmlQualifiedName dom;
+
             if (Report != null)
             {
-                dim = new XmlQualifiedName(dimension, Report.DimensionNamespace);
-                dom = new XmlQualifiedName(domain, Report.TypedDomainNamespace);
+                var idx = dimension.IndexOf(':');
+                if (idx != -1)
+                {
+                    var dimPrefix = dimension.Substring(0, idx);
+                    dimension = dimension.Substring(idx + 1);
+                    var dimNs = Report.Namespaces.LookupNamespace(dimPrefix);
+                    dim = new XmlQualifiedName(dimension, dimNs);
+                }
+                else
+                {
+                    dim = new XmlQualifiedName(dimension, Report.DimensionNamespace);
+                }
+
+                idx = domain.IndexOf(':');
+                if (idx != -1)
+                {
+                    var domPrefix = domain.Substring(0, idx);
+                    //domain = domain.Substring(idx + 1);
+                    var domNs = Report.Namespaces.LookupNamespace(domPrefix);
+                    dom = new XmlQualifiedName(domain, domNs);
+                }
+                else
+                {
+                    dom = new XmlQualifiedName(domain, Report.TypedDomainNamespace);
+                }
             }
             else
             {

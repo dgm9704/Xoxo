@@ -58,6 +58,7 @@ namespace Diwen.Xbrl.Tests.Csv
             var typedDomains = ReadTypedDomainInfo("EBA40_TypedDomain.csv");
 
             var typedDomainNamespace = KeyValuePair.Create("eba_typ", "http://www.eba.europa.eu/xbrl/crr/dict/typ"); //???
+            //KeyValuePair<string, string> typedDomainNamespace = default;
 
             var filingIndicators = ReadFilingIndicatorInfo("EBA40_dora_FilingIndicators.csv");
 
