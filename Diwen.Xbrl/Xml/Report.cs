@@ -924,6 +924,10 @@ namespace Diwen.Xbrl.Xml
                 Select(m => m.Domain.Namespace).
                 ToList().ForEach(ns => namespaces.Add(ns));
 
+            Facts.
+                Select(f => f.Metric.Namespace).
+                ToList().ForEach(ns => namespaces.Add(ns));
+
             namespaces.
                 Where(i => !string.IsNullOrEmpty(i)).
                 Concat(usedDomains).
