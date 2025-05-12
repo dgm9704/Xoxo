@@ -41,16 +41,23 @@ namespace Diwen.Xbrl.Xml
         /// <summary/>
         public Fact Add(Context context, string metric, string unitRef, string decimals, string value)
         {
-            var ns = Report.FactNamespace;
-            var prefix = Report.Namespaces.LookupPrefix(ns);
-            if (prefix == null && metric.Contains(":"))
+            var prefix = string.Empty;
+            var ns = string.Empty;
+            var idx = metric.IndexOf(':');
+            if (idx != -1)
             {
-                prefix = metric.Substring(0, metric.IndexOf(':'));
-                metric = metric.Substring(metric.IndexOf(':') + 1);
+                prefix = metric.Substring(0, idx);
+                metric = metric.Substring(idx + 1);
             }
 
-            if (ns == null)
+            if (!string.IsNullOrEmpty(prefix))
                 ns = Report.Namespaces.LookupNamespace(prefix);
+
+            if (string.IsNullOrEmpty(ns))
+            {
+                ns = Report.FactNamespace;
+                prefix = Report.Namespaces.LookupPrefix(ns);
+            }
 
             Unit unit = null;
             if (!string.IsNullOrEmpty(unitRef))

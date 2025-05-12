@@ -9,6 +9,7 @@
     using System.Reflection;
     using System.Text;
     using System.Text.Json;
+    using System.Text.Json.Serialization;
     using Diwen.Xbrl.Csv.Taxonomy;
     using Diwen.Xbrl.Extensions;
     using Diwen.Xbrl.Xml;
@@ -117,7 +118,11 @@
             };
 
             var stream = new MemoryStream();
-            JsonSerializer.Serialize<PackageInfo>(stream, info);
+            JsonSerializerOptions options = new()
+            {
+                DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingDefault
+            };
+            JsonSerializer.Serialize<PackageInfo>(stream, info, options);
             stream.Position = 0;
             return stream;
         }
@@ -150,7 +155,12 @@
                 EbaGeneratingSoftwareInformation = softwareInfo
             };
 
-            JsonSerializer.Serialize<ReportInfo>(stream, reportInfo);
+            JsonSerializerOptions options = new()
+            {
+                DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingDefault
+            };
+
+            JsonSerializer.Serialize<ReportInfo>(stream, reportInfo, options);
             stream.Position = 0;
             return stream;
         }
@@ -198,7 +208,7 @@
                 foreach (var dimension in table.First().Dimensions.Select(d => d.Key).Order())
                 {
                     var keyColumn = tableDefinition.TableTemplates.First().Value.Dimensions[dimension];
-                    headers.Add(keyColumn);
+                    headers.Add(keyColumn.TrimStart('$'));
                 }
 
                 foreach (var column in table.Select(d => d.Datapoint).Order())
@@ -233,9 +243,9 @@
             var reportFiles = ReadPackage(packagePath);
             var packagename = Path.GetFileNameWithoutExtension(packagePath);
 
-            report.Entrypoint = ReadEntryPoint(reportFiles.Single(f => f.Key.EndsWith("reports/report.json")).Value);
-            report.Parameters = ReadParameters(reportFiles.Single(f => f.Key.EndsWith("reports/parameters.csv")).Value);
-            report.FilingIndicators = ReadFilingIndicators(reportFiles.Single(f => f.Key.EndsWith("reports/FilingIndicators.csv")).Value);
+            report.Entrypoint = ReadEntryPoint(reportFiles.Single(f => f.Key.EndsWith("report.json")).Value);
+            report.Parameters = ReadParameters(reportFiles.Single(f => f.Key.EndsWith("parameters.csv")).Value);
+            report.FilingIndicators = ReadFilingIndicators(reportFiles.Single(f => f.Key.EndsWith("FilingIndicators.csv")).Value);
             foreach (var template in report.FilingIndicators.Where(fi => fi.Value).Select(fi => fi.Key))
                 foreach (var tablefile in reportFiles.Where(f => Path.GetFileNameWithoutExtension(f.Key).StartsWith(template, StringComparison.OrdinalIgnoreCase)))
                 {
@@ -251,7 +261,7 @@
             using (var packageStream = File.OpenRead(packagePath))
             using (var archive = new ZipArchive(packageStream, ZipArchiveMode.Read))
             {
-                var entry = archive.Entries.First(e => e.FullName.EndsWith("reports/report.json"));
+                var entry = archive.Entries.First(e => e.Name.Equals("report.json"));
 
                 using (var entryStream = entry.Open())
                 using (var memoryStream = new MemoryStream())
@@ -406,7 +416,7 @@
                 switch (dimension.Key)
                 {
                     case "concept":
-                        metric = dimension.Value.Split(':').Last();
+                        metric = dimension.Value;
                         break;
 
                     case "unit":
@@ -444,7 +454,7 @@
                      : !string.IsNullOrEmpty(unit)
                          ? unit.Replace("$baseCurrency", baseCurrencyRef)
                          : "uPURE";
-                         
+
             // scenario.Instance = instance;
             var scenarioKey = scenario.ToString();
             var datapointKey = $"{scenarioKey}+{metric}";

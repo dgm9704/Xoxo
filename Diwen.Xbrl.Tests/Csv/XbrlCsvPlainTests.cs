@@ -21,6 +21,7 @@ namespace Diwen.Xbrl.Tests.Csv
     using Diwen.Xbrl.Csv;
     using Diwen.Xbrl.Csv.Taxonomy;
     using Diwen.Xbrl.Extensions;
+    using Diwen.Xbrl.Xml.Comparison;
     using Xunit;
     using Xunit.Abstractions;
 
@@ -66,6 +67,20 @@ namespace Diwen.Xbrl.Tests.Csv
             xmlReport.ToFile(xmlReportPath);
             return xmlReportPath;
 
+        }
+
+        [Theory]
+        [InlineData("data/csv/DUMMYLEI123456789012.CON_FR_DORA010100_DORA_2024-12-31_20241210113351223.xbrl")]
+        public void XmlToPlainCsvToXmlTest(string xmlReportPath)
+        => XmlToPlainCsvToXml(xmlReportPath);
+
+        public static string XmlToPlainCsvToXml(string inXmlReportPath)
+        {
+            var plainCsvReportPath = XmlToPlainCsv(inXmlReportPath);
+            var outXmlReportPath = PlainCsvToXml(plainCsvReportPath);
+            var report = ReportComparer.ReportObjects(inXmlReportPath, outXmlReportPath);
+            Assert.True(report.Result);
+            return outXmlReportPath;
         }
 
         [Theory]
