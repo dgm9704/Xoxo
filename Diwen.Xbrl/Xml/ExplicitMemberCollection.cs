@@ -100,7 +100,16 @@ namespace Diwen.Xbrl.Xml
 
             if (Report != null)
             {
-                string dimNs = Report.DimensionNamespace;
+                var dimPrefix = 
+                    dimension.IndexOf(':') == -1
+                    ? string.Empty
+                    : dimension.Split(':').First();
+
+                string dimNs =
+                    string.IsNullOrEmpty(dimPrefix)
+                    ? Report.DimensionNamespace
+                    : Report.Namespaces.LookupNamespace(dimPrefix);
+
                 var valPrefix = value.Substring(0, value.IndexOf(':'));
                 var valNs = Report.Namespaces.LookupNamespace(valPrefix);
                 value = value.Substring(value.IndexOf(':') + 1);

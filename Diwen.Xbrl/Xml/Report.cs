@@ -901,6 +901,13 @@ namespace Diwen.Xbrl.Xml
                 Select(m => m.Dimension.Namespace).
                 ToList().ForEach(ns => namespaces.Add(ns));
 
+            Contexts.
+                Where(c => c.Scenario != null).
+                Select(c => c.Scenario).
+                SelectMany(s => s.ExplicitMembers).
+                Select(m => m.Dimension.Namespace).
+                ToList().ForEach(ns => namespaces.Add(ns));
+
             namespaces.
                 Where(i => !string.IsNullOrEmpty(i)).
                 Concat(usedDomains).
