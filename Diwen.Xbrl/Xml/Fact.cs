@@ -221,10 +221,9 @@ namespace Diwen.Xbrl.Xml
               && (Decimals == null ? other.Decimals == null : Decimals.Equals(other.Decimals, StringComparison.Ordinal))
               && (Unit == null ? other.Unit == null : Unit.Equals(other.Unit));
 
-            if (result)
-                if (Report != null && other.Report != null)
-                    if (ReferenceEquals(Report, other.Report))
-                        result = ContextRef.Equals(other.ContextRef);
+            // if (result)
+            //     if (ReferenceEquals(Report, other.Report))
+            //         result = string.Equals(ContextRef, other.ContextRef, StringComparison.Ordinal);
 
             return result;
         }

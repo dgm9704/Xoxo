@@ -54,13 +54,13 @@ namespace Diwen.Xbrl.Xml
                     var item = this[i];
                     var dirty = false;
                     item.Report = value;
-                    if (item.Dimension.Namespace != reportField.DimensionNamespace)
+                    if (string.IsNullOrEmpty(item.Dimension.Namespace))
                     {
                         item.Dimension = new XmlQualifiedName(item.Dimension.Name, dimNs);
                         dirty = true;
                     }
 
-                    if (item.Domain.Namespace != reportField.TypedDomainNamespace)
+                    if (string.IsNullOrEmpty(item.Domain.Namespace))
                     {
                         item.Domain = new XmlQualifiedName(item.Domain.Name, domNs);
                         dirty = true;

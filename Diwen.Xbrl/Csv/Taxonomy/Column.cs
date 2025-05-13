@@ -29,8 +29,8 @@ namespace Diwen.Xbrl.Csv.Taxonomy
                         Dimensions.
                         Where(d => !excludeDimensions.Contains(d.Key)).
                         ToDictionary(
-                            d => d.Key.Split(':').Last(),
-                            d => d.Value.Split(':').Last());
+                            d => d.Key,
+                            d => d.Value);
 
                 return dimensionValues;
             }

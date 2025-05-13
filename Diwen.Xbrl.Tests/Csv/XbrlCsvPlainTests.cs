@@ -91,7 +91,7 @@ namespace Diwen.Xbrl.Tests.Csv
 
         public static string XmlToPlainCsv(string reportPath)
         {
-            var xmlReport = Xbrl.Xml.Report.FromFile(reportPath);
+            var xmlReport = Xbrl.Xml.Report.FromFile(reportPath, removeUnusedObjects: false, collapseDuplicateContexts: false, removeDuplicateFacts: false);
 
             xmlReport.ToFile("debug.xbrl");
 

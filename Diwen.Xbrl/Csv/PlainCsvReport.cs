@@ -566,24 +566,41 @@
             foreach (var fact in xmlReport.Facts.ToArray())
             {
                 var value = fact.Value;
-                if (value == "eba_CU:ALL")
+                // Typed members are all open
+
+                var openDimensions =
+                    fact.Context.Scenario.TypedMembers.
+                    ToDictionary(
+                        m => $"{xmlReport.Namespaces.LookupPrefix(m.Dimension.Namespace)}:{m.Dimension.Name}",
+                        m => m.Value);
+
+                var factExplicitMembers =
+                    fact.Context.Scenario.ExplicitMembers.
+                    ToDictionary(
+                        m => $"{xmlReport.Namespaces.LookupPrefix(m.Dimension.Namespace)}:{m.Dimension.Name}",
+                        m => $"{xmlReport.Namespaces.LookupPrefix(m.Value.Namespace)}:{m.Value.Name}");
+
+                var factTypedMembers =
+                    fact.Context.Scenario.TypedMembers.
+                    Select(
+                        m => $"{xmlReport.Namespaces.LookupPrefix(m.Dimension.Namespace)}:{m.Dimension.Name}").
+                    ToHashSet();
+
+                var datapoints = GetTableDatapoints(fact, reportedTables, tablesOpendimensions, factExplicitMembers, factTypedMembers);
+                if (!datapoints.Any())
                 {
 
                 }
-                // Typed members are all open
-                var openDimensions = fact.Context.Scenario.TypedMembers.ToDictionary(m => $"{xmlReport.Namespaces.LookupPrefix(m.Dimension.Namespace)}:{m.Dimension.Name}", m => m.Value);
-
-                var factExplicitMembers = fact.Context.Scenario.ExplicitMembers.ToDictionary(m => m.Dimension.Name, m => m.Value.Name);
-                var factTypedMembers = fact.Context.Scenario.TypedMembers.Select(m => $"{xmlReport.Namespaces.LookupPrefix(m.Dimension.Namespace)}:{m.Dimension.Name}").ToHashSet();
-
-                var datapoints = GetTableDatapoints(fact, reportedTables, tablesOpendimensions, factExplicitMembers, factTypedMembers);
                 foreach (var table in datapoints)
                     foreach (var datapoint in table.Value)
                     {
                         foreach (var dim in tablesOpendimensions[table.Key])
                             if (!openDimensions.ContainsKey(dim))
+                            {
+                                var dimcode = dim.Split(':').Last();
                                 // Some explicit members might be open, depending on the table
-                                openDimensions[dim] = fact.Context.Scenario.ExplicitMembers.First(m => m.Dimension.Name == dim).MemberCode;
+                                openDimensions[dim] = fact.Context.Scenario.ExplicitMembers.First(m => m.Dimension.Name == dimcode).MemberCode;
+                            }
 
                         report.AddData(table.Key, datapoint, fact.Value, openDimensions);
                     }
