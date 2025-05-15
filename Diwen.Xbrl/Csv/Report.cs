@@ -87,11 +87,11 @@
             var stream = new MemoryStream();
             using (var zip = new ZipArchive(stream, ZipArchiveMode.Create, true))
             {
-                foreach (var item in package)
+                foreach (var (key, value) in package)
                 {
-                    ZipArchiveEntry entry = zip.CreateEntry(item.Key, CompressionLevel.Optimal);
+                    ZipArchiveEntry entry = zip.CreateEntry(key, CompressionLevel.Optimal);
                     using (var entryStream = entry.Open())
-                        item.Value.CopyTo(entryStream);
+                        value.CopyTo(entryStream);
                 }
             }
             stream.Flush();

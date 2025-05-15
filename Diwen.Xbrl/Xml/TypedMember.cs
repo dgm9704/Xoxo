@@ -149,8 +149,8 @@ namespace Diwen.Xbrl.Xml
         /// <summary/>
         public bool Equals(TypedMember other)
         => Dimension == other.Dimension
-                        && Domain == other.Domain
-                        && Value == other.Value;
+            && Domain == other.Domain
+            && Value == other.Value;
 
         #endregion
 

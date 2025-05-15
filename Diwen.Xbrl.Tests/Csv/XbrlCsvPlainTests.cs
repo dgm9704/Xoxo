@@ -38,6 +38,21 @@ namespace Diwen.Xbrl.Tests.Csv
             ToDictionary(x => x[0], x => x[1]);
 
         [Theory]
+        [InlineData("data/csv/DUMMYLEI123456789012.CON_FR_DORA010100_DORA_2024-12-31_20241210113351223.zip")]
+        public void PlainCsvToXmlToPlainCsvTest(string plainCsvReportPath)
+            => PlainCsvToXmlToPlainCsv(plainCsvReportPath);
+
+        public static string PlainCsvToXmlToPlainCsv(string inPlainCsvReportPath)
+        {
+            var plainCsvReportPath = PlainCsvToXml(inPlainCsvReportPath);
+            var outPlainCsvReportPath = XmlToPlainCsv(plainCsvReportPath);
+            // var comparison = ReportComparer.ReportObjects(inPlainCsvReportPath, outPlainCsvReportPath);
+            // Assert.True(comparison.Result);
+            return outPlainCsvReportPath;
+        }
+
+        
+        [Theory]
         [InlineData("data/csv/DUMMYLEI123456789012.CON_FR_DORA010100_DORA_2024-12-31_20241213174803429.zip")]
         public void PlainCsvToXmlTest(string reportPath)
         => PlainCsvToXml(reportPath);
@@ -72,6 +87,7 @@ namespace Diwen.Xbrl.Tests.Csv
 
         [Theory]
         [InlineData("data/csv/DUMMYLEI123456789012.CON_FR_DORA010100_DORA_2024-12-31_20241210113351223.xbrl")]
+        //[InlineData("data/csv/97.xbrl")]
         public void XmlToPlainCsvToXmlTest(string xmlReportPath)
         => XmlToPlainCsvToXml(xmlReportPath);
 
