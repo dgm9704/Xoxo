@@ -87,7 +87,8 @@ namespace Diwen.Xbrl.Tests.Csv
 
         [Theory]
         [InlineData("data/csv/DUMMYLEI123456789012.CON_FR_DORA010100_DORA_2024-12-31_20241210113351223.xbrl")]
-        //[InlineData("data/csv/97.xbrl")]
+        //[InlineData("data/csv/97_fact.xbrl")]
+        //[InlineData("data/csv/97_context.xbrl")]
         public void XmlToPlainCsvToXmlTest(string xmlReportPath)
         => XmlToPlainCsvToXml(xmlReportPath);
 
@@ -107,7 +108,7 @@ namespace Diwen.Xbrl.Tests.Csv
 
         public static string XmlToPlainCsv(string reportPath)
         {
-            var xmlReport = Xbrl.Xml.Report.FromFile(reportPath, removeUnusedObjects: false, collapseDuplicateContexts: false, removeDuplicateFacts: false);
+            var xmlReport = Xbrl.Xml.Report.FromFile(reportPath, removeUnusedObjects: false, collapseDuplicateContexts: true, removeDuplicateFacts: false);
 
             xmlReport.ToFile("debug.xbrl");
 

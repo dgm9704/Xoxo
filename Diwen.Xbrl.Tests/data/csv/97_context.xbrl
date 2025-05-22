@@ -1,0 +1,62 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<xbrli:xbrl 
+
+    xmlns:eba_CU="http://www.eba.europa.eu/xbrl/crr/dict/dom/CU" 
+    xmlns:eba_dim_3.5="http://www.eba.europa.eu/xbrl/crr/dict/dim/3.5" 
+    xmlns:eba_met_3.5="http://www.eba.europa.eu/xbrl/crr/dict/met/3.5" 
+    xmlns:eba_typ="http://www.eba.europa.eu/xbrl/crr/dict/typ" 
+    
+    xmlns:find="http://www.eurofiling.info/xbrl/ext/filing-indicators" 
+    xmlns:iso4217="http://www.xbrl.org/2003/iso4217" 
+    xmlns:link="http://www.xbrl.org/2003/linkbase" 
+    xmlns:xbrldi="http://xbrl.org/2006/xbrldi" 
+    xmlns:xbrli="http://www.xbrl.org/2003/instance" 
+    xmlns:xlink="http://www.w3.org/1999/xlink" 
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <link:schemaRef xlink:type="simple" xlink:href="http://www.eba.europa.eu/eu/fr/xbrl/crr/fws/dora/4.0/mod/dora.xsd"/>
+
+  <xbrli:context id="cfi">
+    <xbrli:entity>
+      <xbrli:identifier scheme="https://eurofiling.info/eu/rs">DUMMYLEI123456789012.CON</xbrli:identifier>
+    </xbrli:entity>
+    <xbrli:period>
+      <xbrli:instant>2024-12-31</xbrli:instant>
+    </xbrli:period>
+  </xbrli:context>
+  
+  <find:fIndicators>
+    <find:filingIndicator contextRef="cfi">B_01.01</find:filingIndicator>
+    <find:filingIndicator contextRef="cfi">B_01.02</find:filingIndicator>
+    <find:filingIndicator contextRef="cfi">B_01.03</find:filingIndicator>
+    <find:filingIndicator contextRef="cfi">B_02.01</find:filingIndicator>
+    <find:filingIndicator contextRef="cfi">B_02.02</find:filingIndicator>
+    <find:filingIndicator contextRef="cfi">B_02.03</find:filingIndicator>
+    <find:filingIndicator contextRef="cfi">B_03.01</find:filingIndicator>
+    <find:filingIndicator contextRef="cfi">B_03.02</find:filingIndicator>
+    <find:filingIndicator contextRef="cfi">B_03.03</find:filingIndicator>
+    <find:filingIndicator contextRef="cfi">B_04.01</find:filingIndicator>
+    <find:filingIndicator contextRef="cfi">B_05.01</find:filingIndicator>
+    <find:filingIndicator contextRef="cfi">B_05.02</find:filingIndicator>
+    <find:filingIndicator contextRef="cfi">B_06.01</find:filingIndicator>
+    <find:filingIndicator contextRef="cfi">B_07.01</find:filingIndicator>
+    <find:filingIndicator contextRef="cfi">B_99.01</find:filingIndicator>
+  </find:fIndicators>
+
+  <xbrli:context id="c13">
+    <xbrli:entity>
+      <xbrli:identifier scheme="https://eurofiling.info/eu/rs">DUMMYLEI123456789012.CON</xbrli:identifier>
+    </xbrli:entity>
+    <xbrli:period>
+      <xbrli:instant>2024-12-31</xbrli:instant>
+    </xbrli:period>
+    <xbrli:scenario>
+      <xbrldi:explicitMember dimension="eba_dim_3.5:FGT">eba_CU:x61</xbrldi:explicitMember>
+      <xbrldi:typedMember dimension="eba_dim_3.5:CRZ">
+        <eba_typ:CR>dbjgwafz</eba_typ:CR>
+      </xbrldi:typedMember>
+    </xbrli:scenario>
+  </xbrli:context>
+
+  <eba_met_3.5:ei1559 contextRef="c13">eba_CU:ALL</eba_met_3.5:ei1559>
+  
+</xbrli:xbrl>

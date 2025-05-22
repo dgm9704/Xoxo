@@ -249,9 +249,9 @@ namespace Diwen.Xbrl.Xml.Comparison
              ToList();
 
             var bList = b.
-                         Contexts.
-                         Select(c => c.Scenario).
-                         ToList();
+             Contexts.
+             Select(c => c.Scenario).
+             ToList();
 
             return aList.ContentCompareReport(bList);
         }
