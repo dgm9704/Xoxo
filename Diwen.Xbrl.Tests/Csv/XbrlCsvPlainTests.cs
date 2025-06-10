@@ -38,16 +38,16 @@ namespace Diwen.Xbrl.Tests.Csv
             ToDictionary(x => x[0], x => x[1]);
 
         [Theory]
-        [InlineData("data/csv/DUMMYLEI123456789012.CON_FR_DORA010100_DORA_2024-12-31_20241210113351223.zip")]
+        [InlineData("data/csv/DUMMYLEI123456789012.CON_FR_DORA010100_DORA_2024-12-31_20241213174803429.zip")]
         public void PlainCsvToXmlToPlainCsvTest(string plainCsvReportPath)
             => PlainCsvToXmlToPlainCsv(plainCsvReportPath);
 
         public static string PlainCsvToXmlToPlainCsv(string inPlainCsvReportPath)
         {
-            var plainCsvReportPath = PlainCsvToXml(inPlainCsvReportPath);
-            var outPlainCsvReportPath = XmlToPlainCsv(plainCsvReportPath);
-            // var comparison = ReportComparer.ReportObjects(inPlainCsvReportPath, outPlainCsvReportPath);
-            // Assert.True(comparison.Result);
+            var xmlReportPath = PlainCsvToXml(inPlainCsvReportPath);
+            var outPlainCsvReportPath = XmlToPlainCsv(xmlReportPath);
+            //var comparison = ReportComparer.ReportObjects(inPlainCsvReportPath, outPlainCsvReportPath);
+            //Assert.True(comparison.Result);
             return outPlainCsvReportPath;
         }
 
@@ -61,7 +61,7 @@ namespace Diwen.Xbrl.Tests.Csv
         {
 
             var entrypoint = PlainCsvReport.GetPackageEntryPoint(reportPath).Replace(@"http://", "");
-
+            
             var moduleDefinition = ModuleDefinition.FromFile(entrypoint);
 
             var tableDefinitions = moduleDefinition.TableDefinitions();
@@ -89,6 +89,7 @@ namespace Diwen.Xbrl.Tests.Csv
         [InlineData("data/csv/DUMMYLEI123456789012.CON_FR_DORA010100_DORA_2024-12-31_20241210113351223.xbrl")]
         //[InlineData("data/csv/97_fact.xbrl")]
         //[InlineData("data/csv/97_context.xbrl")]
+        //[InlineData("data/csv/97_contexts.xbrl")]
         public void XmlToPlainCsvToXmlTest(string xmlReportPath)
         => XmlToPlainCsvToXml(xmlReportPath);
 
@@ -108,7 +109,7 @@ namespace Diwen.Xbrl.Tests.Csv
 
         public static string XmlToPlainCsv(string reportPath)
         {
-            var xmlReport = Xbrl.Xml.Report.FromFile(reportPath, removeUnusedObjects: false, collapseDuplicateContexts: true, removeDuplicateFacts: false);
+            var xmlReport = Xbrl.Xml.Report.FromFile(reportPath, removeUnusedObjects: false, collapseDuplicateContexts: false, removeDuplicateFacts: false);
 
             xmlReport.ToFile("debug.xbrl");
 

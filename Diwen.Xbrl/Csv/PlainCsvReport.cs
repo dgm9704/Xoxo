@@ -349,10 +349,9 @@
                 foreach (var entry in archive.Entries)
                 {
                     using (var entryStream = entry.Open())
-                    using (var memoryStream = new MemoryStream())
+                    using (var reader = new StreamReader(entryStream, Encoding.UTF8, detectEncodingFromByteOrderMarks: true))
                     {
-                        entryStream.CopyTo(memoryStream);
-                        string content = Encoding.UTF8.GetString(memoryStream.ToArray());
+                        var content = reader.ReadToEnd();
                         reportFiles.Add(entry.FullName, content);
                     }
                 }
