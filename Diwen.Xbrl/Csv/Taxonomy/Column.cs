@@ -7,7 +7,6 @@ namespace Diwen.Xbrl.Csv.Taxonomy
     /// <summary/>
     public class Column
     {
-
         /// <summary/>
         [JsonPropertyName("decimals")]
         public string Decimals { get; set; }
@@ -21,16 +20,18 @@ namespace Diwen.Xbrl.Csv.Taxonomy
         private Dictionary<string, string> dimensionValues;
 
         /// <summary/>
+        [JsonPropertyName("eba:documentation")]
+        public Dictionary<string, object> EbaDocumentation { get; set; } = [];
+
+        /// <summary/>
         public Dictionary<string, string> DimensionValues
         {
             get
             {
                 dimensionValues ??=
-                        Dimensions.
-                        Where(d => !excludeDimensions.Contains(d.Key)).
-                        ToDictionary(
-                            d => d.Key,
-                            d => d.Value);
+                    Dimensions.Where(d => !excludeDimensions.Contains(d.Key)).ToDictionary(
+                        d => d.Key,
+                        d => d.Value);
 
                 return dimensionValues;
             }
