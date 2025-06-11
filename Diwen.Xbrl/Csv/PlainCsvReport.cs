@@ -6,6 +6,7 @@
     using System.IO;
     using System.IO.Compression;
     using System.Linq;
+    using Microsoft.VisualBasic.FileIO;
     using System.Reflection;
     using System.Text;
     using System.Text.Json;
@@ -295,31 +296,37 @@
         private static List<ReportData> ReadTableData(string table, string data, TableDefinition tableDefinition)
         {
             var result = new List<ReportData>();
-
-            var rows =
-                data.Split([Environment.NewLine, "\r", "\n"], StringSplitOptions.RemoveEmptyEntries)
-                    .Select(line => line.Split(','));
-
-            var columns = rows.First();
-            var keyColumns = tableDefinition.TableTemplates.First().Value.Dimensions;
-
-            foreach (var row in rows.Skip(1))
+            using (var stream = new MemoryStream(Encoding.UTF8.GetBytes(data))) 
+            using (var parser = new TextFieldParser(stream, Encoding.UTF8, detectEncoding: true))
             {
-                Dictionary<string, string> dimensions = [];
-                foreach (var keycolumn in keyColumns)
-                {
-                    var idx = Array.IndexOf(columns, keycolumn.Value.TrimStart('$'));
-                    dimensions.Add(keycolumn.Key, row[idx]);
-                }
+                parser.TextFieldType = FieldType.Delimited;
+                parser.SetDelimiters(",");
+                parser.HasFieldsEnclosedInQuotes = true;
+                parser.TrimWhiteSpace = true;
 
-                for (int i = 0; i < columns.Length; i++)
+                var keyColumns = tableDefinition.TableTemplates.First().Value.Dimensions;
+                var columns = parser.ReadFields();
+
+                while (!parser.EndOfData)
                 {
-                    if (Array.IndexOf([.. keyColumns.Values], $"${columns[i]}") == -1)
+                    var row = parser.ReadFields();
+
+                    Dictionary<string, string> dimensions = [];
+                    foreach (var keycolumn in keyColumns)
                     {
-                        var datapoint = columns[i];
-                        var value = row[i];
-                        var item = new ReportData(table, datapoint, value, dimensions);
-                        result.Add(item);
+                        var idx = Array.IndexOf(columns, keycolumn.Value.TrimStart('$'));
+                        dimensions.Add(keycolumn.Key, row[idx]);
+                    }
+
+                    for (int i = 0; i < columns.Length; i++)
+                    {
+                        if (Array.IndexOf([.. keyColumns.Values], $"${columns[i]}") == -1)
+                        {
+                            var datapoint = columns[i];
+                            var value = row[i];
+                            var item = new ReportData(table, datapoint, value, dimensions);
+                            result.Add(item);
+                        }
                     }
                 }
             }
@@ -349,7 +356,8 @@
                 foreach (var entry in archive.Entries)
                 {
                     using (var entryStream = entry.Open())
-                    using (var reader = new StreamReader(entryStream, Encoding.UTF8, detectEncodingFromByteOrderMarks: true))
+                    using (var reader = new StreamReader(entryStream, Encoding.UTF8,
+                               detectEncodingFromByteOrderMarks: true))
                     {
                         var content = reader.ReadToEnd();
                         reportFiles.Add(entry.FullName, content);
@@ -548,7 +556,8 @@
             report.Parameters.Add("entityID", $"{prefix}:{identifier}");
             report.Parameters.Add("refPeriod", xmlReport.Period.Instant.ToString("yyyy-MM-dd"));
             report.Parameters.Add("baseCurrency",
-                xmlReport.Units.FirstOrDefault(u => u.Measure.Namespace == "http://www.xbrl.org/2003/iso4217")?.Measure
+                xmlReport.Units.FirstOrDefault(u => u.Measure.Namespace == "http://www.xbrl.org/2003/iso4217")
+                    ?.Measure
                     ?.LocalName() ?? "EUR");
             report.Parameters.Add("decimalsInteger", "0");
             report.Parameters.Add("decimalsMonetary", "-3");
@@ -590,7 +599,8 @@
 
                 var factTypedMembers =
                     fact.Context.Scenario.TypedMembers.Select(m =>
-                        $"{xmlReport.Namespaces.LookupPrefix(m.Dimension.Namespace)}:{m.Dimension.Name}").ToHashSet();
+                            $"{xmlReport.Namespaces.LookupPrefix(m.Dimension.Namespace)}:{m.Dimension.Name}")
+                        .ToHashSet();
 
                 var datapoints = GetTableDatapoints(fact, reportedTables, tablesOpendimensions, factExplicitMembers,
                     factTypedMembers);
@@ -619,7 +629,8 @@
             Dictionary<string, string> dimensionDomain, KeyValuePair<string, string> typedDomainNamespace,
             Dictionary<string, string> filingIndicators, HashSet<string> typedDomains,
             ModuleDefinition moduleDefinition)
-            => ToXbrlXml(this, tableDefinitions, dimensionDomain, typedDomainNamespace, filingIndicators, typedDomains,
+            => ToXbrlXml(this, tableDefinitions, dimensionDomain, typedDomainNamespace, filingIndicators,
+                typedDomains,
                 moduleDefinition);
 
         /// <summary/>
@@ -634,7 +645,8 @@
         {
             var xmlreport = new Xml.Report
             {
-                SchemaReference = new SchemaReference("simple", moduleDefinition.DocumentInfo.Taxonomy.FirstOrDefault())
+                SchemaReference =
+                    new SchemaReference("simple", moduleDefinition.DocumentInfo.Taxonomy.FirstOrDefault())
             };
 
             foreach (var ns in moduleDefinition.DocumentInfo.Namespaces)
