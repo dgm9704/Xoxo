@@ -155,6 +155,7 @@ namespace Diwen.Xbrl.Tests.Csv
         => XmlToCsv(reportPath);
 
         [Theory]
+        [InlineData("data/csv/DUMMYLEI123456789012.CON_FR_GSII010300_GSII_2026-12-31_20260108135514790.zip")]
         [InlineData("data/csv/DUMMYLEI123456789012.CON_FR_FINREP030100_FINREP9_2022-12-31_20220411141600000.zip")]
         [InlineData("data/csv/F_18-00-a.zip")]
         public void CsvToXmlTest(string reportPath)

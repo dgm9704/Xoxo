@@ -15,6 +15,10 @@ namespace Diwen.Xbrl.Csv.Taxonomy
         [JsonPropertyName("dimensions")]
         public Dictionary<string, string> Dimensions { get; set; }
 
+        /// <summary/>
+        [JsonPropertyName("eba:documentation")]
+        public Dictionary<string, object> EbaDocumentation { get; set; } = [];
+        
         private readonly HashSet<string> excludeDimensions = new(["concept", "unit"]);
 
         private Dictionary<string, string> dimensionValues;
