@@ -67,15 +67,35 @@ namespace Diwen.Xbrl.Csv.Taxonomy
         public List<FilingIndicatorInfo> FilingIndicatorInfos()
         {
             if (filingIndicatorInfos == null)
-                filingIndicatorInfos =
-                    [.. this.Tables.Where(t=> t.Value.EbaDocumentation.Any()).
-                    Select(t=> new FilingIndicatorInfo
+            {
+                filingIndicatorInfos = [];
+                foreach (var table in this.Tables)
+                {
+                    switch (table.Value.Template)
                     {
-                        TableCode = t.Key,
-                        TemplateCode = t.Value.Template,
-                        Url = t.Value.Url,
-                        FilingIndicatorCode = t.Value.EbaDocumentation["FilingIndicator"].ToString(),
-                    })];
+                        case "FootNotes":
+                        case "FilingIndicators":
+                            break;
+
+                        default:
+                            filingIndicatorInfos.Add(
+                                new FilingIndicatorInfo
+                                {
+                                    TableCode = table.Key,
+                                    TemplateCode = table.Value.Template,
+                                    Url = table.Value.Url,
+                                    FilingIndicatorCode = table.Value.EbaDocumentation.Any()
+                                        ? table.Value.EbaDocumentation["FilingIndicator"].ToString()
+                                        : string.Join('.', table.Value.Template.Split('-').Take(2)),
+                                });
+
+                            break;
+                    }
+                }
+
+
+
+            }
 
             return filingIndicatorInfos;
         }

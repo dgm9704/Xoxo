@@ -220,10 +220,6 @@
             report.Parameters = ReadParameters(reportFiles.Single(f => Path.GetFileName(f.Key) == "parameters.csv").Value);
             report.FilingIndicators = ReadFilingIndicators(reportFiles.Single(f => Path.GetFileName(f.Key) == "FilingIndicators.csv").Value);
 
-            // foreach (var template in report.FilingIndicators.Where(fi => fi.Value).Select(fi => fi.Key))
-            //     foreach (var tablefile in reportFiles.Where(f => Path.GetFileNameWithoutExtension(f.Key).StartsWith(template, StringComparison.OrdinalIgnoreCase)))
-            //         report.Data.AddRange(ReadTableData(Path.GetFileNameWithoutExtension(tablefile.Key), tablefile.Value));
-
             foreach (var filingIndicatorCode in report.FilingIndicators.Where(fi => fi.Value).Select(fi => fi.Key))
             {
                 foreach (var filingIndicatorInfo in filingIndicatorInfos.Where(f => f.FilingIndicatorCode == filingIndicatorCode))
@@ -231,7 +227,7 @@
                     var url = filingIndicatorInfo.Url;
                     var templateCode = filingIndicatorInfo.TemplateCode;
                     var tablefile = reportFiles.Single(f => Path.GetFileName(f.Key) == url);
-                    var tabledata = ReadTableData(Path.GetFileNameWithoutExtension(tablefile.Key), tablefile.Value);
+                    var tabledata = ReadTableData(filingIndicatorInfo.TemplateCode, tablefile.Value);
                     report.Data.AddRange(tabledata);
                 }
             }
