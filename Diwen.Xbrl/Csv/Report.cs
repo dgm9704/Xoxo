@@ -457,7 +457,11 @@
             return result;
         }
 
-        private static bool DatapointMatchesFact(Dictionary<string, string> datapointDimensions, HashSet<string> tableOpenDimensions, Dictionary<string, string> factExplicitMembers, HashSet<string> factTypedMembers)
+        private static bool DatapointMatchesFact(
+            Dictionary<string, string> datapointDimensions,
+            HashSet<string> tableOpenDimensions,
+            Dictionary<string, string> factExplicitMembers,
+            HashSet<string> factTypedMembers)
         {
             var match =
                 factExplicitMembers.Count + factTypedMembers.Count == tableOpenDimensions.Count + datapointDimensions.Count
@@ -474,8 +478,6 @@
         /// <summary/>
         public static Report FromXbrlXml(
             Xml.Report xmlReport,
-            Dictionary<string, TableDefinition> tableDefinitions,
-            List<FilingIndicatorInfo> filingIndicators,
             ModuleDefinition moduleDefinition)
         {
             var report = new Report
@@ -500,9 +502,12 @@
                 xmlReport.Contexts.First(c => c.Scenario != null && c.Scenario.ExplicitMembers.Any()).
                 Scenario.ExplicitMembers.First().Dimension.Namespace);
 
+            var tableDefinitions = moduleDefinition.TableDefinitions();
+            var filingIndicatorInfos = moduleDefinition.FilingIndicatorInfos();
+
             var reportedTables =
                 tableDefinitions.
-                Where(table => report.FilingIndicators.GetValueOrDefault(filingIndicators.Single(fi => fi.TemplateCode == table.Key).FilingIndicatorCode, false)).
+                Where(table => report.FilingIndicators.GetValueOrDefault(filingIndicatorInfos.Single(fi => fi.TemplateCode == table.Key).FilingIndicatorCode, false)).
                 ToDictionary(t => t.Key, t => t.Value);
 
             var tablesOpendimensions =

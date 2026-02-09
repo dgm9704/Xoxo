@@ -31,18 +31,14 @@ namespace Diwen.Xbrl.Extensions
         /// <summary/>
         public static Csv.Report ToXbrlCsv(
             this Xml.Report xmlreport,
-            Dictionary<string, TableDefinition> tableDefinitions,
-            List<FilingIndicatorInfo> filingIndicators,
             ModuleDefinition moduleDefinition)
-        => Csv.Report.FromXbrlXml(xmlreport, tableDefinitions, filingIndicators, moduleDefinition);
+        => Csv.Report.FromXbrlXml(xmlreport, moduleDefinition);
 
         /// <summary/>
         public static Csv.PlainCsvReport ToXbrlCsvPlain(
             this Xml.Report xmlreport,
-            Dictionary<string, TableDefinition> tableDefinitions,
-            List<FilingIndicatorInfo> filingIndicators,
             ModuleDefinition moduleDefinition)
-        => Csv.PlainCsvReport.FromXbrlXml(xmlreport, tableDefinitions, filingIndicators, moduleDefinition);
+        => Csv.PlainCsvReport.FromXbrlXml(xmlreport, moduleDefinition);
 
     }
 }

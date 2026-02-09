@@ -52,11 +52,19 @@
             => Data.Add(new ReportData(table, datapoint, value, dimensions));
 
         /// <summary/>
-        public void Export(string packagePath, Dictionary<string, TableDefinition> tableDefinitions)
+        public void Export(
+            string packagePath,
+            ModuleDefinition moduleDefinition)
         {
             var packageName = Path.GetFileNameWithoutExtension(packagePath);
-            var package = CreatePackage(packageName, DocumentType, Entrypoint, Parameters, FilingIndicators,
-                tableDefinitions, Data);
+            var package = CreatePackage(
+                packageName,
+                DocumentType,
+                Entrypoint,
+                Parameters,
+                FilingIndicators,
+                moduleDefinition,
+                Data);
             var zip = CreateZip(package);
             WriteStreamToFile(zip, Path.ChangeExtension(packagePath, "zip"));
         }
@@ -67,7 +75,7 @@
             string entrypoint,
             Dictionary<string, string> parameters,
             Dictionary<string, bool> filingIndicators,
-            Dictionary<string, TableDefinition> tableDefinitions,
+            ModuleDefinition moduleDefinition,
             List<ReportData> data)
         {
             var metafolder = "META-INF";
@@ -82,7 +90,7 @@
                     CreateFilingIndicators(filingIndicators),
             };
 
-            foreach (var tableStream in CreateReportData(data, tableDefinitions))
+            foreach (var tableStream in CreateReportData(data, moduleDefinition))
                 package.Add(Path.Combine(packageName, reportfolder, tableStream.Key), tableStream.Value);
 
             return package;
@@ -200,15 +208,19 @@
             return stream;
         }
 
-        private static Dictionary<string, Stream> CreateReportData(List<ReportData> data,
-            Dictionary<string, TableDefinition> tableDefinitions)
+        private static Dictionary<string, Stream> CreateReportData(
+            List<ReportData> data,
+            ModuleDefinition moduleDefinition)
         {
             var reportdata = new Dictionary<string, Stream>();
+            var filingIndicatorInfos = moduleDefinition.FilingIndicatorInfos();
+            var tableDefinitions = moduleDefinition.TableDefinitions();
 
             var tabledata = data.GroupBy(d => d.Table);
             foreach (var table in tabledata)
             {
-                var filename = table.Key + ".csv";
+                var filename = filingIndicatorInfos.Single(fi => fi.TemplateCode == table.Key).Url;
+
                 HashSet<string> headers = [];
                 var tableDefinition = tableDefinitions[table.Key];
                 foreach (var dimension in table.First().Dimensions.Select(d => d.Key).Order())
@@ -269,15 +281,6 @@
                     report.Data.AddRange(tabledata);
                 }
             }
-
-            // foreach (var template in report.FilingIndicators.Where(fi => fi.Value).Select(fi => fi.Key))
-            //     foreach (var tablefile in reportFiles.Where(f =>
-            //                  Path.GetFileNameWithoutExtension(f.Key)
-            //                      .StartsWith(template, StringComparison.OrdinalIgnoreCase)))
-            //     {
-            //         var tablecode = Path.GetFileNameWithoutExtension(tablefile.Key);
-            //         report.Data.AddRange(ReadTableData(tablecode, tablefile.Value, tableDefinitions[tablecode]));
-            //     }
 
             return report;
         }
@@ -555,8 +558,8 @@
         }
 
         /// <summary/>
-        public static PlainCsvReport FromXbrlXml(Xml.Report xmlReport,
-            Dictionary<string, TableDefinition> tableDefinitions, List<FilingIndicatorInfo> filingIndicators,
+        public static PlainCsvReport FromXbrlXml(
+            Xml.Report xmlReport,
             ModuleDefinition moduleDefinition)
         {
             var report = new PlainCsvReport
@@ -585,9 +588,13 @@
                 xmlReport.Contexts.First(c => c.Scenario != null && c.Scenario.ExplicitMembers.Any()).Scenario
                     .ExplicitMembers.First().Dimension.Namespace);
 
+            var tableDefinitions = moduleDefinition.TableDefinitions();
+
+            var filingIndicatorInfos = moduleDefinition.FilingIndicatorInfos();
+
             var reportedTables =
                 tableDefinitions
-                    .Where(table => report.FilingIndicators.GetValueOrDefault(filingIndicators.Single(fi => fi.TemplateCode == table.Key).FilingIndicatorCode, false))
+                    .Where(table => report.FilingIndicators.GetValueOrDefault(filingIndicatorInfos.Single(fi => fi.TemplateCode == table.Key).FilingIndicatorCode, false))
                     .ToDictionary(t => t.Key, t => t.Value);
 
             var tablesOpendimensions =

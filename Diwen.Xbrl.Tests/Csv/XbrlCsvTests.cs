@@ -130,7 +130,7 @@ namespace Diwen.Xbrl.Tests.Csv
 
             var moduleDefinition = ModuleDefinition.FromFile(entrypoint);
 
-            var filingIndicators = moduleDefinition.FilingIndicatorInfo();
+            var filingIndicators = moduleDefinition.FilingIndicatorInfos();
 
             var report = Report.FromFile(packagePath, filingIndicators);
 
@@ -217,9 +217,9 @@ namespace Diwen.Xbrl.Tests.Csv
 
             var tableDefinitions = moduleDefinition.TableDefinitions();
 
-            var filingIndicators = moduleDefinition.FilingIndicatorInfo();
+            var filingIndicators = moduleDefinition.FilingIndicatorInfos();
 
-            var csvReport = xmlReport.ToXbrlCsv(tableDefinitions, filingIndicators, moduleDefinition);
+            var csvReport = xmlReport.ToXbrlCsv(moduleDefinition);
 
             var csvReportPath = Path.ChangeExtension(Path.GetFileName(reportPath), ".zip");
             csvReport.Export(csvReportPath);
@@ -233,7 +233,7 @@ namespace Diwen.Xbrl.Tests.Csv
 
             var moduleDefinition = ModuleDefinition.FromFile(entrypoint);
 
-            var filingIndicators = moduleDefinition.FilingIndicatorInfo();
+            var filingIndicators = moduleDefinition.FilingIndicatorInfos();
 
             var csvReport = Report.FromFile(reportPath, filingIndicators);
 

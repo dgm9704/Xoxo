@@ -61,13 +61,13 @@ namespace Diwen.Xbrl.Csv.Taxonomy
             return tableDefinitions;
         }
 
-        private List<FilingIndicatorInfo> filingIndicators;
+        private List<FilingIndicatorInfo> filingIndicatorInfos;
 
         /// <summary /> 
-        public List<FilingIndicatorInfo> FilingIndicatorInfo()
+        public List<FilingIndicatorInfo> FilingIndicatorInfos()
         {
-            if (filingIndicators == null)
-                filingIndicators =
+            if (filingIndicatorInfos == null)
+                filingIndicatorInfos =
                     [.. this.Tables.Where(t=> t.Value.EbaDocumentation.Any()).
                     Select(t=> new FilingIndicatorInfo
                     {
@@ -77,7 +77,7 @@ namespace Diwen.Xbrl.Csv.Taxonomy
                         FilingIndicatorCode = t.Value.EbaDocumentation["FilingIndicator"].ToString(),
                     })];
 
-            return filingIndicators;
+            return filingIndicatorInfos;
         }
 
     }
