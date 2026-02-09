@@ -49,15 +49,24 @@
         => Data.Add(new ReportData(table, datapoint, value, dimensions));
 
         /// <summary/>
-        public void Export(string packagePath)
+        public void Export(
+            string packagePath,
+            ModuleDefinition moduleDefinition)
         {
             var packageName = Path.GetFileNameWithoutExtension(packagePath);
-            var package = CreatePackage(packageName, DocumentType, Entrypoint, Parameters, FilingIndicators, Data);
+            var package = CreatePackage(packageName, DocumentType, Entrypoint, Parameters, FilingIndicators, moduleDefinition, Data);
             var zip = CreateZip(package);
             WriteStreamToFile(zip, Path.ChangeExtension(packagePath, "zip"));
         }
 
-        private static Dictionary<string, Stream> CreatePackage(string packageName, string documentType, string entrypoint, Dictionary<string, string> parameters, Dictionary<string, bool> filingIndicators, List<ReportData> data)
+        private static Dictionary<string, Stream> CreatePackage(
+            string packageName,
+            string documentType,
+            string entrypoint,
+            Dictionary<string, string> parameters,
+            Dictionary<string, bool> filingIndicators,
+            ModuleDefinition moduleDefinition,
+            List<ReportData> data)
         {
             var metafolder = "META-INF";
             var reportfolder = "reports";
@@ -70,7 +79,7 @@
                 [Path.Combine(packageName, reportfolder, "FilingIndicators.csv")] = CreateFilingIndicators(filingIndicators),
             };
 
-            foreach (var tableStream in CreateReportData(data))
+            foreach (var tableStream in CreateReportData(data, moduleDefinition))
                 package.Add(Path.Combine(packageName, reportfolder, tableStream.Key), tableStream.Value);
 
             return package;
@@ -178,14 +187,17 @@
             return stream;
         }
 
-        private static Dictionary<string, Stream> CreateReportData(List<ReportData> data)
+        private static Dictionary<string, Stream> CreateReportData(
+            List<ReportData> data,
+            ModuleDefinition moduleDefinition)
         {
             var reportdata = new Dictionary<string, Stream>();
-
+            var filingIndicatorInfos = moduleDefinition.FilingIndicatorInfos();
             var tabledata = data.GroupBy(d => d.Table);
             foreach (var table in tabledata)
             {
-                var filename = table.Key + ".csv";
+                var filename = filingIndicatorInfos.Single(fi => fi.TemplateCode == table.Key).Url;
+
                 var builder = new StringBuilder("datapoint,factvalue");
                 foreach (var dimension in table.First().Dimensions.Keys)
                     builder.Append($",{dimension}");

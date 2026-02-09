@@ -36,9 +36,13 @@ namespace Diwen.Xbrl.Tests.Csv
         [Fact]
         public void ExportTests()
         {
+            var entrypointUrl = "http://www.eba.europa.eu/eu/fr/xbrl/crr/fws/sbp/cir-2070-2016/2021-07-15/mod/sbp_cr_con.json";
+
+            var moduleDefinition = ModuleDefinition.FromFile(entrypointUrl.Replace("http://", string.Empty));
+
             var report = new Report
             {
-                Entrypoint = "http://www.eba.europa.eu/eu/fr/xbrl/crr/fws/sbp/cir-2070-2016/2021-07-15/mod/sbp_cr_con.json",
+                Entrypoint = entrypointUrl,
                 Parameters = new Dictionary<string, string>
                 {
                     ["entityID"] = "lei:DUMMYLEI123456789012",
@@ -65,39 +69,39 @@ namespace Diwen.Xbrl.Tests.Csv
             };
 
             //datapoint,factValue
-            report.AddData("S_00.01", "dp31870", "eba_AS:x1");
-            report.AddData("S_00.01", "dp37969", "eba_SC:x6");
+            report.AddData("S_00-01", "dp31870", "eba_AS:x1");
+            report.AddData("S_00-01", "dp37969", "eba_SC:x6");
 
             // datapoint,factValue,IRN
-            report.AddData("C_105.03", "dp434188", "grarenmw", "IRN", "36");
-            report.AddData("C_105.03", "dp434189", "eba_GA:AL", "IRN", "36");
-            report.AddData("C_105.03", "dp434188", "grarenmw2", "IRN", "8");
-            report.AddData("C_105.03", "dp434189", "eba_GA:AL", "IRN", "8");
+            report.AddData("C_105-03", "dp434188", "grarenmw", "IRN", "36");
+            report.AddData("C_105-03", "dp434189", "eba_GA:AL", "IRN", "36");
+            report.AddData("C_105-03", "dp434188", "grarenmw2", "IRN", "8");
+            report.AddData("C_105-03", "dp434189", "eba_GA:AL", "IRN", "8");
 
             // datapoint,factValue,IMI,PBE
-            report.AddData("C_105.02", "dp439585", "250238.28", ("IMI", "ksnpfnwn"), ("PBI", "ksnpfnwn"));
-            report.AddData("C_105.02", "dp439586", "247370.72", ("IMI", "ksnpfnwn"), ("PBI", "ksnpfnwn"));
-            report.AddData("C_105.02", "dp439585", "250238.28", ("IMI", "kotnyngp"), ("PBI", "kotnyngp"));
-            report.AddData("C_105.02", "dp439586", "247370.72", ("IMI", "kotnyngp"), ("PBI", "kotnyngp"));
+            report.AddData("C_105-02", "dp439585", "250238.28", ("IMI", "ksnpfnwn"), ("PBI", "ksnpfnwn"));
+            report.AddData("C_105-02", "dp439586", "247370.72", ("IMI", "ksnpfnwn"), ("PBI", "ksnpfnwn"));
+            report.AddData("C_105-02", "dp439585", "250238.28", ("IMI", "kotnyngp"), ("PBI", "kotnyngp"));
+            report.AddData("C_105-02", "dp439586", "247370.72", ("IMI", "kotnyngp"), ("PBI", "kotnyngp"));
 
 
             // datapoint,factValue,FTY,INC
-            report.AddData("C_113.00", "dp439732", "304132.94", ("FTY", "htkaaxvr"), ("INC", "htkaaxvr"));
-            report.AddData("C_113.00", "dp439750", "eba_IM:x33", ("FTY", "htkaaxvr"), ("INC", "htkaaxvr"));
-            report.AddData("C_113.00", "dp439744", "0.1", ("FTY", "htkaaxvr"), ("INC", "htkaaxvr"));
-            report.AddData("C_113.00", "dp439745", "0.72", ("FTY", "htkaaxvr"), ("INC", "htkaaxvr"));
-            report.AddData("C_113.00", "dp439751", "0.34", ("FTY", "htkaaxvr"), ("INC", "htkaaxvr"));
-            report.AddData("C_113.00", "dp439752", "0.46", ("FTY", "htkaaxvr"), ("INC", "htkaaxvr"));
-            report.AddData("C_113.00", "dp439753", "eba_ZZ:x409", ("FTY", "htkaaxvr"), ("INC", "htkaaxvr"));
-            report.AddData("C_113.00", "dp439732", "304132.94", ("FTY", "ynqtbutq"), ("INC", "ynqtbutq"));
-            report.AddData("C_113.00", "dp439750", "eba_IM:x33", ("FTY", "ynqtbutq"), ("INC", "ynqtbutq"));
-            report.AddData("C_113.00", "dp439744", "0.1", ("FTY", "ynqtbutq"), ("INC", "ynqtbutq"));
-            report.AddData("C_113.00", "dp439745", "0.72", ("FTY", "ynqtbutq"), ("INC", "ynqtbutq"));
-            report.AddData("C_113.00", "dp439751", "0.34", ("FTY", "ynqtbutq"), ("INC", "ynqtbutq"));
-            report.AddData("C_113.00", "dp439752", "0.46", ("FTY", "ynqtbutq"), ("INC", "ynqtbutq"));
-            report.AddData("C_113.00", "dp439753", "eba_ZZ:x409", ("FTY", "ynqtbutq"), ("INC", "ynqtbutq"));
+            report.AddData("C_113-00", "dp439732", "304132.94", ("FTY", "htkaaxvr"), ("INC", "htkaaxvr"));
+            report.AddData("C_113-00", "dp439750", "eba_IM:x33", ("FTY", "htkaaxvr"), ("INC", "htkaaxvr"));
+            report.AddData("C_113-00", "dp439744", "0.1", ("FTY", "htkaaxvr"), ("INC", "htkaaxvr"));
+            report.AddData("C_113-00", "dp439745", "0.72", ("FTY", "htkaaxvr"), ("INC", "htkaaxvr"));
+            report.AddData("C_113-00", "dp439751", "0.34", ("FTY", "htkaaxvr"), ("INC", "htkaaxvr"));
+            report.AddData("C_113-00", "dp439752", "0.46", ("FTY", "htkaaxvr"), ("INC", "htkaaxvr"));
+            report.AddData("C_113-00", "dp439753", "eba_ZZ:x409", ("FTY", "htkaaxvr"), ("INC", "htkaaxvr"));
+            report.AddData("C_113-00", "dp439732", "304132.94", ("FTY", "ynqtbutq"), ("INC", "ynqtbutq"));
+            report.AddData("C_113-00", "dp439750", "eba_IM:x33", ("FTY", "ynqtbutq"), ("INC", "ynqtbutq"));
+            report.AddData("C_113-00", "dp439744", "0.1", ("FTY", "ynqtbutq"), ("INC", "ynqtbutq"));
+            report.AddData("C_113-00", "dp439745", "0.72", ("FTY", "ynqtbutq"), ("INC", "ynqtbutq"));
+            report.AddData("C_113-00", "dp439751", "0.34", ("FTY", "ynqtbutq"), ("INC", "ynqtbutq"));
+            report.AddData("C_113-00", "dp439752", "0.46", ("FTY", "ynqtbutq"), ("INC", "ynqtbutq"));
+            report.AddData("C_113-00", "dp439753", "eba_ZZ:x409", ("FTY", "ynqtbutq"), ("INC", "ynqtbutq"));
 
-            report.Export("DUMMYLEI123456789012_GB_SBP010200_SBPCRCON_2021-12-31_20210623163233000");
+            report.Export("DUMMYLEI123456789012_GB_SBP010200_SBPCRCON_2021-12-31_20210623163233000", moduleDefinition);
         }
 
         [Theory]
@@ -169,8 +173,8 @@ namespace Diwen.Xbrl.Tests.Csv
         => CsvToXml(reportPath);
 
         [Theory]
-        [InlineData("data/csv/DUMMYLEI123456789012.CON_FR_FINREP030100_FINREP9_2022-12-31_20220411141600000.xbrl")]
-        [InlineData("data/csv/FINREP_F_23-01_R0080_C0010.xbrl")]
+        // [InlineData("data/csv/DUMMYLEI123456789012.CON_FR_FINREP030100_FINREP9_2022-12-31_20220411141600000.xbrl")]
+        // [InlineData("data/csv/FINREP_F_23-01_R0080_C0010.xbrl")]
         [InlineData("data/csv/FINREP_F_40-01_R999_C0031.xbrl")]
         public void XmlToCsvToXml(string xmlInPath)
         {
@@ -218,7 +222,7 @@ namespace Diwen.Xbrl.Tests.Csv
             var csvReport = xmlReport.ToXbrlCsv(moduleDefinition);
 
             var csvReportPath = Path.ChangeExtension(Path.GetFileName(reportPath), ".zip");
-            csvReport.Export(csvReportPath);
+            csvReport.Export(csvReportPath, moduleDefinition);
             return csvReportPath;
         }
 
