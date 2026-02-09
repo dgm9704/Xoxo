@@ -32,7 +32,7 @@ namespace Diwen.Xbrl.Extensions
         public static Csv.Report ToXbrlCsv(
             this Xml.Report xmlreport,
             Dictionary<string, TableDefinition> tableDefinitions,
-            Dictionary<string, string> filingIndicators,
+            List<FilingIndicatorInfo> filingIndicators,
             ModuleDefinition moduleDefinition)
         => Csv.Report.FromXbrlXml(xmlreport, tableDefinitions, filingIndicators, moduleDefinition);
 

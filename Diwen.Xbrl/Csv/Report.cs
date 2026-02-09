@@ -210,7 +210,7 @@
         }
 
         /// <summary/>
-        public static Report FromFile(string packagePath)
+        public static Report FromFile(string packagePath, List<FilingIndicatorInfo> filingIndicatorInfos)
         {
             var report = new Report();
             var reportFiles = ReadPackage(packagePath);
@@ -219,9 +219,22 @@
             report.Entrypoint = ReadEntryPoint(reportFiles.Single(f => Path.GetFileName(f.Key) == "report.json").Value);
             report.Parameters = ReadParameters(reportFiles.Single(f => Path.GetFileName(f.Key) == "parameters.csv").Value);
             report.FilingIndicators = ReadFilingIndicators(reportFiles.Single(f => Path.GetFileName(f.Key) == "FilingIndicators.csv").Value);
-            foreach (var template in report.FilingIndicators.Where(fi => fi.Value).Select(fi => fi.Key))
-                foreach (var tablefile in reportFiles.Where(f => Path.GetFileNameWithoutExtension(f.Key).StartsWith(template, StringComparison.OrdinalIgnoreCase)))
-                    report.Data.AddRange(ReadTableData(Path.GetFileNameWithoutExtension(tablefile.Key), tablefile.Value));
+
+            // foreach (var template in report.FilingIndicators.Where(fi => fi.Value).Select(fi => fi.Key))
+            //     foreach (var tablefile in reportFiles.Where(f => Path.GetFileNameWithoutExtension(f.Key).StartsWith(template, StringComparison.OrdinalIgnoreCase)))
+            //         report.Data.AddRange(ReadTableData(Path.GetFileNameWithoutExtension(tablefile.Key), tablefile.Value));
+
+            foreach (var filingIndicatorCode in report.FilingIndicators.Where(fi => fi.Value).Select(fi => fi.Key))
+            {
+                foreach (var filingIndicatorInfo in filingIndicatorInfos.Where(f => f.FilingIndicatorCode == filingIndicatorCode))
+                {
+                    var url = filingIndicatorInfo.Url;
+                    var templateCode = filingIndicatorInfo.TemplateCode;
+                    var tablefile = reportFiles.Single(f => Path.GetFileName(f.Key) == url);
+                    var tabledata = ReadTableData(Path.GetFileNameWithoutExtension(tablefile.Key), tablefile.Value);
+                    report.Data.AddRange(tabledata);
+                }
+            }
 
             return report;
         }
@@ -459,7 +472,11 @@
         }
 
         /// <summary/>
-        public static Report FromXbrlXml(Xml.Report xmlReport, Dictionary<string, TableDefinition> tableDefinitions, Dictionary<string, string> filingIndicators, ModuleDefinition moduleDefinition)
+        public static Report FromXbrlXml(
+            Xml.Report xmlReport,
+            Dictionary<string, TableDefinition> tableDefinitions,
+            List<FilingIndicatorInfo> filingIndicators,
+            ModuleDefinition moduleDefinition)
         {
             var report = new Report
             {
@@ -485,7 +502,7 @@
 
             var reportedTables =
                 tableDefinitions.
-                Where(table => report.FilingIndicators.GetValueOrDefault(filingIndicators[table.Key], false)).
+                Where(table => report.FilingIndicators.GetValueOrDefault(filingIndicators.Single(fi => fi.TemplateCode == table.Key).FilingIndicatorCode, false)).
                 ToDictionary(t => t.Key, t => t.Value);
 
             var tablesOpendimensions =
@@ -525,7 +542,13 @@
         }
 
         /// <summary/>
-        public Xml.Report ToXbrlXml(Dictionary<string, TableDefinition> tableDefinitions, Dictionary<string, string> dimensionDomain, KeyValuePair<string, string> typedDomainNamespace, Dictionary<string, string> filingIndicators, HashSet<string> typedDomains, ModuleDefinition moduleDefinition)
+        public Xml.Report ToXbrlXml(
+            Dictionary<string, TableDefinition> tableDefinitions,
+            Dictionary<string, string> dimensionDomain,
+            KeyValuePair<string, string> typedDomainNamespace,
+            List<FilingIndicatorInfo> filingIndicators,
+            HashSet<string> typedDomains,
+            ModuleDefinition moduleDefinition)
         => ToXbrlXml(this, tableDefinitions, dimensionDomain, typedDomainNamespace, filingIndicators, typedDomains, moduleDefinition);
 
         /// <summary/>
@@ -534,7 +557,7 @@
             Dictionary<string, TableDefinition> tableDefinitions,
             Dictionary<string, string> dimensionDomain,
             KeyValuePair<string, string> typedDomainNamespace,
-            Dictionary<string, string> filingIndicators,
+            List<FilingIndicatorInfo> filingIndicators,
             HashSet<string> typedDomains,
             ModuleDefinition moduleDefinition)
         {
@@ -573,7 +596,7 @@
                 report.
                 Data.
                 Where(d => !string.IsNullOrEmpty(d.Value)).
-                Where(d => filed.Contains(filingIndicators[d.Table])).
+                Where(d => filed.Contains(filingIndicators.Single(fi => fi.TemplateCode == d.Table).FilingIndicatorCode)).
                 GroupBy(d => d.Table).
                 ToDictionary(d => d.Key, d => d.ToArray());
 

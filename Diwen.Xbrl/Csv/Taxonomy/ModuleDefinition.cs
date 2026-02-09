@@ -46,7 +46,7 @@ namespace Diwen.Xbrl.Csv.Taxonomy
                 tableDefinitions = [];
                 var modfolder = Path.GetDirectoryName(DocumentInfo.Taxonomy.First().Replace("http://", ""));
 
-                foreach (var moduleTable in DocumentInfo.Extends.Where(f=> !f.StartsWith("http://")))
+                foreach (var moduleTable in DocumentInfo.Extends.Where(f => !f.StartsWith("http://")))
                 {
                     var tabfile = Path.GetFullPath(Path.Combine(modfolder, moduleTable));
                     using (var stream = new FileStream(tabfile, FileMode.Open, FileAccess.Read))
@@ -60,5 +60,25 @@ namespace Diwen.Xbrl.Csv.Taxonomy
 
             return tableDefinitions;
         }
+
+        private List<FilingIndicatorInfo> filingIndicators;
+
+        /// <summary /> 
+        public List<FilingIndicatorInfo> FilingIndicatorInfo()
+        {
+            if (filingIndicators == null)
+                filingIndicators =
+                    [.. this.Tables.Where(t=> t.Value.EbaDocumentation.Any()).
+                    Select(t=> new FilingIndicatorInfo
+                    {
+                        TableCode = t.Key,
+                        TemplateCode = t.Value.Template,
+                        Url = t.Value.Url,
+                        FilingIndicatorCode = t.Value.EbaDocumentation["FilingIndicator"].ToString(),
+                    })];
+
+            return filingIndicators;
+        }
+
     }
 }

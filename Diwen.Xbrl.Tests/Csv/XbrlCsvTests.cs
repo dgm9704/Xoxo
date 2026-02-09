@@ -124,8 +124,15 @@ namespace Diwen.Xbrl.Tests.Csv
         [InlineData("DUMMYLEI123456789012_GB_SBP010200_SBPCRCON_2021-12-31_20210623163233000.zip")]
         public static void ImportTest(string packageName)
         {
+
             var packagePath = Path.Combine("data/csv", packageName);
-            var report = Report.FromFile(packagePath);
+            var entrypoint = PlainCsvReport.GetPackageEntryPoint(packagePath).Replace(@"http://", "");
+
+            var moduleDefinition = ModuleDefinition.FromFile(entrypoint);
+
+            var filingIndicators = moduleDefinition.FilingIndicatorInfo();
+
+            var report = Report.FromFile(packagePath, filingIndicators);
 
             Assert.Equal("http://www.eba.europa.eu/eu/fr/xbrl/crr/fws/sbp/cir-2070-2016/2021-07-15/mod/sbp_cr_con.json", report.Entrypoint);
             Assert.Equal("lei:DUMMYLEI123456789012", report.Parameters["entityID"]);
@@ -182,16 +189,6 @@ namespace Diwen.Xbrl.Tests.Csv
         => ReadTypedDomainInfo(path);
 
         [Theory]
-        [InlineData("EBA32_finrep_FilingIndicators.csv")]
-        public void ReadFilingIndicatorInfoTest(string file)
-        => ReadFilingIndicatorInfo(file);
-
-        public static Dictionary<string, string> ReadFilingIndicatorInfo(string file)
-        => File.ReadAllLines(Path.Combine("data/csv", file)).
-            Select(l => l.Split(',')).
-            ToDictionary(x => x[0], x => x[1]);
-
-        [Theory]
         [InlineData("www.eba.europa.eu/eu/fr/xbrl/crr/fws/finrep/its-005-2020/2022-06-01/mod/finrep9.json")]
         public static void ReadModuleDefinitionTest(string entrypoint)
         => ModuleDefinition.FromFile(entrypoint);
@@ -220,7 +217,7 @@ namespace Diwen.Xbrl.Tests.Csv
 
             var tableDefinitions = moduleDefinition.TableDefinitions();
 
-            var filingIndicators = ReadFilingIndicatorInfo("EBA32_finrep_FilingIndicators.csv");
+            var filingIndicators = moduleDefinition.FilingIndicatorInfo();
 
             var csvReport = xmlReport.ToXbrlCsv(tableDefinitions, filingIndicators, moduleDefinition);
 
@@ -232,11 +229,13 @@ namespace Diwen.Xbrl.Tests.Csv
         public static string CsvToXml(string reportPath)
         {
 
-            var csvReport = Report.FromFile(reportPath);
-
-            var entrypoint = csvReport.Entrypoint.Replace(@"http://", "");
+            var entrypoint = PlainCsvReport.GetPackageEntryPoint(reportPath).Replace(@"http://", "");
 
             var moduleDefinition = ModuleDefinition.FromFile(entrypoint);
+
+            var filingIndicators = moduleDefinition.FilingIndicatorInfo();
+
+            var csvReport = Report.FromFile(reportPath, filingIndicators);
 
             var tableDefinitions = moduleDefinition.TableDefinitions();
 
@@ -246,7 +245,6 @@ namespace Diwen.Xbrl.Tests.Csv
 
             var typedDomainNamespace = KeyValuePair.Create("eba_typ", "http://www.eba.europa.eu/xbrl/crr/dict/typ");
 
-            var filingIndicators = ReadFilingIndicatorInfo("EBA32_finrep_FilingIndicators.csv");
 
             var xmlReport = csvReport.ToXbrlXml(tableDefinitions, dimensionDomainInfo, typedDomainNamespace, filingIndicators, typedDomains, moduleDefinition);
 
