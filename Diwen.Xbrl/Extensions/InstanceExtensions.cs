@@ -22,6 +22,7 @@
 namespace Diwen.Xbrl.Extensions
 {
     using System.Collections.Generic;
+    using Diwen.Xbrl.Csv;
     using Diwen.Xbrl.Csv.Taxonomy;
 
     /// <summary/>
@@ -39,7 +40,7 @@ namespace Diwen.Xbrl.Extensions
         public static Csv.PlainCsvReport ToXbrlCsvPlain(
             this Xml.Report xmlreport,
             Dictionary<string, TableDefinition> tableDefinitions,
-            Dictionary<string, string> filingIndicators,
+            List<FilingIndicatorInfo> filingIndicators,
             ModuleDefinition moduleDefinition)
         => Csv.PlainCsvReport.FromXbrlXml(xmlreport, tableDefinitions, filingIndicators, moduleDefinition);
 

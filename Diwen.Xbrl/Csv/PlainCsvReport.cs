@@ -556,7 +556,7 @@
 
         /// <summary/>
         public static PlainCsvReport FromXbrlXml(Xml.Report xmlReport,
-            Dictionary<string, TableDefinition> tableDefinitions, Dictionary<string, string> filingIndicators,
+            Dictionary<string, TableDefinition> tableDefinitions, List<FilingIndicatorInfo> filingIndicators,
             ModuleDefinition moduleDefinition)
         {
             var report = new PlainCsvReport
@@ -587,13 +587,12 @@
 
             var reportedTables =
                 tableDefinitions
-                    .Where(table => report.FilingIndicators.GetValueOrDefault(filingIndicators[table.Key], false))
+                    .Where(table => report.FilingIndicators.GetValueOrDefault(filingIndicators.Single(fi => fi.TemplateCode == table.Key).FilingIndicatorCode, false))
                     .ToDictionary(t => t.Key, t => t.Value);
 
             var tablesOpendimensions =
                 tableDefinitions.Where(t => reportedTables.ContainsKey(t.Key)).ToDictionary(
                     t => t.Key,
-                    //t => t.Value.TableTemplates.First().Value.Dimensions.Select(c => c.Key.Split(':').Last()).ToHashSet());
                     t => t.Value.TableTemplates.First().Value.Dimensions.Select(c => c.Key).ToHashSet());
 
             foreach (var fact in xmlReport.Facts.ToArray())

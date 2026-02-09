@@ -131,7 +131,8 @@ namespace Diwen.Xbrl.Tests.Csv
 
             var tableDefinitions = moduleDefinition.TableDefinitions();
 
-            var filingIndicators = ReadFilingIndicatorInfo("EBA40_dora_FilingIndicators.csv");
+            //var filingIndicators = ReadFilingIndicatorInfo("EBA40_dora_FilingIndicators.csv");
+            var filingIndicators = ReadFilingIndicatorInfo(moduleDefinition);
 
             var plainCsvReport = xmlReport.ToXbrlCsvPlain(tableDefinitions, filingIndicators, moduleDefinition);
 
