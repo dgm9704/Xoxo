@@ -226,9 +226,12 @@
                 {
                     var url = filingIndicatorInfo.Url;
                     var templateCode = filingIndicatorInfo.TemplateCode;
-                    var tablefile = reportFiles.Single(f => Path.GetFileName(f.Key) == url);
-                    var tabledata = ReadTableData(filingIndicatorInfo.TemplateCode, tablefile.Value);
-                    report.Data.AddRange(tabledata);
+                    var tablefile = reportFiles.SingleOrDefault(f => Path.GetFileName(f.Key) == url);
+                    if (tablefile.Key != default)
+                    {
+                        var tabledata = ReadTableData(filingIndicatorInfo.TemplateCode, tablefile.Value);
+                        report.Data.AddRange(tabledata);
+                    }
                 }
             }
 

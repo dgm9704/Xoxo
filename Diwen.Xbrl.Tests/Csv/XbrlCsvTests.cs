@@ -215,10 +215,6 @@ namespace Diwen.Xbrl.Tests.Csv
             var entrypoint = Path.ChangeExtension(xmlReport.SchemaReference.Value.Replace("http://", ""), "json");
             var moduleDefinition = ModuleDefinition.FromFile(entrypoint);
 
-            var tableDefinitions = moduleDefinition.TableDefinitions();
-
-            var filingIndicators = moduleDefinition.FilingIndicatorInfos();
-
             var csvReport = xmlReport.ToXbrlCsv(moduleDefinition);
 
             var csvReportPath = Path.ChangeExtension(Path.GetFileName(reportPath), ".zip");
