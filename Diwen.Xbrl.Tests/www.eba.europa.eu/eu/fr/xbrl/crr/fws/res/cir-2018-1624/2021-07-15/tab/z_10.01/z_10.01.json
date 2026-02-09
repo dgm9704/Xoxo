@@ -1,0 +1,76 @@
+{
+    "documentInfo": {
+        "documentType": "https://xbrl.org/CR/2021-02-03/xbrl-csv",
+        "namespaces": {
+            "eba": "http://www.eba.europa.eu",
+            "eba_IS": "http://www.eba.europa.eu/xbrl/crr/dict/dom/IS",
+            "eba_ZZ": "http://www.eba.europa.eu/xbrl/crr/dict/dom/ZZ",
+            "eba_dim": "http://www.eba.europa.eu/xbrl/crr/dict/dim",
+            "eba_met": "http://www.eba.europa.eu/xbrl/crr/dict/met"
+        }
+    },
+    "tableTemplates": {
+        "Z_10-01": {
+            "columns": {
+                "IST": {},
+                "datapoint": {
+                    "propertyGroups": {
+                        "dp410233": {
+                            "dimensions": {
+                                "concept": "eba_met:si168"
+                            },
+                            "eba:documentation": {
+                                "CellCode": "{Z 10.01, r999, c0050}",
+                                "logicalDataPointId": "410233"
+                            }
+                        },
+                        "dp410417": {
+                            "dimensions": {
+                                "concept": "eba_met:si289"
+                            },
+                            "eba:documentation": {
+                                "CellCode": "{Z 10.01, r999, c0060}",
+                                "logicalDataPointId": "410417"
+                            }
+                        },
+                        "dp418066": {
+                            "dimensions": {
+                                "concept": "eba_met:ei584"
+                            },
+                            "eba:documentation": {
+                                "CellCode": "{Z 10.01, r999, c0030}",
+                                "logicalDataPointId": "418066"
+                            }
+                        },
+                        "dp418067": {
+                            "dimensions": {
+                                "concept": "eba_met:si585"
+                            },
+                            "eba:documentation": {
+                                "CellCode": "{Z 10.01, r999, c0040}",
+                                "logicalDataPointId": "418067"
+                            }
+                        },
+                        "dp418162": {
+                            "dimensions": {
+                                "concept": "eba_met:si632"
+                            },
+                            "eba:documentation": {
+                                "CellCode": "{Z 10.01, r999, c0020}",
+                                "logicalDataPointId": "418162"
+                            }
+                        }
+                    }
+                },
+                "factValue": {
+                    "dimensions": {
+                        "eba_dim:IST": "$IST"
+                    },
+                    "propertiesFrom": [
+                        "datapoint"
+                    ]
+                }
+            }
+        }
+    }
+}

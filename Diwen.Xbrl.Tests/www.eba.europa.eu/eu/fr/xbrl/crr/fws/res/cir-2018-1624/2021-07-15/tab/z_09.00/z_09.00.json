@@ -1,0 +1,105 @@
+{
+    "documentInfo": {
+        "documentType": "https://xbrl.org/CR/2021-02-03/xbrl-csv",
+        "namespaces": {
+            "eba": "http://www.eba.europa.eu",
+            "eba_GA": "http://www.eba.europa.eu/xbrl/crr/dict/dom/GA",
+            "eba_IS": "http://www.eba.europa.eu/xbrl/crr/dict/dom/IS",
+            "eba_LE": "http://www.eba.europa.eu/xbrl/crr/dict/dom/LE",
+            "eba_TA": "http://www.eba.europa.eu/xbrl/crr/dict/dom/TA",
+            "eba_ZZ": "http://www.eba.europa.eu/xbrl/crr/dict/dom/ZZ",
+            "eba_dim": "http://www.eba.europa.eu/xbrl/crr/dict/dim",
+            "eba_met": "http://www.eba.europa.eu/xbrl/crr/dict/met"
+        }
+    },
+    "tableTemplates": {
+        "Z_09-00": {
+            "columns": {
+                "CRK": {},
+                "FMI": {},
+                "IFM": {},
+                "LCK": {},
+                "LEL": {},
+                "datapoint": {
+                    "propertyGroups": {
+                        "dp439643": {
+                            "dimensions": {
+                                "concept": "eba_met:si168"
+                            },
+                            "eba:documentation": {
+                                "CellCode": "{Z 09.00, r999, c0010}",
+                                "logicalDataPointId": "410231"
+                            }
+                        },
+                        "dp439644": {
+                            "dimensions": {
+                                "concept": "eba_met:ei575"
+                            },
+                            "eba:documentation": {
+                                "CellCode": "{Z 09.00, r999, c0050}",
+                                "logicalDataPointId": "418059"
+                            }
+                        },
+                        "dp439645": {
+                            "dimensions": {
+                                "concept": "eba_met:si576"
+                            },
+                            "eba:documentation": {
+                                "CellCode": "{Z 09.00, r999, c0060}",
+                                "logicalDataPointId": "418060"
+                            }
+                        },
+                        "dp439646": {
+                            "dimensions": {
+                                "concept": "eba_met:si577"
+                            },
+                            "eba:documentation": {
+                                "CellCode": "{Z 09.00, r999, c0110}",
+                                "logicalDataPointId": "418061"
+                            }
+                        },
+                        "dp439647": {
+                            "dimensions": {
+                                "concept": "eba_met:ei578"
+                            },
+                            "eba:documentation": {
+                                "CellCode": "{Z 09.00, r999, c0080}",
+                                "logicalDataPointId": "418062"
+                            }
+                        },
+                        "dp439648": {
+                            "dimensions": {
+                                "concept": "eba_met:si579"
+                            },
+                            "eba:documentation": {
+                                "CellCode": "{Z 09.00, r999, c0090}",
+                                "logicalDataPointId": "418063"
+                            }
+                        },
+                        "dp439649": {
+                            "dimensions": {
+                                "concept": "eba_met:ei581"
+                            },
+                            "eba:documentation": {
+                                "CellCode": "{Z 09.00, r999, c0120}",
+                                "logicalDataPointId": "418065"
+                            }
+                        }
+                    }
+                },
+                "factValue": {
+                    "dimensions": {
+                        "eba_dim:CRK": "$CRK",
+                        "eba_dim:FMI": "$FMI",
+                        "eba_dim:IFM": "$IFM",
+                        "eba_dim:LCK": "$LCK",
+                        "eba_dim:LEL": "$LEL"
+                    },
+                    "propertiesFrom": [
+                        "datapoint"
+                    ]
+                }
+            }
+        }
+    }
+}

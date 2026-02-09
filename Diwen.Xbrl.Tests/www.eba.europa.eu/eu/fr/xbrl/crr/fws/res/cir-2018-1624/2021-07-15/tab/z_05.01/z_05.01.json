@@ -1,0 +1,87 @@
+{
+    "documentInfo": {
+        "documentType": "https://xbrl.org/CR/2021-02-03/xbrl-csv",
+        "namespaces": {
+            "eba": "http://www.eba.europa.eu",
+            "eba_BA": "http://www.eba.europa.eu/xbrl/crr/dict/dom/BA",
+            "eba_CC": "http://www.eba.europa.eu/xbrl/crr/dict/dom/CC",
+            "eba_CT": "http://www.eba.europa.eu/xbrl/crr/dict/dom/CT",
+            "eba_GA": "http://www.eba.europa.eu/xbrl/crr/dict/dom/GA",
+            "eba_MC": "http://www.eba.europa.eu/xbrl/crr/dict/dom/MC",
+            "eba_ZZ": "http://www.eba.europa.eu/xbrl/crr/dict/dom/ZZ",
+            "eba_dim": "http://www.eba.europa.eu/xbrl/crr/dict/dim",
+            "eba_met": "http://www.eba.europa.eu/xbrl/crr/dict/met"
+        }
+    },
+    "tableTemplates": {
+        "Z_05-01": {
+            "columns": {
+                "COM": {},
+                "CRE": {},
+                "datapoint": {
+                    "propertyGroups": {
+                        "dp410211": {
+                            "dimensions": {
+                                "concept": "eba_met:ei152"
+                            },
+                            "eba:documentation": {
+                                "CellCode": "{Z 05.01, r999, c0040}",
+                                "logicalDataPointId": "410211"
+                            }
+                        },
+                        "dp410224": {
+                            "dimensions": {
+                                "concept": "eba_met:si168"
+                            },
+                            "eba:documentation": {
+                                "CellCode": "{Z 05.01, r999, c0010}",
+                                "logicalDataPointId": "410224"
+                            }
+                        },
+                        "dp410247": {
+                            "dimensions": {
+                                "concept": "eba_met:ei219"
+                            },
+                            "eba:documentation": {
+                                "CellCode": "{Z 05.01, r999, c0050}",
+                                "logicalDataPointId": "410247"
+                            }
+                        },
+                        "dp410442": {
+                            "dimensions": {
+                                "concept": "eba_met:ei319"
+                            },
+                            "eba:documentation": {
+                                "CellCode": "{Z 05.01, r999, c0030}",
+                                "logicalDataPointId": "410442"
+                            }
+                        },
+                        "dp428252": {
+                            "decimals": "$decimalsMonetary",
+                            "dimensions": {
+                                "concept": "eba_met:mi308",
+                                "eba_dim:BAS": "eba_BA:x7",
+                                "eba_dim:MCB": "eba_MC:x794",
+                                "eba_dim:MCY": "eba_MC:x31",
+                                "unit": "$baseCurrency"
+                            },
+                            "eba:documentation": {
+                                "CellCode": "{Z 05.01, r999, c0070}",
+                                "logicalDataPointId": "417544"
+                            }
+                        }
+                    }
+                },
+                "factValue": {
+                    "dimensions": {
+                        "eba_dim:COM": "$COM",
+                        "eba_dim:CRE": "$CRE"
+                    },
+                    "propertiesFrom": [
+                        "datapoint"
+                    ]
+                }
+            }
+        }
+    }
+}

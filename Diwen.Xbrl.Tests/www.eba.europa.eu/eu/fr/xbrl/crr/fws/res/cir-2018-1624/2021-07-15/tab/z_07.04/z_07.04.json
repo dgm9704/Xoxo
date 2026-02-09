@@ -1,0 +1,45 @@
+{
+    "documentInfo": {
+        "documentType": "https://xbrl.org/CR/2021-02-03/xbrl-csv",
+        "namespaces": {
+            "eba": "http://www.eba.europa.eu",
+            "eba_GA": "http://www.eba.europa.eu/xbrl/crr/dict/dom/GA",
+            "eba_IS": "http://www.eba.europa.eu/xbrl/crr/dict/dom/IS",
+            "eba_TA": "http://www.eba.europa.eu/xbrl/crr/dict/dom/TA",
+            "eba_dim": "http://www.eba.europa.eu/xbrl/crr/dict/dim",
+            "eba_met": "http://www.eba.europa.eu/xbrl/crr/dict/met"
+        }
+    },
+    "tableTemplates": {
+        "Z_07-04": {
+            "columns": {
+                "BLK": {},
+                "CRI": {},
+                "LCH": {},
+                "datapoint": {
+                    "propertyGroups": {
+                        "dp418053": {
+                            "dimensions": {
+                                "concept": "eba_met:si593"
+                            },
+                            "eba:documentation": {
+                                "CellCode": "{Z 07.04, r999, c0030}",
+                                "logicalDataPointId": "418053"
+                            }
+                        }
+                    }
+                },
+                "factValue": {
+                    "dimensions": {
+                        "eba_dim:BLK": "$BLK",
+                        "eba_dim:CRI": "$CRI",
+                        "eba_dim:LCH": "$LCH"
+                    },
+                    "propertiesFrom": [
+                        "datapoint"
+                    ]
+                }
+            }
+        }
+    }
+}
