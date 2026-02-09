@@ -246,7 +246,7 @@
         }
 
         /// <summary/>
-        public static PlainCsvReport FromFile(string packagePath, Dictionary<string, TableDefinition> tableDefinitions)
+        public static PlainCsvReport FromFile(string packagePath, Dictionary<string, TableDefinition> tableDefinitions, List<FilingIndicatorInfo> filingIndicatorInfos)
         {
             var report = new PlainCsvReport();
             var reportFiles = ReadPackage(packagePath);
@@ -256,14 +256,28 @@
             report.Parameters = ReadParameters(reportFiles.Single(f => f.Key.EndsWith("parameters.csv")).Value);
             report.FilingIndicators =
                 ReadFilingIndicators(reportFiles.Single(f => f.Key.EndsWith("FilingIndicators.csv")).Value);
-            foreach (var template in report.FilingIndicators.Where(fi => fi.Value).Select(fi => fi.Key))
-            foreach (var tablefile in reportFiles.Where(f =>
-                         Path.GetFileNameWithoutExtension(f.Key)
-                             .StartsWith(template, StringComparison.OrdinalIgnoreCase)))
+
+            foreach (var filingIndicatorCode in report.FilingIndicators.Where(fi => fi.Value).Select(fi => fi.Key))
             {
-                var tablecode = Path.GetFileNameWithoutExtension(tablefile.Key);
-                report.Data.AddRange(ReadTableData(tablecode, tablefile.Value, tableDefinitions[tablecode]));
+                foreach (var filingIndicatorInfo in filingIndicatorInfos.Where(f => f.FilingIndicatorCode == filingIndicatorCode))
+                {
+                    var url = filingIndicatorInfo.Url;
+                    var templateCode = filingIndicatorInfo.TemplateCode;
+                    var tablefile = reportFiles.Single(f => Path.GetFileName(f.Key) == url);
+                    var tableDefinition = tableDefinitions[templateCode];
+                    var tabledata = ReadTableData(templateCode, tablefile.Value, tableDefinition);
+                    report.Data.AddRange(tabledata);
+                }
             }
+
+            // foreach (var template in report.FilingIndicators.Where(fi => fi.Value).Select(fi => fi.Key))
+            //     foreach (var tablefile in reportFiles.Where(f =>
+            //                  Path.GetFileNameWithoutExtension(f.Key)
+            //                      .StartsWith(template, StringComparison.OrdinalIgnoreCase)))
+            //     {
+            //         var tablecode = Path.GetFileNameWithoutExtension(tablefile.Key);
+            //         report.Data.AddRange(ReadTableData(tablecode, tablefile.Value, tableDefinitions[tablecode]));
+            //     }
 
             return report;
         }
@@ -296,7 +310,7 @@
         private static List<ReportData> ReadTableData(string table, string data, TableDefinition tableDefinition)
         {
             var result = new List<ReportData>();
-            using (var stream = new MemoryStream(Encoding.UTF8.GetBytes(data))) 
+            using (var stream = new MemoryStream(Encoding.UTF8.GetBytes(data)))
             using (var parser = new TextFieldParser(stream, Encoding.UTF8, detectEncoding: true))
             {
                 parser.TextFieldType = FieldType.Delimited;
@@ -606,19 +620,19 @@
                     factTypedMembers);
 
                 foreach (var table in datapoints)
-                foreach (var datapoint in table.Value)
-                {
-                    foreach (var dim in tablesOpendimensions[table.Key])
-                        if (!openDimensions.ContainsKey(dim))
-                        {
-                            var dimcode = dim.Split(':').Last();
-                            // Some explicit members might be open, depending on the table
-                            openDimensions[dim] = fact.Context.Scenario.ExplicitMembers
-                                .First(m => m.Dimension.Name == dimcode).MemberCode;
-                        }
+                    foreach (var datapoint in table.Value)
+                    {
+                        foreach (var dim in tablesOpendimensions[table.Key])
+                            if (!openDimensions.ContainsKey(dim))
+                            {
+                                var dimcode = dim.Split(':').Last();
+                                // Some explicit members might be open, depending on the table
+                                openDimensions[dim] = fact.Context.Scenario.ExplicitMembers
+                                    .First(m => m.Dimension.Name == dimcode).MemberCode;
+                            }
 
-                    report.AddData(table.Key, datapoint, fact.Value, openDimensions);
-                }
+                        report.AddData(table.Key, datapoint, fact.Value, openDimensions);
+                    }
             }
 
             return report;
@@ -627,7 +641,7 @@
         /// <summary/>
         public Xml.Report ToXbrlXml(Dictionary<string, TableDefinition> tableDefinitions,
             Dictionary<string, string> dimensionDomain, KeyValuePair<string, string> typedDomainNamespace,
-            Dictionary<string, string> filingIndicators, HashSet<string> typedDomains,
+            List<FilingIndicatorInfo> filingIndicators, HashSet<string> typedDomains,
             ModuleDefinition moduleDefinition)
             => ToXbrlXml(this, tableDefinitions, dimensionDomain, typedDomainNamespace, filingIndicators,
                 typedDomains,
@@ -639,7 +653,7 @@
             Dictionary<string, TableDefinition> tableDefinitions,
             Dictionary<string, string> dimensionDomain,
             KeyValuePair<string, string> typedDomainNamespace,
-            Dictionary<string, string> filingIndicators,
+            List<FilingIndicatorInfo> filingIndicators,
             HashSet<string> typedDomains,
             ModuleDefinition moduleDefinition)
         {
@@ -675,7 +689,7 @@
 
             var tabledata =
                 report.Data.Where(d => !string.IsNullOrEmpty(d.Value))
-                    .Where(d => filed.Contains(filingIndicators[d.Table])).GroupBy(d => d.Table)
+                    .Where(d => filed.Contains(filingIndicators.Single(fi => fi.TemplateCode == d.Table).FilingIndicatorCode)).GroupBy(d => d.Table)
                     .ToDictionary(d => d.Key, d => d.ToArray());
 
             var usedContexts = new Dictionary<string, Context>();

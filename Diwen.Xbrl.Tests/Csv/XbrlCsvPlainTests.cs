@@ -37,6 +37,16 @@ namespace Diwen.Xbrl.Tests.Csv
             Select(l => l.Split(',')).
             ToDictionary(x => x[0], x => x[1]);
 
+        public static List<FilingIndicatorInfo> ReadFilingIndicatorInfo(ModuleDefinition moduleDefinition)
+        => [.. moduleDefinition.Tables.Where(t=> t.Value.EbaDocumentation.Any()).
+            Select(t=> new FilingIndicatorInfo
+            {
+                TableCode = t.Key,
+                TemplateCode = t.Value.Template,
+                Url = t.Value.Url,
+                FilingIndicatorCode = t.Value.EbaDocumentation["FilingIndicator"].ToString(),
+            })];
+
         [Theory]
         [InlineData("data/csv/DUMMYLEI123456789012.CON_FR_DORA010100_DORA_2024-12-31_20241213174803429.zip")]
         public void PlainCsvToXmlToPlainCsvTest(string plainCsvReportPath)
@@ -51,7 +61,7 @@ namespace Diwen.Xbrl.Tests.Csv
             return outPlainCsvReportPath;
         }
 
-        
+
         [Theory]
         [InlineData("data/csv/DUMMYLEI123456789012.CON_FR_DORA010100_DORA_2024-12-31_20241213174803429.zip")]
         public void PlainCsvToXmlTest(string reportPath)
@@ -61,12 +71,14 @@ namespace Diwen.Xbrl.Tests.Csv
         {
 
             var entrypoint = PlainCsvReport.GetPackageEntryPoint(reportPath).Replace(@"http://", "");
-            
+
             var moduleDefinition = ModuleDefinition.FromFile(entrypoint);
+
+            var filingIndicators = ReadFilingIndicatorInfo(moduleDefinition);
 
             var tableDefinitions = moduleDefinition.TableDefinitions();
 
-            var plainCsvReport = PlainCsvReport.FromFile(reportPath, tableDefinitions);
+            var plainCsvReport = PlainCsvReport.FromFile(reportPath, tableDefinitions, filingIndicators);
 
             var dimensionDomainInfo = ReadDimensionDomainInfo("EBA40_DimensionDomain.csv");
 
@@ -75,7 +87,7 @@ namespace Diwen.Xbrl.Tests.Csv
             var typedDomainNamespace = KeyValuePair.Create("eba_typ", "http://www.eba.europa.eu/xbrl/crr/dict/typ"); //???
             //KeyValuePair<string, string> typedDomainNamespace = default;
 
-            var filingIndicators = ReadFilingIndicatorInfo("EBA40_dora_FilingIndicators.csv");
+            //var filingIndicators = ReadFilingIndicatorInfo("EBA40_dora_FilingIndicators.csv");
 
             var xmlReport = plainCsvReport.ToXbrlXml(tableDefinitions, dimensionDomainInfo, typedDomainNamespace, filingIndicators, typedDomains, moduleDefinition);
 

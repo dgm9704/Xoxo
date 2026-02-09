@@ -1,10 +1,14 @@
 namespace Diwen.Xbrl.Csv.Taxonomy
 {
+    using System.Collections.Generic;
     using System.Text.Json.Serialization;
 
     /// <summary/>
     public class Table
     {
+        /// <summary/>
+        [JsonPropertyName("eba:documentation")]
+        public Dictionary<string, object> EbaDocumentation { get; set; } = [];
 
         /// <summary/>
         [JsonPropertyName("optional")]

@@ -46,16 +46,15 @@ namespace Diwen.Xbrl.Csv.Taxonomy
                 tableDefinitions = [];
                 var modfolder = Path.GetDirectoryName(DocumentInfo.Taxonomy.First().Replace("http://", ""));
 
-                foreach (var moduleTable in DocumentInfo.Extends)
+                foreach (var moduleTable in DocumentInfo.Extends.Where(f=> !f.StartsWith("http://")))
                 {
                     var tabfile = Path.GetFullPath(Path.Combine(modfolder, moduleTable));
-                    if (File.Exists(tabfile))
-                        using (var stream = new FileStream(tabfile, FileMode.Open, FileAccess.Read))
-                        {
-                            var jsonTable = JsonSerializer.Deserialize<TableDefinition>(stream);
-                            var tablecode = Path.GetFileNameWithoutExtension(tabfile);
-                            tableDefinitions.Add(tablecode, jsonTable);
-                        }
+                    using (var stream = new FileStream(tabfile, FileMode.Open, FileAccess.Read))
+                    {
+                        var tableDefinition = JsonSerializer.Deserialize<TableDefinition>(stream);
+                        var tablecode = tableDefinition.TableTemplates.Single().Key;
+                        tableDefinitions.Add(tablecode, tableDefinition);
+                    }
                 }
             }
 
