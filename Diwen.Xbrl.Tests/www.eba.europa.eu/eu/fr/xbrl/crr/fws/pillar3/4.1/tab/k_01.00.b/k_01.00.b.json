@@ -1,0 +1,49 @@
+{
+    "documentInfo": {
+        "documentType": "https://xbrl.org/2021/xbrl-csv",
+        "namespaces": {
+            "eba": "http://www.eba.europa.eu",
+            "eba_dim_4.0": "http://www.eba.europa.eu/xbrl/crr/dict/dim/4.0",
+            "eba_met": "http://www.eba.europa.eu/xbrl/crr/dict/met",
+            "eba_qCY": "http://www.eba.europa.eu/xbrl/crr/dict/dom/qCY",
+            "eba_qOR": "http://www.eba.europa.eu/xbrl/crr/dict/dom/qOR",
+            "eba_qTR": "http://www.eba.europa.eu/xbrl/crr/dict/dom/qTR",
+            "tc": "https://xbrl.org/CR/2025-10-07/tc"
+        }
+    },
+    "tableTemplates": {
+        "K_01-00-b": {
+            "columns": {
+                "datapoint": {
+                    "propertyGroups": {
+                        "dp3295369": {
+                            "decimals": "$decimalsPercentage",
+                            "dimensions": {
+                                "concept": "eba_met:qALA",
+                                "eba_dim_4.0:qANR": "eba_qCY:q2002",
+                                "eba_dim_4.0:qLHL": "eba_qTR:qx2027",
+                                "eba_dim_4.0:qZZX": "eba_qOR:qx2007"
+                            },
+                            "eba:documentation": {
+                                "CellID": 353393,
+                                "ColumnVID": 239550,
+                                "FactVariableID": 3295369,
+                                "FactVariableVersionID": 3295369,
+                                "RowVID": 239549,
+                                "SheetVID": null,
+                                "cellcode": "{K_01.00.b, r0050, c0010}",
+                                "type": "p"
+                            }
+                        }
+                    }
+                },
+                "factValue": {
+                    "dimensions": {},
+                    "propertiesFrom": [
+                        "datapoint"
+                    ]
+                }
+            }
+        }
+    }
+}

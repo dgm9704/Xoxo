@@ -1,0 +1,62 @@
+{
+    "documentInfo": {
+        "documentType": "https://xbrl.org/2021/xbrl-csv",
+        "namespaces": {
+            "eba": "http://www.eba.europa.eu",
+            "eba_AP": "http://www.eba.europa.eu/xbrl/crr/dict/dom/AP",
+            "eba_dim_3.4": "http://www.eba.europa.eu/xbrl/crr/dict/dim/3.4",
+            "eba_met": "http://www.eba.europa.eu/xbrl/crr/dict/met",
+            "tc": "https://xbrl.org/CR/2025-10-07/tc"
+        }
+    },
+    "tableTemplates": {
+        "K_49-03-b": {
+            "columns": {
+                "datapoint": {
+                    "propertyGroups": {
+                        "dp475708": {
+                            "decimals": "$decimalsPercentage",
+                            "dimensions": {
+                                "concept": "eba_met:pi950",
+                                "eba_dim_3.4:GBC": "eba_AP:x239"
+                            },
+                            "eba:documentation": {
+                                "CellID": 161261,
+                                "ColumnVID": 87985,
+                                "FactVariableID": 475708,
+                                "FactVariableVersionID": 3278015,
+                                "RowVID": 224044,
+                                "SheetVID": null,
+                                "cellcode": "{K_49.03.b, r0010, c0040}",
+                                "type": "p"
+                            }
+                        },
+                        "dp475709": {
+                            "decimals": "$decimalsPercentage",
+                            "dimensions": {
+                                "concept": "eba_met:pi950",
+                                "eba_dim_3.4:GBC": "eba_AP:x240"
+                            },
+                            "eba:documentation": {
+                                "CellID": 161262,
+                                "ColumnVID": 87985,
+                                "FactVariableID": 475709,
+                                "FactVariableVersionID": 3278016,
+                                "RowVID": 224045,
+                                "SheetVID": null,
+                                "cellcode": "{K_49.03.b, r0020, c0040}",
+                                "type": "p"
+                            }
+                        }
+                    }
+                },
+                "factValue": {
+                    "dimensions": {},
+                    "propertiesFrom": [
+                        "datapoint"
+                    ]
+                }
+            }
+        }
+    }
+}

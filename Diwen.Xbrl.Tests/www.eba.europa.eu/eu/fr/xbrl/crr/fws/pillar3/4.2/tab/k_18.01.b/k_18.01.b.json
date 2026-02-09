@@ -1,0 +1,55 @@
+{
+    "documentInfo": {
+        "documentType": "https://xbrl.org/2021/xbrl-csv",
+        "namespaces": {
+            "eba": "http://www.eba.europa.eu",
+            "eba_dim_4.0": "http://www.eba.europa.eu/xbrl/crr/dict/dim/4.0",
+            "eba_met": "http://www.eba.europa.eu/xbrl/crr/dict/met",
+            "eba_qAP": "http://www.eba.europa.eu/xbrl/crr/dict/dom/qAP",
+            "eba_qFI": "http://www.eba.europa.eu/xbrl/crr/dict/dom/qFI",
+            "eba_qOR": "http://www.eba.europa.eu/xbrl/crr/dict/dom/qOR",
+            "eba_qPL": "http://www.eba.europa.eu/xbrl/crr/dict/dom/qPL",
+            "eba_qTR": "http://www.eba.europa.eu/xbrl/crr/dict/dom/qTR",
+            "tc": "https://xbrl.org/CR/2025-10-07/tc",
+            "xs": "http://www.w3.org/2001/XMLSchema"
+        }
+    },
+    "tableTemplates": {
+        "K_18-01-b": {
+            "columns": {
+                "datapoint": {
+                    "propertyGroups": {
+                        "dp3294018": {
+                            "decimals": "$decimalsMonetary",
+                            "dimensions": {
+                                "concept": "eba_met:qIJL",
+                                "eba_dim_4.0:qAFF": "eba_qFI:qx2186",
+                                "eba_dim_4.0:qEEF": "eba_qPL:qx2000",
+                                "eba_dim_4.0:qLHL": "eba_qTR:qx2037",
+                                "eba_dim_4.0:qLNK": "eba_qAP:qx2019",
+                                "eba_dim_4.0:qZZX": "eba_qOR:qx2007",
+                                "unit": "$baseCurrency"
+                            },
+                            "eba:documentation": {
+                                "CellID": 356578,
+                                "ColumnVID": 248368,
+                                "FactVariableID": 3294018,
+                                "FactVariableVersionID": 5480485,
+                                "RowVID": 240242,
+                                "SheetVID": null,
+                                "cellcode": "{K_18.01.b, r0030, c0020}",
+                                "type": "m"
+                            }
+                        }
+                    }
+                },
+                "factValue": {
+                    "dimensions": {},
+                    "propertiesFrom": [
+                        "datapoint"
+                    ]
+                }
+            }
+        }
+    }
+}

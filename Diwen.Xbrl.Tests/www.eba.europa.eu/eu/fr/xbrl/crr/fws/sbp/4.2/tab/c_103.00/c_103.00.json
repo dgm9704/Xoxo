@@ -1,0 +1,584 @@
+{
+    "documentInfo": {
+        "documentType": "https://xbrl.org/2021/xbrl-csv",
+        "namespaces": {
+            "eba": "http://www.eba.europa.eu",
+            "eba_dim_3.4": "http://www.eba.europa.eu/xbrl/crr/dict/dim/3.4",
+            "eba_dim_4.0": "http://www.eba.europa.eu/xbrl/crr/dict/dim/4.0",
+            "eba_dim_4.2": "http://www.eba.europa.eu/xbrl/crr/dict/dim/4.2",
+            "eba_met": "http://www.eba.europa.eu/xbrl/crr/dict/met",
+            "eba_qCM": "http://www.eba.europa.eu/xbrl/crr/dict/dom/qCM",
+            "eba_qCS": "http://www.eba.europa.eu/xbrl/crr/dict/dom/qCS",
+            "eba_qOR": "http://www.eba.europa.eu/xbrl/crr/dict/dom/qOR",
+            "eba_qPL": "http://www.eba.europa.eu/xbrl/crr/dict/dom/qPL",
+            "eba_qRF": "http://www.eba.europa.eu/xbrl/crr/dict/dom/qRF",
+            "eba_qTR": "http://www.eba.europa.eu/xbrl/crr/dict/dom/qTR",
+            "tc": "https://xbrl.org/CR/2025-10-07/tc",
+            "xs": "http://www.w3.org/2001/XMLSchema"
+        }
+    },
+    "tableTemplates": {
+        "C_103-00": {
+            "columns": {
+                "PBE": {
+                    "eba:documentation": {
+                        "KeyVariableID": "199116",
+                        "KeyVariableVID": "199116",
+                        "PropertyID": "1012400825",
+                        "headerCode": "0010",
+                        "headerDirection": "X",
+                        "headerVID": "241532",
+                        "type": "s"
+                    },
+                    "tc:constraints": {
+                        "minLength": 1,
+                        "type": "xs:string"
+                    }
+                },
+                "datapoint": {
+                    "propertyGroups": {
+                        "dp155360": {
+                            "decimals": "$decimalsMonetary",
+                            "dimensions": {
+                                "concept": "eba_met:qNLK",
+                                "eba_dim_4.0:qAPQ": "eba_qPL:qx2078",
+                                "eba_dim_4.0:qLHL": "eba_qTR:qx2019",
+                                "eba_dim_4.0:qZZX": "eba_qOR:qx2007",
+                                "unit": "$baseCurrency"
+                            },
+                            "eba:documentation": {
+                                "CellID": 40243,
+                                "ColumnVID": 224578,
+                                "FactVariableID": 155360,
+                                "FactVariableVersionID": 3237258,
+                                "RowVID": null,
+                                "SheetVID": null,
+                                "cellcode": "{C_103.00, r*, c0120}",
+                                "type": "m"
+                            }
+                        },
+                        "dp155649": {
+                            "decimals": "$decimalsMonetary",
+                            "dimensions": {
+                                "concept": "eba_met:qABJ",
+                                "eba_dim_4.0:qAPQ": "eba_qPL:qx2078",
+                                "eba_dim_4.0:qJLJ": "eba_qOR:qx2059",
+                                "eba_dim_4.0:qLHL": "eba_qTR:qx2019",
+                                "unit": "$baseCurrency"
+                            },
+                            "eba:documentation": {
+                                "CellID": 40250,
+                                "ColumnVID": 224588,
+                                "FactVariableID": 155649,
+                                "FactVariableVersionID": 3237948,
+                                "RowVID": null,
+                                "SheetVID": null,
+                                "cellcode": "{C_103.00, r*, c0160}",
+                                "type": "m"
+                            }
+                        },
+                        "dp155689": {
+                            "decimals": "$decimalsMonetary",
+                            "dimensions": {
+                                "concept": "eba_met:qHNI",
+                                "eba_dim_4.0:qAPQ": "eba_qPL:qx2078",
+                                "eba_dim_4.0:qLHL": "eba_qTR:qx2019",
+                                "unit": "$baseCurrency"
+                            },
+                            "eba:documentation": {
+                                "CellID": 40249,
+                                "ColumnVID": 224587,
+                                "FactVariableID": 155689,
+                                "FactVariableVersionID": 3237577,
+                                "RowVID": null,
+                                "SheetVID": null,
+                                "cellcode": "{C_103.00, r*, c0150}",
+                                "type": "m"
+                            }
+                        },
+                        "dp155692": {
+                            "decimals": "$decimalsMonetary",
+                            "dimensions": {
+                                "concept": "eba_met:qHNJ",
+                                "eba_dim_4.0:qAPQ": "eba_qPL:qx2078",
+                                "eba_dim_4.0:qJLJ": "eba_qOR:qx2127",
+                                "eba_dim_4.0:qLHL": "eba_qTR:qx2019",
+                                "eba_dim_4.0:qZZX": "eba_qOR:qx2007",
+                                "unit": "$baseCurrency"
+                            },
+                            "eba:documentation": {
+                                "CellID": 40240,
+                                "ColumnVID": 224571,
+                                "FactVariableID": 155692,
+                                "FactVariableVersionID": 3237580,
+                                "RowVID": null,
+                                "SheetVID": null,
+                                "cellcode": "{C_103.00, r*, c0090}",
+                                "type": "m"
+                            }
+                        },
+                        "dp155695": {
+                            "decimals": "$decimalsMonetary",
+                            "dimensions": {
+                                "concept": "eba_met:mi119",
+                                "eba_dim_4.0:qAPQ": "eba_qPL:qx2078",
+                                "eba_dim_4.0:qLHL": "eba_qTR:qx2019",
+                                "eba_dim_4.0:qZZX": "eba_qOR:qx2007",
+                                "unit": "$baseCurrency"
+                            },
+                            "eba:documentation": {
+                                "CellID": 40242,
+                                "ColumnVID": 224576,
+                                "FactVariableID": 155695,
+                                "FactVariableVersionID": 3237583,
+                                "RowVID": null,
+                                "SheetVID": null,
+                                "cellcode": "{C_103.00, r*, c0110}",
+                                "type": "m"
+                            }
+                        },
+                        "dp155698": {
+                            "decimals": "$decimalsPercentage",
+                            "dimensions": {
+                                "concept": "eba_met:qIIJ",
+                                "eba_dim_4.0:qAAA": "eba_qCM:qx2019",
+                                "eba_dim_4.0:qAPQ": "eba_qPL:qx2078",
+                                "eba_dim_4.0:qLHL": "eba_qTR:qx2019"
+                            },
+                            "eba:documentation": {
+                                "CellID": 40244,
+                                "ColumnVID": 224580,
+                                "FactVariableID": 155698,
+                                "FactVariableVersionID": 3238160,
+                                "RowVID": null,
+                                "SheetVID": null,
+                                "cellcode": "{C_103.00, r*, c0130}",
+                                "type": "p"
+                            }
+                        },
+                        "dp155793": {
+                            "decimals": "$decimalsInteger",
+                            "dimensions": {
+                                "concept": "eba_met:qFGB",
+                                "eba_dim_4.0:qAPQ": "eba_qPL:qx2078",
+                                "eba_dim_4.0:qLHL": "eba_qTR:qx2019"
+                            },
+                            "eba:documentation": {
+                                "CellID": 40248,
+                                "ColumnVID": 224586,
+                                "FactVariableID": 155793,
+                                "FactVariableVersionID": 3237631,
+                                "RowVID": null,
+                                "SheetVID": null,
+                                "cellcode": "{C_103.00, r*, c0140}",
+                                "type": "i"
+                            }
+                        },
+                        "dp155796": {
+                            "decimals": "$decimalsInteger",
+                            "dimensions": {
+                                "concept": "eba_met:qFGE",
+                                "eba_dim_4.0:qAPQ": "eba_qPL:qx2078",
+                                "eba_dim_4.0:qLHL": "eba_qTR:qx2019"
+                            },
+                            "eba:documentation": {
+                                "CellID": 40235,
+                                "ColumnVID": 224564,
+                                "FactVariableID": 155796,
+                                "FactVariableVersionID": 3238202,
+                                "RowVID": null,
+                                "SheetVID": null,
+                                "cellcode": "{C_103.00, r*, c0040}",
+                                "type": "i"
+                            }
+                        },
+                        "dp155799": {
+                            "decimals": "$decimalsMonetary",
+                            "dimensions": {
+                                "concept": "eba_met:qIJJ",
+                                "eba_dim_4.0:qAPQ": "eba_qPL:qx2078",
+                                "eba_dim_4.0:qLHL": "eba_qTR:qx2019",
+                                "eba_dim_4.0:qZZX": "eba_qOR:qx2007",
+                                "unit": "$baseCurrency"
+                            },
+                            "eba:documentation": {
+                                "CellID": 40239,
+                                "ColumnVID": 224570,
+                                "FactVariableID": 155799,
+                                "FactVariableVersionID": 3237635,
+                                "RowVID": null,
+                                "SheetVID": null,
+                                "cellcode": "{C_103.00, r*, c0080}",
+                                "type": "m"
+                            }
+                        },
+                        "dp155802": {
+                            "decimals": "$decimalsPercentage",
+                            "dimensions": {
+                                "concept": "eba_met:qILL",
+                                "eba_dim_4.0:qAAA": "eba_qCM:qx2065",
+                                "eba_dim_4.0:qAPQ": "eba_qPL:qx2078",
+                                "eba_dim_4.0:qLHL": "eba_qTR:qx2019"
+                            },
+                            "eba:documentation": {
+                                "CellID": 40236,
+                                "ColumnVID": 224565,
+                                "FactVariableID": 155802,
+                                "FactVariableVersionID": 3238205,
+                                "RowVID": null,
+                                "SheetVID": null,
+                                "cellcode": "{C_103.00, r*, c0060}",
+                                "type": "p"
+                            }
+                        },
+                        "dp155960": {
+                            "decimals": "$decimalsMonetary",
+                            "dimensions": {
+                                "concept": "eba_met:qINJ",
+                                "eba_dim_4.0:qAPQ": "eba_qPL:qx2078",
+                                "eba_dim_4.0:qJLJ": "eba_qOR:qx2052",
+                                "eba_dim_4.0:qLHL": "eba_qTR:qx2019",
+                                "eba_dim_4.0:qZZX": "eba_qOR:qx2007",
+                                "eba_dim_4.2:qHVV": "eba_qCS:qx2024",
+                                "unit": "$baseCurrency"
+                            },
+                            "eba:documentation": {
+                                "CellID": 40252,
+                                "ColumnVID": 241538,
+                                "FactVariableID": 155960,
+                                "FactVariableVersionID": 5440748,
+                                "RowVID": null,
+                                "SheetVID": null,
+                                "cellcode": "{C_103.00, r*, c0180}",
+                                "type": "m"
+                            }
+                        },
+                        "dp155963": {
+                            "decimals": "$decimalsMonetary",
+                            "dimensions": {
+                                "concept": "eba_met:qINJ",
+                                "eba_dim_4.0:qAPQ": "eba_qPL:qx2078",
+                                "eba_dim_4.0:qJLJ": "eba_qOR:qx2052",
+                                "eba_dim_4.0:qLHL": "eba_qTR:qx2019",
+                                "eba_dim_4.0:qZZX": "eba_qOR:qx2007",
+                                "unit": "$baseCurrency"
+                            },
+                            "eba:documentation": {
+                                "CellID": 40251,
+                                "ColumnVID": 224590,
+                                "FactVariableID": 155963,
+                                "FactVariableVersionID": 3238273,
+                                "RowVID": null,
+                                "SheetVID": null,
+                                "cellcode": "{C_103.00, r*, c0170}",
+                                "type": "m"
+                            }
+                        },
+                        "dp155968": {
+                            "decimals": "$decimalsPercentage",
+                            "dimensions": {
+                                "concept": "eba_met:qNNH",
+                                "eba_dim_4.0:qAPQ": "eba_qPL:qx2078",
+                                "eba_dim_4.0:qLHL": "eba_qTR:qx2019",
+                                "eba_dim_4.0:qZZX": "eba_qOR:qx2007"
+                            },
+                            "eba:documentation": {
+                                "CellID": 40241,
+                                "ColumnVID": 224573,
+                                "FactVariableID": 155968,
+                                "FactVariableVersionID": 3237691,
+                                "RowVID": null,
+                                "SheetVID": null,
+                                "cellcode": "{C_103.00, r*, c0100}",
+                                "type": "p"
+                            }
+                        },
+                        "dp155969": {
+                            "decimals": "$decimalsPercentage",
+                            "dimensions": {
+                                "concept": "eba_met:qNNL",
+                                "eba_dim_4.0:qAPQ": "eba_qPL:qx2078",
+                                "eba_dim_4.0:qBEG": "eba_qRF:qx2059",
+                                "eba_dim_4.0:qLHL": "eba_qTR:qx2019"
+                            },
+                            "eba:documentation": {
+                                "CellID": 40253,
+                                "ColumnVID": 241539,
+                                "FactVariableID": 155969,
+                                "FactVariableVersionID": 5440749,
+                                "RowVID": null,
+                                "SheetVID": null,
+                                "cellcode": "{C_103.00, r*, c0190}",
+                                "type": "p"
+                            }
+                        },
+                        "dp155970": {
+                            "decimals": "$decimalsPercentage",
+                            "dimensions": {
+                                "concept": "eba_met:qNNL",
+                                "eba_dim_4.0:qAPQ": "eba_qPL:qx2078",
+                                "eba_dim_4.0:qBEG": "eba_qRF:qx2063",
+                                "eba_dim_4.0:qLHL": "eba_qTR:qx2019"
+                            },
+                            "eba:documentation": {
+                                "CellID": 40254,
+                                "ColumnVID": 241540,
+                                "FactVariableID": 155970,
+                                "FactVariableVersionID": 5440750,
+                                "RowVID": null,
+                                "SheetVID": null,
+                                "cellcode": "{C_103.00, r*, c0200}",
+                                "type": "p"
+                            }
+                        },
+                        "dp155971": {
+                            "decimals": "$decimalsPercentage",
+                            "dimensions": {
+                                "concept": "eba_met:qAKC",
+                                "eba_dim_4.0:qAPQ": "eba_qPL:qx2078",
+                                "eba_dim_4.0:qBEG": "eba_qRF:qx2059",
+                                "eba_dim_4.0:qLHL": "eba_qTR:qx2019"
+                            },
+                            "eba:documentation": {
+                                "CellID": 40255,
+                                "ColumnVID": 241541,
+                                "FactVariableID": 155971,
+                                "FactVariableVersionID": 5440751,
+                                "RowVID": null,
+                                "SheetVID": null,
+                                "cellcode": "{C_103.00, r*, c0210}",
+                                "type": "p"
+                            }
+                        },
+                        "dp155972": {
+                            "decimals": "$decimalsPercentage",
+                            "dimensions": {
+                                "concept": "eba_met:qAKC",
+                                "eba_dim_4.0:qAPQ": "eba_qPL:qx2078",
+                                "eba_dim_4.0:qBEG": "eba_qRF:qx2063",
+                                "eba_dim_4.0:qLHL": "eba_qTR:qx2019"
+                            },
+                            "eba:documentation": {
+                                "CellID": 40256,
+                                "ColumnVID": 241542,
+                                "FactVariableID": 155972,
+                                "FactVariableVersionID": 5440752,
+                                "RowVID": null,
+                                "SheetVID": null,
+                                "cellcode": "{C_103.00, r*, c0220}",
+                                "type": "p"
+                            }
+                        },
+                        "dp410419": {
+                            "decimals": "$decimalsMonetary",
+                            "dimensions": {
+                                "concept": "eba_met:qINJ",
+                                "eba_dim_4.0:qAPQ": "eba_qPL:qx2078",
+                                "eba_dim_4.0:qBAC": "eba_qCS:qx2025",
+                                "eba_dim_4.0:qBEG": "eba_qRF:qx2059",
+                                "eba_dim_4.0:qJLJ": "eba_qOR:qx2052",
+                                "eba_dim_4.0:qLHL": "eba_qTR:qx2019",
+                                "eba_dim_4.0:qZZX": "eba_qOR:qx2007",
+                                "eba_dim_4.2:qHVV": "eba_qCS:qx2024",
+                                "unit": "$baseCurrency"
+                            },
+                            "eba:documentation": {
+                                "CellID": 40257,
+                                "ColumnVID": 241543,
+                                "FactVariableID": 410419,
+                                "FactVariableVersionID": 5446415,
+                                "RowVID": null,
+                                "SheetVID": null,
+                                "cellcode": "{C_103.00, r*, c0250}",
+                                "type": "m"
+                            }
+                        },
+                        "dp410420": {
+                            "decimals": "$decimalsMonetary",
+                            "dimensions": {
+                                "concept": "eba_met:qINJ",
+                                "eba_dim_4.0:qAPQ": "eba_qPL:qx2078",
+                                "eba_dim_4.0:qBAC": "eba_qCS:qx2026",
+                                "eba_dim_4.0:qBEG": "eba_qRF:qx2059",
+                                "eba_dim_4.0:qJLJ": "eba_qOR:qx2052",
+                                "eba_dim_4.0:qLHL": "eba_qTR:qx2019",
+                                "eba_dim_4.0:qZZX": "eba_qOR:qx2007",
+                                "eba_dim_4.2:qHVV": "eba_qCS:qx2024",
+                                "unit": "$baseCurrency"
+                            },
+                            "eba:documentation": {
+                                "CellID": 40258,
+                                "ColumnVID": 241544,
+                                "FactVariableID": 410420,
+                                "FactVariableVersionID": 5446085,
+                                "RowVID": null,
+                                "SheetVID": null,
+                                "cellcode": "{C_103.00, r*, c0260}",
+                                "type": "m"
+                            }
+                        },
+                        "dp410421": {
+                            "decimals": "$decimalsMonetary",
+                            "dimensions": {
+                                "concept": "eba_met:qINJ",
+                                "eba_dim_4.0:qAPQ": "eba_qPL:qx2078",
+                                "eba_dim_4.0:qBAC": "eba_qCS:qx2027",
+                                "eba_dim_4.0:qBEG": "eba_qRF:qx2063",
+                                "eba_dim_4.0:qJLJ": "eba_qOR:qx2052",
+                                "eba_dim_4.0:qLHL": "eba_qTR:qx2019",
+                                "eba_dim_4.0:qZZX": "eba_qOR:qx2007",
+                                "eba_dim_4.2:qHVV": "eba_qCS:qx2024",
+                                "unit": "$baseCurrency"
+                            },
+                            "eba:documentation": {
+                                "CellID": 40259,
+                                "ColumnVID": 241545,
+                                "FactVariableID": 410421,
+                                "FactVariableVersionID": 5446086,
+                                "RowVID": null,
+                                "SheetVID": null,
+                                "cellcode": "{C_103.00, r*, c0270}",
+                                "type": "m"
+                            }
+                        },
+                        "dp410422": {
+                            "decimals": "$decimalsMonetary",
+                            "dimensions": {
+                                "concept": "eba_met:qINJ",
+                                "eba_dim_4.0:qAPQ": "eba_qPL:qx2078",
+                                "eba_dim_4.0:qBAC": "eba_qCS:qx2028",
+                                "eba_dim_4.0:qBEG": "eba_qRF:qx2063",
+                                "eba_dim_4.0:qJLJ": "eba_qOR:qx2052",
+                                "eba_dim_4.0:qLHL": "eba_qTR:qx2019",
+                                "eba_dim_4.0:qZZX": "eba_qOR:qx2007",
+                                "eba_dim_4.2:qHVV": "eba_qCS:qx2024",
+                                "unit": "$baseCurrency"
+                            },
+                            "eba:documentation": {
+                                "CellID": 40260,
+                                "ColumnVID": 241546,
+                                "FactVariableID": 410422,
+                                "FactVariableVersionID": 5446416,
+                                "RowVID": null,
+                                "SheetVID": null,
+                                "cellcode": "{C_103.00, r*, c0280}",
+                                "type": "m"
+                            }
+                        },
+                        "dp460312": {
+                            "decimals": "$decimalsPercentage",
+                            "dimensions": {
+                                "concept": "eba_met:qIIJ",
+                                "eba_dim_4.0:qAAA": "eba_qCM:qx2019",
+                                "eba_dim_4.0:qAPQ": "eba_qPL:qx2078",
+                                "eba_dim_4.0:qLHL": "eba_qTR:qx2019",
+                                "eba_dim_4.2:qPVI": "eba_qOR:qx2229"
+                            },
+                            "eba:documentation": {
+                                "CellID": 40245,
+                                "ColumnVID": 241535,
+                                "FactVariableID": 460312,
+                                "FactVariableVersionID": 5467975,
+                                "RowVID": null,
+                                "SheetVID": null,
+                                "cellcode": "{C_103.00, r*, c0131}",
+                                "type": "p"
+                            }
+                        },
+                        "dp460393": {
+                            "decimals": "$decimalsPercentage",
+                            "dimensions": {
+                                "concept": "eba_met:qILL",
+                                "eba_dim_4.0:qAAA": "eba_qCM:qx2065",
+                                "eba_dim_4.0:qAPQ": "eba_qPL:qx2078",
+                                "eba_dim_4.0:qLHL": "eba_qTR:qx2019",
+                                "eba_dim_4.2:qPVI": "eba_qOR:qx2229"
+                            },
+                            "eba:documentation": {
+                                "CellID": 40237,
+                                "ColumnVID": 241533,
+                                "FactVariableID": 460393,
+                                "FactVariableVersionID": 5467718,
+                                "RowVID": null,
+                                "SheetVID": null,
+                                "cellcode": "{C_103.00, r*, c0061}",
+                                "type": "p"
+                            }
+                        },
+                        "dp460985": {
+                            "decimals": "$decimalsPercentage",
+                            "dimensions": {
+                                "concept": "eba_met:qILL",
+                                "eba_dim_4.0:qAAA": "eba_qCM:qx2065",
+                                "eba_dim_4.0:qAPQ": "eba_qPL:qx2078",
+                                "eba_dim_4.0:qBAC": "eba_qCS:qx2015",
+                                "eba_dim_4.0:qLHL": "eba_qTR:qx2019",
+                                "eba_dim_4.2:qPVI": "eba_qOR:qx2229"
+                            },
+                            "eba:documentation": {
+                                "CellID": 40238,
+                                "ColumnVID": 241534,
+                                "FactVariableID": 460985,
+                                "FactVariableVersionID": 5467983,
+                                "RowVID": null,
+                                "SheetVID": null,
+                                "cellcode": "{C_103.00, r*, c0062}",
+                                "type": "p"
+                            }
+                        },
+                        "dp460998": {
+                            "decimals": "$decimalsPercentage",
+                            "dimensions": {
+                                "concept": "eba_met:qIIJ",
+                                "eba_dim_4.0:qAAA": "eba_qCM:qx2019",
+                                "eba_dim_4.0:qAPQ": "eba_qPL:qx2078",
+                                "eba_dim_4.0:qBAC": "eba_qCS:qx2015",
+                                "eba_dim_4.0:qLHL": "eba_qTR:qx2019",
+                                "eba_dim_4.2:qPVI": "eba_qOR:qx2229"
+                            },
+                            "eba:documentation": {
+                                "CellID": 40246,
+                                "ColumnVID": 241536,
+                                "FactVariableID": 460998,
+                                "FactVariableVersionID": 5467727,
+                                "RowVID": null,
+                                "SheetVID": null,
+                                "cellcode": "{C_103.00, r*, c0132}",
+                                "type": "p"
+                            }
+                        },
+                        "dp461000": {
+                            "decimals": "$decimalsPercentage",
+                            "dimensions": {
+                                "concept": "eba_met:qIIJ",
+                                "eba_dim_4.0:qAAA": "eba_qCM:qx2019",
+                                "eba_dim_4.0:qAPQ": "eba_qPL:qx2078",
+                                "eba_dim_4.0:qBAC": "eba_qCS:qx2016",
+                                "eba_dim_4.0:qLHL": "eba_qTR:qx2019",
+                                "eba_dim_4.2:qPVI": "eba_qOR:qx2229"
+                            },
+                            "eba:documentation": {
+                                "CellID": 40247,
+                                "ColumnVID": 241537,
+                                "FactVariableID": 461000,
+                                "FactVariableVersionID": 5467728,
+                                "RowVID": null,
+                                "SheetVID": null,
+                                "cellcode": "{C_103.00, r*, c0133}",
+                                "type": "p"
+                            }
+                        }
+                    }
+                },
+                "factValue": {
+                    "dimensions": {
+                        "eba_dim_3.4:PBE": "$PBE"
+                    },
+                    "propertiesFrom": [
+                        "datapoint"
+                    ]
+                }
+            }
+        }
+    }
+}

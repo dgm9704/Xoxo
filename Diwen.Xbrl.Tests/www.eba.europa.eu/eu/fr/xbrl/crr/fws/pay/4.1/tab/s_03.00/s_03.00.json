@@ -1,0 +1,89 @@
+{
+    "documentInfo": {
+        "documentType": "https://xbrl.org/2021/xbrl-csv",
+        "namespaces": {
+            "eba": "http://www.eba.europa.eu",
+            "eba_CA": "http://www.eba.europa.eu/xbrl/crr/dict/dom/CA",
+            "eba_dim_3.4": "http://www.eba.europa.eu/xbrl/crr/dict/dim/3.4",
+            "eba_dim_4.0": "http://www.eba.europa.eu/xbrl/crr/dict/dim/4.0",
+            "eba_met": "http://www.eba.europa.eu/xbrl/crr/dict/met",
+            "eba_qPY": "http://www.eba.europa.eu/xbrl/crr/dict/dom/qPY",
+            "tc": "https://xbrl.org/CR/2025-10-07/tc"
+        }
+    },
+    "tableTemplates": {
+        "S_03-00": {
+            "columns": {
+                "datapoint": {
+                    "propertyGroups": {
+                        "dp3526437": {
+                            "decimals": "$decimalsInteger",
+                            "dimensions": {
+                                "concept": "eba_met:qGBE",
+                                "eba_dim_4.0:qKJH": "eba_qPY:qx2019",
+                                "eba_dim_4.0:qKJI": "eba_qPY:qx2005"
+                            },
+                            "eba:documentation": {
+                                "CellID": 351425,
+                                "ColumnVID": 238840,
+                                "FactVariableID": 3526437,
+                                "FactVariableVersionID": 3526437,
+                                "RowVID": 238838,
+                                "SheetVID": null,
+                                "cellcode": "{S_03.00, r0010, c0010}",
+                                "type": "i"
+                            }
+                        },
+                        "dp3530894": {
+                            "decimals": "$decimalsMonetary",
+                            "dimensions": {
+                                "concept": "eba_met:qAGV",
+                                "eba_dim_3.4:CCA": "eba_CA:x1",
+                                "eba_dim_4.0:qKJH": "eba_qPY:qx2019",
+                                "eba_dim_4.0:qKJI": "eba_qPY:qx2005",
+                                "unit": "$unit"
+                            },
+                            "eba:documentation": {
+                                "CellID": 351424,
+                                "ColumnVID": 238839,
+                                "FactVariableID": 3530894,
+                                "FactVariableVersionID": 3530894,
+                                "RowVID": 238838,
+                                "SheetVID": null,
+                                "cellcode": "{S_03.00, r0010, c0020}",
+                                "type": "m"
+                            }
+                        },
+                        "dp3530895": {
+                            "decimals": "$decimalsMonetary",
+                            "dimensions": {
+                                "concept": "eba_met:qAGV",
+                                "eba_dim_3.4:CCA": "eba_CA:x1",
+                                "eba_dim_4.0:qKJH": "eba_qPY:qx2020",
+                                "eba_dim_4.0:qKJI": "eba_qPY:qx2005",
+                                "unit": "$unit"
+                            },
+                            "eba:documentation": {
+                                "CellID": 351423,
+                                "ColumnVID": 238837,
+                                "FactVariableID": 3530895,
+                                "FactVariableVersionID": 3530895,
+                                "RowVID": 238838,
+                                "SheetVID": null,
+                                "cellcode": "{S_03.00, r0010, c0030}",
+                                "type": "m"
+                            }
+                        }
+                    }
+                },
+                "factValue": {
+                    "dimensions": {},
+                    "propertiesFrom": [
+                        "datapoint"
+                    ]
+                },
+                "unit": {}
+            }
+        }
+    }
+}

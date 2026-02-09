@@ -1,0 +1,136 @@
+{
+    "dimensions": {
+        "entity": "$entityID",
+        "language": "$baseLanguage",
+        "period": "$refPeriod@end"
+    },
+    "documentInfo": {
+        "documentType": "https://xbrl.org/2021/xbrl-csv",
+        "eba:documentation": {
+            "FromReferenceDate": "2026-03-31",
+            "ModuleVID": 491,
+            "ModuleVersion": "2.1.0",
+            "toReferenceDate": ""
+        },
+        "extends": [
+            "http://www.eba.europa.eu/eu/fr/xbrl/ext/2020/FilingIndicators.json",
+            "http://www.eba.europa.eu/eu/fr/xbrl/ext/2020/FootNotes.json",
+            "../tab/k_30.01/k_30.01.json",
+            "../tab/k_30.02/k_30.02.json",
+            "../tab/k_30.03/k_30.03.json",
+            "../tab/k_30.04/k_30.04.json",
+            "../tab/k_30.05.a/k_30.05.a.json",
+            "../tab/k_30.05.b/k_30.05.b.json"
+        ],
+        "features": {
+            "xbrl:allowedDuplicates": "complete"
+        },
+        "final": {
+            "dimensions": true,
+            "linkGroups": true,
+            "linkTypes": true,
+            "namespaces": true,
+            "parameters": true,
+            "tableTemplates": true,
+            "tables": true,
+            "taxonomy": true
+        },
+        "linkGroups": {
+            "_": "http://www.xbrl.org/2003/role/link"
+        },
+        "linkTypes": {
+            "footnote": "http://www.xbrl.org/2003/arcrole/fact-footnote"
+        },
+        "namespaces": {
+            "eba": "http://www.eba.europa.eu",
+            "iso4217": "http://www.xbrl.org/2003/iso4217",
+            "lei": "http://standards.iso.org/iso/17442",
+            "rs": "https://eurofiling.info/eu/rs",
+            "xbrl": "https://xbrl.org/2021"
+        },
+        "taxonomy": [
+            "http://www.eba.europa.eu/eu/fr/xbrl/crr/fws/pillar3/4.2/mod/remdis.xsd"
+        ]
+    },
+    "parameterURL": "parameters.csv",
+    "parameters": {
+        "baseLanguage": "en"
+    },
+    "tables": {
+        "tFI": {
+            "template": "FilingIndicators",
+            "url": "FilingIndicators.csv"
+        },
+        "tFootNotes": {
+            "optional": true,
+            "template": "FootNotes",
+            "url": "FootNotes.csv"
+        },
+        "tK_30-01": {
+            "eba:documentation": {
+                "FilingIndicator": "K_30.01",
+                "TableKeyID": null,
+                "tableVID": 7106,
+                "templateID": 841
+            },
+            "optional": true,
+            "template": "K_30-01",
+            "url": "k_30.01.csv"
+        },
+        "tK_30-02": {
+            "eba:documentation": {
+                "FilingIndicator": "K_30.02",
+                "TableKeyID": null,
+                "tableVID": 7111,
+                "templateID": 842
+            },
+            "optional": true,
+            "template": "K_30-02",
+            "url": "k_30.02.csv"
+        },
+        "tK_30-03": {
+            "eba:documentation": {
+                "FilingIndicator": "K_30.03",
+                "TableKeyID": null,
+                "tableVID": 7113,
+                "templateID": 843
+            },
+            "optional": true,
+            "template": "K_30-03",
+            "url": "k_30.03.csv"
+        },
+        "tK_30-04": {
+            "eba:documentation": {
+                "FilingIndicator": "K_30.04",
+                "TableKeyID": 6888,
+                "tableVID": 7194,
+                "templateID": 844
+            },
+            "optional": true,
+            "template": "K_30-04",
+            "url": "k_30.04.csv"
+        },
+        "tK_30-05-a": {
+            "eba:documentation": {
+                "FilingIndicator": "K_30.05",
+                "TableKeyID": null,
+                "tableVID": 7114,
+                "templateID": 1663
+            },
+            "optional": true,
+            "template": "K_30-05-a",
+            "url": "k_30.05.a.csv"
+        },
+        "tK_30-05-b": {
+            "eba:documentation": {
+                "FilingIndicator": "K_30.05",
+                "TableKeyID": null,
+                "tableVID": 7120,
+                "templateID": 1663
+            },
+            "optional": true,
+            "template": "K_30-05-b",
+            "url": "k_30.05.b.csv"
+        }
+    }
+}

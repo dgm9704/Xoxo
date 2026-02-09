@@ -1,0 +1,1278 @@
+{
+    "documentInfo": {
+        "documentType": "https://xbrl.org/2021/xbrl-csv",
+        "namespaces": {
+            "eba": "http://www.eba.europa.eu",
+            "eba_CU": "http://www.eba.europa.eu/xbrl/crr/dict/dom/CU",
+            "eba_dim_3.4": "http://www.eba.europa.eu/xbrl/crr/dict/dim/3.4",
+            "eba_dim_4.0": "http://www.eba.europa.eu/xbrl/crr/dict/dim/4.0",
+            "eba_met": "http://www.eba.europa.eu/xbrl/crr/dict/met",
+            "eba_qAI": "http://www.eba.europa.eu/xbrl/crr/dict/dom/qAI",
+            "eba_qCA": "http://www.eba.europa.eu/xbrl/crr/dict/dom/qCA",
+            "eba_qCS": "http://www.eba.europa.eu/xbrl/crr/dict/dom/qCS",
+            "eba_qFI": "http://www.eba.europa.eu/xbrl/crr/dict/dom/qFI",
+            "eba_qPL": "http://www.eba.europa.eu/xbrl/crr/dict/dom/qPL",
+            "eba_qPR": "http://www.eba.europa.eu/xbrl/crr/dict/dom/qPR",
+            "eba_qRF": "http://www.eba.europa.eu/xbrl/crr/dict/dom/qRF",
+            "eba_qRP": "http://www.eba.europa.eu/xbrl/crr/dict/dom/qRP",
+            "eba_qSR": "http://www.eba.europa.eu/xbrl/crr/dict/dom/qSR",
+            "eba_qTI": "http://www.eba.europa.eu/xbrl/crr/dict/dom/qTI",
+            "tc": "https://xbrl.org/CR/2025-10-07/tc",
+            "xs": "http://www.w3.org/2001/XMLSchema"
+        }
+    },
+    "tableTemplates": {
+        "P_02-06": {
+            "columns": {
+                "CUS": {
+                    "eba:documentation": {
+                        "AllowedValue": {
+                            "eba_CU:AED": 3958,
+                            "eba_CU:AFN": 3826,
+                            "eba_CU:ALL": 1669,
+                            "eba_CU:AMD": 3828,
+                            "eba_CU:ANG": 3911,
+                            "eba_CU:AOA": 3889,
+                            "eba_CU:ARS": 1670,
+                            "eba_CU:AUD": 1671,
+                            "eba_CU:AWG": 3829,
+                            "eba_CU:AZN": 3830,
+                            "eba_CU:BAM": 3857,
+                            "eba_CU:BBD": 3835,
+                            "eba_CU:BDT": 3949,
+                            "eba_CU:BGN": 1673,
+                            "eba_CU:BHD": 3832,
+                            "eba_CU:BIF": 3846,
+                            "eba_CU:BMD": 3838,
+                            "eba_CU:BND": 3845,
+                            "eba_CU:BOB": 3840,
+                            "eba_CU:BOV": 3906,
+                            "eba_CU:BRL": 1672,
+                            "eba_CU:BSD": 3831,
+                            "eba_CU:BTN": 3913,
+                            "eba_CU:BWP": 3925,
+                            "eba_CU:BYN": 4909,
+                            "eba_CU:BYR": 3836,
+                            "eba_CU:BZD": 3837,
+                            "eba_CU:CAD": 1674,
+                            "eba_CU:CDF": 3856,
+                            "eba_CU:CHE": 3968,
+                            "eba_CU:CHF": 1696,
+                            "eba_CU:CHW": 3969,
+                            "eba_CU:CLF": 3962,
+                            "eba_CU:CLP": 3852,
+                            "eba_CU:CNH": 6757,
+                            "eba_CU:CNY": 3316,
+                            "eba_CU:COP": 3854,
+                            "eba_CU:COU": 3961,
+                            "eba_CU:CRC": 3859,
+                            "eba_CU:CUC": 3921,
+                            "eba_CU:CUP": 3861,
+                            "eba_CU:CVE": 3847,
+                            "eba_CU:CZK": 1677,
+                            "eba_CU:DJF": 3863,
+                            "eba_CU:DKK": 1678,
+                            "eba_CU:DOP": 3865,
+                            "eba_CU:DZD": 3827,
+                            "eba_CU:EGP": 1679,
+                            "eba_CU:ERN": 3908,
+                            "eba_CU:ETB": 3869,
+                            "eba_CU:EUR": 1680,
+                            "eba_CU:FJD": 3871,
+                            "eba_CU:FKP": 3870,
+                            "eba_CU:GBP": 1681,
+                            "eba_CU:GEL": 3891,
+                            "eba_CU:GHS": 3872,
+                            "eba_CU:GIP": 3873,
+                            "eba_CU:GMD": 3862,
+                            "eba_CU:GNF": 3877,
+                            "eba_CU:GTQ": 3927,
+                            "eba_CU:GYD": 3878,
+                            "eba_CU:HKD": 3310,
+                            "eba_CU:HNL": 3893,
+                            "eba_CU:HTG": 3875,
+                            "eba_CU:HUF": 1682,
+                            "eba_CU:IDR": 3932,
+                            "eba_CU:ILS": 3912,
+                            "eba_CU:INR": 3879,
+                            "eba_CU:IQD": 3881,
+                            "eba_CU:IRR": 3880,
+                            "eba_CU:ISK": 3307,
+                            "eba_CU:JMD": 3882,
+                            "eba_CU:JOD": 3883,
+                            "eba_CU:JPY": 1683,
+                            "eba_CU:KES": 3884,
+                            "eba_CU:KGS": 3940,
+                            "eba_CU:KHR": 3930,
+                            "eba_CU:KMF": 3855,
+                            "eba_CU:KPW": 3914,
+                            "eba_CU:KRW": 3315,
+                            "eba_CU:KWD": 3887,
+                            "eba_CU:KYD": 3848,
+                            "eba_CU:KZT": 3952,
+                            "eba_CU:LAK": 3886,
+                            "eba_CU:LBP": 3892,
+                            "eba_CU:LKR": 3944,
+                            "eba_CU:LRD": 3895,
+                            "eba_CU:LSL": 3898,
+                            "eba_CU:LTL": 1685,
+                            "eba_CU:LVL": 1684,
+                            "eba_CU:LYD": 3896,
+                            "eba_CU:MAD": 3904,
+                            "eba_CU:MDL": 3903,
+                            "eba_CU:MGA": 3899,
+                            "eba_CU:MKD": 1686,
+                            "eba_CU:MMK": 3890,
+                            "eba_CU:MNT": 3955,
+                            "eba_CU:MOP": 3920,
+                            "eba_CU:MRO": 3916,
+                            "eba_CU:MUR": 3901,
+                            "eba_CU:MVR": 3931,
+                            "eba_CU:MWK": 3888,
+                            "eba_CU:MXN": 1687,
+                            "eba_CU:MYR": 3900,
+                            "eba_CU:MZN": 3905,
+                            "eba_CU:NAD": 3909,
+                            "eba_CU:NGN": 3907,
+                            "eba_CU:NIO": 3858,
+                            "eba_CU:NOK": 3308,
+                            "eba_CU:NPR": 3910,
+                            "eba_CU:NZD": 3313,
+                            "eba_CU:OMR": 3929,
+                            "eba_CU:PAB": 3834,
+                            "eba_CU:PEN": 3915,
+                            "eba_CU:PGK": 3885,
+                            "eba_CU:PHP": 3923,
+                            "eba_CU:PKR": 3918,
+                            "eba_CU:PLN": 1691,
+                            "eba_CU:PYG": 3876,
+                            "eba_CU:QAR": 3926,
+                            "eba_CU:RON": 1692,
+                            "eba_CU:RSD": 1694,
+                            "eba_CU:RUB": 1693,
+                            "eba_CU:RWF": 3933,
+                            "eba_CU:SAR": 3935,
+                            "eba_CU:SBD": 3939,
+                            "eba_CU:SCR": 3937,
+                            "eba_CU:SDG": 3946,
+                            "eba_CU:SEK": 1695,
+                            "eba_CU:SGD": 3314,
+                            "eba_CU:SHP": 3934,
+                            "eba_CU:SLL": 3894,
+                            "eba_CU:SOS": 3941,
+                            "eba_CU:SRD": 3947,
+                            "eba_CU:SSP": 3943,
+                            "eba_CU:STD": 3864,
+                            "eba_CU:SVC": 3868,
+                            "eba_CU:SYP": 3948,
+                            "eba_CU:SZL": 3897,
+                            "eba_CU:THB": 3833,
+                            "eba_CU:TJS": 3942,
+                            "eba_CU:TMT": 3957,
+                            "eba_CU:TND": 3956,
+                            "eba_CU:TOP": 3917,
+                            "eba_CU:TRY": 1697,
+                            "eba_CU:TTD": 3954,
+                            "eba_CU:TWD": 3312,
+                            "eba_CU:TZS": 3951,
+                            "eba_CU:UAH": 1698,
+                            "eba_CU:UGX": 3959,
+                            "eba_CU:USD": 1699,
+                            "eba_CU:UYI": 3963,
+                            "eba_CU:UYU": 3922,
+                            "eba_CU:UZS": 3966,
+                            "eba_CU:VEF": 3839,
+                            "eba_CU:VND": 3866,
+                            "eba_CU:VUV": 3967,
+                            "eba_CU:WST": 3950,
+                            "eba_CU:XCD": 3867,
+                            "eba_CU:XPF": 3851,
+                            "eba_CU:YER": 3970,
+                            "eba_CU:ZAR": 3928,
+                            "eba_CU:ZMK": 3971,
+                            "eba_CU:ZMW": 4910,
+                            "eba_CU:ZWL": 3972,
+                            "eba_CU:x46": 4290
+                        },
+                        "KeyVariableID": "199099",
+                        "KeyVariableVID": "199099",
+                        "PropertyID": "1012400775",
+                        "headerCode": "0010",
+                        "headerDirection": "Z",
+                        "headerVID": "236159",
+                        "type": "e"
+                    },
+                    "tc:constraints": {
+                        "type": "xs:QName"
+                    }
+                },
+                "datapoint": {
+                    "propertyGroups": {
+                        "dp112083": {
+                            "decimals": "$decimalsMonetary",
+                            "dimensions": {
+                                "concept": "eba_met:qCCB",
+                                "eba_dim_4.0:qAEA": "eba_qCA:qx2000",
+                                "eba_dim_4.0:qAFF": "eba_qFI:qx2018",
+                                "eba_dim_4.0:qBAC": "eba_qCS:qx2029",
+                                "eba_dim_4.0:qBAF": "eba_qTI:qx2014",
+                                "eba_dim_4.0:qBEC": "eba_qRP:qx2005",
+                                "eba_dim_4.0:qBEG": "eba_qRF:qx2130",
+                                "eba_dim_4.0:qCAA": "eba_qAI:qx2018",
+                                "eba_dim_4.0:qEEG": "eba_qPL:qx2037",
+                                "unit": "$unit"
+                            },
+                            "eba:documentation": {
+                                "CellID": 162663,
+                                "ColumnVID": 246323,
+                                "FactVariableID": 112083,
+                                "FactVariableVersionID": 5426413,
+                                "RowVID": 246341,
+                                "SheetVID": null,
+                                "cellcode": "{P_02.06, r070, c030, s*}",
+                                "type": "m"
+                            }
+                        },
+                        "dp112084": {
+                            "decimals": "$decimalsMonetary",
+                            "dimensions": {
+                                "concept": "eba_met:qCCB",
+                                "eba_dim_4.0:qAEA": "eba_qCA:qx2000",
+                                "eba_dim_4.0:qAFF": "eba_qFI:qx2018",
+                                "eba_dim_4.0:qBAC": "eba_qCS:qx2029",
+                                "eba_dim_4.0:qBAF": "eba_qTI:qx2014",
+                                "eba_dim_4.0:qBEC": "eba_qRP:qx2005",
+                                "eba_dim_4.0:qBEG": "eba_qRF:qx2102",
+                                "eba_dim_4.0:qCAA": "eba_qAI:qx2018",
+                                "eba_dim_4.0:qEEG": "eba_qPL:qx2037",
+                                "unit": "$unit"
+                            },
+                            "eba:documentation": {
+                                "CellID": 162676,
+                                "ColumnVID": 246324,
+                                "FactVariableID": 112084,
+                                "FactVariableVersionID": 5426804,
+                                "RowVID": 246341,
+                                "SheetVID": null,
+                                "cellcode": "{P_02.06, r070, c040, s*}",
+                                "type": "m"
+                            }
+                        },
+                        "dp112085": {
+                            "decimals": "$decimalsMonetary",
+                            "dimensions": {
+                                "concept": "eba_met:qCCB",
+                                "eba_dim_4.0:qAEA": "eba_qCA:qx2000",
+                                "eba_dim_4.0:qAFF": "eba_qFI:qx2018",
+                                "eba_dim_4.0:qBAC": "eba_qCS:qx2029",
+                                "eba_dim_4.0:qBAF": "eba_qTI:qx2014",
+                                "eba_dim_4.0:qBEC": "eba_qRP:qx2005",
+                                "eba_dim_4.0:qBEG": "eba_qRF:qx2103",
+                                "eba_dim_4.0:qCAA": "eba_qAI:qx2018",
+                                "eba_dim_4.0:qEEG": "eba_qPL:qx2037",
+                                "unit": "$unit"
+                            },
+                            "eba:documentation": {
+                                "CellID": 162689,
+                                "ColumnVID": 246325,
+                                "FactVariableID": 112085,
+                                "FactVariableVersionID": 5426414,
+                                "RowVID": 246341,
+                                "SheetVID": null,
+                                "cellcode": "{P_02.06, r070, c050, s*}",
+                                "type": "m"
+                            }
+                        },
+                        "dp112087": {
+                            "decimals": "$decimalsMonetary",
+                            "dimensions": {
+                                "concept": "eba_met:qCCB",
+                                "eba_dim_4.0:qAEA": "eba_qCA:qx2000",
+                                "eba_dim_4.0:qAFF": "eba_qFI:qx2018",
+                                "eba_dim_4.0:qBAC": "eba_qCS:qx2029",
+                                "eba_dim_4.0:qBAF": "eba_qTI:qx2019",
+                                "eba_dim_4.0:qBEC": "eba_qRP:qx2005",
+                                "eba_dim_4.0:qBEG": "eba_qRF:qx2130",
+                                "eba_dim_4.0:qCAA": "eba_qAI:qx2018",
+                                "eba_dim_4.0:qEEG": "eba_qPL:qx2037",
+                                "unit": "$unit"
+                            },
+                            "eba:documentation": {
+                                "CellID": 162664,
+                                "ColumnVID": 246323,
+                                "FactVariableID": 112087,
+                                "FactVariableVersionID": 5426415,
+                                "RowVID": 246342,
+                                "SheetVID": null,
+                                "cellcode": "{P_02.06, r080, c030, s*}",
+                                "type": "m"
+                            }
+                        },
+                        "dp112088": {
+                            "decimals": "$decimalsMonetary",
+                            "dimensions": {
+                                "concept": "eba_met:qCCB",
+                                "eba_dim_4.0:qAEA": "eba_qCA:qx2000",
+                                "eba_dim_4.0:qAFF": "eba_qFI:qx2018",
+                                "eba_dim_4.0:qBAC": "eba_qCS:qx2029",
+                                "eba_dim_4.0:qBAF": "eba_qTI:qx2019",
+                                "eba_dim_4.0:qBEC": "eba_qRP:qx2005",
+                                "eba_dim_4.0:qBEG": "eba_qRF:qx2102",
+                                "eba_dim_4.0:qCAA": "eba_qAI:qx2018",
+                                "eba_dim_4.0:qEEG": "eba_qPL:qx2037",
+                                "unit": "$unit"
+                            },
+                            "eba:documentation": {
+                                "CellID": 162677,
+                                "ColumnVID": 246324,
+                                "FactVariableID": 112088,
+                                "FactVariableVersionID": 5426805,
+                                "RowVID": 246342,
+                                "SheetVID": null,
+                                "cellcode": "{P_02.06, r080, c040, s*}",
+                                "type": "m"
+                            }
+                        },
+                        "dp112089": {
+                            "decimals": "$decimalsMonetary",
+                            "dimensions": {
+                                "concept": "eba_met:qCCB",
+                                "eba_dim_4.0:qAEA": "eba_qCA:qx2000",
+                                "eba_dim_4.0:qAFF": "eba_qFI:qx2018",
+                                "eba_dim_4.0:qBAC": "eba_qCS:qx2029",
+                                "eba_dim_4.0:qBAF": "eba_qTI:qx2019",
+                                "eba_dim_4.0:qBEC": "eba_qRP:qx2005",
+                                "eba_dim_4.0:qBEG": "eba_qRF:qx2103",
+                                "eba_dim_4.0:qCAA": "eba_qAI:qx2018",
+                                "eba_dim_4.0:qEEG": "eba_qPL:qx2037",
+                                "unit": "$unit"
+                            },
+                            "eba:documentation": {
+                                "CellID": 162690,
+                                "ColumnVID": 246325,
+                                "FactVariableID": 112089,
+                                "FactVariableVersionID": 5426416,
+                                "RowVID": 246342,
+                                "SheetVID": null,
+                                "cellcode": "{P_02.06, r080, c050, s*}",
+                                "type": "m"
+                            }
+                        },
+                        "dp112126": {
+                            "decimals": "$decimalsMonetary",
+                            "dimensions": {
+                                "concept": "eba_met:qCCB",
+                                "eba_dim_4.0:qAEA": "eba_qCA:qx2000",
+                                "eba_dim_4.0:qAFF": "eba_qFI:qx2018",
+                                "eba_dim_4.0:qBAF": "eba_qTI:qx2014",
+                                "eba_dim_4.0:qBEC": "eba_qRP:qx2005",
+                                "eba_dim_4.0:qBEG": "eba_qRF:qx2098",
+                                "eba_dim_4.0:qCAA": "eba_qAI:qx2018",
+                                "eba_dim_4.0:qEEG": "eba_qPL:qx2037",
+                                "unit": "$unit"
+                            },
+                            "eba:documentation": {
+                                "CellID": 162650,
+                                "ColumnVID": 246322,
+                                "FactVariableID": 112126,
+                                "FactVariableVersionID": 5426435,
+                                "RowVID": 246341,
+                                "SheetVID": null,
+                                "cellcode": "{P_02.06, r070, c010, s*}",
+                                "type": "m"
+                            }
+                        },
+                        "dp112127": {
+                            "decimals": "$decimalsMonetary",
+                            "dimensions": {
+                                "concept": "eba_met:qCCB",
+                                "eba_dim_4.0:qAEA": "eba_qCA:qx2000",
+                                "eba_dim_4.0:qAFF": "eba_qFI:qx2018",
+                                "eba_dim_4.0:qBAF": "eba_qTI:qx2019",
+                                "eba_dim_4.0:qBEC": "eba_qRP:qx2005",
+                                "eba_dim_4.0:qBEG": "eba_qRF:qx2098",
+                                "eba_dim_4.0:qCAA": "eba_qAI:qx2018",
+                                "eba_dim_4.0:qEEG": "eba_qPL:qx2037",
+                                "unit": "$unit"
+                            },
+                            "eba:documentation": {
+                                "CellID": 162651,
+                                "ColumnVID": 246322,
+                                "FactVariableID": 112127,
+                                "FactVariableVersionID": 5426436,
+                                "RowVID": 246342,
+                                "SheetVID": null,
+                                "cellcode": "{P_02.06, r080, c010, s*}",
+                                "type": "m"
+                            }
+                        },
+                        "dp434475": {
+                            "decimals": "$decimalsMonetary",
+                            "dimensions": {
+                                "concept": "eba_met:qCCB",
+                                "eba_dim_4.0:qACE": "eba_qPR:qx2036",
+                                "eba_dim_4.0:qAEA": "eba_qCA:qx2000",
+                                "eba_dim_4.0:qAFF": "eba_qFI:qx2211",
+                                "eba_dim_4.0:qBAC": "eba_qCS:qx2029",
+                                "eba_dim_4.0:qBBF": "eba_qSR:qx2023",
+                                "eba_dim_4.0:qBEG": "eba_qRF:qx2130",
+                                "eba_dim_4.0:qCAA": "eba_qAI:qx2017",
+                                "eba_dim_4.0:qEEG": "eba_qPL:qx2045",
+                                "unit": "$unit"
+                            },
+                            "eba:documentation": {
+                                "CellID": 162655,
+                                "ColumnVID": 246323,
+                                "FactVariableID": 434475,
+                                "FactVariableVersionID": 5459930,
+                                "RowVID": 226044,
+                                "SheetVID": null,
+                                "cellcode": "{P_02.06, r032, c030, s*}",
+                                "type": "m"
+                            }
+                        },
+                        "dp434476": {
+                            "decimals": "$decimalsMonetary",
+                            "dimensions": {
+                                "concept": "eba_met:qCCB",
+                                "eba_dim_4.0:qACE": "eba_qPR:qx2036",
+                                "eba_dim_4.0:qAEA": "eba_qCA:qx2000",
+                                "eba_dim_4.0:qAFF": "eba_qFI:qx2211",
+                                "eba_dim_4.0:qBAC": "eba_qCS:qx2029",
+                                "eba_dim_4.0:qBBF": "eba_qSR:qx2023",
+                                "eba_dim_4.0:qBEG": "eba_qRF:qx2102",
+                                "eba_dim_4.0:qCAA": "eba_qAI:qx2017",
+                                "eba_dim_4.0:qEEG": "eba_qPL:qx2045",
+                                "unit": "$unit"
+                            },
+                            "eba:documentation": {
+                                "CellID": 162668,
+                                "ColumnVID": 246324,
+                                "FactVariableID": 434476,
+                                "FactVariableVersionID": 5460701,
+                                "RowVID": 226044,
+                                "SheetVID": null,
+                                "cellcode": "{P_02.06, r032, c040, s*}",
+                                "type": "m"
+                            }
+                        },
+                        "dp434477": {
+                            "decimals": "$decimalsMonetary",
+                            "dimensions": {
+                                "concept": "eba_met:qCCB",
+                                "eba_dim_4.0:qACE": "eba_qPR:qx2036",
+                                "eba_dim_4.0:qAEA": "eba_qCA:qx2000",
+                                "eba_dim_4.0:qAFF": "eba_qFI:qx2211",
+                                "eba_dim_4.0:qBAC": "eba_qCS:qx2029",
+                                "eba_dim_4.0:qBBF": "eba_qSR:qx2023",
+                                "eba_dim_4.0:qBEG": "eba_qRF:qx2103",
+                                "eba_dim_4.0:qCAA": "eba_qAI:qx2017",
+                                "eba_dim_4.0:qEEG": "eba_qPL:qx2045",
+                                "unit": "$unit"
+                            },
+                            "eba:documentation": {
+                                "CellID": 162681,
+                                "ColumnVID": 246325,
+                                "FactVariableID": 434477,
+                                "FactVariableVersionID": 5460702,
+                                "RowVID": 226044,
+                                "SheetVID": null,
+                                "cellcode": "{P_02.06, r032, c050, s*}",
+                                "type": "m"
+                            }
+                        },
+                        "dp434490": {
+                            "decimals": "$decimalsMonetary",
+                            "dimensions": {
+                                "concept": "eba_met:qCCB",
+                                "eba_dim_4.0:qACE": "eba_qPR:qx2036",
+                                "eba_dim_4.0:qAEA": "eba_qCA:qx2000",
+                                "eba_dim_4.0:qAFF": "eba_qFI:qx2211",
+                                "eba_dim_4.0:qBBF": "eba_qSR:qx2023",
+                                "eba_dim_4.0:qBEG": "eba_qRF:qx2098",
+                                "eba_dim_4.0:qCAA": "eba_qAI:qx2017",
+                                "eba_dim_4.0:qEEG": "eba_qPL:qx2045",
+                                "unit": "$unit"
+                            },
+                            "eba:documentation": {
+                                "CellID": 162642,
+                                "ColumnVID": 246322,
+                                "FactVariableID": 434490,
+                                "FactVariableVersionID": 5460707,
+                                "RowVID": 226044,
+                                "SheetVID": null,
+                                "cellcode": "{P_02.06, r032, c010, s*}",
+                                "type": "m"
+                            }
+                        },
+                        "dp434623": {
+                            "decimals": "$decimalsMonetary",
+                            "dimensions": {
+                                "concept": "eba_met:qCCB",
+                                "eba_dim_4.0:qACE": "eba_qPR:qx2036",
+                                "eba_dim_4.0:qAEA": "eba_qCA:qx2000",
+                                "eba_dim_4.0:qAFF": "eba_qFI:qx2211",
+                                "eba_dim_4.0:qBAC": "eba_qCS:qx2029",
+                                "eba_dim_4.0:qBBF": "eba_qSR:qx2069",
+                                "eba_dim_4.0:qBEG": "eba_qRF:qx2130",
+                                "eba_dim_4.0:qCAA": "eba_qAI:qx2017",
+                                "eba_dim_4.0:qEEG": "eba_qPL:qx2045",
+                                "unit": "$unit"
+                            },
+                            "eba:documentation": {
+                                "CellID": 162654,
+                                "ColumnVID": 246323,
+                                "FactVariableID": 434623,
+                                "FactVariableVersionID": 5459972,
+                                "RowVID": 226043,
+                                "SheetVID": null,
+                                "cellcode": "{P_02.06, r015, c030, s*}",
+                                "type": "m"
+                            }
+                        },
+                        "dp434624": {
+                            "decimals": "$decimalsMonetary",
+                            "dimensions": {
+                                "concept": "eba_met:qCCB",
+                                "eba_dim_4.0:qACE": "eba_qPR:qx2036",
+                                "eba_dim_4.0:qAEA": "eba_qCA:qx2000",
+                                "eba_dim_4.0:qAFF": "eba_qFI:qx2211",
+                                "eba_dim_4.0:qBAC": "eba_qCS:qx2029",
+                                "eba_dim_4.0:qBBF": "eba_qSR:qx2069",
+                                "eba_dim_4.0:qBEG": "eba_qRF:qx2102",
+                                "eba_dim_4.0:qCAA": "eba_qAI:qx2017",
+                                "eba_dim_4.0:qEEG": "eba_qPL:qx2045",
+                                "unit": "$unit"
+                            },
+                            "eba:documentation": {
+                                "CellID": 162667,
+                                "ColumnVID": 246324,
+                                "FactVariableID": 434624,
+                                "FactVariableVersionID": 5461199,
+                                "RowVID": 226043,
+                                "SheetVID": null,
+                                "cellcode": "{P_02.06, r015, c040, s*}",
+                                "type": "m"
+                            }
+                        },
+                        "dp434625": {
+                            "decimals": "$decimalsMonetary",
+                            "dimensions": {
+                                "concept": "eba_met:qCCB",
+                                "eba_dim_4.0:qACE": "eba_qPR:qx2036",
+                                "eba_dim_4.0:qAEA": "eba_qCA:qx2000",
+                                "eba_dim_4.0:qAFF": "eba_qFI:qx2211",
+                                "eba_dim_4.0:qBAC": "eba_qCS:qx2029",
+                                "eba_dim_4.0:qBBF": "eba_qSR:qx2069",
+                                "eba_dim_4.0:qBEG": "eba_qRF:qx2103",
+                                "eba_dim_4.0:qCAA": "eba_qAI:qx2017",
+                                "eba_dim_4.0:qEEG": "eba_qPL:qx2045",
+                                "unit": "$unit"
+                            },
+                            "eba:documentation": {
+                                "CellID": 162680,
+                                "ColumnVID": 246325,
+                                "FactVariableID": 434625,
+                                "FactVariableVersionID": 5461200,
+                                "RowVID": 226043,
+                                "SheetVID": null,
+                                "cellcode": "{P_02.06, r015, c050, s*}",
+                                "type": "m"
+                            }
+                        },
+                        "dp434626": {
+                            "decimals": "$decimalsMonetary",
+                            "dimensions": {
+                                "concept": "eba_met:qCCB",
+                                "eba_dim_4.0:qACE": "eba_qPR:qx2036",
+                                "eba_dim_4.0:qAEA": "eba_qCA:qx2000",
+                                "eba_dim_4.0:qAFF": "eba_qFI:qx2211",
+                                "eba_dim_4.0:qBBF": "eba_qSR:qx2069",
+                                "eba_dim_4.0:qBEG": "eba_qRF:qx2098",
+                                "eba_dim_4.0:qCAA": "eba_qAI:qx2017",
+                                "eba_dim_4.0:qEEG": "eba_qPL:qx2045",
+                                "unit": "$unit"
+                            },
+                            "eba:documentation": {
+                                "CellID": 162641,
+                                "ColumnVID": 246322,
+                                "FactVariableID": 434626,
+                                "FactVariableVersionID": 5459973,
+                                "RowVID": 226043,
+                                "SheetVID": null,
+                                "cellcode": "{P_02.06, r015, c010, s*}",
+                                "type": "m"
+                            }
+                        },
+                        "dp434643": {
+                            "decimals": "$decimalsMonetary",
+                            "dimensions": {
+                                "concept": "eba_met:qCCB",
+                                "eba_dim_4.0:qACE": "eba_qPR:qx2036",
+                                "eba_dim_4.0:qAEA": "eba_qCA:qx2000",
+                                "eba_dim_4.0:qAFF": "eba_qFI:qx2211",
+                                "eba_dim_4.0:qBAC": "eba_qCS:qx2029",
+                                "eba_dim_4.0:qBBF": "eba_qSR:qx2042",
+                                "eba_dim_4.0:qBEG": "eba_qRF:qx2130",
+                                "eba_dim_4.0:qCAA": "eba_qAI:qx2017",
+                                "eba_dim_4.0:qEEG": "eba_qPL:qx2045",
+                                "unit": "$unit"
+                            },
+                            "eba:documentation": {
+                                "CellID": 162656,
+                                "ColumnVID": 246323,
+                                "FactVariableID": 434643,
+                                "FactVariableVersionID": 5461205,
+                                "RowVID": 226045,
+                                "SheetVID": null,
+                                "cellcode": "{P_02.06, r035, c030, s*}",
+                                "type": "m"
+                            }
+                        },
+                        "dp434644": {
+                            "decimals": "$decimalsMonetary",
+                            "dimensions": {
+                                "concept": "eba_met:qCCB",
+                                "eba_dim_4.0:qACE": "eba_qPR:qx2036",
+                                "eba_dim_4.0:qAEA": "eba_qCA:qx2000",
+                                "eba_dim_4.0:qAFF": "eba_qFI:qx2211",
+                                "eba_dim_4.0:qBAC": "eba_qCS:qx2029",
+                                "eba_dim_4.0:qBBF": "eba_qSR:qx2042",
+                                "eba_dim_4.0:qBEG": "eba_qRF:qx2102",
+                                "eba_dim_4.0:qCAA": "eba_qAI:qx2017",
+                                "eba_dim_4.0:qEEG": "eba_qPL:qx2045",
+                                "unit": "$unit"
+                            },
+                            "eba:documentation": {
+                                "CellID": 162669,
+                                "ColumnVID": 246324,
+                                "FactVariableID": 434644,
+                                "FactVariableVersionID": 5459982,
+                                "RowVID": 226045,
+                                "SheetVID": null,
+                                "cellcode": "{P_02.06, r035, c040, s*}",
+                                "type": "m"
+                            }
+                        },
+                        "dp434645": {
+                            "decimals": "$decimalsMonetary",
+                            "dimensions": {
+                                "concept": "eba_met:qCCB",
+                                "eba_dim_4.0:qACE": "eba_qPR:qx2036",
+                                "eba_dim_4.0:qAEA": "eba_qCA:qx2000",
+                                "eba_dim_4.0:qAFF": "eba_qFI:qx2211",
+                                "eba_dim_4.0:qBAC": "eba_qCS:qx2029",
+                                "eba_dim_4.0:qBBF": "eba_qSR:qx2042",
+                                "eba_dim_4.0:qBEG": "eba_qRF:qx2103",
+                                "eba_dim_4.0:qCAA": "eba_qAI:qx2017",
+                                "eba_dim_4.0:qEEG": "eba_qPL:qx2045",
+                                "unit": "$unit"
+                            },
+                            "eba:documentation": {
+                                "CellID": 162682,
+                                "ColumnVID": 246325,
+                                "FactVariableID": 434645,
+                                "FactVariableVersionID": 5459983,
+                                "RowVID": 226045,
+                                "SheetVID": null,
+                                "cellcode": "{P_02.06, r035, c050, s*}",
+                                "type": "m"
+                            }
+                        },
+                        "dp434658": {
+                            "decimals": "$decimalsMonetary",
+                            "dimensions": {
+                                "concept": "eba_met:qCCB",
+                                "eba_dim_4.0:qACE": "eba_qPR:qx2036",
+                                "eba_dim_4.0:qAEA": "eba_qCA:qx2000",
+                                "eba_dim_4.0:qAFF": "eba_qFI:qx2211",
+                                "eba_dim_4.0:qBBF": "eba_qSR:qx2042",
+                                "eba_dim_4.0:qBEG": "eba_qRF:qx2098",
+                                "eba_dim_4.0:qCAA": "eba_qAI:qx2017",
+                                "eba_dim_4.0:qEEG": "eba_qPL:qx2045",
+                                "unit": "$unit"
+                            },
+                            "eba:documentation": {
+                                "CellID": 162643,
+                                "ColumnVID": 246322,
+                                "FactVariableID": 434658,
+                                "FactVariableVersionID": 5459989,
+                                "RowVID": 226045,
+                                "SheetVID": null,
+                                "cellcode": "{P_02.06, r035, c010, s*}",
+                                "type": "m"
+                            }
+                        },
+                        "dp434663": {
+                            "decimals": "$decimalsMonetary",
+                            "dimensions": {
+                                "concept": "eba_met:qCCB",
+                                "eba_dim_4.0:qAEA": "eba_qCA:qx2000",
+                                "eba_dim_4.0:qAFF": "eba_qFI:qx2018",
+                                "eba_dim_4.0:qBAC": "eba_qCS:qx2029",
+                                "eba_dim_4.0:qBEG": "eba_qRF:qx2130",
+                                "eba_dim_4.0:qCAA": "eba_qAI:qx2017",
+                                "eba_dim_4.0:qEEG": "eba_qPL:qx2045",
+                                "unit": "$unit"
+                            },
+                            "eba:documentation": {
+                                "CellID": 162657,
+                                "ColumnVID": 246323,
+                                "FactVariableID": 434663,
+                                "FactVariableVersionID": 5459992,
+                                "RowVID": 226046,
+                                "SheetVID": null,
+                                "cellcode": "{P_02.06, r037, c030, s*}",
+                                "type": "m"
+                            }
+                        },
+                        "dp434664": {
+                            "decimals": "$decimalsMonetary",
+                            "dimensions": {
+                                "concept": "eba_met:qCCB",
+                                "eba_dim_4.0:qAEA": "eba_qCA:qx2000",
+                                "eba_dim_4.0:qAFF": "eba_qFI:qx2018",
+                                "eba_dim_4.0:qBAC": "eba_qCS:qx2029",
+                                "eba_dim_4.0:qBEG": "eba_qRF:qx2102",
+                                "eba_dim_4.0:qCAA": "eba_qAI:qx2017",
+                                "eba_dim_4.0:qEEG": "eba_qPL:qx2045",
+                                "unit": "$unit"
+                            },
+                            "eba:documentation": {
+                                "CellID": 162670,
+                                "ColumnVID": 246324,
+                                "FactVariableID": 434664,
+                                "FactVariableVersionID": 5459993,
+                                "RowVID": 226046,
+                                "SheetVID": null,
+                                "cellcode": "{P_02.06, r037, c040, s*}",
+                                "type": "m"
+                            }
+                        },
+                        "dp434665": {
+                            "decimals": "$decimalsMonetary",
+                            "dimensions": {
+                                "concept": "eba_met:qCCB",
+                                "eba_dim_4.0:qAEA": "eba_qCA:qx2000",
+                                "eba_dim_4.0:qAFF": "eba_qFI:qx2018",
+                                "eba_dim_4.0:qBAC": "eba_qCS:qx2029",
+                                "eba_dim_4.0:qBEG": "eba_qRF:qx2103",
+                                "eba_dim_4.0:qCAA": "eba_qAI:qx2017",
+                                "eba_dim_4.0:qEEG": "eba_qPL:qx2045",
+                                "unit": "$unit"
+                            },
+                            "eba:documentation": {
+                                "CellID": 162683,
+                                "ColumnVID": 246325,
+                                "FactVariableID": 434665,
+                                "FactVariableVersionID": 5459994,
+                                "RowVID": 226046,
+                                "SheetVID": null,
+                                "cellcode": "{P_02.06, r037, c050, s*}",
+                                "type": "m"
+                            }
+                        },
+                        "dp434666": {
+                            "decimals": "$decimalsMonetary",
+                            "dimensions": {
+                                "concept": "eba_met:qCCB",
+                                "eba_dim_4.0:qAEA": "eba_qCA:qx2000",
+                                "eba_dim_4.0:qAFF": "eba_qFI:qx2206",
+                                "eba_dim_4.0:qBAC": "eba_qCS:qx2029",
+                                "eba_dim_4.0:qBEG": "eba_qRF:qx2130",
+                                "eba_dim_4.0:qCAA": "eba_qAI:qx2017",
+                                "eba_dim_4.0:qEEG": "eba_qPL:qx2045",
+                                "unit": "$unit"
+                            },
+                            "eba:documentation": {
+                                "CellID": 162658,
+                                "ColumnVID": 246323,
+                                "FactVariableID": 434666,
+                                "FactVariableVersionID": 5461211,
+                                "RowVID": 226047,
+                                "SheetVID": null,
+                                "cellcode": "{P_02.06, r038, c030, s*}",
+                                "type": "m"
+                            }
+                        },
+                        "dp434667": {
+                            "decimals": "$decimalsMonetary",
+                            "dimensions": {
+                                "concept": "eba_met:qCCB",
+                                "eba_dim_4.0:qAEA": "eba_qCA:qx2000",
+                                "eba_dim_4.0:qAFF": "eba_qFI:qx2206",
+                                "eba_dim_4.0:qBAC": "eba_qCS:qx2029",
+                                "eba_dim_4.0:qBEG": "eba_qRF:qx2102",
+                                "eba_dim_4.0:qCAA": "eba_qAI:qx2017",
+                                "eba_dim_4.0:qEEG": "eba_qPL:qx2045",
+                                "unit": "$unit"
+                            },
+                            "eba:documentation": {
+                                "CellID": 162671,
+                                "ColumnVID": 246324,
+                                "FactVariableID": 434667,
+                                "FactVariableVersionID": 5461212,
+                                "RowVID": 226047,
+                                "SheetVID": null,
+                                "cellcode": "{P_02.06, r038, c040, s*}",
+                                "type": "m"
+                            }
+                        },
+                        "dp434668": {
+                            "decimals": "$decimalsMonetary",
+                            "dimensions": {
+                                "concept": "eba_met:qCCB",
+                                "eba_dim_4.0:qAEA": "eba_qCA:qx2000",
+                                "eba_dim_4.0:qAFF": "eba_qFI:qx2206",
+                                "eba_dim_4.0:qBAC": "eba_qCS:qx2029",
+                                "eba_dim_4.0:qBEG": "eba_qRF:qx2103",
+                                "eba_dim_4.0:qCAA": "eba_qAI:qx2017",
+                                "eba_dim_4.0:qEEG": "eba_qPL:qx2045",
+                                "unit": "$unit"
+                            },
+                            "eba:documentation": {
+                                "CellID": 162684,
+                                "ColumnVID": 246325,
+                                "FactVariableID": 434668,
+                                "FactVariableVersionID": 5459995,
+                                "RowVID": 226047,
+                                "SheetVID": null,
+                                "cellcode": "{P_02.06, r038, c050, s*}",
+                                "type": "m"
+                            }
+                        },
+                        "dp434684": {
+                            "decimals": "$decimalsMonetary",
+                            "dimensions": {
+                                "concept": "eba_met:qCCB",
+                                "eba_dim_4.0:qAEA": "eba_qCA:qx2000",
+                                "eba_dim_4.0:qAFF": "eba_qFI:qx2018",
+                                "eba_dim_4.0:qBEG": "eba_qRF:qx2098",
+                                "eba_dim_4.0:qCAA": "eba_qAI:qx2017",
+                                "eba_dim_4.0:qEEG": "eba_qPL:qx2045",
+                                "unit": "$unit"
+                            },
+                            "eba:documentation": {
+                                "CellID": 162644,
+                                "ColumnVID": 246322,
+                                "FactVariableID": 434684,
+                                "FactVariableVersionID": 5461214,
+                                "RowVID": 226046,
+                                "SheetVID": null,
+                                "cellcode": "{P_02.06, r037, c010, s*}",
+                                "type": "m"
+                            }
+                        },
+                        "dp434685": {
+                            "decimals": "$decimalsMonetary",
+                            "dimensions": {
+                                "concept": "eba_met:qCCB",
+                                "eba_dim_4.0:qAEA": "eba_qCA:qx2000",
+                                "eba_dim_4.0:qAFF": "eba_qFI:qx2206",
+                                "eba_dim_4.0:qBEG": "eba_qRF:qx2098",
+                                "eba_dim_4.0:qCAA": "eba_qAI:qx2017",
+                                "eba_dim_4.0:qEEG": "eba_qPL:qx2045",
+                                "unit": "$unit"
+                            },
+                            "eba:documentation": {
+                                "CellID": 162645,
+                                "ColumnVID": 246322,
+                                "FactVariableID": 434685,
+                                "FactVariableVersionID": 5460001,
+                                "RowVID": 226047,
+                                "SheetVID": null,
+                                "cellcode": "{P_02.06, r038, c010, s*}",
+                                "type": "m"
+                            }
+                        },
+                        "dp434835": {
+                            "decimals": "$decimalsMonetary",
+                            "dimensions": {
+                                "concept": "eba_met:qCCB",
+                                "eba_dim_4.0:qAEA": "eba_qCA:qx2000",
+                                "eba_dim_4.0:qAFF": "eba_qFI:qx2230",
+                                "eba_dim_4.0:qBAC": "eba_qCS:qx2029",
+                                "eba_dim_4.0:qBBF": "eba_qSR:qx2023",
+                                "eba_dim_4.0:qBEG": "eba_qRF:qx2130",
+                                "eba_dim_4.0:qCAA": "eba_qAI:qx2018",
+                                "eba_dim_4.0:qEEG": "eba_qPL:qx2037",
+                                "unit": "$unit"
+                            },
+                            "eba:documentation": {
+                                "CellID": 162661,
+                                "ColumnVID": 246323,
+                                "FactVariableID": 434835,
+                                "FactVariableVersionID": 5461262,
+                                "RowVID": 226049,
+                                "SheetVID": null,
+                                "cellcode": "{P_02.06, r062, c030, s*}",
+                                "type": "m"
+                            }
+                        },
+                        "dp434836": {
+                            "decimals": "$decimalsMonetary",
+                            "dimensions": {
+                                "concept": "eba_met:qCCB",
+                                "eba_dim_4.0:qAEA": "eba_qCA:qx2000",
+                                "eba_dim_4.0:qAFF": "eba_qFI:qx2230",
+                                "eba_dim_4.0:qBAC": "eba_qCS:qx2029",
+                                "eba_dim_4.0:qBBF": "eba_qSR:qx2023",
+                                "eba_dim_4.0:qBEG": "eba_qRF:qx2102",
+                                "eba_dim_4.0:qCAA": "eba_qAI:qx2018",
+                                "eba_dim_4.0:qEEG": "eba_qPL:qx2037",
+                                "unit": "$unit"
+                            },
+                            "eba:documentation": {
+                                "CellID": 162674,
+                                "ColumnVID": 246324,
+                                "FactVariableID": 434836,
+                                "FactVariableVersionID": 5460053,
+                                "RowVID": 226049,
+                                "SheetVID": null,
+                                "cellcode": "{P_02.06, r062, c040, s*}",
+                                "type": "m"
+                            }
+                        },
+                        "dp434837": {
+                            "decimals": "$decimalsMonetary",
+                            "dimensions": {
+                                "concept": "eba_met:qCCB",
+                                "eba_dim_4.0:qAEA": "eba_qCA:qx2000",
+                                "eba_dim_4.0:qAFF": "eba_qFI:qx2230",
+                                "eba_dim_4.0:qBAC": "eba_qCS:qx2029",
+                                "eba_dim_4.0:qBBF": "eba_qSR:qx2023",
+                                "eba_dim_4.0:qBEG": "eba_qRF:qx2103",
+                                "eba_dim_4.0:qCAA": "eba_qAI:qx2018",
+                                "eba_dim_4.0:qEEG": "eba_qPL:qx2037",
+                                "unit": "$unit"
+                            },
+                            "eba:documentation": {
+                                "CellID": 162687,
+                                "ColumnVID": 246325,
+                                "FactVariableID": 434837,
+                                "FactVariableVersionID": 5460054,
+                                "RowVID": 226049,
+                                "SheetVID": null,
+                                "cellcode": "{P_02.06, r062, c050, s*}",
+                                "type": "m"
+                            }
+                        },
+                        "dp434850": {
+                            "decimals": "$decimalsMonetary",
+                            "dimensions": {
+                                "concept": "eba_met:qCCB",
+                                "eba_dim_4.0:qAEA": "eba_qCA:qx2000",
+                                "eba_dim_4.0:qAFF": "eba_qFI:qx2230",
+                                "eba_dim_4.0:qBBF": "eba_qSR:qx2023",
+                                "eba_dim_4.0:qBEG": "eba_qRF:qx2098",
+                                "eba_dim_4.0:qCAA": "eba_qAI:qx2018",
+                                "eba_dim_4.0:qEEG": "eba_qPL:qx2037",
+                                "unit": "$unit"
+                            },
+                            "eba:documentation": {
+                                "CellID": 162648,
+                                "ColumnVID": 246322,
+                                "FactVariableID": 434850,
+                                "FactVariableVersionID": 5461271,
+                                "RowVID": 226049,
+                                "SheetVID": null,
+                                "cellcode": "{P_02.06, r062, c010, s*}",
+                                "type": "m"
+                            }
+                        },
+                        "dp434959": {
+                            "decimals": "$decimalsMonetary",
+                            "dimensions": {
+                                "concept": "eba_met:qCCB",
+                                "eba_dim_4.0:qAEA": "eba_qCA:qx2000",
+                                "eba_dim_4.0:qAFF": "eba_qFI:qx2230",
+                                "eba_dim_4.0:qBAC": "eba_qCS:qx2029",
+                                "eba_dim_4.0:qBBF": "eba_qSR:qx2069",
+                                "eba_dim_4.0:qBEG": "eba_qRF:qx2130",
+                                "eba_dim_4.0:qCAA": "eba_qAI:qx2018",
+                                "eba_dim_4.0:qEEG": "eba_qPL:qx2037",
+                                "unit": "$unit"
+                            },
+                            "eba:documentation": {
+                                "CellID": 162660,
+                                "ColumnVID": 246323,
+                                "FactVariableID": 434959,
+                                "FactVariableVersionID": 5461296,
+                                "RowVID": 226048,
+                                "SheetVID": null,
+                                "cellcode": "{P_02.06, r045, c030, s*}",
+                                "type": "m"
+                            }
+                        },
+                        "dp434960": {
+                            "decimals": "$decimalsMonetary",
+                            "dimensions": {
+                                "concept": "eba_met:qCCB",
+                                "eba_dim_4.0:qAEA": "eba_qCA:qx2000",
+                                "eba_dim_4.0:qAFF": "eba_qFI:qx2230",
+                                "eba_dim_4.0:qBAC": "eba_qCS:qx2029",
+                                "eba_dim_4.0:qBBF": "eba_qSR:qx2069",
+                                "eba_dim_4.0:qBEG": "eba_qRF:qx2102",
+                                "eba_dim_4.0:qCAA": "eba_qAI:qx2018",
+                                "eba_dim_4.0:qEEG": "eba_qPL:qx2037",
+                                "unit": "$unit"
+                            },
+                            "eba:documentation": {
+                                "CellID": 162673,
+                                "ColumnVID": 246324,
+                                "FactVariableID": 434960,
+                                "FactVariableVersionID": 5460317,
+                                "RowVID": 226048,
+                                "SheetVID": null,
+                                "cellcode": "{P_02.06, r045, c040, s*}",
+                                "type": "m"
+                            }
+                        },
+                        "dp434961": {
+                            "decimals": "$decimalsMonetary",
+                            "dimensions": {
+                                "concept": "eba_met:qCCB",
+                                "eba_dim_4.0:qAEA": "eba_qCA:qx2000",
+                                "eba_dim_4.0:qAFF": "eba_qFI:qx2230",
+                                "eba_dim_4.0:qBAC": "eba_qCS:qx2029",
+                                "eba_dim_4.0:qBBF": "eba_qSR:qx2069",
+                                "eba_dim_4.0:qBEG": "eba_qRF:qx2103",
+                                "eba_dim_4.0:qCAA": "eba_qAI:qx2018",
+                                "eba_dim_4.0:qEEG": "eba_qPL:qx2037",
+                                "unit": "$unit"
+                            },
+                            "eba:documentation": {
+                                "CellID": 162686,
+                                "ColumnVID": 246325,
+                                "FactVariableID": 434961,
+                                "FactVariableVersionID": 5460318,
+                                "RowVID": 226048,
+                                "SheetVID": null,
+                                "cellcode": "{P_02.06, r045, c050, s*}",
+                                "type": "m"
+                            }
+                        },
+                        "dp434962": {
+                            "decimals": "$decimalsMonetary",
+                            "dimensions": {
+                                "concept": "eba_met:qCCB",
+                                "eba_dim_4.0:qAEA": "eba_qCA:qx2000",
+                                "eba_dim_4.0:qAFF": "eba_qFI:qx2230",
+                                "eba_dim_4.0:qBBF": "eba_qSR:qx2069",
+                                "eba_dim_4.0:qBEG": "eba_qRF:qx2098",
+                                "eba_dim_4.0:qCAA": "eba_qAI:qx2018",
+                                "eba_dim_4.0:qEEG": "eba_qPL:qx2037",
+                                "unit": "$unit"
+                            },
+                            "eba:documentation": {
+                                "CellID": 162647,
+                                "ColumnVID": 246322,
+                                "FactVariableID": 434962,
+                                "FactVariableVersionID": 5461297,
+                                "RowVID": 226048,
+                                "SheetVID": null,
+                                "cellcode": "{P_02.06, r045, c010, s*}",
+                                "type": "m"
+                            }
+                        },
+                        "dp434979": {
+                            "decimals": "$decimalsMonetary",
+                            "dimensions": {
+                                "concept": "eba_met:qCCB",
+                                "eba_dim_4.0:qAEA": "eba_qCA:qx2000",
+                                "eba_dim_4.0:qAFF": "eba_qFI:qx2230",
+                                "eba_dim_4.0:qBAC": "eba_qCS:qx2029",
+                                "eba_dim_4.0:qBBF": "eba_qSR:qx2042",
+                                "eba_dim_4.0:qBEG": "eba_qRF:qx2130",
+                                "eba_dim_4.0:qCAA": "eba_qAI:qx2018",
+                                "eba_dim_4.0:qEEG": "eba_qPL:qx2037",
+                                "unit": "$unit"
+                            },
+                            "eba:documentation": {
+                                "CellID": 162662,
+                                "ColumnVID": 246323,
+                                "FactVariableID": 434979,
+                                "FactVariableVersionID": 5461304,
+                                "RowVID": 226050,
+                                "SheetVID": null,
+                                "cellcode": "{P_02.06, r065, c030, s*}",
+                                "type": "m"
+                            }
+                        },
+                        "dp434980": {
+                            "decimals": "$decimalsMonetary",
+                            "dimensions": {
+                                "concept": "eba_met:qCCB",
+                                "eba_dim_4.0:qAEA": "eba_qCA:qx2000",
+                                "eba_dim_4.0:qAFF": "eba_qFI:qx2230",
+                                "eba_dim_4.0:qBAC": "eba_qCS:qx2029",
+                                "eba_dim_4.0:qBBF": "eba_qSR:qx2042",
+                                "eba_dim_4.0:qBEG": "eba_qRF:qx2102",
+                                "eba_dim_4.0:qCAA": "eba_qAI:qx2018",
+                                "eba_dim_4.0:qEEG": "eba_qPL:qx2037",
+                                "unit": "$unit"
+                            },
+                            "eba:documentation": {
+                                "CellID": 162675,
+                                "ColumnVID": 246324,
+                                "FactVariableID": 434980,
+                                "FactVariableVersionID": 5460325,
+                                "RowVID": 226050,
+                                "SheetVID": null,
+                                "cellcode": "{P_02.06, r065, c040, s*}",
+                                "type": "m"
+                            }
+                        },
+                        "dp434981": {
+                            "decimals": "$decimalsMonetary",
+                            "dimensions": {
+                                "concept": "eba_met:qCCB",
+                                "eba_dim_4.0:qAEA": "eba_qCA:qx2000",
+                                "eba_dim_4.0:qAFF": "eba_qFI:qx2230",
+                                "eba_dim_4.0:qBAC": "eba_qCS:qx2029",
+                                "eba_dim_4.0:qBBF": "eba_qSR:qx2042",
+                                "eba_dim_4.0:qBEG": "eba_qRF:qx2103",
+                                "eba_dim_4.0:qCAA": "eba_qAI:qx2018",
+                                "eba_dim_4.0:qEEG": "eba_qPL:qx2037",
+                                "unit": "$unit"
+                            },
+                            "eba:documentation": {
+                                "CellID": 162688,
+                                "ColumnVID": 246325,
+                                "FactVariableID": 434981,
+                                "FactVariableVersionID": 5460326,
+                                "RowVID": 226050,
+                                "SheetVID": null,
+                                "cellcode": "{P_02.06, r065, c050, s*}",
+                                "type": "m"
+                            }
+                        },
+                        "dp434994": {
+                            "decimals": "$decimalsMonetary",
+                            "dimensions": {
+                                "concept": "eba_met:qCCB",
+                                "eba_dim_4.0:qAEA": "eba_qCA:qx2000",
+                                "eba_dim_4.0:qAFF": "eba_qFI:qx2230",
+                                "eba_dim_4.0:qBBF": "eba_qSR:qx2042",
+                                "eba_dim_4.0:qBEG": "eba_qRF:qx2098",
+                                "eba_dim_4.0:qCAA": "eba_qAI:qx2018",
+                                "eba_dim_4.0:qEEG": "eba_qPL:qx2037",
+                                "unit": "$unit"
+                            },
+                            "eba:documentation": {
+                                "CellID": 162649,
+                                "ColumnVID": 246322,
+                                "FactVariableID": 434994,
+                                "FactVariableVersionID": 5461308,
+                                "RowVID": 226050,
+                                "SheetVID": null,
+                                "cellcode": "{P_02.06, r065, c010, s*}",
+                                "type": "m"
+                            }
+                        },
+                        "dp435013": {
+                            "decimals": "$decimalsMonetary",
+                            "dimensions": {
+                                "concept": "eba_met:qCCB",
+                                "eba_dim_4.0:qAEA": "eba_qCA:qx2000",
+                                "eba_dim_4.0:qAFF": "eba_qFI:qx2231",
+                                "eba_dim_4.0:qBAC": "eba_qCS:qx2029",
+                                "eba_dim_4.0:qBEG": "eba_qRF:qx2130",
+                                "eba_dim_4.0:qCAA": "eba_qAI:qx2018",
+                                "eba_dim_4.0:qEEG": "eba_qPL:qx2037",
+                                "unit": "$unit"
+                            },
+                            "eba:documentation": {
+                                "CellID": 162665,
+                                "ColumnVID": 246323,
+                                "FactVariableID": 435013,
+                                "FactVariableVersionID": 5460337,
+                                "RowVID": 226054,
+                                "SheetVID": null,
+                                "cellcode": "{P_02.06, r090, c030, s*}",
+                                "type": "m"
+                            }
+                        },
+                        "dp435014": {
+                            "decimals": "$decimalsMonetary",
+                            "dimensions": {
+                                "concept": "eba_met:qCCB",
+                                "eba_dim_4.0:qAEA": "eba_qCA:qx2000",
+                                "eba_dim_4.0:qAFF": "eba_qFI:qx2231",
+                                "eba_dim_4.0:qBAC": "eba_qCS:qx2029",
+                                "eba_dim_4.0:qBEG": "eba_qRF:qx2102",
+                                "eba_dim_4.0:qCAA": "eba_qAI:qx2018",
+                                "eba_dim_4.0:qEEG": "eba_qPL:qx2037",
+                                "unit": "$unit"
+                            },
+                            "eba:documentation": {
+                                "CellID": 162678,
+                                "ColumnVID": 246324,
+                                "FactVariableID": 435014,
+                                "FactVariableVersionID": 5460338,
+                                "RowVID": 226054,
+                                "SheetVID": null,
+                                "cellcode": "{P_02.06, r090, c040, s*}",
+                                "type": "m"
+                            }
+                        },
+                        "dp435015": {
+                            "decimals": "$decimalsMonetary",
+                            "dimensions": {
+                                "concept": "eba_met:qCCB",
+                                "eba_dim_4.0:qAEA": "eba_qCA:qx2000",
+                                "eba_dim_4.0:qAFF": "eba_qFI:qx2231",
+                                "eba_dim_4.0:qBAC": "eba_qCS:qx2029",
+                                "eba_dim_4.0:qBEG": "eba_qRF:qx2103",
+                                "eba_dim_4.0:qCAA": "eba_qAI:qx2018",
+                                "eba_dim_4.0:qEEG": "eba_qPL:qx2037",
+                                "unit": "$unit"
+                            },
+                            "eba:documentation": {
+                                "CellID": 162691,
+                                "ColumnVID": 246325,
+                                "FactVariableID": 435015,
+                                "FactVariableVersionID": 5461312,
+                                "RowVID": 226054,
+                                "SheetVID": null,
+                                "cellcode": "{P_02.06, r090, c050, s*}",
+                                "type": "m"
+                            }
+                        },
+                        "dp435054": {
+                            "decimals": "$decimalsMonetary",
+                            "dimensions": {
+                                "concept": "eba_met:qCCB",
+                                "eba_dim_4.0:qAEA": "eba_qCA:qx2000",
+                                "eba_dim_4.0:qAFF": "eba_qFI:qx2231",
+                                "eba_dim_4.0:qBEG": "eba_qRF:qx2098",
+                                "eba_dim_4.0:qCAA": "eba_qAI:qx2018",
+                                "eba_dim_4.0:qEEG": "eba_qPL:qx2037",
+                                "unit": "$unit"
+                            },
+                            "eba:documentation": {
+                                "CellID": 162652,
+                                "ColumnVID": 246322,
+                                "FactVariableID": 435054,
+                                "FactVariableVersionID": 5460343,
+                                "RowVID": 226054,
+                                "SheetVID": null,
+                                "cellcode": "{P_02.06, r090, c010, s*}",
+                                "type": "m"
+                            }
+                        }
+                    }
+                },
+                "factValue": {
+                    "dimensions": {
+                        "eba_dim_3.4:CUS": "$CUS"
+                    },
+                    "propertiesFrom": [
+                        "datapoint"
+                    ]
+                },
+                "unit": {}
+            }
+        }
+    }
+}

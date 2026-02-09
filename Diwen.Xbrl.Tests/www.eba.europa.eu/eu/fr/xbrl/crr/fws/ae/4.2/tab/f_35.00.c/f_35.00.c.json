@@ -1,0 +1,188 @@
+{
+    "documentInfo": {
+        "documentType": "https://xbrl.org/2021/xbrl-csv",
+        "namespaces": {
+            "eba": "http://www.eba.europa.eu",
+            "eba_dim_3.4": "http://www.eba.europa.eu/xbrl/crr/dict/dim/3.4",
+            "eba_dim_4.0": "http://www.eba.europa.eu/xbrl/crr/dict/dim/4.0",
+            "eba_dim_4.2": "http://www.eba.europa.eu/xbrl/crr/dict/dim/4.2",
+            "eba_met": "http://www.eba.europa.eu/xbrl/crr/dict/met",
+            "eba_met_4.0": "http://www.eba.europa.eu/xbrl/crr/dict/met/4.0",
+            "eba_qCN": "http://www.eba.europa.eu/xbrl/crr/dict/dom/qCN",
+            "eba_qEC": "http://www.eba.europa.eu/xbrl/crr/dict/dom/qEC",
+            "eba_qTE": "http://www.eba.europa.eu/xbrl/crr/dict/dom/qTE",
+            "tc": "https://xbrl.org/CR/2025-10-07/tc",
+            "xs": "http://www.w3.org/2001/XMLSchema"
+        }
+    },
+    "tableTemplates": {
+        "F_35-00-c": {
+            "columns": {
+                "CBC": {
+                    "eba:documentation": {
+                        "KeyVariableID": "199098",
+                        "KeyVariableVID": "199098",
+                        "PropertyID": "1012400735",
+                        "headerCode": "0010",
+                        "headerDirection": "Z",
+                        "headerVID": "210554",
+                        "type": "s"
+                    },
+                    "tc:constraints": {
+                        "minLength": 1,
+                        "type": "xs:string"
+                    }
+                },
+                "datapoint": {
+                    "propertyGroups": {
+                        "dp111006": {
+                            "dimensions": {
+                                "concept": "eba_met:qEFG"
+                            },
+                            "eba:documentation": {
+                                "CellID": 132508,
+                                "ColumnVID": 225567,
+                                "FactVariableID": 111006,
+                                "FactVariableVersionID": 3222780,
+                                "RowVID": 82744,
+                                "SheetVID": null,
+                                "cellcode": "{F_35.00.c, r0010, c0010, s*}",
+                                "type": "b"
+                            }
+                        },
+                        "dp111007": {
+                            "dimensions": {
+                                "concept": "eba_met_4.0:qACN"
+                            },
+                            "eba:documentation": {
+                                "AllowedValue": {
+                                    "eba_qEC:qx2026": 1012405409,
+                                    "eba_qEC:qx2027": 1012405410,
+                                    "eba_qEC:qx2028": 1012405411,
+                                    "eba_qEC:qx2029": 1012405412,
+                                    "eba_qEC:qx2030": 1012405413,
+                                    "eba_qEC:qx2031": 1012405414,
+                                    "eba_qEC:qx2032": 1012405415,
+                                    "eba_qEC:qx2035": 1012405880
+                                },
+                                "CellID": 132509,
+                                "ColumnVID": 225568,
+                                "FactVariableID": 111007,
+                                "FactVariableVersionID": 3222781,
+                                "RowVID": 82744,
+                                "SheetVID": null,
+                                "cellcode": "{F_35.00.c, r0010, c0012, s*}",
+                                "type": "e"
+                            }
+                        },
+                        "dp55443": {
+                            "dimensions": {
+                                "concept": "eba_met:qGEC",
+                                "eba_dim_4.2:qCRA": "eba_qCN:qx2025"
+                            },
+                            "eba:documentation": {
+                                "CellID": 132513,
+                                "ColumnVID": 240513,
+                                "FactVariableID": 55443,
+                                "FactVariableVersionID": 5421446,
+                                "RowVID": 82744,
+                                "SheetVID": null,
+                                "cellcode": "{F_35.00.c, r0010, c0100, s*}",
+                                "type": "s"
+                            }
+                        },
+                        "dp55444": {
+                            "dimensions": {
+                                "concept": "eba_met:qGEC",
+                                "eba_dim_4.2:qCRA": "eba_qCN:qx2024"
+                            },
+                            "eba:documentation": {
+                                "CellID": 132515,
+                                "ColumnVID": 240515,
+                                "FactVariableID": 55444,
+                                "FactVariableVersionID": 5421723,
+                                "RowVID": 82744,
+                                "SheetVID": null,
+                                "cellcode": "{F_35.00.c, r0010, c0120, s*}",
+                                "type": "s"
+                            }
+                        },
+                        "dp55445": {
+                            "dimensions": {
+                                "concept": "eba_met:qGEC",
+                                "eba_dim_4.2:qCRA": "eba_qCN:qx2023"
+                            },
+                            "eba:documentation": {
+                                "CellID": 132517,
+                                "ColumnVID": 240517,
+                                "FactVariableID": 55445,
+                                "FactVariableVersionID": 5421724,
+                                "RowVID": 82744,
+                                "SheetVID": null,
+                                "cellcode": "{F_35.00.c, r0010, c0140, s*}",
+                                "type": "s"
+                            }
+                        },
+                        "dp55446": {
+                            "dimensions": {
+                                "concept": "eba_met:qCDF",
+                                "eba_dim_4.0:qEDA": "eba_qTE:qx2028",
+                                "eba_dim_4.2:qCRA": "eba_qCN:qx2025"
+                            },
+                            "eba:documentation": {
+                                "CellID": 132512,
+                                "ColumnVID": 240512,
+                                "FactVariableID": 55446,
+                                "FactVariableVersionID": 5421447,
+                                "RowVID": 82744,
+                                "SheetVID": null,
+                                "cellcode": "{F_35.00.c, r0010, c0090, s*}",
+                                "type": "s"
+                            }
+                        },
+                        "dp55447": {
+                            "dimensions": {
+                                "concept": "eba_met:qCDF",
+                                "eba_dim_4.2:qCRA": "eba_qCN:qx2024"
+                            },
+                            "eba:documentation": {
+                                "CellID": 132514,
+                                "ColumnVID": 240514,
+                                "FactVariableID": 55447,
+                                "FactVariableVersionID": 5421725,
+                                "RowVID": 82744,
+                                "SheetVID": null,
+                                "cellcode": "{F_35.00.c, r0010, c0110, s*}",
+                                "type": "s"
+                            }
+                        },
+                        "dp55448": {
+                            "dimensions": {
+                                "concept": "eba_met:qCDF",
+                                "eba_dim_4.2:qCRA": "eba_qCN:qx2023"
+                            },
+                            "eba:documentation": {
+                                "CellID": 132516,
+                                "ColumnVID": 240516,
+                                "FactVariableID": 55448,
+                                "FactVariableVersionID": 5421448,
+                                "RowVID": 82744,
+                                "SheetVID": null,
+                                "cellcode": "{F_35.00.c, r0010, c0130, s*}",
+                                "type": "s"
+                            }
+                        }
+                    }
+                },
+                "factValue": {
+                    "dimensions": {
+                        "eba_dim_3.4:CBC": "$CBC"
+                    },
+                    "propertiesFrom": [
+                        "datapoint"
+                    ]
+                }
+            }
+        }
+    }
+}

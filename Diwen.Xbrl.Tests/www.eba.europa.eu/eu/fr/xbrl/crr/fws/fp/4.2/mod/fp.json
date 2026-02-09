@@ -1,0 +1,244 @@
+{
+    "dimensions": {
+        "entity": "$entityID",
+        "language": "$baseLanguage",
+        "period": "$refPeriod@end"
+    },
+    "documentInfo": {
+        "documentType": "https://xbrl.org/2021/xbrl-csv",
+        "eba:documentation": {
+            "FromReferenceDate": "2026-03-31",
+            "ModuleVID": 498,
+            "ModuleVersion": "2.2.1",
+            "toReferenceDate": ""
+        },
+        "extends": [
+            "http://www.eba.europa.eu/eu/fr/xbrl/ext/2020/FilingIndicators.json",
+            "http://www.eba.europa.eu/eu/fr/xbrl/ext/2020/FootNotes.json",
+            "../tab/p_00.01/p_00.01.json",
+            "../tab/p_01.01/p_01.01.json",
+            "../tab/p_01.02/p_01.02.json",
+            "../tab/p_01.03/p_01.03.json",
+            "../tab/p_02.01/p_02.01.json",
+            "../tab/p_02.02/p_02.02.json",
+            "../tab/p_02.03/p_02.03.json",
+            "../tab/p_02.04/p_02.04.json",
+            "../tab/p_02.05/p_02.05.json",
+            "../tab/p_02.06/p_02.06.json",
+            "../tab/p_02.07/p_02.07.json",
+            "../tab/p_02.08/p_02.08.json",
+            "../tab/p_04.01/p_04.01.json",
+            "../tab/p_04.02/p_04.02.json",
+            "../tab/p_05.00/p_05.00.json"
+        ],
+        "features": {
+            "xbrl:allowedDuplicates": "complete"
+        },
+        "final": {
+            "dimensions": true,
+            "linkGroups": true,
+            "linkTypes": true,
+            "namespaces": true,
+            "parameters": true,
+            "tableTemplates": true,
+            "tables": true,
+            "taxonomy": true
+        },
+        "linkGroups": {
+            "_": "http://www.xbrl.org/2003/role/link"
+        },
+        "linkTypes": {
+            "footnote": "http://www.xbrl.org/2003/arcrole/fact-footnote"
+        },
+        "namespaces": {
+            "eba": "http://www.eba.europa.eu",
+            "iso4217": "http://www.xbrl.org/2003/iso4217",
+            "lei": "http://standards.iso.org/iso/17442",
+            "rs": "https://eurofiling.info/eu/rs",
+            "xbrl": "https://xbrl.org/2021"
+        },
+        "taxonomy": [
+            "http://www.eba.europa.eu/eu/fr/xbrl/crr/fws/fp/4.2/mod/fp.xsd"
+        ]
+    },
+    "parameterURL": "parameters.csv",
+    "parameters": {
+        "baseLanguage": "en"
+    },
+    "tables": {
+        "tFI": {
+            "template": "FilingIndicators",
+            "url": "FilingIndicators.csv"
+        },
+        "tFootNotes": {
+            "optional": true,
+            "template": "FootNotes",
+            "url": "FootNotes.csv"
+        },
+        "tP_00-01": {
+            "eba:documentation": {
+                "FilingIndicator": "P_00.01",
+                "TableKeyID": null,
+                "tableVID": 6847,
+                "templateID": 327
+            },
+            "optional": true,
+            "template": "P_00-01",
+            "url": "p_00.01.csv"
+        },
+        "tP_01-01": {
+            "eba:documentation": {
+                "FilingIndicator": "P_01.01",
+                "TableKeyID": null,
+                "tableVID": 6850,
+                "templateID": 328
+            },
+            "optional": true,
+            "template": "P_01-01",
+            "url": "p_01.01.csv"
+        },
+        "tP_01-02": {
+            "eba:documentation": {
+                "FilingIndicator": "P_01.02",
+                "TableKeyID": null,
+                "tableVID": 6887,
+                "templateID": 329
+            },
+            "optional": true,
+            "template": "P_01-02",
+            "url": "p_01.02.csv"
+        },
+        "tP_01-03": {
+            "eba:documentation": {
+                "FilingIndicator": "P_01.03",
+                "TableKeyID": null,
+                "tableVID": 6890,
+                "templateID": 330
+            },
+            "optional": true,
+            "template": "P_01-03",
+            "url": "p_01.03.csv"
+        },
+        "tP_02-01": {
+            "eba:documentation": {
+                "FilingIndicator": "P_02.01",
+                "TableKeyID": null,
+                "tableVID": 6909,
+                "templateID": 331
+            },
+            "optional": true,
+            "template": "P_02-01",
+            "url": "p_02.01.csv"
+        },
+        "tP_02-02": {
+            "eba:documentation": {
+                "FilingIndicator": "P_02.02",
+                "TableKeyID": null,
+                "tableVID": 6912,
+                "templateID": 332
+            },
+            "optional": true,
+            "template": "P_02-02",
+            "url": "p_02.02.csv"
+        },
+        "tP_02-03": {
+            "eba:documentation": {
+                "FilingIndicator": "P_02.03",
+                "TableKeyID": null,
+                "tableVID": 6916,
+                "templateID": 333
+            },
+            "optional": true,
+            "template": "P_02-03",
+            "url": "p_02.03.csv"
+        },
+        "tP_02-04": {
+            "eba:documentation": {
+                "FilingIndicator": "P_02.04",
+                "TableKeyID": null,
+                "tableVID": 6917,
+                "templateID": 334
+            },
+            "optional": true,
+            "template": "P_02-04",
+            "url": "p_02.04.csv"
+        },
+        "tP_02-05": {
+            "eba:documentation": {
+                "FilingIndicator": "P_02.05",
+                "TableKeyID": null,
+                "tableVID": 6919,
+                "templateID": 335
+            },
+            "optional": true,
+            "template": "P_02-05",
+            "url": "p_02.05.csv"
+        },
+        "tP_02-06": {
+            "eba:documentation": {
+                "FilingIndicator": "P_02.06",
+                "TableKeyID": 77,
+                "tableVID": 6923,
+                "templateID": 336
+            },
+            "optional": true,
+            "template": "P_02-06",
+            "url": "p_02.06.csv"
+        },
+        "tP_02-07": {
+            "eba:documentation": {
+                "FilingIndicator": "P_02.07",
+                "TableKeyID": null,
+                "tableVID": 6925,
+                "templateID": 337
+            },
+            "optional": true,
+            "template": "P_02-07",
+            "url": "p_02.07.csv"
+        },
+        "tP_02-08": {
+            "eba:documentation": {
+                "FilingIndicator": "P_02.08",
+                "TableKeyID": null,
+                "tableVID": 6926,
+                "templateID": 338
+            },
+            "optional": true,
+            "template": "P_02-08",
+            "url": "p_02.08.csv"
+        },
+        "tP_04-01": {
+            "eba:documentation": {
+                "FilingIndicator": "P_04.01",
+                "TableKeyID": null,
+                "tableVID": 6928,
+                "templateID": 604
+            },
+            "optional": true,
+            "template": "P_04-01",
+            "url": "p_04.01.csv"
+        },
+        "tP_04-02": {
+            "eba:documentation": {
+                "FilingIndicator": "P_04.02",
+                "TableKeyID": null,
+                "tableVID": 6936,
+                "templateID": 605
+            },
+            "optional": true,
+            "template": "P_04-02",
+            "url": "p_04.02.csv"
+        },
+        "tP_05-00": {
+            "eba:documentation": {
+                "FilingIndicator": "P_05.00",
+                "TableKeyID": null,
+                "tableVID": 6939,
+                "templateID": 612
+            },
+            "optional": true,
+            "template": "P_05-00",
+            "url": "p_05.00.csv"
+        }
+    }
+}
