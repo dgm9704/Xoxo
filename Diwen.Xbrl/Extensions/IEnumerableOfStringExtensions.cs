@@ -4,7 +4,7 @@
 //  Author:
 //       John Nordberg <john.nordberg@gmail.com>
 //
-//  Copyright (c) 2015-2024 John Nordberg
+//  Copyright (c) 2015-2026 John Nordberg
 //
 //  This program is free software: you can redistribute it and/or modify
 //  it under the terms of the GNU Lesser General Public License as published by
@@ -23,10 +23,10 @@ namespace Diwen.Xbrl.Extensions
 {
     using System.Collections.Generic;
 
-        /// <summary/>
+    /// <summary/>
     public static class IEnumerableOfStringExtensions
     {
-                /// <summary/>
+        /// <summary/>
         public static string Join(this IEnumerable<string> values, string separator)
         => values != null
             ? string.Join(separator ?? "", values)
