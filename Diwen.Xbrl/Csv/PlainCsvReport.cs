@@ -258,8 +258,13 @@
         }
 
         /// <summary/>
-        public static PlainCsvReport FromFile(string packagePath, Dictionary<string, TableDefinition> tableDefinitions, List<FilingIndicatorInfo> filingIndicatorInfos)
+        public static PlainCsvReport FromFile(
+            string packagePath,
+            ModuleDefinition moduleDefinition)
         {
+
+            var filingIndicatorInfos = moduleDefinition.FilingIndicatorInfos();
+            var tableDefinitions = moduleDefinition.TableDefinitions();
             var report = new PlainCsvReport();
             var reportFiles = ReadPackage(packagePath);
             var packagename = Path.GetFileNameWithoutExtension(packagePath);
@@ -645,24 +650,28 @@
         }
 
         /// <summary/>
-        public Xml.Report ToXbrlXml(Dictionary<string, TableDefinition> tableDefinitions,
-            Dictionary<string, string> dimensionDomain, KeyValuePair<string, string> typedDomainNamespace,
-            List<FilingIndicatorInfo> filingIndicators, HashSet<string> typedDomains,
+        public Xml.Report ToXbrlXml(
+            Dictionary<string, string> dimensionDomain,
+            KeyValuePair<string, string> typedDomainNamespace,
+            HashSet<string> typedDomains,
             ModuleDefinition moduleDefinition)
-            => ToXbrlXml(this, tableDefinitions, dimensionDomain, typedDomainNamespace, filingIndicators,
+            => ToXbrlXml(
+                this,
+                dimensionDomain,
+                typedDomainNamespace,
                 typedDomains,
                 moduleDefinition);
 
         /// <summary/>
         public static Xml.Report ToXbrlXml(
             PlainCsvReport report,
-            Dictionary<string, TableDefinition> tableDefinitions,
             Dictionary<string, string> dimensionDomain,
             KeyValuePair<string, string> typedDomainNamespace,
-            List<FilingIndicatorInfo> filingIndicators,
             HashSet<string> typedDomains,
             ModuleDefinition moduleDefinition)
         {
+            var tableDefinitions = moduleDefinition.TableDefinitions();
+            var filingIndicatorInfos = moduleDefinition.FilingIndicatorInfos();
             var xmlreport = new Xml.Report
             {
                 SchemaReference =
@@ -695,7 +704,7 @@
 
             var tabledata =
                 report.Data.Where(d => !string.IsNullOrEmpty(d.Value))
-                    .Where(d => filed.Contains(filingIndicators.Single(fi => fi.TemplateCode == d.Table).FilingIndicatorCode)).GroupBy(d => d.Table)
+                    .Where(d => filed.Contains(filingIndicatorInfos.Single(fi => fi.TemplateCode == d.Table).FilingIndicatorCode)).GroupBy(d => d.Table)
                     .ToDictionary(d => d.Key, d => d.ToArray());
 
             var usedContexts = new Dictionary<string, Context>();

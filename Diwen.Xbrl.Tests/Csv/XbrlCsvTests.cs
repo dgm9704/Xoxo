@@ -134,9 +134,7 @@ namespace Diwen.Xbrl.Tests.Csv
 
             var moduleDefinition = ModuleDefinition.FromFile(entrypoint);
 
-            var filingIndicators = moduleDefinition.FilingIndicatorInfos();
-
-            var report = Report.FromFile(packagePath, filingIndicators);
+            var report = Report.FromFile(packagePath, moduleDefinition);
 
             Assert.Equal("http://www.eba.europa.eu/eu/fr/xbrl/crr/fws/sbp/cir-2070-2016/2021-07-15/mod/sbp_cr_con.json", report.Entrypoint);
             Assert.Equal("lei:DUMMYLEI123456789012", report.Parameters["entityID"]);
@@ -233,9 +231,7 @@ namespace Diwen.Xbrl.Tests.Csv
 
             var moduleDefinition = ModuleDefinition.FromFile(entrypoint);
 
-            var filingIndicators = moduleDefinition.FilingIndicatorInfos();
-
-            var csvReport = Report.FromFile(reportPath, filingIndicators);
+            var csvReport = Report.FromFile(reportPath, moduleDefinition);
 
             var tableDefinitions = moduleDefinition.TableDefinitions();
 
@@ -245,8 +241,7 @@ namespace Diwen.Xbrl.Tests.Csv
 
             var typedDomainNamespace = KeyValuePair.Create("eba_typ", "http://www.eba.europa.eu/xbrl/crr/dict/typ");
 
-
-            var xmlReport = csvReport.ToXbrlXml(tableDefinitions, dimensionDomainInfo, typedDomainNamespace, filingIndicators, typedDomains, moduleDefinition);
+            var xmlReport = csvReport.ToXbrlXml(tableDefinitions, dimensionDomainInfo, typedDomainNamespace, typedDomains, moduleDefinition);
 
             var xmlReportPath = Path.ChangeExtension(Path.GetFileName(reportPath), ".xbrl");
             xmlReport.ToFile(xmlReportPath);

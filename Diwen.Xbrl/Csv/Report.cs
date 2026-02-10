@@ -222,8 +222,9 @@
         }
 
         /// <summary/>
-        public static Report FromFile(string packagePath, List<FilingIndicatorInfo> filingIndicatorInfos)
+        public static Report FromFile(string packagePath, ModuleDefinition moduleDefinition)
         {
+            var filingIndicatorInfos = moduleDefinition.FilingIndicatorInfos();
             var report = new Report();
             var reportFiles = ReadPackage(packagePath);
             var packagename = Path.GetFileNameWithoutExtension(packagePath);
@@ -562,10 +563,9 @@
             Dictionary<string, TableDefinition> tableDefinitions,
             Dictionary<string, string> dimensionDomain,
             KeyValuePair<string, string> typedDomainNamespace,
-            List<FilingIndicatorInfo> filingIndicators,
             HashSet<string> typedDomains,
             ModuleDefinition moduleDefinition)
-        => ToXbrlXml(this, tableDefinitions, dimensionDomain, typedDomainNamespace, filingIndicators, typedDomains, moduleDefinition);
+        => ToXbrlXml(this, tableDefinitions, dimensionDomain, typedDomainNamespace, typedDomains, moduleDefinition);
 
         /// <summary/>
         public static Xml.Report ToXbrlXml(
@@ -573,10 +573,10 @@
             Dictionary<string, TableDefinition> tableDefinitions,
             Dictionary<string, string> dimensionDomain,
             KeyValuePair<string, string> typedDomainNamespace,
-            List<FilingIndicatorInfo> filingIndicators,
             HashSet<string> typedDomains,
             ModuleDefinition moduleDefinition)
         {
+            var filingIndicatorInfos = moduleDefinition.FilingIndicatorInfos();
             var xmlreport = new Xml.Report
             {
                 SchemaReference = new SchemaReference("simple", moduleDefinition.DocumentInfo.Taxonomy.FirstOrDefault())
@@ -612,7 +612,7 @@
                 report.
                 Data.
                 Where(d => !string.IsNullOrEmpty(d.Value)).
-                Where(d => filed.Contains(filingIndicators.Single(fi => fi.TemplateCode == d.Table).FilingIndicatorCode)).
+                Where(d => filed.Contains(filingIndicatorInfos.Single(fi => fi.TemplateCode == d.Table).FilingIndicatorCode)).
                 GroupBy(d => d.Table).
                 ToDictionary(d => d.Key, d => d.ToArray());
 

@@ -59,11 +59,7 @@ namespace Diwen.Xbrl.Tests.Csv
 
             var moduleDefinition = ModuleDefinition.FromFile(entrypoint);
 
-            var filingIndicators = moduleDefinition.FilingIndicatorInfos();
-
-            var tableDefinitions = moduleDefinition.TableDefinitions();
-
-            var plainCsvReport = PlainCsvReport.FromFile(reportPath, tableDefinitions, filingIndicators);
+            var plainCsvReport = PlainCsvReport.FromFile(reportPath, moduleDefinition);
 
             var dimensionDomainInfo = ReadDimensionDomainInfo("EBA40_DimensionDomain.csv");
 
@@ -71,7 +67,7 @@ namespace Diwen.Xbrl.Tests.Csv
 
             var typedDomainNamespace = KeyValuePair.Create("eba_typ", "http://www.eba.europa.eu/xbrl/crr/dict/typ"); //???
 
-            var xmlReport = plainCsvReport.ToXbrlXml(tableDefinitions, dimensionDomainInfo, typedDomainNamespace, filingIndicators, typedDomains, moduleDefinition);
+            var xmlReport = plainCsvReport.ToXbrlXml(dimensionDomainInfo, typedDomainNamespace, typedDomains, moduleDefinition);
 
             var xmlReportPath = Path.ChangeExtension(Path.GetFileName(reportPath), ".xbrl");
             xmlReport.ToFile(xmlReportPath);
