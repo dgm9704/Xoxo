@@ -1,6 +1,7 @@
 namespace Diwen.Xbrl.Csv.Taxonomy
 {
     using System.Collections.Generic;
+    using System.Collections.ObjectModel;
     using System.IO;
     using System.Linq;
     using System.Text.Json;
@@ -61,14 +62,15 @@ namespace Diwen.Xbrl.Csv.Taxonomy
             return tableDefinitions;
         }
 
-        private List<FilingIndicatorInfo> filingIndicatorInfos;
+        private Dictionary<string, Filing> filingInfo;
 
         /// <summary /> 
-        public List<FilingIndicatorInfo> FilingIndicatorInfos()
+        public Dictionary<string, Filing> FilingInfo()
         {
-            if (filingIndicatorInfos == null)
+            if (filingInfo == null)
             {
-                filingIndicatorInfos = [];
+                filingInfo = [];
+
                 foreach (var table in this.Tables)
                 {
                     switch (table.Value.Template)
@@ -78,13 +80,13 @@ namespace Diwen.Xbrl.Csv.Taxonomy
                             break;
 
                         default:
-                            filingIndicatorInfos.Add(
-                                new FilingIndicatorInfo
+                            filingInfo.Add(
+                                table.Value.Template,
+                                new Filing
                                 {
-                                    TableCode = table.Key,
-                                    TemplateCode = table.Value.Template,
+                                    Template = table.Value.Template,
                                     Url = table.Value.Url,
-                                    FilingIndicatorCode = table.Value.EbaDocumentation.Any()
+                                    Indicator = table.Value.EbaDocumentation.Any()
                                         ? table.Value.EbaDocumentation["FilingIndicator"].ToString()
                                         : string.Join('.', table.Value.Template.Split('-').Take(2)),
                                 });
@@ -92,12 +94,9 @@ namespace Diwen.Xbrl.Csv.Taxonomy
                             break;
                     }
                 }
-
-
-
             }
 
-            return filingIndicatorInfos;
+            return filingInfo;
         }
 
     }
