@@ -192,11 +192,11 @@
             ModuleDefinition moduleDefinition)
         {
             var reportdata = new Dictionary<string, Stream>();
-            var filingIndicatorInfos = moduleDefinition.FilingInfo();
+            var filingInfo = moduleDefinition.FilingInfo();
             var tabledata = data.GroupBy(d => d.Table);
             foreach (var table in tabledata)
             {
-                var filename = filingIndicatorInfos.Single(fi => fi.Template == table.Key).Url;
+                var filename = filingInfo[table.Key].Url;
 
                 var builder = new StringBuilder("datapoint,factvalue");
                 foreach (var dimension in table.First().Dimensions.Keys)
@@ -224,7 +224,7 @@
         /// <summary/>
         public static Report FromFile(string packagePath, ModuleDefinition moduleDefinition)
         {
-            var filingIndicatorInfos = moduleDefinition.FilingInfo();
+            var filingInfo = moduleDefinition.FilingInfo();
             var report = new Report();
             var reportFiles = ReadPackage(packagePath);
             var packagename = Path.GetFileNameWithoutExtension(packagePath);
@@ -235,14 +235,14 @@
 
             foreach (var filingIndicatorCode in report.FilingIndicators.Where(fi => fi.Value).Select(fi => fi.Key))
             {
-                foreach (var filingIndicatorInfo in filingIndicatorInfos.Where(f => f.Indicator == filingIndicatorCode))
+                foreach (var filing in filingInfo.Values.Where(f => f.Indicator == filingIndicatorCode))
                 {
-                    var url = filingIndicatorInfo.Url;
-                    var templateCode = filingIndicatorInfo.Template;
+                    var url = filing.Url;
+                    var templateCode = filing.Template;
                     var tablefile = reportFiles.SingleOrDefault(f => Path.GetFileName(f.Key) == url);
                     if (tablefile.Key != default)
                     {
-                        var tabledata = ReadTableData(filingIndicatorInfo.Template, tablefile.Value);
+                        var tabledata = ReadTableData(filing.Template, tablefile.Value);
                         report.Data.AddRange(tabledata);
                     }
                 }
@@ -515,11 +515,11 @@
                 Scenario.ExplicitMembers.First().Dimension.Namespace);
 
             var tableDefinitions = moduleDefinition.TableDefinitions();
-            var filingIndicatorInfos = moduleDefinition.FilingInfo();
+            var filingInfo = moduleDefinition.FilingInfo();
 
             var reportedTables =
                 tableDefinitions.
-                Where(table => report.FilingIndicators.GetValueOrDefault(filingIndicatorInfos.Single(fi => fi.Template == table.Key).Indicator, false)).
+                Where(table => report.FilingIndicators.GetValueOrDefault(filingInfo[table.Key].Indicator, false)).
                 ToDictionary(t => t.Key, t => t.Value);
 
             var tablesOpendimensions =
@@ -576,7 +576,7 @@
             HashSet<string> typedDomains,
             ModuleDefinition moduleDefinition)
         {
-            var filingIndicatorInfos = moduleDefinition.FilingInfo();
+            var filingInfo = moduleDefinition.FilingInfo();
             var xmlreport = new Xml.Report
             {
                 SchemaReference = new SchemaReference("simple", moduleDefinition.DocumentInfo.Taxonomy.FirstOrDefault())
@@ -612,7 +612,7 @@
                 report.
                 Data.
                 Where(d => !string.IsNullOrEmpty(d.Value)).
-                Where(d => filed.Contains(filingIndicatorInfos.Single(fi => fi.Template == d.Table).Indicator)).
+                Where(d => filed.Contains(filingInfo[d.Table].Indicator)).
                 GroupBy(d => d.Table).
                 ToDictionary(d => d.Key, d => d.ToArray());
 

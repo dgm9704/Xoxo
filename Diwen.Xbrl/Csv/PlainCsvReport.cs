@@ -213,13 +213,13 @@
             ModuleDefinition moduleDefinition)
         {
             var reportdata = new Dictionary<string, Stream>();
-            var filingIndicatorInfos = moduleDefinition.FilingInfo();
+            var filingInfo = moduleDefinition.FilingInfo();
             var tableDefinitions = moduleDefinition.TableDefinitions();
 
             var tabledata = data.GroupBy(d => d.Table);
             foreach (var table in tabledata)
             {
-                var filename = filingIndicatorInfos.Single(fi => fi.Template == table.Key).Url;
+                var filename = filingInfo[table.Key].Url;
 
                 HashSet<string> headers = [];
                 var tableDefinition = tableDefinitions[table.Key];
@@ -263,7 +263,7 @@
             ModuleDefinition moduleDefinition)
         {
 
-            var filingIndicatorInfos = moduleDefinition.FilingInfo();
+            var filingInfo = moduleDefinition.FilingInfo();
             var tableDefinitions = moduleDefinition.TableDefinitions();
             var report = new PlainCsvReport();
             var reportFiles = ReadPackage(packagePath);
@@ -276,10 +276,10 @@
 
             foreach (var filingIndicatorCode in report.FilingIndicators.Where(fi => fi.Value).Select(fi => fi.Key))
             {
-                foreach (var filingIndicatorInfo in filingIndicatorInfos.Where(f => f.Indicator == filingIndicatorCode))
+                foreach (var filing in filingInfo.Values.Where(f => f.Indicator == filingIndicatorCode))
                 {
-                    var url = filingIndicatorInfo.Url;
-                    var templateCode = filingIndicatorInfo.Template;
+                    var url = filing.Url;
+                    var templateCode = filing.Template;
                     var tablefile = reportFiles.Single(f => Path.GetFileName(f.Key) == url);
                     var tableDefinition = tableDefinitions[templateCode];
                     var tabledata = ReadTableData(templateCode, tablefile.Value, tableDefinition);
@@ -595,11 +595,11 @@
 
             var tableDefinitions = moduleDefinition.TableDefinitions();
 
-            var filingIndicatorInfos = moduleDefinition.FilingInfo();
+            var filingInfo = moduleDefinition.FilingInfo();
 
             var reportedTables =
                 tableDefinitions
-                    .Where(table => report.FilingIndicators.GetValueOrDefault(filingIndicatorInfos.Single(fi => fi.Template == table.Key).Indicator, false))
+                    .Where(table => report.FilingIndicators.GetValueOrDefault(filingInfo[table.Key].Indicator, false))
                     .ToDictionary(t => t.Key, t => t.Value);
 
             var tablesOpendimensions =
@@ -671,7 +671,7 @@
             ModuleDefinition moduleDefinition)
         {
             var tableDefinitions = moduleDefinition.TableDefinitions();
-            var filingIndicatorInfos = moduleDefinition.FilingInfo();
+            var filingInfo = moduleDefinition.FilingInfo();
             var xmlreport = new Xml.Report
             {
                 SchemaReference =
@@ -704,7 +704,7 @@
 
             var tabledata =
                 report.Data.Where(d => !string.IsNullOrEmpty(d.Value))
-                    .Where(d => filed.Contains(filingIndicatorInfos.Single(fi => fi.Template == d.Table).Indicator)).GroupBy(d => d.Table)
+                    .Where(d => filed.Contains(filingInfo[d.Table].Indicator)).GroupBy(d => d.Table)
                     .ToDictionary(d => d.Key, d => d.ToArray());
 
             var usedContexts = new Dictionary<string, Context>();
