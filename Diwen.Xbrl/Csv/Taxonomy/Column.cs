@@ -3,9 +3,10 @@ namespace Diwen.Xbrl.Csv.Taxonomy
     using System.Collections.Generic;
     using System.Linq;
     using System.Text.Json.Serialization;
+    using Diwen.Xbrl.Json;
 
     /// <summary/>
-    public class Column
+    public class Column : EsaDocumented
     {
         /// <summary/>
         [JsonPropertyName("decimals")]
@@ -18,10 +19,6 @@ namespace Diwen.Xbrl.Csv.Taxonomy
         private readonly HashSet<string> excludeDimensions = new(["concept", "unit"]);
 
         private Dictionary<string, string> dimensionValues;
-
-        /// <summary/>
-        [JsonPropertyName("eba:documentation")]
-        public Dictionary<string, object> EbaDocumentation { get; set; } = [];
 
         /// <summary/>
         public Dictionary<string, string> DimensionValues

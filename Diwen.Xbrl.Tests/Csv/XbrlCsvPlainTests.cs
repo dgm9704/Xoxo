@@ -87,7 +87,15 @@ namespace Diwen.Xbrl.Tests.Csv
         {
             var plainCsvReportPath = XmlToPlainCsv(inXmlReportPath);
             var outXmlReportPath = PlainCsvToXml(plainCsvReportPath);
-            var comparison = ReportComparer.ReportObjects(inXmlReportPath, outXmlReportPath);
+
+            var a = Xbrl.Xml.Report.FromFile(inXmlReportPath, removeUnusedObjects: false, collapseDuplicateContexts: false, removeDuplicateFacts: false);
+            var b = Xbrl.Xml.Report.FromFile(outXmlReportPath, removeUnusedObjects: false, collapseDuplicateContexts: false, removeDuplicateFacts: false);
+
+            var comparison = ReportComparer.ReportObjects(
+                a,
+                b,
+                ComparisonTypes.Basic,
+                BasicComparisons.ContextCount);
             Assert.True(comparison.Result);
             return outXmlReportPath;
         }

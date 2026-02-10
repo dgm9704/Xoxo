@@ -233,15 +233,13 @@ namespace Diwen.Xbrl.Tests.Csv
 
             var csvReport = Report.FromFile(reportPath, moduleDefinition);
 
-            var tableDefinitions = moduleDefinition.TableDefinitions();
-
             var dimensionDomainInfo = ReadDimensionDomainInfo("EBA32_DimensionDomain.csv");
 
             var typedDomains = ReadTypedDomainInfo("EBA32_TypedDomain.csv");
 
             var typedDomainNamespace = KeyValuePair.Create("eba_typ", "http://www.eba.europa.eu/xbrl/crr/dict/typ");
 
-            var xmlReport = csvReport.ToXbrlXml(tableDefinitions, dimensionDomainInfo, typedDomainNamespace, typedDomains, moduleDefinition);
+            var xmlReport = csvReport.ToXbrlXml(dimensionDomainInfo, typedDomainNamespace, typedDomains, moduleDefinition);
 
             var xmlReportPath = Path.ChangeExtension(Path.GetFileName(reportPath), ".xbrl");
             xmlReport.ToFile(xmlReportPath);

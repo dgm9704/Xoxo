@@ -1,14 +1,12 @@
 namespace Diwen.Xbrl.Csv.Taxonomy
 {
-    using System.Collections.Generic;
+    using System.Linq;
     using System.Text.Json.Serialization;
+    using Diwen.Xbrl.Json;
 
     /// <summary/>
-    public class Table
+    public class Table : EsaDocumented
     {
-        /// <summary/>
-        [JsonPropertyName("eba:documentation")]
-        public Dictionary<string, object> EbaDocumentation { get; set; } = [];
 
         /// <summary/>
         [JsonPropertyName("optional")]
@@ -22,5 +20,21 @@ namespace Diwen.Xbrl.Csv.Taxonomy
         [JsonPropertyName("url")]
         public string Url { get; set; }
 
+        private string filingIndicator;
+
+        /// <summary />
+        [JsonIgnore]
+        public string FilingIndicator
+        {
+            get
+            {
+                filingIndicator ??=
+                    EsaDocumentation != null && EsaDocumentation.ContainsKey("FilingIndicator")
+                    ? EsaDocumentation["FilingIndicator"].ToString()
+                    : string.Join('.', Template.Split('-').Take(2)); // won't work for EIOPA
+
+                return filingIndicator;
+            }
+        }
     }
 }

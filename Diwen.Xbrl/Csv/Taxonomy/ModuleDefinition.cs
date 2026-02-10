@@ -71,9 +71,9 @@ namespace Diwen.Xbrl.Csv.Taxonomy
             {
                 filingInfo = [];
 
-                foreach (var table in this.Tables)
+                foreach (var table in this.Tables.Values)
                 {
-                    switch (table.Value.Template)
+                    switch (table.Template)
                     {
                         case "FootNotes":
                         case "FilingIndicators":
@@ -81,14 +81,12 @@ namespace Diwen.Xbrl.Csv.Taxonomy
 
                         default:
                             filingInfo.Add(
-                                table.Value.Template,
+                                table.Template,
                                 new Filing
                                 {
-                                    Template = table.Value.Template,
-                                    Url = table.Value.Url,
-                                    Indicator = table.Value.EbaDocumentation.Any()
-                                        ? table.Value.EbaDocumentation["FilingIndicator"].ToString()
-                                        : string.Join('.', table.Value.Template.Split('-').Take(2)),
+                                    Template = table.Template,
+                                    Url = table.Url,
+                                    Indicator = table.FilingIndicator,
                                 });
 
                             break;

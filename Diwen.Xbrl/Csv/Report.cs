@@ -560,23 +560,22 @@
 
         /// <summary/>
         public Xml.Report ToXbrlXml(
-            Dictionary<string, TableDefinition> tableDefinitions,
             Dictionary<string, string> dimensionDomain,
             KeyValuePair<string, string> typedDomainNamespace,
             HashSet<string> typedDomains,
             ModuleDefinition moduleDefinition)
-        => ToXbrlXml(this, tableDefinitions, dimensionDomain, typedDomainNamespace, typedDomains, moduleDefinition);
+        => ToXbrlXml(this, dimensionDomain, typedDomainNamespace, typedDomains, moduleDefinition);
 
         /// <summary/>
         public static Xml.Report ToXbrlXml(
             Report report,
-            Dictionary<string, TableDefinition> tableDefinitions,
             Dictionary<string, string> dimensionDomain,
             KeyValuePair<string, string> typedDomainNamespace,
             HashSet<string> typedDomains,
             ModuleDefinition moduleDefinition)
         {
             var filingInfo = moduleDefinition.FilingInfo();
+            var tableDefinitions = moduleDefinition.TableDefinitions();
             var xmlreport = new Xml.Report
             {
                 SchemaReference = new SchemaReference("simple", moduleDefinition.DocumentInfo.Taxonomy.FirstOrDefault())
