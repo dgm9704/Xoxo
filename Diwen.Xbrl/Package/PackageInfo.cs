@@ -19,16 +19,16 @@
 //  You should have received a copy of the GNU Lesser General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-namespace Diwen.Xbrl.Csv.Taxonomy
+namespace Diwen.Xbrl.Package
 {
-    using System.Collections.Generic;
     using System.Text.Json.Serialization;
 
     /// <summary/>
-    public class Datapoint
+    public class PackageInfo
     {
         /// <summary/>
-        [JsonPropertyName("propertyGroups")]
-        public Dictionary<string, PropertyGroup> PropertyGroups { get; set; } = [];
+        [JsonPropertyName("documentInfo")]
+        public DocumentInfo DocumentInfo { get; set; }
     }
+
 }

@@ -1,5 +1,5 @@
 //
-//  ScenarioTests.cs
+//  SegmentTests.cs
 //
 //  Author:
 //       John Nordberg <john.nordberg@gmail.com>

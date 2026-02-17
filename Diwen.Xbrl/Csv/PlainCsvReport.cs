@@ -1,4 +1,25 @@
-﻿namespace Diwen.Xbrl.Csv
+﻿//
+//  This file is part of Diwen.Xbrl.
+//
+//  Author:
+//       John Nordberg <john.nordberg@gmail.com>
+//
+//  Copyright (c) 2015-2026 John Nordberg
+//
+//  This program is free software: you can redistribute it and/or modify
+//  it under the terms of the GNU Lesser General Public License as published by
+//  the Free Software Foundation, either version 3 of the License, or
+//  (at your option) any later version.
+//
+//  This program is distributed in the hope that it will be useful,
+//  but WITHOUT ANY WARRANTY; without even the implied warranty of
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+//  GNU Lesser General Public License for more details.
+//
+//  You should have received a copy of the GNU Lesser General Public License
+//  along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+namespace Diwen.Xbrl.Csv
 {
     using System;
     using System.Collections.Generic;
@@ -14,6 +35,7 @@
     using Diwen.Xbrl.Csv.Taxonomy;
     using Diwen.Xbrl.Extensions;
     using Diwen.Xbrl.Xml;
+    using Diwen.Xbrl.Package;
 
     /// <summary/>
     public class PlainCsvReport
@@ -173,7 +195,7 @@
                 DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingDefault
             };
 
-            JsonSerializer.Serialize<ReportInfo>(stream, reportInfo, options);
+            JsonSerializer.Serialize(stream, reportInfo, options);
             stream.Position = 0;
             return stream;
         }
@@ -576,7 +598,7 @@
             };
 
             var prefix = moduleDefinition.DocumentInfo.Namespaces
-                .FirstOrDefault(ns => ns.Value == xmlReport.Entity.Identifier.Scheme).Key;
+                .FirstOrDefault(ns => ns.Value.ToString() == xmlReport.Entity.Identifier.Scheme).Key;
             var identifier = xmlReport.Entity.Identifier.Value;
             report.Parameters.Add("entityID", $"{prefix}:{identifier}");
             report.Parameters.Add("refPeriod", xmlReport.Period.Instant.ToString("yyyy-MM-dd"));
@@ -678,11 +700,11 @@
             var xmlreport = new Xml.Report
             {
                 SchemaReference =
-                    new SchemaReference("simple", moduleDefinition.DocumentInfo.Taxonomy.FirstOrDefault())
+                    new SchemaReference("simple", moduleDefinition.DocumentInfo.Taxonomy.FirstOrDefault()?.ToString())
             };
 
             foreach (var ns in moduleDefinition.DocumentInfo.Namespaces)
-                xmlreport.Namespaces.AddNamespace(ns.Key, ns.Value);
+                xmlreport.Namespaces.AddNamespace(ns.Key, ns.Value.ToString());
 
             var idParts = report.Parameters["entityID"].Split(':');
             var idNs = xmlreport.Namespaces.LookupNamespace(idParts.First());

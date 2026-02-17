@@ -1,5 +1,5 @@
-﻿//
-//  This file is part of Diwen.xbrl.
+//
+//  This file is part of Diwen.Xbrl.
 //
 //  Author:
 //       John Nordberg <john.nordberg@gmail.com>
@@ -19,24 +19,27 @@
 //  You should have received a copy of the GNU Lesser General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-namespace Diwen.Xbrl.Xml
+namespace Diwen.Xbrl.Package
 {
-    using System.Collections.Generic;
+    using System.Text.Json.Serialization;
 
-    readonly struct ReportInfo
+    /// <summary/>
+    public class EbaGeneratingSoftwareInformation
     {
-        public string TaxonomyVersion { get; }
+        /// <summary/>
+        [JsonPropertyName("eba:softwareId")]
+        public string EbaSoftwareId { get; set; }
 
-        public string InstanceGenerator { get; }
+        /// <summary/>
+        [JsonPropertyName("eba:softwareVersion")]
+        public string EbaSoftwareVersion { get; set; }
 
-        public List<string> Comments { get; }
+        /// <summary/>
+        [JsonPropertyName("eba:softwareCreationDate")]
+        public string EbaSoftwareCreationDate { get; set; }
 
-        public ReportInfo(string taxonomyVersion, string instanceGenerator, List<string> comments)
-            : this()
-        {
-            TaxonomyVersion = taxonomyVersion;
-            InstanceGenerator = instanceGenerator;
-            Comments = comments;
-        }
+        /// <summary/>
+        [JsonPropertyName("eba:softwareAdditionalInfo")]
+        public string EbaSoftwareAdditionalInfo { get; set; }
     }
 }

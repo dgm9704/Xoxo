@@ -1,5 +1,5 @@
 //
-//  ScenarioTests.cs
+//  XbrlJsonTests.cs
 //
 //  Author:
 //       John Nordberg <john.nordberg@gmail.com>

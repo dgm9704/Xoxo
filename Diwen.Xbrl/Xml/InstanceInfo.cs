@@ -1,5 +1,5 @@
-//
-//  This file is part of Diwen.Xbrl.
+﻿//
+//  This file is part of Diwen.xbrl.
 //
 //  Author:
 //       John Nordberg <john.nordberg@gmail.com>
@@ -19,16 +19,24 @@
 //  You should have received a copy of the GNU Lesser General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-namespace Diwen.Xbrl.Csv.Taxonomy
+namespace Diwen.Xbrl.Xml
 {
     using System.Collections.Generic;
-    using System.Text.Json.Serialization;
 
-    /// <summary/>
-    public class Datapoint
+    readonly struct InstanceInfo
     {
-        /// <summary/>
-        [JsonPropertyName("propertyGroups")]
-        public Dictionary<string, PropertyGroup> PropertyGroups { get; set; } = [];
+        public string TaxonomyVersion { get; }
+
+        public string InstanceGenerator { get; }
+
+        public List<string> Comments { get; }
+
+        public InstanceInfo(string taxonomyVersion, string instanceGenerator, List<string> comments)
+            : this()
+        {
+            TaxonomyVersion = taxonomyVersion;
+            InstanceGenerator = instanceGenerator;
+            Comments = comments;
+        }
     }
 }

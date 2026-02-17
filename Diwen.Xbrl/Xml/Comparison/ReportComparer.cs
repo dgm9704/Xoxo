@@ -117,7 +117,7 @@ namespace Diwen.Xbrl.Xml.Comparison
         => !(
                 (report.Basics != null && report.Basics.Any())
                 || (report.Contexts != null && (report.Contexts.Item1.Any() || report.Contexts.Item2.Any()))
-                || (report.Facts != null && (report.Facts.Item1.Any()) || report.Facts.Item2.Any())
+                || (report.Facts != null && (report.Facts.Item1.Any() || report.Facts.Item2.Any()))
                 || (report.DomainNamespaces != null && (report.DomainNamespaces.Item1.Any() || report.DomainNamespaces.Item2.Any()))
                 || (report.Units != null && (report.Units.Item1.Any() || report.Units.Item2.Any()))
                 || (report.Entities != null && (report.Entities.Item1.Any() || report.Entities.Item2.Any()))

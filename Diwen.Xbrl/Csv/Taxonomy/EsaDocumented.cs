@@ -22,37 +22,30 @@
 namespace Diwen.Xbrl.Csv.Taxonomy
 {
     using System.Collections.Generic;
-    using System.Linq;
+    using System.Text.Json;
     using System.Text.Json.Serialization;
 
     /// <summary/>
-    public class PropertyGroup : EsaDocumented
+    public class EsaDocumented
     {
-        /// <summary/>
-        [JsonPropertyName("decimals")]
-        public string Decimals { get; set; }
+        private Dictionary<string, object> esaDocumentation;
 
         /// <summary/>
-        [JsonPropertyName("dimensions")]
-        public Dictionary<string, string> Dimensions { get; set; }
-
-        private readonly HashSet<string> excludeDimensions = ["concept", "unit"];
-
-        private Dictionary<string, string> dimensionValues;
+        [JsonExtensionData]
+        public Dictionary<string, JsonElement> ExtensionData { get; set; }
 
         /// <summary/>
-        public Dictionary<string, string> DimensionValues
+        [JsonIgnore]
+        public Dictionary<string, object> EsaDocumentation
         {
             get
             {
-                dimensionValues ??=
-                    Dimensions.
-                    Where(d => !excludeDimensions.Contains(d.Key)).
-                    ToDictionary(
-                        d => d.Key.Split(':').Last(),
-                        d => d.Value.Split(':').Last());
+                esaDocumentation ??=
+                    ExtensionData != null
+                    ? JsonSerializer.Deserialize<Dictionary<string, object>>(ExtensionData["eba:documentation"])
+                    : [];
 
-                return dimensionValues;
+                return esaDocumentation;
             }
         }
     }

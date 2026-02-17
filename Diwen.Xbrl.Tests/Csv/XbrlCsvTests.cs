@@ -1,5 +1,5 @@
 //
-//  ScenarioTests.cs
+//  XbrlCsvTests.cs
 //
 //  Author:
 //       John Nordberg <john.nordberg@gmail.com>

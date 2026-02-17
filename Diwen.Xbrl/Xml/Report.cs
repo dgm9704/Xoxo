@@ -742,7 +742,7 @@ namespace Diwen.Xbrl.Xml
             OmitXmlDeclaration = !OutputXmlDeclaration
         };
 
-        static ReportInfo GetReportInfo(Stream stream)
+        static InstanceInfo GetReportInfo(Stream stream)
         {
             string taxonomyVersion = null;
             string instanceGenerator = null;
@@ -781,10 +781,10 @@ namespace Diwen.Xbrl.Xml
                 }
                 while (!content);
             }
-            return new ReportInfo(taxonomyVersion, instanceGenerator, comments);
+            return new InstanceInfo(taxonomyVersion, instanceGenerator, comments);
         }
 
-        static void SetReportInfo(Report report, ReportInfo info)
+        static void SetReportInfo(Report report, InstanceInfo info)
         {
             if (!string.IsNullOrEmpty(info.TaxonomyVersion))
                 report.TaxonomyVersion = info.TaxonomyVersion;
