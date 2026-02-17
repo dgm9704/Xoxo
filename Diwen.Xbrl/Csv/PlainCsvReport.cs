@@ -280,7 +280,7 @@
                 {
                     var url = filing.Url;
                     var templateCode = filing.Template;
-                    var tablefile = reportFiles.Single(f => Path.GetFileName(f.Key) == url);
+                    var tablefile = reportFiles.SingleOrDefault(f => Path.GetFileName(f.Key) == url);
                     var tableDefinition = tableDefinitions[templateCode];
                     var tabledata = ReadTableData(templateCode, tablefile.Value, tableDefinition);
                     report.Data.AddRange(tabledata);
