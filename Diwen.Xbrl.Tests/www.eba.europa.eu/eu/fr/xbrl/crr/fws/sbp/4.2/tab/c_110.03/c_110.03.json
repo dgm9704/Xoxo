@@ -1,0 +1,93 @@
+{
+    "documentInfo": {
+        "documentType": "https://xbrl.org/2021/xbrl-csv",
+        "namespaces": {
+            "eba": "http://www.eba.europa.eu",
+            "eba_BT": "http://www.eba.europa.eu/xbrl/crr/dict/dom/BT",
+            "eba_dim_3.4": "http://www.eba.europa.eu/xbrl/crr/dict/dim/3.4",
+            "eba_dim_4.0": "http://www.eba.europa.eu/xbrl/crr/dict/dim/4.0",
+            "eba_dim_4.2": "http://www.eba.europa.eu/xbrl/crr/dict/dim/4.2",
+            "eba_met": "http://www.eba.europa.eu/xbrl/crr/dict/met",
+            "eba_qAP": "http://www.eba.europa.eu/xbrl/crr/dict/dom/qAP",
+            "eba_qCA": "http://www.eba.europa.eu/xbrl/crr/dict/dom/qCA",
+            "eba_qOR": "http://www.eba.europa.eu/xbrl/crr/dict/dom/qOR",
+            "eba_qPL": "http://www.eba.europa.eu/xbrl/crr/dict/dom/qPL",
+            "eba_qTR": "http://www.eba.europa.eu/xbrl/crr/dict/dom/qTR",
+            "tc": "https://xbrl.org/CR/2025-10-07/tc",
+            "xs": "http://www.w3.org/2001/XMLSchema"
+        }
+    },
+    "tableTemplates": {
+        "C_110-03": {
+            "columns": {
+                "PBE": {
+                    "eba:documentation": {
+                        "KeyVariableID": "199116",
+                        "KeyVariableVID": "199116",
+                        "PropertyID": "1012400825",
+                        "headerCode": "0010",
+                        "headerDirection": "Z",
+                        "headerVID": "201361",
+                        "type": "s"
+                    },
+                    "tc:constraints": {
+                        "minLength": 1,
+                        "type": "xs:string"
+                    }
+                },
+                "datapoint": {
+                    "propertyGroups": {
+                        "dp5488369": {
+                            "decimals": "$decimalsMonetary",
+                            "dimensions": {
+                                "concept": "eba_met:qIJL",
+                                "eba_dim_3.4:HYV": "eba_BT:x10",
+                                "eba_dim_4.0:qAEA": "eba_qCA:qx2000",
+                                "eba_dim_4.0:qJNL": "eba_qPL:qx2072",
+                                "eba_dim_4.0:qLHL": "eba_qTR:qx2003",
+                                "eba_dim_4.0:qLNK": "eba_qAP:qx2133",
+                                "eba_dim_4.0:qZZX": "eba_qOR:qx2007",
+                                "eba_dim_4.2:qMRW": "eba_qAP:qx2133",
+                                "unit": "$unit"
+                            },
+                            "eba:documentation": {
+                                "CellID": 40388,
+                                "ColumnVID": 241675,
+                                "FactVariableID": 5488369,
+                                "FactVariableVersionID": 5488369,
+                                "RowVID": null,
+                                "SheetVID": null,
+                                "cellcode": "{C_110.03, r*, c0060, s*}",
+                                "type": "m"
+                            }
+                        }
+                    }
+                },
+                "factValue": {
+                    "dimensions": {
+                        "eba_dim_3.4:PBE": "$PBE",
+                        "eba_dim_4.2:qNED": "$qNED"
+                    },
+                    "propertiesFrom": [
+                        "datapoint"
+                    ]
+                },
+                "qNED": {
+                    "eba:documentation": {
+                        "KeyVariableID": "3531133",
+                        "KeyVariableVID": "3531133",
+                        "PropertyID": "1012410619",
+                        "headerCode": "0010",
+                        "headerDirection": "X",
+                        "headerVID": "241674",
+                        "type": "d"
+                    },
+                    "tc:constraints": {
+                        "type": "xs:date"
+                    }
+                },
+                "unit": {}
+            }
+        }
+    }
+}

@@ -1,0 +1,90 @@
+{
+    "documentInfo": {
+        "documentType": "https://xbrl.org/2021/xbrl-csv",
+        "namespaces": {
+            "eba": "http://www.eba.europa.eu",
+            "eba_TR": "http://www.eba.europa.eu/xbrl/crr/dict/dom/TR",
+            "eba_dim_3.4": "http://www.eba.europa.eu/xbrl/crr/dict/dim/3.4",
+            "eba_dim_4.0": "http://www.eba.europa.eu/xbrl/crr/dict/dim/4.0",
+            "eba_met": "http://www.eba.europa.eu/xbrl/crr/dict/met",
+            "eba_qOR": "http://www.eba.europa.eu/xbrl/crr/dict/dom/qOR",
+            "eba_qRF": "http://www.eba.europa.eu/xbrl/crr/dict/dom/qRF",
+            "tc": "https://xbrl.org/CR/2025-10-07/tc",
+            "xs": "http://www.w3.org/2001/XMLSchema"
+        }
+    },
+    "tableTemplates": {
+        "K_60-00-c": {
+            "columns": {
+                "datapoint": {
+                    "propertyGroups": {
+                        "dp475431": {
+                            "decimals": "$decimalsMonetary",
+                            "dimensions": {
+                                "concept": "eba_met:qIJL",
+                                "eba_dim_3.4:TRI": "eba_TR:x74",
+                                "eba_dim_4.0:qZZX": "eba_qOR:qx2007",
+                                "unit": "$baseCurrency"
+                            },
+                            "eba:documentation": {
+                                "CellID": 364921,
+                                "ColumnVID": 240102,
+                                "FactVariableID": 475431,
+                                "FactVariableVersionID": 3277670,
+                                "RowVID": 252539,
+                                "SheetVID": null,
+                                "cellcode": "{K_60.00.c, r0380, c0030}",
+                                "type": "m"
+                            }
+                        },
+                        "dp5489405": {
+                            "decimals": "$decimalsMonetary",
+                            "dimensions": {
+                                "concept": "eba_met:qANM",
+                                "eba_dim_3.4:TRI": "eba_TR:x74",
+                                "eba_dim_4.0:qZZX": "eba_qOR:qx2007",
+                                "unit": "$baseCurrency"
+                            },
+                            "eba:documentation": {
+                                "CellID": 364803,
+                                "ColumnVID": 252543,
+                                "FactVariableID": 5489405,
+                                "FactVariableVersionID": 5489405,
+                                "RowVID": 252539,
+                                "SheetVID": null,
+                                "cellcode": "{K_60.00.c, r0380, c0010}",
+                                "type": "m"
+                            }
+                        },
+                        "dp5489419": {
+                            "decimals": "$decimalsMonetary",
+                            "dimensions": {
+                                "concept": "eba_met:qANM",
+                                "eba_dim_3.4:TRI": "eba_TR:x74",
+                                "eba_dim_4.0:qBEG": "eba_qRF:qx2054",
+                                "eba_dim_4.0:qZZX": "eba_qOR:qx2007",
+                                "unit": "$baseCurrency"
+                            },
+                            "eba:documentation": {
+                                "CellID": 364801,
+                                "ColumnVID": 252544,
+                                "FactVariableID": 5489419,
+                                "FactVariableVersionID": 5489419,
+                                "RowVID": 252539,
+                                "SheetVID": null,
+                                "cellcode": "{K_60.00.c, r0380, c0020}",
+                                "type": "m"
+                            }
+                        }
+                    }
+                },
+                "factValue": {
+                    "dimensions": {},
+                    "propertiesFrom": [
+                        "datapoint"
+                    ]
+                }
+            }
+        }
+    }
+}

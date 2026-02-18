@@ -1,0 +1,70 @@
+{
+    "documentInfo": {
+        "documentType": "https://xbrl.org/2021/xbrl-csv",
+        "namespaces": {
+            "eba": "http://www.eba.europa.eu",
+            "eba_met": "http://www.eba.europa.eu/xbrl/crr/dict/met",
+            "eba_met_4.2": "http://www.eba.europa.eu/xbrl/crr/dict/met/4.2",
+            "eba_qAS": "http://www.eba.europa.eu/xbrl/crr/dict/dom/qAS",
+            "eba_qSC": "http://www.eba.europa.eu/xbrl/crr/dict/dom/qSC",
+            "tc": "https://xbrl.org/CR/2025-10-07/tc",
+            "xs": "http://www.w3.org/2001/XMLSchema"
+        }
+    },
+    "tableTemplates": {
+        "S_00-01": {
+            "columns": {
+                "datapoint": {
+                    "propertyGroups": {
+                        "dp31870": {
+                            "dimensions": {
+                                "concept": "eba_met_4.2:qAST"
+                            },
+                            "eba:documentation": {
+                                "AllowedValue": {
+                                    "eba_qAS:qx2004": 1012409106,
+                                    "eba_qAS:qx2005": 1012409107
+                                },
+                                "CellID": 165025,
+                                "ColumnVID": 69661,
+                                "FactVariableID": 31870,
+                                "FactVariableVersionID": 5418961,
+                                "RowVID": 241574,
+                                "SheetVID": null,
+                                "cellcode": "{S_00.01, r0010, c0010}",
+                                "type": "e"
+                            }
+                        },
+                        "dp37969": {
+                            "dimensions": {
+                                "concept": "eba_met_4.2:qBBU"
+                            },
+                            "eba:documentation": {
+                                "AllowedValue": {
+                                    "eba_qSC:qx10": 1012408155,
+                                    "eba_qSC:qx2002": 1012410167,
+                                    "eba_qSC:qx2007": 1012410172,
+                                    "eba_qSC:qx9": 1012408154
+                                },
+                                "CellID": 165026,
+                                "ColumnVID": 69661,
+                                "FactVariableID": 37969,
+                                "FactVariableVersionID": 5419468,
+                                "RowVID": 241575,
+                                "SheetVID": null,
+                                "cellcode": "{S_00.01, r0020, c0010}",
+                                "type": "e"
+                            }
+                        }
+                    }
+                },
+                "factValue": {
+                    "dimensions": {},
+                    "propertiesFrom": [
+                        "datapoint"
+                    ]
+                }
+            }
+        }
+    }
+}

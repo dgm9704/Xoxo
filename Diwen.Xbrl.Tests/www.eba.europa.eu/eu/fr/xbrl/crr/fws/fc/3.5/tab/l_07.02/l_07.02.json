@@ -1,0 +1,100 @@
+{
+    "documentInfo": {
+        "documentType": "https://xbrl.org/2021/xbrl-csv",
+        "namespaces": {
+            "eba": "http://www.eba.europa.eu",
+            "eba_NC": "http://www.eba.europa.eu/xbrl/crr/dict/dom/NC",
+            "eba_dim_3.5": "http://www.eba.europa.eu/xbrl/crr/dict/dim/3.5",
+            "eba_met": "http://www.eba.europa.eu/xbrl/crr/dict/met",
+            "tc": "https://xbrl.org/CR/2025-10-07/tc"
+        }
+    },
+    "tableTemplates": {
+        "L_07-02": {
+            "columns": {
+                "MFJ": {
+                    "eba:documentation": {
+                        "AllowedValue": {
+                            "eba_NC:A": 2455,
+                            "eba_NC:B": 2456,
+                            "eba_NC:C": 2457,
+                            "eba_NC:D": 2458,
+                            "eba_NC:E": 2459,
+                            "eba_NC:F": 2460,
+                            "eba_NC:G": 2461,
+                            "eba_NC:H": 2462,
+                            "eba_NC:I": 2463,
+                            "eba_NC:J": 2464,
+                            "eba_NC:K": 3820,
+                            "eba_NC:L": 2465,
+                            "eba_NC:M": 2466,
+                            "eba_NC:N": 2467,
+                            "eba_NC:O": 2469,
+                            "eba_NC:P": 2470,
+                            "eba_NC:Q": 2471,
+                            "eba_NC:R": 2472,
+                            "eba_NC:S": 2473,
+                            "eba_NC:T": 4187,
+                            "eba_NC:U": 4190,
+                            "eba_NC:x1": 1012403313,
+                            "eba_NC:x14": 1012403315,
+                            "eba_NC:x15": 1012403316
+                        },
+                        "KeyVariableID": "480221",
+                        "KeyVariableVID": "480221",
+                        "PropertyID": "1012403273",
+                        "headerCode": "0010",
+                        "headerDirection": "X",
+                        "headerVID": "218387",
+                        "type": "e"
+                    }
+                },
+                "datapoint": {
+                    "propertyGroups": {
+                        "dp487294": {
+                            "decimals": "$decimalsMonetary",
+                            "dimensions": {
+                                "concept": "eba_met:mi1376",
+                                "unit": "$baseCurrency"
+                            },
+                            "eba:documentation": {
+                                "CellID": 186053,
+                                "ColumnVID": 217950,
+                                "FactVariableID": 487294,
+                                "FactVariableVersionID": 487294,
+                                "RowVID": null,
+                                "SheetVID": null,
+                                "cellcode": "{L_07.02, r*, c0020}",
+                                "type": "m"
+                            }
+                        },
+                        "dp487323": {
+                            "decimals": "$decimalsPercentage",
+                            "dimensions": {
+                                "concept": "eba_met:pi1392"
+                            },
+                            "eba:documentation": {
+                                "CellID": 191487,
+                                "ColumnVID": 217951,
+                                "FactVariableID": 487323,
+                                "FactVariableVersionID": 487323,
+                                "RowVID": null,
+                                "SheetVID": null,
+                                "cellcode": "{L_07.02, r*, c0030}",
+                                "type": "p"
+                            }
+                        }
+                    }
+                },
+                "factValue": {
+                    "dimensions": {
+                        "eba_dim_3.5:MFJ": "$MFJ"
+                    },
+                    "propertiesFrom": [
+                        "datapoint"
+                    ]
+                }
+            }
+        }
+    }
+}

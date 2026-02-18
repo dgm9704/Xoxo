@@ -1,0 +1,93 @@
+{
+    "documentInfo": {
+        "documentType": "https://xbrl.org/2021/xbrl-csv",
+        "namespaces": {
+            "eba": "http://www.eba.europa.eu",
+            "eba_dim_4.0": "http://www.eba.europa.eu/xbrl/crr/dict/dim/4.0",
+            "eba_dim_4.2": "http://www.eba.europa.eu/xbrl/crr/dict/dim/4.2",
+            "eba_met": "http://www.eba.europa.eu/xbrl/crr/dict/met",
+            "eba_qPY": "http://www.eba.europa.eu/xbrl/crr/dict/dom/qPY",
+            "eba_qRP": "http://www.eba.europa.eu/xbrl/crr/dict/dom/qRP",
+            "tc": "https://xbrl.org/CR/2025-10-07/tc",
+            "xs": "http://www.w3.org/2001/XMLSchema"
+        }
+    },
+    "tableTemplates": {
+        "Y_05-02": {
+            "columns": {
+                "datapoint": {
+                    "propertyGroups": {
+                        "dp435261": {
+                            "decimals": "$decimalsMonetary",
+                            "dimensions": {
+                                "concept": "eba_met:qAFY",
+                                "eba_dim_4.0:qBEA": "eba_qRP:qx2005",
+                                "eba_dim_4.0:qKJI": "eba_qPY:qx2001",
+                                "eba_dim_4.0:qKKL": "eba_qRP:qx2072",
+                                "eba_dim_4.0:qZZV": "eba_qPY:qx2000",
+                                "unit": "$baseCurrency"
+                            },
+                            "eba:documentation": {
+                                "CellID": 173981,
+                                "ColumnVID": 227484,
+                                "FactVariableID": 435261,
+                                "FactVariableVersionID": 5461393,
+                                "RowVID": 241890,
+                                "SheetVID": null,
+                                "cellcode": "{Y_05.02, r0010, c0010}",
+                                "type": "m"
+                            }
+                        },
+                        "dp435262": {
+                            "decimals": "$decimalsMonetary",
+                            "dimensions": {
+                                "concept": "eba_met:qAFY",
+                                "eba_dim_4.0:qKJI": "eba_qPY:qx2001",
+                                "eba_dim_4.0:qKKL": "eba_qRP:qx2083",
+                                "eba_dim_4.0:qZZV": "eba_qPY:qx2000",
+                                "eba_dim_4.2:qBAN": "eba_qRP:qx2074",
+                                "unit": "$baseCurrency"
+                            },
+                            "eba:documentation": {
+                                "CellID": 173982,
+                                "ColumnVID": 227484,
+                                "FactVariableID": 435262,
+                                "FactVariableVersionID": 5460424,
+                                "RowVID": 241891,
+                                "SheetVID": null,
+                                "cellcode": "{Y_05.02, r0020, c0010}",
+                                "type": "m"
+                            }
+                        },
+                        "dp435263": {
+                            "decimals": "$decimalsMonetary",
+                            "dimensions": {
+                                "concept": "eba_met:qAFY",
+                                "eba_dim_4.0:qKJI": "eba_qPY:qx2001",
+                                "eba_dim_4.0:qKKL": "eba_qRP:qx2071",
+                                "eba_dim_4.0:qZZV": "eba_qPY:qx2000",
+                                "unit": "$baseCurrency"
+                            },
+                            "eba:documentation": {
+                                "CellID": 173983,
+                                "ColumnVID": 227484,
+                                "FactVariableID": 435263,
+                                "FactVariableVersionID": 5461394,
+                                "RowVID": 241892,
+                                "SheetVID": null,
+                                "cellcode": "{Y_05.02, r0030, c0010}",
+                                "type": "m"
+                            }
+                        }
+                    }
+                },
+                "factValue": {
+                    "dimensions": {},
+                    "propertiesFrom": [
+                        "datapoint"
+                    ]
+                }
+            }
+        }
+    }
+}

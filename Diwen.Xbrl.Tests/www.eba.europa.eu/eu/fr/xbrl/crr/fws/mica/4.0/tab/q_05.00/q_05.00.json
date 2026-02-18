@@ -1,0 +1,102 @@
+{
+    "documentInfo": {
+        "documentType": "https://xbrl.org/2021/xbrl-csv",
+        "namespaces": {
+            "eba": "http://www.eba.europa.eu",
+            "eba_CU": "http://www.eba.europa.eu/xbrl/crr/dict/dom/CU",
+            "eba_GA": "http://www.eba.europa.eu/xbrl/crr/dict/dom/GA",
+            "eba_PU": "http://www.eba.europa.eu/xbrl/crr/dict/dom/PU",
+            "eba_dim_3.4": "http://www.eba.europa.eu/xbrl/crr/dict/dim/3.4",
+            "eba_dim_4.0": "http://www.eba.europa.eu/xbrl/crr/dict/dim/4.0",
+            "eba_met": "http://www.eba.europa.eu/xbrl/crr/dict/met",
+            "eba_qCM": "http://www.eba.europa.eu/xbrl/crr/dict/dom/qCM",
+            "eba_qCY": "http://www.eba.europa.eu/xbrl/crr/dict/dom/qCY",
+            "eba_qRF": "http://www.eba.europa.eu/xbrl/crr/dict/dom/qRF",
+            "tc": "https://xbrl.org/CR/2025-10-07/tc"
+        }
+    },
+    "tableTemplates": {
+        "Q_05-00": {
+            "columns": {
+                "datapoint": {
+                    "propertyGroups": {
+                        "dp3296009": {
+                            "decimals": "$decimalsDecimal",
+                            "dimensions": {
+                                "concept": "eba_met:qAOF",
+                                "eba_dim_3.4:PUR": "eba_PU:qx50",
+                                "eba_dim_4.0:qAAA": "eba_qCM:qx2020",
+                                "eba_dim_4.0:qAAJ": "eba_qRF:qx2044",
+                                "eba_dim_4.0:qAOA": "eba_qCY:qx2012",
+                                "eba_dim_4.0:qAOK": "eba_GA:qx2002",
+                                "eba_dim_4.0:qAOL": "eba_qCY:qx2004"
+                            },
+                            "eba:documentation": {
+                                "CellID": 302812,
+                                "ColumnVID": 233990,
+                                "FactVariableID": 3296009,
+                                "FactVariableVersionID": 3296009,
+                                "RowVID": 233992,
+                                "SheetVID": null,
+                                "cellcode": "{Q_05.00, r0010, c0010, s*}",
+                                "type": "r"
+                            }
+                        },
+                        "dp3296019": {
+                            "decimals": "$decimalsMonetary",
+                            "dimensions": {
+                                "concept": "eba_met:qAOG",
+                                "eba_dim_3.4:PUR": "eba_PU:qx50",
+                                "eba_dim_4.0:qAAA": "eba_qCM:qx2020",
+                                "eba_dim_4.0:qAAJ": "eba_qRF:qx2044",
+                                "eba_dim_4.0:qAOA": "eba_qCY:qx2012",
+                                "eba_dim_4.0:qAOK": "eba_GA:qx2002",
+                                "eba_dim_4.0:qAOL": "eba_qCY:qx2004",
+                                "unit": "$baseCurrency"
+                            },
+                            "eba:documentation": {
+                                "CellID": 302813,
+                                "ColumnVID": 233991,
+                                "FactVariableID": 3296019,
+                                "FactVariableVersionID": 3296019,
+                                "RowVID": 233992,
+                                "SheetVID": null,
+                                "cellcode": "{Q_05.00, r0010, c0020, s*}",
+                                "type": "m"
+                            }
+                        }
+                    }
+                },
+                "factValue": {
+                    "dimensions": {
+                        "eba_dim_4.0:qAON": "$qAON"
+                    },
+                    "propertiesFrom": [
+                        "datapoint"
+                    ]
+                },
+                "qAON": {
+                    "eba:documentation": {
+                        "AllowedValue": {
+                            "eba_CU:BGN": 1673,
+                            "eba_CU:CZK": 1677,
+                            "eba_CU:DKK": 1678,
+                            "eba_CU:EUR": 1680,
+                            "eba_CU:HUF": 1682,
+                            "eba_CU:PLN": 1691,
+                            "eba_CU:RON": 1692,
+                            "eba_CU:SEK": 1695
+                        },
+                        "KeyVariableID": "487521",
+                        "KeyVariableVID": "487521",
+                        "PropertyID": "1012406898",
+                        "headerCode": "0010",
+                        "headerDirection": "Z",
+                        "headerVID": "235924",
+                        "type": "e"
+                    }
+                }
+            }
+        }
+    }
+}

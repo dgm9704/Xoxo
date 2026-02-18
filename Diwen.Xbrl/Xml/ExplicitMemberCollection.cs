@@ -4,7 +4,7 @@
 //  Author:
 //       John Nordberg <john.nordberg@gmail.com>
 //
-//  Copyright (c) 2015-2024 John Nordberg
+//  Copyright (c) 2015-2026 John Nordberg
 //
 //  This program is free software: you can redistribute it and/or modify
 //  it under the terms of the GNU Lesser General Public License as published by
@@ -100,7 +100,16 @@ namespace Diwen.Xbrl.Xml
 
             if (Report != null)
             {
-                string dimNs = Report.DimensionNamespace;
+                var dimPrefix =
+                    dimension.IndexOf(':') == -1
+                    ? string.Empty
+                    : dimension.Split(':').First();
+
+                string dimNs =
+                    string.IsNullOrEmpty(dimPrefix)
+                    ? Report.DimensionNamespace
+                    : Report.Namespaces.LookupNamespace(dimPrefix);
+
                 var valPrefix = value.Substring(0, value.IndexOf(':'));
                 var valNs = Report.Namespaces.LookupNamespace(valPrefix);
                 value = value.Substring(value.IndexOf(':') + 1);

@@ -4,13 +4,13 @@
 //  Author:
 //       John Nordberg <john.nordberg@gmail.com>
 //
-//  Copyright (c) 2015-2024 John Nordberg
+//  Copyright (c) 2015-2026 John Nordberg
 //
 //  Free Public License 1.0.0
 //  Permission to use, copy, modify, and/or distribute this software for any purpose with or without fee is hereby granted.
-//  THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES WITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES 
-//  OF MERCHANTABILITY AND FITNESS.IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR ANY SPECIAL, DIRECT, INDIRECT, OR CONSEQUENTIAL DAMAGES 
-//  OR ANY DAMAGES WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN AN ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS 
+//  THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES WITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES
+//  OF MERCHANTABILITY AND FITNESS.IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR ANY SPECIAL, DIRECT, INDIRECT, OR CONSEQUENTIAL DAMAGES
+//  OR ANY DAMAGES WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN AN ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS
 //  ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 
 namespace Diwen.Xbrl.Tests.Xml
@@ -256,11 +256,11 @@ namespace Diwen.Xbrl.Tests.Xml
         public void AddLargeNumberOfContexts()
         {
             // This test demonstrates the usual scenario of adding contexts to an instance
-            // There is a performance hit that comes from checking each new context 
+            // There is a performance hit that comes from checking each new context
             // against existing ones to avoid duplicates (GetContext)
             // This of course does not scale well
 
-            // Duplicate checking and removing can be done at caller side when 
+            // Duplicate checking and removing can be done at caller side when
             // creating the scenarios and/or after adding all contexts
             // So now there is a new method (CreateContext)
             // that does not check for duplicates
@@ -286,7 +286,7 @@ namespace Diwen.Xbrl.Tests.Xml
                 scenario.ExplicitMembers.Add("VL", $"s2c_VM:x{i}"); // <- change one member slightly so each context is different
                 scenario.Report = report;
 
-                // GetContext compares the scenario to existing ones 
+                // GetContext compares the scenario to existing ones
                 // and returns the match if found
                 // creates and returns a new one if not found
                 context = report.GetContext(scenario);
@@ -296,7 +296,7 @@ namespace Diwen.Xbrl.Tests.Xml
 
             //output.WriteLine($"instance made with GetContext has {instance.Contexts.Count} contexts");
 
-            // removing duplicates should not be needed but 
+            // removing duplicates should not be needed but
             // make sure we do the same cleanup for both methods
             // so any timing is comparable
             report.CollapseDuplicateContexts();
@@ -320,7 +320,7 @@ namespace Diwen.Xbrl.Tests.Xml
                 scenario.TypedMembers.Add("XX", "ID", "12345");
                 scenario.ExplicitMembers.Add("VL", $"s2c_VM:x{i}"); // <- change one member slightly so each context is different
                 scenario.Report = report;
-                // CreateContext always creates and returns a new context 
+                // CreateContext always creates and returns a new context
                 // without overhead of checking existing ones for duplicates
                 context = report.CreateContext(scenario);
 

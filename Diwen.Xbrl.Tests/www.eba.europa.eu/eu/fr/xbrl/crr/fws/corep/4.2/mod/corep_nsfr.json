@@ -1,0 +1,484 @@
+{
+    "dimensions": {
+        "entity": "$entityID",
+        "language": "$baseLanguage",
+        "period": "$refPeriod@end"
+    },
+    "documentInfo": {
+        "documentType": "https://xbrl.org/2021/xbrl-csv",
+        "eba:documentation": {
+            "FromReferenceDate": "2026-03-31",
+            "ModuleVID": 502,
+            "ModuleVersion": "3.2.0",
+            "toReferenceDate": ""
+        },
+        "extends": [
+            "http://www.eba.europa.eu/eu/fr/xbrl/ext/2020/FilingIndicators.json",
+            "http://www.eba.europa.eu/eu/fr/xbrl/ext/2020/FootNotes.json",
+            "../tab/c_00.01/c_00.01.json",
+            "../tab/c_80.00.a/c_80.00.a.json",
+            "../tab/c_80.00.b/c_80.00.b.json",
+            "../tab/c_80.00.c/c_80.00.c.json",
+            "../tab/c_80.00.w/c_80.00.w.json",
+            "../tab/c_80.00.x/c_80.00.x.json",
+            "../tab/c_80.00.y/c_80.00.y.json",
+            "../tab/c_81.00.a/c_81.00.a.json",
+            "../tab/c_81.00.b/c_81.00.b.json",
+            "../tab/c_81.00.c/c_81.00.c.json",
+            "../tab/c_81.00.w/c_81.00.w.json",
+            "../tab/c_81.00.x/c_81.00.x.json",
+            "../tab/c_81.00.y/c_81.00.y.json",
+            "../tab/c_82.00.a/c_82.00.a.json",
+            "../tab/c_82.00.b/c_82.00.b.json",
+            "../tab/c_82.00.c/c_82.00.c.json",
+            "../tab/c_82.00.w/c_82.00.w.json",
+            "../tab/c_82.00.x/c_82.00.x.json",
+            "../tab/c_82.00.y/c_82.00.y.json",
+            "../tab/c_83.00.a/c_83.00.a.json",
+            "../tab/c_83.00.b/c_83.00.b.json",
+            "../tab/c_83.00.c/c_83.00.c.json",
+            "../tab/c_83.00.w/c_83.00.w.json",
+            "../tab/c_83.00.x/c_83.00.x.json",
+            "../tab/c_83.00.y/c_83.00.y.json",
+            "../tab/c_84.00.a/c_84.00.a.json",
+            "../tab/c_84.00.b/c_84.00.b.json",
+            "../tab/c_84.00.c/c_84.00.c.json",
+            "../tab/c_84.00.d/c_84.00.d.json",
+            "../tab/c_84.00.e/c_84.00.e.json",
+            "../tab/c_84.00.v/c_84.00.v.json",
+            "../tab/c_84.00.w/c_84.00.w.json",
+            "../tab/c_84.00.x/c_84.00.x.json",
+            "../tab/c_84.00.y/c_84.00.y.json",
+            "../tab/c_84.00.z/c_84.00.z.json"
+        ],
+        "features": {
+            "xbrl:allowedDuplicates": "complete"
+        },
+        "final": {
+            "dimensions": true,
+            "linkGroups": true,
+            "linkTypes": true,
+            "namespaces": true,
+            "parameters": true,
+            "tableTemplates": true,
+            "tables": true,
+            "taxonomy": true
+        },
+        "linkGroups": {
+            "_": "http://www.xbrl.org/2003/role/link"
+        },
+        "linkTypes": {
+            "footnote": "http://www.xbrl.org/2003/arcrole/fact-footnote"
+        },
+        "namespaces": {
+            "eba": "http://www.eba.europa.eu",
+            "iso4217": "http://www.xbrl.org/2003/iso4217",
+            "lei": "http://standards.iso.org/iso/17442",
+            "rs": "https://eurofiling.info/eu/rs",
+            "xbrl": "https://xbrl.org/2021"
+        },
+        "taxonomy": [
+            "http://www.eba.europa.eu/eu/fr/xbrl/crr/fws/corep/4.2/mod/corep_nsfr.xsd"
+        ]
+    },
+    "parameterURL": "parameters.csv",
+    "parameters": {
+        "baseLanguage": "en"
+    },
+    "tables": {
+        "tC_00-01": {
+            "eba:documentation": {
+                "FilingIndicator": "C_00.01",
+                "TableKeyID": null,
+                "tableVID": 6867,
+                "templateID": 304
+            },
+            "optional": true,
+            "template": "C_00-01",
+            "url": "c_00.01.csv"
+        },
+        "tC_80-00-a": {
+            "eba:documentation": {
+                "FilingIndicator": "C_80.00",
+                "TableKeyID": null,
+                "tableVID": 7076,
+                "templateID": 1558
+            },
+            "optional": true,
+            "template": "C_80-00-a",
+            "url": "c_80.00.a.csv"
+        },
+        "tC_80-00-b": {
+            "eba:documentation": {
+                "FilingIndicator": "C_80.00",
+                "TableKeyID": null,
+                "tableVID": 7090,
+                "templateID": 1558
+            },
+            "optional": true,
+            "template": "C_80-00-b",
+            "url": "c_80.00.b.csv"
+        },
+        "tC_80-00-c": {
+            "eba:documentation": {
+                "FilingIndicator": "C_80.00",
+                "TableKeyID": null,
+                "tableVID": 7091,
+                "templateID": 1558
+            },
+            "optional": true,
+            "template": "C_80-00-c",
+            "url": "c_80.00.c.csv"
+        },
+        "tC_80-00-w": {
+            "eba:documentation": {
+                "FilingIndicator": "C_80.00",
+                "TableKeyID": 77,
+                "tableVID": 7146,
+                "templateID": 1558
+            },
+            "optional": true,
+            "template": "C_80-00-w",
+            "url": "c_80.00.w.csv"
+        },
+        "tC_80-00-x": {
+            "eba:documentation": {
+                "FilingIndicator": "C_80.00",
+                "TableKeyID": 77,
+                "tableVID": 7147,
+                "templateID": 1558
+            },
+            "optional": true,
+            "template": "C_80-00-x",
+            "url": "c_80.00.x.csv"
+        },
+        "tC_80-00-y": {
+            "eba:documentation": {
+                "FilingIndicator": "C_80.00",
+                "TableKeyID": 77,
+                "tableVID": 7148,
+                "templateID": 1558
+            },
+            "optional": true,
+            "template": "C_80-00-y",
+            "url": "c_80.00.y.csv"
+        },
+        "tC_81-00-a": {
+            "eba:documentation": {
+                "FilingIndicator": "C_81.00",
+                "TableKeyID": null,
+                "tableVID": 7125,
+                "templateID": 1559
+            },
+            "optional": true,
+            "template": "C_81-00-a",
+            "url": "c_81.00.a.csv"
+        },
+        "tC_81-00-b": {
+            "eba:documentation": {
+                "FilingIndicator": "C_81.00",
+                "TableKeyID": null,
+                "tableVID": 7126,
+                "templateID": 1559
+            },
+            "optional": true,
+            "template": "C_81-00-b",
+            "url": "c_81.00.b.csv"
+        },
+        "tC_81-00-c": {
+            "eba:documentation": {
+                "FilingIndicator": "C_81.00",
+                "TableKeyID": null,
+                "tableVID": 7127,
+                "templateID": 1559
+            },
+            "optional": true,
+            "template": "C_81-00-c",
+            "url": "c_81.00.c.csv"
+        },
+        "tC_81-00-w": {
+            "eba:documentation": {
+                "FilingIndicator": "C_81.00",
+                "TableKeyID": 77,
+                "tableVID": 7149,
+                "templateID": 1559
+            },
+            "optional": true,
+            "template": "C_81-00-w",
+            "url": "c_81.00.w.csv"
+        },
+        "tC_81-00-x": {
+            "eba:documentation": {
+                "FilingIndicator": "C_81.00",
+                "TableKeyID": 77,
+                "tableVID": 7150,
+                "templateID": 1559
+            },
+            "optional": true,
+            "template": "C_81-00-x",
+            "url": "c_81.00.x.csv"
+        },
+        "tC_81-00-y": {
+            "eba:documentation": {
+                "FilingIndicator": "C_81.00",
+                "TableKeyID": 77,
+                "tableVID": 7151,
+                "templateID": 1559
+            },
+            "optional": true,
+            "template": "C_81-00-y",
+            "url": "c_81.00.y.csv"
+        },
+        "tC_82-00-a": {
+            "eba:documentation": {
+                "FilingIndicator": "C_82.00",
+                "TableKeyID": null,
+                "tableVID": 7128,
+                "templateID": 1560
+            },
+            "optional": true,
+            "template": "C_82-00-a",
+            "url": "c_82.00.a.csv"
+        },
+        "tC_82-00-b": {
+            "eba:documentation": {
+                "FilingIndicator": "C_82.00",
+                "TableKeyID": null,
+                "tableVID": 7135,
+                "templateID": 1560
+            },
+            "optional": true,
+            "template": "C_82-00-b",
+            "url": "c_82.00.b.csv"
+        },
+        "tC_82-00-c": {
+            "eba:documentation": {
+                "FilingIndicator": "C_82.00",
+                "TableKeyID": null,
+                "tableVID": 7136,
+                "templateID": 1560
+            },
+            "optional": true,
+            "template": "C_82-00-c",
+            "url": "c_82.00.c.csv"
+        },
+        "tC_82-00-w": {
+            "eba:documentation": {
+                "FilingIndicator": "C_82.00",
+                "TableKeyID": 77,
+                "tableVID": 7152,
+                "templateID": 1560
+            },
+            "optional": true,
+            "template": "C_82-00-w",
+            "url": "c_82.00.w.csv"
+        },
+        "tC_82-00-x": {
+            "eba:documentation": {
+                "FilingIndicator": "C_82.00",
+                "TableKeyID": 77,
+                "tableVID": 7153,
+                "templateID": 1560
+            },
+            "optional": true,
+            "template": "C_82-00-x",
+            "url": "c_82.00.x.csv"
+        },
+        "tC_82-00-y": {
+            "eba:documentation": {
+                "FilingIndicator": "C_82.00",
+                "TableKeyID": 77,
+                "tableVID": 7154,
+                "templateID": 1560
+            },
+            "optional": true,
+            "template": "C_82-00-y",
+            "url": "c_82.00.y.csv"
+        },
+        "tC_83-00-a": {
+            "eba:documentation": {
+                "FilingIndicator": "C_83.00",
+                "TableKeyID": null,
+                "tableVID": 7137,
+                "templateID": 1561
+            },
+            "optional": true,
+            "template": "C_83-00-a",
+            "url": "c_83.00.a.csv"
+        },
+        "tC_83-00-b": {
+            "eba:documentation": {
+                "FilingIndicator": "C_83.00",
+                "TableKeyID": null,
+                "tableVID": 7138,
+                "templateID": 1561
+            },
+            "optional": true,
+            "template": "C_83-00-b",
+            "url": "c_83.00.b.csv"
+        },
+        "tC_83-00-c": {
+            "eba:documentation": {
+                "FilingIndicator": "C_83.00",
+                "TableKeyID": null,
+                "tableVID": 7139,
+                "templateID": 1561
+            },
+            "optional": true,
+            "template": "C_83-00-c",
+            "url": "c_83.00.c.csv"
+        },
+        "tC_83-00-w": {
+            "eba:documentation": {
+                "FilingIndicator": "C_83.00",
+                "TableKeyID": 77,
+                "tableVID": 7155,
+                "templateID": 1561
+            },
+            "optional": true,
+            "template": "C_83-00-w",
+            "url": "c_83.00.w.csv"
+        },
+        "tC_83-00-x": {
+            "eba:documentation": {
+                "FilingIndicator": "C_83.00",
+                "TableKeyID": 77,
+                "tableVID": 7156,
+                "templateID": 1561
+            },
+            "optional": true,
+            "template": "C_83-00-x",
+            "url": "c_83.00.x.csv"
+        },
+        "tC_83-00-y": {
+            "eba:documentation": {
+                "FilingIndicator": "C_83.00",
+                "TableKeyID": 77,
+                "tableVID": 7157,
+                "templateID": 1561
+            },
+            "optional": true,
+            "template": "C_83-00-y",
+            "url": "c_83.00.y.csv"
+        },
+        "tC_84-00-a": {
+            "eba:documentation": {
+                "FilingIndicator": "C_84.00",
+                "TableKeyID": null,
+                "tableVID": 7140,
+                "templateID": 1562
+            },
+            "optional": true,
+            "template": "C_84-00-a",
+            "url": "c_84.00.a.csv"
+        },
+        "tC_84-00-b": {
+            "eba:documentation": {
+                "FilingIndicator": "C_84.00",
+                "TableKeyID": null,
+                "tableVID": 7141,
+                "templateID": 1562
+            },
+            "optional": true,
+            "template": "C_84-00-b",
+            "url": "c_84.00.b.csv"
+        },
+        "tC_84-00-c": {
+            "eba:documentation": {
+                "FilingIndicator": "C_84.00",
+                "TableKeyID": null,
+                "tableVID": 7142,
+                "templateID": 1562
+            },
+            "optional": true,
+            "template": "C_84-00-c",
+            "url": "c_84.00.c.csv"
+        },
+        "tC_84-00-d": {
+            "eba:documentation": {
+                "FilingIndicator": "C_84.00",
+                "TableKeyID": null,
+                "tableVID": 7143,
+                "templateID": 1562
+            },
+            "optional": true,
+            "template": "C_84-00-d",
+            "url": "c_84.00.d.csv"
+        },
+        "tC_84-00-e": {
+            "eba:documentation": {
+                "FilingIndicator": "C_84.00",
+                "TableKeyID": null,
+                "tableVID": 7144,
+                "templateID": 1562
+            },
+            "optional": true,
+            "template": "C_84-00-e",
+            "url": "c_84.00.e.csv"
+        },
+        "tC_84-00-v": {
+            "eba:documentation": {
+                "FilingIndicator": "C_84.00",
+                "TableKeyID": 77,
+                "tableVID": 7158,
+                "templateID": 1562
+            },
+            "optional": true,
+            "template": "C_84-00-v",
+            "url": "c_84.00.v.csv"
+        },
+        "tC_84-00-w": {
+            "eba:documentation": {
+                "FilingIndicator": "C_84.00",
+                "TableKeyID": 77,
+                "tableVID": 7159,
+                "templateID": 1562
+            },
+            "optional": true,
+            "template": "C_84-00-w",
+            "url": "c_84.00.w.csv"
+        },
+        "tC_84-00-x": {
+            "eba:documentation": {
+                "FilingIndicator": "C_84.00",
+                "TableKeyID": 77,
+                "tableVID": 7160,
+                "templateID": 1562
+            },
+            "optional": true,
+            "template": "C_84-00-x",
+            "url": "c_84.00.x.csv"
+        },
+        "tC_84-00-y": {
+            "eba:documentation": {
+                "FilingIndicator": "C_84.00",
+                "TableKeyID": 77,
+                "tableVID": 7161,
+                "templateID": 1562
+            },
+            "optional": true,
+            "template": "C_84-00-y",
+            "url": "c_84.00.y.csv"
+        },
+        "tC_84-00-z": {
+            "eba:documentation": {
+                "FilingIndicator": "C_84.00",
+                "TableKeyID": 77,
+                "tableVID": 7162,
+                "templateID": 1562
+            },
+            "optional": true,
+            "template": "C_84-00-z",
+            "url": "c_84.00.z.csv"
+        },
+        "tFI": {
+            "template": "FilingIndicators",
+            "url": "FilingIndicators.csv"
+        },
+        "tFootNotes": {
+            "optional": true,
+            "template": "FootNotes",
+            "url": "FootNotes.csv"
+        }
+    }
+}

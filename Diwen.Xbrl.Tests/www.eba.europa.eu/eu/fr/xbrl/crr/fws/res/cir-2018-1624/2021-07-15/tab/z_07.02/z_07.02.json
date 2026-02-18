@@ -1,0 +1,56 @@
+{
+    "documentInfo": {
+        "documentType": "https://xbrl.org/CR/2021-02-03/xbrl-csv",
+        "namespaces": {
+            "eba": "http://www.eba.europa.eu",
+            "eba_GA": "http://www.eba.europa.eu/xbrl/crr/dict/dom/GA",
+            "eba_LE": "http://www.eba.europa.eu/xbrl/crr/dict/dom/LE",
+            "eba_TA": "http://www.eba.europa.eu/xbrl/crr/dict/dom/TA",
+            "eba_dim": "http://www.eba.europa.eu/xbrl/crr/dict/dim",
+            "eba_met": "http://www.eba.europa.eu/xbrl/crr/dict/met"
+        }
+    },
+    "tableTemplates": {
+        "Z_07-02": {
+            "columns": {
+                "CRH": {},
+                "LCG": {},
+                "LEH": {},
+                "datapoint": {
+                    "propertyGroups": {
+                        "dp410228": {
+                            "dimensions": {
+                                "concept": "eba_met:si168"
+                            },
+                            "eba:documentation": {
+                                "CellCode": "{Z 07.02, r999, c0030}",
+                                "logicalDataPointId": "410228"
+                            }
+                        },
+                        "dp417923": {
+                            "decimals": "$decimalsMonetary",
+                            "dimensions": {
+                                "concept": "eba_met:mi591",
+                                "unit": "$baseCurrency"
+                            },
+                            "eba:documentation": {
+                                "CellCode": "{Z 07.02, r999, c0050}",
+                                "logicalDataPointId": "417923"
+                            }
+                        }
+                    }
+                },
+                "factValue": {
+                    "dimensions": {
+                        "eba_dim:CRH": "$CRH",
+                        "eba_dim:LCG": "$LCG",
+                        "eba_dim:LEH": "$LEH"
+                    },
+                    "propertiesFrom": [
+                        "datapoint"
+                    ]
+                }
+            }
+        }
+    }
+}

@@ -4,13 +4,13 @@
 //  Author:
 //       John Nordberg <john.nordberg@gmail.com>
 //
-//  Copyright (c) 2015-2024 John Nordberg
+//  Copyright (c) 2015-2026 John Nordberg
 //
 //  Free Public License 1.0.0
 //  Permission to use, copy, modify, and/or distribute this software for any purpose with or without fee is hereby granted.
-//  THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES WITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES 
-//  OF MERCHANTABILITY AND FITNESS.IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR ANY SPECIAL, DIRECT, INDIRECT, OR CONSEQUENTIAL DAMAGES 
-//  OR ANY DAMAGES WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN AN ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS 
+//  THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES WITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES
+//  OF MERCHANTABILITY AND FITNESS.IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR ANY SPECIAL, DIRECT, INDIRECT, OR CONSEQUENTIAL DAMAGES
+//  OR ANY DAMAGES WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN AN ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS
 //  ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 
 namespace Diwen.Xbrl.Tests.Xml
@@ -109,7 +109,7 @@ namespace Diwen.Xbrl.Tests.Xml
 
             var invalidScenario = new Scenario();
 
-            // Member has value with domain that has no corresponding namespace 
+            // Member has value with domain that has no corresponding namespace
             invalidScenario.AddExplicitMember("CS", "s2c_XA:x0");
             try
             {
@@ -148,7 +148,7 @@ namespace Diwen.Xbrl.Tests.Xml
         {
             var report = CreateSolvencyReport();
 
-            // unless done when loading, duplicate objects 
+            // unless done when loading, duplicate objects
             // aren't automatically removed until serialization so do it before comparisons
             report.RemoveUnusedObjects();
 
@@ -169,10 +169,10 @@ namespace Diwen.Xbrl.Tests.Xml
             var newReport = Report.FromFile(tempFile);
 
             // Assert.True(newInstance.Equals(instance));
-            var comparison = ReportComparer.Report(report, newReport);
+            var comparison = ReportComparer.ReportObjects(report, newReport, ComparisonTypes.All, BasicComparisons.All);
             if (!comparison.Result)
                 Console.WriteLine(report);
-            Assert.Empty(comparison.Messages);
+            Assert.True(comparison.Result);
 
             Assert.True(newReport.Equals(referenceReport));
 
@@ -359,7 +359,7 @@ namespace Diwen.Xbrl.Tests.Xml
             report.Entity = new Entity("http://standards.iso.org/iso/17442", "00000000000000000098");
             report.Period = new Period(2015, 12, 31);
 
-            // add a fact with enumerated value 
+            // add a fact with enumerated value
             report.AddFact((Scenario)null, "ei1643", null, null, "s2c_CN:x1");
 
             // add the namespace for the domain
@@ -479,7 +479,7 @@ namespace Diwen.Xbrl.Tests.Xml
         {
             // should be completely the same instance
             // first has canonical prefix "xbrli" for "http://www.xbrl.org/2003/instance"
-            // and second has it as default namespace 
+            // and second has it as default namespace
             var first = Path.Combine("data", "reference.xbrl");
             var second = Path.Combine("data", "reference_defaultns.xbrl");
             var report = ReportComparer.Report(first, second);

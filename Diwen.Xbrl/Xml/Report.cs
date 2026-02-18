@@ -665,6 +665,15 @@ namespace Diwen.Xbrl.Xml
                 Distinct().
                 ToList();
 
+            var fromContextsTyped = Contexts.
+                Where(c => c != null).
+                Where(c => c.Scenario != null).
+                Where(c => c.Scenario.TypedMembers.Any()).
+                SelectMany(c => c.Scenario.TypedMembers).
+                Select(e => e.Domain.Namespace).
+                Distinct().
+                ToList();
+
             var fromSegments = Contexts.
                 Where(c => c != null).
                 Where(c => c.Entity.Segment != null).
@@ -733,7 +742,7 @@ namespace Diwen.Xbrl.Xml
             OmitXmlDeclaration = !OutputXmlDeclaration
         };
 
-        static ReportInfo GetReportInfo(Stream stream)
+        static InstanceInfo GetReportInfo(Stream stream)
         {
             string taxonomyVersion = null;
             string instanceGenerator = null;
@@ -772,10 +781,10 @@ namespace Diwen.Xbrl.Xml
                 }
                 while (!content);
             }
-            return new ReportInfo(taxonomyVersion, instanceGenerator, comments);
+            return new InstanceInfo(taxonomyVersion, instanceGenerator, comments);
         }
 
-        static void SetReportInfo(Report report, ReportInfo info)
+        static void SetReportInfo(Report report, InstanceInfo info)
         {
             if (!string.IsNullOrEmpty(info.TaxonomyVersion))
                 report.TaxonomyVersion = info.TaxonomyVersion;
@@ -790,6 +799,8 @@ namespace Diwen.Xbrl.Xml
         {
             report.RebuildNamespacesAfterRead();
 
+            report.SetReportReferences();
+            
             report.SetContextReferences(report.Facts);
             report.SetUnitReferences(report.Facts);
 
@@ -809,7 +820,6 @@ namespace Diwen.Xbrl.Xml
             }
 
 
-            report.SetReportReferences();
         }
 
         void SetReportReferences()
@@ -832,6 +842,14 @@ namespace Diwen.Xbrl.Xml
 
             foreach (var unit in Units)
                 unit.Report = this;
+
+            foreach (var fact in Facts)
+            {
+                fact.Report = this;
+                foreach (var f in fact.Facts)
+                    f.Report = this;
+            }
+
         }
 
         XmlSerializerNamespaces GetXmlSerializerNamespaces()
@@ -899,6 +917,24 @@ namespace Diwen.Xbrl.Xml
                 Select(c => c.Entity.Segment).
                 SelectMany(s => s.ExplicitMembers).
                 Select(m => m.Dimension.Namespace).
+                ToList().ForEach(ns => namespaces.Add(ns));
+
+            Contexts.
+                Where(c => c.Scenario != null).
+                Select(c => c.Scenario).
+                SelectMany(s => s.ExplicitMembers).
+                Select(m => m.Dimension.Namespace).
+                ToList().ForEach(ns => namespaces.Add(ns));
+
+            Contexts.
+                Where(c => c.Scenario != null).
+                Select(c => c.Scenario).
+                SelectMany(s => s.TypedMembers).
+                Select(m => m.Domain.Namespace).
+                ToList().ForEach(ns => namespaces.Add(ns));
+
+            Facts.
+                Select(f => f.Metric.Namespace).
                 ToList().ForEach(ns => namespaces.Add(ns));
 
             namespaces.

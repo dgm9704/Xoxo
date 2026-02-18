@@ -4,7 +4,7 @@
 //  Author:
 //       John Nordberg <john.nordberg@gmail.com>
 //
-//  Copyright (c) 2015-2024 John Nordberg
+//  Copyright (c) 2015-2026 John Nordberg
 //
 //  This program is free software: you can redistribute it and/or modify
 //  it under the terms of the GNU Lesser General Public License as published by
@@ -117,7 +117,7 @@ namespace Diwen.Xbrl.Xml.Comparison
         => !(
                 (report.Basics != null && report.Basics.Any())
                 || (report.Contexts != null && (report.Contexts.Item1.Any() || report.Contexts.Item2.Any()))
-                || (report.Facts != null && (report.Facts.Item1.Any()) || report.Facts.Item2.Any())
+                || (report.Facts != null && (report.Facts.Item1.Any() || report.Facts.Item2.Any()))
                 || (report.DomainNamespaces != null && (report.DomainNamespaces.Item1.Any() || report.DomainNamespaces.Item2.Any()))
                 || (report.Units != null && (report.Units.Item1.Any() || report.Units.Item2.Any()))
                 || (report.Entities != null && (report.Entities.Item1.Any() || report.Entities.Item2.Any()))
@@ -249,9 +249,9 @@ namespace Diwen.Xbrl.Xml.Comparison
              ToList();
 
             var bList = b.
-                         Contexts.
-                         Select(c => c.Scenario).
-                         ToList();
+             Contexts.
+             Select(c => c.Scenario).
+             ToList();
 
             return aList.ContentCompareReport(bList);
         }

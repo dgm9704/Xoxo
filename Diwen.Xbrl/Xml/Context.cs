@@ -4,7 +4,7 @@
 //  Author:
 //       John Nordberg <john.nordberg@gmail.com>
 //
-//  Copyright (c) 2015-2024 John Nordberg
+//  Copyright (c) 2015-2026 John Nordberg
 //
 //  This program is free software: you can redistribute it and/or modify
 //  it under the terms of the GNU Lesser General Public License as published by
@@ -53,8 +53,8 @@ namespace Diwen.Xbrl.Xml
         {
             var result = false;
             if (Scenario != null)
-                result = (Scenario.ExplicitMembers.Any())
-                    || (Scenario.TypedMembers.Any());
+                result = Scenario.ExplicitMembers.Any()
+                    || Scenario.TypedMembers.Any();
 
             return result;
         }

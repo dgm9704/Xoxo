@@ -1,0 +1,105 @@
+{
+    "documentInfo": {
+        "documentType": "https://xbrl.org/CR/2021-02-03/xbrl-csv",
+        "namespaces": {
+            "eba": "http://www.eba.europa.eu",
+            "eba_BA": "http://www.eba.europa.eu/xbrl/crr/dict/dom/BA",
+            "eba_BT": "http://www.eba.europa.eu/xbrl/crr/dict/dom/BT",
+            "eba_LE": "http://www.eba.europa.eu/xbrl/crr/dict/dom/LE",
+            "eba_MC": "http://www.eba.europa.eu/xbrl/crr/dict/dom/MC",
+            "eba_RP": "http://www.eba.europa.eu/xbrl/crr/dict/dom/RP",
+            "eba_ZZ": "http://www.eba.europa.eu/xbrl/crr/dict/dom/ZZ",
+            "eba_dim": "http://www.eba.europa.eu/xbrl/crr/dict/dim",
+            "eba_met": "http://www.eba.europa.eu/xbrl/crr/dict/met"
+        }
+    },
+    "tableTemplates": {
+        "Z_04-00": {
+            "columns": {
+                "COM": {},
+                "ICG": {},
+                "ISS": {},
+                "datapoint": {
+                    "propertyGroups": {
+                        "dp410226": {
+                            "dimensions": {
+                                "concept": "eba_met:si168",
+                                "eba_dim:ROL": "eba_RP:x37",
+                                "eba_dim:RPR": "eba_RP:x34"
+                            },
+                            "eba:documentation": {
+                                "CellCode": "{Z 04.00, r999, c0010}",
+                                "logicalDataPointId": "410226"
+                            }
+                        },
+                        "dp410227": {
+                            "dimensions": {
+                                "concept": "eba_met:si168",
+                                "eba_dim:ROL": "eba_RP:x38",
+                                "eba_dim:RPR": "eba_RP:x34"
+                            },
+                            "eba:documentation": {
+                                "CellCode": "{Z 04.00, r999, c0030}",
+                                "logicalDataPointId": "410227"
+                            }
+                        },
+                        "dp417801": {
+                            "decimals": "$decimalsMonetary",
+                            "dimensions": {
+                                "concept": "eba_met:mi308",
+                                "eba_dim:BAS": "eba_BA:x25",
+                                "eba_dim:MCB": "eba_MC:x793",
+                                "eba_dim:MCY": "eba_MC:x792",
+                                "unit": "$baseCurrency"
+                            },
+                            "eba:documentation": {
+                                "CellCode": "{Z 04.00, r999, c0060}",
+                                "logicalDataPointId": "417801"
+                            }
+                        },
+                        "dp417802": {
+                            "decimals": "$decimalsMonetary",
+                            "dimensions": {
+                                "concept": "eba_met:mi308",
+                                "eba_dim:BAS": "eba_BA:x25",
+                                "eba_dim:MCB": "eba_MC:x793",
+                                "eba_dim:MCY": "eba_MC:x792",
+                                "eba_dim:MRE": "eba_BT:x12",
+                                "unit": "$baseCurrency"
+                            },
+                            "eba:documentation": {
+                                "CellCode": "{Z 04.00, r999, c0080}",
+                                "logicalDataPointId": "417802"
+                            }
+                        },
+                        "dp417803": {
+                            "decimals": "$decimalsMonetary",
+                            "dimensions": {
+                                "concept": "eba_met:mi308",
+                                "eba_dim:BAS": "eba_BA:x25",
+                                "eba_dim:MCB": "eba_MC:x793",
+                                "eba_dim:MCY": "eba_MC:x792",
+                                "eba_dim:SEL": "eba_BT:x2",
+                                "unit": "$baseCurrency"
+                            },
+                            "eba:documentation": {
+                                "CellCode": "{Z 04.00, r999, c0070}",
+                                "logicalDataPointId": "417803"
+                            }
+                        }
+                    }
+                },
+                "factValue": {
+                    "dimensions": {
+                        "eba_dim:COM": "$COM",
+                        "eba_dim:ICG": "$ICG",
+                        "eba_dim:ISS": "$ISS"
+                    },
+                    "propertiesFrom": [
+                        "datapoint"
+                    ]
+                }
+            }
+        }
+    }
+}

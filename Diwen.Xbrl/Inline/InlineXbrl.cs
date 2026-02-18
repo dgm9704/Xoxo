@@ -4,7 +4,7 @@
 //  Author:
 //       John Nordberg <john.nordberg@gmail.com>
 //
-//  Copyright (c) 2015-2024 John Nordberg
+//  Copyright (c) 2015-2026 John Nordberg
 //
 //  This program is free software: you can redistribute it and/or modify
 //  it under the terms of the GNU Lesser General Public License as published by
@@ -94,7 +94,7 @@ namespace Diwen.Xbrl.Inline
                 if (!string.IsNullOrWhiteSpace(scale))
                 {
                     var power = int.Parse(scale);
-                    var v = decimal.Parse(value.Replace(" ", ""));
+                    var v = decimal.Parse(value.Replace(" ", ""), CultureInfo.InvariantCulture);
                     var multiplier = (decimal)Math.Pow(10, power);
                     v *= multiplier;
                     value = v.ToString();

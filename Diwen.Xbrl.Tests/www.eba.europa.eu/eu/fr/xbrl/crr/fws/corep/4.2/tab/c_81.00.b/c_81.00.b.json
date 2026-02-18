@@ -1,0 +1,70 @@
+{
+    "documentInfo": {
+        "documentType": "https://xbrl.org/2021/xbrl-csv",
+        "namespaces": {
+            "eba": "http://www.eba.europa.eu",
+            "eba_dim_4.0": "http://www.eba.europa.eu/xbrl/crr/dict/dim/4.0",
+            "eba_met": "http://www.eba.europa.eu/xbrl/crr/dict/met",
+            "eba_qAI": "http://www.eba.europa.eu/xbrl/crr/dict/dom/qAI",
+            "eba_qFI": "http://www.eba.europa.eu/xbrl/crr/dict/dom/qFI",
+            "eba_qTI": "http://www.eba.europa.eu/xbrl/crr/dict/dom/qTI",
+            "tc": "https://xbrl.org/CR/2025-10-07/tc",
+            "xs": "http://www.w3.org/2001/XMLSchema"
+        }
+    },
+    "tableTemplates": {
+        "C_81-00-b": {
+            "columns": {
+                "datapoint": {
+                    "propertyGroups": {
+                        "dp456456": {
+                            "decimals": "$decimalsMonetary",
+                            "dimensions": {
+                                "concept": "eba_met:qCCD",
+                                "eba_dim_4.0:qAFF": "eba_qFI:qx2006",
+                                "eba_dim_4.0:qBAD": "eba_qTI:qx2003",
+                                "eba_dim_4.0:qCAA": "eba_qAI:qx2018",
+                                "unit": "$baseCurrency"
+                            },
+                            "eba:documentation": {
+                                "CellID": 108245,
+                                "ColumnVID": 250522,
+                                "FactVariableID": 456456,
+                                "FactVariableVersionID": 5465026,
+                                "RowVID": 250519,
+                                "SheetVID": null,
+                                "cellcode": "{C_81.00.b, r0320, c0010}",
+                                "type": "m"
+                            }
+                        },
+                        "dp458935": {
+                            "decimals": "$decimalsMonetary",
+                            "dimensions": {
+                                "concept": "eba_met:qCFF",
+                                "eba_dim_4.0:qAFF": "eba_qFI:qx2006",
+                                "eba_dim_4.0:qCAA": "eba_qAI:qx2018",
+                                "unit": "$baseCurrency"
+                            },
+                            "eba:documentation": {
+                                "CellID": 108259,
+                                "ColumnVID": 250528,
+                                "FactVariableID": 458935,
+                                "FactVariableVersionID": 5467163,
+                                "RowVID": 250519,
+                                "SheetVID": null,
+                                "cellcode": "{C_81.00.b, r0320, c0100}",
+                                "type": "m"
+                            }
+                        }
+                    }
+                },
+                "factValue": {
+                    "dimensions": {},
+                    "propertiesFrom": [
+                        "datapoint"
+                    ]
+                }
+            }
+        }
+    }
+}

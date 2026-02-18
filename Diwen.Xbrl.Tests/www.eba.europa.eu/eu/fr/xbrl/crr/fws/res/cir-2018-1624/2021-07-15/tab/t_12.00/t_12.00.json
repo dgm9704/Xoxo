@@ -1,0 +1,96 @@
+{
+    "documentInfo": {
+        "documentType": "https://xbrl.org/CR/2021-02-03/xbrl-csv",
+        "namespaces": {
+            "eba": "http://www.eba.europa.eu",
+            "eba_BA": "http://www.eba.europa.eu/xbrl/crr/dict/dom/BA",
+            "eba_CC": "http://www.eba.europa.eu/xbrl/crr/dict/dom/CC",
+            "eba_CT": "http://www.eba.europa.eu/xbrl/crr/dict/dom/CT",
+            "eba_GA": "http://www.eba.europa.eu/xbrl/crr/dict/dom/GA",
+            "eba_MC": "http://www.eba.europa.eu/xbrl/crr/dict/dom/MC",
+            "eba_ZZ": "http://www.eba.europa.eu/xbrl/crr/dict/dom/ZZ",
+            "eba_dim": "http://www.eba.europa.eu/xbrl/crr/dict/dim",
+            "eba_met": "http://www.eba.europa.eu/xbrl/crr/dict/met"
+        }
+    },
+    "tableTemplates": {
+        "T_12-00": {
+            "columns": {
+                "CCI": {},
+                "COM": {},
+                "datapoint": {
+                    "propertyGroups": {
+                        "dp423747": {
+                            "dimensions": {
+                                "concept": "eba_met:ei152"
+                            },
+                            "eba:documentation": {
+                                "CellCode": "{T 12.00, r999, c0040}",
+                                "logicalDataPointId": "423747"
+                            }
+                        },
+                        "dp423753": {
+                            "dimensions": {
+                                "concept": "eba_met:si168"
+                            },
+                            "eba:documentation": {
+                                "CellCode": "{T 12.00, r999, c0010}",
+                                "logicalDataPointId": "423753"
+                            }
+                        },
+                        "dp424153": {
+                            "dimensions": {
+                                "concept": "eba_met:ei219"
+                            },
+                            "eba:documentation": {
+                                "CellCode": "{T 12.00, r999, c0050}",
+                                "logicalDataPointId": "424153"
+                            }
+                        },
+                        "dp424340": {
+                            "dimensions": {
+                                "concept": "eba_met:ei319"
+                            },
+                            "eba:documentation": {
+                                "CellCode": "{T 12.00, r999, c0030}",
+                                "logicalDataPointId": "424340"
+                            }
+                        },
+                        "dp428282": {
+                            "decimals": "$decimalsMonetary",
+                            "dimensions": {
+                                "concept": "eba_met:mi308",
+                                "eba_dim:BAS": "eba_BA:x10",
+                                "eba_dim:MCB": "eba_MC:x841",
+                                "eba_dim:MCY": "eba_MC:x937",
+                                "unit": "$baseCurrency"
+                            },
+                            "eba:documentation": {
+                                "CellCode": "{T 12.00, r999, c0070}",
+                                "logicalDataPointId": "428282"
+                            }
+                        },
+                        "dp428660": {
+                            "dimensions": {
+                                "concept": "eba_met:ei706"
+                            },
+                            "eba:documentation": {
+                                "CellCode": "{T 12.00, r999, c0025}",
+                                "logicalDataPointId": "428660"
+                            }
+                        }
+                    }
+                },
+                "factValue": {
+                    "dimensions": {
+                        "eba_dim:CCI": "$CCI",
+                        "eba_dim:COM": "$COM"
+                    },
+                    "propertiesFrom": [
+                        "datapoint"
+                    ]
+                }
+            }
+        }
+    }
+}

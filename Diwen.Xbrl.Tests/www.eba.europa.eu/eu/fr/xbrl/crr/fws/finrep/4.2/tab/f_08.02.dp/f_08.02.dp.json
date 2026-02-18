@@ -1,0 +1,95 @@
+{
+    "documentInfo": {
+        "documentType": "https://xbrl.org/2021/xbrl-csv",
+        "namespaces": {
+            "eba": "http://www.eba.europa.eu",
+            "eba_dim_4.0": "http://www.eba.europa.eu/xbrl/crr/dict/dim/4.0",
+            "eba_met": "http://www.eba.europa.eu/xbrl/crr/dict/met",
+            "eba_qAI": "http://www.eba.europa.eu/xbrl/crr/dict/dom/qAI",
+            "eba_qFI": "http://www.eba.europa.eu/xbrl/crr/dict/dom/qFI",
+            "eba_qPL": "http://www.eba.europa.eu/xbrl/crr/dict/dom/qPL",
+            "eba_qPR": "http://www.eba.europa.eu/xbrl/crr/dict/dom/qPR",
+            "tc": "https://xbrl.org/CR/2025-10-07/tc",
+            "xs": "http://www.w3.org/2001/XMLSchema"
+        }
+    },
+    "tableTemplates": {
+        "F_08-02-dp": {
+            "columns": {
+                "datapoint": {
+                    "propertyGroups": {
+                        "dp11246": {
+                            "decimals": "$decimalsMonetary",
+                            "dimensions": {
+                                "concept": "eba_met:qCCB",
+                                "eba_dim_4.0:qADC": "eba_qPR:qx2030",
+                                "eba_dim_4.0:qAFF": "eba_qFI:qx2152",
+                                "eba_dim_4.0:qCAA": "eba_qAI:qx2018",
+                                "eba_dim_4.0:qEEG": "eba_qPL:qx2012",
+                                "unit": "$baseCurrency"
+                            },
+                            "eba:documentation": {
+                                "CellID": 365437,
+                                "ColumnVID": 253630,
+                                "FactVariableID": 11246,
+                                "FactVariableVersionID": 3212785,
+                                "RowVID": 253628,
+                                "SheetVID": null,
+                                "cellcode": "{F_08.02.dp, r0030, c0010}",
+                                "type": "m"
+                            }
+                        },
+                        "dp11450": {
+                            "decimals": "$decimalsMonetary",
+                            "dimensions": {
+                                "concept": "eba_met:qCCB",
+                                "eba_dim_4.0:qADC": "eba_qPR:qx2030",
+                                "eba_dim_4.0:qAFF": "eba_qFI:qx2152",
+                                "eba_dim_4.0:qCAA": "eba_qAI:qx2018",
+                                "eba_dim_4.0:qEEG": "eba_qPL:qx2047",
+                                "unit": "$baseCurrency"
+                            },
+                            "eba:documentation": {
+                                "CellID": 365436,
+                                "ColumnVID": 253631,
+                                "FactVariableID": 11450,
+                                "FactVariableVersionID": 3213100,
+                                "RowVID": 253628,
+                                "SheetVID": null,
+                                "cellcode": "{F_08.02.dp, r0030, c0020}",
+                                "type": "m"
+                            }
+                        },
+                        "dp45848": {
+                            "decimals": "$decimalsMonetary",
+                            "dimensions": {
+                                "concept": "eba_met:qCCB",
+                                "eba_dim_4.0:qADC": "eba_qPR:qx2030",
+                                "eba_dim_4.0:qAFF": "eba_qFI:qx2152",
+                                "eba_dim_4.0:qCAA": "eba_qAI:qx2018",
+                                "eba_dim_4.0:qEEG": "eba_qPL:qx2048",
+                                "unit": "$baseCurrency"
+                            },
+                            "eba:documentation": {
+                                "CellID": 365438,
+                                "ColumnVID": 253632,
+                                "FactVariableID": 45848,
+                                "FactVariableVersionID": 3216832,
+                                "RowVID": 253628,
+                                "SheetVID": null,
+                                "cellcode": "{F_08.02.dp, r0030, c0030}",
+                                "type": "m"
+                            }
+                        }
+                    }
+                },
+                "factValue": {
+                    "dimensions": {},
+                    "propertiesFrom": [
+                        "datapoint"
+                    ]
+                }
+            }
+        }
+    }
+}

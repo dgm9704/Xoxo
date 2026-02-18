@@ -1,0 +1,112 @@
+{
+    "documentInfo": {
+        "documentType": "https://xbrl.org/2021/xbrl-csv",
+        "namespaces": {
+            "eba": "http://www.eba.europa.eu",
+            "eba_MC": "http://www.eba.europa.eu/xbrl/crr/dict/dom/MC",
+            "eba_SC": "http://www.eba.europa.eu/xbrl/crr/dict/dom/SC",
+            "eba_TR": "http://www.eba.europa.eu/xbrl/crr/dict/dom/TR",
+            "eba_dim_3.4": "http://www.eba.europa.eu/xbrl/crr/dict/dim/3.4",
+            "eba_dim_4.0": "http://www.eba.europa.eu/xbrl/crr/dict/dim/4.0",
+            "eba_met": "http://www.eba.europa.eu/xbrl/crr/dict/met",
+            "eba_qAI": "http://www.eba.europa.eu/xbrl/crr/dict/dom/qAI",
+            "tc": "https://xbrl.org/CR/2025-10-07/tc"
+        }
+    },
+    "tableTemplates": {
+        "F_17-02": {
+            "columns": {
+                "datapoint": {
+                    "propertyGroups": {
+                        "dp39712": {
+                            "decimals": "$decimalsMonetary",
+                            "dimensions": {
+                                "concept": "eba_met:qCBG",
+                                "eba_dim_3.4:MCY": "eba_MC:x154",
+                                "eba_dim_3.4:SCO": "eba_SC:x1",
+                                "eba_dim_4.0:qCAA": "eba_qAI:qx2021",
+                                "unit": "$baseCurrency"
+                            },
+                            "eba:documentation": {
+                                "CellID": 122432,
+                                "ColumnVID": 224299,
+                                "FactVariableID": 39712,
+                                "FactVariableVersionID": 3214732,
+                                "RowVID": 71983,
+                                "SheetVID": null,
+                                "cellcode": "{F_17.02, r0020, c0010}",
+                                "type": "m"
+                            }
+                        },
+                        "dp39716": {
+                            "decimals": "$decimalsMonetary",
+                            "dimensions": {
+                                "concept": "eba_met:qCBG",
+                                "eba_dim_3.4:MCY": "eba_MC:x221",
+                                "eba_dim_3.4:SCO": "eba_SC:x1",
+                                "eba_dim_4.0:qCAA": "eba_qAI:qx2021",
+                                "unit": "$baseCurrency"
+                            },
+                            "eba:documentation": {
+                                "CellID": 122431,
+                                "ColumnVID": 224299,
+                                "FactVariableID": 39716,
+                                "FactVariableVersionID": 3215382,
+                                "RowVID": 71982,
+                                "SheetVID": null,
+                                "cellcode": "{F_17.02, r0010, c0010}",
+                                "type": "m"
+                            }
+                        },
+                        "dp39726": {
+                            "decimals": "$decimalsMonetary",
+                            "dimensions": {
+                                "concept": "eba_met:qCBG",
+                                "eba_dim_3.4:SCO": "eba_SC:x1",
+                                "eba_dim_3.4:TRI": "eba_TR:x2",
+                                "eba_dim_4.0:qCAA": "eba_qAI:qx2021",
+                                "unit": "$baseCurrency"
+                            },
+                            "eba:documentation": {
+                                "CellID": 122434,
+                                "ColumnVID": 224299,
+                                "FactVariableID": 39726,
+                                "FactVariableVersionID": 3214739,
+                                "RowVID": 231954,
+                                "SheetVID": null,
+                                "cellcode": "{F_17.02, r0040, c0010}",
+                                "type": "m"
+                            }
+                        },
+                        "dp39729": {
+                            "decimals": "$decimalsMonetary",
+                            "dimensions": {
+                                "concept": "eba_met:qCBG",
+                                "eba_dim_3.4:MCY": "eba_MC:x52",
+                                "eba_dim_3.4:SCO": "eba_SC:x1",
+                                "eba_dim_4.0:qCAA": "eba_qAI:qx2021",
+                                "unit": "$baseCurrency"
+                            },
+                            "eba:documentation": {
+                                "CellID": 122433,
+                                "ColumnVID": 224299,
+                                "FactVariableID": 39729,
+                                "FactVariableVersionID": 3215388,
+                                "RowVID": 71984,
+                                "SheetVID": null,
+                                "cellcode": "{F_17.02, r0030, c0010}",
+                                "type": "m"
+                            }
+                        }
+                    }
+                },
+                "factValue": {
+                    "dimensions": {},
+                    "propertiesFrom": [
+                        "datapoint"
+                    ]
+                }
+            }
+        }
+    }
+}

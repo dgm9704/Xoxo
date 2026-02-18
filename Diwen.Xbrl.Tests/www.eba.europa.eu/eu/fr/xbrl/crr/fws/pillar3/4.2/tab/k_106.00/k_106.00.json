@@ -1,0 +1,52 @@
+{
+    "documentInfo": {
+        "documentType": "https://xbrl.org/2021/xbrl-csv",
+        "namespaces": {
+            "eba": "http://www.eba.europa.eu",
+            "eba_dim_4.0": "http://www.eba.europa.eu/xbrl/crr/dict/dim/4.0",
+            "eba_dim_4.1": "http://www.eba.europa.eu/xbrl/crr/dict/dim/4.1",
+            "eba_met": "http://www.eba.europa.eu/xbrl/crr/dict/met",
+            "eba_qAI": "http://www.eba.europa.eu/xbrl/crr/dict/dom/qAI",
+            "eba_qRP": "http://www.eba.europa.eu/xbrl/crr/dict/dom/qRP",
+            "eba_qSC": "http://www.eba.europa.eu/xbrl/crr/dict/dom/qSC",
+            "tc": "https://xbrl.org/CR/2025-10-07/tc",
+            "xs": "http://www.w3.org/2001/XMLSchema"
+        }
+    },
+    "tableTemplates": {
+        "K_106-00": {
+            "columns": {
+                "datapoint": {
+                    "propertyGroups": {
+                        "dp3529914": {
+                            "decimals": "$decimalsMonetary",
+                            "dimensions": {
+                                "concept": "eba_met:qAJR",
+                                "eba_dim_4.0:qCAA": "eba_qAI:qx2017",
+                                "eba_dim_4.0:qZZQ": "eba_qRP:qx2010",
+                                "eba_dim_4.1:qAGT": "eba_qSC:qx1",
+                                "unit": "$baseCurrency"
+                            },
+                            "eba:documentation": {
+                                "CellID": 348861,
+                                "ColumnVID": 238060,
+                                "FactVariableID": 3529914,
+                                "FactVariableVersionID": 3529914,
+                                "RowVID": 238061,
+                                "SheetVID": null,
+                                "cellcode": "{K_106.00, r0010, c0010}",
+                                "type": "m"
+                            }
+                        }
+                    }
+                },
+                "factValue": {
+                    "dimensions": {},
+                    "propertiesFrom": [
+                        "datapoint"
+                    ]
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,55 @@
+{
+    "documentInfo": {
+        "documentType": "https://xbrl.org/2021/xbrl-csv",
+        "namespaces": {
+            "eba": "http://www.eba.europa.eu",
+            "eba_TA": "http://www.eba.europa.eu/xbrl/crr/dict/dom/TA",
+            "eba_dim_3.4": "http://www.eba.europa.eu/xbrl/crr/dict/dim/3.4",
+            "eba_dim_4.0": "http://www.eba.europa.eu/xbrl/crr/dict/dim/4.0",
+            "eba_met": "http://www.eba.europa.eu/xbrl/crr/dict/met",
+            "eba_qAI": "http://www.eba.europa.eu/xbrl/crr/dict/dom/qAI",
+            "eba_qET": "http://www.eba.europa.eu/xbrl/crr/dict/dom/qET",
+            "eba_qNF": "http://www.eba.europa.eu/xbrl/crr/dict/dom/qNF",
+            "tc": "https://xbrl.org/CR/2025-10-07/tc"
+        }
+    },
+    "tableTemplates": {
+        "F_25-01-c": {
+            "columns": {
+                "datapoint": {
+                    "propertyGroups": {
+                        "dp433467": {
+                            "decimals": "$decimalsMonetary",
+                            "dimensions": {
+                                "concept": "eba_met:qNHH",
+                                "eba_dim_3.4:TYA": "eba_TA:x113",
+                                "eba_dim_4.0:qAGF": "eba_qNF:qx2027",
+                                "eba_dim_4.0:qCAA": "eba_qAI:qx2022",
+                                "eba_dim_4.0:qLJM": "eba_qAI:qx2017",
+                                "eba_dim_4.0:qLLI": "eba_qAI:qx2051",
+                                "eba_dim_4.0:qMKJ": "eba_qET:qx2018",
+                                "unit": "$baseCurrency"
+                            },
+                            "eba:documentation": {
+                                "CellID": 131253,
+                                "ColumnVID": 233197,
+                                "FactVariableID": 433467,
+                                "FactVariableVersionID": 3261242,
+                                "RowVID": 225092,
+                                "SheetVID": null,
+                                "cellcode": "{F_25.01.c, r0080, c0040}",
+                                "type": "m"
+                            }
+                        }
+                    }
+                },
+                "factValue": {
+                    "dimensions": {},
+                    "propertiesFrom": [
+                        "datapoint"
+                    ]
+                }
+            }
+        }
+    }
+}

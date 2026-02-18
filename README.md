@@ -91,7 +91,7 @@ Tests for exercising Diwen.Xbrl code, also serving as documentation and samples
 # My environment
 Code is written in [C#](https://docs.microsoft.com/en-us/dotnet/csharp/index), 
 
-targeting [.NET 8](https://learn.microsoft.com/en-us/dotnet/api/?view=net-8.0)
+targeting [.NET 10](https://learn.microsoft.com/en-us/dotnet/api/?view=net-10.0)
 
 Test framework is [xUnit](https://xunit.net/)
 
@@ -109,7 +109,7 @@ https://github.com/dgm9704/Xoxo/issues/new
 ### send a message through the NuGet package page
 This might be the best way if you have something you don't want share publicly
 
-https://www.nuget.org/packages/Diwen.Xbrl/2.0.0/ContactOwners
+https://www.nuget.org/packages/Diwen.Xbrl/3.4.2/ContactOwners
 
 ### mastodon: @diwen@techhub.social
 https://techhub.social/@diwen

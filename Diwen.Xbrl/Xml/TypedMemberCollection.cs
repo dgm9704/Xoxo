@@ -4,7 +4,7 @@
 //  Author:
 //       John Nordberg <john.nordberg@gmail.com>
 //
-//  Copyright (c) 2015-2024 John Nordberg
+//  Copyright (c) 2015-2026 John Nordberg
 //
 //  This program is free software: you can redistribute it and/or modify
 //  it under the terms of the GNU Lesser General Public License as published by
@@ -54,15 +54,15 @@ namespace Diwen.Xbrl.Xml
                     var item = this[i];
                     var dirty = false;
                     item.Report = value;
-                    if (item.Dimension.Namespace != reportField.DimensionNamespace)
+                    if (string.IsNullOrEmpty(item.Dimension.Namespace))
                     {
-                        item.Dimension = new XmlQualifiedName($"{dimPrefix}:{item.Dimension.Name}", dimNs);
+                        item.Dimension = new XmlQualifiedName(item.Dimension.Name, dimNs);
                         dirty = true;
                     }
 
-                    if (item.Domain.Namespace != reportField.TypedDomainNamespace)
+                    if (string.IsNullOrEmpty(item.Domain.Namespace))
                     {
-                        item.Domain = new XmlQualifiedName($"{domprefix}:{item.Domain.Name}", domNs);
+                        item.Domain = new XmlQualifiedName(item.Domain.Name, domNs);
                         dirty = true;
                     }
 
@@ -90,10 +90,34 @@ namespace Diwen.Xbrl.Xml
 
             XmlQualifiedName dim;
             XmlQualifiedName dom;
+
             if (Report != null)
             {
-                dim = new XmlQualifiedName(dimension, Report.DimensionNamespace);
-                dom = new XmlQualifiedName(domain, Report.TypedDomainNamespace);
+                var idx = dimension.IndexOf(':');
+                if (idx != -1)
+                {
+                    var dimPrefix = dimension.Substring(0, idx);
+                    dimension = dimension.Substring(idx + 1);
+                    var dimNs = Report.Namespaces.LookupNamespace(dimPrefix);
+                    dim = new XmlQualifiedName(dimension, dimNs);
+                }
+                else
+                {
+                    dim = new XmlQualifiedName(dimension, Report.DimensionNamespace);
+                }
+
+                idx = domain.IndexOf(':');
+                if (idx != -1)
+                {
+                    var domPrefix = domain.Substring(0, idx);
+                    //domain = domain.Substring(idx + 1);
+                    var domNs = Report.Namespaces.LookupNamespace(domPrefix);
+                    dom = new XmlQualifiedName(domain, domNs);
+                }
+                else
+                {
+                    dom = new XmlQualifiedName(domain, Report.TypedDomainNamespace);
+                }
             }
             else
             {

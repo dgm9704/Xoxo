@@ -4,7 +4,7 @@
 //  Author:
 //       John Nordberg <john.nordberg@gmail.com>
 //
-//  Copyright (c) 2015-2024 John Nordberg
+//  Copyright (c) 2015-2026 John Nordberg
 //
 //  This program is free software: you can redistribute it and/or modify
 //  it under the terms of the GNU Lesser General Public License as published by
@@ -105,10 +105,11 @@ namespace Diwen.Xbrl.Xml
             var dim = reader.GetAttribute("dimension");
             var idx = dim.IndexOf(':');
             var prefix = dim.Substring(0, idx);
+            dim = dim.Substring(idx + 1);
             var dimNs = reader.LookupNamespace(prefix);
             Dimension = new XmlQualifiedName(dim, dimNs);
             reader.ReadStartElement();
-            Domain = new XmlQualifiedName(reader.Name, reader.NamespaceURI);
+            Domain = new XmlQualifiedName(reader.LocalName, reader.NamespaceURI);
             Value = reader.ReadElementString();
             reader.ReadEndElement();
         }
@@ -118,11 +119,20 @@ namespace Diwen.Xbrl.Xml
         {
             ArgumentNullException.ThrowIfNull(writer);
 
-            writer.WriteAttributeString("dimension", Dimension.Name);
+            if (Dimension.Name.Contains(':'))
+            {
+                writer.WriteAttributeString("dimension", Dimension.Name);
+            }
+            else
+            {
+                var prefix = writer.LookupPrefix(Dimension.Namespace);
+                writer.WriteAttributeString("dimension", $"{prefix}:{Dimension.Name}");
+            }
 
             if (!string.IsNullOrEmpty(Value))
             {
-                writer.WriteElementString(Domain.Prefix(), Domain.LocalName(), Domain.Namespace, Value);
+                var prefix = writer.LookupPrefix(Domain.Namespace);
+                writer.WriteElementString(prefix, Domain.LocalName(), Domain.Namespace, Value);
             }
             else
             {
@@ -139,8 +149,8 @@ namespace Diwen.Xbrl.Xml
         /// <summary/>
         public bool Equals(TypedMember other)
         => Dimension == other.Dimension
-                        && Domain == other.Domain
-                        && Value == other.Value;
+            && Domain == other.Domain
+            && Value == other.Value;
 
         #endregion
 

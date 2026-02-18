@@ -1,0 +1,76 @@
+{
+    "documentInfo": {
+        "documentType": "https://xbrl.org/CR/2021-02-03/xbrl-csv",
+        "namespaces": {
+            "eba": "http://www.eba.europa.eu",
+            "eba_AP": "http://www.eba.europa.eu/xbrl/crr/dict/dom/AP",
+            "eba_BA": "http://www.eba.europa.eu/xbrl/crr/dict/dom/BA",
+            "eba_IS": "http://www.eba.europa.eu/xbrl/crr/dict/dom/IS",
+            "eba_MC": "http://www.eba.europa.eu/xbrl/crr/dict/dom/MC",
+            "eba_TR": "http://www.eba.europa.eu/xbrl/crr/dict/dom/TR",
+            "eba_dim": "http://www.eba.europa.eu/xbrl/crr/dict/dim",
+            "eba_met": "http://www.eba.europa.eu/xbrl/crr/dict/met"
+        }
+    },
+    "tableTemplates": {
+        "C_110-02-b": {
+            "columns": {
+                "PBE": {},
+                "datapoint": {
+                    "propertyGroups": {
+                        "dp433654": {
+                            "dimensions": {
+                                "concept": "eba_met:si396",
+                                "eba_dim:APR": "eba_AP:x26",
+                                "eba_dim:BAS": "eba_BA:x17",
+                                "eba_dim:MCY": "eba_MC:x189",
+                                "eba_dim:MRW": "eba_AP:x80",
+                                "eba_dim:TRI": "eba_TR:x11"
+                            },
+                            "eba:documentation": {
+                                "CellCode": "{C 110.02.b, r010, c020, s999}",
+                                "logicalDataPointId": "433654"
+                            }
+                        },
+                        "dp433656": {
+                            "dimensions": {
+                                "concept": "eba_met:si767",
+                                "eba_dim:APR": "eba_AP:x26",
+                                "eba_dim:BAS": "eba_BA:x17",
+                                "eba_dim:MCY": "eba_MC:x189",
+                                "eba_dim:MRW": "eba_AP:x80",
+                                "eba_dim:TRI": "eba_TR:x11"
+                            },
+                            "eba:documentation": {
+                                "CellCode": "{C 110.02.b, r020, c020, s999}",
+                                "logicalDataPointId": "433656"
+                            }
+                        },
+                        "dp433658": {
+                            "dimensions": {
+                                "concept": "eba_met:si768",
+                                "eba_dim:APR": "eba_AP:x26",
+                                "eba_dim:BAS": "eba_BA:x17",
+                                "eba_dim:MCY": "eba_MC:x189",
+                                "eba_dim:MRW": "eba_AP:x80",
+                                "eba_dim:TRI": "eba_TR:x11"
+                            },
+                            "eba:documentation": {
+                                "CellCode": "{C 110.02.b, r030, c020, s999}",
+                                "logicalDataPointId": "433658"
+                            }
+                        }
+                    }
+                },
+                "factValue": {
+                    "dimensions": {
+                        "eba_dim:PBE": "$PBE"
+                    },
+                    "propertiesFrom": [
+                        "datapoint"
+                    ]
+                }
+            }
+        }
+    }
+}

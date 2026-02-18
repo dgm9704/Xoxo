@@ -1,0 +1,140 @@
+{
+    "documentInfo": {
+        "documentType": "https://xbrl.org/2021/xbrl-csv",
+        "namespaces": {
+            "eba": "http://www.eba.europa.eu",
+            "eba_dim_3.4": "http://www.eba.europa.eu/xbrl/crr/dict/dim/3.4",
+            "eba_dim_4.0": "http://www.eba.europa.eu/xbrl/crr/dict/dim/4.0",
+            "eba_dim_4.1": "http://www.eba.europa.eu/xbrl/crr/dict/dim/4.1",
+            "eba_dim_4.2": "http://www.eba.europa.eu/xbrl/crr/dict/dim/4.2",
+            "eba_met": "http://www.eba.europa.eu/xbrl/crr/dict/met",
+            "eba_qAP": "http://www.eba.europa.eu/xbrl/crr/dict/dom/qAP",
+            "eba_qCA": "http://www.eba.europa.eu/xbrl/crr/dict/dom/qCA",
+            "eba_qCM": "http://www.eba.europa.eu/xbrl/crr/dict/dom/qCM",
+            "eba_qCS": "http://www.eba.europa.eu/xbrl/crr/dict/dom/qCS",
+            "eba_qOR": "http://www.eba.europa.eu/xbrl/crr/dict/dom/qOR",
+            "eba_qRM": "http://www.eba.europa.eu/xbrl/crr/dict/dom/qRM",
+            "eba_qTR": "http://www.eba.europa.eu/xbrl/crr/dict/dom/qTR",
+            "tc": "https://xbrl.org/CR/2025-10-07/tc",
+            "xs": "http://www.w3.org/2001/XMLSchema"
+        }
+    },
+    "tableTemplates": {
+        "C_107-02": {
+            "columns": {
+                "PBE": {
+                    "eba:documentation": {
+                        "KeyVariableID": "199116",
+                        "KeyVariableVID": "199116",
+                        "PropertyID": "1012400825",
+                        "headerCode": "0010",
+                        "headerDirection": "Z",
+                        "headerVID": "201304",
+                        "type": "s"
+                    },
+                    "tc:constraints": {
+                        "minLength": 1,
+                        "type": "xs:string"
+                    }
+                },
+                "datapoint": {
+                    "propertyGroups": {
+                        "dp5488972": {
+                            "decimals": "$decimalsMonetary",
+                            "dimensions": {
+                                "concept": "eba_met:qAGZ",
+                                "eba_dim_4.0:qAAA": "eba_qCM:qx2066",
+                                "eba_dim_4.0:qAEA": "eba_qCA:qx2000",
+                                "eba_dim_4.0:qLHL": "eba_qTR:qx2003",
+                                "eba_dim_4.0:qLNK": "eba_qAP:qx2133",
+                                "eba_dim_4.0:qZZX": "eba_qOR:qx2007",
+                                "eba_dim_4.2:qHVV": "eba_qCS:qx2024",
+                                "unit": "$unit"
+                            },
+                            "eba:documentation": {
+                                "CellID": 40317,
+                                "ColumnVID": 241649,
+                                "FactVariableID": 5488972,
+                                "FactVariableVersionID": 5488972,
+                                "RowVID": null,
+                                "SheetVID": null,
+                                "cellcode": "{C_107.02, r*, c0040, s*}",
+                                "type": "m"
+                            }
+                        },
+                        "dp5489003": {
+                            "decimals": "$decimalsMonetary",
+                            "dimensions": {
+                                "concept": "eba_met:qAHE",
+                                "eba_dim_4.0:qAEA": "eba_qCA:qx2000",
+                                "eba_dim_4.0:qLHL": "eba_qTR:qx2003",
+                                "eba_dim_4.0:qLNK": "eba_qAP:qx2133",
+                                "eba_dim_4.0:qZZX": "eba_qOR:qx2007",
+                                "eba_dim_4.1:qAJG": "eba_qRM:qx2002",
+                                "eba_dim_4.2:qHVV": "eba_qCS:qx2024",
+                                "unit": "$unit"
+                            },
+                            "eba:documentation": {
+                                "CellID": 40316,
+                                "ColumnVID": 241648,
+                                "FactVariableID": 5489003,
+                                "FactVariableVersionID": 5489003,
+                                "RowVID": null,
+                                "SheetVID": null,
+                                "cellcode": "{C_107.02, r*, c0030, s*}",
+                                "type": "m"
+                            }
+                        },
+                        "dp5489004": {
+                            "decimals": "$decimalsMonetary",
+                            "dimensions": {
+                                "concept": "eba_met:qAHF",
+                                "eba_dim_4.0:qAEA": "eba_qCA:qx2000",
+                                "eba_dim_4.0:qLHL": "eba_qTR:qx2003",
+                                "eba_dim_4.0:qLNK": "eba_qAP:qx2133",
+                                "eba_dim_4.0:qZZX": "eba_qOR:qx2007",
+                                "eba_dim_4.1:qAJG": "eba_qRM:qx2001",
+                                "eba_dim_4.2:qHVV": "eba_qCS:qx2024",
+                                "unit": "$unit"
+                            },
+                            "eba:documentation": {
+                                "CellID": 40315,
+                                "ColumnVID": 241647,
+                                "FactVariableID": 5489004,
+                                "FactVariableVersionID": 5489004,
+                                "RowVID": null,
+                                "SheetVID": null,
+                                "cellcode": "{C_107.02, r*, c0020, s*}",
+                                "type": "m"
+                            }
+                        }
+                    }
+                },
+                "factValue": {
+                    "dimensions": {
+                        "eba_dim_3.4:PBE": "$PBE",
+                        "eba_dim_4.2:qNED": "$qNED"
+                    },
+                    "propertiesFrom": [
+                        "datapoint"
+                    ]
+                },
+                "qNED": {
+                    "eba:documentation": {
+                        "KeyVariableID": "3531133",
+                        "KeyVariableVID": "3531133",
+                        "PropertyID": "1012410619",
+                        "headerCode": "0010",
+                        "headerDirection": "X",
+                        "headerVID": "241646",
+                        "type": "d"
+                    },
+                    "tc:constraints": {
+                        "type": "xs:date"
+                    }
+                },
+                "unit": {}
+            }
+        }
+    }
+}

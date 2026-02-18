@@ -1,0 +1,211 @@
+{
+    "documentInfo": {
+        "documentType": "https://xbrl.org/2021/xbrl-csv",
+        "namespaces": {
+            "eba": "http://www.eba.europa.eu",
+            "eba_dim_3.4": "http://www.eba.europa.eu/xbrl/crr/dict/dim/3.4",
+            "eba_dim_4.0": "http://www.eba.europa.eu/xbrl/crr/dict/dim/4.0",
+            "eba_dim_4.2": "http://www.eba.europa.eu/xbrl/crr/dict/dim/4.2",
+            "eba_met": "http://www.eba.europa.eu/xbrl/crr/dict/met",
+            "eba_met_4.2": "http://www.eba.europa.eu/xbrl/crr/dict/met/4.2",
+            "eba_qIM": "http://www.eba.europa.eu/xbrl/crr/dict/dom/qIM",
+            "eba_qPL": "http://www.eba.europa.eu/xbrl/crr/dict/dom/qPL",
+            "eba_qRF": "http://www.eba.europa.eu/xbrl/crr/dict/dom/qRF",
+            "eba_qTR": "http://www.eba.europa.eu/xbrl/crr/dict/dom/qTR",
+            "tc": "https://xbrl.org/CR/2025-10-07/tc",
+            "xs": "http://www.w3.org/2001/XMLSchema"
+        }
+    },
+    "tableTemplates": {
+        "C_113-00": {
+            "columns": {
+                "FTY": {
+                    "eba:documentation": {
+                        "KeyVariableID": "199127",
+                        "KeyVariableVID": "199127",
+                        "PropertyID": "1012400877",
+                        "headerCode": "0020",
+                        "headerDirection": "X",
+                        "headerVID": "241953",
+                        "type": "s"
+                    },
+                    "tc:constraints": {
+                        "minLength": 1,
+                        "type": "xs:string"
+                    }
+                },
+                "datapoint": {
+                    "propertyGroups": {
+                        "dp5488893": {
+                            "decimals": "$decimalsPercentage",
+                            "dimensions": {
+                                "concept": "eba_met:qAKP",
+                                "eba_dim_4.0:qAPQ": "eba_qPL:qx2077",
+                                "eba_dim_4.0:qLHL": "eba_qTR:qx2019"
+                            },
+                            "eba:documentation": {
+                                "CellID": 40414,
+                                "ColumnVID": 224760,
+                                "FactVariableID": 5488893,
+                                "FactVariableVersionID": 5488893,
+                                "RowVID": null,
+                                "SheetVID": null,
+                                "cellcode": "{C_113.00, r*, c0550}",
+                                "type": "p"
+                            }
+                        },
+                        "dp5488954": {
+                            "decimals": "$decimalsPercentage",
+                            "dimensions": {
+                                "concept": "eba_met:qAKO",
+                                "eba_dim_4.0:qAPQ": "eba_qPL:qx2077",
+                                "eba_dim_4.0:qLHL": "eba_qTR:qx2019"
+                            },
+                            "eba:documentation": {
+                                "CellID": 40413,
+                                "ColumnVID": 224759,
+                                "FactVariableID": 5488954,
+                                "FactVariableVersionID": 5488954,
+                                "RowVID": null,
+                                "SheetVID": null,
+                                "cellcode": "{C_113.00, r*, c0500}",
+                                "type": "p"
+                            }
+                        },
+                        "dp5488990": {
+                            "decimals": "$decimalsPercentage",
+                            "dimensions": {
+                                "concept": "eba_met:qAKK",
+                                "eba_dim_4.0:qAPQ": "eba_qPL:qx2077",
+                                "eba_dim_4.0:qLHL": "eba_qTR:qx2019",
+                                "eba_dim_4.2:qRPE": "eba_qRF:qx2130"
+                            },
+                            "eba:documentation": {
+                                "CellID": 40412,
+                                "ColumnVID": 241957,
+                                "FactVariableID": 5488990,
+                                "FactVariableVersionID": 5488990,
+                                "RowVID": null,
+                                "SheetVID": null,
+                                "cellcode": "{C_113.00, r*, c0400}",
+                                "type": "p"
+                            }
+                        },
+                        "dp5488996": {
+                            "decimals": "$decimalsPercentage",
+                            "dimensions": {
+                                "concept": "eba_met:qAKK",
+                                "eba_dim_4.0:qAPQ": "eba_qPL:qx2077",
+                                "eba_dim_4.0:qLHL": "eba_qTR:qx2019",
+                                "eba_dim_4.2:qPTE": "eba_qRF:qx2075",
+                                "eba_dim_4.2:qRPE": "eba_qRF:qx2130"
+                            },
+                            "eba:documentation": {
+                                "CellID": 40411,
+                                "ColumnVID": 241956,
+                                "FactVariableID": 5488996,
+                                "FactVariableVersionID": 5488996,
+                                "RowVID": null,
+                                "SheetVID": null,
+                                "cellcode": "{C_113.00, r*, c0300}",
+                                "type": "p"
+                            }
+                        },
+                        "dp5489337": {
+                            "decimals": "$decimalsMonetary",
+                            "dimensions": {
+                                "concept": "eba_met:qAPT",
+                                "eba_dim_4.0:qAPQ": "eba_qPL:qx2077",
+                                "eba_dim_4.0:qLHL": "eba_qTR:qx2019",
+                                "eba_dim_4.2:qRPE": "eba_qRF:qx2130",
+                                "unit": "$baseCurrency"
+                            },
+                            "eba:documentation": {
+                                "CellID": 40409,
+                                "ColumnVID": 241954,
+                                "FactVariableID": 5489337,
+                                "FactVariableVersionID": 5489337,
+                                "RowVID": null,
+                                "SheetVID": null,
+                                "cellcode": "{C_113.00, r*, c0100}",
+                                "type": "m"
+                            }
+                        },
+                        "dp5489684": {
+                            "dimensions": {
+                                "concept": "eba_met_4.2:qBME",
+                                "eba_dim_4.0:qAPQ": "eba_qPL:qx2077",
+                                "eba_dim_4.0:qLHL": "eba_qTR:qx2019"
+                            },
+                            "eba:documentation": {
+                                "AllowedValue": {
+                                    "eba_qIM:qx2011": 1012409554,
+                                    "eba_qIM:qx2045": 1012409588,
+                                    "eba_qIM:qx2049": 1012409592
+                                },
+                                "CellID": 40410,
+                                "ColumnVID": 241955,
+                                "FactVariableID": 5489684,
+                                "FactVariableVersionID": 5489684,
+                                "RowVID": null,
+                                "SheetVID": null,
+                                "cellcode": "{C_113.00, r*, c0200}",
+                                "type": "e"
+                            }
+                        },
+                        "dp5489685": {
+                            "dimensions": {
+                                "concept": "eba_met_4.2:qBPC",
+                                "eba_dim_4.0:qAPQ": "eba_qPL:qx2077",
+                                "eba_dim_4.0:qLHL": "eba_qTR:qx2019"
+                            },
+                            "eba:documentation": {
+                                "AllowedValue": {
+                                    "eba_qIM:qx2048": 1012409591,
+                                    "eba_qIM:qx2056": 1012409599,
+                                    "eba_qIM:qx2057": 1012409600,
+                                    "eba_qIM:qx2058": 1012409601,
+                                    "eba_qIM:qx2059": 1012409602,
+                                    "eba_qIM:qx2060": 1012409603,
+                                    "eba_qIM:qx2061": 1012409604
+                                },
+                                "CellID": 40415,
+                                "ColumnVID": 241958,
+                                "FactVariableID": 5489685,
+                                "FactVariableVersionID": 5489685,
+                                "RowVID": null,
+                                "SheetVID": null,
+                                "cellcode": "{C_113.00, r*, c0600}",
+                                "type": "e"
+                            }
+                        }
+                    }
+                },
+                "factValue": {
+                    "dimensions": {
+                        "eba_dim_3.4:FTY": "$FTY",
+                        "eba_dim_4.2:qINC": "$qINC"
+                    },
+                    "propertiesFrom": [
+                        "datapoint"
+                    ]
+                },
+                "qINC": {
+                    "eba:documentation": {
+                        "KeyVariableID": "3531139",
+                        "KeyVariableVID": "3531139",
+                        "PropertyID": "1012410829",
+                        "headerCode": "0010",
+                        "headerDirection": "X",
+                        "headerVID": "241952",
+                        "type": "s"
+                    },
+                    "tc:constraints": {
+                        "minLength": 1,
+                        "type": "xs:string"
+                    }
+                }
+            }
+        }
+    }
+}

@@ -4,7 +4,7 @@
 //  Author:
 //       John Nordberg <john.nordberg@gmail.com>
 //
-//  Copyright (c) 2015-2024 John Nordberg
+//  Copyright (c) 2015-2026 John Nordberg
 //
 //  This program is free software: you can redistribute it and/or modify
 //  it under the terms of the GNU Lesser General Public License as published by
@@ -22,6 +22,7 @@
 namespace Diwen.Xbrl.Extensions
 {
     using System.Collections.Generic;
+    using Diwen.Xbrl.Csv;
     using Diwen.Xbrl.Csv.Taxonomy;
 
     /// <summary/>
@@ -30,10 +31,14 @@ namespace Diwen.Xbrl.Extensions
         /// <summary/>
         public static Csv.Report ToXbrlCsv(
             this Xml.Report xmlreport,
-            Dictionary<string, TableDefinition> tableDefinitions,
-            Dictionary<string, string> filingIndicators,
             ModuleDefinition moduleDefinition)
-        => Csv.Report.FromXbrlXml(xmlreport, tableDefinitions, filingIndicators, moduleDefinition);
+        => Csv.Report.FromXbrlXml(xmlreport, moduleDefinition);
+
+        /// <summary/>
+        public static Csv.PlainCsvReport ToXbrlCsvPlain(
+            this Xml.Report xmlreport,
+            ModuleDefinition moduleDefinition)
+        => Csv.PlainCsvReport.FromXbrlXml(xmlreport, moduleDefinition);
 
     }
 }

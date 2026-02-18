@@ -1,4 +1,25 @@
-﻿namespace Diwen.Xbrl.Csv
+﻿//
+//  This file is part of Diwen.Xbrl.
+//
+//  Author:
+//       John Nordberg <john.nordberg@gmail.com>
+//
+//  Copyright (c) 2015-2026 John Nordberg
+//
+//  This program is free software: you can redistribute it and/or modify
+//  it under the terms of the GNU Lesser General Public License as published by
+//  the Free Software Foundation, either version 3 of the License, or
+//  (at your option) any later version.
+//
+//  This program is distributed in the hope that it will be useful,
+//  but WITHOUT ANY WARRANTY; without even the implied warranty of
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+//  GNU Lesser General Public License for more details.
+//
+//  You should have received a copy of the GNU Lesser General Public License
+//  along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+namespace Diwen.Xbrl.Csv
 {
     using System;
     using System.Collections.Generic;
@@ -11,12 +32,13 @@
     using System.Text.Json;
     using Diwen.Xbrl.Csv.Taxonomy;
     using Diwen.Xbrl.Extensions;
+    using Diwen.Xbrl.Package;
     using Diwen.Xbrl.Xml;
 
-        /// <summary/>
-    public partial class Report
+    /// <summary/>
+    public class Report
     {
-                /// <summary/>
+        /// <summary/>
         public string DocumentType { get; set; } = "https://xbrl.org/CR/2021-02-03/xbrl-csv";
 
         /// <summary/>
@@ -49,15 +71,24 @@
         => Data.Add(new ReportData(table, datapoint, value, dimensions));
 
         /// <summary/>
-        public void Export(string packagePath)
+        public void Export(
+            string packagePath,
+            ModuleDefinition moduleDefinition)
         {
             var packageName = Path.GetFileNameWithoutExtension(packagePath);
-            var package = CreatePackage(packageName, DocumentType, Entrypoint, Parameters, FilingIndicators, Data);
+            var package = CreatePackage(packageName, DocumentType, Entrypoint, Parameters, FilingIndicators, moduleDefinition, Data);
             var zip = CreateZip(package);
             WriteStreamToFile(zip, Path.ChangeExtension(packagePath, "zip"));
         }
 
-        private static Dictionary<string, Stream> CreatePackage(string packageName, string documentType, string entrypoint, Dictionary<string, string> parameters, Dictionary<string, bool> filingIndicators, List<ReportData> data)
+        private static Dictionary<string, Stream> CreatePackage(
+            string packageName,
+            string documentType,
+            string entrypoint,
+            Dictionary<string, string> parameters,
+            Dictionary<string, bool> filingIndicators,
+            ModuleDefinition moduleDefinition,
+            List<ReportData> data)
         {
             var metafolder = "META-INF";
             var reportfolder = "reports";
@@ -70,7 +101,7 @@
                 [Path.Combine(packageName, reportfolder, "FilingIndicators.csv")] = CreateFilingIndicators(filingIndicators),
             };
 
-            foreach (var tableStream in CreateReportData(data))
+            foreach (var tableStream in CreateReportData(data, moduleDefinition))
                 package.Add(Path.Combine(packageName, reportfolder, tableStream.Key), tableStream.Value);
 
             return package;
@@ -87,11 +118,11 @@
             var stream = new MemoryStream();
             using (var zip = new ZipArchive(stream, ZipArchiveMode.Create, true))
             {
-                foreach (var item in package)
+                foreach (var (key, value) in package)
                 {
-                    ZipArchiveEntry entry = zip.CreateEntry(item.Key, CompressionLevel.Optimal);
+                    ZipArchiveEntry entry = zip.CreateEntry(key, CompressionLevel.Optimal);
                     using (var entryStream = entry.Open())
-                        item.Value.CopyTo(entryStream);
+                        value.CopyTo(entryStream);
                 }
             }
             stream.Flush();
@@ -143,7 +174,7 @@
                 EbaGeneratingSoftwareInformation = softwareInfo
             };
 
-            JsonSerializer.Serialize<ReportInfo>(stream, reportInfo);
+            JsonSerializer.Serialize(stream, reportInfo);
             stream.Position = 0;
             return stream;
         }
@@ -178,14 +209,17 @@
             return stream;
         }
 
-        private static Dictionary<string, Stream> CreateReportData(List<ReportData> data)
+        private static Dictionary<string, Stream> CreateReportData(
+            List<ReportData> data,
+            ModuleDefinition moduleDefinition)
         {
             var reportdata = new Dictionary<string, Stream>();
-
+            var filingInfo = moduleDefinition.FilingInfo();
             var tabledata = data.GroupBy(d => d.Table);
             foreach (var table in tabledata)
             {
-                var filename = table.Key + ".csv";
+                var filename = filingInfo[table.Key].Url;
+
                 var builder = new StringBuilder("datapoint,factvalue");
                 foreach (var dimension in table.First().Dimensions.Keys)
                     builder.Append($",{dimension}");
@@ -210,18 +244,31 @@
         }
 
         /// <summary/>
-        public static Report FromFile(string packagePath)
+        public static Report FromFile(string packagePath, ModuleDefinition moduleDefinition)
         {
+            var filingInfo = moduleDefinition.FilingInfo();
             var report = new Report();
             var reportFiles = ReadPackage(packagePath);
             var packagename = Path.GetFileNameWithoutExtension(packagePath);
 
-            report.Entrypoint = ReadEntryPoint(reportFiles.Single(f => f.Key.EndsWith("reports/report.json")).Value);
-            report.Parameters = ReadParameters(reportFiles.Single(f => f.Key.EndsWith("reports/parameters.csv")).Value);
-            report.FilingIndicators = ReadFilingIndicators(reportFiles.Single(f => f.Key.EndsWith("reports/FilingIndicators.csv")).Value);
-            foreach (var template in report.FilingIndicators.Where(fi => fi.Value).Select(fi => fi.Key))
-                foreach (var tablefile in reportFiles.Where(f => Path.GetFileNameWithoutExtension(f.Key).StartsWith(template, StringComparison.OrdinalIgnoreCase)))
-                    report.Data.AddRange(ReadTableData(Path.GetFileNameWithoutExtension(tablefile.Key), tablefile.Value));
+            report.Entrypoint = ReadEntryPoint(reportFiles.Single(f => Path.GetFileName(f.Key) == "report.json").Value);
+            report.Parameters = ReadParameters(reportFiles.Single(f => Path.GetFileName(f.Key) == "parameters.csv").Value);
+            report.FilingIndicators = ReadFilingIndicators(reportFiles.Single(f => Path.GetFileName(f.Key) == "FilingIndicators.csv").Value);
+
+            foreach (var filingIndicatorCode in report.FilingIndicators.Where(fi => fi.Value).Select(fi => fi.Key))
+            {
+                foreach (var filing in filingInfo.Values.Where(f => f.Indicator == filingIndicatorCode))
+                {
+                    var url = filing.Url;
+                    var templateCode = filing.Template;
+                    var tablefile = reportFiles.SingleOrDefault(f => Path.GetFileName(f.Key) == url);
+                    if (tablefile.Key != default)
+                    {
+                        var tabledata = ReadTableData(filing.Template, tablefile.Value);
+                        report.Data.AddRange(tabledata);
+                    }
+                }
+            }
 
             return report;
         }
@@ -444,7 +491,11 @@
             return result;
         }
 
-        private static bool DatapointMatchesFact(Dictionary<string, string> datapointDimensions, HashSet<string> tableOpenDimensions, Dictionary<string, string> factExplicitMembers, HashSet<string> factTypedMembers)
+        private static bool DatapointMatchesFact(
+            Dictionary<string, string> datapointDimensions,
+            HashSet<string> tableOpenDimensions,
+            Dictionary<string, string> factExplicitMembers,
+            HashSet<string> factTypedMembers)
         {
             var match =
                 factExplicitMembers.Count + factTypedMembers.Count == tableOpenDimensions.Count + datapointDimensions.Count
@@ -459,14 +510,16 @@
         }
 
         /// <summary/>
-        public static Report FromXbrlXml(Xml.Report xmlReport, Dictionary<string, TableDefinition> tableDefinitions, Dictionary<string, string> filingIndicators, ModuleDefinition moduleDefinition)
+        public static Report FromXbrlXml(
+            Xml.Report xmlReport,
+            ModuleDefinition moduleDefinition)
         {
             var report = new Report
             {
                 Entrypoint = Path.ChangeExtension(xmlReport.SchemaReference.Value, ".json")
             };
 
-            var prefix = moduleDefinition.DocumentInfo.Namespaces.FirstOrDefault(ns => ns.Value == xmlReport.Entity.Identifier.Scheme).Key;
+            var prefix = moduleDefinition.DocumentInfo.Namespaces.FirstOrDefault(ns => ns.Value.ToString() == xmlReport.Entity.Identifier.Scheme).Key;
             var identifier = xmlReport.Entity.Identifier.Value;
             report.Parameters.Add("entityID", $"{prefix}:{identifier}");
             report.Parameters.Add("refPeriod", xmlReport.Period.Instant.ToString("yyyy-MM-dd"));
@@ -483,9 +536,12 @@
                 xmlReport.Contexts.First(c => c.Scenario != null && c.Scenario.ExplicitMembers.Any()).
                 Scenario.ExplicitMembers.First().Dimension.Namespace);
 
+            var tableDefinitions = moduleDefinition.TableDefinitions();
+            var filingInfo = moduleDefinition.FilingInfo();
+
             var reportedTables =
                 tableDefinitions.
-                Where(table => report.FilingIndicators.GetValueOrDefault(filingIndicators[table.Key], false)).
+                Where(table => report.FilingIndicators.GetValueOrDefault(filingInfo[table.Key].Indicator, false)).
                 ToDictionary(t => t.Key, t => t.Value);
 
             var tablesOpendimensions =
@@ -525,26 +581,30 @@
         }
 
         /// <summary/>
-        public Xml.Report ToXbrlXml(Dictionary<string, TableDefinition> tableDefinitions, Dictionary<string, string> dimensionDomain, KeyValuePair<string, string> typedDomainNamespace, Dictionary<string, string> filingIndicators, HashSet<string> typedDomains, ModuleDefinition moduleDefinition)
-        => ToXbrlXml(this, tableDefinitions, dimensionDomain, typedDomainNamespace, filingIndicators, typedDomains, moduleDefinition);
+        public Xml.Report ToXbrlXml(
+            Dictionary<string, string> dimensionDomain,
+            KeyValuePair<string, string> typedDomainNamespace,
+            HashSet<string> typedDomains,
+            ModuleDefinition moduleDefinition)
+        => ToXbrlXml(this, dimensionDomain, typedDomainNamespace, typedDomains, moduleDefinition);
 
         /// <summary/>
         public static Xml.Report ToXbrlXml(
             Report report,
-            Dictionary<string, TableDefinition> tableDefinitions,
             Dictionary<string, string> dimensionDomain,
             KeyValuePair<string, string> typedDomainNamespace,
-            Dictionary<string, string> filingIndicators,
             HashSet<string> typedDomains,
             ModuleDefinition moduleDefinition)
         {
+            var filingInfo = moduleDefinition.FilingInfo();
+            var tableDefinitions = moduleDefinition.TableDefinitions();
             var xmlreport = new Xml.Report
             {
-                SchemaReference = new SchemaReference("simple", moduleDefinition.DocumentInfo.Taxonomy.FirstOrDefault())
+                SchemaReference = new SchemaReference("simple", moduleDefinition.DocumentInfo.Taxonomy.FirstOrDefault()?.ToString())
             };
 
             foreach (var ns in moduleDefinition.DocumentInfo.Namespaces)
-                xmlreport.Namespaces.AddNamespace(ns.Key, ns.Value);
+                xmlreport.Namespaces.AddNamespace(ns.Key, ns.Value.ToString());
 
             var idParts = report.Parameters["entityID"].Split(':');
             var idNs = xmlreport.Namespaces.LookupNamespace(idParts.First());
@@ -573,7 +633,7 @@
                 report.
                 Data.
                 Where(d => !string.IsNullOrEmpty(d.Value)).
-                Where(d => filed.Contains(filingIndicators[d.Table])).
+                Where(d => filed.Contains(filingInfo[d.Table].Indicator)).
                 GroupBy(d => d.Table).
                 ToDictionary(d => d.Key, d => d.ToArray());
 

@@ -4,7 +4,7 @@
 //  Author:
 //       John Nordberg <john.nordberg@gmail.com>
 //
-//  Copyright (c) 2015-2024 John Nordberg
+//  Copyright (c) 2015-2026 John Nordberg
 //
 //  This program is free software: you can redistribute it and/or modify
 //  it under the terms of the GNU Lesser General Public License as published by
@@ -30,6 +30,9 @@ namespace Diwen.Xbrl.Xml
     /// <summary/>
     public class Fact : IEquatable<Fact>
     {
+
+        internal Report Report { get; set; }
+
         static readonly XmlDocument doc = new();
 
         /// <summary/>
@@ -210,12 +213,20 @@ namespace Diwen.Xbrl.Xml
 
         /// <summary/>
         public bool Equals(Fact other)
-        => other != null
-            && (Value == null ? other.Value == null : Value.Equals(other.Value, StringComparison.Ordinal))
-            && (Metric == null ? other.Metric == null : Metric.Equals(other.Metric))
-            && (Decimals == null ? other.Decimals == null : Decimals.Equals(other.Decimals, StringComparison.Ordinal))
-            && (Unit == null ? other.Unit == null : Unit.Equals(other.Unit));
+        {
+            var result =
+              other != null
+              && (Value == null ? other.Value == null : Value.Equals(other.Value, StringComparison.Ordinal))
+              && (Metric == null ? other.Metric == null : Metric.Equals(other.Metric))
+              && (Decimals == null ? other.Decimals == null : Decimals.Equals(other.Decimals, StringComparison.Ordinal))
+              && (Unit == null ? other.Unit == null : Unit.Equals(other.Unit));
 
+            // if (result)
+            //     if (ReferenceEquals(Report, other.Report))
+            //         result = string.Equals(ContextRef, other.ContextRef, StringComparison.Ordinal);
+
+            return result;
+        }
         #endregion
     }
 }
