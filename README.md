@@ -59,7 +59,7 @@ Supports:
 | -------------------- | ------------- | -------             |
 | xBRL-XML             | read+write    | xBRL-CSV, xBRL-JSON |
 | xBRL-CSV             | read+write    | xBRL-XML            |
-| xBRL-CSV "Plain-csv" | not supported | not supported       |
+| xBRL-CSV "Plain-csv" | read+write    | xBRL-XML            |
 | xBRL-JSON            | read+write    | xBRL-XML            |
 | iXBRL                | read          | xBRL-XML            |
 
@@ -91,7 +91,7 @@ Tests for exercising Diwen.Xbrl code, also serving as documentation and samples
 # My environment
 Code is written in [C#](https://docs.microsoft.com/en-us/dotnet/csharp/index), 
 
-targeting [.NET 10](https://learn.microsoft.com/en-us/dotnet/api/?view=net-10.0)
+targeting [.NET 8](https://learn.microsoft.com/en-us/dotnet/api/?view=net-8.0)
 
 Test framework is [xUnit](https://xunit.net/)
 
