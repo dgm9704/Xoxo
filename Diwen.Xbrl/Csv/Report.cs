@@ -95,14 +95,14 @@ namespace Diwen.Xbrl.Csv
 
             var package = new Dictionary<string, Stream>
             {
-                [Path.Combine(packageName, metafolder, "reports.json")] = CreatePackageInfo(),
-                [Path.Combine(packageName, reportfolder, "report.json")] = CreateReportInfo(documentType, entrypoint),
-                [Path.Combine(packageName, reportfolder, "parameters.csv")] = CreateParameters(parameters),
-                [Path.Combine(packageName, reportfolder, "FilingIndicators.csv")] = CreateFilingIndicators(filingIndicators),
+                [$"{packageName}/{metafolder}/reports.json"] = CreatePackageInfo(),
+                [$"{packageName}/{reportfolder}/report.json"] = CreateReportInfo(documentType, entrypoint),
+                [$"{packageName}/{reportfolder}/parameters.csv"] = CreateParameters(parameters),
+                [$"{packageName}/{reportfolder}/FilingIndicators.csv"] = CreateFilingIndicators(filingIndicators),
             };
 
             foreach (var tableStream in CreateReportData(data, moduleDefinition))
-                package.Add(Path.Combine(packageName, reportfolder, tableStream.Key), tableStream.Value);
+                package.Add($"{packageName}/{reportfolder}/{tableStream.Key}", tableStream.Value);
 
             return package;
         }

@@ -108,20 +108,20 @@ namespace Diwen.Xbrl.Tests.Csv
         [InlineData("DUMMYLEI123456789012_GB_SBP010200_SBPCRCON_2021-12-31_20210623163233000.zip")]
         public static void ReadPackageTest(string packageName)
         {
-            var packagePath = Path.Combine("data/csv", packageName);
+            var packagePath = Path.Combine("data", "csv", packageName);
             var reportFiles = Report.ReadPackage(packagePath);
 
             var metafolder = "META-INF";
             var reportfolder = "reports";
 
-            Assert.True(reportFiles.ContainsKey(Path.Combine(metafolder, "reports.json")));
-            Assert.True(reportFiles.ContainsKey(Path.Combine(reportfolder, "report.json")));
-            Assert.True(reportFiles.ContainsKey(Path.Combine(reportfolder, "parameters.csv")));
-            Assert.True(reportFiles.ContainsKey(Path.Combine(reportfolder, "FilingIndicators.csv")));
-            Assert.True(reportFiles.ContainsKey(Path.Combine(reportfolder, "S_00.01.csv")));
-            Assert.True(reportFiles.ContainsKey(Path.Combine(reportfolder, "C_105.02.csv")));
-            Assert.True(reportFiles.ContainsKey(Path.Combine(reportfolder, "C_105.03.csv")));
-            Assert.True(reportFiles.ContainsKey(Path.Combine(reportfolder, "C_113.00.csv")));
+            Assert.True(reportFiles.ContainsKey($"{metafolder}/reports.json"));
+            Assert.True(reportFiles.ContainsKey($"{reportfolder}/report.json"));
+            Assert.True(reportFiles.ContainsKey($"{reportfolder}/parameters.csv"));
+            Assert.True(reportFiles.ContainsKey($"{reportfolder}/FilingIndicators.csv"));
+            Assert.True(reportFiles.ContainsKey($"{reportfolder}/S_00.01.csv"));
+            Assert.True(reportFiles.ContainsKey($"{reportfolder}/C_105.02.csv"));
+            Assert.True(reportFiles.ContainsKey($"{reportfolder}/C_105.03.csv"));
+            Assert.True(reportFiles.ContainsKey($"{reportfolder}/C_113.00.csv"));
         }
 
         [Theory]
@@ -129,7 +129,7 @@ namespace Diwen.Xbrl.Tests.Csv
         public static void ImportTest(string packageName)
         {
 
-            var packagePath = Path.Combine("data/csv", packageName);
+            var packagePath = Path.Combine("data", "csv", packageName);
             var entrypoint = PlainCsvReport.GetPackageEntryPoint(packagePath).Replace(@"http://", "");
 
             var moduleDefinition = ModuleDefinition.FromFile(entrypoint);
@@ -248,10 +248,10 @@ namespace Diwen.Xbrl.Tests.Csv
         }
 
         public static HashSet<string> ReadTypedDomainInfo(string path)
-        => File.ReadAllLines(Path.Combine("data/csv", path)).ToHashSet();
+        => File.ReadAllLines(Path.Combine("data", "csv", path)).ToHashSet();
 
         public static Dictionary<string, string> ReadDimensionDomainInfo(string file)
-        => File.ReadAllLines(Path.Combine("data/csv", file)).
+        => File.ReadAllLines(Path.Combine("data", "csv", file)).
             Select(l => l.Split(',')).
             ToDictionary(x => x[0], x => x[1]);
 

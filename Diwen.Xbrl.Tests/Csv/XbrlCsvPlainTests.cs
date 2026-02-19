@@ -125,10 +125,10 @@ namespace Diwen.Xbrl.Tests.Csv
         }
 
         public static HashSet<string> ReadTypedDomainInfo(string path)
-        => [.. File.ReadAllLines(Path.Combine("data/csv", path))];
+        => [.. File.ReadAllLines(Path.Combine("data", "csv", path))];
 
         public static Dictionary<string, string> ReadDimensionDomainInfo(string file)
-        => File.ReadAllLines(Path.Combine("data/csv", file)).
+        => File.ReadAllLines(Path.Combine("data", "csv", file)).
             Select(l => l.Split(',')).
             ToDictionary(x => x[0], x => x[1]);
     }
