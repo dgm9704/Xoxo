@@ -17,6 +17,25 @@ If I think that the fix or change is something that should go in the library,
 
 I will then implement it, taking into consideration any suggestions.
 
+## Ways to get in touch
+If you have any questions, comments, suggestions, problems, bugreports/fixes, etc
+
+### create an issue 
+It's always ok to create one even if you're not sure
+
+https://github.com/dgm9704/Xoxo/issues/new
+
+### send a message through the NuGet package page
+This might be the best way if you have something you don't want share publicly
+
+[https://www.nuget.org/packages/Diwen.Xbrl/3.4.2/ContactOwners](https://www.nuget.org/packages/Diwen.Xbrl/3.5.0/ContactOwners)
+
+### mastodon: @diwen@techhub.social
+https://techhub.social/@diwen
+
+### bluesky: @diwen.social
+https://bsky.app/profile/diwen.social
+
 
 # Breaking changes!
 After starting to add support for xBRL-JSON it became obvious that the code needed restructuring.
@@ -97,22 +116,3 @@ Test framework is [xUnit](https://xunit.net/)
 
 I use [Visual Studio Code](https://code.visualstudio.com/) 
 on [Arch Linux](https://www.archlinux.org/)
-
-## Ways get in touch
-If you have any questions, comments, suggestions, problems, bugreports/fixes, etc
-
-### create an issue 
-It's always ok to create one even if you're not sure
-
-https://github.com/dgm9704/Xoxo/issues/new
-
-### send a message through the NuGet package page
-This might be the best way if you have something you don't want share publicly
-
-[https://www.nuget.org/packages/Diwen.Xbrl/3.4.2/ContactOwners](https://www.nuget.org/packages/Diwen.Xbrl/3.5.0/ContactOwners)
-
-### mastodon: @diwen@techhub.social
-https://techhub.social/@diwen
-
-### bluesky: @diwen.social
-https://bsky.app/profile/diwen.social
