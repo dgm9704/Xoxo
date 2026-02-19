@@ -26,7 +26,7 @@ It's always ok to create one even if you're not sure
 https://github.com/dgm9704/Xoxo/issues/new
 
 ### send a message through the NuGet package page
-This might be the best way if you have something you don't want share publicly
+This might be the best way if you have something you don't want to share publicly
 
 [https://www.nuget.org/packages/Diwen.Xbrl/3.4.2/ContactOwners](https://www.nuget.org/packages/Diwen.Xbrl/3.5.0/ContactOwners)
 
