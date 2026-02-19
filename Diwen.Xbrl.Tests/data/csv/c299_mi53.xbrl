@@ -1,0 +1,55 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!--(C) EBA-->
+<xbrli:xbrl xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xbrli="http://www.xbrl.org/2003/instance" xmlns:link="http://www.xbrl.org/2003/linkbase" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xbrldi="http://xbrl.org/2006/xbrldi" xmlns:iso4217="http://www.xbrl.org/2003/iso4217" xmlns:eba_model="http://www.eba.europa.eu/xbrl/ext/model" xmlns:find="http://www.eurofiling.info/xbrl/ext/filing-indicators" xmlns:eba_dim="http://www.eba.europa.eu/xbrl/crr/dict/dim" xmlns:eba_BA="http://www.eba.europa.eu/xbrl/crr/dict/dom/BA" xmlns:eba_MC="http://www.eba.europa.eu/xbrl/crr/dict/dom/MC" xmlns:eba_met="http://www.eba.europa.eu/xbrl/crr/dict/met" xmlns:eba_PL="http://www.eba.europa.eu/xbrl/crr/dict/dom/PL" xmlns:eba_CT="http://www.eba.europa.eu/xbrl/crr/dict/dom/CT" xmlns:eba_AP="http://www.eba.europa.eu/xbrl/crr/dict/dom/AP" xmlns:eba_BT="http://www.eba.europa.eu/xbrl/crr/dict/dom/BT" xmlns:eba_TR="http://www.eba.europa.eu/xbrl/crr/dict/dom/TR" xmlns:eba_IM="http://www.eba.europa.eu/xbrl/crr/dict/dom/IM" xmlns:eba_PU="http://www.eba.europa.eu/xbrl/crr/dict/dom/PU" xmlns:eba_NC="http://www.eba.europa.eu/xbrl/crr/dict/dom/NC" xmlns:eba_TI="http://www.eba.europa.eu/xbrl/crr/dict/dom/TI" xmlns:eba_MA="http://www.eba.europa.eu/xbrl/crr/dict/dom/MA" xmlns:eba_RF="http://www.eba.europa.eu/xbrl/crr/dict/dom/RF" xmlns:eba_RT="http://www.eba.europa.eu/xbrl/crr/dict/dom/RT" xmlns:eba_TA="http://www.eba.europa.eu/xbrl/crr/dict/dom/TA" xmlns:eba_RP="http://www.eba.europa.eu/xbrl/crr/dict/dom/RP" xmlns:eba_SC="http://www.eba.europa.eu/xbrl/crr/dict/dom/SC" xmlns:eba_CG="http://www.eba.europa.eu/xbrl/crr/dict/dom/CG" xmlns:eba_GA="http://www.eba.europa.eu/xbrl/crr/dict/dom/GA" xmlns:eba_typ="http://www.eba.europa.eu/xbrl/crr/dict/typ" xmlns:eba_ZZ="http://www.eba.europa.eu/xbrl/crr/dict/dom/ZZ" xmlns:eba_AS="http://www.eba.europa.eu/xbrl/crr/dict/dom/AS">
+  <link:schemaRef xlink:type="simple" xlink:href="http://www.eba.europa.eu/eu/fr/xbrl/crr/fws/finrep/its-005-2020/2022-06-01/mod/finrep9.xsd"/>
+  <xbrli:unit id="uEUR">
+    <xbrli:measure>iso4217:EUR</xbrli:measure>
+  </xbrli:unit>
+  <xbrli:context id="c1">
+    <xbrli:entity>
+      <xbrli:identifier scheme="https://eurofiling.info/eu/rs">DUMMYLEI123456789012.CON</xbrli:identifier>
+    </xbrli:entity>
+    <xbrli:period>
+      <xbrli:instant>2022-12-31</xbrli:instant>
+    </xbrli:period>
+  </xbrli:context>
+  <find:fIndicators>
+    <find:filingIndicator contextRef="c1">F_04.02.1</find:filingIndicator>
+  </find:fIndicators>
+
+<!--
+f_04.02.1.json
+                         "dp152720": {
+                            "decimals": "$decimalsMonetary",
+                            "dimensions": {
+                                "concept": "eba_met:mi53",
+                                "eba_dim:APL": "eba_PL:x500",
+                                "eba_dim:BAS": "eba_BA:x6",
+                                "eba_dim:CPS": "eba_CT:x18",
+                                "eba_dim:MCY": "eba_MC:x469",
+                                "unit": "$baseCurrency"
+                            },
+                            "eba:documentation": {
+                                "CellCode": "{F 04.02.1, r0150, c0010}",
+                                "DataPointVersionId": "152720"
+                            }
+                        },
+ -->
+
+  <xbrli:context id="c299">
+    <xbrli:entity>
+      <xbrli:identifier scheme="https://eurofiling.info/eu/rs">DUMMYLEI123456789012.CON</xbrli:identifier>
+    </xbrli:entity>
+    <xbrli:period>
+      <xbrli:instant>2022-12-31</xbrli:instant>
+    </xbrli:period>
+    <xbrli:scenario>
+      <xbrldi:explicitMember dimension="eba_dim:BAS">eba_BA:x6</xbrldi:explicitMember>
+      <xbrldi:explicitMember dimension="eba_dim:APL">eba_PL:x500</xbrldi:explicitMember>
+      <xbrldi:explicitMember dimension="eba_dim:MCY">eba_MC:x469</xbrldi:explicitMember>
+      <xbrldi:explicitMember dimension="eba_dim:CPS">eba_CT:x18</xbrldi:explicitMember>
+    </xbrli:scenario>
+  </xbrli:context>
+  <eba_met:mi53 unitRef="uEUR" decimals="-3" contextRef="c299">2784000</eba_met:mi53>
+
+</xbrli:xbrl>

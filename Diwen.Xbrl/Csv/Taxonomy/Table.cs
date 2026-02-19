@@ -23,6 +23,7 @@ namespace Diwen.Xbrl.Csv.Taxonomy
 {
     using System.Linq;
     using System.Text.Json.Serialization;
+    using System.Text.RegularExpressions;
 
     /// <summary/>
     public class Table : EsaDocumented
@@ -42,6 +43,10 @@ namespace Diwen.Xbrl.Csv.Taxonomy
 
         private string filingIndicator;
 
+
+        private static string letterVariantPattern = @"-[a-z]";
+        private static Regex letterVariantExpression = new(letterVariantPattern, RegexOptions.Compiled);
+
         /// <summary />
         [JsonIgnore]
         public string FilingIndicator
@@ -51,7 +56,8 @@ namespace Diwen.Xbrl.Csv.Taxonomy
                 filingIndicator ??=
                     EsaDocumentation != null && EsaDocumentation.ContainsKey("FilingIndicator")
                     ? EsaDocumentation["FilingIndicator"].ToString()
-                    : string.Join('.', Template.Split('-').Take(2)); // won't work for EIOPA
+                    //: string.Join('.', Template.Split('-').Take(2)); 
+                    : string.Join('.', letterVariantExpression.Replace(Template, string.Empty).Split('-'));
 
                 return filingIndicator;
             }

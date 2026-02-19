@@ -174,6 +174,7 @@ namespace Diwen.Xbrl.Tests.Csv
         [InlineData("data/csv/DUMMYLEI123456789012.CON_FR_FINREP030100_FINREP9_2022-12-31_20220411141600000.xbrl")]
         [InlineData("data/csv/FINREP_F_23-01_R0080_C0010.xbrl")]
         [InlineData("data/csv/FINREP_F_40-01_R999_C0031.xbrl")]
+        [InlineData("data/csv/c299_mi53.xbrl")]
         public void XmlToCsvToXml(string xmlInPath)
         {
             var csvPath = XmlToCsv(xmlInPath);
