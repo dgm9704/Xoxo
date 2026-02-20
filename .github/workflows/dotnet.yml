@@ -17,9 +17,5 @@ jobs:
       uses: actions/setup-dotnet@v2
       with:
         dotnet-version: 8.0.x
-    - name: Install dependencies
-      run: dotnet restore Diwen.Xbrl.Tests/Diwen.Xbrl.Tests.csproj
-    - name: Build
-      run: dotnet build --configuration Release --no-restore Diwen.Xbrl.Tests/Diwen.Xbrl.Tests.csproj
     - name: Test
-      run: dotnet test --no-restore --verbosity normal Diwen.Xbrl.Tests/Diwen.Xbrl.Tests.csproj
+      run: dotnet --project Diwen.Xbrl.Tests
