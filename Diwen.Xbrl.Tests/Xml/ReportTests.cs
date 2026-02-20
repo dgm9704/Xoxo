@@ -20,7 +20,6 @@ namespace Diwen.Xbrl.Tests.Xml
     using System.Diagnostics;
     using System.IO;
     using Xunit;
-    using Xunit.Abstractions;
     using Diwen.Xbrl.Xml.Comparison;
     using Diwen.Xbrl.Xml;
     using System.Xml.Linq;

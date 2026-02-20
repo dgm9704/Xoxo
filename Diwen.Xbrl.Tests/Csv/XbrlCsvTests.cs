@@ -23,7 +23,6 @@ namespace Diwen.Xbrl.Tests.Csv
     using Diwen.Xbrl.Csv.Taxonomy;
     using Diwen.Xbrl.Extensions;
     using Xunit;
-    using Xunit.Abstractions;
     using Diwen.Xbrl.Csv;
 
     public class XbrlCsvTests

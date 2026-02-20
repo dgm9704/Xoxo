@@ -21,7 +21,6 @@ namespace Diwen.Xbrl.Tests.Json
     using System.Linq;
     using Diwen.Xbrl.Json;
     using Xunit;
-    using Xunit.Abstractions;
 
     public class XbrlJsonTests
     {

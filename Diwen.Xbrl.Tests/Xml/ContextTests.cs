@@ -20,7 +20,6 @@ namespace Diwen.Xbrl.Tests.Xml
     using Diwen.Xbrl.Xml;
     using Diwen.Xbrl.Xml.Comparison;
     using Xunit;
-    using Xunit.Abstractions;
 
     public class ContextTests
     {

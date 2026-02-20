@@ -23,7 +23,6 @@ namespace Diwen.Xbrl.Tests.Csv
     using Diwen.Xbrl.Extensions;
     using Diwen.Xbrl.Xml.Comparison;
     using Xunit;
-    using Xunit.Abstractions;
 
     public class XbrlCsvPlainTests
     {
