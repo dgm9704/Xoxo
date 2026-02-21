@@ -1,0 +1,58 @@
+{
+    "documentInfo": {
+        "documentType": "https://xbrl.org/CR/2021-02-03/xbrl-csv",
+        "namespaces": {
+            "eba": "http://www.eba.europa.eu",
+            "eba_AP": "http://www.eba.europa.eu/xbrl/crr/dict/dom/AP",
+            "eba_BA": "http://www.eba.europa.eu/xbrl/crr/dict/dom/BA",
+            "eba_MC": "http://www.eba.europa.eu/xbrl/crr/dict/dom/MC",
+            "eba_TR": "http://www.eba.europa.eu/xbrl/crr/dict/dom/TR",
+            "eba_dim": "http://www.eba.europa.eu/xbrl/crr/dict/dim",
+            "eba_met": "http://www.eba.europa.eu/xbrl/crr/dict/met"
+        }
+    },
+    "tableTemplates": {
+        "C_109-01-b": {
+            "columns": {
+                "datapoint": {
+                    "propertyGroups": {
+                        "dp113379": {
+                            "dimensions": {
+                                "concept": "eba_met:si404",
+                                "eba_dim:APR": "eba_AP:x26",
+                                "eba_dim:BAS": "eba_BA:x17",
+                                "eba_dim:MCY": "eba_MC:x612",
+                                "eba_dim:MRW": "eba_AP:x93",
+                                "eba_dim:TRI": "eba_TR:x11"
+                            },
+                            "eba:documentation": {
+                                "CellCode": "{C 109.01.b, r0010, c0020}",
+                                "DataPointVersionId": "113379"
+                            }
+                        },
+                        "dp113381": {
+                            "dimensions": {
+                                "concept": "eba_met:si405",
+                                "eba_dim:APR": "eba_AP:x26",
+                                "eba_dim:BAS": "eba_BA:x17",
+                                "eba_dim:MCY": "eba_MC:x612",
+                                "eba_dim:MRW": "eba_AP:x93",
+                                "eba_dim:TRI": "eba_TR:x11"
+                            },
+                            "eba:documentation": {
+                                "CellCode": "{C 109.01.b, r0020, c0020}",
+                                "DataPointVersionId": "113381"
+                            }
+                        }
+                    }
+                },
+                "factValue": {
+                    "dimensions": {},
+                    "propertiesFrom": [
+                        "datapoint"
+                    ]
+                }
+            }
+        }
+    }
+}

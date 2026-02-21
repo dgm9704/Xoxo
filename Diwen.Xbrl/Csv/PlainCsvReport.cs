@@ -234,8 +234,8 @@ namespace Diwen.Xbrl.Csv
             ModuleDefinition moduleDefinition)
         {
             var reportdata = new Dictionary<string, Stream>();
-            var filingInfo = moduleDefinition.FilingInfo();
-            var tableDefinitions = moduleDefinition.TableDefinitions();
+            var filingInfo = moduleDefinition.FilingInfo;
+            var tableDefinitions = moduleDefinition.TableDefinitions;
 
             var tabledata = data.GroupBy(d => d.Table);
             foreach (var table in tabledata)
@@ -284,8 +284,8 @@ namespace Diwen.Xbrl.Csv
             ModuleDefinition moduleDefinition)
         {
 
-            var filingInfo = moduleDefinition.FilingInfo();
-            var tableDefinitions = moduleDefinition.TableDefinitions();
+            var filingInfo = moduleDefinition.FilingInfo;
+            var tableDefinitions = moduleDefinition.TableDefinitions;
             var report = new PlainCsvReport();
             var reportFiles = ReadPackage(packagePath);
             var packagename = Path.GetFileNameWithoutExtension(packagePath);
@@ -617,9 +617,9 @@ namespace Diwen.Xbrl.Csv
                 xmlReport.Contexts.First(c => c.Scenario != null && c.Scenario.ExplicitMembers.Any()).Scenario
                     .ExplicitMembers.First().Dimension.Namespace);
 
-            var tableDefinitions = moduleDefinition.TableDefinitions();
+            var tableDefinitions = moduleDefinition.TableDefinitions;
 
-            var filingInfo = moduleDefinition.FilingInfo();
+            var filingInfo = moduleDefinition.FilingInfo;
 
             var reportedTables =
                 tableDefinitions
@@ -694,8 +694,8 @@ namespace Diwen.Xbrl.Csv
             HashSet<string> typedDomains,
             ModuleDefinition moduleDefinition)
         {
-            var tableDefinitions = moduleDefinition.TableDefinitions();
-            var filingInfo = moduleDefinition.FilingInfo();
+            var tableDefinitions = moduleDefinition.TableDefinitions;
+            var filingInfo = moduleDefinition.FilingInfo;
             var xmlreport = new Xml.Report
             {
                 SchemaReference =

@@ -54,7 +54,7 @@ namespace Diwen.Xbrl.Tests.Csv
         public static string PlainCsvToXml(string reportPath)
         {
 
-            var entrypoint = PlainCsvReport.GetPackageEntryPoint(reportPath).Replace(@"http://", "");
+            var entrypoint = PlainCsvReport.GetPackageEntryPoint(reportPath).Replace(@"http://", "taxonomy/");
 
             var moduleDefinition = ModuleDefinition.FromFile(entrypoint);
 
@@ -110,9 +110,9 @@ namespace Diwen.Xbrl.Tests.Csv
 
             xmlReport.ToFile("debug.xbrl");
 
-            var entrypoint = Path.ChangeExtension(xmlReport.SchemaReference.Value.Replace("http://", ""), "json");
+            var entrypoint = Path.ChangeExtension(xmlReport.SchemaReference.Value, "json");
 
-            var moduleDefinition = ModuleDefinition.FromFile(entrypoint);
+            var moduleDefinition = ModuleDefinition.FromFile(entrypoint.Replace("http://", "taxonomy/"));
 
             var plainCsvReport = xmlReport.ToXbrlCsvPlain(moduleDefinition);
 

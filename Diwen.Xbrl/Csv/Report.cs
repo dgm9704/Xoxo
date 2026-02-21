@@ -214,7 +214,7 @@ namespace Diwen.Xbrl.Csv
             ModuleDefinition moduleDefinition)
         {
             var reportdata = new Dictionary<string, Stream>();
-            var filingInfo = moduleDefinition.FilingInfo();
+            var filingInfo = moduleDefinition.FilingInfo;
             var tabledata = data.GroupBy(d => d.Table);
             foreach (var table in tabledata)
             {
@@ -246,7 +246,7 @@ namespace Diwen.Xbrl.Csv
         /// <summary/>
         public static Report FromFile(string packagePath, ModuleDefinition moduleDefinition)
         {
-            var filingInfo = moduleDefinition.FilingInfo();
+            var filingInfo = moduleDefinition.FilingInfo;
             var report = new Report();
             var reportFiles = ReadPackage(packagePath);
             var packagename = Path.GetFileNameWithoutExtension(packagePath);
@@ -536,8 +536,8 @@ namespace Diwen.Xbrl.Csv
                 xmlReport.Contexts.First(c => c.Scenario != null && c.Scenario.ExplicitMembers.Any()).
                 Scenario.ExplicitMembers.First().Dimension.Namespace);
 
-            var tableDefinitions = moduleDefinition.TableDefinitions();
-            var filingInfo = moduleDefinition.FilingInfo();
+            var tableDefinitions = moduleDefinition.TableDefinitions;
+            var filingInfo = moduleDefinition.FilingInfo;
 
             var reportedTables =
                 tableDefinitions.
@@ -596,8 +596,8 @@ namespace Diwen.Xbrl.Csv
             HashSet<string> typedDomains,
             ModuleDefinition moduleDefinition)
         {
-            var filingInfo = moduleDefinition.FilingInfo();
-            var tableDefinitions = moduleDefinition.TableDefinitions();
+            var filingInfo = moduleDefinition.FilingInfo;
+            var tableDefinitions = moduleDefinition.TableDefinitions;
             var xmlreport = new Xml.Report
             {
                 SchemaReference = new SchemaReference("simple", moduleDefinition.DocumentInfo.Taxonomy.FirstOrDefault()?.ToString())

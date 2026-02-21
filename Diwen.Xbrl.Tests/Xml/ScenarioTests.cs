@@ -26,8 +26,8 @@ namespace Diwen.Xbrl.Tests.Xml
         [Fact]
         public static void CompareScenarioMemberOrderDifferent()
         {
-            var left = Report.FromFile(Path.Combine("data", "memberorder0.xbrl"));
-            var right = Report.FromFile(Path.Combine("data", "memberorder1.xbrl"));
+            var left = Report.FromFile(Path.Combine("data","xml", "memberorder0.xbrl"));
+            var right = Report.FromFile(Path.Combine("data","xml", "memberorder1.xbrl"));
 
             Assert.Equal(left, right);
 

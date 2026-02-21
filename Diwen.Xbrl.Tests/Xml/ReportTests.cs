@@ -137,7 +137,7 @@ namespace Diwen.Xbrl.Tests.Xml
         [Fact]
         public void ReadSolvencyReferenceReport()
         {
-            var path = Path.Combine("data", "reference.xbrl");
+            var path = Path.Combine("data", "xml", "reference.xbrl");
             var referenceReport = Report.FromFile(path);
             Assert.NotNull(referenceReport);
         }
@@ -151,7 +151,7 @@ namespace Diwen.Xbrl.Tests.Xml
             // aren't automatically removed until serialization so do it before comparisons
             report.RemoveUnusedObjects();
 
-            var referencePath = Path.Combine("data", "reference.xbrl");
+            var referencePath = Path.Combine("data", "xml", "reference.xbrl");
             var referenceReport = Report.FromFile(referencePath);
 
             // Instances are functionally equivalent:
@@ -185,7 +185,7 @@ namespace Diwen.Xbrl.Tests.Xml
         {
             var sw = new Stopwatch();
 
-            var inputPath = Path.Combine("data", "ars.xbrl");
+            var inputPath = Path.Combine("data", "xml", "ars.xbrl");
 
             sw.Start();
             var firstRead = Report.FromFile(inputPath);
@@ -233,7 +233,7 @@ namespace Diwen.Xbrl.Tests.Xml
         [Fact]
         public void CollapseDuplicateContexts()
         {
-            var inputPath = Path.Combine("data", "duplicate_context.xbrl");
+            var inputPath = Path.Combine("data", "xml", "duplicate_context.xbrl");
             Report report = null;
             using (var stream = new FileStream(inputPath, FileMode.Open))
                 report = Report.FromStream(stream, removeUnusedObjects: false, collapseDuplicateContexts: false, removeDuplicateFacts: false);
@@ -250,7 +250,7 @@ namespace Diwen.Xbrl.Tests.Xml
         [Fact]
         public void ReadExampleReportFPInd()
         {
-            var inputPath = Path.Combine("data", "fp_ind_new_correct.xbrl");
+            var inputPath = Path.Combine("data", "xml", "fp_ind_new_correct.xbrl");
             var first = Report.FromFile(inputPath, removeUnusedObjects: false, collapseDuplicateContexts: false, removeDuplicateFacts: false);
             Assert.Equal(7051, first.Contexts.Count);
             Assert.Equal(7091, first.Facts.Count);
@@ -270,7 +270,7 @@ namespace Diwen.Xbrl.Tests.Xml
         [Fact]
         public void RemoveUnusedObjectsPerformance()
         {
-            var inputPath = Path.Combine("data", "fp_ind_new_correct.xbrl");
+            var inputPath = Path.Combine("data", "xml", "fp_ind_new_correct.xbrl");
             var xi = Report.FromFile(inputPath);
 
             var sw = new Stopwatch();
@@ -377,13 +377,13 @@ namespace Diwen.Xbrl.Tests.Xml
         public void ReadAndWriteComments()
         {
             // read a test instance with a comment
-            var inputPath = Path.Combine("data", "comments.xbrl");
+            var inputPath = Path.Combine("data", "xml", "comments.xbrl");
             var report = Report.FromFile(inputPath);
             Assert.Contains("foo", report.Comments);
 
             // add a new comment
             report.Comments.Add("bar");
-            var outputPath = Path.Combine("data", "morecomments.xbrl");
+            var outputPath = Path.Combine("data", "xml", "morecomments.xbrl");
             report.ToFile(outputPath);
             report = Report.FromFile(outputPath);
             Assert.Contains("bar", report.Comments);
@@ -392,7 +392,7 @@ namespace Diwen.Xbrl.Tests.Xml
         [Fact]
         public void NoExtraNamespaces()
         {
-            var report = Report.FromFile(Path.Combine("data", "comments.xbrl"));
+            var report = Report.FromFile(Path.Combine("data", "xml", "comments.xbrl"));
             report.SetDimensionNamespace("s2c_dim", "http://eiopa.europa.eu/xbrl/s2c/dict/dim");
             report.SetTypedDomainNamespace("s2c_typ", "http://eiopa.europa.eu/xbrl/s2c/dict/typ");
             report.ToFile("ns.out");
@@ -402,7 +402,7 @@ namespace Diwen.Xbrl.Tests.Xml
         public void EmptyInstance()
         {
             // should load ok
-            var report = Report.FromFile(Path.Combine("data", "empty_instance.xbrl"));
+            var report = Report.FromFile(Path.Combine("data", "xml", "empty_instance.xbrl"));
             Assert.NotNull(report);
             report.ToFile("empty_instance_out.xbrl");
         }
@@ -410,7 +410,7 @@ namespace Diwen.Xbrl.Tests.Xml
         [Fact]
         public void ReportFromString()
         {
-            var input = File.ReadAllText(Path.Combine("data", "comments.xbrl"));
+            var input = File.ReadAllText(Path.Combine("data", "xml", "comments.xbrl"));
             var report = Report.FromXml(input);
             var output = report.ToXml();
             Assert.NotEmpty(output);
@@ -421,7 +421,7 @@ namespace Diwen.Xbrl.Tests.Xml
         [Fact]
         public void SerializedReportWithNoMonetaryUnitShouldNotHaveUnusedNamespace()
         {
-            var inFile = Path.Combine("data", "minimal.xbrl");
+            var inFile = Path.Combine("data", "xml", "minimal.xbrl");
             var report = Report.FromFile(inFile);
             var outFile = "minimal.out";
             report.ToFile(outFile);
@@ -432,7 +432,7 @@ namespace Diwen.Xbrl.Tests.Xml
         [Fact]
         public void ExplicitMembersWithSurroundingWhitespaceShouldNotBork()
         {
-            var infile = Path.Combine("data", "example_erst_dcca.xbrl");
+            var infile = Path.Combine("data", "xml", "example_erst_dcca.xbrl");
             var report = Report.FromFile(infile);
             Assert.NotNull(report);
         }
@@ -440,7 +440,7 @@ namespace Diwen.Xbrl.Tests.Xml
         [Fact]
         public void FactWithNullContextShouldNotThrow_71()
         {
-            var infile = Path.Combine("data", "71.xbrl");
+            var infile = Path.Combine("data", "xml", "71.xbrl");
             var report = Report.FromFile(infile);
             Assert.NotNull(report);
         }
@@ -466,7 +466,7 @@ namespace Diwen.Xbrl.Tests.Xml
         {
             // set up a report that has no facts and therefore no contexts with scenarios containing any explicit or typed members
             // this means that the namespace "http://xbrl.org/2006/xbrldi" with the canonical prefix "xbrldi" is not used and should not be declared
-            var inputfile = Path.Combine("data", "minimal.xbrl");
+            var inputfile = Path.Combine("data", "xml", "minimal.xbrl");
             var report = Report.FromFile(inputfile);
             report.Facts.RemoveAt(0);
             var xml = report.ToXmlDocument();
@@ -479,8 +479,8 @@ namespace Diwen.Xbrl.Tests.Xml
             // should be completely the same instance
             // first has canonical prefix "xbrli" for "http://www.xbrl.org/2003/instance"
             // and second has it as default namespace
-            var first = Path.Combine("data", "reference.xbrl");
-            var second = Path.Combine("data", "reference_defaultns.xbrl");
+            var first = Path.Combine("data", "xml", "reference.xbrl");
+            var second = Path.Combine("data", "xml", "reference_defaultns.xbrl");
             var report = ReportComparer.Report(first, second);
             if (!report.Result)
                 Console.WriteLine(report);
@@ -490,7 +490,7 @@ namespace Diwen.Xbrl.Tests.Xml
         [Fact]
         public void RemoveDeclarationAndProcessingInstructionsAndComments()
         {
-            var inputpath = Path.Combine("data", "minimal.xbrl");
+            var inputpath = Path.Combine("data", "xml", "minimal.xbrl");
 
             var doc = XDocument.Load(inputpath);
             Assert.NotNull(doc.Declaration);

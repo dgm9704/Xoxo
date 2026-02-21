@@ -231,7 +231,7 @@ namespace Diwen.Xbrl.Tests.Xml
             // aren't automatically removed until serialization so do it before comparisons
             report.RemoveUnusedObjects();
 
-            var referencePath = Path.Combine("data", "sbr_reference.xbrl");
+            var referencePath = Path.Combine("data", "xml", "sbr_reference.xbrl");
             var referenceReport = Report.FromFile(referencePath, removeUnusedObjects: false, collapseDuplicateContexts: false, removeDuplicateFacts: false);
 
             // Instances are functionally equivalent:

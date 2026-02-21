@@ -1,0 +1,66 @@
+{
+    "documentInfo": {
+        "documentType": "https://xbrl.org/CR/2021-02-03/xbrl-csv",
+        "namespaces": {
+            "eba": "http://www.eba.europa.eu",
+            "eba_AP": "http://www.eba.europa.eu/xbrl/crr/dict/dom/AP",
+            "eba_BA": "http://www.eba.europa.eu/xbrl/crr/dict/dom/BA",
+            "eba_IS": "http://www.eba.europa.eu/xbrl/crr/dict/dom/IS",
+            "eba_MC": "http://www.eba.europa.eu/xbrl/crr/dict/dom/MC",
+            "eba_TR": "http://www.eba.europa.eu/xbrl/crr/dict/dom/TR",
+            "eba_dim": "http://www.eba.europa.eu/xbrl/crr/dict/dim",
+            "eba_met": "http://www.eba.europa.eu/xbrl/crr/dict/met"
+        }
+    },
+    "tableTemplates": {
+        "C_105-02": {
+            "columns": {
+                "IMI": {},
+                "PBE": {},
+                "datapoint": {
+                    "propertyGroups": {
+                        "dp155345": {
+                            "decimals": "$decimalsMonetary",
+                            "dimensions": {
+                                "concept": "eba_met:mi119",
+                                "eba_dim:APR": "eba_AP:x27",
+                                "eba_dim:BAS": "eba_BA:x9",
+                                "eba_dim:MCY": "eba_MC:x945",
+                                "eba_dim:TRI": "eba_TR:x4",
+                                "unit": "$baseCurrency"
+                            },
+                            "eba:documentation": {
+                                "CellCode": "{C 105.02, r999, c0030}",
+                                "DataPointVersionId": "439585"
+                            }
+                        },
+                        "dp155347": {
+                            "decimals": "$decimalsMonetary",
+                            "dimensions": {
+                                "concept": "eba_met:mi793",
+                                "eba_dim:APR": "eba_AP:x27",
+                                "eba_dim:BAS": "eba_BA:x9",
+                                "eba_dim:MCY": "eba_MC:x945",
+                                "eba_dim:TRI": "eba_TR:x4",
+                                "unit": "$baseCurrency"
+                            },
+                            "eba:documentation": {
+                                "CellCode": "{C 105.02, r999, c0040}",
+                                "DataPointVersionId": "469291"
+                            }
+                        }
+                    }
+                },
+                "factValue": {
+                    "dimensions": {
+                        "eba_dim:IMI": "$IMI",
+                        "eba_dim:PBE": "$PBE"
+                    },
+                    "propertiesFrom": [
+                        "datapoint"
+                    ]
+                }
+            }
+        }
+    }
+}

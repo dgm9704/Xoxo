@@ -21,8 +21,6 @@
 
 namespace Diwen.Xbrl.Extensions
 {
-    using System.Collections.Generic;
-    using Diwen.Xbrl.Csv;
     using Diwen.Xbrl.Csv.Taxonomy;
 
     /// <summary/>

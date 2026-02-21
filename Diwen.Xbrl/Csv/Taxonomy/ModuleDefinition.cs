@@ -52,71 +52,55 @@ namespace Diwen.Xbrl.Csv.Taxonomy
         public Dictionary<string, Table> Tables { get; set; }
 
         /// <summary/>
-        public static ModuleDefinition FromFile(string path)
-        {
-            using (var stream = new FileStream(path, FileMode.Open, FileAccess.Read))
-                return JsonSerializer.Deserialize<ModuleDefinition>(stream);
-        }
-
-        private Dictionary<string, TableDefinition> tableDefinitions;
+        [JsonIgnore]
+        public Dictionary<string, TableDefinition> TableDefinitions { get; set; } = [];
 
         /// <summary/>
-        public Dictionary<string, TableDefinition> TableDefinitions()
-        {
-            if (tableDefinitions == null)
-            {
-                tableDefinitions = [];
-                var modfolder = Path.GetDirectoryName(DocumentInfo.Taxonomy.First().ToString().Replace("http://", ""));
+        [JsonIgnore]
+        public Dictionary<string, Filing> FilingInfo { get; set; } = [];
 
-                foreach (var moduleTable in DocumentInfo.Extends.Where(f => !f.StartsWith("http://")))
+        /// <summary/>
+        public static ModuleDefinition FromFile(string path)
+        {
+            ModuleDefinition result;
+            using (var stream = new FileStream(path, FileMode.Open, FileAccess.Read))
+                result = JsonSerializer.Deserialize<ModuleDefinition>(stream);
+
+            var modfolder = Path.GetDirectoryName(path);
+            foreach (var moduleTable in result.DocumentInfo.Extends.Where(f => !f.StartsWith("http://")))
+            {
+                var tabfile = Path.GetFullPath(Path.Combine(modfolder, moduleTable));
+                using (var stream = new FileStream(tabfile, FileMode.Open, FileAccess.Read))
                 {
-                    var tabfile = Path.GetFullPath(Path.Combine(modfolder, moduleTable));
-                    using (var stream = new FileStream(tabfile, FileMode.Open, FileAccess.Read))
-                    {
-                        var tableDefinition = JsonSerializer.Deserialize<TableDefinition>(stream);
-                        var tablecode = tableDefinition.TableTemplates.Single().Key;
-                        tableDefinitions.Add(tablecode, tableDefinition);
-                    }
+                    var tableDefinition = JsonSerializer.Deserialize<TableDefinition>(stream);
+                    var tablecode = tableDefinition.TableTemplates.Single().Key;
+                    result.TableDefinitions.Add(tablecode, tableDefinition);
                 }
             }
 
-            return tableDefinitions;
-        }
-
-        private Dictionary<string, Filing> filingInfo;
-
-        /// <summary /> 
-        public Dictionary<string, Filing> FilingInfo()
-        {
-            if (filingInfo == null)
+            foreach (var table in result.Tables.Values)
             {
-                filingInfo = [];
-
-                foreach (var table in this.Tables.Values)
+                switch (table.Template)
                 {
-                    switch (table.Template)
-                    {
-                        case "FootNotes":
-                        case "FilingIndicators":
-                            break;
+                    case "FootNotes":
+                    case "FilingIndicators":
+                        break;
 
-                        default:
-                            filingInfo.Add(
-                                table.Template,
-                                new Filing
-                                {
-                                    Template = table.Template,
-                                    Url = table.Url,
-                                    Indicator = table.FilingIndicator,
-                                });
+                    default:
+                        result.FilingInfo.Add(
+                            table.Template,
+                            new Filing
+                            {
+                                Template = table.Template,
+                                Url = table.Url,
+                                Indicator = table.FilingIndicator,
+                            });
 
-                            break;
-                    }
+                        break;
                 }
             }
 
-            return filingInfo;
+            return result;
         }
-
     }
 }

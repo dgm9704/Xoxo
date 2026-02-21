@@ -1,0 +1,108 @@
+{
+    "documentInfo": {
+        "documentType": "https://xbrl.org/2021/xbrl-csv",
+        "namespaces": {
+            "eba": "http://www.eba.europa.eu",
+            "eba_CO": "http://www.eba.europa.eu/xbrl/crr/dict/dom/CO",
+            "eba_ZZ": "http://www.eba.europa.eu/xbrl/crr/dict/dom/ZZ",
+            "eba_dim_3.5": "http://www.eba.europa.eu/xbrl/crr/dict/dim/3.5",
+            "eba_dim_4.0": "http://www.eba.europa.eu/xbrl/crr/dict/dim/4.0",
+            "eba_met": "http://www.eba.europa.eu/xbrl/crr/dict/met",
+            "eba_met_3.5": "http://www.eba.europa.eu/xbrl/crr/dict/met/3.5",
+            "tc": "https://xbrl.org/PWD/2024-05-21/tc"
+        }
+    },
+    "tableTemplates": {
+        "B_04-01": {
+            "columns": {
+                "c0010": {
+                    "eba:documentation": {
+                        "KeyVariableID": "480197",
+                        "KeyVariableVID": "480197",
+                        "PropertyID": "1012401908",
+                        "headerCode": "0010",
+                        "headerDirection": "X",
+                        "headerVID": "218871",
+                        "type": "s"
+                    }
+                },
+                "c0020": {
+                    "eba:documentation": {
+                        "KeyVariableID": "480201",
+                        "KeyVariableVID": "480201",
+                        "PropertyID": "1012402020",
+                        "headerCode": "0020",
+                        "headerDirection": "X",
+                        "headerVID": "218872",
+                        "type": "s"
+                    }
+                },
+                "c0030": {
+                    "dimensions": {
+                        "concept": "eba_met_3.5:ei1510",
+                        "eba_dim_3.5:RCA": "eba_CO:x11"
+                    },
+                    "eba:documentation": {
+                        "AllowedValue": {
+                            "eba_ZZ:x838": 1012402182,
+                            "eba_ZZ:x839": 1012402183
+                        },
+                        "CellCode": "{B_04.01, r*, c0030}",
+                        "CellID": 202800,
+                        "ColumnVID": 218812,
+                        "FactVariableID": 483520,
+                        "FactVariableVersionID": 483520,
+                        "RowVID": null,
+                        "SheetVID": null,
+                        "type": "e"
+                    }
+                },
+                "c0040": {
+                    "eba:documentation": {
+                        "KeyVariableID": "480218",
+                        "KeyVariableVID": "480218",
+                        "PropertyID": "1012403259",
+                        "headerCode": "0040",
+                        "headerDirection": "X",
+                        "headerVID": "218873",
+                        "type": "s"
+                    }
+                }
+            },
+            "dimensions": {
+                "eba_dim_3.5:CRZ": "$c0010",
+                "eba_dim_3.5:ISB": "$c0040",
+                "eba_dim_4.0:qLES": "$c0020"
+            },
+            "tc:keys": {
+                "primary": {
+                    "fields": [
+                        "c0010",
+                        "c0020",
+                        "c0040"
+                    ]
+                },
+                "reference": [
+                    {
+                        "columns": [
+                            "c0020"
+                        ],
+                        "keyRef": {
+                            "tableTemplate": "B_01-02"
+                        },
+                        "name": "R4 - LEI of the entity must match_B_01.02"
+                    },
+                    {
+                        "columns": [
+                            "c0010"
+                        ],
+                        "keyRef": {
+                            "tableTemplate": "B_02-01"
+                        },
+                        "name": "R16 Contractual arr. reference number must match_B_02.01"
+                    }
+                ]
+            }
+        }
+    }
+}

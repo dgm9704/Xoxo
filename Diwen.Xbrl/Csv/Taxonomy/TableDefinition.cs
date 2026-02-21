@@ -65,10 +65,8 @@ namespace Diwen.Xbrl.Csv.Taxonomy
             }
         }
 
-
         private Dictionary<string, KeyValuePair<string, PropertyGroup>[]> datapointsByMetric;
         private Dictionary<string, KeyValuePair<string, Column>[]> columnsByMetric;
-
         private static readonly KeyValuePair<string, PropertyGroup>[] noCandidates = [];
 
         /// <summary/>

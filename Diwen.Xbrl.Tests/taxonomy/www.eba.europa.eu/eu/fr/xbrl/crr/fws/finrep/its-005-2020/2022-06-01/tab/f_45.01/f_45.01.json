@@ -1,0 +1,89 @@
+{
+    "documentInfo": {
+        "documentType": "https://xbrl.org/CR/2021-02-03/xbrl-csv",
+        "namespaces": {
+            "eba": "http://www.eba.europa.eu",
+            "eba_BA": "http://www.eba.europa.eu/xbrl/crr/dict/dom/BA",
+            "eba_MC": "http://www.eba.europa.eu/xbrl/crr/dict/dom/MC",
+            "eba_PL": "http://www.eba.europa.eu/xbrl/crr/dict/dom/PL",
+            "eba_dim": "http://www.eba.europa.eu/xbrl/crr/dict/dim",
+            "eba_met": "http://www.eba.europa.eu/xbrl/crr/dict/met"
+        }
+    },
+    "tableTemplates": {
+        "F_45-01": {
+            "columns": {
+                "datapoint": {
+                    "propertyGroups": {
+                        "dp56328": {
+                            "decimals": "$decimalsMonetary",
+                            "dimensions": {
+                                "concept": "eba_met:md103",
+                                "eba_dim:APL": "eba_PL:x15",
+                                "eba_dim:BAS": "eba_BA:x1",
+                                "eba_dim:MCE": "eba_MC:x45",
+                                "eba_dim:MCY": "eba_MC:x181",
+                                "unit": "$baseCurrency"
+                            },
+                            "eba:documentation": {
+                                "CellCode": "{F 45.01, r0030, c0010}",
+                                "DataPointVersionId": "56328"
+                            }
+                        },
+                        "dp67309": {
+                            "decimals": "$decimalsMonetary",
+                            "dimensions": {
+                                "concept": "eba_met:md103",
+                                "eba_dim:APL": "eba_PL:x14",
+                                "eba_dim:BAS": "eba_BA:x1",
+                                "eba_dim:MCE": "eba_MC:x143",
+                                "eba_dim:MCY": "eba_MC:x181",
+                                "unit": "$baseCurrency"
+                            },
+                            "eba:documentation": {
+                                "CellCode": "{F 45.01, r0010, c0010}",
+                                "DataPointVersionId": "67309"
+                            }
+                        },
+                        "dp67324": {
+                            "decimals": "$decimalsMonetary",
+                            "dimensions": {
+                                "concept": "eba_met:md103",
+                                "eba_dim:APL": "eba_PL:x25",
+                                "eba_dim:BAS": "eba_BA:x1",
+                                "eba_dim:MCE": "eba_MC:x93",
+                                "eba_dim:MCY": "eba_MC:x181",
+                                "unit": "$baseCurrency"
+                            },
+                            "eba:documentation": {
+                                "CellCode": "{F 45.01, r0020, c0010}",
+                                "DataPointVersionId": "67324"
+                            }
+                        },
+                        "dp67325": {
+                            "decimals": "$decimalsMonetary",
+                            "dimensions": {
+                                "concept": "eba_met:md103",
+                                "eba_dim:APL": "eba_PL:x25",
+                                "eba_dim:BAS": "eba_BA:x1",
+                                "eba_dim:MCE": "eba_MC:x93",
+                                "eba_dim:MCY": "eba_MC:x512",
+                                "unit": "$baseCurrency"
+                            },
+                            "eba:documentation": {
+                                "CellCode": "{F 45.01, r0020, c0020}",
+                                "DataPointVersionId": "67325"
+                            }
+                        }
+                    }
+                },
+                "factValue": {
+                    "dimensions": {},
+                    "propertiesFrom": [
+                        "datapoint"
+                    ]
+                }
+            }
+        }
+    }
+}

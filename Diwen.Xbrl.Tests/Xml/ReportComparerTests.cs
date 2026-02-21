@@ -28,7 +28,7 @@ namespace Diwen.Xbrl.Tests.Xml
         public static void CompareReportToItself()
         {
             // load same instance twice and compare
-            var path = Path.Combine("data", "reference.xbrl");
+            var path = Path.Combine("data", "xml", "reference.xbrl");
             var firstReport = Report.FromFile(path);
             var secondReport = Report.FromFile(path);
             var report = ReportComparer.Report(firstReport, secondReport);
@@ -42,7 +42,7 @@ namespace Diwen.Xbrl.Tests.Xml
         public static void CompareReportToItselfWithPath()
         {
             // load same instance twice and compare
-            var path = Path.Combine("data", "reference.xbrl");
+            var path = Path.Combine("data", "xml", "reference.xbrl");
             var report = ReportComparer.Report(path, path);
             // comparison should find the instances equivalent
             Assert.True(report.Result);
@@ -54,7 +54,7 @@ namespace Diwen.Xbrl.Tests.Xml
         public static void ComparisonReportContainsContextWithNullScenario()
         {
             // load same instance twice
-            var path = Path.Combine("data", "reference.xbrl");
+            var path = Path.Combine("data", "xml", "reference.xbrl");
             var firstReport = Report.FromFile(path);
             var secondReport = Report.FromFile(path);
 
@@ -75,7 +75,7 @@ namespace Diwen.Xbrl.Tests.Xml
         public static void CompareBasicNullValues()
         {
             // load same instance twice and compare
-            var path = Path.Combine("data", "reference.xbrl");
+            var path = Path.Combine("data", "xml", "reference.xbrl");
             var firstReport = Report.FromFile(path);
             var secondReport = Report.FromFile(path);
 
@@ -92,7 +92,7 @@ namespace Diwen.Xbrl.Tests.Xml
         public static void CompareSimilarFacts()
         {
             // load same instance twice and compare
-            var path = Path.Combine("data", "reference.xbrl");
+            var path = Path.Combine("data", "xml", "reference.xbrl");
             var firstReport = Report.FromFile(path);
             var secondReport = Report.FromFile(path);
 
@@ -109,8 +109,8 @@ namespace Diwen.Xbrl.Tests.Xml
         [Fact]
         public static void CompareTotallyDifferentReports()
         {
-            var firstPath = Path.Combine("data", "reference.xbrl");
-            var secondPath = Path.Combine("data", "ars.xbrl");
+            var firstPath = Path.Combine("data", "xml", "reference.xbrl");
+            var secondPath = Path.Combine("data", "xml", "ars.xbrl");
             var comparisonReport = ReportComparer.Report(firstPath, secondPath, ComparisonTypes.All);
             Assert.False(comparisonReport.Result);
             Assert.NotEmpty(comparisonReport.Messages);
@@ -119,8 +119,8 @@ namespace Diwen.Xbrl.Tests.Xml
         [Fact]
         public static void CompareDomainNamespacesOfTotallyDifferentReports()
         {
-            var firstPath = Path.Combine("data", "reference.xbrl");
-            var secondPath = Path.Combine("data", "ars.xbrl");
+            var firstPath = Path.Combine("data", "xml", "reference.xbrl");
+            var secondPath = Path.Combine("data", "xml", "ars.xbrl");
             var comparisonReport = ReportComparer.Report(firstPath, secondPath, ComparisonTypes.DomainNamespaces);
             Assert.False(comparisonReport.Result);
             Assert.NotEmpty(comparisonReport.Messages);
@@ -167,7 +167,7 @@ namespace Diwen.Xbrl.Tests.Xml
         public static void CompareLargeReportMinorDifferenceInFact()
         {
             // load same instance twice
-            var path = Path.Combine("data", "ars.xbrl");
+            var path = Path.Combine("data", "xml", "ars.xbrl");
             var firstReport = Report.FromFile(path, removeUnusedObjects: false, collapseDuplicateContexts: false, removeDuplicateFacts: false);
             var secondReport = Report.FromFile(path, removeUnusedObjects: false, collapseDuplicateContexts: false, removeDuplicateFacts: false);
             // change one fact in both instances
@@ -187,7 +187,7 @@ namespace Diwen.Xbrl.Tests.Xml
         public static void CompareReportTest()
         {
             // load same instance twice
-            var path = Path.Combine("data", "reference.xbrl");
+            var path = Path.Combine("data", "xml", "reference.xbrl");
             var report = ReportComparer.Report(path, path, ComparisonTypes.Contexts);
             Assert.True(report.Result, string.Join(Environment.NewLine, report.Messages));
         }
@@ -195,8 +195,8 @@ namespace Diwen.Xbrl.Tests.Xml
         [Fact]
         public static void CompareEntityWithNoEntity()
         {
-            var first = Report.FromFile(Path.Combine("data", "empty_instance.xbrl"));
-            var second = Report.FromFile(Path.Combine("data", "empty_instance.xbrl"));
+            var first = Report.FromFile(Path.Combine("data", "xml", "empty_instance.xbrl"));
+            var second = Report.FromFile(Path.Combine("data", "xml", "empty_instance.xbrl"));
 
             second.Entity = new Entity("LEI", "00000000000000000098");
             second.Period = new Period(2016, 05, 31);
@@ -208,8 +208,8 @@ namespace Diwen.Xbrl.Tests.Xml
         [Fact]
         public static void CompareDifferentEntityAndPeriodOnly()
         {
-            var path = Path.Combine("data", "reference.xbrl");
-            var path2 = Path.Combine("data", "reference2.xbrl");
+            var path = Path.Combine("data", "xml", "reference.xbrl");
+            var path2 = Path.Combine("data", "xml", "reference2.xbrl");
 
             var report = ReportComparer.Report(path, path2);
             Assert.False(report.Result);
@@ -228,7 +228,7 @@ namespace Diwen.Xbrl.Tests.Xml
         [Fact]
         public static void CompareFactWithMissingUnit()
         {
-            var path = Path.Combine("data", "reference.xbrl");
+            var path = Path.Combine("data", "xml", "reference.xbrl");
             var firstReport = Report.FromFile(path);
             var secondReport = Report.FromFile(path);
 
@@ -243,7 +243,7 @@ namespace Diwen.Xbrl.Tests.Xml
         [Fact]
         public static void BypassTaxonomyVersion()
         {
-            var path = Path.Combine("data", "reference.xbrl");
+            var path = Path.Combine("data", "xml", "reference.xbrl");
             var firstReport = Report.FromFile(path);
             var secondReport = Report.FromFile(path);
             secondReport.TaxonomyVersion = null;
@@ -261,7 +261,7 @@ namespace Diwen.Xbrl.Tests.Xml
             // change the other a little, save it and reload so we get a fresh instance
             // bypassing some bugs that lead to not everything updating on the fly :(
 
-            var path = Path.Combine("data", "minimal.xbrl");
+            var path = Path.Combine("data", "xml", "minimal.xbrl");
             var tempPath = Path.GetTempFileName();
 
             var first = Report.FromFile(path);
@@ -318,8 +318,8 @@ namespace Diwen.Xbrl.Tests.Xml
         [Fact]
         public static void CompareTotallyDifferentInstancesReportObjects()
         {
-            var firstPath = Path.Combine("data", "reference.xbrl");
-            var secondPath = Path.Combine("data", "ars.xbrl");
+            var firstPath = Path.Combine("data", "xml", "reference.xbrl");
+            var secondPath = Path.Combine("data", "xml", "ars.xbrl");
             var report = ReportComparer.ReportObjects(firstPath, secondPath);
             Assert.False(report.Result);
         }
@@ -328,7 +328,7 @@ namespace Diwen.Xbrl.Tests.Xml
         public static void CompareLargeInstanceMinorDifferenceInFactReportObjects()
         {
             // load same instance twice
-            var path = Path.Combine("data", "ars.xbrl");
+            var path = Path.Combine("data", "xml", "ars.xbrl");
             var firstReport = Report.FromFile(path, removeUnusedObjects: false, collapseDuplicateContexts: false, removeDuplicateFacts: false);
             var secondReport = Report.FromFile(path, removeUnusedObjects: false, collapseDuplicateContexts: false, removeDuplicateFacts: false);
             // change one fact in both instances
@@ -349,7 +349,7 @@ namespace Diwen.Xbrl.Tests.Xml
         public static void ExamineFactDifferences()
         {
             // load same instance twice
-            var path = Path.Combine("data", "ars.xbrl");
+            var path = Path.Combine("data", "xml", "ars.xbrl");
             var firstReport = Report.FromFile(path);
             var secondReport = Report.FromFile(path);
 
@@ -380,7 +380,7 @@ namespace Diwen.Xbrl.Tests.Xml
         [Fact]
         public static void CompareDifferentUnits()
         {
-            var path = Path.Combine("data", "reference.xbrl");
+            var path = Path.Combine("data", "xml", "reference.xbrl");
             var first = Report.FromFile(path);
             var second = Report.FromFile(path);
 

@@ -1,0 +1,98 @@
+{
+    "documentInfo": {
+        "documentType": "https://xbrl.org/CR/2021-02-03/xbrl-csv",
+        "namespaces": {
+            "eba": "http://www.eba.europa.eu",
+            "eba_BA": "http://www.eba.europa.eu/xbrl/crr/dict/dom/BA",
+            "eba_MC": "http://www.eba.europa.eu/xbrl/crr/dict/dom/MC",
+            "eba_PL": "http://www.eba.europa.eu/xbrl/crr/dict/dom/PL",
+            "eba_TI": "http://www.eba.europa.eu/xbrl/crr/dict/dom/TI",
+            "eba_dim": "http://www.eba.europa.eu/xbrl/crr/dict/dim",
+            "eba_met": "http://www.eba.europa.eu/xbrl/crr/dict/met"
+        }
+    },
+    "tableTemplates": {
+        "F_25-02-b": {
+            "columns": {
+                "datapoint": {
+                    "propertyGroups": {
+                        "dp433593": {
+                            "decimals": "$decimalsInteger",
+                            "dimensions": {
+                                "concept": "eba_met:ii694",
+                                "eba_dim:APL": "eba_PL:x491",
+                                "eba_dim:BAS": "eba_BA:x17",
+                                "eba_dim:MCY": "eba_MC:x25"
+                            },
+                            "eba:documentation": {
+                                "CellCode": "{F 25.02.b, r0120, c0040}",
+                                "DataPointVersionId": "433593"
+                            }
+                        },
+                        "dp433594": {
+                            "decimals": "$decimalsInteger",
+                            "dimensions": {
+                                "concept": "eba_met:ii694",
+                                "eba_dim:APL": "eba_PL:x491",
+                                "eba_dim:BAS": "eba_BA:x17",
+                                "eba_dim:MCY": "eba_MC:x25",
+                                "eba_dim:TIE": "eba_TI:x23"
+                            },
+                            "eba:documentation": {
+                                "CellCode": "{F 25.02.b, r0120, c0130}",
+                                "DataPointVersionId": "433594"
+                            }
+                        },
+                        "dp433595": {
+                            "decimals": "$decimalsInteger",
+                            "dimensions": {
+                                "concept": "eba_met:ii694",
+                                "eba_dim:APL": "eba_PL:x491",
+                                "eba_dim:BAS": "eba_BA:x17",
+                                "eba_dim:MCY": "eba_MC:x25",
+                                "eba_dim:TIE": "eba_TI:x29"
+                            },
+                            "eba:documentation": {
+                                "CellCode": "{F 25.02.b, r0120, c0100}",
+                                "DataPointVersionId": "433595"
+                            }
+                        },
+                        "dp433596": {
+                            "decimals": "$decimalsInteger",
+                            "dimensions": {
+                                "concept": "eba_met:ii694",
+                                "eba_dim:APL": "eba_PL:x491",
+                                "eba_dim:BAS": "eba_BA:x17",
+                                "eba_dim:MCY": "eba_MC:x25",
+                                "eba_dim:TIE": "eba_TI:x118"
+                            },
+                            "eba:documentation": {
+                                "CellCode": "{F 25.02.b, r0120, c0070}",
+                                "DataPointVersionId": "433596"
+                            }
+                        },
+                        "dp433650": {
+                            "decimals": "$decimalsInteger",
+                            "dimensions": {
+                                "concept": "eba_met:ii694",
+                                "eba_dim:APL": "eba_PL:x492",
+                                "eba_dim:BAS": "eba_BA:x17",
+                                "eba_dim:MCY": "eba_MC:x25"
+                            },
+                            "eba:documentation": {
+                                "CellCode": "{F 25.02.b, r0120, c0160}",
+                                "DataPointVersionId": "433650"
+                            }
+                        }
+                    }
+                },
+                "factValue": {
+                    "dimensions": {},
+                    "propertiesFrom": [
+                        "datapoint"
+                    ]
+                }
+            }
+        }
+    }
+}

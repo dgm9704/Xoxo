@@ -124,9 +124,9 @@ namespace Diwen.Xbrl.Tests.Json
 
 
         [Theory]
-        [InlineData("data/reference.xbrl")]
-        [InlineData("data/ars.xbrl")]
-        [InlineData("data/fp_ind_new_correct.xbrl")]
+        [InlineData("data/xml/reference.xbrl")]
+        [InlineData("data/xml/ars.xbrl")]
+        [InlineData("data/xml/fp_ind_new_correct.xbrl")]
         public void XmlToJsonTest(string path)
         {
             //var xmlreport = Instance.FromFile(path, removeUnusedObjects: false, collapseDuplicateContexts: false, removeDuplicateFacts: false);

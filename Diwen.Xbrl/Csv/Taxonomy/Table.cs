@@ -21,7 +21,6 @@
 
 namespace Diwen.Xbrl.Csv.Taxonomy
 {
-    using System.Linq;
     using System.Text.Json.Serialization;
     using System.Text.RegularExpressions;
 

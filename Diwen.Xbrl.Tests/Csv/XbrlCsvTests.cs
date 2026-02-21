@@ -37,7 +37,7 @@ namespace Diwen.Xbrl.Tests.Csv
         {
             var entrypointUrl = "http://www.eba.europa.eu/eu/fr/xbrl/crr/fws/sbp/cir-2070-2016/2021-07-15/mod/sbp_cr_con.json";
 
-            var moduleDefinition = ModuleDefinition.FromFile(entrypointUrl.Replace("http://", string.Empty));
+            var moduleDefinition = ModuleDefinition.FromFile(entrypointUrl.Replace("http://", "taxonomy/"));
 
             var report = new Report
             {
@@ -129,7 +129,7 @@ namespace Diwen.Xbrl.Tests.Csv
         {
 
             var packagePath = Path.Combine("data", "csv", packageName);
-            var entrypoint = PlainCsvReport.GetPackageEntryPoint(packagePath).Replace(@"http://", "");
+            var entrypoint = PlainCsvReport.GetPackageEntryPoint(packagePath).Replace(@"http://", "taxonomy/");
 
             var moduleDefinition = ModuleDefinition.FromFile(entrypoint);
 
@@ -191,9 +191,9 @@ namespace Diwen.Xbrl.Tests.Csv
         => ReadTypedDomainInfo(path);
 
         [Theory]
-        [InlineData("www.eba.europa.eu/eu/fr/xbrl/crr/fws/finrep/its-005-2020/2022-06-01/mod/finrep9.json")]
+        [InlineData("http://www.eba.europa.eu/eu/fr/xbrl/crr/fws/finrep/its-005-2020/2022-06-01/mod/finrep9.json")]
         public static void ReadModuleDefinitionTest(string entrypoint)
-        => ModuleDefinition.FromFile(entrypoint);
+        => ModuleDefinition.FromFile(entrypoint.Replace("http://", "taxonomy/"));
 
         [Theory]
         [InlineData("EBA32_DimensionDomain.csv")]
@@ -201,20 +201,20 @@ namespace Diwen.Xbrl.Tests.Csv
         => ReadDimensionDomainInfo(file);
 
         [Theory]
-        [InlineData("www.eba.europa.eu/eu/fr/xbrl/crr/fws/sbp/cir-2070-2016/2022-06-01/mod/sbp_cr.json")]
+        [InlineData("http://www.eba.europa.eu/eu/fr/xbrl/crr/fws/sbp/cir-2070-2016/2022-06-01/mod/sbp_cr.json")]
         public static void DeserializeModuleFromJsonTest(string path)
-        => ModuleDefinition.FromFile(path);
+        => ModuleDefinition.FromFile(path.Replace("http://", "taxonomy/"));
 
         [Theory]
-        [InlineData("www.eba.europa.eu/eu/fr/xbrl/crr/fws/sbp/cir-2070-2016/2022-06-01/tab/c_101.00/c_101.00.json")]
+        [InlineData("http://www.eba.europa.eu/eu/fr/xbrl/crr/fws/sbp/cir-2070-2016/2022-06-01/tab/c_101.00/c_101.00.json")]
         public static void DeserializeTableFromJsonTest(string path)
-        => TableDefinition.FromFile(path);
+        => TableDefinition.FromFile(path.Replace("http://", "taxonomy/"));
 
         public static string XmlToCsv(string reportPath)
         {
             var xmlReport = Xbrl.Xml.Report.FromFile(reportPath);
 
-            var entrypoint = Path.ChangeExtension(xmlReport.SchemaReference.Value.Replace("http://", ""), "json");
+            var entrypoint = Path.ChangeExtension(xmlReport.SchemaReference.Value.Replace("http://", "taxonomy/"), "json");
             var moduleDefinition = ModuleDefinition.FromFile(entrypoint);
 
             var csvReport = xmlReport.ToXbrlCsv(moduleDefinition);
@@ -227,7 +227,7 @@ namespace Diwen.Xbrl.Tests.Csv
         public static string CsvToXml(string reportPath)
         {
 
-            var entrypoint = PlainCsvReport.GetPackageEntryPoint(reportPath).Replace(@"http://", "");
+            var entrypoint = PlainCsvReport.GetPackageEntryPoint(reportPath).Replace(@"http://", "taxonomy/");
 
             var moduleDefinition = ModuleDefinition.FromFile(entrypoint);
 
