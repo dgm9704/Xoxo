@@ -24,6 +24,7 @@ namespace Diwen.Xbrl.Tests.Csv
     using Diwen.Xbrl.Extensions;
     using Xunit;
     using Diwen.Xbrl.Csv;
+    using System.Xml.Linq;
 
     public class XbrlCsvTests
     {
@@ -186,19 +187,9 @@ namespace Diwen.Xbrl.Tests.Csv
         }
 
         [Theory]
-        [InlineData("EBA32_TypedDomain.csv")]
-        public void ReadTypedDomainInfoTest(string path)
-        => ReadTypedDomainInfo(path);
-
-        [Theory]
         [InlineData("http://www.eba.europa.eu/eu/fr/xbrl/crr/fws/finrep/its-005-2020/2022-06-01/mod/finrep9.json")]
         public static void ReadModuleDefinitionTest(string entrypoint)
         => ModuleDefinition.FromFile(entrypoint.Replace("http://", "taxonomy/"));
-
-        [Theory]
-        [InlineData("EBA32_DimensionDomain.csv")]
-        public static void ReadDimensionDomainInfoTest(string file)
-        => ReadDimensionDomainInfo(file);
 
         [Theory]
         [InlineData("http://www.eba.europa.eu/eu/fr/xbrl/crr/fws/sbp/cir-2070-2016/2022-06-01/mod/sbp_cr.json")]
@@ -233,13 +224,13 @@ namespace Diwen.Xbrl.Tests.Csv
 
             var csvReport = Report.FromFile(reportPath, moduleDefinition);
 
-            var dimensionDomainInfo = ReadDimensionDomainInfo("EBA32_DimensionDomain.csv");
-
-            var typedDomains = ReadTypedDomainInfo("EBA32_TypedDomain.csv");
+            var dimensionSpecification = "http://www.eba.europa.eu/eu/fr/xbrl/crr/dict/dim/4.2/dim.xsd";
+            Dictionary<string, string> typedDimensions = new();
+            //ReadTypedDimensions(dimensionSpecification.Replace("http://", "taxonomy/"));
 
             var typedDomainNamespace = KeyValuePair.Create("eba_typ", "http://www.eba.europa.eu/xbrl/crr/dict/typ");
 
-            var xmlReport = csvReport.ToXbrlXml(dimensionDomainInfo, typedDomainNamespace, typedDomains, moduleDefinition);
+            var xmlReport = csvReport.ToXbrlXml(typedDimensions, typedDomainNamespace, moduleDefinition);
 
             var xmlReportPath = Path.ChangeExtension(Path.GetFileName(reportPath), ".xbrl");
             xmlReport.ToFile(xmlReportPath);
@@ -247,13 +238,158 @@ namespace Diwen.Xbrl.Tests.Csv
 
         }
 
-        public static HashSet<string> ReadTypedDomainInfo(string path)
-        => File.ReadAllLines(Path.Combine("data", "csv", path)).ToHashSet();
+        // private static Dictionary<string, DimensionInfo> ReadDimensionInfo(string path)
+        // {
+        //     var result = new Dictionary<string, DimensionInfo>();
 
-        public static Dictionary<string, string> ReadDimensionDomainInfo(string file)
-        => File.ReadAllLines(Path.Combine("data", "csv", file)).
-            Select(l => l.Split(',')).
-            ToDictionary(x => x[0], x => x[1]);
+        //     XNamespace xs = "http://www.w3.org/2001/XMLSchema";
+        //     XNamespace xbrldt = "http://xbrl.org/2005/xbrldt";
+
+        //     XName element = xs + "element";
+        //     XName typedDomainRef = xbrldt + "typedDomainRef";
+
+        //     //xbrldt:typedDomainRef="../dom/typ.xsd#eba_SE"
+        //     var document = XDocument.Load(path);
+        //     var dimensions = document.Root.Elements(element).ToList();
+
+        //     // TODO: Get the value from the actual definition instead of guessing 
+        //     foreach (var dimension in dimensions)
+        //     {
+        //         var dimensionCode = dimension.Attribute("id");
+
+        //         //var dimensionInfo = new DimensionInfo( dimension.Attribute("name").Value, 
+        //     }
+
+        //     // result.Add(
+        //     //     typedDimensions.
+        //     //         ToDictionary
+        //     //         (
+        //     //             dim => dim.Attribute("name").Value,
+        //     //             dim => dim.Attribute(typedDomainRef).Value.Split('#').Last().Split('_').Last()
+        //     //         );
+
+        //     return result;
+        // }
+
+        // public static string CsvToXml(string reportPath)
+        // {
+
+        //     var entrypoint = PlainCsvReport.GetPackageEntryPoint(reportPath).Replace(@"http://", "taxonomy/");
+
+        //     var moduleDefinition = ModuleDefinition.FromFile(entrypoint);
+
+        //     var csvReport = Report.FromFile(reportPath, moduleDefinition);
+
+        //     var dimensionSpecification = "http://www.eba.europa.eu/eu/fr/xbrl/crr/dict/dim/4.2/dim.xsd";
+        //     Dictionary<string, string> typedDimensions =
+        //         ReadTypedDimensions(dimensionSpecification.Replace("http://", "taxonomy/"));
+
+        //     var typedDomainNamespace = KeyValuePair.Create("eba_typ", "http://www.eba.europa.eu/xbrl/crr/dict/typ");
+
+        //     var xmlReport = csvReport.ToXbrlXml(typedDimensions, typedDomainNamespace, moduleDefinition);
+
+        //     var xmlReportPath = Path.ChangeExtension(Path.GetFileName(reportPath), ".xbrl");
+        //     xmlReport.ToFile(xmlReportPath);
+        //     return xmlReportPath;
+
+        // }
+
+        // private static Dictionary<string, DimensionInfo> ReadDimensionInfo(string path)
+        // {
+        //     var result = new Dictionary<string, DimensionInfo>();
+
+        //     XNamespace xs = "http://www.w3.org/2001/XMLSchema";
+        //     XNamespace xbrldt = "http://xbrl.org/2005/xbrldt";
+
+        //     XName element = xs + "element";
+        //     XName typedDomainRef = xbrldt + "typedDomainRef";
+
+        //     //xbrldt:typedDomainRef="../dom/typ.xsd#eba_SE"
+        //     var document = XDocument.Load(path);
+        //     var dimensions = document.Root.Elements(element).ToList();
+
+        //     // TODO: Get the value from the actual definition instead of guessing 
+        //     foreach (var dimension in dimensions)
+        //     {
+        //         var dimensionCode = dimension.Attribute("id");
+
+        //         //var dimensionInfo = new DimensionInfo( dimension.Attribute("name").Value, 
+        //     }
+
+        //     // result.Add(
+        //     //     typedDimensions.
+        //     //         ToDictionary
+        //     //         (
+        //     //             dim => dim.Attribute("name").Value,
+        //     //             dim => dim.Attribute(typedDomainRef).Value.Split('#').Last().Split('_').Last()
+        //     //         );
+
+        //     return result;
+        // }
+
+
+        [Theory]
+        [InlineData("http://www.eba.europa.eu/eu/fr/xbrl/crr/dict/dim/4.2/dim-def.xml")]
+        public static void ReadDimensionInfoTest(string path)
+        {
+            path = path.Replace("http://", "taxonomy/");
+            ReadDimensionInfo(path);
+        }
+
+        private static void ReadDimensionInfo(string path)
+        {
+            XNamespace link = "http://www.xbrl.org/2003/linkbase";
+            XName loc = link + "loc";
+            XName definitionArc = link + "definitionArc";
+
+            XNamespace xlink = "http://www.w3.org/1999/xlink";
+            XName href = xlink + "href";
+            XName label = xlink + "label";
+            XName from = xlink + "from";
+            XName to = xlink + "to";
+            XName arcrole = xlink + "arcrole";
+
+            var document = XDocument.Load(path);
+
+            //  <link:loc xlink:type="locator" xlink:label="loc_dim_eba_qBXX" xlink:href="dim.xsd#eba_qBXX"/>
+            var dimensions = document.Root.Descendants(loc).Where(l => l.Attribute(href).Value.StartsWith("dim.xsd#")).ToList();
+            var dimensionDomainRole = "http://xbrl.org/int/dim/arcrole/dimension-domain";
+            var result = new Dictionary<string, (string, bool)>();
+            foreach (var dimension in dimensions)
+            {
+
+                var fromLabel = dimension.Attribute(label).Value;
+                var dimensionref = dimension.Attribute(href).Value;
+                var dimensionCode = dimensionref.Split('#').Last();
+
+                //<link:loc xlink:type="locator" xlink:label="loc_dim_eba_qBRD" xlink:href="dim.xsd#eba_qBRD"/>
+                //<link:definitionArc order="1005" xlink:arcrole="http://xbrl.org/int/dim/arcrole/dimension-domain" 
+                //     xlink:from="loc_dim_eba_qBRD" xlink:to="loc_dom_eba_CU" xlink:type="arc" xbrldt:usable="false" />
+                var toLabel = document.Root.
+                    Descendants(definitionArc).
+                    Where(d => d.Attribute(from).Value == fromLabel).
+                    Single(d => d.Attribute(arcrole).Value == dimensionDomainRole).
+                    Attribute(to).Value;
+
+                //<link:loc xlink:type="locator" xlink:label="loc_dom_eba_GA" xlink:href="../../dom/exp.xsd#eba_GA"/>
+                var domain = document.Root.
+                    Descendants(loc).
+                    Single(l => l.Attribute(label).Value == toLabel);
+
+                var domainref = Path.GetFileName(domain.Attribute(href).Value).Split('#');
+                var domaincode = domainref.Last();
+                var typed = domainref.First() == "typ.xsd";
+                result[dimensionCode] = (domaincode, typed);
+            }
+        }
+
+        // public static HashSet<string> ReadTypedDomainInfo(string path)
+        // => File.ReadAllLines(Path.Combine("data", "csv", path)).ToHashSet();
+
+        // public static Dictionary<string, string> ReadDimensionDomainInfo(string file)
+        // => File.ReadAllLines(Path.Combine("data", "csv", file)).
+        //     Select(l => l.Split(',')).
+        //     ToDictionary(x => x[0], x => x[1]);
 
     }
 }

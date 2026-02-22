@@ -343,9 +343,8 @@ namespace Diwen.Xbrl.Csv
         private static string AddFactsForTable(
             Dictionary<string, string> parameters,
             TableDefinition tableDefinition,
-            Dictionary<string, string> dimensionDomain,
+            Dictionary<string, string> typedDimensions,
             KeyValuePair<string, string> typedDomainNamespace,
-            HashSet<string> typedDomains,
             Xml.Report xmlreport,
             string baseCurrencyRef,
             KeyValuePair<string, ReportData[]> table,
@@ -374,16 +373,15 @@ namespace Diwen.Xbrl.Csv
             foreach (var fact in table.Value)
             {
                 var datapoint = tableDefinition.Datapoints[fact.Datapoint];
-                AddFact(parameters, dimensionDomain, typedDomainNamespace, typedDomains, xmlreport, baseCurrencyRef, dimensionPrefix, datapoint, fact, usedContexts, usedDatapoints);
+                AddFact(parameters, typedDimensions, typedDomainNamespace, xmlreport, baseCurrencyRef, dimensionPrefix, datapoint, fact, usedContexts, usedDatapoints);
             }
             return dimensionPrefix;
         }
 
         private static void AddFact(
             Dictionary<string, string> parameters,
-            Dictionary<string, string> dimensionDomain,
+            Dictionary<string, string> typedDimensions,
             KeyValuePair<string, string> typedDomainNamespace,
-            HashSet<string> typedDomains,
             Xml.Report xmlreport,
             string baseCurrencyRef,
             string dimensionPrefix,
@@ -415,10 +413,10 @@ namespace Diwen.Xbrl.Csv
             }
 
             foreach (var d in fact.Dimensions)
-                if (typedDomains.Contains(dimensionDomain[d.Key]))
+                if (typedDimensions.ContainsKey(d.Key))
                     // HACK: For some reason the prefixes aren't found during normal operation so we have to add them here
                     // Find why the prefixs are dropped and remove this
-                    scenario.AddTypedMember($"{dimensionPrefix}:{d.Key}", $"{typedDomainNamespace.Key}:{dimensionDomain[d.Key]}", d.Value);
+                    scenario.AddTypedMember($"{dimensionPrefix}:{d.Key}", $"{typedDomainNamespace.Key}:{typedDimensions[d.Key]}", d.Value);
                 else
                     scenario.AddExplicitMember(d.Key, d.Value);
 
@@ -582,18 +580,16 @@ namespace Diwen.Xbrl.Csv
 
         /// <summary/>
         public Xml.Report ToXbrlXml(
-            Dictionary<string, string> dimensionDomain,
+            Dictionary<string, string> typedDimensions,
             KeyValuePair<string, string> typedDomainNamespace,
-            HashSet<string> typedDomains,
             ModuleDefinition moduleDefinition)
-        => ToXbrlXml(this, dimensionDomain, typedDomainNamespace, typedDomains, moduleDefinition);
+        => ToXbrlXml(this, typedDimensions, typedDomainNamespace, moduleDefinition);
 
         /// <summary/>
         public static Xml.Report ToXbrlXml(
             Report report,
-            Dictionary<string, string> dimensionDomain,
+            Dictionary<string, string> typedDimensions,
             KeyValuePair<string, string> typedDomainNamespace,
-            HashSet<string> typedDomains,
             ModuleDefinition moduleDefinition)
         {
             var filingInfo = moduleDefinition.FilingInfo;
@@ -644,7 +640,7 @@ namespace Diwen.Xbrl.Csv
             {
                 // var sw = Stopwatch.StartNew();
                 var tableDefinition = tableDefinitions[table.Key];
-                AddFactsForTable(report.Parameters, tableDefinition, dimensionDomain, typedDomainNamespace, typedDomains, xmlreport, baseCurrencyRef, table, usedContexts, usedDatapoints);
+                AddFactsForTable(report.Parameters, tableDefinition, typedDimensions, typedDomainNamespace, xmlreport, baseCurrencyRef, table, usedContexts, usedDatapoints);
                 // sw.Stop();
                 // Console.WriteLine($"AddFactsForTable {table.Key} {sw.Elapsed}");
             }
