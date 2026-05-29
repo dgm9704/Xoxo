@@ -1,0 +1,91 @@
+{
+  "documentInfo" : {
+    "documentType" : "https://xbrl.org/2021/xbrl-csv",
+    "namespaces" : {
+      "s2md" : "http://eiopa.europa.eu/xbrl/s2md/",
+      "s2c_CG" : "http://eiopa.europa.eu/xbrl/s2c/dict/dom/CG",
+      "s2c_dim" : "http://eiopa.europa.eu/xbrl/s2c/dict/dim",
+      "s2md_met" : "http://eiopa.europa.eu/xbrl/s2md/dict/met"
+    }
+  },
+  "tableTemplates" : {
+    "S.02.03.07.02" : {
+      "columns" : {
+        "C0020" : {
+          "s2md:documentation" : {
+            "CellCode" : "{S.02.03.07.02, C0020}",
+            "Label" : "Code and type of code of encumbered assets",
+            "Key" : "s2c_dim:UI",
+            "Values" : "String"
+          }
+        },
+        "C0040" : {
+          "dimensions" : {
+            "concept" : "s2md_met:si2141",
+            "s2c_dim:EN" : "s2c_CG:x29",
+            "s2c_dim:UI" : "$C0020"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.02.03.07.02, C0040}",
+            "Label" : "S.02.03.07.02 - Description of encumbered assets|Z Axis:",
+            "Values" : "String"
+          }
+        },
+        "C0050" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi1131",
+            "s2c_dim:EN" : "s2c_CG:x29",
+            "s2c_dim:UI" : "$C0020"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.02.03.07.02, C0050}",
+            "Label" : "S.02.03.07.02 - Gross value as per balance sheet|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetaryOpenTable"
+        },
+        "C0060" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi2144",
+            "s2c_dim:EN" : "s2c_CG:x29",
+            "s2c_dim:UI" : "$C0020"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.02.03.07.02, C0060}",
+            "Label" : "S.02.03.07.02 - Amount subject to prior security interests|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetaryOpenTable"
+        },
+        "C0070" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi2145",
+            "s2c_dim:EN" : "s2c_CG:x29",
+            "s2c_dim:UI" : "$C0020"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.02.03.07.02, C0070}",
+            "Label" : "S.02.03.07.02 - Net value of encumbered assets|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetaryOpenTable"
+        },
+        "C0080" : {
+          "dimensions" : {
+            "concept" : "s2md_met:si2142",
+            "s2c_dim:EN" : "s2c_CG:x29",
+            "s2c_dim:UI" : "$C0020"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.02.03.07.02, C0080}",
+            "Label" : "S.02.03.07.02 - Description of encumbrance|Z Axis:",
+            "Values" : "String"
+          }
+        }
+      }
+    }
+  }
+}

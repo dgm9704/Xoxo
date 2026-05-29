@@ -1,0 +1,30 @@
+{
+  "documentInfo" : {
+    "documentType" : "https://xbrl.org/2021/xbrl-csv",
+    "namespaces" : {
+      "s2md" : "http://eiopa.europa.eu/xbrl/s2md/",
+      "s2c_AM" : "http://eiopa.europa.eu/xbrl/s2c/dict/dom/AM",
+      "s2c_dim" : "http://eiopa.europa.eu/xbrl/s2c/dict/dim",
+      "s2md_met" : "http://eiopa.europa.eu/xbrl/s2md/dict/met"
+    }
+  },
+  "tableTemplates" : {
+    "S.24.01.01.11" : {
+      "columns" : {
+        "C0620_R0100" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi2048",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.24.01.01.11, C0620, R0100}",
+            "Label" : "S.24.01.01.11 - Total|Total all participations|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        }
+      }
+    }
+  }
+}

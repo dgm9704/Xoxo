@@ -1,0 +1,79 @@
+{
+  "documentInfo" : {
+    "documentType" : "https://xbrl.org/2021/xbrl-csv",
+    "namespaces" : {
+      "s2md" : "http://eiopa.europa.eu/xbrl/s2md/",
+      "s2c_AM" : "http://eiopa.europa.eu/xbrl/s2c/dict/dom/AM",
+      "s2c_CU" : "http://eiopa.europa.eu/xbrl/s2c/dict/dom/CU",
+      "s2c_VM" : "http://eiopa.europa.eu/xbrl/s2c/dict/dom/VM",
+      "s2c_dim" : "http://eiopa.europa.eu/xbrl/s2c/dict/dim",
+      "s2md_met" : "http://eiopa.europa.eu/xbrl/s2md/dict/met"
+    }
+  },
+  "tableTemplates" : {
+    "S.22.07.01.01" : {
+      "columns" : {
+        "C0040_R0020" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi1830",
+            "s2c_dim:OC" : "s2c_CU:EUR",
+            "s2c_dim:VG" : "s2c_AM:x80",
+            "s2c_dim:VL" : "s2c_VM:x5"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.22.07.01.01, C0040, R0020}",
+            "Label" : "S.22.07.01.01 - Part of the best estimate subject to the volatility adjustment written in currency euro|Calculated undertaking-specific components of the volatility adjustment and total value of best estimate subject to the volatility adjustment in all countries|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0042_R0020" : {
+          "dimensions" : {
+            "concept" : "s2md_met:ri3033",
+            "s2c_dim:OC" : "s2c_CU:EUR",
+            "s2c_dim:VG" : "s2c_AM:x80",
+            "s2c_dim:VL" : "s2c_VM:x5"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.22.07.01.01, C0042, R0020}",
+            "Label" : "S.22.07.01.01 - Sensitivity of assets in the currency euro to changes in credit spreads|Calculated undertaking-specific components of the volatility adjustment and total value of best estimate subject to the volatility adjustment in all countries|Z Axis:",
+            "Values" : "Decimal"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "decimalsDecimal"
+        },
+        "C0044_R0020" : {
+          "dimensions" : {
+            "concept" : "s2md_met:ri3019",
+            "s2c_dim:OC" : "s2c_CU:EUR",
+            "s2c_dim:VG" : "s2c_AM:x80",
+            "s2c_dim:VL" : "s2c_VM:x5"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.22.07.01.01, C0044, R0020}",
+            "Label" : "S.22.07.01.01 - Sensitivity of the best estimate in the currency euro to changes in interest rates|Calculated undertaking-specific components of the volatility adjustment and total value of best estimate subject to the volatility adjustment in all countries|Z Axis:",
+            "Values" : "Decimal"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "decimalsDecimal"
+        },
+        "C0046_R0020" : {
+          "dimensions" : {
+            "concept" : "s2md_met:ri3034",
+            "s2c_dim:OC" : "s2c_CU:EUR",
+            "s2c_dim:VG" : "s2c_AM:x80",
+            "s2c_dim:VL" : "s2c_VM:x5"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.22.07.01.01, C0046, R0020}",
+            "Label" : "S.22.07.01.01 - Risk-corrected spread calculated on the basis of the undertaking's portfolio of investments in debt instruments in the currency euro|Calculated undertaking-specific components of the volatility adjustment and total value of best estimate subject to the volatility adjustment in all countries|Z Axis:",
+            "Values" : "Decimal"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "decimalsDecimal"
+        }
+      }
+    }
+  }
+}

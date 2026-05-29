@@ -1,0 +1,39 @@
+{
+  "documentInfo" : {
+    "documentType" : "https://xbrl.org/2021/xbrl-csv",
+    "namespaces" : {
+      "s2md" : "http://eiopa.europa.eu/xbrl/s2md/",
+      "s2c_AM" : "http://eiopa.europa.eu/xbrl/s2c/dict/dom/AM",
+      "s2c_dim" : "http://eiopa.europa.eu/xbrl/s2c/dict/dim",
+      "s2md_met" : "http://eiopa.europa.eu/xbrl/s2md/dict/met"
+    }
+  },
+  "tableTemplates" : {
+    "SPV.02.01.20.04" : {
+      "columns" : {
+        "C0010" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi2196",
+            "s2c_dim:DE" : "$C0020",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{SPV.02.01.20.04, C0010}",
+            "Label" : "SPV.02.01.20.04 - Value|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetaryOpenTable"
+        },
+        "C0020" : {
+          "s2md:documentation" : {
+            "CellCode" : "{SPV.02.01.20.04, C0020}",
+            "Label" : "Material Equity item",
+            "Key" : "s2c_dim:DE",
+            "Values" : "String"
+          }
+        }
+      }
+    }
+  }
+}

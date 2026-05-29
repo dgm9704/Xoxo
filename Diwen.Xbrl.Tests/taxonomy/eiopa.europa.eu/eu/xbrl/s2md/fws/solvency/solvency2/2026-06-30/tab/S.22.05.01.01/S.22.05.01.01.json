@@ -1,0 +1,128 @@
+{
+  "documentInfo" : {
+    "documentType" : "https://xbrl.org/2021/xbrl-csv",
+    "namespaces" : {
+      "s2md" : "http://eiopa.europa.eu/xbrl/s2md/",
+      "s2c_AM" : "http://eiopa.europa.eu/xbrl/s2c/dict/dom/AM",
+      "s2c_TF" : "http://eiopa.europa.eu/xbrl/s2c/dict/dom/TF",
+      "s2c_VM" : "http://eiopa.europa.eu/xbrl/s2c/dict/dom/VM",
+      "s2c_dim" : "http://eiopa.europa.eu/xbrl/s2c/dict/dim",
+      "s2md_met" : "http://eiopa.europa.eu/xbrl/s2md/dict/met"
+    }
+  },
+  "tableTemplates" : {
+    "S.22.05.01.01" : {
+      "columns" : {
+        "C0010_R0010" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi363",
+            "s2c_dim:TK" : "s2c_TF:x1",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.22.05.01.01, C0010, R0010}",
+            "Label" : "S.22.05.01.01 - Value|Day 1 Solvency II technical provisions",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0010_R0020" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi2259",
+            "s2c_dim:VG" : "s2c_AM:x80",
+            "s2c_dim:VL" : "s2c_VM:x8"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.22.05.01.01, C0010, R0020}",
+            "Label" : "S.22.05.01.01 - Value|TP calculated as a whole",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0010_R0030" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi2259",
+            "s2c_dim:VG" : "s2c_AM:x80",
+            "s2c_dim:VL" : "s2c_VM:x5"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.22.05.01.01, C0010, R0030}",
+            "Label" : "S.22.05.01.01 - Value|Best estimate",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0010_R0040" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi2259",
+            "s2c_dim:VG" : "s2c_AM:x80",
+            "s2c_dim:VL" : "s2c_VM:x47"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.22.05.01.01, C0010, R0040}",
+            "Label" : "S.22.05.01.01 - Value|Risk margin",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0010_R0050" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi363",
+            "s2c_dim:VG" : "s2c_AM:x121"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.22.05.01.01, C0010, R0050}",
+            "Label" : "S.22.05.01.01 - Value|Solvency I technical provisions",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0010_R0060" : {
+          "dimensions" : {
+            "concept" : "s2md_met:pi1911"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.22.05.01.01, C0010, R0060}",
+            "Label" : "S.22.05.01.01 - Value|Portion of the difference adjusted",
+            "Values" : "Percent"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "decimalsPercentage"
+        },
+        "C0010_R0070" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi363",
+            "s2c_dim:TA" : "s2c_AM:x122",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.22.05.01.01, C0010, R0070}",
+            "Label" : "S.22.05.01.01 - Value|Adjustment to technical provisions after any limitation applied in accordance with Article 308d(4)",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0010_R0080" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi2259",
+            "s2c_dim:TA" : "s2c_AM:x123",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.22.05.01.01, C0010, R0080}",
+            "Label" : "S.22.05.01.01 - Value|Technical provision after transitional on technical provisions",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        }
+      }
+    }
+  }
+}

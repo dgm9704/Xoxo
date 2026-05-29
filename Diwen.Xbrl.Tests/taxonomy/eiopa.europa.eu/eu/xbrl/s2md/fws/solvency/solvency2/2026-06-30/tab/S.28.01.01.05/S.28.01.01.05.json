@@ -1,0 +1,114 @@
+{
+  "documentInfo" : {
+    "documentType" : "https://xbrl.org/2021/xbrl-csv",
+    "namespaces" : {
+      "s2md" : "http://eiopa.europa.eu/xbrl/s2md/",
+      "s2c_AM" : "http://eiopa.europa.eu/xbrl/s2c/dict/dom/AM",
+      "s2c_dim" : "http://eiopa.europa.eu/xbrl/s2c/dict/dim",
+      "s2md_met" : "http://eiopa.europa.eu/xbrl/s2md/dict/met"
+    }
+  },
+  "tableTemplates" : {
+    "S.28.01.01.05" : {
+      "columns" : {
+        "C0070_R0300" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi1959",
+            "s2c_dim:TA" : "s2c_AM:x49",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.28.01.01.05, C0070, R0300}",
+            "Label" : "S.28.01.01.05 - Value|Linear MCR|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0070_R0310" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi1958",
+            "s2c_dim:TA" : "s2c_AM:x133",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.28.01.01.05, C0070, R0310}",
+            "Label" : "S.28.01.01.05 - Value|SCR|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0070_R0320" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi1959",
+            "s2c_dim:TA" : "s2c_AM:x16",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.28.01.01.05, C0070, R0320}",
+            "Label" : "S.28.01.01.05 - Value|MCR cap|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0070_R0330" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi1959",
+            "s2c_dim:TA" : "s2c_AM:x35",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.28.01.01.05, C0070, R0330}",
+            "Label" : "S.28.01.01.05 - Value|MCR floor|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0070_R0340" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi1959",
+            "s2c_dim:TA" : "s2c_AM:x21",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.28.01.01.05, C0070, R0340}",
+            "Label" : "S.28.01.01.05 - Value|Combined MCR|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0070_R0350" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi1959",
+            "s2c_dim:TA" : "s2c_AM:x1",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.28.01.01.05, C0070, R0350}",
+            "Label" : "S.28.01.01.05 - Value|Absolute floor of the MCR|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0070_R0400" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi1959",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.28.01.01.05, C0070, R0400}",
+            "Label" : "S.28.01.01.05 - Value|Minimum Capital Requirement|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        }
+      }
+    }
+  }
+}

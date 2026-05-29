@@ -1,0 +1,132 @@
+{
+  "documentInfo" : {
+    "documentType" : "https://xbrl.org/2021/xbrl-csv",
+    "namespaces" : {
+      "s2md" : "http://eiopa.europa.eu/xbrl/s2md/",
+      "s2c_AM" : "http://eiopa.europa.eu/xbrl/s2c/dict/dom/AM",
+      "s2c_CS" : "http://eiopa.europa.eu/xbrl/s2c/dict/dom/CS",
+      "s2c_EL" : "http://eiopa.europa.eu/xbrl/s2c/dict/dom/EL",
+      "s2c_dim" : "http://eiopa.europa.eu/xbrl/s2c/dict/dim",
+      "s2md_met" : "http://eiopa.europa.eu/xbrl/s2md/dict/met"
+    }
+  },
+  "tableTemplates" : {
+    "S.23.02.04.03" : {
+      "columns" : {
+        "C0110_R0600" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi2365",
+            "s2c_dim:CM" : "s2c_CS:x1",
+            "s2c_dim:VG" : "s2c_AM:x24"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.23.02.04.03, C0110, R0600}",
+            "Label" : "S.23.02.04.03 - Total|Difference in the valuation of assets|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0110_R0610" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi2366",
+            "s2c_dim:CM" : "s2c_CS:x1",
+            "s2c_dim:VG" : "s2c_AM:x24"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.23.02.04.03, C0110, R0610}",
+            "Label" : "S.23.02.04.03 - Total|Difference in the valuation of technical provisions|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0110_R0620" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi2367",
+            "s2c_dim:CM" : "s2c_CS:x1",
+            "s2c_dim:VG" : "s2c_AM:x24"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.23.02.04.03, C0110, R0620}",
+            "Label" : "S.23.02.04.03 - Total|Difference in the valuation of other liabilities|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0110_R0630" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi2368",
+            "s2c_dim:CM" : "s2c_CS:x1",
+            "s2c_dim:VG" : "s2c_AM:x84"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.23.02.04.03, C0110, R0630}",
+            "Label" : "S.23.02.04.03 - Total|Total of reserves and retained earnings from financial statements|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0110_R0640" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi2371",
+            "s2c_dim:CM" : "s2c_CS:x1",
+            "s2c_dim:VG" : "s2c_AM:x84"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.23.02.04.03, C0110, R0640}",
+            "Label" : "S.23.02.04.03 - Total|Other, please explain why you need to use this line|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0110_R0650" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi2368",
+            "s2c_dim:CM" : "s2c_CS:x1",
+            "s2c_dim:VG" : "s2c_AM:x85"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.23.02.04.03, C0110, R0650}",
+            "Label" : "S.23.02.04.03 - Total|Reserves from financial statements adjusted for Solvency II valuation differences|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0110_R0660" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi2370",
+            "s2c_dim:CM" : "s2c_CS:x1",
+            "s2c_dim:TX" : "s2c_EL:x1",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.23.02.04.03, C0110, R0660}",
+            "Label" : "S.23.02.04.03 - Total|Excess of assets over liabilities attributable to basic own fund items (excluding the reconciliation reserve)|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0110_R0700" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi1660",
+            "s2c_dim:CM" : "s2c_CS:x1",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.23.02.04.03, C0110, R0700}",
+            "Label" : "S.23.02.04.03 - Total|Excess of assets over liabilities|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        }
+      }
+    }
+  }
+}

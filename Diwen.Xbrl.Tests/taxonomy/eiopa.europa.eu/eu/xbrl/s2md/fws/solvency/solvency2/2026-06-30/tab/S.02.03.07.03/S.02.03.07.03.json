@@ -1,0 +1,74 @@
+{
+  "documentInfo" : {
+    "documentType" : "https://xbrl.org/2021/xbrl-csv",
+    "namespaces" : {
+      "s2md" : "http://eiopa.europa.eu/xbrl/s2md/",
+      "s2c_dim" : "http://eiopa.europa.eu/xbrl/s2c/dict/dim",
+      "s2md_met" : "http://eiopa.europa.eu/xbrl/s2md/dict/met"
+    }
+  },
+  "tableTemplates" : {
+    "S.02.03.07.03" : {
+      "columns" : {
+        "C0090" : {
+          "dimensions" : {
+            "concept" : "s2md_met:si2143",
+            "s2c_dim:XT" : "$C0130"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.02.03.07.03, C0090}",
+            "Label" : "S.02.03.07.03 - Balance sheet liability",
+            "Values" : "String"
+          }
+        },
+        "C0100" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi2228",
+            "s2c_dim:XT" : "$C0130"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.02.03.07.03, C0100}",
+            "Label" : "S.02.03.07.03 - Gross value",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetaryOpenTable"
+        },
+        "C0110" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi2229",
+            "s2c_dim:XT" : "$C0130"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.02.03.07.03, C0110}",
+            "Label" : "S.02.03.07.03 - Preferential claim",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetaryOpenTable"
+        },
+        "C0120" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi2230",
+            "s2c_dim:XT" : "$C0130"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.02.03.07.03, C0120}",
+            "Label" : "S.02.03.07.03 - Net amount",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetaryOpenTable"
+        },
+        "C0130" : {
+          "s2md:documentation" : {
+            "CellCode" : "{S.02.03.07.03, C0130}",
+            "Label" : "Line identification",
+            "Key" : "s2c_dim:XT",
+            "Values" : "String"
+          }
+        }
+      }
+    }
+  }
+}

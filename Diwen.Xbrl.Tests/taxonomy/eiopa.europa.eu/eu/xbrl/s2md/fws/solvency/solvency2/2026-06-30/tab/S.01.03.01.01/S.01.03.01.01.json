@@ -1,0 +1,95 @@
+{
+  "documentInfo" : {
+    "documentType" : "https://xbrl.org/2021/xbrl-csv",
+    "namespaces" : {
+      "s2md" : "http://eiopa.europa.eu/xbrl/s2md/",
+      "s2c_AP" : "http://eiopa.europa.eu/xbrl/s2c/dict/dom/AP",
+      "s2c_PU" : "http://eiopa.europa.eu/xbrl/s2c/dict/dom/PU",
+      "s2c_dim" : "http://eiopa.europa.eu/xbrl/s2c/dict/dim",
+      "s2md_met" : "http://eiopa.europa.eu/xbrl/s2md/dict/met"
+    }
+  },
+  "tableTemplates" : {
+    "S.01.03.01.01" : {
+      "columns" : {
+        "C0040" : {
+          "s2md:documentation" : {
+            "CellCode" : "{S.01.03.01.01, C0040}",
+            "Label" : "Fund/Portfolio Number",
+            "Key" : "s2c_dim:FN",
+            "Values" : "String"
+          }
+        },
+        "C0050" : {
+          "dimensions" : {
+            "concept" : "s2md_met:si1963",
+            "s2c_dim:FN" : "$C0040"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.01.03.01.01, C0050}",
+            "Label" : "S.01.03.01.01 - Name of ring-fenced fund/Matching adjustment portfolio",
+            "Values" : "String"
+          }
+        },
+        "C0060" : {
+          "dimensions" : {
+            "concept" : "s2md_met:ei2433",
+            "s2c_dim:FN" : "$C0040"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.01.03.01.01, C0060}",
+            "Label" : "S.01.03.01.01 - RFF/MAP/Remaining part of a fund",
+            "Values" : {
+              "s2c_PU:x96" : "Ring Fenced Funds",
+              "s2c_PU:x53" : "Matching Adjustment Portfolios",
+              "s2c_PU:x97" : "Remaining part of a fund"
+            }
+          }
+        },
+        "C0070" : {
+          "dimensions" : {
+            "concept" : "s2md_met:ei1691",
+            "s2c_dim:FN" : "$C0040"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.01.03.01.01, C0070}",
+            "Label" : "S.01.03.01.01 - RFF/MAP with sub RFF/MAP",
+            "Values" : {
+              "s2c_PU:x55" : "Fund with other funds embedded",
+              "s2c_PU:x56" : "Not a fund with other funds embedded"
+            }
+          }
+        },
+        "C0080" : {
+          "dimensions" : {
+            "concept" : "s2md_met:ei1692",
+            "s2c_dim:FN" : "$C0040"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.01.03.01.01, C0080}",
+            "Label" : "S.01.03.01.01 - Material",
+            "Values" : {
+              "s2c_AP:x21" : "Material",
+              "s2c_AP:x22" : "Not material"
+            }
+          }
+        },
+        "C0090" : {
+          "dimensions" : {
+            "concept" : "s2md_met:ei1693",
+            "s2c_dim:FN" : "$C0040"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.01.03.01.01, C0090}",
+            "Label" : "S.01.03.01.01 - Article 304",
+            "Values" : {
+              "s2c_AP:x15" : "RFF under article 304 - with the option for the equity risk sub-module",
+              "s2c_AP:x16" : "RFF under article 304 - without the option for the equity risk sub-module",
+              "s2c_AP:x17" : "RFF not under article 304"
+            }
+          }
+        }
+      }
+    }
+  }
+}

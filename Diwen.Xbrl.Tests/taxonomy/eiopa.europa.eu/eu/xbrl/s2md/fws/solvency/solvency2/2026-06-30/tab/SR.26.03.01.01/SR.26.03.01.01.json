@@ -1,0 +1,834 @@
+{
+  "documentInfo" : {
+    "documentType" : "https://xbrl.org/2021/xbrl-csv",
+    "namespaces" : {
+      "s2md" : "http://eiopa.europa.eu/xbrl/s2md/",
+      "s2c_AM" : "http://eiopa.europa.eu/xbrl/s2c/dict/dom/AM",
+      "s2c_EX" : "http://eiopa.europa.eu/xbrl/s2c/dict/dom/EX",
+      "s2c_RT" : "http://eiopa.europa.eu/xbrl/s2c/dict/dom/RT",
+      "s2c_VM" : "http://eiopa.europa.eu/xbrl/s2c/dict/dom/VM",
+      "s2c_dim" : "http://eiopa.europa.eu/xbrl/s2c/dict/dim",
+      "s2md_met" : "http://eiopa.europa.eu/xbrl/s2md/dict/met"
+    }
+  },
+  "tableTemplates" : {
+    "SR.26.03.01.01" : {
+      "columns" : {
+        "C0020_R0100" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi655",
+            "s2c_dim:AO" : "$Z0010",
+            "s2c_dim:EX" : "s2c_EX:x13",
+            "s2c_dim:NF" : "$Z0030",
+            "s2c_dim:PO" : "$Z0020",
+            "s2c_dim:RT" : "s2c_RT:x80",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{SR.26.03.01.01, C0020, R0100}",
+            "Label" : "SR.26.03.01.01 - Assets|Mortality risk|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0020_R0200" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi655",
+            "s2c_dim:AO" : "$Z0010",
+            "s2c_dim:EX" : "s2c_EX:x13",
+            "s2c_dim:NF" : "$Z0030",
+            "s2c_dim:PO" : "$Z0020",
+            "s2c_dim:RT" : "s2c_RT:x78",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{SR.26.03.01.01, C0020, R0200}",
+            "Label" : "SR.26.03.01.01 - Assets|Longevity risk|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0020_R0300" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi655",
+            "s2c_dim:AO" : "$Z0010",
+            "s2c_dim:EX" : "s2c_EX:x13",
+            "s2c_dim:NF" : "$Z0030",
+            "s2c_dim:PO" : "$Z0020",
+            "s2c_dim:RT" : "s2c_RT:x75",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{SR.26.03.01.01, C0020, R0300}",
+            "Label" : "SR.26.03.01.01 - Assets|Disability-morbidity risk|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0020_R0410" : {
+          "dimensions" : {
+            "s2c_dim:AO" : "$Z0010",
+            "s2c_dim:EX" : "s2c_EX:x13",
+            "s2c_dim:NF" : "$Z0030",
+            "s2c_dim:PO" : "$Z0020",
+            "s2c_dim:RT" : "s2c_RT:x83",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{SR.26.03.01.01, C0020, R0410}",
+            "Label" : "SR.26.03.01.01 - Assets|risk of increase in lapse rates|Z Axis:",
+            "Values" : ""
+          }
+        },
+        "C0020_R0420" : {
+          "dimensions" : {
+            "s2c_dim:AO" : "$Z0010",
+            "s2c_dim:EX" : "s2c_EX:x13",
+            "s2c_dim:NF" : "$Z0030",
+            "s2c_dim:PO" : "$Z0020",
+            "s2c_dim:RT" : "s2c_RT:x82",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{SR.26.03.01.01, C0020, R0420}",
+            "Label" : "SR.26.03.01.01 - Assets|risk of decrease in lapse rates|Z Axis:",
+            "Values" : ""
+          }
+        },
+        "C0020_R0430" : {
+          "dimensions" : {
+            "s2c_dim:AO" : "$Z0010",
+            "s2c_dim:EX" : "s2c_EX:x13",
+            "s2c_dim:NF" : "$Z0030",
+            "s2c_dim:PO" : "$Z0020",
+            "s2c_dim:RT" : "s2c_RT:x79",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{SR.26.03.01.01, C0020, R0430}",
+            "Label" : "SR.26.03.01.01 - Assets|mass lapse risk|Z Axis:",
+            "Values" : ""
+          }
+        },
+        "C0020_R0500" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi655",
+            "s2c_dim:AO" : "$Z0010",
+            "s2c_dim:EX" : "s2c_EX:x13",
+            "s2c_dim:NF" : "$Z0030",
+            "s2c_dim:PO" : "$Z0020",
+            "s2c_dim:RT" : "s2c_RT:x76",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{SR.26.03.01.01, C0020, R0500}",
+            "Label" : "SR.26.03.01.01 - Assets|Life expense risk|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0020_R0600" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi655",
+            "s2c_dim:AO" : "$Z0010",
+            "s2c_dim:EX" : "s2c_EX:x13",
+            "s2c_dim:NF" : "$Z0030",
+            "s2c_dim:PO" : "$Z0020",
+            "s2c_dim:RT" : "s2c_RT:x81",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{SR.26.03.01.01, C0020, R0600}",
+            "Label" : "SR.26.03.01.01 - Assets|Revision risk|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0020_R0700" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi2455",
+            "s2c_dim:AO" : "$Z0010",
+            "s2c_dim:EX" : "s2c_EX:x13",
+            "s2c_dim:NF" : "$Z0030",
+            "s2c_dim:PO" : "$Z0020",
+            "s2c_dim:RT" : "s2c_RT:x74",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{SR.26.03.01.01, C0020, R0700}",
+            "Label" : "SR.26.03.01.01 - Assets|Life catastrophe risk|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0030_R0100" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi655",
+            "s2c_dim:AO" : "$Z0010",
+            "s2c_dim:EX" : "s2c_EX:x15",
+            "s2c_dim:NF" : "$Z0030",
+            "s2c_dim:PO" : "$Z0020",
+            "s2c_dim:RT" : "s2c_RT:x80",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{SR.26.03.01.01, C0030, R0100}",
+            "Label" : "SR.26.03.01.01 - Liabilities|Mortality risk|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0030_R0200" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi655",
+            "s2c_dim:AO" : "$Z0010",
+            "s2c_dim:EX" : "s2c_EX:x15",
+            "s2c_dim:NF" : "$Z0030",
+            "s2c_dim:PO" : "$Z0020",
+            "s2c_dim:RT" : "s2c_RT:x78",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{SR.26.03.01.01, C0030, R0200}",
+            "Label" : "SR.26.03.01.01 - Liabilities|Longevity risk|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0030_R0300" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi655",
+            "s2c_dim:AO" : "$Z0010",
+            "s2c_dim:EX" : "s2c_EX:x15",
+            "s2c_dim:NF" : "$Z0030",
+            "s2c_dim:PO" : "$Z0020",
+            "s2c_dim:RT" : "s2c_RT:x75",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{SR.26.03.01.01, C0030, R0300}",
+            "Label" : "SR.26.03.01.01 - Liabilities|Disability-morbidity risk|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0030_R0410" : {
+          "dimensions" : {
+            "s2c_dim:AO" : "$Z0010",
+            "s2c_dim:EX" : "s2c_EX:x15",
+            "s2c_dim:NF" : "$Z0030",
+            "s2c_dim:PO" : "$Z0020",
+            "s2c_dim:RT" : "s2c_RT:x83",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{SR.26.03.01.01, C0030, R0410}",
+            "Label" : "SR.26.03.01.01 - Liabilities|risk of increase in lapse rates|Z Axis:",
+            "Values" : ""
+          }
+        },
+        "C0030_R0420" : {
+          "dimensions" : {
+            "s2c_dim:AO" : "$Z0010",
+            "s2c_dim:EX" : "s2c_EX:x15",
+            "s2c_dim:NF" : "$Z0030",
+            "s2c_dim:PO" : "$Z0020",
+            "s2c_dim:RT" : "s2c_RT:x82",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{SR.26.03.01.01, C0030, R0420}",
+            "Label" : "SR.26.03.01.01 - Liabilities|risk of decrease in lapse rates|Z Axis:",
+            "Values" : ""
+          }
+        },
+        "C0030_R0430" : {
+          "dimensions" : {
+            "s2c_dim:AO" : "$Z0010",
+            "s2c_dim:EX" : "s2c_EX:x15",
+            "s2c_dim:NF" : "$Z0030",
+            "s2c_dim:PO" : "$Z0020",
+            "s2c_dim:RT" : "s2c_RT:x79",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{SR.26.03.01.01, C0030, R0430}",
+            "Label" : "SR.26.03.01.01 - Liabilities|mass lapse risk|Z Axis:",
+            "Values" : ""
+          }
+        },
+        "C0030_R0500" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi655",
+            "s2c_dim:AO" : "$Z0010",
+            "s2c_dim:EX" : "s2c_EX:x15",
+            "s2c_dim:NF" : "$Z0030",
+            "s2c_dim:PO" : "$Z0020",
+            "s2c_dim:RT" : "s2c_RT:x76",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{SR.26.03.01.01, C0030, R0500}",
+            "Label" : "SR.26.03.01.01 - Liabilities|Life expense risk|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0030_R0600" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi655",
+            "s2c_dim:AO" : "$Z0010",
+            "s2c_dim:EX" : "s2c_EX:x15",
+            "s2c_dim:NF" : "$Z0030",
+            "s2c_dim:PO" : "$Z0020",
+            "s2c_dim:RT" : "s2c_RT:x81",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{SR.26.03.01.01, C0030, R0600}",
+            "Label" : "SR.26.03.01.01 - Liabilities|Revision risk|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0030_R0700" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi2455",
+            "s2c_dim:AO" : "$Z0010",
+            "s2c_dim:EX" : "s2c_EX:x15",
+            "s2c_dim:NF" : "$Z0030",
+            "s2c_dim:PO" : "$Z0020",
+            "s2c_dim:RT" : "s2c_RT:x74",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{SR.26.03.01.01, C0030, R0700}",
+            "Label" : "SR.26.03.01.01 - Liabilities|Life catastrophe risk|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0040_R0100" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi655",
+            "s2c_dim:AO" : "$Z0010",
+            "s2c_dim:EX" : "s2c_EX:x13",
+            "s2c_dim:NF" : "$Z0030",
+            "s2c_dim:PO" : "$Z0020",
+            "s2c_dim:RT" : "s2c_RT:x80",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{SR.26.03.01.01, C0040, R0100}",
+            "Label" : "SR.26.03.01.01 - Assets|Mortality risk|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0040_R0200" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi655",
+            "s2c_dim:AO" : "$Z0010",
+            "s2c_dim:EX" : "s2c_EX:x13",
+            "s2c_dim:NF" : "$Z0030",
+            "s2c_dim:PO" : "$Z0020",
+            "s2c_dim:RT" : "s2c_RT:x78",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{SR.26.03.01.01, C0040, R0200}",
+            "Label" : "SR.26.03.01.01 - Assets|Longevity risk|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0040_R0300" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi655",
+            "s2c_dim:AO" : "$Z0010",
+            "s2c_dim:EX" : "s2c_EX:x13",
+            "s2c_dim:NF" : "$Z0030",
+            "s2c_dim:PO" : "$Z0020",
+            "s2c_dim:RT" : "s2c_RT:x75",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{SR.26.03.01.01, C0040, R0300}",
+            "Label" : "SR.26.03.01.01 - Assets|Disability-morbidity risk|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0040_R0410" : {
+          "dimensions" : {
+            "s2c_dim:AO" : "$Z0010",
+            "s2c_dim:EX" : "s2c_EX:x13",
+            "s2c_dim:NF" : "$Z0030",
+            "s2c_dim:PO" : "$Z0020",
+            "s2c_dim:RT" : "s2c_RT:x83",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{SR.26.03.01.01, C0040, R0410}",
+            "Label" : "SR.26.03.01.01 - Assets|risk of increase in lapse rates|Z Axis:",
+            "Values" : ""
+          }
+        },
+        "C0040_R0420" : {
+          "dimensions" : {
+            "s2c_dim:AO" : "$Z0010",
+            "s2c_dim:EX" : "s2c_EX:x13",
+            "s2c_dim:NF" : "$Z0030",
+            "s2c_dim:PO" : "$Z0020",
+            "s2c_dim:RT" : "s2c_RT:x82",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{SR.26.03.01.01, C0040, R0420}",
+            "Label" : "SR.26.03.01.01 - Assets|risk of decrease in lapse rates|Z Axis:",
+            "Values" : ""
+          }
+        },
+        "C0040_R0430" : {
+          "dimensions" : {
+            "s2c_dim:AO" : "$Z0010",
+            "s2c_dim:EX" : "s2c_EX:x13",
+            "s2c_dim:NF" : "$Z0030",
+            "s2c_dim:PO" : "$Z0020",
+            "s2c_dim:RT" : "s2c_RT:x79",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{SR.26.03.01.01, C0040, R0430}",
+            "Label" : "SR.26.03.01.01 - Assets|mass lapse risk|Z Axis:",
+            "Values" : ""
+          }
+        },
+        "C0040_R0500" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi655",
+            "s2c_dim:AO" : "$Z0010",
+            "s2c_dim:EX" : "s2c_EX:x13",
+            "s2c_dim:NF" : "$Z0030",
+            "s2c_dim:PO" : "$Z0020",
+            "s2c_dim:RT" : "s2c_RT:x76",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{SR.26.03.01.01, C0040, R0500}",
+            "Label" : "SR.26.03.01.01 - Assets|Life expense risk|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0040_R0600" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi655",
+            "s2c_dim:AO" : "$Z0010",
+            "s2c_dim:EX" : "s2c_EX:x13",
+            "s2c_dim:NF" : "$Z0030",
+            "s2c_dim:PO" : "$Z0020",
+            "s2c_dim:RT" : "s2c_RT:x81",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{SR.26.03.01.01, C0040, R0600}",
+            "Label" : "SR.26.03.01.01 - Assets|Revision risk|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0040_R0700" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi2455",
+            "s2c_dim:AO" : "$Z0010",
+            "s2c_dim:EX" : "s2c_EX:x13",
+            "s2c_dim:NF" : "$Z0030",
+            "s2c_dim:PO" : "$Z0020",
+            "s2c_dim:RT" : "s2c_RT:x74",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{SR.26.03.01.01, C0040, R0700}",
+            "Label" : "SR.26.03.01.01 - Assets|Life catastrophe risk|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0050_R0100" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi655",
+            "s2c_dim:AO" : "$Z0010",
+            "s2c_dim:EA" : "s2c_VM:x23",
+            "s2c_dim:EX" : "s2c_EX:x15",
+            "s2c_dim:NF" : "$Z0030",
+            "s2c_dim:PO" : "$Z0020",
+            "s2c_dim:RT" : "s2c_RT:x80",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{SR.26.03.01.01, C0050, R0100}",
+            "Label" : "SR.26.03.01.01 - Liabilities (after the loss absorbing capacity of technical provisions)|Mortality risk|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0050_R0200" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi655",
+            "s2c_dim:AO" : "$Z0010",
+            "s2c_dim:EA" : "s2c_VM:x23",
+            "s2c_dim:EX" : "s2c_EX:x15",
+            "s2c_dim:NF" : "$Z0030",
+            "s2c_dim:PO" : "$Z0020",
+            "s2c_dim:RT" : "s2c_RT:x78",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{SR.26.03.01.01, C0050, R0200}",
+            "Label" : "SR.26.03.01.01 - Liabilities (after the loss absorbing capacity of technical provisions)|Longevity risk|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0050_R0300" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi655",
+            "s2c_dim:AO" : "$Z0010",
+            "s2c_dim:EA" : "s2c_VM:x23",
+            "s2c_dim:EX" : "s2c_EX:x15",
+            "s2c_dim:NF" : "$Z0030",
+            "s2c_dim:PO" : "$Z0020",
+            "s2c_dim:RT" : "s2c_RT:x75",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{SR.26.03.01.01, C0050, R0300}",
+            "Label" : "SR.26.03.01.01 - Liabilities (after the loss absorbing capacity of technical provisions)|Disability-morbidity risk|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0050_R0410" : {
+          "dimensions" : {
+            "s2c_dim:AO" : "$Z0010",
+            "s2c_dim:EA" : "s2c_VM:x23",
+            "s2c_dim:EX" : "s2c_EX:x15",
+            "s2c_dim:NF" : "$Z0030",
+            "s2c_dim:PO" : "$Z0020",
+            "s2c_dim:RT" : "s2c_RT:x83",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{SR.26.03.01.01, C0050, R0410}",
+            "Label" : "SR.26.03.01.01 - Liabilities (after the loss absorbing capacity of technical provisions)|risk of increase in lapse rates|Z Axis:",
+            "Values" : ""
+          }
+        },
+        "C0050_R0420" : {
+          "dimensions" : {
+            "s2c_dim:AO" : "$Z0010",
+            "s2c_dim:EA" : "s2c_VM:x23",
+            "s2c_dim:EX" : "s2c_EX:x15",
+            "s2c_dim:NF" : "$Z0030",
+            "s2c_dim:PO" : "$Z0020",
+            "s2c_dim:RT" : "s2c_RT:x82",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{SR.26.03.01.01, C0050, R0420}",
+            "Label" : "SR.26.03.01.01 - Liabilities (after the loss absorbing capacity of technical provisions)|risk of decrease in lapse rates|Z Axis:",
+            "Values" : ""
+          }
+        },
+        "C0050_R0430" : {
+          "dimensions" : {
+            "s2c_dim:AO" : "$Z0010",
+            "s2c_dim:EA" : "s2c_VM:x23",
+            "s2c_dim:EX" : "s2c_EX:x15",
+            "s2c_dim:NF" : "$Z0030",
+            "s2c_dim:PO" : "$Z0020",
+            "s2c_dim:RT" : "s2c_RT:x79",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{SR.26.03.01.01, C0050, R0430}",
+            "Label" : "SR.26.03.01.01 - Liabilities (after the loss absorbing capacity of technical provisions)|mass lapse risk|Z Axis:",
+            "Values" : ""
+          }
+        },
+        "C0050_R0500" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi655",
+            "s2c_dim:AO" : "$Z0010",
+            "s2c_dim:EA" : "s2c_VM:x23",
+            "s2c_dim:EX" : "s2c_EX:x15",
+            "s2c_dim:NF" : "$Z0030",
+            "s2c_dim:PO" : "$Z0020",
+            "s2c_dim:RT" : "s2c_RT:x76",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{SR.26.03.01.01, C0050, R0500}",
+            "Label" : "SR.26.03.01.01 - Liabilities (after the loss absorbing capacity of technical provisions)|Life expense risk|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0050_R0600" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi655",
+            "s2c_dim:AO" : "$Z0010",
+            "s2c_dim:EA" : "s2c_VM:x23",
+            "s2c_dim:EX" : "s2c_EX:x15",
+            "s2c_dim:NF" : "$Z0030",
+            "s2c_dim:PO" : "$Z0020",
+            "s2c_dim:RT" : "s2c_RT:x81",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{SR.26.03.01.01, C0050, R0600}",
+            "Label" : "SR.26.03.01.01 - Liabilities (after the loss absorbing capacity of technical provisions)|Revision risk|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0050_R0700" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi2455",
+            "s2c_dim:AO" : "$Z0010",
+            "s2c_dim:EA" : "s2c_VM:x23",
+            "s2c_dim:EX" : "s2c_EX:x15",
+            "s2c_dim:NF" : "$Z0030",
+            "s2c_dim:PO" : "$Z0020",
+            "s2c_dim:RT" : "s2c_RT:x74",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{SR.26.03.01.01, C0050, R0700}",
+            "Label" : "SR.26.03.01.01 - Liabilities (after the loss absorbing capacity of technical provisions)|Life catastrophe risk|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0070_R0100" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi655",
+            "s2c_dim:AO" : "$Z0010",
+            "s2c_dim:EA" : "s2c_VM:x20",
+            "s2c_dim:EX" : "s2c_EX:x15",
+            "s2c_dim:NF" : "$Z0030",
+            "s2c_dim:PO" : "$Z0020",
+            "s2c_dim:RT" : "s2c_RT:x80",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{SR.26.03.01.01, C0070, R0100}",
+            "Label" : "SR.26.03.01.01 - Liabilities (before the loss-absorbing capacity of technical provisions)|Mortality risk|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0070_R0200" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi655",
+            "s2c_dim:AO" : "$Z0010",
+            "s2c_dim:EA" : "s2c_VM:x20",
+            "s2c_dim:EX" : "s2c_EX:x15",
+            "s2c_dim:NF" : "$Z0030",
+            "s2c_dim:PO" : "$Z0020",
+            "s2c_dim:RT" : "s2c_RT:x78",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{SR.26.03.01.01, C0070, R0200}",
+            "Label" : "SR.26.03.01.01 - Liabilities (before the loss-absorbing capacity of technical provisions)|Longevity risk|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0070_R0300" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi655",
+            "s2c_dim:AO" : "$Z0010",
+            "s2c_dim:EA" : "s2c_VM:x20",
+            "s2c_dim:EX" : "s2c_EX:x15",
+            "s2c_dim:NF" : "$Z0030",
+            "s2c_dim:PO" : "$Z0020",
+            "s2c_dim:RT" : "s2c_RT:x75",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{SR.26.03.01.01, C0070, R0300}",
+            "Label" : "SR.26.03.01.01 - Liabilities (before the loss-absorbing capacity of technical provisions)|Disability-morbidity risk|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0070_R0410" : {
+          "dimensions" : {
+            "s2c_dim:AO" : "$Z0010",
+            "s2c_dim:EA" : "s2c_VM:x20",
+            "s2c_dim:EX" : "s2c_EX:x15",
+            "s2c_dim:NF" : "$Z0030",
+            "s2c_dim:PO" : "$Z0020",
+            "s2c_dim:RT" : "s2c_RT:x83",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{SR.26.03.01.01, C0070, R0410}",
+            "Label" : "SR.26.03.01.01 - Liabilities (before the loss-absorbing capacity of technical provisions)|risk of increase in lapse rates|Z Axis:",
+            "Values" : ""
+          }
+        },
+        "C0070_R0420" : {
+          "dimensions" : {
+            "s2c_dim:AO" : "$Z0010",
+            "s2c_dim:EA" : "s2c_VM:x20",
+            "s2c_dim:EX" : "s2c_EX:x15",
+            "s2c_dim:NF" : "$Z0030",
+            "s2c_dim:PO" : "$Z0020",
+            "s2c_dim:RT" : "s2c_RT:x82",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{SR.26.03.01.01, C0070, R0420}",
+            "Label" : "SR.26.03.01.01 - Liabilities (before the loss-absorbing capacity of technical provisions)|risk of decrease in lapse rates|Z Axis:",
+            "Values" : ""
+          }
+        },
+        "C0070_R0430" : {
+          "dimensions" : {
+            "s2c_dim:AO" : "$Z0010",
+            "s2c_dim:EA" : "s2c_VM:x20",
+            "s2c_dim:EX" : "s2c_EX:x15",
+            "s2c_dim:NF" : "$Z0030",
+            "s2c_dim:PO" : "$Z0020",
+            "s2c_dim:RT" : "s2c_RT:x79",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{SR.26.03.01.01, C0070, R0430}",
+            "Label" : "SR.26.03.01.01 - Liabilities (before the loss-absorbing capacity of technical provisions)|mass lapse risk|Z Axis:",
+            "Values" : ""
+          }
+        },
+        "C0070_R0500" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi655",
+            "s2c_dim:AO" : "$Z0010",
+            "s2c_dim:EA" : "s2c_VM:x20",
+            "s2c_dim:EX" : "s2c_EX:x15",
+            "s2c_dim:NF" : "$Z0030",
+            "s2c_dim:PO" : "$Z0020",
+            "s2c_dim:RT" : "s2c_RT:x76",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{SR.26.03.01.01, C0070, R0500}",
+            "Label" : "SR.26.03.01.01 - Liabilities (before the loss-absorbing capacity of technical provisions)|Life expense risk|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0070_R0600" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi655",
+            "s2c_dim:AO" : "$Z0010",
+            "s2c_dim:EA" : "s2c_VM:x20",
+            "s2c_dim:EX" : "s2c_EX:x15",
+            "s2c_dim:NF" : "$Z0030",
+            "s2c_dim:PO" : "$Z0020",
+            "s2c_dim:RT" : "s2c_RT:x81",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{SR.26.03.01.01, C0070, R0600}",
+            "Label" : "SR.26.03.01.01 - Liabilities (before the loss-absorbing capacity of technical provisions)|Revision risk|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0070_R0700" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi2455",
+            "s2c_dim:AO" : "$Z0010",
+            "s2c_dim:EA" : "s2c_VM:x20",
+            "s2c_dim:EX" : "s2c_EX:x15",
+            "s2c_dim:NF" : "$Z0030",
+            "s2c_dim:PO" : "$Z0020",
+            "s2c_dim:RT" : "s2c_RT:x74",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{SR.26.03.01.01, C0070, R0700}",
+            "Label" : "SR.26.03.01.01 - Liabilities (before the loss-absorbing capacity of technical provisions)|Life catastrophe risk|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "Z0010" : {
+          "s2md:documentation" : {
+            "CellCode" : "{SR.26.03.01.01, Z0010}",
+            "Label" : "Article 112",
+            "Key" : "s2c_dim:AO",
+            "Values" : {
+              "x0" : "No",
+              "x1" : "Yes",
+              "x2" : "Yes - biennial reporting"
+            }
+          }
+        },
+        "Z0020" : {
+          "s2md:documentation" : {
+            "CellCode" : "{SR.26.03.01.01, Z0020}",
+            "Label" : "Ring-fenced fund or remaining part",
+            "Key" : "s2c_dim:PO",
+            "Values" : {
+              "x40" : "Material Ring Fenced Funds",
+              "x54" : "Remaining part [other than MAPs and material RFFs]"
+            }
+          }
+        },
+        "Z0030" : {
+          "s2md:documentation" : {
+            "CellCode" : "{SR.26.03.01.01, Z0030}",
+            "Label" : "Fund Number",
+            "Key" : "s2c_dim:NF",
+            "Values" : "String"
+          }
+        }
+      }
+    }
+  }
+}

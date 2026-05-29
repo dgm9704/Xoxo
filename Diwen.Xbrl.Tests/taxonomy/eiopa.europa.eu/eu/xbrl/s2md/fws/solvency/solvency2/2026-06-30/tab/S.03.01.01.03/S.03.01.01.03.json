@@ -1,0 +1,46 @@
+{
+  "documentInfo" : {
+    "documentType" : "https://xbrl.org/2021/xbrl-csv",
+    "namespaces" : {
+      "s2md" : "http://eiopa.europa.eu/xbrl/s2md/",
+      "s2c_CG" : "http://eiopa.europa.eu/xbrl/s2c/dict/dom/CG",
+      "s2md_met" : "http://eiopa.europa.eu/xbrl/s2md/dict/met"
+    }
+  },
+  "tableTemplates" : {
+    "S.03.01.01.03" : {
+      "columns" : {
+        "C0050_R0510" : {
+          "dimensions" : {
+            "concept" : "s2md_met:ei2717"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.03.01.01.03, C0050, R0510}",
+            "Label" : "S.03.01.01.03 - Information about the unlimited guarantees|received",
+            "Values" : {
+              "s2c_CG:x39" : "No unlimited guarantees received",
+              "s2c_CG:x41" : "Unlimited guarantees received from group",
+              "s2c_CG:x42" : "Undertaking is not a part of group",
+              "s2c_CG:x44" : "Unlimited guarantees received"
+            }
+          }
+        },
+        "C0050_R0520" : {
+          "dimensions" : {
+            "concept" : "s2md_met:ei2718"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.03.01.01.03, C0050, R0520}",
+            "Label" : "S.03.01.01.03 - Information about the unlimited guarantees|provided",
+            "Values" : {
+              "s2c_CG:x40" : "No unlimited guarantees provided",
+              "s2c_CG:x43" : "Unlimited guarantees provided from group",
+              "s2c_CG:x42" : "Undertaking is not a part of group",
+              "s2c_CG:x45" : "Unlimited guarantees provided"
+            }
+          }
+        }
+      }
+    }
+  }
+}

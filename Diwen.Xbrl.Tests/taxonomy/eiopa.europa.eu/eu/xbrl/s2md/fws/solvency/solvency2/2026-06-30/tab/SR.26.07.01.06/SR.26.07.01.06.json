@@ -1,0 +1,134 @@
+{
+  "documentInfo" : {
+    "documentType" : "https://xbrl.org/2021/xbrl-csv",
+    "namespaces" : {
+      "s2md" : "http://eiopa.europa.eu/xbrl/s2md/",
+      "s2c_AM" : "http://eiopa.europa.eu/xbrl/s2c/dict/dom/AM",
+      "s2c_RT" : "http://eiopa.europa.eu/xbrl/s2c/dict/dom/RT",
+      "s2c_dim" : "http://eiopa.europa.eu/xbrl/s2c/dict/dim",
+      "s2md_met" : "http://eiopa.europa.eu/xbrl/s2md/dict/met"
+    }
+  },
+  "tableTemplates" : {
+    "SR.26.07.01.06" : {
+      "columns" : {
+        "C0330_R0400" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi2538",
+            "s2c_dim:AO" : "$Z0010",
+            "s2c_dim:NF" : "$Z0030",
+            "s2c_dim:PO" : "$Z0020",
+            "s2c_dim:RT" : "s2c_RT:x150",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{SR.26.07.01.06, C0330, R0400}",
+            "Label" : "SR.26.07.01.06 - Sum of exposure|Windstorm|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0330_R0410" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi2538",
+            "s2c_dim:AO" : "$Z0010",
+            "s2c_dim:NF" : "$Z0030",
+            "s2c_dim:PO" : "$Z0020",
+            "s2c_dim:RT" : "s2c_RT:x40",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{SR.26.07.01.06, C0330, R0410}",
+            "Label" : "SR.26.07.01.06 - Sum of exposure|Hail|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0330_R0420" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi2538",
+            "s2c_dim:AO" : "$Z0010",
+            "s2c_dim:NF" : "$Z0030",
+            "s2c_dim:PO" : "$Z0020",
+            "s2c_dim:RT" : "s2c_RT:x30",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{SR.26.07.01.06, C0330, R0420}",
+            "Label" : "SR.26.07.01.06 - Sum of exposure|Earthquake|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0330_R0430" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi2538",
+            "s2c_dim:AO" : "$Z0010",
+            "s2c_dim:NF" : "$Z0030",
+            "s2c_dim:PO" : "$Z0020",
+            "s2c_dim:RT" : "s2c_RT:x36",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{SR.26.07.01.06, C0330, R0430}",
+            "Label" : "SR.26.07.01.06 - Sum of exposure|Flood|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0330_R0440" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi2538",
+            "s2c_dim:AO" : "$Z0010",
+            "s2c_dim:NF" : "$Z0030",
+            "s2c_dim:PO" : "$Z0020",
+            "s2c_dim:RT" : "s2c_RT:x144",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{SR.26.07.01.06, C0330, R0440}",
+            "Label" : "SR.26.07.01.06 - Sum of exposure|Subsidence|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "Z0010" : {
+          "s2md:documentation" : {
+            "CellCode" : "{SR.26.07.01.06, Z0010}",
+            "Label" : "Article 112",
+            "Key" : "s2c_dim:AO",
+            "Values" : {
+              "x0" : "No",
+              "x1" : "Yes",
+              "x2" : "Yes - biennial reporting"
+            }
+          }
+        },
+        "Z0020" : {
+          "s2md:documentation" : {
+            "CellCode" : "{SR.26.07.01.06, Z0020}",
+            "Label" : "Ring-fenced fund or remaining part",
+            "Key" : "s2c_dim:PO",
+            "Values" : {
+              "x40" : "Material Ring Fenced Funds",
+              "x54" : "Remaining part [other than MAPs and material RFFs]"
+            }
+          }
+        },
+        "Z0030" : {
+          "s2md:documentation" : {
+            "CellCode" : "{SR.26.07.01.06, Z0030}",
+            "Label" : "Fund Number",
+            "Key" : "s2c_dim:NF",
+            "Values" : "String"
+          }
+        }
+      }
+    }
+  }
+}

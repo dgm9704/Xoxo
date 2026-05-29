@@ -1,0 +1,136 @@
+{
+  "documentInfo" : {
+    "documentType" : "https://xbrl.org/2021/xbrl-csv",
+    "namespaces" : {
+      "s2md" : "http://eiopa.europa.eu/xbrl/s2md/",
+      "s2c_AM" : "http://eiopa.europa.eu/xbrl/s2c/dict/dom/AM",
+      "s2c_VM" : "http://eiopa.europa.eu/xbrl/s2c/dict/dom/VM",
+      "s2c_dim" : "http://eiopa.europa.eu/xbrl/s2c/dict/dim",
+      "s2md_met" : "http://eiopa.europa.eu/xbrl/s2md/dict/met"
+    }
+  },
+  "tableTemplates" : {
+    "SR.25.01.01.05" : {
+      "columns" : {
+        "C0130_R0640" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi728",
+            "s2c_dim:AO" : "$Z0010",
+            "s2c_dim:EA" : "s2c_VM:x28",
+            "s2c_dim:NF" : "$Z0030",
+            "s2c_dim:PO" : "$Z0020",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{SR.25.01.01.05, C0130, R0640}",
+            "Label" : "SR.25.01.01.05 - LAC DT|LAC DT|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0130_R0650" : {
+          "dimensions" : {
+            "s2c_dim:AO" : "$Z0010",
+            "s2c_dim:EA" : "s2c_VM:x91",
+            "s2c_dim:NF" : "$Z0030",
+            "s2c_dim:PO" : "$Z0020",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{SR.25.01.01.05, C0130, R0650}",
+            "Label" : "SR.25.01.01.05 - LAC DT|LAC DT justified by reversion of deferred tax liabilities|Z Axis:",
+            "Values" : ""
+          }
+        },
+        "C0130_R0660" : {
+          "dimensions" : {
+            "s2c_dim:AO" : "$Z0010",
+            "s2c_dim:EA" : "s2c_VM:x92",
+            "s2c_dim:NF" : "$Z0030",
+            "s2c_dim:PO" : "$Z0020",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{SR.25.01.01.05, C0130, R0660}",
+            "Label" : "SR.25.01.01.05 - LAC DT|LAC DT justified by reference to probable future taxable economic profit|Z Axis:",
+            "Values" : ""
+          }
+        },
+        "C0130_R0670" : {
+          "dimensions" : {
+            "s2c_dim:AO" : "$Z0010",
+            "s2c_dim:EA" : "s2c_VM:x93",
+            "s2c_dim:NF" : "$Z0030",
+            "s2c_dim:PO" : "$Z0020",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{SR.25.01.01.05, C0130, R0670}",
+            "Label" : "SR.25.01.01.05 - LAC DT|LAC DT justified by carry back, current year|Z Axis:",
+            "Values" : ""
+          }
+        },
+        "C0130_R0680" : {
+          "dimensions" : {
+            "s2c_dim:AO" : "$Z0010",
+            "s2c_dim:EA" : "s2c_VM:x94",
+            "s2c_dim:NF" : "$Z0030",
+            "s2c_dim:PO" : "$Z0020",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{SR.25.01.01.05, C0130, R0680}",
+            "Label" : "SR.25.01.01.05 - LAC DT|LAC DT justified by carry back, future years|Z Axis:",
+            "Values" : ""
+          }
+        },
+        "C0130_R0690" : {
+          "dimensions" : {
+            "s2c_dim:AO" : "$Z0010",
+            "s2c_dim:NF" : "$Z0030",
+            "s2c_dim:PO" : "$Z0020",
+            "s2c_dim:TA" : "s2c_AM:x54",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{SR.25.01.01.05, C0130, R0690}",
+            "Label" : "SR.25.01.01.05 - LAC DT|Maximum LAC DT|Z Axis:",
+            "Values" : ""
+          }
+        },
+        "Z0010" : {
+          "s2md:documentation" : {
+            "CellCode" : "{SR.25.01.01.05, Z0010}",
+            "Label" : "Article 112",
+            "Key" : "s2c_dim:AO",
+            "Values" : {
+              "x0" : "No",
+              "x1" : "Yes",
+              "x2" : "Yes - biennial reporting"
+            }
+          }
+        },
+        "Z0020" : {
+          "s2md:documentation" : {
+            "CellCode" : "{SR.25.01.01.05, Z0020}",
+            "Label" : "Ring-fenced fund or remaining part",
+            "Key" : "s2c_dim:PO",
+            "Values" : {
+              "x40" : "Material Ring Fenced Funds",
+              "x54" : "Remaining part [other than MAPs and material RFFs]"
+            }
+          }
+        },
+        "Z0030" : {
+          "s2md:documentation" : {
+            "CellCode" : "{SR.25.01.01.05, Z0030}",
+            "Label" : "Fund Number",
+            "Key" : "s2c_dim:NF",
+            "Values" : "String"
+          }
+        }
+      }
+    }
+  }
+}

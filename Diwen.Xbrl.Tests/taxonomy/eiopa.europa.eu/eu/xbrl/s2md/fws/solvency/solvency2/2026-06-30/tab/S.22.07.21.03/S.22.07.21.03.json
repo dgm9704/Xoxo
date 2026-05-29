@@ -1,0 +1,84 @@
+{
+  "documentInfo" : {
+    "documentType" : "https://xbrl.org/2021/xbrl-csv",
+    "namespaces" : {
+      "s2md" : "http://eiopa.europa.eu/xbrl/s2md/",
+      "s2c_AM" : "http://eiopa.europa.eu/xbrl/s2c/dict/dom/AM",
+      "s2c_CU" : "http://eiopa.europa.eu/xbrl/s2c/dict/dom/CU",
+      "s2c_GA" : "http://eiopa.europa.eu/xbrl/s2c/dict/dom/GA",
+      "s2c_VM" : "http://eiopa.europa.eu/xbrl/s2c/dict/dom/VM",
+      "s2c_dim" : "http://eiopa.europa.eu/xbrl/s2c/dict/dim",
+      "s2md_met" : "http://eiopa.europa.eu/xbrl/s2md/dict/met"
+    }
+  },
+  "tableTemplates" : {
+    "S.22.07.21.03" : {
+      "columns" : {
+        "C0020" : {
+          "s2md:documentation" : {
+            "CellCode" : "{S.22.07.21.03, C0020}",
+            "Label" : "Countries",
+            "Key" : "s2c_dim:LG",
+            "Values" : {
+              "AT" : "AUSTRIA",
+              "BE" : "BELGIUM",
+              "BG" : "BULGARIA",
+              "CY" : "CYPRUS",
+              "DE" : "GERMANY",
+              "EE" : "ESTONIA",
+              "ES" : "SPAIN",
+              "FI" : "FINLAND",
+              "FR" : "FRANCE",
+              "GR" : "GREECE",
+              "HR" : "CROATIA",
+              "IE" : "IRELAND",
+              "IT" : "ITALY",
+              "LT" : "LITHUANIA",
+              "LU" : "LUXEMBOURG",
+              "LV" : "LATVIA",
+              "MT" : "MALTA",
+              "NL" : "NETHERLANDS",
+              "PT" : "PORTUGAL",
+              "SI" : "SLOVENIA",
+              "SK" : "SLOVAKIA"
+            }
+          }
+        },
+        "C0040_R0040" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi1830",
+            "s2c_dim:EE" : "s2c_GA:x74",
+            "s2c_dim:LG" : "$C0020",
+            "s2c_dim:OC" : "s2c_CU:EUR",
+            "s2c_dim:VG" : "s2c_AM:x80",
+            "s2c_dim:VL" : "s2c_VM:x5"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.22.07.21.03, C0040, R0040}",
+            "Label" : "S.22.07.21.03 - Part of the best estimate subject to the volatility adjustment written in the currency Euro|Calculated volatility adjustment and total value of best estimate subject to the volatility adjustment for currency Euro by country|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0048_R0040" : {
+          "dimensions" : {
+            "concept" : "s2md_met:pi3035",
+            "s2c_dim:EE" : "s2c_GA:x74",
+            "s2c_dim:LG" : "$C0020",
+            "s2c_dim:OC" : "s2c_CU:EUR",
+            "s2c_dim:VG" : "s2c_AM:x80",
+            "s2c_dim:VL" : "s2c_VM:x5"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.22.07.21.03, C0048, R0040}",
+            "Label" : "S.22.07.21.03 - Volatility adjustment for the currency euro|Calculated volatility adjustment and total value of best estimate subject to the volatility adjustment for currency Euro by country|Z Axis:",
+            "Values" : "Percent"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "decimalsPercentage"
+        }
+      }
+    }
+  }
+}

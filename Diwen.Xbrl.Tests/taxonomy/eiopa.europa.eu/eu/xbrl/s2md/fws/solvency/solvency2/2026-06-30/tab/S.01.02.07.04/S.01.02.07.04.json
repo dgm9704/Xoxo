@@ -1,0 +1,65 @@
+{
+  "documentInfo" : {
+    "documentType" : "https://xbrl.org/2021/xbrl-csv",
+    "namespaces" : {
+      "s2md" : "http://eiopa.europa.eu/xbrl/s2md/",
+      "s2c_AP" : "http://eiopa.europa.eu/xbrl/s2c/dict/dom/AP",
+      "s2c_LB" : "http://eiopa.europa.eu/xbrl/s2c/dict/dom/LB",
+      "s2c_dim" : "http://eiopa.europa.eu/xbrl/s2c/dict/dim",
+      "s2md_met" : "http://eiopa.europa.eu/xbrl/s2md/dict/met"
+    }
+  },
+  "tableTemplates" : {
+    "S.01.02.07.04" : {
+      "columns" : {
+        "C0050" : {
+          "s2md:documentation" : {
+            "CellCode" : "{S.01.02.07.04, C0050}",
+            "Label" : "PEPP registration number",
+            "Key" : "s2c_dim:PX",
+            "Values" : "String"
+          }
+        },
+        "C0060" : {
+          "dimensions" : {
+            "concept" : "s2md_met:si7067",
+            "s2c_dim:PX" : "$C0050"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.01.02.07.04, C0060}",
+            "Label" : "S.01.02.07.04 - PEPP name",
+            "Values" : "String"
+          }
+        },
+        "C0070" : {
+          "dimensions" : {
+            "concept" : "s2md_met:ei1072",
+            "s2c_dim:PX" : "$C0050"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.01.02.07.04, C0070}",
+            "Label" : "S.01.02.07.04 - Product still commercialised?",
+            "Values" : {
+              "s2c_LB:x23" : "Still commercialised",
+              "s2c_LB:x89" : "In run-off"
+            }
+          }
+        },
+        "C0080" : {
+          "dimensions" : {
+            "concept" : "s2md_met:ei7114",
+            "s2c_dim:PX" : "$C0050"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.01.02.07.04, C0080}",
+            "Label" : "S.01.02.07.04 - Use of common pool of assets for all investments options",
+            "Values" : {
+              "s2c_AP:x7000" : "Common pool of assets for all investments options is used",
+              "s2c_AP:x7001" : "Common pool of assets for all investments options is not used"
+            }
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,137 @@
+{
+  "documentInfo" : {
+    "documentType" : "https://xbrl.org/2021/xbrl-csv",
+    "namespaces" : {
+      "s2md" : "http://eiopa.europa.eu/xbrl/s2md/",
+      "s2c_EX" : "http://eiopa.europa.eu/xbrl/s2c/dict/dom/EX",
+      "s2c_dim" : "http://eiopa.europa.eu/xbrl/s2c/dict/dim",
+      "s2md_met" : "http://eiopa.europa.eu/xbrl/s2md/dict/met"
+    }
+  },
+  "tableTemplates" : {
+    "SR.26.01.04.05" : {
+      "columns" : {
+        "C0001" : {
+          "s2md:documentation" : {
+            "CellCode" : "{SR.26.01.04.05, C0001}",
+            "Label" : "Line identification",
+            "Key" : "s2c_dim:ME",
+            "Values" : "String"
+          }
+        },
+        "C0010" : {
+          "s2md:documentation" : {
+            "CellCode" : "{SR.26.01.04.05, C0010}",
+            "Label" : "Equity investment ID Code",
+            "Key" : "s2c_dim:UI",
+            "Values" : "String"
+          }
+        },
+        "C0020" : {
+          "s2md:documentation" : {
+            "CellCode" : "{SR.26.01.04.05, C0020}",
+            "Label" : "Legislative programme ID",
+            "Key" : "s2c_dim:EB",
+            "Values" : "String"
+          }
+        },
+        "C0030" : {
+          "dimensions" : {
+            "concept" : "s2md_met:ei3083",
+            "s2c_dim:AO" : "$Z0010",
+            "s2c_dim:EB" : "$C0020",
+            "s2c_dim:ME" : "$C0001",
+            "s2c_dim:NF" : "$Z0030",
+            "s2c_dim:PO" : "$Z0020",
+            "s2c_dim:UI" : "$C0010"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{SR.26.01.04.05, C0030}",
+            "Label" : "SR.26.01.04.05 - Equity Risk Type|Z Axis:",
+            "Values" : {
+              "s2c_EX:x58" : "Type 1 equity investments in related undertakings within the meaning of Article 212(1)(b) and 212(2) of Directive 2009/138/EC where these investments are of a strategic nature",
+              "s2c_EX:x59" : "Type 1 equity investments that are treated as long-term equity investments in accordance with Article 105a of Directive 2009/138/EC",
+              "s2c_EX:x60" : "Type 1 equity investments other than those in related undertakings within the meaning of Article 212(1)(b) and 212(2) of Directive 2009/138/EC where these investments are of a strategic nature or those that are treated as long-term equity investments in accordance with Article 105a of Directive 2009/138/EC",
+              "s2c_EX:x61" : "Type 2 equity investments in related undertakings within the meaning of Article 212(1)(b) and 212(2) of Directive 2009/138/EC where these investments are of a strategic nature",
+              "s2c_EX:x62" : "Type 2 equity investments that are treated as long-term equity investments in accordance with Article 105a of Directive 2009/138/EC",
+              "s2c_EX:x63" : "Type 2 equity investments other than those in related undertakings within the meaning of Article 212(1)(b) and 212(2) of Directive 2009/138/EC where these investments are of a strategic nature or those that are treated as long-term equity investments in accordance with Article 105a of Directive 2009/138/EC",
+              "s2c_EX:x64" : "Qualifying infrastructure equity investments in related undertakings within the meaning of Article 212(1)(b) and 212(2) of Directive 2009/138/EC where these investments are of a strategic nature",
+              "s2c_EX:x65" : "Qualifying infrastructure equity investments that are treated as long-term equity investments in accordance with Article 105a of Directive 2009/138/EC",
+              "s2c_EX:x66" : "Qualifying infrastructure equities other than those\nthat are treated as long-term equity investments in accordance with Article 105a of Directive 2009/138/EC or those in related undertakings within the meaning of Article 212(1)(b) and 212(2) of Directive 2009/138/EC where these investments are of a strategic nature",
+              "s2c_EX:x67" : "Qualifying infrastructure corporate equity investments in related undertakings within the meaning of Article 212(1)(b) and 212(2) of Directive 2009/138/EC where these investments are of a strategic nature",
+              "s2c_EX:x68" : "Qualifying infrastructure corporate equity investments that are treated as long-term equity investments in accordance with Article 105a of Directive 2009/138/EC",
+              "s2c_EX:x69" : "Qualifying infrastructure corporate equity investments other that those that are treated as long-term equity investments in accordance with Article 105a of Directive 2009/138/EC or those in related undertakings within the meaning of Article 212(1)(b) and 212(2) of Directive 2009/138/EC where these investments are of a strategic nature"
+            }
+          }
+        },
+        "C0040" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi3084",
+            "s2c_dim:AO" : "$Z0010",
+            "s2c_dim:EB" : "$C0020",
+            "s2c_dim:ME" : "$C0001",
+            "s2c_dim:NF" : "$Z0030",
+            "s2c_dim:PO" : "$Z0020",
+            "s2c_dim:UI" : "$C0010"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{SR.26.01.04.05, C0040}",
+            "Label" : "SR.26.01.04.05 - Initial value before shock|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetaryOpenTable"
+        },
+        "C0050" : {
+          "dimensions" : {
+            "concept" : "s2md_met:pi3085",
+            "s2c_dim:AO" : "$Z0010",
+            "s2c_dim:EB" : "$C0020",
+            "s2c_dim:ME" : "$C0001",
+            "s2c_dim:NF" : "$Z0030",
+            "s2c_dim:PO" : "$Z0020",
+            "s2c_dim:UI" : "$C0010"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{SR.26.01.04.05, C0050}",
+            "Label" : "SR.26.01.04.05 - Reduction factor applied to equity risk type shock|Z Axis:",
+            "Values" : "Percent"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "decimalsPercentage"
+        },
+        "Z0010" : {
+          "s2md:documentation" : {
+            "CellCode" : "{SR.26.01.04.05, Z0010}",
+            "Label" : "Article 112",
+            "Key" : "s2c_dim:AO",
+            "Values" : {
+              "x0" : "No",
+              "x1" : "Yes",
+              "x2" : "Yes - biennial reporting"
+            }
+          }
+        },
+        "Z0020" : {
+          "s2md:documentation" : {
+            "CellCode" : "{SR.26.01.04.05, Z0020}",
+            "Label" : "Ring-fenced fund or remaining part",
+            "Key" : "s2c_dim:PO",
+            "Values" : {
+              "x40" : "Material Ring Fenced Funds",
+              "x54" : "Remaining part [other than MAPs and material RFFs]"
+            }
+          }
+        },
+        "Z0030" : {
+          "s2md:documentation" : {
+            "CellCode" : "{SR.26.01.04.05, Z0030}",
+            "Label" : "Fund Number",
+            "Key" : "s2c_dim:NF",
+            "Values" : "String"
+          }
+        }
+      }
+    }
+  }
+}

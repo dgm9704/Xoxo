@@ -1,0 +1,45 @@
+{
+  "documentInfo" : {
+    "documentType" : "https://xbrl.org/2021/xbrl-csv",
+    "namespaces" : {
+      "s2md" : "http://eiopa.europa.eu/xbrl/s2md/",
+      "s2c_AM" : "http://eiopa.europa.eu/xbrl/s2c/dict/dom/AM",
+      "s2c_GA" : "http://eiopa.europa.eu/xbrl/s2c/dict/dom/GA",
+      "s2c_LB" : "http://eiopa.europa.eu/xbrl/s2c/dict/dom/LB",
+      "s2c_dim" : "http://eiopa.europa.eu/xbrl/s2c/dict/dim",
+      "s2md_met" : "http://eiopa.europa.eu/xbrl/s2md/dict/met"
+    }
+  },
+  "tableTemplates" : {
+    "S.04.02.01.01" : {
+      "columns" : {
+        "C0010_R0020" : {
+          "dimensions" : {
+            "concept" : "s2md_met:ri2483"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.04.02.01.01, C0010, R0020}",
+            "Label" : "S.04.02.01.01 - FPS|Frequency of claims for Motor Vehicle Liability (except carrier's liability)",
+            "Values" : "Decimal"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "decimalsDecimal"
+        },
+        "C0010_R0030" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi1820",
+            "s2c_dim:TA" : "s2c_AM:x10",
+            "s2c_dim:VG" : "s2c_AM:x84"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.04.02.01.01, C0010, R0030}",
+            "Label" : "S.04.02.01.01 - FPS|Average cost of claims for Motor Vehicle Liability (except carrier's liability)",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        }
+      }
+    }
+  }
+}

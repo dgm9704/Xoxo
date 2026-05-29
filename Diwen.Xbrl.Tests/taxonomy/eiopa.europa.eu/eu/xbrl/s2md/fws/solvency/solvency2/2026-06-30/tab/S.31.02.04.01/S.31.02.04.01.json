@@ -1,0 +1,353 @@
+{
+  "documentInfo" : {
+    "documentType" : "https://xbrl.org/2021/xbrl-csv",
+    "namespaces" : {
+      "s2md" : "http://eiopa.europa.eu/xbrl/s2md/",
+      "s2c_LB" : "http://eiopa.europa.eu/xbrl/s2c/dict/dom/LB",
+      "s2c_LT" : "http://eiopa.europa.eu/xbrl/s2c/dict/dom/LT",
+      "s2c_RT" : "http://eiopa.europa.eu/xbrl/s2c/dict/dom/RT",
+      "s2c_SE" : "http://eiopa.europa.eu/xbrl/s2c/dict/dom/SE",
+      "s2c_TB" : "http://eiopa.europa.eu/xbrl/s2c/dict/dom/TB",
+      "s2c_dim" : "http://eiopa.europa.eu/xbrl/s2c/dict/dim",
+      "s2md_met" : "http://eiopa.europa.eu/xbrl/s2md/dict/met"
+    }
+  },
+  "tableTemplates" : {
+    "S.31.02.04.01" : {
+      "columns" : {
+        "C0001" : {
+          "s2md:documentation" : {
+            "CellCode" : "{S.31.02.04.01, C0001}",
+            "Label" : "Line identification",
+            "Key" : "s2c_dim:XU",
+            "Values" : "String"
+          }
+        },
+        "C0010" : {
+          "dimensions" : {
+            "concept" : "s2md_met:si1584",
+            "s2c_dim:BL" : "$C0060",
+            "s2c_dim:CE" : "$C0020",
+            "s2c_dim:OV" : "$C0030",
+            "s2c_dim:UI" : "$C0040",
+            "s2c_dim:XU" : "$C0001"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.31.02.04.01, C0010}",
+            "Label" : "S.31.02.04.01 - Legal name of reinsured undertaking",
+            "Values" : "String"
+          }
+        },
+        "C0020" : {
+          "s2md:documentation" : {
+            "CellCode" : "{S.31.02.04.01, C0020}",
+            "Label" : "Identification code and type of code of the undertaking",
+            "Key" : "s2c_dim:CE",
+            "Values" : "String"
+          }
+        },
+        "C0030" : {
+          "s2md:documentation" : {
+            "CellCode" : "{S.31.02.04.01, C0030}",
+            "Label" : "Internal code and type of code of the SPV",
+            "Key" : "s2c_dim:OV",
+            "Values" : "String"
+          }
+        },
+        "C0040" : {
+          "s2md:documentation" : {
+            "CellCode" : "{S.31.02.04.01, C0040}",
+            "Label" : "ID Code and type of code of SPV notes or other financing mechanism issued",
+            "Key" : "s2c_dim:UI",
+            "Values" : "String"
+          }
+        },
+        "C0060" : {
+          "s2md:documentation" : {
+            "CellCode" : "{S.31.02.04.01, C0060}",
+            "Label" : "Lines of Business SPV securitisation relates",
+            "Key" : "s2c_dim:BL",
+            "Values" : {
+              "s2c_LB:x135" : "Medical expense insurance [direct business]",
+              "s2c_LB:x136" : "Income protection insurance [direct business]",
+              "s2c_LB:x137" : "Workers' compensation insurance [direct business]",
+              "s2c_LB:x138" : "Motor vehicle liability insurance [direct business]",
+              "s2c_LB:x139" : "Other motor insurance [direct business]",
+              "s2c_LB:x140" : "Marine, aviation and transport insurance [direct business]",
+              "s2c_LB:x141" : "Fire and other damage to property insurance [direct business]",
+              "s2c_LB:x142" : "General liability insurance [direct business]",
+              "s2c_LB:x143" : "Credit and suretyship insurance [direct business]",
+              "s2c_LB:x144" : "Legal expenses insurance [direct business]",
+              "s2c_LB:x145" : "Assistance [direct business]",
+              "s2c_LB:x146" : "Miscellaneous financial loss [direct business]",
+              "s2c_LB:x148" : "Medical expense insurance [accepted proportional reinsurance]",
+              "s2c_LB:x149" : "Income protection insurance [accepted proportional reinsurance]",
+              "s2c_LB:x150" : "Workers' compensation insurance [accepted proportional reinsurance]",
+              "s2c_LB:x151" : "Motor vehicle liability insurance [accepted proportional reinsurance]",
+              "s2c_LB:x152" : "Other motor insurance [accepted proportional reinsurance]",
+              "s2c_LB:x153" : "Marine, aviation and transport insurance [accepted proportional reinsurance]",
+              "s2c_LB:x154" : "Fire and other damage to property insurance [accepted proportional reinsurance]",
+              "s2c_LB:x155" : "General liability insurance [accepted proportional reinsurance]",
+              "s2c_LB:x156" : "Credit and suretyship insurance [accepted proportional reinsurance]",
+              "s2c_LB:x157" : "Legal expenses insurance [accepted proportional reinsurance]",
+              "s2c_LB:x158" : "Assistance [accepted proportional reinsurance]",
+              "s2c_LB:x159" : "Miscellaneous financial loss [accepted proportional reinsurance]",
+              "s2c_LB:x42" : "Health [accepted non-proportional reinsurance]",
+              "s2c_LB:x14" : "Casualty [accepted non-proportional reinsurance]",
+              "s2c_LB:x67" : "Marine, aviation, transport [accepted non-proportional reinsurance]",
+              "s2c_LB:x106" : "Property [accepted non-proportional reinsurance]",
+              "s2c_LB:x45" : "Health SLT",
+              "s2c_LB:x53" : "Insurance with profit participation",
+              "s2c_LB:x119" : "Unit-linked or index-linked",
+              "s2c_LB:x93" : "Other life",
+              "s2c_LB:x10" : "Annuities stemming from non-life insurance contracts and relating to health insurance obligations",
+              "s2c_LB:x11" : "Annuities stemming from non-life insurance contracts and relating to insurance obligations other than health insurance obligations",
+              "s2c_LB:x160" : "Health reinsurance",
+              "s2c_LB:x161" : "Life reinsurance",
+              "s2c_LB:x168" : "Multiline"
+            }
+          }
+        },
+        "C0070" : {
+          "dimensions" : {
+            "concept" : "s2md_met:ei1894",
+            "s2c_dim:BL" : "$C0060",
+            "s2c_dim:CE" : "$C0020",
+            "s2c_dim:OV" : "$C0030",
+            "s2c_dim:UI" : "$C0040",
+            "s2c_dim:XU" : "$C0001"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.31.02.04.01, C0070}",
+            "Label" : "S.31.02.04.01 - Type of Trigger(s) in the SPV",
+            "Values" : {
+              "s2c_LT:x13" : "Indemnity",
+              "s2c_LT:x15" : "Model Loss",
+              "s2c_LT:x14" : "Index or Parametric",
+              "s2c_LT:x12" : "Hybrid (including components from above techniques)",
+              "s2c_LT:x22" : "Other than indemnity, Model Loss, Index or Parametric and Hybrids"
+            }
+          }
+        },
+        "C0080" : {
+          "dimensions" : {
+            "concept" : "s2md_met:si1365",
+            "s2c_dim:BL" : "$C0060",
+            "s2c_dim:CE" : "$C0020",
+            "s2c_dim:OV" : "$C0030",
+            "s2c_dim:UI" : "$C0040",
+            "s2c_dim:XU" : "$C0001"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.31.02.04.01, C0080}",
+            "Label" : "S.31.02.04.01 - Contractual trigger event",
+            "Values" : "String"
+          }
+        },
+        "C0090" : {
+          "dimensions" : {
+            "concept" : "s2md_met:ei1513",
+            "s2c_dim:BL" : "$C0060",
+            "s2c_dim:CE" : "$C0020",
+            "s2c_dim:OV" : "$C0030",
+            "s2c_dim:UI" : "$C0040",
+            "s2c_dim:XU" : "$C0001"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.31.02.04.01, C0090}",
+            "Label" : "S.31.02.04.01 - Same trigger as in underlying cedant's portfolio?",
+            "Values" : {
+              "s2c_LT:x23" : "The same as in underlying portfolio",
+              "s2c_LT:x21" : "Other than in underlying portfolio"
+            }
+          }
+        },
+        "C0100" : {
+          "dimensions" : {
+            "concept" : "s2md_met:ei1867",
+            "s2c_dim:BL" : "$C0060",
+            "s2c_dim:CE" : "$C0020",
+            "s2c_dim:OV" : "$C0030",
+            "s2c_dim:UI" : "$C0040",
+            "s2c_dim:XU" : "$C0001"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.31.02.04.01, C0100}",
+            "Label" : "S.31.02.04.01 - Basis risk arising from risk-transfer structure",
+            "Values" : {
+              "s2c_RT:x161" : "No basis risk",
+              "s2c_RT:x162" : "Insufficient subordination for note holders",
+              "s2c_RT:x163" : "Investors' additional recourse against cedant",
+              "s2c_RT:x164" : "Additional risks were securitised subsequent to authorisation",
+              "s2c_RT:x165" : "Cedants hold exposure to notes issued",
+              "s2c_RT:x166" : "Other risk than insufficient subordination for note holders, investors' additional recourse against cedant, additional risks were securitised subsequent to authorisation and cedants hold exposure to notes issued"
+            }
+          }
+        },
+        "C0110" : {
+          "dimensions" : {
+            "concept" : "s2md_met:ei1868",
+            "s2c_dim:BL" : "$C0060",
+            "s2c_dim:CE" : "$C0020",
+            "s2c_dim:OV" : "$C0030",
+            "s2c_dim:UI" : "$C0040",
+            "s2c_dim:XU" : "$C0001"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.31.02.04.01, C0110}",
+            "Label" : "S.31.02.04.01 - Basis risk arising from contractual terms",
+            "Values" : {
+              "s2c_RT:x161" : "No basis risk",
+              "s2c_RT:x167" : "Substantial part of risks insured not transferred",
+              "s2c_RT:x168" : "Insufficient trigger to match risk exposure of cedant"
+            }
+          }
+        },
+        "C0120" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi2428",
+            "s2c_dim:BL" : "$C0060",
+            "s2c_dim:CE" : "$C0020",
+            "s2c_dim:OV" : "$C0030",
+            "s2c_dim:UI" : "$C0040",
+            "s2c_dim:XU" : "$C0001"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.31.02.04.01, C0120}",
+            "Label" : "S.31.02.04.01 - SPV assets ring-fenced to settle cedant-specific obligations",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetaryOpenTable"
+        },
+        "C0130" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi2429",
+            "s2c_dim:BL" : "$C0060",
+            "s2c_dim:CE" : "$C0020",
+            "s2c_dim:OV" : "$C0030",
+            "s2c_dim:UI" : "$C0040",
+            "s2c_dim:XU" : "$C0001"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.31.02.04.01, C0130}",
+            "Label" : "S.31.02.04.01 - Other non cedant-specific SPV Assets for which recourse may exist",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetaryOpenTable"
+        },
+        "C0140" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi1927",
+            "s2c_dim:BL" : "$C0060",
+            "s2c_dim:CE" : "$C0020",
+            "s2c_dim:OV" : "$C0030",
+            "s2c_dim:UI" : "$C0040",
+            "s2c_dim:XU" : "$C0001"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.31.02.04.01, C0140}",
+            "Label" : "S.31.02.04.01 - Other recourse arising from securitisation",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetaryOpenTable"
+        },
+        "C0150" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi1102",
+            "s2c_dim:BL" : "$C0060",
+            "s2c_dim:CE" : "$C0020",
+            "s2c_dim:OV" : "$C0030",
+            "s2c_dim:UI" : "$C0040",
+            "s2c_dim:XU" : "$C0001"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.31.02.04.01, C0150}",
+            "Label" : "S.31.02.04.01 - Total maximum possible obligations from SPV under reinsurance policy",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetaryOpenTable"
+        },
+        "C0160" : {
+          "dimensions" : {
+            "concept" : "s2md_met:ei1870",
+            "s2c_dim:BL" : "$C0060",
+            "s2c_dim:CE" : "$C0020",
+            "s2c_dim:OV" : "$C0030",
+            "s2c_dim:UI" : "$C0040",
+            "s2c_dim:XU" : "$C0001"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.31.02.04.01, C0160}",
+            "Label" : "S.31.02.04.01 - SPV fully funded in relation to cedant obligations throughout the reporting period",
+            "Values" : {
+              "s2c_SE:x105" : "SPV fully funded in relation to cedant obligations",
+              "s2c_SE:x106" : "SPV not fully funded in relation to cedant obligations"
+            }
+          }
+        },
+        "C0170" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi1135",
+            "s2c_dim:BL" : "$C0060",
+            "s2c_dim:CE" : "$C0020",
+            "s2c_dim:OV" : "$C0030",
+            "s2c_dim:UI" : "$C0040",
+            "s2c_dim:XU" : "$C0001"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.31.02.04.01, C0170}",
+            "Label" : "S.31.02.04.01 - Current recoverables from SPV",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetaryOpenTable"
+        },
+        "C0180" : {
+          "dimensions" : {
+            "concept" : "s2md_met:ei1871",
+            "s2c_dim:BL" : "$C0060",
+            "s2c_dim:CE" : "$C0020",
+            "s2c_dim:OV" : "$C0030",
+            "s2c_dim:UI" : "$C0040",
+            "s2c_dim:XU" : "$C0001"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.31.02.04.01, C0180}",
+            "Label" : "S.31.02.04.01 - Identification of material investments held by cedant in SPV",
+            "Values" : {
+              "s2c_TB:x0" : "Total/NA",
+              "s2c_TB:x54" : "Investments of SPV controlled by cedant and/or sponsor (where it differs from cedant)",
+              "s2c_TB:x55" : "Investments of SPV held by cedant (equity, notes or other subordinated debt of the SPV)",
+              "s2c_TB:x56" : "Cedant sells reinsurance or other risk mitigation protection to the SPV",
+              "s2c_TB:x57" : "Cedant has provided guarantee or other credit enhancement to SPV or note holders",
+              "s2c_TB:x58" : "Sufficient basis risk retained by cedant",
+              "s2c_TB:x59" : "Other"
+            }
+          }
+        },
+        "C0190" : {
+          "dimensions" : {
+            "concept" : "s2md_met:ei1872",
+            "s2c_dim:BL" : "$C0060",
+            "s2c_dim:CE" : "$C0020",
+            "s2c_dim:OV" : "$C0030",
+            "s2c_dim:UI" : "$C0040",
+            "s2c_dim:XU" : "$C0001"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.31.02.04.01, C0190}",
+            "Label" : "S.31.02.04.01 - Securitisation assets related to cedant held in trust with other third party than cedant / sponsor?",
+            "Values" : {
+              "s2c_TB:x60" : "Held in trust with other third party than cedant / sponsor",
+              "s2c_TB:x61" : "Not held in trust with other third party than cedant / sponsor"
+            }
+          }
+        }
+      }
+    }
+  }
+}

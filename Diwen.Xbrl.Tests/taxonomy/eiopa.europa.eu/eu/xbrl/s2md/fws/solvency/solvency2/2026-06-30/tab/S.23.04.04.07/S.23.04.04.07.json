@@ -1,0 +1,95 @@
+{
+  "documentInfo" : {
+    "documentType" : "https://xbrl.org/2021/xbrl-csv",
+    "namespaces" : {
+      "s2md" : "http://eiopa.europa.eu/xbrl/s2md/",
+      "s2c_CS" : "http://eiopa.europa.eu/xbrl/s2c/dict/dom/CS",
+      "s2c_dim" : "http://eiopa.europa.eu/xbrl/s2c/dict/dim",
+      "s2md_met" : "http://eiopa.europa.eu/xbrl/s2md/dict/met"
+    }
+  },
+  "tableTemplates" : {
+    "S.23.04.04.07" : {
+      "columns" : {
+        "C0660" : {
+          "s2md:documentation" : {
+            "CellCode" : "{S.23.04.04.07, C0660}",
+            "Label" : "Ring-fenced fund number",
+            "Key" : "s2c_dim:NF",
+            "Values" : "String"
+          }
+        },
+        "C0670" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi3108",
+            "s2c_dim:CM" : "s2c_CS:x1",
+            "s2c_dim:NF" : "$C0660"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.23.04.04.07, C0670}",
+            "Label" : "S.23.04.04.07 - Notional SCR|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetaryOpenTable"
+        },
+        "C0680" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi3114",
+            "s2c_dim:CM" : "s2c_CS:x1",
+            "s2c_dim:NF" : "$C0660"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.23.04.04.07, C0680}",
+            "Label" : "S.23.04.04.07 - Notional SCR (negative results set to zero)|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetaryOpenTable"
+        },
+        "C0690" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi3107",
+            "s2c_dim:CM" : "s2c_CS:x1",
+            "s2c_dim:NF" : "$C0660"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.23.04.04.07, C0690}",
+            "Label" : "S.23.04.04.07 - Excess of assets over liabilities|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetaryOpenTable"
+        },
+        "C0700" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi3113",
+            "s2c_dim:CM" : "s2c_CS:x1",
+            "s2c_dim:NF" : "$C0660"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.23.04.04.07, C0700}",
+            "Label" : "S.23.04.04.07 - Future transfers attributable to shareholders|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetaryOpenTable"
+        },
+        "C0710" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi3064",
+            "s2c_dim:CM" : "s2c_CS:x1",
+            "s2c_dim:NF" : "$C0660"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.23.04.04.07, C0710}",
+            "Label" : "S.23.04.04.07 - Adjustment for restricted own fund items in respect of ring fenced funds|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetaryOpenTable"
+        }
+      }
+    }
+  }
+}

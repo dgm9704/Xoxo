@@ -1,0 +1,60 @@
+{
+  "documentInfo" : {
+    "documentType" : "https://xbrl.org/2021/xbrl-csv",
+    "namespaces" : {
+      "s2md" : "http://eiopa.europa.eu/xbrl/s2md/",
+      "s2c_LB" : "http://eiopa.europa.eu/xbrl/s2c/dict/dom/LB",
+      "s2c_TI" : "http://eiopa.europa.eu/xbrl/s2c/dict/dom/TI",
+      "s2c_dim" : "http://eiopa.europa.eu/xbrl/s2c/dict/dim",
+      "s2md_met" : "http://eiopa.europa.eu/xbrl/s2md/dict/met"
+    }
+  },
+  "tableTemplates" : {
+    "S.26.13.01.13" : {
+      "columns" : {
+        "C0430_R2000" : {
+          "dimensions" : {
+            "concept" : "s2md_met:pi2628",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:TB" : "s2c_LB:x28"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.13.01.13, C0430, R2000}",
+            "Label" : "S.26.13.01.13 - Split of premium income|Direct insurance|Z Axis:",
+            "Values" : "Percent"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "decimalsPercentage"
+        },
+        "C0430_R2010" : {
+          "dimensions" : {
+            "concept" : "s2md_met:pi2628",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:TB" : "s2c_LB:x109"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.13.01.13, C0430, R2010}",
+            "Label" : "S.26.13.01.13 - Split of premium income|Reinsurance|Z Axis:",
+            "Values" : "Percent"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "decimalsPercentage"
+        },
+        "C0430_R2020" : {
+          "dimensions" : {
+            "concept" : "s2md_met:pi2628",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:TB" : "s2c_LB:x236"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.13.01.13, C0430, R2020}",
+            "Label" : "S.26.13.01.13 - Split of premium income|Retrocession|Z Axis:",
+            "Values" : "Percent"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "decimalsPercentage"
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,74 @@
+{
+  "documentInfo" : {
+    "documentType" : "https://xbrl.org/2021/xbrl-csv",
+    "namespaces" : {
+      "s2md" : "http://eiopa.europa.eu/xbrl/s2md/",
+      "s2c_AM" : "http://eiopa.europa.eu/xbrl/s2c/dict/dom/AM",
+      "s2c_EL" : "http://eiopa.europa.eu/xbrl/s2c/dict/dom/EL",
+      "s2c_dim" : "http://eiopa.europa.eu/xbrl/s2c/dict/dim",
+      "s2md_met" : "http://eiopa.europa.eu/xbrl/s2md/dict/met"
+    }
+  },
+  "tableTemplates" : {
+    "S.24.01.01.03" : {
+      "columns" : {
+        "C0150_R0001" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi2314",
+            "s2c_dim:TX" : "s2c_EL:x27",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.24.01.01.03, C0150, R0001}",
+            "Label" : "S.24.01.01.03 - Total|Total participations in related undertakings that are financial and credit institutions (for which there is an OF deduction)|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0160_R0001" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi2314",
+            "s2c_dim:TX" : "s2c_EL:x8",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.24.01.01.03, C0160, R0001}",
+            "Label" : "S.24.01.01.03 - Common Equity Tier 1|Total participations in related undertakings that are financial and credit institutions (for which there is an OF deduction)|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0170_R0001" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi2314",
+            "s2c_dim:TX" : "s2c_EL:x1",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.24.01.01.03, C0170, R0001}",
+            "Label" : "S.24.01.01.03 - Additional Tier 1|Total participations in related undertakings that are financial and credit institutions (for which there is an OF deduction)|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0180_R0001" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi2314",
+            "s2c_dim:TX" : "s2c_EL:x28",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.24.01.01.03, C0180, R0001}",
+            "Label" : "S.24.01.01.03 - Tier 2|Total participations in related undertakings that are financial and credit institutions (for which there is an OF deduction)|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,963 @@
+{
+  "documentInfo" : {
+    "documentType" : "https://xbrl.org/2021/xbrl-csv",
+    "namespaces" : {
+      "s2md" : "http://eiopa.europa.eu/xbrl/s2md/",
+      "s2c_AM" : "http://eiopa.europa.eu/xbrl/s2c/dict/dom/AM",
+      "s2c_AP" : "http://eiopa.europa.eu/xbrl/s2c/dict/dom/AP",
+      "s2c_PI" : "http://eiopa.europa.eu/xbrl/s2c/dict/dom/PI",
+      "s2c_RT" : "http://eiopa.europa.eu/xbrl/s2c/dict/dom/RT",
+      "s2c_TI" : "http://eiopa.europa.eu/xbrl/s2c/dict/dom/TI",
+      "s2c_VM" : "http://eiopa.europa.eu/xbrl/s2c/dict/dom/VM",
+      "s2c_dim" : "http://eiopa.europa.eu/xbrl/s2c/dict/dim",
+      "s2md_met" : "http://eiopa.europa.eu/xbrl/s2md/dict/met"
+    }
+  },
+  "tableTemplates" : {
+    "S.26.13.01.05" : {
+      "columns" : {
+        "C0090_R0070" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi2683",
+            "s2c_dim:DV" : "s2c_RT:x11",
+            "s2c_dim:IL" : "$Z0010",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RT" : "$Z0020",
+            "s2c_dim:VL" : "s2c_VM:x5"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.13.01.05, C0090, R0070}",
+            "Label" : "S.26.13.01.05 - Internal Line of Business|Provision for claims outstanding - discounted|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0090_R0080" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi2920",
+            "s2c_dim:DV" : "s2c_RT:x11",
+            "s2c_dim:IL" : "$Z0010",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RT" : "$Z0020",
+            "s2c_dim:VL" : "s2c_VM:x5"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.13.01.05, C0090, R0080}",
+            "Label" : "S.26.13.01.05 - Internal Line of Business|Premium Provision - discounted (only if premium provision allocated to reserve risk)|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0090_R0090" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi92",
+            "s2c_dim:DV" : "s2c_RT:x11",
+            "s2c_dim:EA" : "s2c_VM:x24",
+            "s2c_dim:IL" : "$Z0010",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RT" : "$Z0020"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.13.01.05, C0090, R0090}",
+            "Label" : "S.26.13.01.05 - Internal Line of Business|Solvency Capital Requirement|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0090_R0100" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi2702",
+            "s2c_dim:DV" : "s2c_RT:x11",
+            "s2c_dim:IL" : "$Z0010",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RT" : "$Z0020",
+            "s2c_dim:TA" : "s2c_AM:x12"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.13.01.05, C0090, R0100}",
+            "Label" : "S.26.13.01.05 - Internal Line of Business|Simulated (output) mean|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0090_R0110" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi2702",
+            "s2c_dim:DV" : "s2c_RT:x11",
+            "s2c_dim:IL" : "$Z0010",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RT" : "$Z0020",
+            "s2c_dim:TA" : "s2c_AM:x138"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.13.01.05, C0090, R0110}",
+            "Label" : "S.26.13.01.05 - Internal Line of Business|Simulated (output) standard deviation|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0090_R0120" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi2702",
+            "s2c_dim:DV" : "s2c_RT:x11",
+            "s2c_dim:IL" : "$Z0010",
+            "s2c_dim:PT" : "s2c_PI:x38",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RT" : "$Z0020"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.13.01.05, C0090, R0120}",
+            "Label" : "S.26.13.01.05 - Internal Line of Business|0,001|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0090_R0130" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi2702",
+            "s2c_dim:DV" : "s2c_RT:x11",
+            "s2c_dim:IL" : "$Z0010",
+            "s2c_dim:PT" : "s2c_PI:x19",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RT" : "$Z0020"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.13.01.05, C0090, R0130}",
+            "Label" : "S.26.13.01.05 - Internal Line of Business|0,005|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0090_R0140" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi2702",
+            "s2c_dim:DV" : "s2c_RT:x11",
+            "s2c_dim:IL" : "$Z0010",
+            "s2c_dim:PT" : "s2c_PI:x18",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RT" : "$Z0020"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.13.01.05, C0090, R0140}",
+            "Label" : "S.26.13.01.05 - Internal Line of Business|0,01|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0090_R0150" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi2702",
+            "s2c_dim:DV" : "s2c_RT:x11",
+            "s2c_dim:IL" : "$Z0010",
+            "s2c_dim:PT" : "s2c_PI:x35",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RT" : "$Z0020"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.13.01.05, C0090, R0150}",
+            "Label" : "S.26.13.01.05 - Internal Line of Business|0,05|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0090_R0160" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi2702",
+            "s2c_dim:DV" : "s2c_RT:x11",
+            "s2c_dim:IL" : "$Z0010",
+            "s2c_dim:PT" : "s2c_PI:x16",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RT" : "$Z0020"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.13.01.05, C0090, R0160}",
+            "Label" : "S.26.13.01.05 - Internal Line of Business|0,1|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0090_R0170" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi2702",
+            "s2c_dim:DV" : "s2c_RT:x11",
+            "s2c_dim:IL" : "$Z0010",
+            "s2c_dim:PT" : "s2c_PI:x52",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RT" : "$Z0020"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.13.01.05, C0090, R0170}",
+            "Label" : "S.26.13.01.05 - Internal Line of Business|0,2|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0090_R0180" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi2702",
+            "s2c_dim:DV" : "s2c_RT:x11",
+            "s2c_dim:IL" : "$Z0010",
+            "s2c_dim:PT" : "s2c_PI:x15",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RT" : "$Z0020"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.13.01.05, C0090, R0180}",
+            "Label" : "S.26.13.01.05 - Internal Line of Business|0,25|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0090_R0190" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi2702",
+            "s2c_dim:DV" : "s2c_RT:x11",
+            "s2c_dim:IL" : "$Z0010",
+            "s2c_dim:PT" : "s2c_PI:x17",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RT" : "$Z0020"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.13.01.05, C0090, R0190}",
+            "Label" : "S.26.13.01.05 - Internal Line of Business|0,3|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0090_R0200" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi2702",
+            "s2c_dim:DV" : "s2c_RT:x11",
+            "s2c_dim:IL" : "$Z0010",
+            "s2c_dim:PT" : "s2c_PI:x49",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RT" : "$Z0020"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.13.01.05, C0090, R0200}",
+            "Label" : "S.26.13.01.05 - Internal Line of Business|0,4|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0090_R0210" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi2702",
+            "s2c_dim:DV" : "s2c_RT:x11",
+            "s2c_dim:IL" : "$Z0010",
+            "s2c_dim:PT" : "s2c_PI:x32",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RT" : "$Z0020"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.13.01.05, C0090, R0210}",
+            "Label" : "S.26.13.01.05 - Internal Line of Business|0,5|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0090_R0220" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi2702",
+            "s2c_dim:DV" : "s2c_RT:x11",
+            "s2c_dim:IL" : "$Z0010",
+            "s2c_dim:PT" : "s2c_PI:x45",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RT" : "$Z0020"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.13.01.05, C0090, R0220}",
+            "Label" : "S.26.13.01.05 - Internal Line of Business|0,6|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0090_R0230" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi2702",
+            "s2c_dim:DV" : "s2c_RT:x11",
+            "s2c_dim:IL" : "$Z0010",
+            "s2c_dim:PT" : "s2c_PI:x47",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RT" : "$Z0020"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.13.01.05, C0090, R0230}",
+            "Label" : "S.26.13.01.05 - Internal Line of Business|0,7|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0090_R0240" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi2702",
+            "s2c_dim:DV" : "s2c_RT:x11",
+            "s2c_dim:IL" : "$Z0010",
+            "s2c_dim:PT" : "s2c_PI:x31",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RT" : "$Z0020"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.13.01.05, C0090, R0240}",
+            "Label" : "S.26.13.01.05 - Internal Line of Business|0,75|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0090_R0250" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi2702",
+            "s2c_dim:DV" : "s2c_RT:x11",
+            "s2c_dim:IL" : "$Z0010",
+            "s2c_dim:PT" : "s2c_PI:x30",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RT" : "$Z0020"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.13.01.05, C0090, R0250}",
+            "Label" : "S.26.13.01.05 - Internal Line of Business|0,8|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0090_R0260" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi2702",
+            "s2c_dim:DV" : "s2c_RT:x11",
+            "s2c_dim:IL" : "$Z0010",
+            "s2c_dim:PT" : "s2c_PI:x28",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RT" : "$Z0020"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.13.01.05, C0090, R0260}",
+            "Label" : "S.26.13.01.05 - Internal Line of Business|0,9|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0090_R0270" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi2702",
+            "s2c_dim:DV" : "s2c_RT:x11",
+            "s2c_dim:IL" : "$Z0010",
+            "s2c_dim:PT" : "s2c_PI:x39",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RT" : "$Z0020"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.13.01.05, C0090, R0270}",
+            "Label" : "S.26.13.01.05 - Internal Line of Business|0,975|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0090_R0280" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi2702",
+            "s2c_dim:DV" : "s2c_RT:x11",
+            "s2c_dim:IL" : "$Z0010",
+            "s2c_dim:PT" : "s2c_PI:x40",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RT" : "$Z0020"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.13.01.05, C0090, R0280}",
+            "Label" : "S.26.13.01.05 - Internal Line of Business|0,98|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0090_R0290" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi2702",
+            "s2c_dim:DV" : "s2c_RT:x11",
+            "s2c_dim:IL" : "$Z0010",
+            "s2c_dim:PT" : "s2c_PI:x41",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RT" : "$Z0020"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.13.01.05, C0090, R0290}",
+            "Label" : "S.26.13.01.05 - Internal Line of Business|0,985|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0090_R0300" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi2702",
+            "s2c_dim:DV" : "s2c_RT:x11",
+            "s2c_dim:IL" : "$Z0010",
+            "s2c_dim:PT" : "s2c_PI:x42",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RT" : "$Z0020"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.13.01.05, C0090, R0300}",
+            "Label" : "S.26.13.01.05 - Internal Line of Business|0,99|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0090_R0310" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi2702",
+            "s2c_dim:DV" : "s2c_RT:x11",
+            "s2c_dim:IL" : "$Z0010",
+            "s2c_dim:PT" : "s2c_PI:x24",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RT" : "$Z0020"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.13.01.05, C0090, R0310}",
+            "Label" : "S.26.13.01.05 - Internal Line of Business|0,995|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0090_R0320" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi2702",
+            "s2c_dim:DV" : "s2c_RT:x11",
+            "s2c_dim:IL" : "$Z0010",
+            "s2c_dim:PT" : "s2c_PI:x43",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RT" : "$Z0020"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.13.01.05, C0090, R0320}",
+            "Label" : "S.26.13.01.05 - Internal Line of Business|0,997|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0090_R0330" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi2702",
+            "s2c_dim:DV" : "s2c_RT:x11",
+            "s2c_dim:IL" : "$Z0010",
+            "s2c_dim:PT" : "s2c_PI:x20",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RT" : "$Z0020"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.13.01.05, C0090, R0330}",
+            "Label" : "S.26.13.01.05 - Internal Line of Business|0,999|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0090_R0340" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi2684",
+            "s2c_dim:DV" : "s2c_RT:x11",
+            "s2c_dim:IL" : "$Z0010",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RT" : "$Z0020",
+            "s2c_dim:VL" : "s2c_VM:x5"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.13.01.05, C0090, R0340}",
+            "Label" : "S.26.13.01.05 - Internal Line of Business|Provision for claims outstanding - discounted|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0090_R0350" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi2910",
+            "s2c_dim:DV" : "s2c_RT:x11",
+            "s2c_dim:IL" : "$Z0010",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RT" : "$Z0020",
+            "s2c_dim:VL" : "s2c_VM:x5"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.13.01.05, C0090, R0350}",
+            "Label" : "S.26.13.01.05 - Internal Line of Business|Premium Provision - discounted (only if premium provision allocated to reserve risk)|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0090_R0360" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi2630",
+            "s2c_dim:DV" : "s2c_RT:x11",
+            "s2c_dim:EA" : "s2c_VM:x24",
+            "s2c_dim:IL" : "$Z0010",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RT" : "$Z0020"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.13.01.05, C0090, R0360}",
+            "Label" : "S.26.13.01.05 - Internal Line of Business|Solvency Capital Requirement|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0090_R0370" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi2701",
+            "s2c_dim:DV" : "s2c_RT:x11",
+            "s2c_dim:IL" : "$Z0010",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RT" : "$Z0020",
+            "s2c_dim:TA" : "s2c_AM:x12"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.13.01.05, C0090, R0370}",
+            "Label" : "S.26.13.01.05 - Internal Line of Business|Simulated (output) mean|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0090_R0380" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi2701",
+            "s2c_dim:DV" : "s2c_RT:x11",
+            "s2c_dim:IL" : "$Z0010",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RT" : "$Z0020",
+            "s2c_dim:TA" : "s2c_AM:x138"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.13.01.05, C0090, R0380}",
+            "Label" : "S.26.13.01.05 - Internal Line of Business|Simulated (output) standard deviation|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0090_R0390" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi2701",
+            "s2c_dim:DV" : "s2c_RT:x11",
+            "s2c_dim:IL" : "$Z0010",
+            "s2c_dim:PT" : "s2c_PI:x38",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RT" : "$Z0020"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.13.01.05, C0090, R0390}",
+            "Label" : "S.26.13.01.05 - Internal Line of Business|0,001|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0090_R0400" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi2701",
+            "s2c_dim:DV" : "s2c_RT:x11",
+            "s2c_dim:IL" : "$Z0010",
+            "s2c_dim:PT" : "s2c_PI:x19",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RT" : "$Z0020"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.13.01.05, C0090, R0400}",
+            "Label" : "S.26.13.01.05 - Internal Line of Business|0,005|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0090_R0410" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi2701",
+            "s2c_dim:DV" : "s2c_RT:x11",
+            "s2c_dim:IL" : "$Z0010",
+            "s2c_dim:PT" : "s2c_PI:x18",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RT" : "$Z0020"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.13.01.05, C0090, R0410}",
+            "Label" : "S.26.13.01.05 - Internal Line of Business|0,01|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0090_R0420" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi2701",
+            "s2c_dim:DV" : "s2c_RT:x11",
+            "s2c_dim:IL" : "$Z0010",
+            "s2c_dim:PT" : "s2c_PI:x35",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RT" : "$Z0020"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.13.01.05, C0090, R0420}",
+            "Label" : "S.26.13.01.05 - Internal Line of Business|0,05|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0090_R0430" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi2701",
+            "s2c_dim:DV" : "s2c_RT:x11",
+            "s2c_dim:IL" : "$Z0010",
+            "s2c_dim:PT" : "s2c_PI:x16",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RT" : "$Z0020"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.13.01.05, C0090, R0430}",
+            "Label" : "S.26.13.01.05 - Internal Line of Business|0,1|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0090_R0440" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi2701",
+            "s2c_dim:DV" : "s2c_RT:x11",
+            "s2c_dim:IL" : "$Z0010",
+            "s2c_dim:PT" : "s2c_PI:x52",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RT" : "$Z0020"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.13.01.05, C0090, R0440}",
+            "Label" : "S.26.13.01.05 - Internal Line of Business|0,2|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0090_R0450" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi2701",
+            "s2c_dim:DV" : "s2c_RT:x11",
+            "s2c_dim:IL" : "$Z0010",
+            "s2c_dim:PT" : "s2c_PI:x15",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RT" : "$Z0020"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.13.01.05, C0090, R0450}",
+            "Label" : "S.26.13.01.05 - Internal Line of Business|0,25|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0090_R0460" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi2701",
+            "s2c_dim:DV" : "s2c_RT:x11",
+            "s2c_dim:IL" : "$Z0010",
+            "s2c_dim:PT" : "s2c_PI:x17",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RT" : "$Z0020"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.13.01.05, C0090, R0460}",
+            "Label" : "S.26.13.01.05 - Internal Line of Business|0,3|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0090_R0470" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi2701",
+            "s2c_dim:DV" : "s2c_RT:x11",
+            "s2c_dim:IL" : "$Z0010",
+            "s2c_dim:PT" : "s2c_PI:x49",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RT" : "$Z0020"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.13.01.05, C0090, R0470}",
+            "Label" : "S.26.13.01.05 - Internal Line of Business|0,4|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0090_R0480" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi2701",
+            "s2c_dim:DV" : "s2c_RT:x11",
+            "s2c_dim:IL" : "$Z0010",
+            "s2c_dim:PT" : "s2c_PI:x32",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RT" : "$Z0020"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.13.01.05, C0090, R0480}",
+            "Label" : "S.26.13.01.05 - Internal Line of Business|0,5|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0090_R0490" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi2701",
+            "s2c_dim:DV" : "s2c_RT:x11",
+            "s2c_dim:IL" : "$Z0010",
+            "s2c_dim:PT" : "s2c_PI:x45",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RT" : "$Z0020"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.13.01.05, C0090, R0490}",
+            "Label" : "S.26.13.01.05 - Internal Line of Business|0,6|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0090_R0500" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi2701",
+            "s2c_dim:DV" : "s2c_RT:x11",
+            "s2c_dim:IL" : "$Z0010",
+            "s2c_dim:PT" : "s2c_PI:x47",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RT" : "$Z0020"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.13.01.05, C0090, R0500}",
+            "Label" : "S.26.13.01.05 - Internal Line of Business|0,7|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0090_R0510" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi2701",
+            "s2c_dim:DV" : "s2c_RT:x11",
+            "s2c_dim:IL" : "$Z0010",
+            "s2c_dim:PT" : "s2c_PI:x31",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RT" : "$Z0020"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.13.01.05, C0090, R0510}",
+            "Label" : "S.26.13.01.05 - Internal Line of Business|0,75|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0090_R0520" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi2701",
+            "s2c_dim:DV" : "s2c_RT:x11",
+            "s2c_dim:IL" : "$Z0010",
+            "s2c_dim:PT" : "s2c_PI:x30",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RT" : "$Z0020"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.13.01.05, C0090, R0520}",
+            "Label" : "S.26.13.01.05 - Internal Line of Business|0,8|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0090_R0530" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi2701",
+            "s2c_dim:DV" : "s2c_RT:x11",
+            "s2c_dim:IL" : "$Z0010",
+            "s2c_dim:PT" : "s2c_PI:x28",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RT" : "$Z0020"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.13.01.05, C0090, R0530}",
+            "Label" : "S.26.13.01.05 - Internal Line of Business|0,9|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0090_R0540" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi2701",
+            "s2c_dim:DV" : "s2c_RT:x11",
+            "s2c_dim:IL" : "$Z0010",
+            "s2c_dim:PT" : "s2c_PI:x39",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RT" : "$Z0020"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.13.01.05, C0090, R0540}",
+            "Label" : "S.26.13.01.05 - Internal Line of Business|0,975|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0090_R0550" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi2701",
+            "s2c_dim:DV" : "s2c_RT:x11",
+            "s2c_dim:IL" : "$Z0010",
+            "s2c_dim:PT" : "s2c_PI:x40",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RT" : "$Z0020"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.13.01.05, C0090, R0550}",
+            "Label" : "S.26.13.01.05 - Internal Line of Business|0,98|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0090_R0560" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi2701",
+            "s2c_dim:DV" : "s2c_RT:x11",
+            "s2c_dim:IL" : "$Z0010",
+            "s2c_dim:PT" : "s2c_PI:x41",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RT" : "$Z0020"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.13.01.05, C0090, R0560}",
+            "Label" : "S.26.13.01.05 - Internal Line of Business|0,985|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0090_R0570" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi2701",
+            "s2c_dim:DV" : "s2c_RT:x11",
+            "s2c_dim:IL" : "$Z0010",
+            "s2c_dim:PT" : "s2c_PI:x42",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RT" : "$Z0020"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.13.01.05, C0090, R0570}",
+            "Label" : "S.26.13.01.05 - Internal Line of Business|0,99|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0090_R0580" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi2701",
+            "s2c_dim:DV" : "s2c_RT:x11",
+            "s2c_dim:IL" : "$Z0010",
+            "s2c_dim:PT" : "s2c_PI:x24",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RT" : "$Z0020"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.13.01.05, C0090, R0580}",
+            "Label" : "S.26.13.01.05 - Internal Line of Business|0,995|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0090_R0590" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi2701",
+            "s2c_dim:DV" : "s2c_RT:x11",
+            "s2c_dim:IL" : "$Z0010",
+            "s2c_dim:PT" : "s2c_PI:x43",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RT" : "$Z0020"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.13.01.05, C0090, R0590}",
+            "Label" : "S.26.13.01.05 - Internal Line of Business|0,997|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0090_R0600" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi2701",
+            "s2c_dim:DV" : "s2c_RT:x11",
+            "s2c_dim:IL" : "$Z0010",
+            "s2c_dim:PT" : "s2c_PI:x20",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RT" : "$Z0020"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.13.01.05, C0090, R0600}",
+            "Label" : "S.26.13.01.05 - Internal Line of Business|0,999|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "Z0010" : {
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.13.01.05, Z0010}",
+            "Label" : "Internal line of business",
+            "Key" : "s2c_dim:IL",
+            "Values" : "String"
+          }
+        },
+        "Z0020" : {
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.13.01.05, Z0020}",
+            "Label" : "Risk type",
+            "Key" : "s2c_dim:RT",
+            "Values" : {
+              "s2c_RT:x307" : "Non-life and NSLT health reserve risk aggregated jointly with implicit catastrophe risk",
+              "s2c_RT:x248" : "Non-life and NSLT health reserve risk",
+              "s2c_RT:x308" : "Non-life underwriting reserve risk with implicit catastrophe risk",
+              "s2c_RT:x108" : "Non-life underwriting reserve risk",
+              "s2c_RT:x345" : "NSLT health underwriting reserve risk with implicit catastrophe risk",
+              "s2c_RT:x120" : "NSLT health underwriting risk"
+            }
+          }
+        }
+      }
+    }
+  }
+}

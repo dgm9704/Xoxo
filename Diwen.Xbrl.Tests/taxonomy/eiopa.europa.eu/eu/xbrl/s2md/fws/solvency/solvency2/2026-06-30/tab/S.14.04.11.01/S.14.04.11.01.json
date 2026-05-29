@@ -1,0 +1,50 @@
+{
+  "documentInfo" : {
+    "documentType" : "https://xbrl.org/2021/xbrl-csv",
+    "namespaces" : {
+      "s2md" : "http://eiopa.europa.eu/xbrl/s2md/",
+      "s2c_LB" : "http://eiopa.europa.eu/xbrl/s2c/dict/dom/LB",
+      "s2c_dim" : "http://eiopa.europa.eu/xbrl/s2c/dict/dim",
+      "s2md_met" : "http://eiopa.europa.eu/xbrl/s2md/dict/met"
+    }
+  },
+  "tableTemplates" : {
+    "S.14.04.11.01" : {
+      "columns" : {
+        "C0080" : {
+          "dimensions" : {
+            "concept" : "s2md_met:si1350",
+            "s2c_dim:ES" : "$C0240"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.14.04.11.01, C0080}",
+            "Label" : "S.14.04.11.01 - Country",
+            "Values" : "String"
+          }
+        },
+        "C0240" : {
+          "s2md:documentation" : {
+            "CellCode" : "{S.14.04.11.01, C0240}",
+            "Label" : "Line identification (internal portfolio ID)",
+            "Key" : "s2c_dim:ES",
+            "Values" : "String"
+          }
+        },
+        "C0310" : {
+          "dimensions" : {
+            "concept" : "s2md_met:ei1070",
+            "s2c_dim:ES" : "$C0240"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.14.04.11.01, C0310}",
+            "Label" : "S.14.04.11.01 - Asset held in unit linked and index linked contracts",
+            "Values" : {
+              "s2c_LB:x119" : "Unit-linked or index-linked",
+              "s2c_LB:x91" : "Neither unit-linked nor index-linked"
+            }
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,130 @@
+{
+  "documentInfo" : {
+    "documentType" : "https://xbrl.org/2021/xbrl-csv",
+    "namespaces" : {
+      "s2md" : "http://eiopa.europa.eu/xbrl/s2md/",
+      "s2c_LB" : "http://eiopa.europa.eu/xbrl/s2c/dict/dom/LB",
+      "s2c_dim" : "http://eiopa.europa.eu/xbrl/s2c/dict/dim",
+      "s2md_met" : "http://eiopa.europa.eu/xbrl/s2md/dict/met"
+    }
+  },
+  "tableTemplates" : {
+    "S.14.01.01.01" : {
+      "columns" : {
+        "C0010" : {
+          "s2md:documentation" : {
+            "CellCode" : "{S.14.01.01.01, C0010}",
+            "Label" : "Product ID code",
+            "Key" : "s2c_dim:IP",
+            "Values" : "String"
+          }
+        },
+        "C0015" : {
+          "dimensions" : {
+            "concept" : "s2md_met:si3052",
+            "s2c_dim:IP" : "$C0010"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.14.01.01.01, C0015}",
+            "Label" : "S.14.01.01.01 - ESAP metadata - instrument or product identifier",
+            "Values" : "String"
+          }
+        },
+        "C0030" : {
+          "dimensions" : {
+            "concept" : "s2md_met:ei2948",
+            "s2c_dim:IP" : "$C0010"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.14.01.01.01, C0030}",
+            "Label" : "S.14.01.01.01 - Line of Business",
+            "Values" : {
+              "s2c_LB:x45" : "Health SLT",
+              "s2c_LB:x53" : "Insurance with profit participation",
+              "s2c_LB:x119" : "Unit-linked or index-linked",
+              "s2c_LB:x93" : "Other life",
+              "s2c_LB:x10" : "Annuities stemming from non-life insurance contracts and relating to health insurance obligations",
+              "s2c_LB:x11" : "Annuities stemming from non-life insurance contracts and relating to insurance obligations other than health insurance obligations"
+            }
+          }
+        },
+        "C0040" : {
+          "dimensions" : {
+            "concept" : "s2md_met:ii1067",
+            "s2c_dim:IP" : "$C0010"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.14.01.01.01, C0040}",
+            "Label" : "S.14.01.01.01 - Number of contracts at the end of the year",
+            "Values" : "Integer"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsInteger"
+        },
+        "C0041" : {
+          "dimensions" : {
+            "concept" : "s2md_met:ii2638",
+            "s2c_dim:IP" : "$C0010"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.14.01.01.01, C0041}",
+            "Label" : "S.14.01.01.01 - of which: contracts with surrender option",
+            "Values" : "Integer"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsInteger"
+        },
+        "C0050" : {
+          "dimensions" : {
+            "concept" : "s2md_met:ii2643",
+            "s2c_dim:IP" : "$C0010"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.14.01.01.01, C0050}",
+            "Label" : "S.14.01.01.01 - Number of new contracts during year",
+            "Values" : "Integer"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsInteger"
+        },
+        "C0051" : {
+          "dimensions" : {
+            "concept" : "s2md_met:ii2251",
+            "s2c_dim:IP" : "$C0010"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.14.01.01.01, C0051}",
+            "Label" : "S.14.01.01.01 - Number of contracts surrendered during the year",
+            "Values" : "Integer"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsInteger"
+        },
+        "C0054" : {
+          "dimensions" : {
+            "concept" : "s2md_met:ii2640",
+            "s2c_dim:IP" : "$C0010"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.14.01.01.01, C0054}",
+            "Label" : "S.14.01.01.01 - Number of insured at the end of the year",
+            "Values" : "Integer"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsInteger"
+        },
+        "C0080" : {
+          "dimensions" : {
+            "concept" : "s2md_met:si1350",
+            "s2c_dim:IP" : "$C0010"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.14.01.01.01, C0080}",
+            "Label" : "S.14.01.01.01 - Country",
+            "Values" : "String"
+          }
+        }
+      }
+    }
+  }
+}

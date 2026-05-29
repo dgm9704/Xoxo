@@ -1,0 +1,127 @@
+{
+  "documentInfo" : {
+    "documentType" : "https://xbrl.org/2021/xbrl-csv",
+    "namespaces" : {
+      "s2md" : "http://eiopa.europa.eu/xbrl/s2md/",
+      "s2c_CS" : "http://eiopa.europa.eu/xbrl/s2c/dict/dom/CS",
+      "s2c_EL" : "http://eiopa.europa.eu/xbrl/s2c/dict/dom/EL",
+      "s2c_dim" : "http://eiopa.europa.eu/xbrl/s2c/dict/dim",
+      "s2md_met" : "http://eiopa.europa.eu/xbrl/s2md/dict/met"
+    }
+  },
+  "tableTemplates" : {
+    "S.23.04.04.02" : {
+      "columns" : {
+        "C0185" : {
+          "s2md:documentation" : {
+            "CellCode" : "{S.23.04.04.02, C0185}",
+            "Label" : "Line identification",
+            "Key" : "s2c_dim:YH",
+            "Values" : "String"
+          }
+        },
+        "C0190" : {
+          "dimensions" : {
+            "concept" : "s2md_met:si1360",
+            "s2c_dim:CM" : "s2c_CS:x1",
+            "s2c_dim:YH" : "$C0185"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.23.04.04.02, C0190}",
+            "Label" : "S.23.04.04.02 - Description of preference shares|Z Axis:",
+            "Values" : "String"
+          }
+        },
+        "C0200" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi1152",
+            "s2c_dim:CM" : "s2c_CS:x1",
+            "s2c_dim:YH" : "$C0185"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.23.04.04.02, C0200}",
+            "Label" : "S.23.04.04.02 - Amount|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetaryOpenTable"
+        },
+        "C0210" : {
+          "dimensions" : {
+            "concept" : "s2md_met:ei1895",
+            "s2c_dim:CM" : "s2c_CS:x1",
+            "s2c_dim:YH" : "$C0185"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.23.04.04.02, C0210}",
+            "Label" : "S.23.04.04.02 - Counted under transitionals?|Z Axis:",
+            "Values" : {
+              "s2c_EL:x9" : "Counted under transitionals",
+              "s2c_EL:x23" : "Other than counted under transitionals"
+            }
+          }
+        },
+        "C0220" : {
+          "dimensions" : {
+            "concept" : "s2md_met:si1378",
+            "s2c_dim:CM" : "s2c_CS:x1",
+            "s2c_dim:YH" : "$C0185"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.23.04.04.02, C0220}",
+            "Label" : "S.23.04.04.02 - Counterparty (if specific)|Z Axis:",
+            "Values" : "String"
+          }
+        },
+        "C0230" : {
+          "dimensions" : {
+            "concept" : "s2md_met:di1048",
+            "s2c_dim:CM" : "s2c_CS:x1",
+            "s2c_dim:YH" : "$C0185"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.23.04.04.02, C0230}",
+            "Label" : "S.23.04.04.02 - Issue date|Z Axis:",
+            "Values" : "Date"
+          }
+        },
+        "C0240" : {
+          "dimensions" : {
+            "concept" : "s2md_met:di1040",
+            "s2c_dim:CM" : "s2c_CS:x1",
+            "s2c_dim:YH" : "$C0185"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.23.04.04.02, C0240}",
+            "Label" : "S.23.04.04.02 - First call date|Z Axis:",
+            "Values" : "Date"
+          }
+        },
+        "C0250" : {
+          "dimensions" : {
+            "concept" : "s2md_met:si1352",
+            "s2c_dim:CM" : "s2c_CS:x1",
+            "s2c_dim:YH" : "$C0185"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.23.04.04.02, C0250}",
+            "Label" : "S.23.04.04.02 - Details of further call dates|Z Axis:",
+            "Values" : "String"
+          }
+        },
+        "C0260" : {
+          "dimensions" : {
+            "concept" : "s2md_met:si1354",
+            "s2c_dim:CM" : "s2c_CS:x1",
+            "s2c_dim:YH" : "$C0185"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.23.04.04.02, C0260}",
+            "Label" : "S.23.04.04.02 - Details of incentives to redeem|Z Axis:",
+            "Values" : "String"
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,138 @@
+{
+  "documentInfo" : {
+    "documentType" : "https://xbrl.org/2021/xbrl-csv",
+    "namespaces" : {
+      "s2md" : "http://eiopa.europa.eu/xbrl/s2md/",
+      "s2c_AM" : "http://eiopa.europa.eu/xbrl/s2c/dict/dom/AM",
+      "s2c_RT" : "http://eiopa.europa.eu/xbrl/s2c/dict/dom/RT",
+      "s2c_VM" : "http://eiopa.europa.eu/xbrl/s2c/dict/dom/VM",
+      "s2c_dim" : "http://eiopa.europa.eu/xbrl/s2c/dict/dim",
+      "s2md_met" : "http://eiopa.europa.eu/xbrl/s2md/dict/met"
+    }
+  },
+  "tableTemplates" : {
+    "SR.27.01.01.08" : {
+      "columns" : {
+        "C0520_R2100" : {
+          "dimensions" : {
+            "concept" : "s2md_met:ii643",
+            "s2c_dim:NF" : "$Z0030",
+            "s2c_dim:PO" : "$Z0020",
+            "s2c_dim:RT" : "s2c_RT:x101",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{SR.27.01.01.08, C0520, R2100}",
+            "Label" : "SR.27.01.01.08 - Number of vehicles policy limit above 24M EUR|Motor Vehicle Liability|Z Axis:",
+            "Values" : "Integer"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsInteger"
+        },
+        "C0530_R2100" : {
+          "dimensions" : {
+            "concept" : "s2md_met:ii644",
+            "s2c_dim:NF" : "$Z0030",
+            "s2c_dim:PO" : "$Z0020",
+            "s2c_dim:RT" : "s2c_RT:x101",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{SR.27.01.01.08, C0530, R2100}",
+            "Label" : "SR.27.01.01.08 - Number of vehicles policy limit below or equal to 24M EUR|Motor Vehicle Liability|Z Axis:",
+            "Values" : "Integer"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsInteger"
+        },
+        "C0540_R2100" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi149",
+            "s2c_dim:EA" : "s2c_VM:x20",
+            "s2c_dim:NF" : "$Z0030",
+            "s2c_dim:PO" : "$Z0020",
+            "s2c_dim:RT" : "s2c_RT:x101",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{SR.27.01.01.08, C0540, R2100}",
+            "Label" : "SR.27.01.01.08 - Catastrophe Risk Charge Motor Vehicle Liability before risk mitigation|Motor Vehicle Liability|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0550_R2100" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi689",
+            "s2c_dim:EA" : "s2c_VM:x20",
+            "s2c_dim:NF" : "$Z0030",
+            "s2c_dim:PO" : "$Z0020",
+            "s2c_dim:RT" : "s2c_RT:x101",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{SR.27.01.01.08, C0550, R2100}",
+            "Label" : "SR.27.01.01.08 - Estimated Risk Mitigation|Motor Vehicle Liability|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0560_R2100" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi688",
+            "s2c_dim:EA" : "s2c_VM:x20",
+            "s2c_dim:NF" : "$Z0030",
+            "s2c_dim:PO" : "$Z0020",
+            "s2c_dim:RT" : "s2c_RT:x101",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{SR.27.01.01.08, C0560, R2100}",
+            "Label" : "SR.27.01.01.08 - Estimated Reinstatement Premiums|Motor Vehicle Liability|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0570_R2100" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi685",
+            "s2c_dim:EA" : "s2c_VM:x20",
+            "s2c_dim:NF" : "$Z0030",
+            "s2c_dim:PO" : "$Z0020",
+            "s2c_dim:RT" : "s2c_RT:x101",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{SR.27.01.01.08, C0570, R2100}",
+            "Label" : "SR.27.01.01.08 - Catastrophe Risk Charge Motor Vehicle Liability after risk mitigation|Motor Vehicle Liability|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "Z0020" : {
+          "s2md:documentation" : {
+            "CellCode" : "{SR.27.01.01.08, Z0020}",
+            "Label" : "Ring-fenced fund or remaining part",
+            "Key" : "s2c_dim:PO",
+            "Values" : {
+              "x40" : "Material Ring Fenced Funds",
+              "x54" : "Remaining part [other than MAPs and material RFFs]"
+            }
+          }
+        },
+        "Z0030" : {
+          "s2md:documentation" : {
+            "CellCode" : "{SR.27.01.01.08, Z0030}",
+            "Label" : "Fund Number",
+            "Key" : "s2c_dim:NF",
+            "Values" : "String"
+          }
+        }
+      }
+    }
+  }
+}

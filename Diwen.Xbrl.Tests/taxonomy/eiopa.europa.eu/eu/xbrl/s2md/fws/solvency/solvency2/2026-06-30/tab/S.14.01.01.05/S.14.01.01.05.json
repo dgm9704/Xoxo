@@ -1,0 +1,250 @@
+{
+  "documentInfo" : {
+    "documentType" : "https://xbrl.org/2021/xbrl-csv",
+    "namespaces" : {
+      "s2md" : "http://eiopa.europa.eu/xbrl/s2md/",
+      "s2c_dim" : "http://eiopa.europa.eu/xbrl/s2c/dict/dim",
+      "s2md_met" : "http://eiopa.europa.eu/xbrl/s2md/dict/met"
+    }
+  },
+  "tableTemplates" : {
+    "S.14.01.01.05" : {
+      "columns" : {
+        "C0001" : {
+          "s2md:documentation" : {
+            "CellCode" : "{S.14.01.01.05, C0001}",
+            "Label" : "Line identification",
+            "Key" : "s2c_dim:NK",
+            "Values" : "String"
+          }
+        },
+        "C0020" : {
+          "s2md:documentation" : {
+            "CellCode" : "{S.14.01.01.05, C0020}",
+            "Label" : "Fund number",
+            "Key" : "s2c_dim:NF",
+            "Values" : "String"
+          }
+        },
+        "C0060" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi2951",
+            "s2c_dim:IP" : "$C0090",
+            "s2c_dim:NF" : "$C0020",
+            "s2c_dim:NK" : "$C0001"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.14.01.01.05, C0060}",
+            "Label" : "S.14.01.01.05 - Total amount of Written premiums",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetaryOpenTable"
+        },
+        "C0061" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi2647",
+            "s2c_dim:IP" : "$C0090",
+            "s2c_dim:NF" : "$C0020",
+            "s2c_dim:NK" : "$C0001"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.14.01.01.05, C0061}",
+            "Label" : "S.14.01.01.05 - of which: written directly by the insurance undertaking",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetaryOpenTable"
+        },
+        "C0062" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi2648",
+            "s2c_dim:IP" : "$C0090",
+            "s2c_dim:NF" : "$C0020",
+            "s2c_dim:NK" : "$C0001"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.14.01.01.05, C0062}",
+            "Label" : "S.14.01.01.05 - of which: written via credit institutions",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetaryOpenTable"
+        },
+        "C0063" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi2649",
+            "s2c_dim:IP" : "$C0090",
+            "s2c_dim:NF" : "$C0020",
+            "s2c_dim:NK" : "$C0001"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.14.01.01.05, C0063}",
+            "Label" : "S.14.01.01.05 - of which: written via other insurance distributors",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetaryOpenTable"
+        },
+        "C0070" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi1136",
+            "s2c_dim:IP" : "$C0090",
+            "s2c_dim:NF" : "$C0020",
+            "s2c_dim:NK" : "$C0001"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.14.01.01.05, C0070}",
+            "Label" : "S.14.01.01.05 - Total amount of claims paid during year",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetaryOpenTable"
+        },
+        "C0071" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi2644",
+            "s2c_dim:IP" : "$C0090",
+            "s2c_dim:NF" : "$C0020",
+            "s2c_dim:NK" : "$C0001"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.14.01.01.05, C0071}",
+            "Label" : "S.14.01.01.05 - Total amount of commissions due during year",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetaryOpenTable"
+        },
+        "C0075" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi2646",
+            "s2c_dim:IP" : "$C0090",
+            "s2c_dim:NF" : "$C0020",
+            "s2c_dim:NK" : "$C0001"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.14.01.01.05, C0075}",
+            "Label" : "S.14.01.01.05 - Expected future premiums",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetaryOpenTable"
+        },
+        "C0077" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi2844",
+            "s2c_dim:IP" : "$C0090",
+            "s2c_dim:NF" : "$C0020",
+            "s2c_dim:NK" : "$C0001"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.14.01.01.05, C0077}",
+            "Label" : "S.14.01.01.05 - Expected future commissions",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetaryOpenTable"
+        },
+        "C0090" : {
+          "s2md:documentation" : {
+            "CellCode" : "{S.14.01.01.05, C0090}",
+            "Label" : "Product ID code",
+            "Key" : "s2c_dim:IP",
+            "Values" : "String"
+          }
+        },
+        "C0180" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi1147",
+            "s2c_dim:IP" : "$C0090",
+            "s2c_dim:NF" : "$C0020",
+            "s2c_dim:NK" : "$C0001"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.14.01.01.05, C0180}",
+            "Label" : "S.14.01.01.05 - Best Estimate and Technical Provisions as a whole",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetaryOpenTable"
+        },
+        "C0190" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi1141",
+            "s2c_dim:IP" : "$C0090",
+            "s2c_dim:NF" : "$C0020",
+            "s2c_dim:NK" : "$C0001"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.14.01.01.05, C0190}",
+            "Label" : "S.14.01.01.05 - Capital-at-risk",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetaryOpenTable"
+        },
+        "C0200" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi1125",
+            "s2c_dim:IP" : "$C0090",
+            "s2c_dim:NF" : "$C0020",
+            "s2c_dim:NK" : "$C0001"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.14.01.01.05, C0200}",
+            "Label" : "S.14.01.01.05 - Surrender value",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetaryOpenTable"
+        },
+        "C0260" : {
+          "dimensions" : {
+            "concept" : "s2md_met:pi2515",
+            "s2c_dim:IP" : "$C0090",
+            "s2c_dim:NF" : "$C0020",
+            "s2c_dim:NK" : "$C0001"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.14.01.01.05, C0260}",
+            "Label" : "S.14.01.01.05 - Annualised guaranteed rate (over average duration of guarantee)",
+            "Values" : "Percent"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "decimalsPercentage"
+        },
+        "C0261" : {
+          "dimensions" : {
+            "concept" : "s2md_met:pi2826",
+            "s2c_dim:IP" : "$C0090",
+            "s2c_dim:NF" : "$C0020",
+            "s2c_dim:NK" : "$C0001"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.14.01.01.05, C0261}",
+            "Label" : "S.14.01.01.05 - Yearly interest rate guarantee for the reporting year",
+            "Values" : "Percent"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "decimalsPercentage"
+        },
+        "C0280" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi2827",
+            "s2c_dim:IP" : "$C0090",
+            "s2c_dim:NF" : "$C0020",
+            "s2c_dim:NK" : "$C0001"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.14.01.01.05, C0280}",
+            "Label" : "S.14.01.01.05 - Amount on which interest rate is guaranteed",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetaryOpenTable"
+        }
+      }
+    }
+  }
+}

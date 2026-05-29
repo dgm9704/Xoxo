@@ -1,0 +1,54 @@
+{
+  "documentInfo" : {
+    "documentType" : "https://xbrl.org/2021/xbrl-csv",
+    "namespaces" : {
+      "s2md" : "http://eiopa.europa.eu/xbrl/s2md/",
+      "s2c_AP" : "http://eiopa.europa.eu/xbrl/s2c/dict/dom/AP",
+      "s2c_dim" : "http://eiopa.europa.eu/xbrl/s2c/dict/dim",
+      "s2md_met" : "http://eiopa.europa.eu/xbrl/s2md/dict/met"
+    }
+  },
+  "tableTemplates" : {
+    "S.26.02.01.02" : {
+      "columns" : {
+        "C0010_R0010" : {
+          "dimensions" : {
+            "concept" : "s2md_met:si2527",
+            "s2c_dim:AO" : "$Z0010"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.02.01.02, C0010, R0010}",
+            "Label" : "S.26.02.01.02 - Simplifications used|Simplifications|Z Axis:",
+            "Values" : "String"
+          }
+        },
+        "C0010_R0020" : {
+          "dimensions" : {
+            "concept" : "s2md_met:ei3087",
+            "s2c_dim:AO" : "$Z0010"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.02.01.02, C0010, R0020}",
+            "Label" : "S.26.02.01.02 - Simplifications used|Volume based simplification - counterparty default risk|Z Axis:",
+            "Values" : {
+              "s2c_AP:x33" : "Simplifications used",
+              "s2c_AP:x34" : "Simplifications not used"
+            }
+          }
+        },
+        "Z0010" : {
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.02.01.02, Z0010}",
+            "Label" : "Article 112",
+            "Key" : "s2c_dim:AO",
+            "Values" : {
+              "x0" : "No",
+              "x1" : "Yes",
+              "x2" : "Yes - biennial reporting"
+            }
+          }
+        }
+      }
+    }
+  }
+}

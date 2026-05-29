@@ -1,0 +1,3716 @@
+{
+  "documentInfo" : {
+    "documentType" : "https://xbrl.org/2021/xbrl-csv",
+    "namespaces" : {
+      "s2md" : "http://eiopa.europa.eu/xbrl/s2md/",
+      "s2c_AM" : "http://eiopa.europa.eu/xbrl/s2c/dict/dom/AM",
+      "s2c_AP" : "http://eiopa.europa.eu/xbrl/s2c/dict/dom/AP",
+      "s2c_RT" : "http://eiopa.europa.eu/xbrl/s2c/dict/dom/RT",
+      "s2c_TI" : "http://eiopa.europa.eu/xbrl/s2c/dict/dom/TI",
+      "s2c_VM" : "http://eiopa.europa.eu/xbrl/s2c/dict/dom/VM",
+      "s2c_dim" : "http://eiopa.europa.eu/xbrl/s2c/dict/dim",
+      "s2md_met" : "http://eiopa.europa.eu/xbrl/s2md/dict/met"
+    }
+  },
+  "tableTemplates" : {
+    "SR.26.08.04.01" : {
+      "columns" : {
+        "C0010_R0010" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi92",
+            "s2c_dim:DV" : "s2c_RT:x352",
+            "s2c_dim:EA" : "s2c_VM:x24",
+            "s2c_dim:NF" : "$Z0030",
+            "s2c_dim:PO" : "$Z0020",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{SR.26.08.04.01, C0010, R0010}",
+            "Label" : "SR.26.08.04.01 - Solvency Capital Requirement|Total stand-alone risk including diversification within each module (Level 2)|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0010_R0020" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi92",
+            "s2c_dim:DV" : "s2c_RT:x29",
+            "s2c_dim:NF" : "$Z0030",
+            "s2c_dim:PO" : "$Z0020",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{SR.26.08.04.01, C0010, R0020}",
+            "Label" : "SR.26.08.04.01 - Solvency Capital Requirement|Total diversification|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0010_R0030" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi92",
+            "s2c_dim:NF" : "$Z0030",
+            "s2c_dim:PO" : "$Z0020",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:VG" : "s2c_AM:x80",
+            "s2c_dim:VM" : "s2c_VM:x102"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{SR.26.08.04.01, C0010, R0030}",
+            "Label" : "SR.26.08.04.01 - Solvency Capital Requirement|Total diversified risk before tax|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0010_R0040" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi92",
+            "s2c_dim:NF" : "$Z0030",
+            "s2c_dim:PO" : "$Z0020",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:VG" : "s2c_AM:x80",
+            "s2c_dim:VM" : "s2c_VM:x101"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{SR.26.08.04.01, C0010, R0040}",
+            "Label" : "SR.26.08.04.01 - Solvency Capital Requirement|Total diversified risk after tax|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0010_R0050" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi92",
+            "s2c_dim:EA" : "s2c_VM:x32",
+            "s2c_dim:NF" : "$Z0030",
+            "s2c_dim:PO" : "$Z0020",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{SR.26.08.04.01, C0010, R0050}",
+            "Label" : "SR.26.08.04.01 - Solvency Capital Requirement|Loss absorbing capacity of deferred taxes|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0010_R0060" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi92",
+            "s2c_dim:EA" : "s2c_VM:x28",
+            "s2c_dim:NF" : "$Z0030",
+            "s2c_dim:PO" : "$Z0020",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{SR.26.08.04.01, C0010, R0060}",
+            "Label" : "SR.26.08.04.01 - Solvency Capital Requirement|Loss absorbing capacity of technical provisions|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0010_R0070" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi92",
+            "s2c_dim:DV" : "s2c_RT:x11",
+            "s2c_dim:EA" : "s2c_VM:x23",
+            "s2c_dim:NF" : "$Z0030",
+            "s2c_dim:PO" : "$Z0020",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RT" : "s2c_RT:x222",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{SR.26.08.04.01, C0010, R0070}",
+            "Label" : "SR.26.08.04.01 - Solvency Capital Requirement|Total market and credit risk|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0010_R0080" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi92",
+            "s2c_dim:DV" : "s2c_RT:x0",
+            "s2c_dim:EA" : "s2c_VM:x24",
+            "s2c_dim:NF" : "$Z0030",
+            "s2c_dim:PO" : "$Z0020",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{SR.26.08.04.01, C0010, R0080}",
+            "Label" : "SR.26.08.04.01 - Solvency Capital Requirement|Market and Credit risk - diversified|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0010_R0090" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi92",
+            "s2c_dim:NF" : "$Z0030",
+            "s2c_dim:PO" : "$Z0020",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RT" : "s2c_RT:x70",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{SR.26.08.04.01, C0010, R0090}",
+            "Label" : "SR.26.08.04.01 - Solvency Capital Requirement|Interest rate risk|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0010_R0100" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi92",
+            "s2c_dim:NF" : "$Z0030",
+            "s2c_dim:PO" : "$Z0020",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RT" : "s2c_RT:x224",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{SR.26.08.04.01, C0010, R0100}",
+            "Label" : "SR.26.08.04.01 - Solvency Capital Requirement|Interest rate volatility risk|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0010_R0110" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi92",
+            "s2c_dim:NF" : "$Z0030",
+            "s2c_dim:PO" : "$Z0020",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RT" : "s2c_RT:x225",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{SR.26.08.04.01, C0010, R0110}",
+            "Label" : "SR.26.08.04.01 - Solvency Capital Requirement|Inflation risk|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0010_R0120" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi92",
+            "s2c_dim:NF" : "$Z0030",
+            "s2c_dim:PO" : "$Z0020",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RT" : "s2c_RT:x32",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{SR.26.08.04.01, C0010, R0120}",
+            "Label" : "SR.26.08.04.01 - Solvency Capital Requirement|Equity risk|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0010_R0130" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi92",
+            "s2c_dim:NF" : "$Z0030",
+            "s2c_dim:PO" : "$Z0020",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RT" : "s2c_RT:x227",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{SR.26.08.04.01, C0010, R0130}",
+            "Label" : "SR.26.08.04.01 - Solvency Capital Requirement|Equity volatility risk|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0010_R0140" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi92",
+            "s2c_dim:NF" : "$Z0030",
+            "s2c_dim:PO" : "$Z0020",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RT" : "s2c_RT:x128",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{SR.26.08.04.01, C0010, R0140}",
+            "Label" : "SR.26.08.04.01 - Solvency Capital Requirement|Property risk|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0010_R0150" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi92",
+            "s2c_dim:NF" : "$Z0030",
+            "s2c_dim:PO" : "$Z0020",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RT" : "s2c_RT:x25",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{SR.26.08.04.01, C0010, R0150}",
+            "Label" : "SR.26.08.04.01 - Solvency Capital Requirement|Currency risk|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0010_R0160" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi92",
+            "s2c_dim:NF" : "$Z0030",
+            "s2c_dim:PO" : "$Z0020",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RT" : "s2c_RT:x141",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{SR.26.08.04.01, C0010, R0160}",
+            "Label" : "SR.26.08.04.01 - Solvency Capital Requirement|Credit spread risk|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0010_R0170" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi92",
+            "s2c_dim:DV" : "s2c_RT:x0",
+            "s2c_dim:NF" : "$Z0030",
+            "s2c_dim:PO" : "$Z0020",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RT" : "s2c_RT:x251",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{SR.26.08.04.01, C0010, R0170}",
+            "Label" : "SR.26.08.04.01 - Solvency Capital Requirement|Credit event risk (migration and default)|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0010_R0180" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi92",
+            "s2c_dim:NF" : "$Z0030",
+            "s2c_dim:PO" : "$Z0020",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RT" : "s2c_RT:x249",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{SR.26.08.04.01, C0010, R0180}",
+            "Label" : "SR.26.08.04.01 - Solvency Capital Requirement|Credit risk sum (spread, migration and default)|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0010_R0190" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi92",
+            "s2c_dim:DV" : "s2c_RT:x352",
+            "s2c_dim:EA" : "s2c_VM:x23",
+            "s2c_dim:NF" : "$Z0030",
+            "s2c_dim:PO" : "$Z0020",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RT" : "s2c_RT:x330",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{SR.26.08.04.01, C0010, R0190}",
+            "Label" : "SR.26.08.04.01 - Solvency Capital Requirement|Credit event risk not covered in market and credit risk|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0010_R0200" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi92",
+            "s2c_dim:DV" : "s2c_RT:x0",
+            "s2c_dim:EA" : "s2c_VM:x23",
+            "s2c_dim:NF" : "$Z0030",
+            "s2c_dim:PO" : "$Z0020",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RT" : "s2c_RT:x330",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{SR.26.08.04.01, C0010, R0200}",
+            "Label" : "SR.26.08.04.01 - Solvency Capital Requirement|Credit event risk not covered in market and credit risk - diversified|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0010_R0210" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi92",
+            "s2c_dim:DV" : "s2c_RT:x352",
+            "s2c_dim:EA" : "s2c_VM:x24",
+            "s2c_dim:NF" : "$Z0030",
+            "s2c_dim:PO" : "$Z0020",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RT" : "s2c_RT:x228",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{SR.26.08.04.01, C0010, R0210}",
+            "Label" : "SR.26.08.04.01 - Solvency Capital Requirement|Basis risk financial instruments|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0010_R0220" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi92",
+            "s2c_dim:DV" : "s2c_RT:x352",
+            "s2c_dim:EA" : "s2c_VM:x24",
+            "s2c_dim:NF" : "$Z0030",
+            "s2c_dim:PO" : "$Z0020",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RT" : "s2c_RT:x229",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{SR.26.08.04.01, C0010, R0220}",
+            "Label" : "SR.26.08.04.01 - Solvency Capital Requirement|Derivatives risk|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0010_R0230" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi92",
+            "s2c_dim:DV" : "s2c_RT:x352",
+            "s2c_dim:EA" : "s2c_VM:x24",
+            "s2c_dim:NF" : "$Z0030",
+            "s2c_dim:PO" : "$Z0020",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RT" : "s2c_RT:x230",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{SR.26.08.04.01, C0010, R0230}",
+            "Label" : "SR.26.08.04.01 - Solvency Capital Requirement|Participations|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0010_R0240" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi92",
+            "s2c_dim:DV" : "s2c_RT:x352",
+            "s2c_dim:EA" : "s2c_VM:x24",
+            "s2c_dim:NF" : "$Z0030",
+            "s2c_dim:PO" : "$Z0020",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RT" : "s2c_RT:x231",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{SR.26.08.04.01, C0010, R0240}",
+            "Label" : "SR.26.08.04.01 - Solvency Capital Requirement|Liquidity risk|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0010_R0250" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi92",
+            "s2c_dim:DV" : "s2c_RT:x352",
+            "s2c_dim:EA" : "s2c_VM:x24",
+            "s2c_dim:NF" : "$Z0030",
+            "s2c_dim:PO" : "$Z0020",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RT" : "s2c_RT:x232",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{SR.26.08.04.01, C0010, R0250}",
+            "Label" : "SR.26.08.04.01 - Solvency Capital Requirement|Pension risk|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0010_R0260" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi92",
+            "s2c_dim:DV" : "s2c_RT:x352",
+            "s2c_dim:EA" : "s2c_VM:x24",
+            "s2c_dim:NF" : "$Z0030",
+            "s2c_dim:PO" : "$Z0020",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RT" : "s2c_RT:x98",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{SR.26.08.04.01, C0010, R0260}",
+            "Label" : "SR.26.08.04.01 - Solvency Capital Requirement|Concentration risk|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0010_R0270" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi92",
+            "s2c_dim:DV" : "s2c_RT:x352",
+            "s2c_dim:EA" : "s2c_VM:x24",
+            "s2c_dim:NF" : "$Z0030",
+            "s2c_dim:PO" : "$Z0020",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RT" : "s2c_RT:x233",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{SR.26.08.04.01, C0010, R0270}",
+            "Label" : "SR.26.08.04.01 - Solvency Capital Requirement|Total Business risk|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0010_R0280" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi92",
+            "s2c_dim:DV" : "s2c_RT:x0",
+            "s2c_dim:NF" : "$Z0030",
+            "s2c_dim:PO" : "$Z0020",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{SR.26.08.04.01, C0010, R0280}",
+            "Label" : "SR.26.08.04.01 - Solvency Capital Requirement|Total Business risk - diversified|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0010_R0290" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi92",
+            "s2c_dim:DV" : "s2c_RT:x11",
+            "s2c_dim:EA" : "s2c_VM:x24",
+            "s2c_dim:NF" : "$Z0030",
+            "s2c_dim:PO" : "$Z0020",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RT" : "s2c_RT:x244",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{SR.26.08.04.01, C0010, R0290}",
+            "Label" : "SR.26.08.04.01 - Solvency Capital Requirement|Total underwriting risk|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0010_R0300" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi92",
+            "s2c_dim:DV" : "s2c_RT:x0",
+            "s2c_dim:NF" : "$Z0030",
+            "s2c_dim:PO" : "$Z0020",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{SR.26.08.04.01, C0010, R0300}",
+            "Label" : "SR.26.08.04.01 - Solvency Capital Requirement|Total underwriting risk - diversified|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0010_R0310" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi92",
+            "s2c_dim:DV" : "s2c_RT:x352",
+            "s2c_dim:NF" : "$Z0030",
+            "s2c_dim:PO" : "$Z0020",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RT" : "s2c_RT:x245",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{SR.26.08.04.01, C0010, R0310}",
+            "Label" : "SR.26.08.04.01 - Solvency Capital Requirement|Total Net Non-life and Health NSLT underwriting risk|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0010_R0320" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi92",
+            "s2c_dim:DV" : "s2c_RT:x0",
+            "s2c_dim:NF" : "$Z0030",
+            "s2c_dim:PO" : "$Z0020",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{SR.26.08.04.01, C0010, R0320}",
+            "Label" : "SR.26.08.04.01 - Solvency Capital Requirement|Total Net Non-life and Health NSLT underwriting risk - diversified|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0010_R0330" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi92",
+            "s2c_dim:DV" : "s2c_RT:x0",
+            "s2c_dim:NF" : "$Z0030",
+            "s2c_dim:PO" : "$Z0020",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RT" : "s2c_RT:x102",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{SR.26.08.04.01, C0010, R0330}",
+            "Label" : "SR.26.08.04.01 - Solvency Capital Requirement|Net Nat-cat risk|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0010_R0340" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi92",
+            "s2c_dim:DV" : "s2c_RT:x0",
+            "s2c_dim:NF" : "$Z0030",
+            "s2c_dim:PO" : "$Z0020",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RT" : "s2c_RT:x85",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{SR.26.08.04.01, C0010, R0340}",
+            "Label" : "SR.26.08.04.01 - Solvency Capital Requirement|Net Man-made risk|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0010_R0350" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi92",
+            "s2c_dim:DV" : "s2c_RT:x0",
+            "s2c_dim:NF" : "$Z0030",
+            "s2c_dim:PO" : "$Z0020",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RT" : "s2c_RT:x248",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{SR.26.08.04.01, C0010, R0350}",
+            "Label" : "SR.26.08.04.01 - Solvency Capital Requirement|Net reserve risk|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0010_R0360" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi92",
+            "s2c_dim:DV" : "s2c_RT:x0",
+            "s2c_dim:NF" : "$Z0030",
+            "s2c_dim:PO" : "$Z0020",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RT" : "s2c_RT:x247",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{SR.26.08.04.01, C0010, R0360}",
+            "Label" : "SR.26.08.04.01 - Solvency Capital Requirement|Net premium risk|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0010_R0370" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi92",
+            "s2c_dim:DV" : "s2c_RT:x352",
+            "s2c_dim:NF" : "$Z0030",
+            "s2c_dim:PO" : "$Z0020",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RT" : "s2c_RT:x351",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{SR.26.08.04.01, C0010, R0370}",
+            "Label" : "SR.26.08.04.01 - Solvency Capital Requirement|Total Life and Health SLT underwriting risk|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0010_R0380" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi92",
+            "s2c_dim:DV" : "s2c_RT:x0",
+            "s2c_dim:NF" : "$Z0030",
+            "s2c_dim:PO" : "$Z0020",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{SR.26.08.04.01, C0010, R0380}",
+            "Label" : "SR.26.08.04.01 - Solvency Capital Requirement|Total Life and Health SLT underwriting risk - diversified|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0010_R0390" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi92",
+            "s2c_dim:DV" : "s2c_RT:x11",
+            "s2c_dim:NF" : "$Z0030",
+            "s2c_dim:PO" : "$Z0020",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RT" : "s2c_RT:x235",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{SR.26.08.04.01, C0010, R0390}",
+            "Label" : "SR.26.08.04.01 - Solvency Capital Requirement|Mortality risk|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0010_R0400" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi92",
+            "s2c_dim:DV" : "s2c_RT:x11",
+            "s2c_dim:NF" : "$Z0030",
+            "s2c_dim:PO" : "$Z0020",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RT" : "s2c_RT:x236",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{SR.26.08.04.01, C0010, R0400}",
+            "Label" : "SR.26.08.04.01 - Solvency Capital Requirement|Longevity risk|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0010_R0410" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi92",
+            "s2c_dim:DV" : "s2c_RT:x11",
+            "s2c_dim:NF" : "$Z0030",
+            "s2c_dim:PO" : "$Z0020",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RT" : "s2c_RT:x237",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{SR.26.08.04.01, C0010, R0410}",
+            "Label" : "SR.26.08.04.01 - Solvency Capital Requirement|Disability-Morbidity risk|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0010_R0420" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi92",
+            "s2c_dim:DV" : "s2c_RT:x11",
+            "s2c_dim:NF" : "$Z0030",
+            "s2c_dim:PO" : "$Z0020",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RT" : "s2c_RT:x238",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{SR.26.08.04.01, C0010, R0420}",
+            "Label" : "SR.26.08.04.01 - Solvency Capital Requirement|Lapse|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0010_R0430" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi92",
+            "s2c_dim:DV" : "s2c_RT:x11",
+            "s2c_dim:NF" : "$Z0030",
+            "s2c_dim:PO" : "$Z0020",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RT" : "s2c_RT:x239",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{SR.26.08.04.01, C0010, R0430}",
+            "Label" : "SR.26.08.04.01 - Solvency Capital Requirement|Expense risk|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0010_R0440" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi92",
+            "s2c_dim:DV" : "s2c_RT:x11",
+            "s2c_dim:NF" : "$Z0030",
+            "s2c_dim:PO" : "$Z0020",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RT" : "s2c_RT:x336",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{SR.26.08.04.01, C0010, R0440}",
+            "Label" : "SR.26.08.04.01 - Solvency Capital Requirement|Revision risk|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0010_R0450" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi92",
+            "s2c_dim:DV" : "s2c_RT:x11",
+            "s2c_dim:NF" : "$Z0030",
+            "s2c_dim:PO" : "$Z0020",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RT" : "s2c_RT:x320",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{SR.26.08.04.01, C0010, R0450}",
+            "Label" : "SR.26.08.04.01 - Solvency Capital Requirement|Catastrophe risk|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0010_R0460" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi92",
+            "s2c_dim:DV" : "s2c_RT:x11",
+            "s2c_dim:NF" : "$Z0030",
+            "s2c_dim:PO" : "$Z0020",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RL" : "s2c_RT:x260",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{SR.26.08.04.01, C0010, R0460}",
+            "Label" : "SR.26.08.04.01 - Solvency Capital Requirement|Trend risk|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0010_R0470" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi92",
+            "s2c_dim:DV" : "s2c_RT:x11",
+            "s2c_dim:NF" : "$Z0030",
+            "s2c_dim:PO" : "$Z0020",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RL" : "s2c_RT:x261",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{SR.26.08.04.01, C0010, R0470}",
+            "Label" : "SR.26.08.04.01 - Solvency Capital Requirement|Level risk|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0010_R0480" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi92",
+            "s2c_dim:DV" : "s2c_RT:x352",
+            "s2c_dim:EA" : "s2c_VM:x24",
+            "s2c_dim:NF" : "$Z0030",
+            "s2c_dim:PO" : "$Z0020",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RT" : "s2c_RT:x121",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{SR.26.08.04.01, C0010, R0480}",
+            "Label" : "SR.26.08.04.01 - Solvency Capital Requirement|Total Operational risk|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0010_R0490" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi92",
+            "s2c_dim:DV" : "s2c_RT:x0",
+            "s2c_dim:NF" : "$Z0030",
+            "s2c_dim:PO" : "$Z0020",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{SR.26.08.04.01, C0010, R0490}",
+            "Label" : "SR.26.08.04.01 - Solvency Capital Requirement|Total Operational risk - diversified|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0010_R0500" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi92",
+            "s2c_dim:DV" : "s2c_RT:x352",
+            "s2c_dim:EA" : "s2c_VM:x24",
+            "s2c_dim:NF" : "$Z0030",
+            "s2c_dim:PO" : "$Z0020",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RT" : "s2c_RT:x243",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{SR.26.08.04.01, C0010, R0500}",
+            "Label" : "SR.26.08.04.01 - Solvency Capital Requirement|Residual risk|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0050_R0010" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi2691",
+            "s2c_dim:DV" : "s2c_RT:x352",
+            "s2c_dim:EA" : "s2c_VM:x24",
+            "s2c_dim:NF" : "$Z0030",
+            "s2c_dim:PO" : "$Z0020",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{SR.26.08.04.01, C0050, R0010}",
+            "Label" : "SR.26.08.04.01 - Allocation from adjustments due to RFF|Total stand-alone risk including diversification within each module (Level 2)|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0050_R0020" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi2691",
+            "s2c_dim:DV" : "s2c_RT:x29",
+            "s2c_dim:NF" : "$Z0030",
+            "s2c_dim:PO" : "$Z0020",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{SR.26.08.04.01, C0050, R0020}",
+            "Label" : "SR.26.08.04.01 - Allocation from adjustments due to RFF|Total diversification|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0050_R0030" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi2691",
+            "s2c_dim:NF" : "$Z0030",
+            "s2c_dim:PO" : "$Z0020",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:VG" : "s2c_AM:x80",
+            "s2c_dim:VM" : "s2c_VM:x102"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{SR.26.08.04.01, C0050, R0030}",
+            "Label" : "SR.26.08.04.01 - Allocation from adjustments due to RFF|Total diversified risk before tax|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0050_R0040" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi2691",
+            "s2c_dim:NF" : "$Z0030",
+            "s2c_dim:PO" : "$Z0020",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:VG" : "s2c_AM:x80",
+            "s2c_dim:VM" : "s2c_VM:x101"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{SR.26.08.04.01, C0050, R0040}",
+            "Label" : "SR.26.08.04.01 - Allocation from adjustments due to RFF|Total diversified risk after tax|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0050_R0050" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi2691",
+            "s2c_dim:EA" : "s2c_VM:x32",
+            "s2c_dim:NF" : "$Z0030",
+            "s2c_dim:PO" : "$Z0020",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{SR.26.08.04.01, C0050, R0050}",
+            "Label" : "SR.26.08.04.01 - Allocation from adjustments due to RFF|Loss absorbing capacity of deferred taxes|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0050_R0060" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi2691",
+            "s2c_dim:EA" : "s2c_VM:x28",
+            "s2c_dim:NF" : "$Z0030",
+            "s2c_dim:PO" : "$Z0020",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{SR.26.08.04.01, C0050, R0060}",
+            "Label" : "SR.26.08.04.01 - Allocation from adjustments due to RFF|Loss absorbing capacity of technical provisions|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0050_R0070" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi2691",
+            "s2c_dim:DV" : "s2c_RT:x11",
+            "s2c_dim:EA" : "s2c_VM:x23",
+            "s2c_dim:NF" : "$Z0030",
+            "s2c_dim:PO" : "$Z0020",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RT" : "s2c_RT:x222",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{SR.26.08.04.01, C0050, R0070}",
+            "Label" : "SR.26.08.04.01 - Allocation from adjustments due to RFF|Total market and credit risk|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0050_R0080" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi2691",
+            "s2c_dim:DV" : "s2c_RT:x0",
+            "s2c_dim:EA" : "s2c_VM:x24",
+            "s2c_dim:NF" : "$Z0030",
+            "s2c_dim:PO" : "$Z0020",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{SR.26.08.04.01, C0050, R0080}",
+            "Label" : "SR.26.08.04.01 - Allocation from adjustments due to RFF|Market and Credit risk - diversified|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0050_R0090" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi2691",
+            "s2c_dim:NF" : "$Z0030",
+            "s2c_dim:PO" : "$Z0020",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RT" : "s2c_RT:x70",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{SR.26.08.04.01, C0050, R0090}",
+            "Label" : "SR.26.08.04.01 - Allocation from adjustments due to RFF|Interest rate risk|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0050_R0100" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi2691",
+            "s2c_dim:NF" : "$Z0030",
+            "s2c_dim:PO" : "$Z0020",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RT" : "s2c_RT:x224",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{SR.26.08.04.01, C0050, R0100}",
+            "Label" : "SR.26.08.04.01 - Allocation from adjustments due to RFF|Interest rate volatility risk|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0050_R0110" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi2691",
+            "s2c_dim:NF" : "$Z0030",
+            "s2c_dim:PO" : "$Z0020",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RT" : "s2c_RT:x225",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{SR.26.08.04.01, C0050, R0110}",
+            "Label" : "SR.26.08.04.01 - Allocation from adjustments due to RFF|Inflation risk|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0050_R0120" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi2691",
+            "s2c_dim:NF" : "$Z0030",
+            "s2c_dim:PO" : "$Z0020",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RT" : "s2c_RT:x32",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{SR.26.08.04.01, C0050, R0120}",
+            "Label" : "SR.26.08.04.01 - Allocation from adjustments due to RFF|Equity risk|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0050_R0130" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi2691",
+            "s2c_dim:NF" : "$Z0030",
+            "s2c_dim:PO" : "$Z0020",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RT" : "s2c_RT:x227",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{SR.26.08.04.01, C0050, R0130}",
+            "Label" : "SR.26.08.04.01 - Allocation from adjustments due to RFF|Equity volatility risk|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0050_R0140" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi2691",
+            "s2c_dim:NF" : "$Z0030",
+            "s2c_dim:PO" : "$Z0020",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RT" : "s2c_RT:x128",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{SR.26.08.04.01, C0050, R0140}",
+            "Label" : "SR.26.08.04.01 - Allocation from adjustments due to RFF|Property risk|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0050_R0150" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi2691",
+            "s2c_dim:NF" : "$Z0030",
+            "s2c_dim:PO" : "$Z0020",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RT" : "s2c_RT:x25",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{SR.26.08.04.01, C0050, R0150}",
+            "Label" : "SR.26.08.04.01 - Allocation from adjustments due to RFF|Currency risk|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0050_R0160" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi2691",
+            "s2c_dim:NF" : "$Z0030",
+            "s2c_dim:PO" : "$Z0020",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RT" : "s2c_RT:x141",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{SR.26.08.04.01, C0050, R0160}",
+            "Label" : "SR.26.08.04.01 - Allocation from adjustments due to RFF|Credit spread risk|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0050_R0170" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi2691",
+            "s2c_dim:DV" : "s2c_RT:x0",
+            "s2c_dim:NF" : "$Z0030",
+            "s2c_dim:PO" : "$Z0020",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RT" : "s2c_RT:x251",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{SR.26.08.04.01, C0050, R0170}",
+            "Label" : "SR.26.08.04.01 - Allocation from adjustments due to RFF|Credit event risk (migration and default)|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0050_R0180" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi2691",
+            "s2c_dim:NF" : "$Z0030",
+            "s2c_dim:PO" : "$Z0020",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RT" : "s2c_RT:x249",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{SR.26.08.04.01, C0050, R0180}",
+            "Label" : "SR.26.08.04.01 - Allocation from adjustments due to RFF|Credit risk sum (spread, migration and default)|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0050_R0190" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi2691",
+            "s2c_dim:DV" : "s2c_RT:x352",
+            "s2c_dim:EA" : "s2c_VM:x23",
+            "s2c_dim:NF" : "$Z0030",
+            "s2c_dim:PO" : "$Z0020",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RT" : "s2c_RT:x330",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{SR.26.08.04.01, C0050, R0190}",
+            "Label" : "SR.26.08.04.01 - Allocation from adjustments due to RFF|Credit event risk not covered in market and credit risk|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0050_R0200" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi2691",
+            "s2c_dim:DV" : "s2c_RT:x0",
+            "s2c_dim:EA" : "s2c_VM:x23",
+            "s2c_dim:NF" : "$Z0030",
+            "s2c_dim:PO" : "$Z0020",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RT" : "s2c_RT:x330",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{SR.26.08.04.01, C0050, R0200}",
+            "Label" : "SR.26.08.04.01 - Allocation from adjustments due to RFF|Credit event risk not covered in market and credit risk - diversified|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0050_R0210" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi2691",
+            "s2c_dim:DV" : "s2c_RT:x352",
+            "s2c_dim:EA" : "s2c_VM:x24",
+            "s2c_dim:NF" : "$Z0030",
+            "s2c_dim:PO" : "$Z0020",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RT" : "s2c_RT:x228",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{SR.26.08.04.01, C0050, R0210}",
+            "Label" : "SR.26.08.04.01 - Allocation from adjustments due to RFF|Basis risk financial instruments|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0050_R0220" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi2691",
+            "s2c_dim:DV" : "s2c_RT:x352",
+            "s2c_dim:EA" : "s2c_VM:x24",
+            "s2c_dim:NF" : "$Z0030",
+            "s2c_dim:PO" : "$Z0020",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RT" : "s2c_RT:x229",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{SR.26.08.04.01, C0050, R0220}",
+            "Label" : "SR.26.08.04.01 - Allocation from adjustments due to RFF|Derivatives risk|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0050_R0230" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi2691",
+            "s2c_dim:DV" : "s2c_RT:x352",
+            "s2c_dim:EA" : "s2c_VM:x24",
+            "s2c_dim:NF" : "$Z0030",
+            "s2c_dim:PO" : "$Z0020",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RT" : "s2c_RT:x230",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{SR.26.08.04.01, C0050, R0230}",
+            "Label" : "SR.26.08.04.01 - Allocation from adjustments due to RFF|Participations|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0050_R0240" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi2691",
+            "s2c_dim:DV" : "s2c_RT:x352",
+            "s2c_dim:EA" : "s2c_VM:x24",
+            "s2c_dim:NF" : "$Z0030",
+            "s2c_dim:PO" : "$Z0020",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RT" : "s2c_RT:x231",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{SR.26.08.04.01, C0050, R0240}",
+            "Label" : "SR.26.08.04.01 - Allocation from adjustments due to RFF|Liquidity risk|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0050_R0250" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi2691",
+            "s2c_dim:DV" : "s2c_RT:x352",
+            "s2c_dim:EA" : "s2c_VM:x24",
+            "s2c_dim:NF" : "$Z0030",
+            "s2c_dim:PO" : "$Z0020",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RT" : "s2c_RT:x232",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{SR.26.08.04.01, C0050, R0250}",
+            "Label" : "SR.26.08.04.01 - Allocation from adjustments due to RFF|Pension risk|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0050_R0260" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi2691",
+            "s2c_dim:DV" : "s2c_RT:x352",
+            "s2c_dim:EA" : "s2c_VM:x24",
+            "s2c_dim:NF" : "$Z0030",
+            "s2c_dim:PO" : "$Z0020",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RT" : "s2c_RT:x98",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{SR.26.08.04.01, C0050, R0260}",
+            "Label" : "SR.26.08.04.01 - Allocation from adjustments due to RFF|Concentration risk|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0050_R0270" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi2691",
+            "s2c_dim:DV" : "s2c_RT:x352",
+            "s2c_dim:EA" : "s2c_VM:x24",
+            "s2c_dim:NF" : "$Z0030",
+            "s2c_dim:PO" : "$Z0020",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RT" : "s2c_RT:x233",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{SR.26.08.04.01, C0050, R0270}",
+            "Label" : "SR.26.08.04.01 - Allocation from adjustments due to RFF|Total Business risk|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0050_R0280" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi2691",
+            "s2c_dim:DV" : "s2c_RT:x0",
+            "s2c_dim:NF" : "$Z0030",
+            "s2c_dim:PO" : "$Z0020",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{SR.26.08.04.01, C0050, R0280}",
+            "Label" : "SR.26.08.04.01 - Allocation from adjustments due to RFF|Total Business risk - diversified|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0050_R0290" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi2691",
+            "s2c_dim:DV" : "s2c_RT:x11",
+            "s2c_dim:EA" : "s2c_VM:x24",
+            "s2c_dim:NF" : "$Z0030",
+            "s2c_dim:PO" : "$Z0020",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RT" : "s2c_RT:x244",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{SR.26.08.04.01, C0050, R0290}",
+            "Label" : "SR.26.08.04.01 - Allocation from adjustments due to RFF|Total underwriting risk|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0050_R0300" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi2691",
+            "s2c_dim:DV" : "s2c_RT:x0",
+            "s2c_dim:NF" : "$Z0030",
+            "s2c_dim:PO" : "$Z0020",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{SR.26.08.04.01, C0050, R0300}",
+            "Label" : "SR.26.08.04.01 - Allocation from adjustments due to RFF|Total underwriting risk - diversified|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0050_R0310" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi2691",
+            "s2c_dim:DV" : "s2c_RT:x352",
+            "s2c_dim:NF" : "$Z0030",
+            "s2c_dim:PO" : "$Z0020",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RT" : "s2c_RT:x245",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{SR.26.08.04.01, C0050, R0310}",
+            "Label" : "SR.26.08.04.01 - Allocation from adjustments due to RFF|Total Net Non-life and Health NSLT underwriting risk|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0050_R0320" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi2691",
+            "s2c_dim:DV" : "s2c_RT:x0",
+            "s2c_dim:NF" : "$Z0030",
+            "s2c_dim:PO" : "$Z0020",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{SR.26.08.04.01, C0050, R0320}",
+            "Label" : "SR.26.08.04.01 - Allocation from adjustments due to RFF|Total Net Non-life and Health NSLT underwriting risk - diversified|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0050_R0330" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi2691",
+            "s2c_dim:DV" : "s2c_RT:x0",
+            "s2c_dim:NF" : "$Z0030",
+            "s2c_dim:PO" : "$Z0020",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RT" : "s2c_RT:x102",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{SR.26.08.04.01, C0050, R0330}",
+            "Label" : "SR.26.08.04.01 - Allocation from adjustments due to RFF|Net Nat-cat risk|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0050_R0340" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi2691",
+            "s2c_dim:DV" : "s2c_RT:x0",
+            "s2c_dim:NF" : "$Z0030",
+            "s2c_dim:PO" : "$Z0020",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RT" : "s2c_RT:x85",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{SR.26.08.04.01, C0050, R0340}",
+            "Label" : "SR.26.08.04.01 - Allocation from adjustments due to RFF|Net Man-made risk|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0050_R0350" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi2691",
+            "s2c_dim:DV" : "s2c_RT:x0",
+            "s2c_dim:NF" : "$Z0030",
+            "s2c_dim:PO" : "$Z0020",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RT" : "s2c_RT:x248",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{SR.26.08.04.01, C0050, R0350}",
+            "Label" : "SR.26.08.04.01 - Allocation from adjustments due to RFF|Net reserve risk|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0050_R0360" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi2691",
+            "s2c_dim:DV" : "s2c_RT:x0",
+            "s2c_dim:NF" : "$Z0030",
+            "s2c_dim:PO" : "$Z0020",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RT" : "s2c_RT:x247",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{SR.26.08.04.01, C0050, R0360}",
+            "Label" : "SR.26.08.04.01 - Allocation from adjustments due to RFF|Net premium risk|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0050_R0370" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi2691",
+            "s2c_dim:DV" : "s2c_RT:x352",
+            "s2c_dim:NF" : "$Z0030",
+            "s2c_dim:PO" : "$Z0020",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RT" : "s2c_RT:x351",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{SR.26.08.04.01, C0050, R0370}",
+            "Label" : "SR.26.08.04.01 - Allocation from adjustments due to RFF|Total Life and Health SLT underwriting risk|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0050_R0380" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi2691",
+            "s2c_dim:DV" : "s2c_RT:x0",
+            "s2c_dim:NF" : "$Z0030",
+            "s2c_dim:PO" : "$Z0020",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{SR.26.08.04.01, C0050, R0380}",
+            "Label" : "SR.26.08.04.01 - Allocation from adjustments due to RFF|Total Life and Health SLT underwriting risk - diversified|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0050_R0390" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi2691",
+            "s2c_dim:DV" : "s2c_RT:x11",
+            "s2c_dim:NF" : "$Z0030",
+            "s2c_dim:PO" : "$Z0020",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RT" : "s2c_RT:x235",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{SR.26.08.04.01, C0050, R0390}",
+            "Label" : "SR.26.08.04.01 - Allocation from adjustments due to RFF|Mortality risk|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0050_R0400" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi2691",
+            "s2c_dim:DV" : "s2c_RT:x11",
+            "s2c_dim:NF" : "$Z0030",
+            "s2c_dim:PO" : "$Z0020",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RT" : "s2c_RT:x236",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{SR.26.08.04.01, C0050, R0400}",
+            "Label" : "SR.26.08.04.01 - Allocation from adjustments due to RFF|Longevity risk|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0050_R0410" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi2691",
+            "s2c_dim:DV" : "s2c_RT:x11",
+            "s2c_dim:NF" : "$Z0030",
+            "s2c_dim:PO" : "$Z0020",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RT" : "s2c_RT:x237",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{SR.26.08.04.01, C0050, R0410}",
+            "Label" : "SR.26.08.04.01 - Allocation from adjustments due to RFF|Disability-Morbidity risk|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0050_R0420" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi2691",
+            "s2c_dim:DV" : "s2c_RT:x11",
+            "s2c_dim:NF" : "$Z0030",
+            "s2c_dim:PO" : "$Z0020",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RT" : "s2c_RT:x238",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{SR.26.08.04.01, C0050, R0420}",
+            "Label" : "SR.26.08.04.01 - Allocation from adjustments due to RFF|Lapse|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0050_R0430" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi2691",
+            "s2c_dim:DV" : "s2c_RT:x11",
+            "s2c_dim:NF" : "$Z0030",
+            "s2c_dim:PO" : "$Z0020",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RT" : "s2c_RT:x239",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{SR.26.08.04.01, C0050, R0430}",
+            "Label" : "SR.26.08.04.01 - Allocation from adjustments due to RFF|Expense risk|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0050_R0440" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi2691",
+            "s2c_dim:DV" : "s2c_RT:x11",
+            "s2c_dim:NF" : "$Z0030",
+            "s2c_dim:PO" : "$Z0020",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RT" : "s2c_RT:x336",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{SR.26.08.04.01, C0050, R0440}",
+            "Label" : "SR.26.08.04.01 - Allocation from adjustments due to RFF|Revision risk|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0050_R0450" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi2691",
+            "s2c_dim:DV" : "s2c_RT:x11",
+            "s2c_dim:NF" : "$Z0030",
+            "s2c_dim:PO" : "$Z0020",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RT" : "s2c_RT:x320",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{SR.26.08.04.01, C0050, R0450}",
+            "Label" : "SR.26.08.04.01 - Allocation from adjustments due to RFF|Catastrophe risk|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0050_R0460" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi2691",
+            "s2c_dim:DV" : "s2c_RT:x11",
+            "s2c_dim:NF" : "$Z0030",
+            "s2c_dim:PO" : "$Z0020",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RL" : "s2c_RT:x260",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{SR.26.08.04.01, C0050, R0460}",
+            "Label" : "SR.26.08.04.01 - Allocation from adjustments due to RFF|Trend risk|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0050_R0470" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi2691",
+            "s2c_dim:DV" : "s2c_RT:x11",
+            "s2c_dim:NF" : "$Z0030",
+            "s2c_dim:PO" : "$Z0020",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RL" : "s2c_RT:x261",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{SR.26.08.04.01, C0050, R0470}",
+            "Label" : "SR.26.08.04.01 - Allocation from adjustments due to RFF|Level risk|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0050_R0480" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi2691",
+            "s2c_dim:DV" : "s2c_RT:x352",
+            "s2c_dim:EA" : "s2c_VM:x24",
+            "s2c_dim:NF" : "$Z0030",
+            "s2c_dim:PO" : "$Z0020",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RT" : "s2c_RT:x121",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{SR.26.08.04.01, C0050, R0480}",
+            "Label" : "SR.26.08.04.01 - Allocation from adjustments due to RFF|Total Operational risk|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0050_R0490" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi2691",
+            "s2c_dim:DV" : "s2c_RT:x0",
+            "s2c_dim:NF" : "$Z0030",
+            "s2c_dim:PO" : "$Z0020",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{SR.26.08.04.01, C0050, R0490}",
+            "Label" : "SR.26.08.04.01 - Allocation from adjustments due to RFF|Total Operational risk - diversified|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0050_R0500" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi2691",
+            "s2c_dim:DV" : "s2c_RT:x352",
+            "s2c_dim:EA" : "s2c_VM:x24",
+            "s2c_dim:NF" : "$Z0030",
+            "s2c_dim:PO" : "$Z0020",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RT" : "s2c_RT:x243",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{SR.26.08.04.01, C0050, R0500}",
+            "Label" : "SR.26.08.04.01 - Allocation from adjustments due to RFF|Residual risk|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0060_R0010" : {
+          "dimensions" : {
+            "concept" : "s2md_met:ei1902",
+            "s2c_dim:DV" : "s2c_RT:x352",
+            "s2c_dim:EA" : "s2c_VM:x24",
+            "s2c_dim:NF" : "$Z0030",
+            "s2c_dim:PO" : "$Z0020",
+            "s2c_dim:RH" : "s2c_TI:x2"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{SR.26.08.04.01, C0060, R0010}",
+            "Label" : "SR.26.08.04.01 - Consideration of the future management actions regarding technical provisions and/or deferred taxes|Total stand-alone risk including diversification within each module (Level 2)|Z Axis:",
+            "Values" : {
+              "s2c_AP:x25" : "Future management actions regarding the loss-absorbing capacity of technical provisions embedded within the component",
+              "s2c_AP:x26" : "Future management actions regarding the loss-absorbing capacity of deferred taxes embedded within the component",
+              "s2c_AP:x27" : "Future management actions regarding the loss-absorbing capacity of technical provisions and deferred taxes embedded within the component",
+              "s2c_AP:x28" : "No embedded consideration of future management actions"
+            }
+          }
+        },
+        "C0060_R0020" : {
+          "dimensions" : {
+            "concept" : "s2md_met:ei1902",
+            "s2c_dim:DV" : "s2c_RT:x29",
+            "s2c_dim:NF" : "$Z0030",
+            "s2c_dim:PO" : "$Z0020",
+            "s2c_dim:RH" : "s2c_TI:x2"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{SR.26.08.04.01, C0060, R0020}",
+            "Label" : "SR.26.08.04.01 - Consideration of the future management actions regarding technical provisions and/or deferred taxes|Total diversification|Z Axis:",
+            "Values" : {
+              "s2c_AP:x25" : "Future management actions regarding the loss-absorbing capacity of technical provisions embedded within the component",
+              "s2c_AP:x26" : "Future management actions regarding the loss-absorbing capacity of deferred taxes embedded within the component",
+              "s2c_AP:x27" : "Future management actions regarding the loss-absorbing capacity of technical provisions and deferred taxes embedded within the component",
+              "s2c_AP:x28" : "No embedded consideration of future management actions"
+            }
+          }
+        },
+        "C0060_R0030" : {
+          "dimensions" : {
+            "concept" : "s2md_met:ei1902",
+            "s2c_dim:NF" : "$Z0030",
+            "s2c_dim:PO" : "$Z0020",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:VM" : "s2c_VM:x102"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{SR.26.08.04.01, C0060, R0030}",
+            "Label" : "SR.26.08.04.01 - Consideration of the future management actions regarding technical provisions and/or deferred taxes|Total diversified risk before tax|Z Axis:",
+            "Values" : {
+              "s2c_AP:x25" : "Future management actions regarding the loss-absorbing capacity of technical provisions embedded within the component",
+              "s2c_AP:x26" : "Future management actions regarding the loss-absorbing capacity of deferred taxes embedded within the component",
+              "s2c_AP:x27" : "Future management actions regarding the loss-absorbing capacity of technical provisions and deferred taxes embedded within the component",
+              "s2c_AP:x28" : "No embedded consideration of future management actions"
+            }
+          }
+        },
+        "C0060_R0040" : {
+          "dimensions" : {
+            "concept" : "s2md_met:ei1902",
+            "s2c_dim:NF" : "$Z0030",
+            "s2c_dim:PO" : "$Z0020",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:VM" : "s2c_VM:x101"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{SR.26.08.04.01, C0060, R0040}",
+            "Label" : "SR.26.08.04.01 - Consideration of the future management actions regarding technical provisions and/or deferred taxes|Total diversified risk after tax|Z Axis:",
+            "Values" : {
+              "s2c_AP:x25" : "Future management actions regarding the loss-absorbing capacity of technical provisions embedded within the component",
+              "s2c_AP:x26" : "Future management actions regarding the loss-absorbing capacity of deferred taxes embedded within the component",
+              "s2c_AP:x27" : "Future management actions regarding the loss-absorbing capacity of technical provisions and deferred taxes embedded within the component",
+              "s2c_AP:x28" : "No embedded consideration of future management actions"
+            }
+          }
+        },
+        "C0060_R0050" : {
+          "dimensions" : {
+            "concept" : "s2md_met:ei1902",
+            "s2c_dim:EA" : "s2c_VM:x32",
+            "s2c_dim:NF" : "$Z0030",
+            "s2c_dim:PO" : "$Z0020",
+            "s2c_dim:RH" : "s2c_TI:x2"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{SR.26.08.04.01, C0060, R0050}",
+            "Label" : "SR.26.08.04.01 - Consideration of the future management actions regarding technical provisions and/or deferred taxes|Loss absorbing capacity of deferred taxes|Z Axis:",
+            "Values" : {
+              "s2c_AP:x25" : "Future management actions regarding the loss-absorbing capacity of technical provisions embedded within the component",
+              "s2c_AP:x26" : "Future management actions regarding the loss-absorbing capacity of deferred taxes embedded within the component",
+              "s2c_AP:x27" : "Future management actions regarding the loss-absorbing capacity of technical provisions and deferred taxes embedded within the component",
+              "s2c_AP:x28" : "No embedded consideration of future management actions"
+            }
+          }
+        },
+        "C0060_R0060" : {
+          "dimensions" : {
+            "concept" : "s2md_met:ei1902",
+            "s2c_dim:EA" : "s2c_VM:x28",
+            "s2c_dim:NF" : "$Z0030",
+            "s2c_dim:PO" : "$Z0020",
+            "s2c_dim:RH" : "s2c_TI:x2"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{SR.26.08.04.01, C0060, R0060}",
+            "Label" : "SR.26.08.04.01 - Consideration of the future management actions regarding technical provisions and/or deferred taxes|Loss absorbing capacity of technical provisions|Z Axis:",
+            "Values" : {
+              "s2c_AP:x25" : "Future management actions regarding the loss-absorbing capacity of technical provisions embedded within the component",
+              "s2c_AP:x26" : "Future management actions regarding the loss-absorbing capacity of deferred taxes embedded within the component",
+              "s2c_AP:x27" : "Future management actions regarding the loss-absorbing capacity of technical provisions and deferred taxes embedded within the component",
+              "s2c_AP:x28" : "No embedded consideration of future management actions"
+            }
+          }
+        },
+        "C0060_R0070" : {
+          "dimensions" : {
+            "concept" : "s2md_met:ei1902",
+            "s2c_dim:DV" : "s2c_RT:x11",
+            "s2c_dim:EA" : "s2c_VM:x23",
+            "s2c_dim:NF" : "$Z0030",
+            "s2c_dim:PO" : "$Z0020",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RT" : "s2c_RT:x222"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{SR.26.08.04.01, C0060, R0070}",
+            "Label" : "SR.26.08.04.01 - Consideration of the future management actions regarding technical provisions and/or deferred taxes|Total market and credit risk|Z Axis:",
+            "Values" : {
+              "s2c_AP:x25" : "Future management actions regarding the loss-absorbing capacity of technical provisions embedded within the component",
+              "s2c_AP:x26" : "Future management actions regarding the loss-absorbing capacity of deferred taxes embedded within the component",
+              "s2c_AP:x27" : "Future management actions regarding the loss-absorbing capacity of technical provisions and deferred taxes embedded within the component",
+              "s2c_AP:x28" : "No embedded consideration of future management actions"
+            }
+          }
+        },
+        "C0060_R0080" : {
+          "dimensions" : {
+            "concept" : "s2md_met:ei1902",
+            "s2c_dim:DV" : "s2c_RT:x0",
+            "s2c_dim:EA" : "s2c_VM:x24",
+            "s2c_dim:NF" : "$Z0030",
+            "s2c_dim:PO" : "$Z0020",
+            "s2c_dim:RH" : "s2c_TI:x2"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{SR.26.08.04.01, C0060, R0080}",
+            "Label" : "SR.26.08.04.01 - Consideration of the future management actions regarding technical provisions and/or deferred taxes|Market and Credit risk - diversified|Z Axis:",
+            "Values" : {
+              "s2c_AP:x25" : "Future management actions regarding the loss-absorbing capacity of technical provisions embedded within the component",
+              "s2c_AP:x26" : "Future management actions regarding the loss-absorbing capacity of deferred taxes embedded within the component",
+              "s2c_AP:x27" : "Future management actions regarding the loss-absorbing capacity of technical provisions and deferred taxes embedded within the component",
+              "s2c_AP:x28" : "No embedded consideration of future management actions"
+            }
+          }
+        },
+        "C0060_R0090" : {
+          "dimensions" : {
+            "concept" : "s2md_met:ei1902",
+            "s2c_dim:NF" : "$Z0030",
+            "s2c_dim:PO" : "$Z0020",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RT" : "s2c_RT:x70"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{SR.26.08.04.01, C0060, R0090}",
+            "Label" : "SR.26.08.04.01 - Consideration of the future management actions regarding technical provisions and/or deferred taxes|Interest rate risk|Z Axis:",
+            "Values" : {
+              "s2c_AP:x25" : "Future management actions regarding the loss-absorbing capacity of technical provisions embedded within the component",
+              "s2c_AP:x26" : "Future management actions regarding the loss-absorbing capacity of deferred taxes embedded within the component",
+              "s2c_AP:x27" : "Future management actions regarding the loss-absorbing capacity of technical provisions and deferred taxes embedded within the component",
+              "s2c_AP:x28" : "No embedded consideration of future management actions"
+            }
+          }
+        },
+        "C0060_R0100" : {
+          "dimensions" : {
+            "concept" : "s2md_met:ei1902",
+            "s2c_dim:NF" : "$Z0030",
+            "s2c_dim:PO" : "$Z0020",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RT" : "s2c_RT:x224"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{SR.26.08.04.01, C0060, R0100}",
+            "Label" : "SR.26.08.04.01 - Consideration of the future management actions regarding technical provisions and/or deferred taxes|Interest rate volatility risk|Z Axis:",
+            "Values" : {
+              "s2c_AP:x25" : "Future management actions regarding the loss-absorbing capacity of technical provisions embedded within the component",
+              "s2c_AP:x26" : "Future management actions regarding the loss-absorbing capacity of deferred taxes embedded within the component",
+              "s2c_AP:x27" : "Future management actions regarding the loss-absorbing capacity of technical provisions and deferred taxes embedded within the component",
+              "s2c_AP:x28" : "No embedded consideration of future management actions"
+            }
+          }
+        },
+        "C0060_R0110" : {
+          "dimensions" : {
+            "concept" : "s2md_met:ei1902",
+            "s2c_dim:NF" : "$Z0030",
+            "s2c_dim:PO" : "$Z0020",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RT" : "s2c_RT:x225"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{SR.26.08.04.01, C0060, R0110}",
+            "Label" : "SR.26.08.04.01 - Consideration of the future management actions regarding technical provisions and/or deferred taxes|Inflation risk|Z Axis:",
+            "Values" : {
+              "s2c_AP:x25" : "Future management actions regarding the loss-absorbing capacity of technical provisions embedded within the component",
+              "s2c_AP:x26" : "Future management actions regarding the loss-absorbing capacity of deferred taxes embedded within the component",
+              "s2c_AP:x27" : "Future management actions regarding the loss-absorbing capacity of technical provisions and deferred taxes embedded within the component",
+              "s2c_AP:x28" : "No embedded consideration of future management actions"
+            }
+          }
+        },
+        "C0060_R0120" : {
+          "dimensions" : {
+            "concept" : "s2md_met:ei1902",
+            "s2c_dim:NF" : "$Z0030",
+            "s2c_dim:PO" : "$Z0020",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RT" : "s2c_RT:x32"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{SR.26.08.04.01, C0060, R0120}",
+            "Label" : "SR.26.08.04.01 - Consideration of the future management actions regarding technical provisions and/or deferred taxes|Equity risk|Z Axis:",
+            "Values" : {
+              "s2c_AP:x25" : "Future management actions regarding the loss-absorbing capacity of technical provisions embedded within the component",
+              "s2c_AP:x26" : "Future management actions regarding the loss-absorbing capacity of deferred taxes embedded within the component",
+              "s2c_AP:x27" : "Future management actions regarding the loss-absorbing capacity of technical provisions and deferred taxes embedded within the component",
+              "s2c_AP:x28" : "No embedded consideration of future management actions"
+            }
+          }
+        },
+        "C0060_R0130" : {
+          "dimensions" : {
+            "concept" : "s2md_met:ei1902",
+            "s2c_dim:NF" : "$Z0030",
+            "s2c_dim:PO" : "$Z0020",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RT" : "s2c_RT:x227"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{SR.26.08.04.01, C0060, R0130}",
+            "Label" : "SR.26.08.04.01 - Consideration of the future management actions regarding technical provisions and/or deferred taxes|Equity volatility risk|Z Axis:",
+            "Values" : {
+              "s2c_AP:x25" : "Future management actions regarding the loss-absorbing capacity of technical provisions embedded within the component",
+              "s2c_AP:x26" : "Future management actions regarding the loss-absorbing capacity of deferred taxes embedded within the component",
+              "s2c_AP:x27" : "Future management actions regarding the loss-absorbing capacity of technical provisions and deferred taxes embedded within the component",
+              "s2c_AP:x28" : "No embedded consideration of future management actions"
+            }
+          }
+        },
+        "C0060_R0140" : {
+          "dimensions" : {
+            "concept" : "s2md_met:ei1902",
+            "s2c_dim:NF" : "$Z0030",
+            "s2c_dim:PO" : "$Z0020",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RT" : "s2c_RT:x128"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{SR.26.08.04.01, C0060, R0140}",
+            "Label" : "SR.26.08.04.01 - Consideration of the future management actions regarding technical provisions and/or deferred taxes|Property risk|Z Axis:",
+            "Values" : {
+              "s2c_AP:x25" : "Future management actions regarding the loss-absorbing capacity of technical provisions embedded within the component",
+              "s2c_AP:x26" : "Future management actions regarding the loss-absorbing capacity of deferred taxes embedded within the component",
+              "s2c_AP:x27" : "Future management actions regarding the loss-absorbing capacity of technical provisions and deferred taxes embedded within the component",
+              "s2c_AP:x28" : "No embedded consideration of future management actions"
+            }
+          }
+        },
+        "C0060_R0150" : {
+          "dimensions" : {
+            "concept" : "s2md_met:ei1902",
+            "s2c_dim:NF" : "$Z0030",
+            "s2c_dim:PO" : "$Z0020",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RT" : "s2c_RT:x25"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{SR.26.08.04.01, C0060, R0150}",
+            "Label" : "SR.26.08.04.01 - Consideration of the future management actions regarding technical provisions and/or deferred taxes|Currency risk|Z Axis:",
+            "Values" : {
+              "s2c_AP:x25" : "Future management actions regarding the loss-absorbing capacity of technical provisions embedded within the component",
+              "s2c_AP:x26" : "Future management actions regarding the loss-absorbing capacity of deferred taxes embedded within the component",
+              "s2c_AP:x27" : "Future management actions regarding the loss-absorbing capacity of technical provisions and deferred taxes embedded within the component",
+              "s2c_AP:x28" : "No embedded consideration of future management actions"
+            }
+          }
+        },
+        "C0060_R0160" : {
+          "dimensions" : {
+            "concept" : "s2md_met:ei1902",
+            "s2c_dim:NF" : "$Z0030",
+            "s2c_dim:PO" : "$Z0020",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RT" : "s2c_RT:x141"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{SR.26.08.04.01, C0060, R0160}",
+            "Label" : "SR.26.08.04.01 - Consideration of the future management actions regarding technical provisions and/or deferred taxes|Credit spread risk|Z Axis:",
+            "Values" : {
+              "s2c_AP:x25" : "Future management actions regarding the loss-absorbing capacity of technical provisions embedded within the component",
+              "s2c_AP:x26" : "Future management actions regarding the loss-absorbing capacity of deferred taxes embedded within the component",
+              "s2c_AP:x27" : "Future management actions regarding the loss-absorbing capacity of technical provisions and deferred taxes embedded within the component",
+              "s2c_AP:x28" : "No embedded consideration of future management actions"
+            }
+          }
+        },
+        "C0060_R0170" : {
+          "dimensions" : {
+            "concept" : "s2md_met:ei1902",
+            "s2c_dim:DV" : "s2c_RT:x0",
+            "s2c_dim:NF" : "$Z0030",
+            "s2c_dim:PO" : "$Z0020",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RT" : "s2c_RT:x251"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{SR.26.08.04.01, C0060, R0170}",
+            "Label" : "SR.26.08.04.01 - Consideration of the future management actions regarding technical provisions and/or deferred taxes|Credit event risk (migration and default)|Z Axis:",
+            "Values" : {
+              "s2c_AP:x25" : "Future management actions regarding the loss-absorbing capacity of technical provisions embedded within the component",
+              "s2c_AP:x26" : "Future management actions regarding the loss-absorbing capacity of deferred taxes embedded within the component",
+              "s2c_AP:x27" : "Future management actions regarding the loss-absorbing capacity of technical provisions and deferred taxes embedded within the component",
+              "s2c_AP:x28" : "No embedded consideration of future management actions"
+            }
+          }
+        },
+        "C0060_R0180" : {
+          "dimensions" : {
+            "concept" : "s2md_met:ei1902",
+            "s2c_dim:NF" : "$Z0030",
+            "s2c_dim:PO" : "$Z0020",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RT" : "s2c_RT:x249"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{SR.26.08.04.01, C0060, R0180}",
+            "Label" : "SR.26.08.04.01 - Consideration of the future management actions regarding technical provisions and/or deferred taxes|Credit risk sum (spread, migration and default)|Z Axis:",
+            "Values" : {
+              "s2c_AP:x25" : "Future management actions regarding the loss-absorbing capacity of technical provisions embedded within the component",
+              "s2c_AP:x26" : "Future management actions regarding the loss-absorbing capacity of deferred taxes embedded within the component",
+              "s2c_AP:x27" : "Future management actions regarding the loss-absorbing capacity of technical provisions and deferred taxes embedded within the component",
+              "s2c_AP:x28" : "No embedded consideration of future management actions"
+            }
+          }
+        },
+        "C0060_R0190" : {
+          "dimensions" : {
+            "concept" : "s2md_met:ei1902",
+            "s2c_dim:DV" : "s2c_RT:x352",
+            "s2c_dim:EA" : "s2c_VM:x23",
+            "s2c_dim:NF" : "$Z0030",
+            "s2c_dim:PO" : "$Z0020",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RT" : "s2c_RT:x330"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{SR.26.08.04.01, C0060, R0190}",
+            "Label" : "SR.26.08.04.01 - Consideration of the future management actions regarding technical provisions and/or deferred taxes|Credit event risk not covered in market and credit risk|Z Axis:",
+            "Values" : {
+              "s2c_AP:x25" : "Future management actions regarding the loss-absorbing capacity of technical provisions embedded within the component",
+              "s2c_AP:x26" : "Future management actions regarding the loss-absorbing capacity of deferred taxes embedded within the component",
+              "s2c_AP:x27" : "Future management actions regarding the loss-absorbing capacity of technical provisions and deferred taxes embedded within the component",
+              "s2c_AP:x28" : "No embedded consideration of future management actions"
+            }
+          }
+        },
+        "C0060_R0200" : {
+          "dimensions" : {
+            "concept" : "s2md_met:ei1902",
+            "s2c_dim:DV" : "s2c_RT:x0",
+            "s2c_dim:EA" : "s2c_VM:x23",
+            "s2c_dim:NF" : "$Z0030",
+            "s2c_dim:PO" : "$Z0020",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RT" : "s2c_RT:x330"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{SR.26.08.04.01, C0060, R0200}",
+            "Label" : "SR.26.08.04.01 - Consideration of the future management actions regarding technical provisions and/or deferred taxes|Credit event risk not covered in market and credit risk - diversified|Z Axis:",
+            "Values" : {
+              "s2c_AP:x25" : "Future management actions regarding the loss-absorbing capacity of technical provisions embedded within the component",
+              "s2c_AP:x26" : "Future management actions regarding the loss-absorbing capacity of deferred taxes embedded within the component",
+              "s2c_AP:x27" : "Future management actions regarding the loss-absorbing capacity of technical provisions and deferred taxes embedded within the component",
+              "s2c_AP:x28" : "No embedded consideration of future management actions"
+            }
+          }
+        },
+        "C0060_R0210" : {
+          "dimensions" : {
+            "concept" : "s2md_met:ei1902",
+            "s2c_dim:DV" : "s2c_RT:x352",
+            "s2c_dim:EA" : "s2c_VM:x24",
+            "s2c_dim:NF" : "$Z0030",
+            "s2c_dim:PO" : "$Z0020",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RT" : "s2c_RT:x228"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{SR.26.08.04.01, C0060, R0210}",
+            "Label" : "SR.26.08.04.01 - Consideration of the future management actions regarding technical provisions and/or deferred taxes|Basis risk financial instruments|Z Axis:",
+            "Values" : {
+              "s2c_AP:x25" : "Future management actions regarding the loss-absorbing capacity of technical provisions embedded within the component",
+              "s2c_AP:x26" : "Future management actions regarding the loss-absorbing capacity of deferred taxes embedded within the component",
+              "s2c_AP:x27" : "Future management actions regarding the loss-absorbing capacity of technical provisions and deferred taxes embedded within the component",
+              "s2c_AP:x28" : "No embedded consideration of future management actions"
+            }
+          }
+        },
+        "C0060_R0220" : {
+          "dimensions" : {
+            "concept" : "s2md_met:ei1902",
+            "s2c_dim:DV" : "s2c_RT:x352",
+            "s2c_dim:EA" : "s2c_VM:x24",
+            "s2c_dim:NF" : "$Z0030",
+            "s2c_dim:PO" : "$Z0020",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RT" : "s2c_RT:x229"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{SR.26.08.04.01, C0060, R0220}",
+            "Label" : "SR.26.08.04.01 - Consideration of the future management actions regarding technical provisions and/or deferred taxes|Derivatives risk|Z Axis:",
+            "Values" : {
+              "s2c_AP:x25" : "Future management actions regarding the loss-absorbing capacity of technical provisions embedded within the component",
+              "s2c_AP:x26" : "Future management actions regarding the loss-absorbing capacity of deferred taxes embedded within the component",
+              "s2c_AP:x27" : "Future management actions regarding the loss-absorbing capacity of technical provisions and deferred taxes embedded within the component",
+              "s2c_AP:x28" : "No embedded consideration of future management actions"
+            }
+          }
+        },
+        "C0060_R0230" : {
+          "dimensions" : {
+            "concept" : "s2md_met:ei1902",
+            "s2c_dim:DV" : "s2c_RT:x352",
+            "s2c_dim:EA" : "s2c_VM:x24",
+            "s2c_dim:NF" : "$Z0030",
+            "s2c_dim:PO" : "$Z0020",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RT" : "s2c_RT:x230"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{SR.26.08.04.01, C0060, R0230}",
+            "Label" : "SR.26.08.04.01 - Consideration of the future management actions regarding technical provisions and/or deferred taxes|Participations|Z Axis:",
+            "Values" : {
+              "s2c_AP:x25" : "Future management actions regarding the loss-absorbing capacity of technical provisions embedded within the component",
+              "s2c_AP:x26" : "Future management actions regarding the loss-absorbing capacity of deferred taxes embedded within the component",
+              "s2c_AP:x27" : "Future management actions regarding the loss-absorbing capacity of technical provisions and deferred taxes embedded within the component",
+              "s2c_AP:x28" : "No embedded consideration of future management actions"
+            }
+          }
+        },
+        "C0060_R0240" : {
+          "dimensions" : {
+            "concept" : "s2md_met:ei1902",
+            "s2c_dim:DV" : "s2c_RT:x352",
+            "s2c_dim:EA" : "s2c_VM:x24",
+            "s2c_dim:NF" : "$Z0030",
+            "s2c_dim:PO" : "$Z0020",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RT" : "s2c_RT:x231"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{SR.26.08.04.01, C0060, R0240}",
+            "Label" : "SR.26.08.04.01 - Consideration of the future management actions regarding technical provisions and/or deferred taxes|Liquidity risk|Z Axis:",
+            "Values" : {
+              "s2c_AP:x25" : "Future management actions regarding the loss-absorbing capacity of technical provisions embedded within the component",
+              "s2c_AP:x26" : "Future management actions regarding the loss-absorbing capacity of deferred taxes embedded within the component",
+              "s2c_AP:x27" : "Future management actions regarding the loss-absorbing capacity of technical provisions and deferred taxes embedded within the component",
+              "s2c_AP:x28" : "No embedded consideration of future management actions"
+            }
+          }
+        },
+        "C0060_R0250" : {
+          "dimensions" : {
+            "concept" : "s2md_met:ei1902",
+            "s2c_dim:DV" : "s2c_RT:x352",
+            "s2c_dim:EA" : "s2c_VM:x24",
+            "s2c_dim:NF" : "$Z0030",
+            "s2c_dim:PO" : "$Z0020",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RT" : "s2c_RT:x232"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{SR.26.08.04.01, C0060, R0250}",
+            "Label" : "SR.26.08.04.01 - Consideration of the future management actions regarding technical provisions and/or deferred taxes|Pension risk|Z Axis:",
+            "Values" : {
+              "s2c_AP:x25" : "Future management actions regarding the loss-absorbing capacity of technical provisions embedded within the component",
+              "s2c_AP:x26" : "Future management actions regarding the loss-absorbing capacity of deferred taxes embedded within the component",
+              "s2c_AP:x27" : "Future management actions regarding the loss-absorbing capacity of technical provisions and deferred taxes embedded within the component",
+              "s2c_AP:x28" : "No embedded consideration of future management actions"
+            }
+          }
+        },
+        "C0060_R0260" : {
+          "dimensions" : {
+            "concept" : "s2md_met:ei1902",
+            "s2c_dim:DV" : "s2c_RT:x352",
+            "s2c_dim:EA" : "s2c_VM:x24",
+            "s2c_dim:NF" : "$Z0030",
+            "s2c_dim:PO" : "$Z0020",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RT" : "s2c_RT:x98"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{SR.26.08.04.01, C0060, R0260}",
+            "Label" : "SR.26.08.04.01 - Consideration of the future management actions regarding technical provisions and/or deferred taxes|Concentration risk|Z Axis:",
+            "Values" : {
+              "s2c_AP:x25" : "Future management actions regarding the loss-absorbing capacity of technical provisions embedded within the component",
+              "s2c_AP:x26" : "Future management actions regarding the loss-absorbing capacity of deferred taxes embedded within the component",
+              "s2c_AP:x27" : "Future management actions regarding the loss-absorbing capacity of technical provisions and deferred taxes embedded within the component",
+              "s2c_AP:x28" : "No embedded consideration of future management actions"
+            }
+          }
+        },
+        "C0060_R0270" : {
+          "dimensions" : {
+            "concept" : "s2md_met:ei1902",
+            "s2c_dim:DV" : "s2c_RT:x352",
+            "s2c_dim:EA" : "s2c_VM:x24",
+            "s2c_dim:NF" : "$Z0030",
+            "s2c_dim:PO" : "$Z0020",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RT" : "s2c_RT:x233"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{SR.26.08.04.01, C0060, R0270}",
+            "Label" : "SR.26.08.04.01 - Consideration of the future management actions regarding technical provisions and/or deferred taxes|Total Business risk|Z Axis:",
+            "Values" : {
+              "s2c_AP:x25" : "Future management actions regarding the loss-absorbing capacity of technical provisions embedded within the component",
+              "s2c_AP:x26" : "Future management actions regarding the loss-absorbing capacity of deferred taxes embedded within the component",
+              "s2c_AP:x27" : "Future management actions regarding the loss-absorbing capacity of technical provisions and deferred taxes embedded within the component",
+              "s2c_AP:x28" : "No embedded consideration of future management actions"
+            }
+          }
+        },
+        "C0060_R0280" : {
+          "dimensions" : {
+            "concept" : "s2md_met:ei1902",
+            "s2c_dim:DV" : "s2c_RT:x0",
+            "s2c_dim:NF" : "$Z0030",
+            "s2c_dim:PO" : "$Z0020",
+            "s2c_dim:RH" : "s2c_TI:x2"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{SR.26.08.04.01, C0060, R0280}",
+            "Label" : "SR.26.08.04.01 - Consideration of the future management actions regarding technical provisions and/or deferred taxes|Total Business risk - diversified|Z Axis:",
+            "Values" : {
+              "s2c_AP:x25" : "Future management actions regarding the loss-absorbing capacity of technical provisions embedded within the component",
+              "s2c_AP:x26" : "Future management actions regarding the loss-absorbing capacity of deferred taxes embedded within the component",
+              "s2c_AP:x27" : "Future management actions regarding the loss-absorbing capacity of technical provisions and deferred taxes embedded within the component",
+              "s2c_AP:x28" : "No embedded consideration of future management actions"
+            }
+          }
+        },
+        "C0060_R0290" : {
+          "dimensions" : {
+            "concept" : "s2md_met:ei1902",
+            "s2c_dim:DV" : "s2c_RT:x11",
+            "s2c_dim:EA" : "s2c_VM:x24",
+            "s2c_dim:NF" : "$Z0030",
+            "s2c_dim:PO" : "$Z0020",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RT" : "s2c_RT:x244"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{SR.26.08.04.01, C0060, R0290}",
+            "Label" : "SR.26.08.04.01 - Consideration of the future management actions regarding technical provisions and/or deferred taxes|Total underwriting risk|Z Axis:",
+            "Values" : {
+              "s2c_AP:x25" : "Future management actions regarding the loss-absorbing capacity of technical provisions embedded within the component",
+              "s2c_AP:x26" : "Future management actions regarding the loss-absorbing capacity of deferred taxes embedded within the component",
+              "s2c_AP:x27" : "Future management actions regarding the loss-absorbing capacity of technical provisions and deferred taxes embedded within the component",
+              "s2c_AP:x28" : "No embedded consideration of future management actions"
+            }
+          }
+        },
+        "C0060_R0300" : {
+          "dimensions" : {
+            "concept" : "s2md_met:ei1902",
+            "s2c_dim:DV" : "s2c_RT:x0",
+            "s2c_dim:NF" : "$Z0030",
+            "s2c_dim:PO" : "$Z0020",
+            "s2c_dim:RH" : "s2c_TI:x2"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{SR.26.08.04.01, C0060, R0300}",
+            "Label" : "SR.26.08.04.01 - Consideration of the future management actions regarding technical provisions and/or deferred taxes|Total underwriting risk - diversified|Z Axis:",
+            "Values" : {
+              "s2c_AP:x25" : "Future management actions regarding the loss-absorbing capacity of technical provisions embedded within the component",
+              "s2c_AP:x26" : "Future management actions regarding the loss-absorbing capacity of deferred taxes embedded within the component",
+              "s2c_AP:x27" : "Future management actions regarding the loss-absorbing capacity of technical provisions and deferred taxes embedded within the component",
+              "s2c_AP:x28" : "No embedded consideration of future management actions"
+            }
+          }
+        },
+        "C0060_R0310" : {
+          "dimensions" : {
+            "concept" : "s2md_met:ei1902",
+            "s2c_dim:DV" : "s2c_RT:x352",
+            "s2c_dim:NF" : "$Z0030",
+            "s2c_dim:PO" : "$Z0020",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RT" : "s2c_RT:x245"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{SR.26.08.04.01, C0060, R0310}",
+            "Label" : "SR.26.08.04.01 - Consideration of the future management actions regarding technical provisions and/or deferred taxes|Total Net Non-life and Health NSLT underwriting risk|Z Axis:",
+            "Values" : {
+              "s2c_AP:x25" : "Future management actions regarding the loss-absorbing capacity of technical provisions embedded within the component",
+              "s2c_AP:x26" : "Future management actions regarding the loss-absorbing capacity of deferred taxes embedded within the component",
+              "s2c_AP:x27" : "Future management actions regarding the loss-absorbing capacity of technical provisions and deferred taxes embedded within the component",
+              "s2c_AP:x28" : "No embedded consideration of future management actions"
+            }
+          }
+        },
+        "C0060_R0320" : {
+          "dimensions" : {
+            "concept" : "s2md_met:ei1902",
+            "s2c_dim:DV" : "s2c_RT:x0",
+            "s2c_dim:NF" : "$Z0030",
+            "s2c_dim:PO" : "$Z0020",
+            "s2c_dim:RH" : "s2c_TI:x2"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{SR.26.08.04.01, C0060, R0320}",
+            "Label" : "SR.26.08.04.01 - Consideration of the future management actions regarding technical provisions and/or deferred taxes|Total Net Non-life and Health NSLT underwriting risk - diversified|Z Axis:",
+            "Values" : {
+              "s2c_AP:x25" : "Future management actions regarding the loss-absorbing capacity of technical provisions embedded within the component",
+              "s2c_AP:x26" : "Future management actions regarding the loss-absorbing capacity of deferred taxes embedded within the component",
+              "s2c_AP:x27" : "Future management actions regarding the loss-absorbing capacity of technical provisions and deferred taxes embedded within the component",
+              "s2c_AP:x28" : "No embedded consideration of future management actions"
+            }
+          }
+        },
+        "C0060_R0330" : {
+          "dimensions" : {
+            "concept" : "s2md_met:ei1902",
+            "s2c_dim:DV" : "s2c_RT:x0",
+            "s2c_dim:NF" : "$Z0030",
+            "s2c_dim:PO" : "$Z0020",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RT" : "s2c_RT:x102"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{SR.26.08.04.01, C0060, R0330}",
+            "Label" : "SR.26.08.04.01 - Consideration of the future management actions regarding technical provisions and/or deferred taxes|Net Nat-cat risk|Z Axis:",
+            "Values" : {
+              "s2c_AP:x25" : "Future management actions regarding the loss-absorbing capacity of technical provisions embedded within the component",
+              "s2c_AP:x26" : "Future management actions regarding the loss-absorbing capacity of deferred taxes embedded within the component",
+              "s2c_AP:x27" : "Future management actions regarding the loss-absorbing capacity of technical provisions and deferred taxes embedded within the component",
+              "s2c_AP:x28" : "No embedded consideration of future management actions"
+            }
+          }
+        },
+        "C0060_R0340" : {
+          "dimensions" : {
+            "concept" : "s2md_met:ei1902",
+            "s2c_dim:DV" : "s2c_RT:x0",
+            "s2c_dim:NF" : "$Z0030",
+            "s2c_dim:PO" : "$Z0020",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RT" : "s2c_RT:x85"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{SR.26.08.04.01, C0060, R0340}",
+            "Label" : "SR.26.08.04.01 - Consideration of the future management actions regarding technical provisions and/or deferred taxes|Net Man-made risk|Z Axis:",
+            "Values" : {
+              "s2c_AP:x25" : "Future management actions regarding the loss-absorbing capacity of technical provisions embedded within the component",
+              "s2c_AP:x26" : "Future management actions regarding the loss-absorbing capacity of deferred taxes embedded within the component",
+              "s2c_AP:x27" : "Future management actions regarding the loss-absorbing capacity of technical provisions and deferred taxes embedded within the component",
+              "s2c_AP:x28" : "No embedded consideration of future management actions"
+            }
+          }
+        },
+        "C0060_R0350" : {
+          "dimensions" : {
+            "concept" : "s2md_met:ei1902",
+            "s2c_dim:DV" : "s2c_RT:x0",
+            "s2c_dim:NF" : "$Z0030",
+            "s2c_dim:PO" : "$Z0020",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RT" : "s2c_RT:x248"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{SR.26.08.04.01, C0060, R0350}",
+            "Label" : "SR.26.08.04.01 - Consideration of the future management actions regarding technical provisions and/or deferred taxes|Net reserve risk|Z Axis:",
+            "Values" : {
+              "s2c_AP:x25" : "Future management actions regarding the loss-absorbing capacity of technical provisions embedded within the component",
+              "s2c_AP:x26" : "Future management actions regarding the loss-absorbing capacity of deferred taxes embedded within the component",
+              "s2c_AP:x27" : "Future management actions regarding the loss-absorbing capacity of technical provisions and deferred taxes embedded within the component",
+              "s2c_AP:x28" : "No embedded consideration of future management actions"
+            }
+          }
+        },
+        "C0060_R0360" : {
+          "dimensions" : {
+            "concept" : "s2md_met:ei1902",
+            "s2c_dim:DV" : "s2c_RT:x0",
+            "s2c_dim:NF" : "$Z0030",
+            "s2c_dim:PO" : "$Z0020",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RT" : "s2c_RT:x247"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{SR.26.08.04.01, C0060, R0360}",
+            "Label" : "SR.26.08.04.01 - Consideration of the future management actions regarding technical provisions and/or deferred taxes|Net premium risk|Z Axis:",
+            "Values" : {
+              "s2c_AP:x25" : "Future management actions regarding the loss-absorbing capacity of technical provisions embedded within the component",
+              "s2c_AP:x26" : "Future management actions regarding the loss-absorbing capacity of deferred taxes embedded within the component",
+              "s2c_AP:x27" : "Future management actions regarding the loss-absorbing capacity of technical provisions and deferred taxes embedded within the component",
+              "s2c_AP:x28" : "No embedded consideration of future management actions"
+            }
+          }
+        },
+        "C0060_R0370" : {
+          "dimensions" : {
+            "concept" : "s2md_met:ei1902",
+            "s2c_dim:DV" : "s2c_RT:x352",
+            "s2c_dim:NF" : "$Z0030",
+            "s2c_dim:PO" : "$Z0020",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RT" : "s2c_RT:x351"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{SR.26.08.04.01, C0060, R0370}",
+            "Label" : "SR.26.08.04.01 - Consideration of the future management actions regarding technical provisions and/or deferred taxes|Total Life and Health SLT underwriting risk|Z Axis:",
+            "Values" : {
+              "s2c_AP:x25" : "Future management actions regarding the loss-absorbing capacity of technical provisions embedded within the component",
+              "s2c_AP:x26" : "Future management actions regarding the loss-absorbing capacity of deferred taxes embedded within the component",
+              "s2c_AP:x27" : "Future management actions regarding the loss-absorbing capacity of technical provisions and deferred taxes embedded within the component",
+              "s2c_AP:x28" : "No embedded consideration of future management actions"
+            }
+          }
+        },
+        "C0060_R0380" : {
+          "dimensions" : {
+            "concept" : "s2md_met:ei1902",
+            "s2c_dim:DV" : "s2c_RT:x0",
+            "s2c_dim:NF" : "$Z0030",
+            "s2c_dim:PO" : "$Z0020",
+            "s2c_dim:RH" : "s2c_TI:x2"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{SR.26.08.04.01, C0060, R0380}",
+            "Label" : "SR.26.08.04.01 - Consideration of the future management actions regarding technical provisions and/or deferred taxes|Total Life and Health SLT underwriting risk - diversified|Z Axis:",
+            "Values" : {
+              "s2c_AP:x25" : "Future management actions regarding the loss-absorbing capacity of technical provisions embedded within the component",
+              "s2c_AP:x26" : "Future management actions regarding the loss-absorbing capacity of deferred taxes embedded within the component",
+              "s2c_AP:x27" : "Future management actions regarding the loss-absorbing capacity of technical provisions and deferred taxes embedded within the component",
+              "s2c_AP:x28" : "No embedded consideration of future management actions"
+            }
+          }
+        },
+        "C0060_R0390" : {
+          "dimensions" : {
+            "concept" : "s2md_met:ei1902",
+            "s2c_dim:DV" : "s2c_RT:x11",
+            "s2c_dim:NF" : "$Z0030",
+            "s2c_dim:PO" : "$Z0020",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RT" : "s2c_RT:x235"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{SR.26.08.04.01, C0060, R0390}",
+            "Label" : "SR.26.08.04.01 - Consideration of the future management actions regarding technical provisions and/or deferred taxes|Mortality risk|Z Axis:",
+            "Values" : {
+              "s2c_AP:x25" : "Future management actions regarding the loss-absorbing capacity of technical provisions embedded within the component",
+              "s2c_AP:x26" : "Future management actions regarding the loss-absorbing capacity of deferred taxes embedded within the component",
+              "s2c_AP:x27" : "Future management actions regarding the loss-absorbing capacity of technical provisions and deferred taxes embedded within the component",
+              "s2c_AP:x28" : "No embedded consideration of future management actions"
+            }
+          }
+        },
+        "C0060_R0400" : {
+          "dimensions" : {
+            "concept" : "s2md_met:ei1902",
+            "s2c_dim:DV" : "s2c_RT:x11",
+            "s2c_dim:NF" : "$Z0030",
+            "s2c_dim:PO" : "$Z0020",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RT" : "s2c_RT:x236"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{SR.26.08.04.01, C0060, R0400}",
+            "Label" : "SR.26.08.04.01 - Consideration of the future management actions regarding technical provisions and/or deferred taxes|Longevity risk|Z Axis:",
+            "Values" : {
+              "s2c_AP:x25" : "Future management actions regarding the loss-absorbing capacity of technical provisions embedded within the component",
+              "s2c_AP:x26" : "Future management actions regarding the loss-absorbing capacity of deferred taxes embedded within the component",
+              "s2c_AP:x27" : "Future management actions regarding the loss-absorbing capacity of technical provisions and deferred taxes embedded within the component",
+              "s2c_AP:x28" : "No embedded consideration of future management actions"
+            }
+          }
+        },
+        "C0060_R0410" : {
+          "dimensions" : {
+            "concept" : "s2md_met:ei1902",
+            "s2c_dim:DV" : "s2c_RT:x11",
+            "s2c_dim:NF" : "$Z0030",
+            "s2c_dim:PO" : "$Z0020",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RT" : "s2c_RT:x237"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{SR.26.08.04.01, C0060, R0410}",
+            "Label" : "SR.26.08.04.01 - Consideration of the future management actions regarding technical provisions and/or deferred taxes|Disability-Morbidity risk|Z Axis:",
+            "Values" : {
+              "s2c_AP:x25" : "Future management actions regarding the loss-absorbing capacity of technical provisions embedded within the component",
+              "s2c_AP:x26" : "Future management actions regarding the loss-absorbing capacity of deferred taxes embedded within the component",
+              "s2c_AP:x27" : "Future management actions regarding the loss-absorbing capacity of technical provisions and deferred taxes embedded within the component",
+              "s2c_AP:x28" : "No embedded consideration of future management actions"
+            }
+          }
+        },
+        "C0060_R0420" : {
+          "dimensions" : {
+            "concept" : "s2md_met:ei1902",
+            "s2c_dim:DV" : "s2c_RT:x11",
+            "s2c_dim:NF" : "$Z0030",
+            "s2c_dim:PO" : "$Z0020",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RT" : "s2c_RT:x238"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{SR.26.08.04.01, C0060, R0420}",
+            "Label" : "SR.26.08.04.01 - Consideration of the future management actions regarding technical provisions and/or deferred taxes|Lapse|Z Axis:",
+            "Values" : {
+              "s2c_AP:x25" : "Future management actions regarding the loss-absorbing capacity of technical provisions embedded within the component",
+              "s2c_AP:x26" : "Future management actions regarding the loss-absorbing capacity of deferred taxes embedded within the component",
+              "s2c_AP:x27" : "Future management actions regarding the loss-absorbing capacity of technical provisions and deferred taxes embedded within the component",
+              "s2c_AP:x28" : "No embedded consideration of future management actions"
+            }
+          }
+        },
+        "C0060_R0430" : {
+          "dimensions" : {
+            "concept" : "s2md_met:ei1902",
+            "s2c_dim:DV" : "s2c_RT:x11",
+            "s2c_dim:NF" : "$Z0030",
+            "s2c_dim:PO" : "$Z0020",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RT" : "s2c_RT:x239"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{SR.26.08.04.01, C0060, R0430}",
+            "Label" : "SR.26.08.04.01 - Consideration of the future management actions regarding technical provisions and/or deferred taxes|Expense risk|Z Axis:",
+            "Values" : {
+              "s2c_AP:x25" : "Future management actions regarding the loss-absorbing capacity of technical provisions embedded within the component",
+              "s2c_AP:x26" : "Future management actions regarding the loss-absorbing capacity of deferred taxes embedded within the component",
+              "s2c_AP:x27" : "Future management actions regarding the loss-absorbing capacity of technical provisions and deferred taxes embedded within the component",
+              "s2c_AP:x28" : "No embedded consideration of future management actions"
+            }
+          }
+        },
+        "C0060_R0440" : {
+          "dimensions" : {
+            "concept" : "s2md_met:ei1902",
+            "s2c_dim:DV" : "s2c_RT:x11",
+            "s2c_dim:NF" : "$Z0030",
+            "s2c_dim:PO" : "$Z0020",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RT" : "s2c_RT:x336"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{SR.26.08.04.01, C0060, R0440}",
+            "Label" : "SR.26.08.04.01 - Consideration of the future management actions regarding technical provisions and/or deferred taxes|Revision risk|Z Axis:",
+            "Values" : {
+              "s2c_AP:x25" : "Future management actions regarding the loss-absorbing capacity of technical provisions embedded within the component",
+              "s2c_AP:x26" : "Future management actions regarding the loss-absorbing capacity of deferred taxes embedded within the component",
+              "s2c_AP:x27" : "Future management actions regarding the loss-absorbing capacity of technical provisions and deferred taxes embedded within the component",
+              "s2c_AP:x28" : "No embedded consideration of future management actions"
+            }
+          }
+        },
+        "C0060_R0450" : {
+          "dimensions" : {
+            "concept" : "s2md_met:ei1902",
+            "s2c_dim:DV" : "s2c_RT:x11",
+            "s2c_dim:NF" : "$Z0030",
+            "s2c_dim:PO" : "$Z0020",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RT" : "s2c_RT:x320"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{SR.26.08.04.01, C0060, R0450}",
+            "Label" : "SR.26.08.04.01 - Consideration of the future management actions regarding technical provisions and/or deferred taxes|Catastrophe risk|Z Axis:",
+            "Values" : {
+              "s2c_AP:x25" : "Future management actions regarding the loss-absorbing capacity of technical provisions embedded within the component",
+              "s2c_AP:x26" : "Future management actions regarding the loss-absorbing capacity of deferred taxes embedded within the component",
+              "s2c_AP:x27" : "Future management actions regarding the loss-absorbing capacity of technical provisions and deferred taxes embedded within the component",
+              "s2c_AP:x28" : "No embedded consideration of future management actions"
+            }
+          }
+        },
+        "C0060_R0460" : {
+          "dimensions" : {
+            "concept" : "s2md_met:ei1902",
+            "s2c_dim:DV" : "s2c_RT:x11",
+            "s2c_dim:NF" : "$Z0030",
+            "s2c_dim:PO" : "$Z0020",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RL" : "s2c_RT:x260"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{SR.26.08.04.01, C0060, R0460}",
+            "Label" : "SR.26.08.04.01 - Consideration of the future management actions regarding technical provisions and/or deferred taxes|Trend risk|Z Axis:",
+            "Values" : {
+              "s2c_AP:x25" : "Future management actions regarding the loss-absorbing capacity of technical provisions embedded within the component",
+              "s2c_AP:x26" : "Future management actions regarding the loss-absorbing capacity of deferred taxes embedded within the component",
+              "s2c_AP:x27" : "Future management actions regarding the loss-absorbing capacity of technical provisions and deferred taxes embedded within the component",
+              "s2c_AP:x28" : "No embedded consideration of future management actions"
+            }
+          }
+        },
+        "C0060_R0470" : {
+          "dimensions" : {
+            "concept" : "s2md_met:ei1902",
+            "s2c_dim:DV" : "s2c_RT:x11",
+            "s2c_dim:NF" : "$Z0030",
+            "s2c_dim:PO" : "$Z0020",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RL" : "s2c_RT:x261"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{SR.26.08.04.01, C0060, R0470}",
+            "Label" : "SR.26.08.04.01 - Consideration of the future management actions regarding technical provisions and/or deferred taxes|Level risk|Z Axis:",
+            "Values" : {
+              "s2c_AP:x25" : "Future management actions regarding the loss-absorbing capacity of technical provisions embedded within the component",
+              "s2c_AP:x26" : "Future management actions regarding the loss-absorbing capacity of deferred taxes embedded within the component",
+              "s2c_AP:x27" : "Future management actions regarding the loss-absorbing capacity of technical provisions and deferred taxes embedded within the component",
+              "s2c_AP:x28" : "No embedded consideration of future management actions"
+            }
+          }
+        },
+        "C0060_R0480" : {
+          "dimensions" : {
+            "concept" : "s2md_met:ei1902",
+            "s2c_dim:DV" : "s2c_RT:x352",
+            "s2c_dim:EA" : "s2c_VM:x24",
+            "s2c_dim:NF" : "$Z0030",
+            "s2c_dim:PO" : "$Z0020",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RT" : "s2c_RT:x121"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{SR.26.08.04.01, C0060, R0480}",
+            "Label" : "SR.26.08.04.01 - Consideration of the future management actions regarding technical provisions and/or deferred taxes|Total Operational risk|Z Axis:",
+            "Values" : {
+              "s2c_AP:x25" : "Future management actions regarding the loss-absorbing capacity of technical provisions embedded within the component",
+              "s2c_AP:x26" : "Future management actions regarding the loss-absorbing capacity of deferred taxes embedded within the component",
+              "s2c_AP:x27" : "Future management actions regarding the loss-absorbing capacity of technical provisions and deferred taxes embedded within the component",
+              "s2c_AP:x28" : "No embedded consideration of future management actions"
+            }
+          }
+        },
+        "C0060_R0490" : {
+          "dimensions" : {
+            "concept" : "s2md_met:ei1902",
+            "s2c_dim:DV" : "s2c_RT:x0",
+            "s2c_dim:NF" : "$Z0030",
+            "s2c_dim:PO" : "$Z0020",
+            "s2c_dim:RH" : "s2c_TI:x2"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{SR.26.08.04.01, C0060, R0490}",
+            "Label" : "SR.26.08.04.01 - Consideration of the future management actions regarding technical provisions and/or deferred taxes|Total Operational risk - diversified|Z Axis:",
+            "Values" : {
+              "s2c_AP:x25" : "Future management actions regarding the loss-absorbing capacity of technical provisions embedded within the component",
+              "s2c_AP:x26" : "Future management actions regarding the loss-absorbing capacity of deferred taxes embedded within the component",
+              "s2c_AP:x27" : "Future management actions regarding the loss-absorbing capacity of technical provisions and deferred taxes embedded within the component",
+              "s2c_AP:x28" : "No embedded consideration of future management actions"
+            }
+          }
+        },
+        "C0060_R0500" : {
+          "dimensions" : {
+            "concept" : "s2md_met:ei1902",
+            "s2c_dim:DV" : "s2c_RT:x352",
+            "s2c_dim:EA" : "s2c_VM:x24",
+            "s2c_dim:NF" : "$Z0030",
+            "s2c_dim:PO" : "$Z0020",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RT" : "s2c_RT:x243"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{SR.26.08.04.01, C0060, R0500}",
+            "Label" : "SR.26.08.04.01 - Consideration of the future management actions regarding technical provisions and/or deferred taxes|Residual risk|Z Axis:",
+            "Values" : {
+              "s2c_AP:x25" : "Future management actions regarding the loss-absorbing capacity of technical provisions embedded within the component",
+              "s2c_AP:x26" : "Future management actions regarding the loss-absorbing capacity of deferred taxes embedded within the component",
+              "s2c_AP:x27" : "Future management actions regarding the loss-absorbing capacity of technical provisions and deferred taxes embedded within the component",
+              "s2c_AP:x28" : "No embedded consideration of future management actions"
+            }
+          }
+        },
+        "C0070_R0010" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi119",
+            "s2c_dim:DV" : "s2c_RT:x352",
+            "s2c_dim:EA" : "s2c_VM:x24",
+            "s2c_dim:NF" : "$Z0030",
+            "s2c_dim:PO" : "$Z0020",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{SR.26.08.04.01, C0070, R0010}",
+            "Label" : "SR.26.08.04.01 - Amount modelled|Total stand-alone risk including diversification within each module (Level 2)|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0070_R0020" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi119",
+            "s2c_dim:DV" : "s2c_RT:x29",
+            "s2c_dim:NF" : "$Z0030",
+            "s2c_dim:PO" : "$Z0020",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{SR.26.08.04.01, C0070, R0020}",
+            "Label" : "SR.26.08.04.01 - Amount modelled|Total diversification|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0070_R0030" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi119",
+            "s2c_dim:NF" : "$Z0030",
+            "s2c_dim:PO" : "$Z0020",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:VG" : "s2c_AM:x80",
+            "s2c_dim:VM" : "s2c_VM:x102"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{SR.26.08.04.01, C0070, R0030}",
+            "Label" : "SR.26.08.04.01 - Amount modelled|Total diversified risk before tax|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0070_R0040" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi119",
+            "s2c_dim:NF" : "$Z0030",
+            "s2c_dim:PO" : "$Z0020",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:VG" : "s2c_AM:x80",
+            "s2c_dim:VM" : "s2c_VM:x101"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{SR.26.08.04.01, C0070, R0040}",
+            "Label" : "SR.26.08.04.01 - Amount modelled|Total diversified risk after tax|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0070_R0050" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi119",
+            "s2c_dim:EA" : "s2c_VM:x32",
+            "s2c_dim:NF" : "$Z0030",
+            "s2c_dim:PO" : "$Z0020",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{SR.26.08.04.01, C0070, R0050}",
+            "Label" : "SR.26.08.04.01 - Amount modelled|Loss absorbing capacity of deferred taxes|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0070_R0060" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi119",
+            "s2c_dim:EA" : "s2c_VM:x28",
+            "s2c_dim:NF" : "$Z0030",
+            "s2c_dim:PO" : "$Z0020",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{SR.26.08.04.01, C0070, R0060}",
+            "Label" : "SR.26.08.04.01 - Amount modelled|Loss absorbing capacity of technical provisions|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0070_R0070" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi119",
+            "s2c_dim:DV" : "s2c_RT:x11",
+            "s2c_dim:EA" : "s2c_VM:x23",
+            "s2c_dim:NF" : "$Z0030",
+            "s2c_dim:PO" : "$Z0020",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RT" : "s2c_RT:x222",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{SR.26.08.04.01, C0070, R0070}",
+            "Label" : "SR.26.08.04.01 - Amount modelled|Total market and credit risk|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0070_R0080" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi119",
+            "s2c_dim:DV" : "s2c_RT:x0",
+            "s2c_dim:EA" : "s2c_VM:x24",
+            "s2c_dim:NF" : "$Z0030",
+            "s2c_dim:PO" : "$Z0020",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{SR.26.08.04.01, C0070, R0080}",
+            "Label" : "SR.26.08.04.01 - Amount modelled|Market and Credit risk - diversified|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0070_R0090" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi119",
+            "s2c_dim:NF" : "$Z0030",
+            "s2c_dim:PO" : "$Z0020",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RT" : "s2c_RT:x70",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{SR.26.08.04.01, C0070, R0090}",
+            "Label" : "SR.26.08.04.01 - Amount modelled|Interest rate risk|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0070_R0100" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi119",
+            "s2c_dim:NF" : "$Z0030",
+            "s2c_dim:PO" : "$Z0020",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RT" : "s2c_RT:x224",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{SR.26.08.04.01, C0070, R0100}",
+            "Label" : "SR.26.08.04.01 - Amount modelled|Interest rate volatility risk|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0070_R0110" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi119",
+            "s2c_dim:NF" : "$Z0030",
+            "s2c_dim:PO" : "$Z0020",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RT" : "s2c_RT:x225",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{SR.26.08.04.01, C0070, R0110}",
+            "Label" : "SR.26.08.04.01 - Amount modelled|Inflation risk|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0070_R0120" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi119",
+            "s2c_dim:NF" : "$Z0030",
+            "s2c_dim:PO" : "$Z0020",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RT" : "s2c_RT:x32",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{SR.26.08.04.01, C0070, R0120}",
+            "Label" : "SR.26.08.04.01 - Amount modelled|Equity risk|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0070_R0130" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi119",
+            "s2c_dim:NF" : "$Z0030",
+            "s2c_dim:PO" : "$Z0020",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RT" : "s2c_RT:x227",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{SR.26.08.04.01, C0070, R0130}",
+            "Label" : "SR.26.08.04.01 - Amount modelled|Equity volatility risk|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0070_R0140" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi119",
+            "s2c_dim:NF" : "$Z0030",
+            "s2c_dim:PO" : "$Z0020",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RT" : "s2c_RT:x128",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{SR.26.08.04.01, C0070, R0140}",
+            "Label" : "SR.26.08.04.01 - Amount modelled|Property risk|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0070_R0150" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi119",
+            "s2c_dim:NF" : "$Z0030",
+            "s2c_dim:PO" : "$Z0020",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RT" : "s2c_RT:x25",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{SR.26.08.04.01, C0070, R0150}",
+            "Label" : "SR.26.08.04.01 - Amount modelled|Currency risk|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0070_R0160" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi119",
+            "s2c_dim:NF" : "$Z0030",
+            "s2c_dim:PO" : "$Z0020",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RT" : "s2c_RT:x141",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{SR.26.08.04.01, C0070, R0160}",
+            "Label" : "SR.26.08.04.01 - Amount modelled|Credit spread risk|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0070_R0170" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi119",
+            "s2c_dim:DV" : "s2c_RT:x0",
+            "s2c_dim:NF" : "$Z0030",
+            "s2c_dim:PO" : "$Z0020",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RT" : "s2c_RT:x251",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{SR.26.08.04.01, C0070, R0170}",
+            "Label" : "SR.26.08.04.01 - Amount modelled|Credit event risk (migration and default)|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0070_R0180" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi119",
+            "s2c_dim:NF" : "$Z0030",
+            "s2c_dim:PO" : "$Z0020",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RT" : "s2c_RT:x249",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{SR.26.08.04.01, C0070, R0180}",
+            "Label" : "SR.26.08.04.01 - Amount modelled|Credit risk sum (spread, migration and default)|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0070_R0190" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi119",
+            "s2c_dim:DV" : "s2c_RT:x352",
+            "s2c_dim:EA" : "s2c_VM:x23",
+            "s2c_dim:NF" : "$Z0030",
+            "s2c_dim:PO" : "$Z0020",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RT" : "s2c_RT:x330",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{SR.26.08.04.01, C0070, R0190}",
+            "Label" : "SR.26.08.04.01 - Amount modelled|Credit event risk not covered in market and credit risk|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0070_R0200" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi119",
+            "s2c_dim:DV" : "s2c_RT:x0",
+            "s2c_dim:EA" : "s2c_VM:x23",
+            "s2c_dim:NF" : "$Z0030",
+            "s2c_dim:PO" : "$Z0020",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RT" : "s2c_RT:x330",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{SR.26.08.04.01, C0070, R0200}",
+            "Label" : "SR.26.08.04.01 - Amount modelled|Credit event risk not covered in market and credit risk - diversified|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0070_R0210" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi119",
+            "s2c_dim:DV" : "s2c_RT:x352",
+            "s2c_dim:EA" : "s2c_VM:x24",
+            "s2c_dim:NF" : "$Z0030",
+            "s2c_dim:PO" : "$Z0020",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RT" : "s2c_RT:x228",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{SR.26.08.04.01, C0070, R0210}",
+            "Label" : "SR.26.08.04.01 - Amount modelled|Basis risk financial instruments|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0070_R0220" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi119",
+            "s2c_dim:DV" : "s2c_RT:x352",
+            "s2c_dim:EA" : "s2c_VM:x24",
+            "s2c_dim:NF" : "$Z0030",
+            "s2c_dim:PO" : "$Z0020",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RT" : "s2c_RT:x229",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{SR.26.08.04.01, C0070, R0220}",
+            "Label" : "SR.26.08.04.01 - Amount modelled|Derivatives risk|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0070_R0230" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi119",
+            "s2c_dim:DV" : "s2c_RT:x352",
+            "s2c_dim:EA" : "s2c_VM:x24",
+            "s2c_dim:NF" : "$Z0030",
+            "s2c_dim:PO" : "$Z0020",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RT" : "s2c_RT:x230",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{SR.26.08.04.01, C0070, R0230}",
+            "Label" : "SR.26.08.04.01 - Amount modelled|Participations|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0070_R0240" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi119",
+            "s2c_dim:DV" : "s2c_RT:x352",
+            "s2c_dim:EA" : "s2c_VM:x24",
+            "s2c_dim:NF" : "$Z0030",
+            "s2c_dim:PO" : "$Z0020",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RT" : "s2c_RT:x231",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{SR.26.08.04.01, C0070, R0240}",
+            "Label" : "SR.26.08.04.01 - Amount modelled|Liquidity risk|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0070_R0250" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi119",
+            "s2c_dim:DV" : "s2c_RT:x352",
+            "s2c_dim:EA" : "s2c_VM:x24",
+            "s2c_dim:NF" : "$Z0030",
+            "s2c_dim:PO" : "$Z0020",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RT" : "s2c_RT:x232",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{SR.26.08.04.01, C0070, R0250}",
+            "Label" : "SR.26.08.04.01 - Amount modelled|Pension risk|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0070_R0260" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi119",
+            "s2c_dim:DV" : "s2c_RT:x352",
+            "s2c_dim:EA" : "s2c_VM:x24",
+            "s2c_dim:NF" : "$Z0030",
+            "s2c_dim:PO" : "$Z0020",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RT" : "s2c_RT:x98",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{SR.26.08.04.01, C0070, R0260}",
+            "Label" : "SR.26.08.04.01 - Amount modelled|Concentration risk|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0070_R0270" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi119",
+            "s2c_dim:DV" : "s2c_RT:x352",
+            "s2c_dim:EA" : "s2c_VM:x24",
+            "s2c_dim:NF" : "$Z0030",
+            "s2c_dim:PO" : "$Z0020",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RT" : "s2c_RT:x233",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{SR.26.08.04.01, C0070, R0270}",
+            "Label" : "SR.26.08.04.01 - Amount modelled|Total Business risk|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0070_R0280" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi119",
+            "s2c_dim:DV" : "s2c_RT:x0",
+            "s2c_dim:NF" : "$Z0030",
+            "s2c_dim:PO" : "$Z0020",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{SR.26.08.04.01, C0070, R0280}",
+            "Label" : "SR.26.08.04.01 - Amount modelled|Total Business risk - diversified|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0070_R0290" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi119",
+            "s2c_dim:DV" : "s2c_RT:x11",
+            "s2c_dim:EA" : "s2c_VM:x24",
+            "s2c_dim:NF" : "$Z0030",
+            "s2c_dim:PO" : "$Z0020",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RT" : "s2c_RT:x244",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{SR.26.08.04.01, C0070, R0290}",
+            "Label" : "SR.26.08.04.01 - Amount modelled|Total underwriting risk|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0070_R0300" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi119",
+            "s2c_dim:DV" : "s2c_RT:x0",
+            "s2c_dim:NF" : "$Z0030",
+            "s2c_dim:PO" : "$Z0020",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{SR.26.08.04.01, C0070, R0300}",
+            "Label" : "SR.26.08.04.01 - Amount modelled|Total underwriting risk - diversified|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0070_R0310" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi119",
+            "s2c_dim:DV" : "s2c_RT:x352",
+            "s2c_dim:NF" : "$Z0030",
+            "s2c_dim:PO" : "$Z0020",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RT" : "s2c_RT:x245",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{SR.26.08.04.01, C0070, R0310}",
+            "Label" : "SR.26.08.04.01 - Amount modelled|Total Net Non-life and Health NSLT underwriting risk|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0070_R0320" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi119",
+            "s2c_dim:DV" : "s2c_RT:x0",
+            "s2c_dim:NF" : "$Z0030",
+            "s2c_dim:PO" : "$Z0020",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{SR.26.08.04.01, C0070, R0320}",
+            "Label" : "SR.26.08.04.01 - Amount modelled|Total Net Non-life and Health NSLT underwriting risk - diversified|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0070_R0330" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi119",
+            "s2c_dim:DV" : "s2c_RT:x0",
+            "s2c_dim:NF" : "$Z0030",
+            "s2c_dim:PO" : "$Z0020",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RT" : "s2c_RT:x102",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{SR.26.08.04.01, C0070, R0330}",
+            "Label" : "SR.26.08.04.01 - Amount modelled|Net Nat-cat risk|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0070_R0340" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi119",
+            "s2c_dim:DV" : "s2c_RT:x0",
+            "s2c_dim:NF" : "$Z0030",
+            "s2c_dim:PO" : "$Z0020",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RT" : "s2c_RT:x85",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{SR.26.08.04.01, C0070, R0340}",
+            "Label" : "SR.26.08.04.01 - Amount modelled|Net Man-made risk|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0070_R0350" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi119",
+            "s2c_dim:DV" : "s2c_RT:x0",
+            "s2c_dim:NF" : "$Z0030",
+            "s2c_dim:PO" : "$Z0020",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RT" : "s2c_RT:x248",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{SR.26.08.04.01, C0070, R0350}",
+            "Label" : "SR.26.08.04.01 - Amount modelled|Net reserve risk|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0070_R0360" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi119",
+            "s2c_dim:DV" : "s2c_RT:x0",
+            "s2c_dim:NF" : "$Z0030",
+            "s2c_dim:PO" : "$Z0020",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RT" : "s2c_RT:x247",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{SR.26.08.04.01, C0070, R0360}",
+            "Label" : "SR.26.08.04.01 - Amount modelled|Net premium risk|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0070_R0370" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi119",
+            "s2c_dim:DV" : "s2c_RT:x352",
+            "s2c_dim:NF" : "$Z0030",
+            "s2c_dim:PO" : "$Z0020",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RT" : "s2c_RT:x351",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{SR.26.08.04.01, C0070, R0370}",
+            "Label" : "SR.26.08.04.01 - Amount modelled|Total Life and Health SLT underwriting risk|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0070_R0380" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi119",
+            "s2c_dim:DV" : "s2c_RT:x0",
+            "s2c_dim:NF" : "$Z0030",
+            "s2c_dim:PO" : "$Z0020",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{SR.26.08.04.01, C0070, R0380}",
+            "Label" : "SR.26.08.04.01 - Amount modelled|Total Life and Health SLT underwriting risk - diversified|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0070_R0390" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi119",
+            "s2c_dim:DV" : "s2c_RT:x11",
+            "s2c_dim:NF" : "$Z0030",
+            "s2c_dim:PO" : "$Z0020",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RT" : "s2c_RT:x235",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{SR.26.08.04.01, C0070, R0390}",
+            "Label" : "SR.26.08.04.01 - Amount modelled|Mortality risk|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0070_R0400" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi119",
+            "s2c_dim:DV" : "s2c_RT:x11",
+            "s2c_dim:NF" : "$Z0030",
+            "s2c_dim:PO" : "$Z0020",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RT" : "s2c_RT:x236",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{SR.26.08.04.01, C0070, R0400}",
+            "Label" : "SR.26.08.04.01 - Amount modelled|Longevity risk|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0070_R0410" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi119",
+            "s2c_dim:DV" : "s2c_RT:x11",
+            "s2c_dim:NF" : "$Z0030",
+            "s2c_dim:PO" : "$Z0020",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RT" : "s2c_RT:x237",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{SR.26.08.04.01, C0070, R0410}",
+            "Label" : "SR.26.08.04.01 - Amount modelled|Disability-Morbidity risk|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0070_R0420" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi119",
+            "s2c_dim:DV" : "s2c_RT:x11",
+            "s2c_dim:NF" : "$Z0030",
+            "s2c_dim:PO" : "$Z0020",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RT" : "s2c_RT:x238",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{SR.26.08.04.01, C0070, R0420}",
+            "Label" : "SR.26.08.04.01 - Amount modelled|Lapse|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0070_R0430" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi119",
+            "s2c_dim:DV" : "s2c_RT:x11",
+            "s2c_dim:NF" : "$Z0030",
+            "s2c_dim:PO" : "$Z0020",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RT" : "s2c_RT:x239",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{SR.26.08.04.01, C0070, R0430}",
+            "Label" : "SR.26.08.04.01 - Amount modelled|Expense risk|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0070_R0440" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi119",
+            "s2c_dim:DV" : "s2c_RT:x11",
+            "s2c_dim:NF" : "$Z0030",
+            "s2c_dim:PO" : "$Z0020",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RT" : "s2c_RT:x336",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{SR.26.08.04.01, C0070, R0440}",
+            "Label" : "SR.26.08.04.01 - Amount modelled|Revision risk|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0070_R0450" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi119",
+            "s2c_dim:DV" : "s2c_RT:x11",
+            "s2c_dim:NF" : "$Z0030",
+            "s2c_dim:PO" : "$Z0020",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RT" : "s2c_RT:x320",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{SR.26.08.04.01, C0070, R0450}",
+            "Label" : "SR.26.08.04.01 - Amount modelled|Catastrophe risk|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0070_R0460" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi119",
+            "s2c_dim:DV" : "s2c_RT:x11",
+            "s2c_dim:NF" : "$Z0030",
+            "s2c_dim:PO" : "$Z0020",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RL" : "s2c_RT:x260",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{SR.26.08.04.01, C0070, R0460}",
+            "Label" : "SR.26.08.04.01 - Amount modelled|Trend risk|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0070_R0470" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi119",
+            "s2c_dim:DV" : "s2c_RT:x11",
+            "s2c_dim:NF" : "$Z0030",
+            "s2c_dim:PO" : "$Z0020",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RL" : "s2c_RT:x261",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{SR.26.08.04.01, C0070, R0470}",
+            "Label" : "SR.26.08.04.01 - Amount modelled|Level risk|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0070_R0480" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi119",
+            "s2c_dim:DV" : "s2c_RT:x352",
+            "s2c_dim:EA" : "s2c_VM:x24",
+            "s2c_dim:NF" : "$Z0030",
+            "s2c_dim:PO" : "$Z0020",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RT" : "s2c_RT:x121",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{SR.26.08.04.01, C0070, R0480}",
+            "Label" : "SR.26.08.04.01 - Amount modelled|Total Operational risk|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0070_R0490" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi119",
+            "s2c_dim:DV" : "s2c_RT:x0",
+            "s2c_dim:NF" : "$Z0030",
+            "s2c_dim:PO" : "$Z0020",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{SR.26.08.04.01, C0070, R0490}",
+            "Label" : "SR.26.08.04.01 - Amount modelled|Total Operational risk - diversified|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0070_R0500" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi119",
+            "s2c_dim:DV" : "s2c_RT:x352",
+            "s2c_dim:EA" : "s2c_VM:x24",
+            "s2c_dim:NF" : "$Z0030",
+            "s2c_dim:PO" : "$Z0020",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RT" : "s2c_RT:x243",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{SR.26.08.04.01, C0070, R0500}",
+            "Label" : "SR.26.08.04.01 - Amount modelled|Residual risk|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "Z0020" : {
+          "s2md:documentation" : {
+            "CellCode" : "{SR.26.08.04.01, Z0020}",
+            "Label" : "Ring-fenced fund or remaining part",
+            "Key" : "s2c_dim:PO",
+            "Values" : {
+              "x40" : "Material Ring Fenced Funds",
+              "x54" : "Remaining part [other than MAPs and material RFFs]"
+            }
+          }
+        },
+        "Z0030" : {
+          "s2md:documentation" : {
+            "CellCode" : "{SR.26.08.04.01, Z0030}",
+            "Label" : "Fund Number",
+            "Key" : "s2c_dim:NF",
+            "Values" : "String"
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,1247 @@
+{
+  "documentInfo" : {
+    "documentType" : "https://xbrl.org/2021/xbrl-csv",
+    "namespaces" : {
+      "s2md" : "http://eiopa.europa.eu/xbrl/s2md/",
+      "s2c_AM" : "http://eiopa.europa.eu/xbrl/s2c/dict/dom/AM",
+      "s2c_CS" : "http://eiopa.europa.eu/xbrl/s2c/dict/dom/CS",
+      "s2c_EX" : "http://eiopa.europa.eu/xbrl/s2c/dict/dom/EX",
+      "s2c_RT" : "http://eiopa.europa.eu/xbrl/s2c/dict/dom/RT",
+      "s2c_SE" : "http://eiopa.europa.eu/xbrl/s2c/dict/dom/SE",
+      "s2c_VM" : "http://eiopa.europa.eu/xbrl/s2c/dict/dom/VM",
+      "s2c_dim" : "http://eiopa.europa.eu/xbrl/s2c/dict/dim",
+      "s2md_met" : "http://eiopa.europa.eu/xbrl/s2md/dict/met"
+    }
+  },
+  "tableTemplates" : {
+    "SR.26.01.04.02" : {
+      "columns" : {
+        "AC0059_R0463" : {
+          "dimensions" : {
+            "s2c_dim:AO" : "$Z0010",
+            "s2c_dim:CM" : "s2c_CS:x1",
+            "s2c_dim:ET" : "s2c_EX:x71",
+            "s2c_dim:NF" : "$Z0030",
+            "s2c_dim:PO" : "$Z0020",
+            "s2c_dim:SO" : "s2c_SE:x44",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{SR.26.01.04.02, AC0059, R0463}",
+            "Label" : "SR.26.01.04.02 - Absolute values after shock|Senior non-STS securitisation|Z Axis:",
+            "Values" : ""
+          }
+        },
+        "AC0059_R0464" : {
+          "dimensions" : {
+            "s2c_dim:AO" : "$Z0010",
+            "s2c_dim:CM" : "s2c_CS:x1",
+            "s2c_dim:ET" : "s2c_EX:x70",
+            "s2c_dim:NF" : "$Z0030",
+            "s2c_dim:PO" : "$Z0020",
+            "s2c_dim:SO" : "s2c_SE:x44",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{SR.26.01.04.02, AC0059, R0464}",
+            "Label" : "SR.26.01.04.02 - Absolute values after shock|Non-senior non-STS securitisation|Z Axis:",
+            "Values" : ""
+          }
+        },
+        "C0060_R0100" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi686",
+            "s2c_dim:AO" : "$Z0010",
+            "s2c_dim:CM" : "s2c_CS:x1",
+            "s2c_dim:EA" : "s2c_VM:x23",
+            "s2c_dim:NF" : "$Z0030",
+            "s2c_dim:PO" : "$Z0020",
+            "s2c_dim:RT" : "s2c_RT:x70",
+            "s2c_dim:SO" : "s2c_SE:x44",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{SR.26.01.04.02, C0060, R0100}",
+            "Label" : "SR.26.01.04.02 - Net solvency capital requirement|Interest rate risk|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0060_R0110" : {
+          "dimensions" : {
+            "s2c_dim:AO" : "$Z0010",
+            "s2c_dim:CM" : "s2c_CS:x1",
+            "s2c_dim:EA" : "s2c_VM:x23",
+            "s2c_dim:NF" : "$Z0030",
+            "s2c_dim:PO" : "$Z0020",
+            "s2c_dim:RT" : "s2c_RT:x69",
+            "s2c_dim:SO" : "s2c_SE:x44",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{SR.26.01.04.02, C0060, R0110}",
+            "Label" : "SR.26.01.04.02 - Net solvency capital requirement|interest rate down shock|Z Axis:",
+            "Values" : ""
+          }
+        },
+        "C0060_R0120" : {
+          "dimensions" : {
+            "s2c_dim:AO" : "$Z0010",
+            "s2c_dim:CM" : "s2c_CS:x1",
+            "s2c_dim:EA" : "s2c_VM:x23",
+            "s2c_dim:NF" : "$Z0030",
+            "s2c_dim:PO" : "$Z0020",
+            "s2c_dim:RT" : "s2c_RT:x71",
+            "s2c_dim:SO" : "s2c_SE:x44",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{SR.26.01.04.02, C0060, R0120}",
+            "Label" : "SR.26.01.04.02 - Net solvency capital requirement|interest rate up shock|Z Axis:",
+            "Values" : ""
+          }
+        },
+        "C0060_R0200" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi686",
+            "s2c_dim:AO" : "$Z0010",
+            "s2c_dim:CM" : "s2c_CS:x1",
+            "s2c_dim:EA" : "s2c_VM:x23",
+            "s2c_dim:NF" : "$Z0030",
+            "s2c_dim:PO" : "$Z0020",
+            "s2c_dim:RT" : "s2c_RT:x32",
+            "s2c_dim:SO" : "s2c_SE:x44",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{SR.26.01.04.02, C0060, R0200}",
+            "Label" : "SR.26.01.04.02 - Net solvency capital requirement|Equity risk|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0060_R0210" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi667",
+            "s2c_dim:AO" : "$Z0010",
+            "s2c_dim:CM" : "s2c_CS:x1",
+            "s2c_dim:EA" : "s2c_VM:x23",
+            "s2c_dim:ET" : "s2c_EX:x30",
+            "s2c_dim:NF" : "$Z0030",
+            "s2c_dim:PO" : "$Z0020",
+            "s2c_dim:SO" : "s2c_SE:x44",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{SR.26.01.04.02, C0060, R0210}",
+            "Label" : "SR.26.01.04.02 - Net solvency capital requirement|type 1 equities|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0060_R0250" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi667",
+            "s2c_dim:AO" : "$Z0010",
+            "s2c_dim:CM" : "s2c_CS:x1",
+            "s2c_dim:EA" : "s2c_VM:x23",
+            "s2c_dim:ET" : "s2c_EX:x31",
+            "s2c_dim:NF" : "$Z0030",
+            "s2c_dim:PO" : "$Z0020",
+            "s2c_dim:SO" : "s2c_SE:x44",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{SR.26.01.04.02, C0060, R0250}",
+            "Label" : "SR.26.01.04.02 - Net solvency capital requirement|type 2 equities|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0060_R0291" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi667",
+            "s2c_dim:AO" : "$Z0010",
+            "s2c_dim:CM" : "s2c_CS:x1",
+            "s2c_dim:EA" : "s2c_VM:x23",
+            "s2c_dim:ET" : "s2c_EX:x42",
+            "s2c_dim:NF" : "$Z0030",
+            "s2c_dim:PO" : "$Z0020",
+            "s2c_dim:SO" : "s2c_SE:x44",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{SR.26.01.04.02, C0060, R0291}",
+            "Label" : "SR.26.01.04.02 - Net solvency capital requirement|qualifying infrastructure corporate equities|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0060_R0292" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi667",
+            "s2c_dim:AO" : "$Z0010",
+            "s2c_dim:CM" : "s2c_CS:x1",
+            "s2c_dim:EA" : "s2c_VM:x23",
+            "s2c_dim:ET" : "s2c_EX:x45",
+            "s2c_dim:NF" : "$Z0030",
+            "s2c_dim:PO" : "$Z0020",
+            "s2c_dim:SO" : "s2c_SE:x44",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{SR.26.01.04.02, C0060, R0292}",
+            "Label" : "SR.26.01.04.02 - Net solvency capital requirement|qualifying infrastructure equities other than corporate|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0060_R0300" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi686",
+            "s2c_dim:AO" : "$Z0010",
+            "s2c_dim:CM" : "s2c_CS:x1",
+            "s2c_dim:EA" : "s2c_VM:x23",
+            "s2c_dim:NF" : "$Z0030",
+            "s2c_dim:PO" : "$Z0020",
+            "s2c_dim:RT" : "s2c_RT:x128",
+            "s2c_dim:SO" : "s2c_SE:x44",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{SR.26.01.04.02, C0060, R0300}",
+            "Label" : "SR.26.01.04.02 - Net solvency capital requirement|Property risk|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0060_R0400" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi686",
+            "s2c_dim:AO" : "$Z0010",
+            "s2c_dim:CM" : "s2c_CS:x1",
+            "s2c_dim:EA" : "s2c_VM:x23",
+            "s2c_dim:NF" : "$Z0030",
+            "s2c_dim:PO" : "$Z0020",
+            "s2c_dim:RT" : "s2c_RT:x141",
+            "s2c_dim:SO" : "s2c_SE:x44",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{SR.26.01.04.02, C0060, R0400}",
+            "Label" : "SR.26.01.04.02 - Net solvency capital requirement|Spread risk|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0060_R0410" : {
+          "dimensions" : {
+            "s2c_dim:AO" : "$Z0010",
+            "s2c_dim:CM" : "s2c_CS:x1",
+            "s2c_dim:EA" : "s2c_VM:x23",
+            "s2c_dim:ET" : "s2c_EX:x34",
+            "s2c_dim:NF" : "$Z0030",
+            "s2c_dim:PO" : "$Z0020",
+            "s2c_dim:SO" : "s2c_SE:x44",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{SR.26.01.04.02, C0060, R0410}",
+            "Label" : "SR.26.01.04.02 - Net solvency capital requirement|bonds and loans|Z Axis:",
+            "Values" : ""
+          }
+        },
+        "C0060_R0412" : {
+          "dimensions" : {
+            "s2c_dim:AO" : "$Z0010",
+            "s2c_dim:CM" : "s2c_CS:x1",
+            "s2c_dim:EA" : "s2c_VM:x23",
+            "s2c_dim:ET" : "s2c_EX:x36",
+            "s2c_dim:NF" : "$Z0030",
+            "s2c_dim:PO" : "$Z0020",
+            "s2c_dim:SO" : "s2c_SE:x44",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{SR.26.01.04.02, C0060, R0412}",
+            "Label" : "SR.26.01.04.02 - Net solvency capital requirement|loans and bonds (other than qualifying investment infrastructure and infrastructure corporate)|Z Axis:",
+            "Values" : ""
+          }
+        },
+        "C0060_R0413" : {
+          "dimensions" : {
+            "s2c_dim:AO" : "$Z0010",
+            "s2c_dim:CM" : "s2c_CS:x1",
+            "s2c_dim:EA" : "s2c_VM:x23",
+            "s2c_dim:ET" : "s2c_EX:x44",
+            "s2c_dim:NF" : "$Z0030",
+            "s2c_dim:PO" : "$Z0020",
+            "s2c_dim:SO" : "s2c_SE:x44",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{SR.26.01.04.02, C0060, R0413}",
+            "Label" : "SR.26.01.04.02 - Net solvency capital requirement|loans and bonds (qualifying investment infrastructure other than infrastructure corporate)|Z Axis:",
+            "Values" : ""
+          }
+        },
+        "C0060_R0414" : {
+          "dimensions" : {
+            "s2c_dim:AO" : "$Z0010",
+            "s2c_dim:CM" : "s2c_CS:x1",
+            "s2c_dim:EA" : "s2c_VM:x23",
+            "s2c_dim:ET" : "s2c_EX:x43",
+            "s2c_dim:NF" : "$Z0030",
+            "s2c_dim:PO" : "$Z0020",
+            "s2c_dim:SO" : "s2c_SE:x44",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{SR.26.01.04.02, C0060, R0414}",
+            "Label" : "SR.26.01.04.02 - Net solvency capital requirement|loans and bonds (qualifying infrastructure corporate investment)|Z Axis:",
+            "Values" : ""
+          }
+        },
+        "C0060_R0420" : {
+          "dimensions" : {
+            "s2c_dim:AO" : "$Z0010",
+            "s2c_dim:CM" : "s2c_CS:x1",
+            "s2c_dim:EA" : "s2c_VM:x23",
+            "s2c_dim:ET" : "s2c_EX:x37",
+            "s2c_dim:NF" : "$Z0030",
+            "s2c_dim:PO" : "$Z0020",
+            "s2c_dim:SO" : "s2c_SE:x44",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{SR.26.01.04.02, C0060, R0420}",
+            "Label" : "SR.26.01.04.02 - Net solvency capital requirement|credit derivatives|Z Axis:",
+            "Values" : ""
+          }
+        },
+        "C0060_R0430" : {
+          "dimensions" : {
+            "s2c_dim:AO" : "$Z0010",
+            "s2c_dim:CM" : "s2c_CS:x1",
+            "s2c_dim:EA" : "s2c_VM:x23",
+            "s2c_dim:NF" : "$Z0030",
+            "s2c_dim:PO" : "$Z0020",
+            "s2c_dim:RT" : "s2c_RT:x142",
+            "s2c_dim:SO" : "s2c_SE:x44",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{SR.26.01.04.02, C0060, R0430}",
+            "Label" : "SR.26.01.04.02 - Net solvency capital requirement|downward shock on credit derivatives|Z Axis:",
+            "Values" : ""
+          }
+        },
+        "C0060_R0440" : {
+          "dimensions" : {
+            "s2c_dim:AO" : "$Z0010",
+            "s2c_dim:CM" : "s2c_CS:x1",
+            "s2c_dim:EA" : "s2c_VM:x23",
+            "s2c_dim:NF" : "$Z0030",
+            "s2c_dim:PO" : "$Z0020",
+            "s2c_dim:RT" : "s2c_RT:x143",
+            "s2c_dim:SO" : "s2c_SE:x44",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{SR.26.01.04.02, C0060, R0440}",
+            "Label" : "SR.26.01.04.02 - Net solvency capital requirement|upward shock on credit derivatives|Z Axis:",
+            "Values" : ""
+          }
+        },
+        "C0060_R0450" : {
+          "dimensions" : {
+            "s2c_dim:AO" : "$Z0010",
+            "s2c_dim:CM" : "s2c_CS:x1",
+            "s2c_dim:EA" : "s2c_VM:x23",
+            "s2c_dim:ET" : "s2c_EX:x38",
+            "s2c_dim:NF" : "$Z0030",
+            "s2c_dim:PO" : "$Z0020",
+            "s2c_dim:SO" : "s2c_SE:x44",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{SR.26.01.04.02, C0060, R0450}",
+            "Label" : "SR.26.01.04.02 - Net solvency capital requirement|Securitisation positions|Z Axis:",
+            "Values" : ""
+          }
+        },
+        "C0060_R0461" : {
+          "dimensions" : {
+            "s2c_dim:AO" : "$Z0010",
+            "s2c_dim:CM" : "s2c_CS:x1",
+            "s2c_dim:EA" : "s2c_VM:x23",
+            "s2c_dim:ET" : "s2c_EX:x46",
+            "s2c_dim:NF" : "$Z0030",
+            "s2c_dim:PO" : "$Z0020",
+            "s2c_dim:SO" : "s2c_SE:x44",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{SR.26.01.04.02, C0060, R0461}",
+            "Label" : "SR.26.01.04.02 - Net solvency capital requirement|Senior STS securitisation|Z Axis:",
+            "Values" : ""
+          }
+        },
+        "C0060_R0462" : {
+          "dimensions" : {
+            "s2c_dim:AO" : "$Z0010",
+            "s2c_dim:CM" : "s2c_CS:x1",
+            "s2c_dim:EA" : "s2c_VM:x23",
+            "s2c_dim:ET" : "s2c_EX:x47",
+            "s2c_dim:NF" : "$Z0030",
+            "s2c_dim:PO" : "$Z0020",
+            "s2c_dim:SO" : "s2c_SE:x44",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{SR.26.01.04.02, C0060, R0462}",
+            "Label" : "SR.26.01.04.02 - Net solvency capital requirement|Non-senior STS securitisation|Z Axis:",
+            "Values" : ""
+          }
+        },
+        "C0060_R0463" : {
+          "dimensions" : {
+            "s2c_dim:AO" : "$Z0010",
+            "s2c_dim:CM" : "s2c_CS:x1",
+            "s2c_dim:EA" : "s2c_VM:x23",
+            "s2c_dim:ET" : "s2c_EX:x71",
+            "s2c_dim:NF" : "$Z0030",
+            "s2c_dim:PO" : "$Z0020",
+            "s2c_dim:SO" : "s2c_SE:x44",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{SR.26.01.04.02, C0060, R0463}",
+            "Label" : "SR.26.01.04.02 - Net solvency capital requirement|Senior non-STS securitisation|Z Axis:",
+            "Values" : ""
+          }
+        },
+        "C0060_R0464" : {
+          "dimensions" : {
+            "s2c_dim:AO" : "$Z0010",
+            "s2c_dim:CM" : "s2c_CS:x1",
+            "s2c_dim:EA" : "s2c_VM:x23",
+            "s2c_dim:ET" : "s2c_EX:x70",
+            "s2c_dim:NF" : "$Z0030",
+            "s2c_dim:PO" : "$Z0020",
+            "s2c_dim:SO" : "s2c_SE:x44",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{SR.26.01.04.02, C0060, R0464}",
+            "Label" : "SR.26.01.04.02 - Net solvency capital requirement|Non-senior non-STS securitisation|Z Axis:",
+            "Values" : ""
+          }
+        },
+        "C0060_R0480" : {
+          "dimensions" : {
+            "s2c_dim:AO" : "$Z0010",
+            "s2c_dim:CM" : "s2c_CS:x1",
+            "s2c_dim:EA" : "s2c_VM:x23",
+            "s2c_dim:ET" : "s2c_EX:x41",
+            "s2c_dim:NF" : "$Z0030",
+            "s2c_dim:PO" : "$Z0020",
+            "s2c_dim:SO" : "s2c_SE:x44",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{SR.26.01.04.02, C0060, R0480}",
+            "Label" : "SR.26.01.04.02 - Net solvency capital requirement|Resecuritisations|Z Axis:",
+            "Values" : ""
+          }
+        },
+        "C0060_R0481" : {
+          "dimensions" : {
+            "s2c_dim:AO" : "$Z0010",
+            "s2c_dim:CM" : "s2c_CS:x1",
+            "s2c_dim:EA" : "s2c_VM:x23",
+            "s2c_dim:ET" : "s2c_EX:x48",
+            "s2c_dim:NF" : "$Z0030",
+            "s2c_dim:PO" : "$Z0020",
+            "s2c_dim:SO" : "s2c_SE:x44",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{SR.26.01.04.02, C0060, R0481}",
+            "Label" : "SR.26.01.04.02 - Net solvency capital requirement|Other securitisation|Z Axis:",
+            "Values" : ""
+          }
+        },
+        "C0060_R0482" : {
+          "dimensions" : {
+            "s2c_dim:AO" : "$Z0010",
+            "s2c_dim:CM" : "s2c_CS:x1",
+            "s2c_dim:EA" : "s2c_VM:x23",
+            "s2c_dim:ET" : "s2c_EX:x49",
+            "s2c_dim:NF" : "$Z0030",
+            "s2c_dim:PO" : "$Z0020",
+            "s2c_dim:SO" : "s2c_SE:x44",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{SR.26.01.04.02, C0060, R0482}",
+            "Label" : "SR.26.01.04.02 - Net solvency capital requirement|Transitional type 1 securitisation|Z Axis:",
+            "Values" : ""
+          }
+        },
+        "C0060_R0483" : {
+          "dimensions" : {
+            "s2c_dim:AO" : "$Z0010",
+            "s2c_dim:CM" : "s2c_CS:x1",
+            "s2c_dim:EA" : "s2c_VM:x23",
+            "s2c_dim:ET" : "s2c_EX:x50",
+            "s2c_dim:NF" : "$Z0030",
+            "s2c_dim:PO" : "$Z0020",
+            "s2c_dim:SO" : "s2c_SE:x44",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{SR.26.01.04.02, C0060, R0483}",
+            "Label" : "SR.26.01.04.02 - Net solvency capital requirement|Guaranteed STS securitisation|Z Axis:",
+            "Values" : ""
+          }
+        },
+        "C0060_R0500" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi686",
+            "s2c_dim:AO" : "$Z0010",
+            "s2c_dim:CM" : "s2c_CS:x1",
+            "s2c_dim:EA" : "s2c_VM:x23",
+            "s2c_dim:NF" : "$Z0030",
+            "s2c_dim:PO" : "$Z0020",
+            "s2c_dim:RT" : "s2c_RT:x98",
+            "s2c_dim:SO" : "s2c_SE:x44",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{SR.26.01.04.02, C0060, R0500}",
+            "Label" : "SR.26.01.04.02 - Net solvency capital requirement|Market risk concentrations|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0060_R0600" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi686",
+            "s2c_dim:AO" : "$Z0010",
+            "s2c_dim:CM" : "s2c_CS:x1",
+            "s2c_dim:EA" : "s2c_VM:x23",
+            "s2c_dim:NF" : "$Z0030",
+            "s2c_dim:PO" : "$Z0020",
+            "s2c_dim:RT" : "s2c_RT:x25",
+            "s2c_dim:SO" : "s2c_SE:x44",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{SR.26.01.04.02, C0060, R0600}",
+            "Label" : "SR.26.01.04.02 - Net solvency capital requirement|Currency risk|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0060_R0610" : {
+          "dimensions" : {
+            "s2c_dim:AO" : "$Z0010",
+            "s2c_dim:CM" : "s2c_CS:x1",
+            "s2c_dim:EA" : "s2c_VM:x23",
+            "s2c_dim:NF" : "$Z0030",
+            "s2c_dim:PO" : "$Z0020",
+            "s2c_dim:RT" : "s2c_RT:x156",
+            "s2c_dim:SO" : "s2c_SE:x44",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{SR.26.01.04.02, C0060, R0610}",
+            "Label" : "SR.26.01.04.02 - Net solvency capital requirement|increase in the value of the foreign currency|Z Axis:",
+            "Values" : ""
+          }
+        },
+        "C0060_R0620" : {
+          "dimensions" : {
+            "s2c_dim:AO" : "$Z0010",
+            "s2c_dim:CM" : "s2c_CS:x1",
+            "s2c_dim:EA" : "s2c_VM:x23",
+            "s2c_dim:NF" : "$Z0030",
+            "s2c_dim:PO" : "$Z0020",
+            "s2c_dim:RT" : "s2c_RT:x157",
+            "s2c_dim:SO" : "s2c_SE:x44",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{SR.26.01.04.02, C0060, R0620}",
+            "Label" : "SR.26.01.04.02 - Net solvency capital requirement|decrease in the value of the foreign currency|Z Axis:",
+            "Values" : ""
+          }
+        },
+        "C0060_R0700" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi686",
+            "s2c_dim:AO" : "$Z0010",
+            "s2c_dim:CM" : "s2c_CS:x1",
+            "s2c_dim:DV" : "s2c_RT:x29",
+            "s2c_dim:EA" : "s2c_VM:x23",
+            "s2c_dim:NF" : "$Z0030",
+            "s2c_dim:PO" : "$Z0020",
+            "s2c_dim:RT" : "s2c_RT:x97",
+            "s2c_dim:SO" : "s2c_SE:x44",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{SR.26.01.04.02, C0060, R0700}",
+            "Label" : "SR.26.01.04.02 - Net solvency capital requirement|Diversification within market risk module|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0060_R0800" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi686",
+            "s2c_dim:AO" : "$Z0010",
+            "s2c_dim:CM" : "s2c_CS:x1",
+            "s2c_dim:EA" : "s2c_VM:x23",
+            "s2c_dim:NF" : "$Z0030",
+            "s2c_dim:PO" : "$Z0020",
+            "s2c_dim:RT" : "s2c_RT:x97",
+            "s2c_dim:SO" : "s2c_SE:x44",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{SR.26.01.04.02, C0060, R0800}",
+            "Label" : "SR.26.01.04.02 - Net solvency capital requirement|Total market risk|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0080_R0100" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi686",
+            "s2c_dim:AO" : "$Z0010",
+            "s2c_dim:CM" : "s2c_CS:x1",
+            "s2c_dim:EA" : "s2c_VM:x20",
+            "s2c_dim:NF" : "$Z0030",
+            "s2c_dim:PO" : "$Z0020",
+            "s2c_dim:RT" : "s2c_RT:x70",
+            "s2c_dim:SO" : "s2c_SE:x44",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{SR.26.01.04.02, C0080, R0100}",
+            "Label" : "SR.26.01.04.02 - Gross solvency capital requirement|Interest rate risk|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0080_R0110" : {
+          "dimensions" : {
+            "s2c_dim:AO" : "$Z0010",
+            "s2c_dim:CM" : "s2c_CS:x1",
+            "s2c_dim:EA" : "s2c_VM:x20",
+            "s2c_dim:NF" : "$Z0030",
+            "s2c_dim:PO" : "$Z0020",
+            "s2c_dim:RT" : "s2c_RT:x69",
+            "s2c_dim:SO" : "s2c_SE:x44",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{SR.26.01.04.02, C0080, R0110}",
+            "Label" : "SR.26.01.04.02 - Gross solvency capital requirement|interest rate down shock|Z Axis:",
+            "Values" : ""
+          }
+        },
+        "C0080_R0120" : {
+          "dimensions" : {
+            "s2c_dim:AO" : "$Z0010",
+            "s2c_dim:CM" : "s2c_CS:x1",
+            "s2c_dim:EA" : "s2c_VM:x20",
+            "s2c_dim:NF" : "$Z0030",
+            "s2c_dim:PO" : "$Z0020",
+            "s2c_dim:RT" : "s2c_RT:x71",
+            "s2c_dim:SO" : "s2c_SE:x44",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{SR.26.01.04.02, C0080, R0120}",
+            "Label" : "SR.26.01.04.02 - Gross solvency capital requirement|interest rate up shock|Z Axis:",
+            "Values" : ""
+          }
+        },
+        "C0080_R0200" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi686",
+            "s2c_dim:AO" : "$Z0010",
+            "s2c_dim:CM" : "s2c_CS:x1",
+            "s2c_dim:EA" : "s2c_VM:x20",
+            "s2c_dim:NF" : "$Z0030",
+            "s2c_dim:PO" : "$Z0020",
+            "s2c_dim:RT" : "s2c_RT:x32",
+            "s2c_dim:SO" : "s2c_SE:x44",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{SR.26.01.04.02, C0080, R0200}",
+            "Label" : "SR.26.01.04.02 - Gross solvency capital requirement|Equity risk|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0080_R0210" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi667",
+            "s2c_dim:AO" : "$Z0010",
+            "s2c_dim:CM" : "s2c_CS:x1",
+            "s2c_dim:EA" : "s2c_VM:x20",
+            "s2c_dim:ET" : "s2c_EX:x30",
+            "s2c_dim:NF" : "$Z0030",
+            "s2c_dim:PO" : "$Z0020",
+            "s2c_dim:SO" : "s2c_SE:x44",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{SR.26.01.04.02, C0080, R0210}",
+            "Label" : "SR.26.01.04.02 - Gross solvency capital requirement|type 1 equities|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0080_R0250" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi667",
+            "s2c_dim:AO" : "$Z0010",
+            "s2c_dim:CM" : "s2c_CS:x1",
+            "s2c_dim:EA" : "s2c_VM:x20",
+            "s2c_dim:ET" : "s2c_EX:x31",
+            "s2c_dim:NF" : "$Z0030",
+            "s2c_dim:PO" : "$Z0020",
+            "s2c_dim:SO" : "s2c_SE:x44",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{SR.26.01.04.02, C0080, R0250}",
+            "Label" : "SR.26.01.04.02 - Gross solvency capital requirement|type 2 equities|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0080_R0291" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi667",
+            "s2c_dim:AO" : "$Z0010",
+            "s2c_dim:CM" : "s2c_CS:x1",
+            "s2c_dim:EA" : "s2c_VM:x20",
+            "s2c_dim:ET" : "s2c_EX:x42",
+            "s2c_dim:NF" : "$Z0030",
+            "s2c_dim:PO" : "$Z0020",
+            "s2c_dim:SO" : "s2c_SE:x44",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{SR.26.01.04.02, C0080, R0291}",
+            "Label" : "SR.26.01.04.02 - Gross solvency capital requirement|qualifying infrastructure corporate equities|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0080_R0292" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi667",
+            "s2c_dim:AO" : "$Z0010",
+            "s2c_dim:CM" : "s2c_CS:x1",
+            "s2c_dim:EA" : "s2c_VM:x20",
+            "s2c_dim:ET" : "s2c_EX:x45",
+            "s2c_dim:NF" : "$Z0030",
+            "s2c_dim:PO" : "$Z0020",
+            "s2c_dim:SO" : "s2c_SE:x44",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{SR.26.01.04.02, C0080, R0292}",
+            "Label" : "SR.26.01.04.02 - Gross solvency capital requirement|qualifying infrastructure equities other than corporate|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0080_R0300" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi686",
+            "s2c_dim:AO" : "$Z0010",
+            "s2c_dim:CM" : "s2c_CS:x1",
+            "s2c_dim:EA" : "s2c_VM:x20",
+            "s2c_dim:NF" : "$Z0030",
+            "s2c_dim:PO" : "$Z0020",
+            "s2c_dim:RT" : "s2c_RT:x128",
+            "s2c_dim:SO" : "s2c_SE:x44",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{SR.26.01.04.02, C0080, R0300}",
+            "Label" : "SR.26.01.04.02 - Gross solvency capital requirement|Property risk|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0080_R0400" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi686",
+            "s2c_dim:AO" : "$Z0010",
+            "s2c_dim:CM" : "s2c_CS:x1",
+            "s2c_dim:EA" : "s2c_VM:x20",
+            "s2c_dim:NF" : "$Z0030",
+            "s2c_dim:PO" : "$Z0020",
+            "s2c_dim:RT" : "s2c_RT:x141",
+            "s2c_dim:SO" : "s2c_SE:x44",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{SR.26.01.04.02, C0080, R0400}",
+            "Label" : "SR.26.01.04.02 - Gross solvency capital requirement|Spread risk|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0080_R0410" : {
+          "dimensions" : {
+            "s2c_dim:AO" : "$Z0010",
+            "s2c_dim:CM" : "s2c_CS:x1",
+            "s2c_dim:EA" : "s2c_VM:x20",
+            "s2c_dim:ET" : "s2c_EX:x34",
+            "s2c_dim:NF" : "$Z0030",
+            "s2c_dim:PO" : "$Z0020",
+            "s2c_dim:SO" : "s2c_SE:x44",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{SR.26.01.04.02, C0080, R0410}",
+            "Label" : "SR.26.01.04.02 - Gross solvency capital requirement|bonds and loans|Z Axis:",
+            "Values" : ""
+          }
+        },
+        "C0080_R0412" : {
+          "dimensions" : {
+            "s2c_dim:AO" : "$Z0010",
+            "s2c_dim:CM" : "s2c_CS:x1",
+            "s2c_dim:EA" : "s2c_VM:x20",
+            "s2c_dim:ET" : "s2c_EX:x36",
+            "s2c_dim:NF" : "$Z0030",
+            "s2c_dim:PO" : "$Z0020",
+            "s2c_dim:SO" : "s2c_SE:x44",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{SR.26.01.04.02, C0080, R0412}",
+            "Label" : "SR.26.01.04.02 - Gross solvency capital requirement|loans and bonds (other than qualifying investment infrastructure and infrastructure corporate)|Z Axis:",
+            "Values" : ""
+          }
+        },
+        "C0080_R0413" : {
+          "dimensions" : {
+            "s2c_dim:AO" : "$Z0010",
+            "s2c_dim:CM" : "s2c_CS:x1",
+            "s2c_dim:EA" : "s2c_VM:x20",
+            "s2c_dim:ET" : "s2c_EX:x44",
+            "s2c_dim:NF" : "$Z0030",
+            "s2c_dim:PO" : "$Z0020",
+            "s2c_dim:SO" : "s2c_SE:x44",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{SR.26.01.04.02, C0080, R0413}",
+            "Label" : "SR.26.01.04.02 - Gross solvency capital requirement|loans and bonds (qualifying investment infrastructure other than infrastructure corporate)|Z Axis:",
+            "Values" : ""
+          }
+        },
+        "C0080_R0414" : {
+          "dimensions" : {
+            "s2c_dim:AO" : "$Z0010",
+            "s2c_dim:CM" : "s2c_CS:x1",
+            "s2c_dim:EA" : "s2c_VM:x20",
+            "s2c_dim:ET" : "s2c_EX:x43",
+            "s2c_dim:NF" : "$Z0030",
+            "s2c_dim:PO" : "$Z0020",
+            "s2c_dim:SO" : "s2c_SE:x44",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{SR.26.01.04.02, C0080, R0414}",
+            "Label" : "SR.26.01.04.02 - Gross solvency capital requirement|loans and bonds (qualifying infrastructure corporate investment)|Z Axis:",
+            "Values" : ""
+          }
+        },
+        "C0080_R0420" : {
+          "dimensions" : {
+            "s2c_dim:AO" : "$Z0010",
+            "s2c_dim:CM" : "s2c_CS:x1",
+            "s2c_dim:EA" : "s2c_VM:x20",
+            "s2c_dim:ET" : "s2c_EX:x37",
+            "s2c_dim:NF" : "$Z0030",
+            "s2c_dim:PO" : "$Z0020",
+            "s2c_dim:SO" : "s2c_SE:x44",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{SR.26.01.04.02, C0080, R0420}",
+            "Label" : "SR.26.01.04.02 - Gross solvency capital requirement|credit derivatives|Z Axis:",
+            "Values" : ""
+          }
+        },
+        "C0080_R0430" : {
+          "dimensions" : {
+            "s2c_dim:AO" : "$Z0010",
+            "s2c_dim:CM" : "s2c_CS:x1",
+            "s2c_dim:EA" : "s2c_VM:x20",
+            "s2c_dim:NF" : "$Z0030",
+            "s2c_dim:PO" : "$Z0020",
+            "s2c_dim:RT" : "s2c_RT:x142",
+            "s2c_dim:SO" : "s2c_SE:x44",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{SR.26.01.04.02, C0080, R0430}",
+            "Label" : "SR.26.01.04.02 - Gross solvency capital requirement|downward shock on credit derivatives|Z Axis:",
+            "Values" : ""
+          }
+        },
+        "C0080_R0440" : {
+          "dimensions" : {
+            "s2c_dim:AO" : "$Z0010",
+            "s2c_dim:CM" : "s2c_CS:x1",
+            "s2c_dim:EA" : "s2c_VM:x20",
+            "s2c_dim:NF" : "$Z0030",
+            "s2c_dim:PO" : "$Z0020",
+            "s2c_dim:RT" : "s2c_RT:x143",
+            "s2c_dim:SO" : "s2c_SE:x44",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{SR.26.01.04.02, C0080, R0440}",
+            "Label" : "SR.26.01.04.02 - Gross solvency capital requirement|upward shock on credit derivatives|Z Axis:",
+            "Values" : ""
+          }
+        },
+        "C0080_R0450" : {
+          "dimensions" : {
+            "s2c_dim:AO" : "$Z0010",
+            "s2c_dim:CM" : "s2c_CS:x1",
+            "s2c_dim:EA" : "s2c_VM:x20",
+            "s2c_dim:ET" : "s2c_EX:x38",
+            "s2c_dim:NF" : "$Z0030",
+            "s2c_dim:PO" : "$Z0020",
+            "s2c_dim:SO" : "s2c_SE:x44",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{SR.26.01.04.02, C0080, R0450}",
+            "Label" : "SR.26.01.04.02 - Gross solvency capital requirement|Securitisation positions|Z Axis:",
+            "Values" : ""
+          }
+        },
+        "C0080_R0461" : {
+          "dimensions" : {
+            "s2c_dim:AO" : "$Z0010",
+            "s2c_dim:CM" : "s2c_CS:x1",
+            "s2c_dim:EA" : "s2c_VM:x20",
+            "s2c_dim:ET" : "s2c_EX:x46",
+            "s2c_dim:NF" : "$Z0030",
+            "s2c_dim:PO" : "$Z0020",
+            "s2c_dim:SO" : "s2c_SE:x44",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{SR.26.01.04.02, C0080, R0461}",
+            "Label" : "SR.26.01.04.02 - Gross solvency capital requirement|Senior STS securitisation|Z Axis:",
+            "Values" : ""
+          }
+        },
+        "C0080_R0462" : {
+          "dimensions" : {
+            "s2c_dim:AO" : "$Z0010",
+            "s2c_dim:CM" : "s2c_CS:x1",
+            "s2c_dim:EA" : "s2c_VM:x20",
+            "s2c_dim:ET" : "s2c_EX:x47",
+            "s2c_dim:NF" : "$Z0030",
+            "s2c_dim:PO" : "$Z0020",
+            "s2c_dim:SO" : "s2c_SE:x44",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{SR.26.01.04.02, C0080, R0462}",
+            "Label" : "SR.26.01.04.02 - Gross solvency capital requirement|Non-senior STS securitisation|Z Axis:",
+            "Values" : ""
+          }
+        },
+        "C0080_R0463" : {
+          "dimensions" : {
+            "s2c_dim:AO" : "$Z0010",
+            "s2c_dim:CM" : "s2c_CS:x1",
+            "s2c_dim:EA" : "s2c_VM:x20",
+            "s2c_dim:ET" : "s2c_EX:x71",
+            "s2c_dim:NF" : "$Z0030",
+            "s2c_dim:PO" : "$Z0020",
+            "s2c_dim:SO" : "s2c_SE:x44",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{SR.26.01.04.02, C0080, R0463}",
+            "Label" : "SR.26.01.04.02 - Gross solvency capital requirement|Senior non-STS securitisation|Z Axis:",
+            "Values" : ""
+          }
+        },
+        "C0080_R0464" : {
+          "dimensions" : {
+            "s2c_dim:AO" : "$Z0010",
+            "s2c_dim:CM" : "s2c_CS:x1",
+            "s2c_dim:EA" : "s2c_VM:x20",
+            "s2c_dim:ET" : "s2c_EX:x70",
+            "s2c_dim:NF" : "$Z0030",
+            "s2c_dim:PO" : "$Z0020",
+            "s2c_dim:SO" : "s2c_SE:x44",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{SR.26.01.04.02, C0080, R0464}",
+            "Label" : "SR.26.01.04.02 - Gross solvency capital requirement|Non-senior non-STS securitisation|Z Axis:",
+            "Values" : ""
+          }
+        },
+        "C0080_R0480" : {
+          "dimensions" : {
+            "s2c_dim:AO" : "$Z0010",
+            "s2c_dim:CM" : "s2c_CS:x1",
+            "s2c_dim:EA" : "s2c_VM:x20",
+            "s2c_dim:ET" : "s2c_EX:x41",
+            "s2c_dim:NF" : "$Z0030",
+            "s2c_dim:PO" : "$Z0020",
+            "s2c_dim:SO" : "s2c_SE:x44",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{SR.26.01.04.02, C0080, R0480}",
+            "Label" : "SR.26.01.04.02 - Gross solvency capital requirement|Resecuritisations|Z Axis:",
+            "Values" : ""
+          }
+        },
+        "C0080_R0481" : {
+          "dimensions" : {
+            "s2c_dim:AO" : "$Z0010",
+            "s2c_dim:CM" : "s2c_CS:x1",
+            "s2c_dim:EA" : "s2c_VM:x20",
+            "s2c_dim:ET" : "s2c_EX:x48",
+            "s2c_dim:NF" : "$Z0030",
+            "s2c_dim:PO" : "$Z0020",
+            "s2c_dim:SO" : "s2c_SE:x44",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{SR.26.01.04.02, C0080, R0481}",
+            "Label" : "SR.26.01.04.02 - Gross solvency capital requirement|Other securitisation|Z Axis:",
+            "Values" : ""
+          }
+        },
+        "C0080_R0482" : {
+          "dimensions" : {
+            "s2c_dim:AO" : "$Z0010",
+            "s2c_dim:CM" : "s2c_CS:x1",
+            "s2c_dim:EA" : "s2c_VM:x20",
+            "s2c_dim:ET" : "s2c_EX:x49",
+            "s2c_dim:NF" : "$Z0030",
+            "s2c_dim:PO" : "$Z0020",
+            "s2c_dim:SO" : "s2c_SE:x44",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{SR.26.01.04.02, C0080, R0482}",
+            "Label" : "SR.26.01.04.02 - Gross solvency capital requirement|Transitional type 1 securitisation|Z Axis:",
+            "Values" : ""
+          }
+        },
+        "C0080_R0483" : {
+          "dimensions" : {
+            "s2c_dim:AO" : "$Z0010",
+            "s2c_dim:CM" : "s2c_CS:x1",
+            "s2c_dim:EA" : "s2c_VM:x20",
+            "s2c_dim:ET" : "s2c_EX:x50",
+            "s2c_dim:NF" : "$Z0030",
+            "s2c_dim:PO" : "$Z0020",
+            "s2c_dim:SO" : "s2c_SE:x44",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{SR.26.01.04.02, C0080, R0483}",
+            "Label" : "SR.26.01.04.02 - Gross solvency capital requirement|Guaranteed STS securitisation|Z Axis:",
+            "Values" : ""
+          }
+        },
+        "C0080_R0500" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi686",
+            "s2c_dim:AO" : "$Z0010",
+            "s2c_dim:CM" : "s2c_CS:x1",
+            "s2c_dim:EA" : "s2c_VM:x20",
+            "s2c_dim:NF" : "$Z0030",
+            "s2c_dim:PO" : "$Z0020",
+            "s2c_dim:RT" : "s2c_RT:x98",
+            "s2c_dim:SO" : "s2c_SE:x44",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{SR.26.01.04.02, C0080, R0500}",
+            "Label" : "SR.26.01.04.02 - Gross solvency capital requirement|Market risk concentrations|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0080_R0600" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi686",
+            "s2c_dim:AO" : "$Z0010",
+            "s2c_dim:CM" : "s2c_CS:x1",
+            "s2c_dim:EA" : "s2c_VM:x20",
+            "s2c_dim:NF" : "$Z0030",
+            "s2c_dim:PO" : "$Z0020",
+            "s2c_dim:RT" : "s2c_RT:x25",
+            "s2c_dim:SO" : "s2c_SE:x44",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{SR.26.01.04.02, C0080, R0600}",
+            "Label" : "SR.26.01.04.02 - Gross solvency capital requirement|Currency risk|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0080_R0610" : {
+          "dimensions" : {
+            "s2c_dim:AO" : "$Z0010",
+            "s2c_dim:CM" : "s2c_CS:x1",
+            "s2c_dim:EA" : "s2c_VM:x20",
+            "s2c_dim:NF" : "$Z0030",
+            "s2c_dim:PO" : "$Z0020",
+            "s2c_dim:RT" : "s2c_RT:x156",
+            "s2c_dim:SO" : "s2c_SE:x44",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{SR.26.01.04.02, C0080, R0610}",
+            "Label" : "SR.26.01.04.02 - Gross solvency capital requirement|increase in the value of the foreign currency|Z Axis:",
+            "Values" : ""
+          }
+        },
+        "C0080_R0620" : {
+          "dimensions" : {
+            "s2c_dim:AO" : "$Z0010",
+            "s2c_dim:CM" : "s2c_CS:x1",
+            "s2c_dim:EA" : "s2c_VM:x20",
+            "s2c_dim:NF" : "$Z0030",
+            "s2c_dim:PO" : "$Z0020",
+            "s2c_dim:RT" : "s2c_RT:x157",
+            "s2c_dim:SO" : "s2c_SE:x44",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{SR.26.01.04.02, C0080, R0620}",
+            "Label" : "SR.26.01.04.02 - Gross solvency capital requirement|decrease in the value of the foreign currency|Z Axis:",
+            "Values" : ""
+          }
+        },
+        "C0080_R0700" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi686",
+            "s2c_dim:AO" : "$Z0010",
+            "s2c_dim:CM" : "s2c_CS:x1",
+            "s2c_dim:DV" : "s2c_RT:x29",
+            "s2c_dim:EA" : "s2c_VM:x20",
+            "s2c_dim:NF" : "$Z0030",
+            "s2c_dim:PO" : "$Z0020",
+            "s2c_dim:RT" : "s2c_RT:x97",
+            "s2c_dim:SO" : "s2c_SE:x44",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{SR.26.01.04.02, C0080, R0700}",
+            "Label" : "SR.26.01.04.02 - Gross solvency capital requirement|Diversification within market risk module|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0080_R0800" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi686",
+            "s2c_dim:AO" : "$Z0010",
+            "s2c_dim:CM" : "s2c_CS:x1",
+            "s2c_dim:EA" : "s2c_VM:x20",
+            "s2c_dim:NF" : "$Z0030",
+            "s2c_dim:PO" : "$Z0020",
+            "s2c_dim:RT" : "s2c_RT:x97",
+            "s2c_dim:SO" : "s2c_SE:x44",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{SR.26.01.04.02, C0080, R0800}",
+            "Label" : "SR.26.01.04.02 - Gross solvency capital requirement|Total market risk|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "Z0010" : {
+          "s2md:documentation" : {
+            "CellCode" : "{SR.26.01.04.02, Z0010}",
+            "Label" : "Article 112",
+            "Key" : "s2c_dim:AO",
+            "Values" : {
+              "x0" : "No",
+              "x1" : "Yes",
+              "x2" : "Yes - biennial reporting"
+            }
+          }
+        },
+        "Z0020" : {
+          "s2md:documentation" : {
+            "CellCode" : "{SR.26.01.04.02, Z0020}",
+            "Label" : "Ring-fenced fund or remaining part",
+            "Key" : "s2c_dim:PO",
+            "Values" : {
+              "x40" : "Material Ring Fenced Funds",
+              "x54" : "Remaining part [other than MAPs and material RFFs]"
+            }
+          }
+        },
+        "Z0030" : {
+          "s2md:documentation" : {
+            "CellCode" : "{SR.26.01.04.02, Z0030}",
+            "Label" : "Fund Number",
+            "Key" : "s2c_dim:NF",
+            "Values" : "String"
+          }
+        }
+      }
+    }
+  }
+}

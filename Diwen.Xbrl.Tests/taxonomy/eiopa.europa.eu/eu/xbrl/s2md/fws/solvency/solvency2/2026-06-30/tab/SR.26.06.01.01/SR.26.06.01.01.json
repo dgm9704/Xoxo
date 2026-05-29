@@ -1,0 +1,346 @@
+{
+  "documentInfo" : {
+    "documentType" : "https://xbrl.org/2021/xbrl-csv",
+    "namespaces" : {
+      "s2md" : "http://eiopa.europa.eu/xbrl/s2md/",
+      "s2c_AM" : "http://eiopa.europa.eu/xbrl/s2c/dict/dom/AM",
+      "s2c_DI" : "http://eiopa.europa.eu/xbrl/s2c/dict/dom/DI",
+      "s2c_LB" : "http://eiopa.europa.eu/xbrl/s2c/dict/dom/LB",
+      "s2c_RT" : "http://eiopa.europa.eu/xbrl/s2c/dict/dom/RT",
+      "s2c_VM" : "http://eiopa.europa.eu/xbrl/s2c/dict/dom/VM",
+      "s2c_dim" : "http://eiopa.europa.eu/xbrl/s2c/dict/dim",
+      "s2md_met" : "http://eiopa.europa.eu/xbrl/s2md/dict/met"
+    }
+  },
+  "tableTemplates" : {
+    "SR.26.06.01.01" : {
+      "columns" : {
+        "C0020_R0100" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi658",
+            "s2c_dim:AO" : "$Z0010",
+            "s2c_dim:BL" : "s2c_LB:x64",
+            "s2c_dim:EA" : "s2c_VM:x23",
+            "s2c_dim:NF" : "$Z0030",
+            "s2c_dim:PO" : "$Z0020",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{SR.26.06.01.01, C0020, R0100}",
+            "Label" : "SR.26.06.01.01 - Capital requirement|Life gross technical provisions (excluding risk margin) (other than unit-linked or index-linked)|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0020_R0110" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi658",
+            "s2c_dim:AO" : "$Z0010",
+            "s2c_dim:BL" : "s2c_LB:x119",
+            "s2c_dim:EA" : "s2c_VM:x23",
+            "s2c_dim:NF" : "$Z0030",
+            "s2c_dim:PO" : "$Z0020",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{SR.26.06.01.01, C0020, R0110}",
+            "Label" : "SR.26.06.01.01 - Capital requirement|Life gross technical provisions unit-linked (excluding risk margin)|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0020_R0120" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi658",
+            "s2c_dim:AO" : "$Z0010",
+            "s2c_dim:BL" : "s2c_LB:x79",
+            "s2c_dim:EA" : "s2c_VM:x23",
+            "s2c_dim:NF" : "$Z0030",
+            "s2c_dim:PO" : "$Z0020",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{SR.26.06.01.01, C0020, R0120}",
+            "Label" : "SR.26.06.01.01 - Capital requirement|Non-life gross technical provisions (excluding risk margin)|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0020_R0130" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi149",
+            "s2c_dim:AO" : "$Z0010",
+            "s2c_dim:EA" : "s2c_VM:x23",
+            "s2c_dim:NF" : "$Z0030",
+            "s2c_dim:PO" : "$Z0020",
+            "s2c_dim:RT" : "s2c_RT:x123",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{SR.26.06.01.01, C0020, R0130}",
+            "Label" : "SR.26.06.01.01 - Capital requirement|Capital requirement for operational risk based on technical provisions|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0020_R0200" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi660",
+            "s2c_dim:AO" : "$Z0010",
+            "s2c_dim:BL" : "s2c_LB:x64",
+            "s2c_dim:DI" : "s2c_DI:x6",
+            "s2c_dim:EA" : "s2c_VM:x23",
+            "s2c_dim:NF" : "$Z0030",
+            "s2c_dim:PO" : "$Z0020",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{SR.26.06.01.01, C0020, R0200}",
+            "Label" : "SR.26.06.01.01 - Capital requirement|Earned life gross premiums (previous 12 months) (other than unit-linked or index-linked)|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0020_R0210" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi660",
+            "s2c_dim:AO" : "$Z0010",
+            "s2c_dim:BL" : "s2c_LB:x119",
+            "s2c_dim:DI" : "s2c_DI:x6",
+            "s2c_dim:EA" : "s2c_VM:x23",
+            "s2c_dim:NF" : "$Z0030",
+            "s2c_dim:PO" : "$Z0020",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{SR.26.06.01.01, C0020, R0210}",
+            "Label" : "SR.26.06.01.01 - Capital requirement|Earned life gross premiums unit-linked (previous 12 months)|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0020_R0220" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi660",
+            "s2c_dim:AO" : "$Z0010",
+            "s2c_dim:BL" : "s2c_LB:x79",
+            "s2c_dim:DI" : "s2c_DI:x6",
+            "s2c_dim:EA" : "s2c_VM:x23",
+            "s2c_dim:NF" : "$Z0030",
+            "s2c_dim:PO" : "$Z0020",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{SR.26.06.01.01, C0020, R0220}",
+            "Label" : "SR.26.06.01.01 - Capital requirement|Earned non-life gross premiums (previous 12 months)|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0020_R0230" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi660",
+            "s2c_dim:AO" : "$Z0010",
+            "s2c_dim:BL" : "s2c_LB:x64",
+            "s2c_dim:DI" : "s2c_DI:x7",
+            "s2c_dim:EA" : "s2c_VM:x23",
+            "s2c_dim:NF" : "$Z0030",
+            "s2c_dim:PO" : "$Z0020",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{SR.26.06.01.01, C0020, R0230}",
+            "Label" : "SR.26.06.01.01 - Capital requirement|Earned life gross premiums (12 months prior to the previous 12 months) (other than unit-linked or index-linked)|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0020_R0240" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi660",
+            "s2c_dim:AO" : "$Z0010",
+            "s2c_dim:BL" : "s2c_LB:x119",
+            "s2c_dim:DI" : "s2c_DI:x7",
+            "s2c_dim:EA" : "s2c_VM:x23",
+            "s2c_dim:NF" : "$Z0030",
+            "s2c_dim:PO" : "$Z0020",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{SR.26.06.01.01, C0020, R0240}",
+            "Label" : "SR.26.06.01.01 - Capital requirement|Earned life gross premiums unit-linked (12 months prior to the previous 12 months)|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0020_R0250" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi660",
+            "s2c_dim:AO" : "$Z0010",
+            "s2c_dim:BL" : "s2c_LB:x79",
+            "s2c_dim:DI" : "s2c_DI:x7",
+            "s2c_dim:EA" : "s2c_VM:x23",
+            "s2c_dim:NF" : "$Z0030",
+            "s2c_dim:PO" : "$Z0020",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{SR.26.06.01.01, C0020, R0250}",
+            "Label" : "SR.26.06.01.01 - Capital requirement|Earned non-life gross premiums (12 months prior to the previous 12 months)|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0020_R0260" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi149",
+            "s2c_dim:AO" : "$Z0010",
+            "s2c_dim:EA" : "s2c_VM:x23",
+            "s2c_dim:NF" : "$Z0030",
+            "s2c_dim:PO" : "$Z0020",
+            "s2c_dim:RT" : "s2c_RT:x122",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{SR.26.06.01.01, C0020, R0260}",
+            "Label" : "SR.26.06.01.01 - Capital requirement|Capital requirement for operational risk based on earned premiums|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0020_R0300" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi149",
+            "s2c_dim:AO" : "$Z0010",
+            "s2c_dim:EA" : "s2c_VM:x23",
+            "s2c_dim:NF" : "$Z0030",
+            "s2c_dim:PO" : "$Z0020",
+            "s2c_dim:TA" : "s2c_AM:x15",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{SR.26.06.01.01, C0020, R0300}",
+            "Label" : "SR.26.06.01.01 - Capital requirement|Capital requirement for operational risk charge before capping|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0020_R0310" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi149",
+            "s2c_dim:AO" : "$Z0010",
+            "s2c_dim:EA" : "s2c_VM:x23",
+            "s2c_dim:NF" : "$Z0030",
+            "s2c_dim:PO" : "$Z0020",
+            "s2c_dim:TA" : "s2c_AM:x66",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{SR.26.06.01.01, C0020, R0310}",
+            "Label" : "SR.26.06.01.01 - Capital requirement|Percentage of Basic Solvency Capital Requirement|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0020_R0320" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi149",
+            "s2c_dim:AO" : "$Z0010",
+            "s2c_dim:EA" : "s2c_VM:x23",
+            "s2c_dim:NF" : "$Z0030",
+            "s2c_dim:PO" : "$Z0020",
+            "s2c_dim:TA" : "s2c_AM:x93",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{SR.26.06.01.01, C0020, R0320}",
+            "Label" : "SR.26.06.01.01 - Capital requirement|Capital requirement for operational risk charge after capping|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0020_R0330" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi647",
+            "s2c_dim:AO" : "$Z0010",
+            "s2c_dim:DI" : "s2c_DI:x6",
+            "s2c_dim:EA" : "s2c_VM:x23",
+            "s2c_dim:NF" : "$Z0030",
+            "s2c_dim:PO" : "$Z0020",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{SR.26.06.01.01, C0020, R0330}",
+            "Label" : "SR.26.06.01.01 - Capital requirement|Expenses incurred in respect of unit linked business (previous 12 months)|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0020_R0340" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi728",
+            "s2c_dim:AO" : "$Z0010",
+            "s2c_dim:EA" : "s2c_VM:x23",
+            "s2c_dim:NF" : "$Z0030",
+            "s2c_dim:PO" : "$Z0020",
+            "s2c_dim:RT" : "s2c_RT:x121",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{SR.26.06.01.01, C0020, R0340}",
+            "Label" : "SR.26.06.01.01 - Capital requirement|Total capital requirement for operational risk|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "Z0010" : {
+          "s2md:documentation" : {
+            "CellCode" : "{SR.26.06.01.01, Z0010}",
+            "Label" : "Article 112",
+            "Key" : "s2c_dim:AO",
+            "Values" : {
+              "x0" : "No",
+              "x1" : "Yes",
+              "x2" : "Yes - biennial reporting"
+            }
+          }
+        },
+        "Z0020" : {
+          "s2md:documentation" : {
+            "CellCode" : "{SR.26.06.01.01, Z0020}",
+            "Label" : "Ring-fenced fund or remaining part",
+            "Key" : "s2c_dim:PO",
+            "Values" : {
+              "x40" : "Material Ring Fenced Funds",
+              "x54" : "Remaining part [other than MAPs and material RFFs]"
+            }
+          }
+        },
+        "Z0030" : {
+          "s2md:documentation" : {
+            "CellCode" : "{SR.26.06.01.01, Z0030}",
+            "Label" : "Fund Number",
+            "Key" : "s2c_dim:NF",
+            "Values" : "String"
+          }
+        }
+      }
+    }
+  }
+}

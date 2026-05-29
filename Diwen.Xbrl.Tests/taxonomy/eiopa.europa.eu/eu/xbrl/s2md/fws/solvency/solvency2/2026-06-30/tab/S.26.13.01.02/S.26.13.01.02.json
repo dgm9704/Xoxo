@@ -1,0 +1,108 @@
+{
+  "documentInfo" : {
+    "documentType" : "https://xbrl.org/2021/xbrl-csv",
+    "namespaces" : {
+      "s2md" : "http://eiopa.europa.eu/xbrl/s2md/",
+      "s2c_CG" : "http://eiopa.europa.eu/xbrl/s2c/dict/dom/CG",
+      "s2c_LB" : "http://eiopa.europa.eu/xbrl/s2c/dict/dom/LB",
+      "s2c_dim" : "http://eiopa.europa.eu/xbrl/s2c/dict/dim",
+      "s2md_met" : "http://eiopa.europa.eu/xbrl/s2md/dict/met"
+    }
+  },
+  "tableTemplates" : {
+    "S.26.13.01.02" : {
+      "columns" : {
+        "C0020" : {
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.13.01.02, C0020}",
+            "Label" : "Internal line of business",
+            "Key" : "s2c_dim:IL",
+            "Values" : "String"
+          }
+        },
+        "C0030" : {
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.13.01.02, C0030}",
+            "Label" : "Solvency II line of business",
+            "Key" : "s2c_dim:BL",
+            "Values" : {
+              "s2c_LB:x0" : "Total/NA",
+              "s2c_LB:x138" : "Motor vehicle liability insurance [direct business]",
+              "s2c_LB:x139" : "Other motor insurance [direct business]",
+              "s2c_LB:x140" : "Marine, aviation and transport insurance [direct business]",
+              "s2c_LB:x141" : "Fire and other damage to property insurance [direct business]",
+              "s2c_LB:x142" : "General liability insurance [direct business]",
+              "s2c_LB:x143" : "Credit and suretyship insurance [direct business]",
+              "s2c_LB:x144" : "Legal expenses insurance [direct business]",
+              "s2c_LB:x145" : "Assistance [direct business]",
+              "s2c_LB:x146" : "Miscellaneous financial loss [direct business]",
+              "s2c_LB:x151" : "Motor vehicle liability insurance [accepted proportional reinsurance]",
+              "s2c_LB:x152" : "Other motor insurance [accepted proportional reinsurance]",
+              "s2c_LB:x153" : "Marine, aviation and transport insurance [accepted proportional reinsurance]",
+              "s2c_LB:x154" : "Fire and other damage to property insurance [accepted proportional reinsurance]",
+              "s2c_LB:x155" : "General liability insurance [accepted proportional reinsurance]",
+              "s2c_LB:x156" : "Credit and suretyship insurance [accepted proportional reinsurance]",
+              "s2c_LB:x157" : "Legal expenses insurance [accepted proportional reinsurance]",
+              "s2c_LB:x158" : "Assistance [accepted proportional reinsurance]",
+              "s2c_LB:x159" : "Miscellaneous financial loss [accepted proportional reinsurance]",
+              "s2c_LB:x14" : "Casualty [accepted non-proportional reinsurance]",
+              "s2c_LB:x67" : "Marine, aviation, transport [accepted non-proportional reinsurance]",
+              "s2c_LB:x106" : "Property [accepted non-proportional reinsurance]",
+              "s2c_LB:x135" : "Medical expense insurance [direct business]",
+              "s2c_LB:x136" : "Income protection insurance [direct business]",
+              "s2c_LB:x137" : "Workers' compensation insurance [direct business]",
+              "s2c_LB:x148" : "Medical expense insurance [accepted proportional reinsurance]",
+              "s2c_LB:x149" : "Income protection insurance [accepted proportional reinsurance]",
+              "s2c_LB:x150" : "Workers' compensation insurance [accepted proportional reinsurance]",
+              "s2c_LB:x42" : "Health [accepted non-proportional reinsurance]"
+            }
+          }
+        },
+        "C0040" : {
+          "dimensions" : {
+            "concept" : "s2md_met:ei2707",
+            "s2c_dim:BL" : "$C0030",
+            "s2c_dim:IL" : "$C0020"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.13.01.02, C0040}",
+            "Label" : "S.26.13.01.02 - Premium risk indicator",
+            "Values" : {
+              "s2c_CG:x25" : "Yes [Y]",
+              "s2c_CG:x13" : "No [N]"
+            }
+          }
+        },
+        "C0050" : {
+          "dimensions" : {
+            "concept" : "s2md_met:ei2708",
+            "s2c_dim:BL" : "$C0030",
+            "s2c_dim:IL" : "$C0020"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.13.01.02, C0050}",
+            "Label" : "S.26.13.01.02 - Reserve risk indicator",
+            "Values" : {
+              "s2c_CG:x25" : "Yes [Y]",
+              "s2c_CG:x13" : "No [N]"
+            }
+          }
+        },
+        "C0060" : {
+          "dimensions" : {
+            "concept" : "s2md_met:pi2919",
+            "s2c_dim:BL" : "$C0030",
+            "s2c_dim:IL" : "$C0020"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.13.01.02, C0060}",
+            "Label" : "S.26.13.01.02 - Proportion of Internal Line of Business allocated to SII Line of Business",
+            "Values" : "Percent"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "decimalsPercentage"
+        }
+      }
+    }
+  }
+}

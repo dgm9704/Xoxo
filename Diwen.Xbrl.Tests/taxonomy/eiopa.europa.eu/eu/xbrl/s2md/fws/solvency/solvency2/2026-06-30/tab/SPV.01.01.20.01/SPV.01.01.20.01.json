@@ -1,0 +1,81 @@
+{
+  "documentInfo" : {
+    "documentType" : "https://xbrl.org/2021/xbrl-csv",
+    "namespaces" : {
+      "s2md" : "http://eiopa.europa.eu/xbrl/s2md/",
+      "s2c_CN" : "http://eiopa.europa.eu/xbrl/s2c/dict/dom/CN",
+      "s2md_met" : "http://eiopa.europa.eu/xbrl/s2md/dict/met"
+    }
+  },
+  "tableTemplates" : {
+    "SPV.01.01.20.01" : {
+      "columns" : {
+        "C0010_R0010" : {
+          "dimensions" : {
+            "concept" : "s2md_met:ei1633"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{SPV.01.01.20.01, C0010, R0010}",
+            "Label" : "SPV.01.01.20.01 - Reporting status|SPV.01.02.20 - Basic Information",
+            "Values" : {
+              "s2c_CN:x1" : "Reported"
+            }
+          }
+        },
+        "C0010_R0020" : {
+          "dimensions" : {
+            "concept" : "s2md_met:ei1634"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{SPV.01.01.20.01, C0010, R0020}",
+            "Label" : "SPV.01.01.20.01 - Reporting status|SPV.02.01.20 - Balance sheet",
+            "Values" : {
+              "s2c_CN:x1" : "Reported",
+              "s2c_CN:x0" : "Not reported"
+            }
+          }
+        },
+        "C0010_R0030" : {
+          "dimensions" : {
+            "concept" : "s2md_met:ei1674"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{SPV.01.01.20.01, C0010, R0030}",
+            "Label" : "SPV.01.01.20.01 - Reporting status|SPV.02.02.20 - Off-balance sheet",
+            "Values" : {
+              "s2c_CN:x1" : "Reported",
+              "s2c_CN:x20" : "Not reported as no off-balance sheet items",
+              "s2c_CN:x2" : "Not reported other reason"
+            }
+          }
+        },
+        "C0010_R0040" : {
+          "dimensions" : {
+            "concept" : "s2md_met:ei2177"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{SPV.01.01.20.01, C0010, R0040}",
+            "Label" : "SPV.01.01.20.01 - Reporting status|SPV.03.01.20 - Risks assumed",
+            "Values" : {
+              "s2c_CN:x1" : "Reported",
+              "s2c_CN:x0" : "Not reported"
+            }
+          }
+        },
+        "C0010_R0050" : {
+          "dimensions" : {
+            "concept" : "s2md_met:ei2178"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{SPV.01.01.20.01, C0010, R0050}",
+            "Label" : "SPV.01.01.20.01 - Reporting status|SPV.03.02.20 - Debt or other financing mechanism",
+            "Values" : {
+              "s2c_CN:x1" : "Reported",
+              "s2c_CN:x0" : "Not reported"
+            }
+          }
+        }
+      }
+    }
+  }
+}

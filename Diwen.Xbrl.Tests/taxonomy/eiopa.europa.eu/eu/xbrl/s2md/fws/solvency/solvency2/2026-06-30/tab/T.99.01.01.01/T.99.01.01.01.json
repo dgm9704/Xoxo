@@ -1,0 +1,168 @@
+{
+  "documentInfo" : {
+    "documentType" : "https://xbrl.org/2021/xbrl-csv",
+    "namespaces" : {
+      "s2md" : "http://eiopa.europa.eu/xbrl/s2md/",
+      "s2c_dim" : "http://eiopa.europa.eu/xbrl/s2c/dict/dim",
+      "s2md_met" : "http://eiopa.europa.eu/xbrl/s2md/dict/met"
+    }
+  },
+  "tableTemplates" : {
+    "T.99.01.01.01" : {
+      "columns" : {
+        "C0010" : {
+          "s2md:documentation" : {
+            "CellCode" : "{T.99.01.01.01, C0010}",
+            "Label" : "Table",
+            "Key" : "s2c_dim:YM",
+            "Values" : "String"
+          }
+        },
+        "C0020" : {
+          "s2md:documentation" : {
+            "CellCode" : "{T.99.01.01.01, C0020}",
+            "Label" : "X axis",
+            "Key" : "s2c_dim:YN",
+            "Values" : "String"
+          }
+        },
+        "C0030" : {
+          "s2md:documentation" : {
+            "CellCode" : "{T.99.01.01.01, C0030}",
+            "Label" : "Y axis",
+            "Key" : "s2c_dim:YO",
+            "Values" : "String"
+          }
+        },
+        "C0040" : {
+          "s2md:documentation" : {
+            "CellCode" : "{T.99.01.01.01, C0040}",
+            "Label" : "Z axis",
+            "Key" : "s2c_dim:YR",
+            "Values" : "String"
+          }
+        },
+        "C0050" : {
+          "dimensions" : {
+            "concept" : "s2md_met:si2512",
+            "s2c_dim:YM" : "$C0010",
+            "s2c_dim:YN" : "$C0020",
+            "s2c_dim:YO" : "$C0030",
+            "s2c_dim:YR" : "$C0040"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{T.99.01.01.01, C0050}",
+            "Label" : "T.99.01.01.01 - Comment",
+            "Values" : "String"
+          }
+        },
+        "C0060" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi2507",
+            "s2c_dim:YM" : "$C0010",
+            "s2c_dim:YN" : "$C0020",
+            "s2c_dim:YO" : "$C0030",
+            "s2c_dim:YR" : "$C0040"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{T.99.01.01.01, C0060}",
+            "Label" : "T.99.01.01.01 - Monetary",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetaryOpenTable"
+        },
+        "C0070" : {
+          "dimensions" : {
+            "concept" : "s2md_met:si2508",
+            "s2c_dim:YM" : "$C0010",
+            "s2c_dim:YN" : "$C0020",
+            "s2c_dim:YO" : "$C0030",
+            "s2c_dim:YR" : "$C0040"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{T.99.01.01.01, C0070}",
+            "Label" : "T.99.01.01.01 - String",
+            "Values" : "String"
+          }
+        },
+        "C0080" : {
+          "dimensions" : {
+            "concept" : "s2md_met:di2509",
+            "s2c_dim:YM" : "$C0010",
+            "s2c_dim:YN" : "$C0020",
+            "s2c_dim:YO" : "$C0030",
+            "s2c_dim:YR" : "$C0040"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{T.99.01.01.01, C0080}",
+            "Label" : "T.99.01.01.01 - Date",
+            "Values" : "Date"
+          }
+        },
+        "C0090" : {
+          "dimensions" : {
+            "concept" : "s2md_met:ii2510",
+            "s2c_dim:YM" : "$C0010",
+            "s2c_dim:YN" : "$C0020",
+            "s2c_dim:YO" : "$C0030",
+            "s2c_dim:YR" : "$C0040"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{T.99.01.01.01, C0090}",
+            "Label" : "T.99.01.01.01 - Integer",
+            "Values" : "Integer"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsInteger"
+        },
+        "C0100" : {
+          "dimensions" : {
+            "concept" : "s2md_met:ri2511",
+            "s2c_dim:YM" : "$C0010",
+            "s2c_dim:YN" : "$C0020",
+            "s2c_dim:YO" : "$C0030",
+            "s2c_dim:YR" : "$C0040"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{T.99.01.01.01, C0100}",
+            "Label" : "T.99.01.01.01 - Decimal",
+            "Values" : "Decimal"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "decimalsDecimal"
+        },
+        "C0110" : {
+          "dimensions" : {
+            "concept" : "s2md_met:pi1550",
+            "s2c_dim:YM" : "$C0010",
+            "s2c_dim:YN" : "$C0020",
+            "s2c_dim:YO" : "$C0030",
+            "s2c_dim:YR" : "$C0040"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{T.99.01.01.01, C0110}",
+            "Label" : "T.99.01.01.01 - Pure",
+            "Values" : "Percent"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "decimalsPercentage"
+        },
+        "C0120" : {
+          "dimensions" : {
+            "concept" : "s2md_met:bi7",
+            "s2c_dim:YM" : "$C0010",
+            "s2c_dim:YN" : "$C0020",
+            "s2c_dim:YO" : "$C0030",
+            "s2c_dim:YR" : "$C0040"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{T.99.01.01.01, C0120}",
+            "Label" : "T.99.01.01.01 - Boolean",
+            "Values" : "Boolean"
+          }
+        }
+      }
+    }
+  }
+}

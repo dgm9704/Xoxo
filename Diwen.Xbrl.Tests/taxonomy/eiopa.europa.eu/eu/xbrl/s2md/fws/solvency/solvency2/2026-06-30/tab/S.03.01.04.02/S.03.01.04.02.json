@@ -1,0 +1,159 @@
+{
+  "documentInfo" : {
+    "documentType" : "https://xbrl.org/2021/xbrl-csv",
+    "namespaces" : {
+      "s2md" : "http://eiopa.europa.eu/xbrl/s2md/",
+      "s2c_AM" : "http://eiopa.europa.eu/xbrl/s2c/dict/dom/AM",
+      "s2c_LB" : "http://eiopa.europa.eu/xbrl/s2c/dict/dom/LB",
+      "s2c_dim" : "http://eiopa.europa.eu/xbrl/s2c/dict/dim",
+      "s2md_met" : "http://eiopa.europa.eu/xbrl/s2md/dict/met"
+    }
+  },
+  "tableTemplates" : {
+    "S.03.01.04.02" : {
+      "columns" : {
+        "C0030_R0100" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi587",
+            "s2c_dim:TA" : "s2c_AM:x112",
+            "s2c_dim:VG" : "s2c_AM:x95"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.03.01.04.02, C0030, R0100}",
+            "Label" : "S.03.01.04.02 - Value of assets for which collateral is held|Collateral held for loans made or bonds purchased",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0030_R0110" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi586",
+            "s2c_dim:TA" : "s2c_AM:x112",
+            "s2c_dim:VG" : "s2c_AM:x95"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.03.01.04.02, C0030, R0110}",
+            "Label" : "S.03.01.04.02 - Value of assets for which collateral is held|Collateral held for derivatives",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0030_R0120" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi589",
+            "s2c_dim:TA" : "s2c_AM:x112",
+            "s2c_dim:VG" : "s2c_AM:x95"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.03.01.04.02, C0030, R0120}",
+            "Label" : "S.03.01.04.02 - Value of assets for which collateral is held|Assets pledged by reinsurers for ceded technical provisions",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0030_R0130" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi588",
+            "s2c_dim:TA" : "s2c_AM:x112",
+            "s2c_dim:VG" : "s2c_AM:x95"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.03.01.04.02, C0030, R0130}",
+            "Label" : "S.03.01.04.02 - Value of assets for which collateral is held|Other collateral held",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0030_R0200" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi584",
+            "s2c_dim:TA" : "s2c_AM:x112",
+            "s2c_dim:VG" : "s2c_AM:x95"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.03.01.04.02, C0030, R0200}",
+            "Label" : "S.03.01.04.02 - Value of assets for which collateral is held|Total collateral held",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0040_R0210" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi592",
+            "s2c_dim:TA" : "s2c_AM:x113",
+            "s2c_dim:VG" : "s2c_AM:x95"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.03.01.04.02, C0040, R0210}",
+            "Label" : "S.03.01.04.02 - Value of liabilities for which collateral is pledged|Collateral pledged for loans received or bonds issued",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0040_R0220" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi593",
+            "s2c_dim:TA" : "s2c_AM:x113",
+            "s2c_dim:VG" : "s2c_AM:x95"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.03.01.04.02, C0040, R0220}",
+            "Label" : "S.03.01.04.02 - Value of liabilities for which collateral is pledged|Collateral pledged for derivatives",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0040_R0230" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi594",
+            "s2c_dim:TA" : "s2c_AM:x113",
+            "s2c_dim:TB" : "s2c_LB:x109",
+            "s2c_dim:VG" : "s2c_AM:x95"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.03.01.04.02, C0040, R0230}",
+            "Label" : "S.03.01.04.02 - Value of liabilities for which collateral is pledged|Assets pledged to cedants for technical provisions (reinsurance accepted)",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0040_R0240" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi612",
+            "s2c_dim:TA" : "s2c_AM:x113",
+            "s2c_dim:VG" : "s2c_AM:x95"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.03.01.04.02, C0040, R0240}",
+            "Label" : "S.03.01.04.02 - Value of liabilities for which collateral is pledged|Other collateral pledged",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0040_R0300" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi590",
+            "s2c_dim:TA" : "s2c_AM:x113",
+            "s2c_dim:VG" : "s2c_AM:x95"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.03.01.04.02, C0040, R0300}",
+            "Label" : "S.03.01.04.02 - Value of liabilities for which collateral is pledged|Total collateral pledged",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        }
+      }
+    }
+  }
+}

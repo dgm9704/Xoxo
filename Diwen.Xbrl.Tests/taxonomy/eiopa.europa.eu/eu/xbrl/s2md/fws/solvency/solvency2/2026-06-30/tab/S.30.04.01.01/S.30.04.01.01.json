@@ -1,0 +1,212 @@
+{
+  "documentInfo" : {
+    "documentType" : "https://xbrl.org/2021/xbrl-csv",
+    "namespaces" : {
+      "s2md" : "http://eiopa.europa.eu/xbrl/s2md/",
+      "s2c_MC" : "http://eiopa.europa.eu/xbrl/s2c/dict/dom/MC",
+      "s2c_TB" : "http://eiopa.europa.eu/xbrl/s2c/dict/dom/TB",
+      "s2c_dim" : "http://eiopa.europa.eu/xbrl/s2c/dict/dim",
+      "s2md_met" : "http://eiopa.europa.eu/xbrl/s2md/dict/met"
+    }
+  },
+  "tableTemplates" : {
+    "S.30.04.01.01" : {
+      "columns" : {
+        "C0001" : {
+          "s2md:documentation" : {
+            "CellCode" : "{S.30.04.01.01, C0001}",
+            "Label" : "Line identification",
+            "Key" : "s2c_dim:YE",
+            "Values" : "String"
+          }
+        },
+        "C0010" : {
+          "s2md:documentation" : {
+            "CellCode" : "{S.30.04.01.01, C0010}",
+            "Label" : "Reinsurance program code",
+            "Key" : "s2c_dim:RE",
+            "Values" : "String"
+          }
+        },
+        "C0020" : {
+          "s2md:documentation" : {
+            "CellCode" : "{S.30.04.01.01, C0020}",
+            "Label" : "Treaty identification code",
+            "Key" : "s2c_dim:OD",
+            "Values" : "String"
+          }
+        },
+        "C0030" : {
+          "s2md:documentation" : {
+            "CellCode" : "{S.30.04.01.01, C0030}",
+            "Label" : "Progressive section number in treaty",
+            "Key" : "s2c_dim:ST",
+            "Values" : "String"
+          }
+        },
+        "C0040" : {
+          "s2md:documentation" : {
+            "CellCode" : "{S.30.04.01.01, C0040}",
+            "Label" : "Progressive number of surplus/layer in program",
+            "Key" : "s2c_dim:LP",
+            "Values" : "String"
+          }
+        },
+        "C0050" : {
+          "s2md:documentation" : {
+            "CellCode" : "{S.30.04.01.01, C0050}",
+            "Label" : "Code and type of code of the reinsurer",
+            "Key" : "s2c_dim:RF",
+            "Values" : "String"
+          }
+        },
+        "C0100" : {
+          "dimensions" : {
+            "concept" : "s2md_met:pi1301",
+            "s2c_dim:CC" : "s2c_TB:x36",
+            "s2c_dim:CV" : "$C0140",
+            "s2c_dim:LP" : "$C0040",
+            "s2c_dim:OD" : "$C0020",
+            "s2c_dim:RE" : "$C0010",
+            "s2c_dim:RF" : "$C0050",
+            "s2c_dim:ST" : "$C0030",
+            "s2c_dim:YE" : "$C0001"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.30.04.01.01, C0100}",
+            "Label" : "S.30.04.01.01 - Share reinsurer (%)|Z Axis:",
+            "Values" : "Percent"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "decimalsPercentage"
+        },
+        "C0110" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi1099",
+            "s2c_dim:CC" : "s2c_TB:x36",
+            "s2c_dim:CV" : "$C0140",
+            "s2c_dim:LP" : "$C0040",
+            "s2c_dim:OD" : "$C0020",
+            "s2c_dim:RE" : "$C0010",
+            "s2c_dim:RF" : "$C0050",
+            "s2c_dim:ST" : "$C0030",
+            "s2c_dim:YE" : "$C0001"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.30.04.01.01, C0110}",
+            "Label" : "S.30.04.01.01 - Exposure ceded for reinsurer's share (amount)|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetaryOpenTable"
+        },
+        "C0120" : {
+          "dimensions" : {
+            "concept" : "s2md_met:ei1592",
+            "s2c_dim:CC" : "s2c_TB:x36",
+            "s2c_dim:CV" : "$C0140",
+            "s2c_dim:LP" : "$C0040",
+            "s2c_dim:OD" : "$C0020",
+            "s2c_dim:RE" : "$C0010",
+            "s2c_dim:RF" : "$C0050",
+            "s2c_dim:ST" : "$C0030",
+            "s2c_dim:YE" : "$C0001"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.30.04.01.01, C0120}",
+            "Label" : "S.30.04.01.01 - Type of collateral (if applicable)|Z Axis:",
+            "Values" : {
+              "s2c_MC:x164" : "Cash or equivalent in Trust",
+              "s2c_MC:x165" : "Cash or Funds Withheld",
+              "s2c_MC:x166" : "Letter of Credit",
+              "s2c_MC:x167" : "Other than Cash or equivalent in Trust, Cash or Funds Withheld and Letter of Credit",
+              "s2c_MC:x0" : "Total/NA"
+            }
+          }
+        },
+        "C0130" : {
+          "dimensions" : {
+            "concept" : "s2md_met:si1861",
+            "s2c_dim:CC" : "s2c_TB:x36",
+            "s2c_dim:CV" : "$C0140",
+            "s2c_dim:LP" : "$C0040",
+            "s2c_dim:OD" : "$C0020",
+            "s2c_dim:RE" : "$C0010",
+            "s2c_dim:RF" : "$C0050",
+            "s2c_dim:ST" : "$C0030",
+            "s2c_dim:YE" : "$C0001"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.30.04.01.01, C0130}",
+            "Label" : "S.30.04.01.01 - Description of the reinsurers limit collateralised|Z Axis:",
+            "Values" : "String"
+          }
+        },
+        "C0140" : {
+          "s2md:documentation" : {
+            "CellCode" : "{S.30.04.01.01, C0140}",
+            "Label" : "Code and type of code of collateral provider (if applicable)",
+            "Key" : "s2c_dim:CV",
+            "Values" : "String"
+          }
+        },
+        "C0160" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi1094",
+            "s2c_dim:CC" : "s2c_TB:x36",
+            "s2c_dim:CV" : "$C0140",
+            "s2c_dim:LP" : "$C0040",
+            "s2c_dim:OD" : "$C0020",
+            "s2c_dim:RE" : "$C0010",
+            "s2c_dim:RF" : "$C0050",
+            "s2c_dim:ST" : "$C0030",
+            "s2c_dim:YE" : "$C0001"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.30.04.01.01, C0160}",
+            "Label" : "S.30.04.01.01 - Estimated outgoing reinsurance premium for reinsurer's share|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetaryOpenTable"
+        },
+        "C0170" : {
+          "dimensions" : {
+            "concept" : "s2md_met:si1349",
+            "s2c_dim:CC" : "s2c_TB:x36",
+            "s2c_dim:CV" : "$C0140",
+            "s2c_dim:LP" : "$C0040",
+            "s2c_dim:OD" : "$C0020",
+            "s2c_dim:RE" : "$C0010",
+            "s2c_dim:RF" : "$C0050",
+            "s2c_dim:ST" : "$C0030",
+            "s2c_dim:YE" : "$C0001"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.30.04.01.01, C0170}",
+            "Label" : "S.30.04.01.01 - Annotations|Z Axis:",
+            "Values" : "String"
+          }
+        },
+        "C0320" : {
+          "dimensions" : {
+            "concept" : "s2md_met:si2408",
+            "s2c_dim:CC" : "s2c_TB:x36",
+            "s2c_dim:CV" : "$C0140",
+            "s2c_dim:LP" : "$C0040",
+            "s2c_dim:OD" : "$C0020",
+            "s2c_dim:RE" : "$C0010",
+            "s2c_dim:RF" : "$C0050",
+            "s2c_dim:ST" : "$C0030",
+            "s2c_dim:YE" : "$C0001"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.30.04.01.01, C0320}",
+            "Label" : "S.30.04.01.01 - Collateral provider name (if applicable)|Z Axis:",
+            "Values" : "String"
+          }
+        }
+      }
+    }
+  }
+}

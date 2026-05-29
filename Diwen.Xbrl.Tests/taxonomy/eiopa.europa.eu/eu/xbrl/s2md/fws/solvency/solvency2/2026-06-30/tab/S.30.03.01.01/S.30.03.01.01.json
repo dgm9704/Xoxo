@@ -1,0 +1,860 @@
+{
+  "documentInfo" : {
+    "documentType" : "https://xbrl.org/2021/xbrl-csv",
+    "namespaces" : {
+      "s2md" : "http://eiopa.europa.eu/xbrl/s2md/",
+      "s2c_AM" : "http://eiopa.europa.eu/xbrl/s2c/dict/dom/AM",
+      "s2c_AP" : "http://eiopa.europa.eu/xbrl/s2c/dict/dom/AP",
+      "s2c_CU" : "http://eiopa.europa.eu/xbrl/s2c/dict/dom/CU",
+      "s2c_LB" : "http://eiopa.europa.eu/xbrl/s2c/dict/dom/LB",
+      "s2c_TB" : "http://eiopa.europa.eu/xbrl/s2c/dict/dom/TB",
+      "s2c_dim" : "http://eiopa.europa.eu/xbrl/s2c/dict/dim",
+      "s2md_met" : "http://eiopa.europa.eu/xbrl/s2md/dict/met"
+    }
+  },
+  "tableTemplates" : {
+    "S.30.03.01.01" : {
+      "columns" : {
+        "C0010" : {
+          "s2md:documentation" : {
+            "CellCode" : "{S.30.03.01.01, C0010}",
+            "Label" : "Reinsurance program code",
+            "Key" : "s2c_dim:RE",
+            "Values" : "String"
+          }
+        },
+        "C0020" : {
+          "s2md:documentation" : {
+            "CellCode" : "{S.30.03.01.01, C0020}",
+            "Label" : "Treaty identification code",
+            "Key" : "s2c_dim:OD",
+            "Values" : "String"
+          }
+        },
+        "C0030" : {
+          "s2md:documentation" : {
+            "CellCode" : "{S.30.03.01.01, C0030}",
+            "Label" : "Progressive section number in treaty",
+            "Key" : "s2c_dim:ST",
+            "Values" : "String"
+          }
+        },
+        "C0040" : {
+          "s2md:documentation" : {
+            "CellCode" : "{S.30.03.01.01, C0040}",
+            "Label" : "Progressive number of surplus/layer in program",
+            "Key" : "s2c_dim:LP",
+            "Values" : "String"
+          }
+        },
+        "C0050" : {
+          "dimensions" : {
+            "concept" : "s2md_met:ii1068",
+            "s2c_dim:BL" : "$C0070",
+            "s2c_dim:CC" : "s2c_TB:x36",
+            "s2c_dim:LP" : "$C0040",
+            "s2c_dim:OD" : "$C0020",
+            "s2c_dim:RE" : "$C0010",
+            "s2c_dim:ST" : "$C0030"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.30.03.01.01, C0050}",
+            "Label" : "S.30.03.01.01 - Quantity of surplus/layers in program|Z Axis:",
+            "Values" : "Integer"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsInteger"
+        },
+        "C0060" : {
+          "dimensions" : {
+            "concept" : "s2md_met:ei1399",
+            "s2c_dim:BL" : "$C0070",
+            "s2c_dim:CC" : "s2c_TB:x36",
+            "s2c_dim:LP" : "$C0040",
+            "s2c_dim:OD" : "$C0020",
+            "s2c_dim:RE" : "$C0010",
+            "s2c_dim:ST" : "$C0030"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.30.03.01.01, C0060}",
+            "Label" : "S.30.03.01.01 - Finite reinsurance or similar arrangements|Z Axis:",
+            "Values" : {
+              "s2c_TB:x22" : "Non-traditional or Finite RE",
+              "s2c_TB:x31" : "Other than non-traditional or Finite RE"
+            }
+          }
+        },
+        "C0070" : {
+          "s2md:documentation" : {
+            "CellCode" : "{S.30.03.01.01, C0070}",
+            "Label" : "Line of business",
+            "Key" : "s2c_dim:BL",
+            "Values" : {
+              "s2c_LB:x135" : "Medical expense insurance [direct business]",
+              "s2c_LB:x136" : "Income protection insurance [direct business]",
+              "s2c_LB:x137" : "Workers' compensation insurance [direct business]",
+              "s2c_LB:x138" : "Motor vehicle liability insurance [direct business]",
+              "s2c_LB:x139" : "Other motor insurance [direct business]",
+              "s2c_LB:x140" : "Marine, aviation and transport insurance [direct business]",
+              "s2c_LB:x141" : "Fire and other damage to property insurance [direct business]",
+              "s2c_LB:x142" : "General liability insurance [direct business]",
+              "s2c_LB:x143" : "Credit and suretyship insurance [direct business]",
+              "s2c_LB:x144" : "Legal expenses insurance [direct business]",
+              "s2c_LB:x145" : "Assistance [direct business]",
+              "s2c_LB:x146" : "Miscellaneous financial loss [direct business]",
+              "s2c_LB:x148" : "Medical expense insurance [accepted proportional reinsurance]",
+              "s2c_LB:x149" : "Income protection insurance [accepted proportional reinsurance]",
+              "s2c_LB:x150" : "Workers' compensation insurance [accepted proportional reinsurance]",
+              "s2c_LB:x151" : "Motor vehicle liability insurance [accepted proportional reinsurance]",
+              "s2c_LB:x152" : "Other motor insurance [accepted proportional reinsurance]",
+              "s2c_LB:x153" : "Marine, aviation and transport insurance [accepted proportional reinsurance]",
+              "s2c_LB:x154" : "Fire and other damage to property insurance [accepted proportional reinsurance]",
+              "s2c_LB:x155" : "General liability insurance [accepted proportional reinsurance]",
+              "s2c_LB:x156" : "Credit and suretyship insurance [accepted proportional reinsurance]",
+              "s2c_LB:x157" : "Legal expenses insurance [accepted proportional reinsurance]",
+              "s2c_LB:x158" : "Assistance [accepted proportional reinsurance]",
+              "s2c_LB:x159" : "Miscellaneous financial loss [accepted proportional reinsurance]",
+              "s2c_LB:x42" : "Health [accepted non-proportional reinsurance]",
+              "s2c_LB:x14" : "Casualty [accepted non-proportional reinsurance]",
+              "s2c_LB:x67" : "Marine, aviation, transport [accepted non-proportional reinsurance]",
+              "s2c_LB:x106" : "Property [accepted non-proportional reinsurance]",
+              "s2c_LB:x45" : "Health SLT",
+              "s2c_LB:x53" : "Insurance with profit participation",
+              "s2c_LB:x119" : "Unit-linked or index-linked",
+              "s2c_LB:x93" : "Other life",
+              "s2c_LB:x10" : "Annuities stemming from non-life insurance contracts and relating to health insurance obligations",
+              "s2c_LB:x11" : "Annuities stemming from non-life insurance contracts and relating to insurance obligations other than health insurance obligations",
+              "s2c_LB:x160" : "Health reinsurance",
+              "s2c_LB:x161" : "Life reinsurance",
+              "s2c_LB:x168" : "Multiline"
+            }
+          }
+        },
+        "C0080" : {
+          "dimensions" : {
+            "concept" : "s2md_met:si1367",
+            "s2c_dim:BL" : "$C0070",
+            "s2c_dim:CC" : "s2c_TB:x36",
+            "s2c_dim:LP" : "$C0040",
+            "s2c_dim:OD" : "$C0020",
+            "s2c_dim:RE" : "$C0010",
+            "s2c_dim:ST" : "$C0030"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.30.03.01.01, C0080}",
+            "Label" : "S.30.03.01.01 - Description risk category covered|Z Axis:",
+            "Values" : "String"
+          }
+        },
+        "C0090" : {
+          "dimensions" : {
+            "concept" : "s2md_met:ei1860",
+            "s2c_dim:BL" : "$C0070",
+            "s2c_dim:CC" : "s2c_TB:x36",
+            "s2c_dim:LP" : "$C0040",
+            "s2c_dim:OD" : "$C0020",
+            "s2c_dim:RE" : "$C0010",
+            "s2c_dim:ST" : "$C0030"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.30.03.01.01, C0090}",
+            "Label" : "S.30.03.01.01 - Type of reinsurance treaty|Z Axis:",
+            "Values" : {
+              "s2c_TB:x34" : "Quota share",
+              "s2c_TB:x45" : "Variable quota share",
+              "s2c_TB:x41" : "Surplus",
+              "s2c_TB:x8" : "Excess of loss [per event and per risk]",
+              "s2c_TB:x10" : "Excess of loss [per risk]",
+              "s2c_TB:x9" : "Excess of loss [per event]",
+              "s2c_TB:x11" : "Excess of loss \"back-up\"",
+              "s2c_TB:x52" : "Excess of loss with basic risk",
+              "s2c_TB:x35" : "Reinstatement cover",
+              "s2c_TB:x2" : "Aggregate excess of loss",
+              "s2c_TB:x44" : "Unlimited excess of loss",
+              "s2c_TB:x39" : "Stop loss [SL]",
+              "s2c_TB:x30" : "Other proportional treaties",
+              "s2c_TB:x29" : "Other non proportional treaties"
+            }
+          }
+        },
+        "C0100" : {
+          "dimensions" : {
+            "concept" : "s2md_met:si1355",
+            "s2c_dim:BL" : "$C0070",
+            "s2c_dim:CC" : "s2c_TB:x36",
+            "s2c_dim:LP" : "$C0040",
+            "s2c_dim:OD" : "$C0020",
+            "s2c_dim:RE" : "$C0010",
+            "s2c_dim:ST" : "$C0030"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.30.03.01.01, C0100}",
+            "Label" : "S.30.03.01.01 - Inclusion of catastrophic reinsurance cover|Z Axis:",
+            "Values" : "String"
+          }
+        },
+        "C0110" : {
+          "dimensions" : {
+            "concept" : "s2md_met:di1045",
+            "s2c_dim:BL" : "$C0070",
+            "s2c_dim:CC" : "s2c_TB:x36",
+            "s2c_dim:LP" : "$C0040",
+            "s2c_dim:OD" : "$C0020",
+            "s2c_dim:RE" : "$C0010",
+            "s2c_dim:ST" : "$C0030"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.30.03.01.01, C0110}",
+            "Label" : "S.30.03.01.01 - Validity period (start date)|Z Axis:",
+            "Values" : "Date"
+          }
+        },
+        "C0120" : {
+          "dimensions" : {
+            "concept" : "s2md_met:di1037",
+            "s2c_dim:BL" : "$C0070",
+            "s2c_dim:CC" : "s2c_TB:x36",
+            "s2c_dim:LP" : "$C0040",
+            "s2c_dim:OD" : "$C0020",
+            "s2c_dim:RE" : "$C0010",
+            "s2c_dim:ST" : "$C0030"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.30.03.01.01, C0120}",
+            "Label" : "S.30.03.01.01 - Validity period (expiry date)|Z Axis:",
+            "Values" : "Date"
+          }
+        },
+        "C0130" : {
+          "dimensions" : {
+            "concept" : "s2md_met:ei1026",
+            "s2c_dim:BL" : "$C0070",
+            "s2c_dim:CC" : "s2c_TB:x36",
+            "s2c_dim:LP" : "$C0040",
+            "s2c_dim:OD" : "$C0020",
+            "s2c_dim:RE" : "$C0010",
+            "s2c_dim:ST" : "$C0030"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.30.03.01.01, C0130}",
+            "Label" : "S.30.03.01.01 - Currency|Z Axis:",
+            "Values" : {
+              "s2c_CU:EUR" : "EUR",
+              "s2c_CU:AED" : "AED",
+              "s2c_CU:AFN" : "AFN",
+              "s2c_CU:ALL" : "ALL",
+              "s2c_CU:AMD" : "AMD",
+              "s2c_CU:ANG" : "ANG",
+              "s2c_CU:AOA" : "AOA",
+              "s2c_CU:ARS" : "ARS",
+              "s2c_CU:AUD" : "AUD",
+              "s2c_CU:AWG" : "AWG",
+              "s2c_CU:AZN" : "AZN",
+              "s2c_CU:BAM" : "BAM",
+              "s2c_CU:BBD" : "BBD",
+              "s2c_CU:BDT" : "BDT",
+              "s2c_CU:BGN" : "BGN",
+              "s2c_CU:BHD" : "BHD",
+              "s2c_CU:BIF" : "BIF",
+              "s2c_CU:BMD" : "BMD",
+              "s2c_CU:BND" : "BND",
+              "s2c_CU:BOB" : "BOB",
+              "s2c_CU:BOV" : "BOV",
+              "s2c_CU:BRL" : "BRL",
+              "s2c_CU:BSD" : "BSD",
+              "s2c_CU:BTN" : "BTN",
+              "s2c_CU:BWP" : "BWP",
+              "s2c_CU:BYN" : "BYN",
+              "s2c_CU:BYR" : "BYR",
+              "s2c_CU:BZD" : "BZD",
+              "s2c_CU:CAD" : "CAD",
+              "s2c_CU:CDF" : "CDF",
+              "s2c_CU:CHE" : "CHE",
+              "s2c_CU:CHF" : "CHF",
+              "s2c_CU:CHW" : "CHW",
+              "s2c_CU:CLF" : "CLF",
+              "s2c_CU:CLP" : "CLP",
+              "s2c_CU:CNY" : "CNY",
+              "s2c_CU:COP" : "COP",
+              "s2c_CU:COU" : "COU",
+              "s2c_CU:CRC" : "CRC",
+              "s2c_CU:CUC" : "CUC",
+              "s2c_CU:CUP" : "CUP",
+              "s2c_CU:CVE" : "CVE",
+              "s2c_CU:CZK" : "CZK",
+              "s2c_CU:DJF" : "DJF",
+              "s2c_CU:DKK" : "DKK",
+              "s2c_CU:DOP" : "DOP",
+              "s2c_CU:DZD" : "DZD",
+              "s2c_CU:EEK" : "EEK",
+              "s2c_CU:EGP" : "EGP",
+              "s2c_CU:ERN" : "ERN",
+              "s2c_CU:ETB" : "ETB",
+              "s2c_CU:FJD" : "FJD",
+              "s2c_CU:FKP" : "FKP",
+              "s2c_CU:GBP" : "GBP",
+              "s2c_CU:GEL" : "GEL",
+              "s2c_CU:GHS" : "GHS",
+              "s2c_CU:GIP" : "GIP",
+              "s2c_CU:GMD" : "GMD",
+              "s2c_CU:GNF" : "GNF",
+              "s2c_CU:GTQ" : "GTQ",
+              "s2c_CU:GYD" : "GYD",
+              "s2c_CU:HKD" : "HKD",
+              "s2c_CU:HNL" : "HNL",
+              "s2c_CU:HRK" : "HRK",
+              "s2c_CU:HTG" : "HTG",
+              "s2c_CU:HUF" : "HUF",
+              "s2c_CU:IDR" : "IDR",
+              "s2c_CU:ILS" : "ILS",
+              "s2c_CU:INR" : "INR",
+              "s2c_CU:IQD" : "IQD",
+              "s2c_CU:IRR" : "IRR",
+              "s2c_CU:ISK" : "ISK",
+              "s2c_CU:JMD" : "JMD",
+              "s2c_CU:JOD" : "JOD",
+              "s2c_CU:JPY" : "JPY",
+              "s2c_CU:KES" : "KES",
+              "s2c_CU:KGS" : "KGS",
+              "s2c_CU:KHR" : "KHR",
+              "s2c_CU:KMF" : "KMF",
+              "s2c_CU:KPW" : "KPW",
+              "s2c_CU:KRW" : "KRW",
+              "s2c_CU:KWD" : "KWD",
+              "s2c_CU:KYD" : "KYD",
+              "s2c_CU:KZT" : "KZT",
+              "s2c_CU:LAK" : "LAK",
+              "s2c_CU:LBP" : "LBP",
+              "s2c_CU:LKR" : "LKR",
+              "s2c_CU:LRD" : "LRD",
+              "s2c_CU:LSL" : "LSL",
+              "s2c_CU:LTL" : "LTL",
+              "s2c_CU:LVL" : "LVL",
+              "s2c_CU:LYD" : "LYD",
+              "s2c_CU:MAD" : "MAD",
+              "s2c_CU:MDL" : "MDL",
+              "s2c_CU:MGA" : "MGA",
+              "s2c_CU:MKD" : "MKD",
+              "s2c_CU:MMK" : "MMK",
+              "s2c_CU:MNT" : "MNT",
+              "s2c_CU:MOP" : "MOP",
+              "s2c_CU:MRO" : "MRO",
+              "s2c_CU:MRU" : "MRU",
+              "s2c_CU:MUR" : "MUR",
+              "s2c_CU:MVR" : "MVR",
+              "s2c_CU:MWK" : "MWK",
+              "s2c_CU:MXN" : "MXN",
+              "s2c_CU:MXV" : "MXV",
+              "s2c_CU:MYR" : "MYR",
+              "s2c_CU:MZN" : "MZN",
+              "s2c_CU:NAD" : "NAD",
+              "s2c_CU:NGN" : "NGN",
+              "s2c_CU:NIO" : "NIO",
+              "s2c_CU:NOK" : "NOK",
+              "s2c_CU:NPR" : "NPR",
+              "s2c_CU:NZD" : "NZD",
+              "s2c_CU:OMR" : "OMR",
+              "s2c_CU:PAB" : "PAB",
+              "s2c_CU:PEN" : "PEN",
+              "s2c_CU:PGK" : "PGK",
+              "s2c_CU:PHP" : "PHP",
+              "s2c_CU:PKR" : "PKR",
+              "s2c_CU:PLN" : "PLN",
+              "s2c_CU:PYG" : "PYG",
+              "s2c_CU:QAR" : "QAR",
+              "s2c_CU:RON" : "RON",
+              "s2c_CU:RSD" : "RSD",
+              "s2c_CU:RUB" : "RUB",
+              "s2c_CU:RWF" : "RWF",
+              "s2c_CU:SAR" : "SAR",
+              "s2c_CU:SBD" : "SBD",
+              "s2c_CU:SCR" : "SCR",
+              "s2c_CU:SDG" : "SDG",
+              "s2c_CU:SEK" : "SEK",
+              "s2c_CU:SGD" : "SGD",
+              "s2c_CU:SHP" : "SHP",
+              "s2c_CU:SLL" : "SLL",
+              "s2c_CU:SLE" : "SLE",
+              "s2c_CU:SOS" : "SOS",
+              "s2c_CU:SRD" : "SRD",
+              "s2c_CU:SSP" : "SSP",
+              "s2c_CU:STD" : "STD",
+              "s2c_CU:STN" : "STN",
+              "s2c_CU:SVC" : "SVC",
+              "s2c_CU:SYP" : "SYP",
+              "s2c_CU:SZL" : "SZL",
+              "s2c_CU:THB" : "THB",
+              "s2c_CU:TJS" : "TJS",
+              "s2c_CU:TMT" : "TMT",
+              "s2c_CU:TND" : "TND",
+              "s2c_CU:TOP" : "TOP",
+              "s2c_CU:TRY" : "TRY",
+              "s2c_CU:TTD" : "TTD",
+              "s2c_CU:TWD" : "TWD",
+              "s2c_CU:TZS" : "TZS",
+              "s2c_CU:UAH" : "UAH",
+              "s2c_CU:UGX" : "UGX",
+              "s2c_CU:USD" : "USD",
+              "s2c_CU:USN" : "USN",
+              "s2c_CU:USS" : "USS",
+              "s2c_CU:UYI" : "UYI",
+              "s2c_CU:UYU" : "UYU",
+              "s2c_CU:UYW" : "UYW",
+              "s2c_CU:UZS" : "UZS",
+              "s2c_CU:VEF" : "VEF",
+              "s2c_CU:VES" : "VES",
+              "s2c_CU:VND" : "VND",
+              "s2c_CU:VUV" : "VUV",
+              "s2c_CU:WST" : "WST",
+              "s2c_CU:XAF" : "XAF",
+              "s2c_CU:XAG" : "XAG",
+              "s2c_CU:XAU" : "XAU",
+              "s2c_CU:XBA" : "XBA",
+              "s2c_CU:XBB" : "XBB",
+              "s2c_CU:XBC" : "XBC",
+              "s2c_CU:XBD" : "XBD",
+              "s2c_CU:XCD" : "XCD",
+              "s2c_CU:XCG" : "XCG",
+              "s2c_CU:XDR" : "XDR",
+              "s2c_CU:XFU" : "XFU",
+              "s2c_CU:XOF" : "XOF",
+              "s2c_CU:XPD" : "XPD",
+              "s2c_CU:XPF" : "XPF",
+              "s2c_CU:XPT" : "XPT",
+              "s2c_CU:XSU" : "XSU",
+              "s2c_CU:XTS" : "XTS",
+              "s2c_CU:XUA" : "XUA",
+              "s2c_CU:YER" : "YER",
+              "s2c_CU:ZAR" : "ZAR",
+              "s2c_CU:ZMK" : "ZMK",
+              "s2c_CU:ZMW" : "ZMW",
+              "s2c_CU:ZWL" : "ZWL",
+              "s2c_CU:ZWG" : "ZWG",
+              "s2c_CU:x5" : "Temporary identifier for currency 1",
+              "s2c_CU:x6" : "Temporary identifier for currency 2",
+              "s2c_CU:x7" : "Temporary identifier for currency 3"
+            }
+          }
+        },
+        "C0140" : {
+          "dimensions" : {
+            "concept" : "s2md_met:ei1400",
+            "s2c_dim:BL" : "$C0070",
+            "s2c_dim:CC" : "s2c_TB:x36",
+            "s2c_dim:LP" : "$C0040",
+            "s2c_dim:OD" : "$C0020",
+            "s2c_dim:RE" : "$C0010",
+            "s2c_dim:ST" : "$C0030"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.30.03.01.01, C0140}",
+            "Label" : "S.30.03.01.01 - Type of underwriting model|Z Axis:",
+            "Values" : {
+              "s2c_TB:x40" : "Sum Insured [SI]",
+              "s2c_TB:x17" : "Maximum Possible Loss [MPL]",
+              "s2c_TB:x33" : "Probable Maximum Loss [PML]",
+              "s2c_TB:x7" : "Estimated Maximum Loss [EML]",
+              "s2c_TB:x32" : "Other than sum insured, maximum possible loss, probable maximum loss and estimated maximum loss"
+            }
+          }
+        },
+        "C0150" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi1093",
+            "s2c_dim:BL" : "$C0070",
+            "s2c_dim:CC" : "s2c_TB:x36",
+            "s2c_dim:LP" : "$C0040",
+            "s2c_dim:OD" : "$C0020",
+            "s2c_dim:RE" : "$C0010",
+            "s2c_dim:ST" : "$C0030"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.30.03.01.01, C0150}",
+            "Label" : "S.30.03.01.01 - Estimated Subject Premium income (XL-ESPI)|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetaryOpenTable"
+        },
+        "C0160" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi1094",
+            "s2c_dim:BL" : "$C0070",
+            "s2c_dim:CC" : "s2c_TB:x36",
+            "s2c_dim:LP" : "$C0040",
+            "s2c_dim:OD" : "$C0020",
+            "s2c_dim:RE" : "$C0010",
+            "s2c_dim:ST" : "$C0030"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.30.03.01.01, C0160}",
+            "Label" : "S.30.03.01.01 - Gross Estimated Treaty Premium Income (proportional and non proportional)|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetaryOpenTable"
+        },
+        "C0170" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi1089",
+            "s2c_dim:BL" : "$C0070",
+            "s2c_dim:CC" : "s2c_TB:x36",
+            "s2c_dim:LP" : "$C0040",
+            "s2c_dim:OD" : "$C0020",
+            "s2c_dim:RE" : "$C0010",
+            "s2c_dim:ST" : "$C0030"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.30.03.01.01, C0170}",
+            "Label" : "S.30.03.01.01 - Aggregate deductibles (amount)|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetaryOpenTable"
+        },
+        "C0180" : {
+          "dimensions" : {
+            "concept" : "s2md_met:pi1875",
+            "s2c_dim:BL" : "$C0070",
+            "s2c_dim:CC" : "s2c_TB:x36",
+            "s2c_dim:LP" : "$C0040",
+            "s2c_dim:OD" : "$C0020",
+            "s2c_dim:RE" : "$C0010",
+            "s2c_dim:ST" : "$C0030"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.30.03.01.01, C0180}",
+            "Label" : "S.30.03.01.01 - Aggregate deductibles (%)|Z Axis:",
+            "Values" : "Percent"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "decimalsPercentage"
+        },
+        "C0190" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi1124",
+            "s2c_dim:BL" : "$C0070",
+            "s2c_dim:CC" : "s2c_TB:x36",
+            "s2c_dim:LP" : "$C0040",
+            "s2c_dim:OD" : "$C0020",
+            "s2c_dim:RE" : "$C0010",
+            "s2c_dim:ST" : "$C0030"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.30.03.01.01, C0190}",
+            "Label" : "S.30.03.01.01 - Retention or priority (amount)|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetaryOpenTable"
+        },
+        "C0200" : {
+          "dimensions" : {
+            "concept" : "s2md_met:pi1285",
+            "s2c_dim:BL" : "$C0070",
+            "s2c_dim:CC" : "s2c_TB:x36",
+            "s2c_dim:LP" : "$C0040",
+            "s2c_dim:OD" : "$C0020",
+            "s2c_dim:RE" : "$C0010",
+            "s2c_dim:ST" : "$C0030"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.30.03.01.01, C0200}",
+            "Label" : "S.30.03.01.01 - Retention or priority (%)|Z Axis:",
+            "Values" : "Percent"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "decimalsPercentage"
+        },
+        "C0210" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi1097",
+            "s2c_dim:BL" : "$C0070",
+            "s2c_dim:CC" : "s2c_TB:x36",
+            "s2c_dim:LP" : "$C0040",
+            "s2c_dim:OD" : "$C0020",
+            "s2c_dim:RE" : "$C0010",
+            "s2c_dim:ST" : "$C0030"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.30.03.01.01, C0210}",
+            "Label" : "S.30.03.01.01 - Limit (amount)|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetaryOpenTable"
+        },
+        "C0220" : {
+          "dimensions" : {
+            "concept" : "s2md_met:pi1284",
+            "s2c_dim:BL" : "$C0070",
+            "s2c_dim:CC" : "s2c_TB:x36",
+            "s2c_dim:LP" : "$C0040",
+            "s2c_dim:OD" : "$C0020",
+            "s2c_dim:RE" : "$C0010",
+            "s2c_dim:ST" : "$C0030"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.30.03.01.01, C0220}",
+            "Label" : "S.30.03.01.01 - Limit (%)|Z Axis:",
+            "Values" : "Percent"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "decimalsPercentage"
+        },
+        "C0230" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi1099",
+            "s2c_dim:BL" : "$C0070",
+            "s2c_dim:CC" : "s2c_TB:x36",
+            "s2c_dim:LP" : "$C0040",
+            "s2c_dim:OD" : "$C0020",
+            "s2c_dim:RE" : "$C0010",
+            "s2c_dim:ST" : "$C0030"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.30.03.01.01, C0230}",
+            "Label" : "S.30.03.01.01 - Maximum cover per risk or event|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetaryOpenTable"
+        },
+        "C0240" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi1098",
+            "s2c_dim:BL" : "$C0070",
+            "s2c_dim:CC" : "s2c_TB:x36",
+            "s2c_dim:LP" : "$C0040",
+            "s2c_dim:OD" : "$C0020",
+            "s2c_dim:RE" : "$C0010",
+            "s2c_dim:ST" : "$C0030"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.30.03.01.01, C0240}",
+            "Label" : "S.30.03.01.01 - Maximum cover per treaty|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetaryOpenTable"
+        },
+        "C0245" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi3082",
+            "s2c_dim:BL" : "$C0070",
+            "s2c_dim:CC" : "s2c_TB:x36",
+            "s2c_dim:LP" : "$C0040",
+            "s2c_dim:OD" : "$C0020",
+            "s2c_dim:RE" : "$C0010",
+            "s2c_dim:ST" : "$C0030"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.30.03.01.01, C0245}",
+            "Label" : "S.30.03.01.01 - Coverage of a layer covered by reinsurance|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetaryOpenTable"
+        },
+        "C0250" : {
+          "dimensions" : {
+            "concept" : "s2md_met:ii1591",
+            "s2c_dim:BL" : "$C0070",
+            "s2c_dim:CC" : "s2c_TB:x36",
+            "s2c_dim:LP" : "$C0040",
+            "s2c_dim:OD" : "$C0020",
+            "s2c_dim:RE" : "$C0010",
+            "s2c_dim:ST" : "$C0030"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.30.03.01.01, C0250}",
+            "Label" : "S.30.03.01.01 - Number of reinstatements|Z Axis:",
+            "Values" : "Integer"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsInteger"
+        },
+        "C0260" : {
+          "dimensions" : {
+            "concept" : "s2md_met:si1372",
+            "s2c_dim:BL" : "$C0070",
+            "s2c_dim:CC" : "s2c_TB:x36",
+            "s2c_dim:LP" : "$C0040",
+            "s2c_dim:OD" : "$C0020",
+            "s2c_dim:RE" : "$C0010",
+            "s2c_dim:ST" : "$C0030"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.30.03.01.01, C0260}",
+            "Label" : "S.30.03.01.01 - Description of reinstatements|Z Axis:",
+            "Values" : "String"
+          }
+        },
+        "C0360" : {
+          "dimensions" : {
+            "concept" : "s2md_met:pi1304",
+            "s2c_dim:BL" : "$C0070",
+            "s2c_dim:CC" : "s2c_TB:x36",
+            "s2c_dim:LP" : "$C0040",
+            "s2c_dim:OD" : "$C0020",
+            "s2c_dim:RE" : "$C0010",
+            "s2c_dim:ST" : "$C0030"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.30.03.01.01, C0360}",
+            "Label" : "S.30.03.01.01 - XL rate 1|Z Axis:",
+            "Values" : "Percent"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "decimalsPercentage"
+        },
+        "C0370" : {
+          "dimensions" : {
+            "concept" : "s2md_met:pi1305",
+            "s2c_dim:BL" : "$C0070",
+            "s2c_dim:CC" : "s2c_TB:x36",
+            "s2c_dim:LP" : "$C0040",
+            "s2c_dim:OD" : "$C0020",
+            "s2c_dim:RE" : "$C0010",
+            "s2c_dim:ST" : "$C0030"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.30.03.01.01, C0370}",
+            "Label" : "S.30.03.01.01 - XL rate 2|Z Axis:",
+            "Values" : "Percent"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "decimalsPercentage"
+        },
+        "C0380" : {
+          "dimensions" : {
+            "concept" : "s2md_met:ei1003",
+            "s2c_dim:BL" : "$C0070",
+            "s2c_dim:CC" : "s2c_TB:x36",
+            "s2c_dim:LP" : "$C0040",
+            "s2c_dim:OD" : "$C0020",
+            "s2c_dim:RE" : "$C0010",
+            "s2c_dim:ST" : "$C0030"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.30.03.01.01, C0380}",
+            "Label" : "S.30.03.01.01 - XL premium flat|Z Axis:",
+            "Values" : {
+              "s2c_AM:x14" : "Based on flat premium [Y]",
+              "s2c_AM:x58" : "Not based on a flat premium [N]"
+            }
+          }
+        },
+        "C0390" : {
+          "dimensions" : {
+            "concept" : "s2md_met:ei2729",
+            "s2c_dim:BL" : "$C0070",
+            "s2c_dim:CC" : "s2c_TB:x36",
+            "s2c_dim:LP" : "$C0040",
+            "s2c_dim:OD" : "$C0020",
+            "s2c_dim:RE" : "$C0010",
+            "s2c_dim:ST" : "$C0030"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.30.03.01.01, C0390}",
+            "Label" : "S.30.03.01.01 - Sliding scale commission|Z Axis:",
+            "Values" : {
+              "s2c_AP:x110" : "Sliding scale commission is used",
+              "s2c_AP:x111" : "Sliding scale commission is not used"
+            }
+          }
+        },
+        "C0400" : {
+          "dimensions" : {
+            "concept" : "s2md_met:pi2857",
+            "s2c_dim:BL" : "$C0070",
+            "s2c_dim:CC" : "s2c_TB:x36",
+            "s2c_dim:LP" : "$C0040",
+            "s2c_dim:OD" : "$C0020",
+            "s2c_dim:RE" : "$C0010",
+            "s2c_dim:ST" : "$C0030"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.30.03.01.01, C0400}",
+            "Label" : "S.30.03.01.01 - Minimum claim ratio on which the amount of sliding scale commission is dependant|Z Axis:",
+            "Values" : "Percent"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "decimalsPercentage"
+        },
+        "C0410" : {
+          "dimensions" : {
+            "concept" : "s2md_met:pi2858",
+            "s2c_dim:BL" : "$C0070",
+            "s2c_dim:CC" : "s2c_TB:x36",
+            "s2c_dim:LP" : "$C0040",
+            "s2c_dim:OD" : "$C0020",
+            "s2c_dim:RE" : "$C0010",
+            "s2c_dim:ST" : "$C0030"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.30.03.01.01, C0410}",
+            "Label" : "S.30.03.01.01 - Maximum claim ratio on which the amount of sliding scale commission is dependant|Z Axis:",
+            "Values" : "Percent"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "decimalsPercentage"
+        },
+        "C0420" : {
+          "dimensions" : {
+            "concept" : "s2md_met:pi2859",
+            "s2c_dim:BL" : "$C0070",
+            "s2c_dim:CC" : "s2c_TB:x36",
+            "s2c_dim:LP" : "$C0040",
+            "s2c_dim:OD" : "$C0020",
+            "s2c_dim:RE" : "$C0010",
+            "s2c_dim:ST" : "$C0030"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.30.03.01.01, C0420}",
+            "Label" : "S.30.03.01.01 - Minimum commission|Z Axis:",
+            "Values" : "Percent"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "decimalsPercentage"
+        },
+        "C0430" : {
+          "dimensions" : {
+            "concept" : "s2md_met:pi2860",
+            "s2c_dim:BL" : "$C0070",
+            "s2c_dim:CC" : "s2c_TB:x36",
+            "s2c_dim:LP" : "$C0040",
+            "s2c_dim:OD" : "$C0020",
+            "s2c_dim:RE" : "$C0010",
+            "s2c_dim:ST" : "$C0030"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.30.03.01.01, C0430}",
+            "Label" : "S.30.03.01.01 - Maximum commission|Z Axis:",
+            "Values" : "Percent"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "decimalsPercentage"
+        },
+        "C0440" : {
+          "dimensions" : {
+            "concept" : "s2md_met:pi2861",
+            "s2c_dim:BL" : "$C0070",
+            "s2c_dim:CC" : "s2c_TB:x36",
+            "s2c_dim:LP" : "$C0040",
+            "s2c_dim:OD" : "$C0020",
+            "s2c_dim:RE" : "$C0010",
+            "s2c_dim:ST" : "$C0030"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.30.03.01.01, C0440}",
+            "Label" : "S.30.03.01.01 - Expected commission|Z Axis:",
+            "Values" : "Percent"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "decimalsPercentage"
+        }
+      }
+    }
+  }
+}

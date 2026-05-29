@@ -1,0 +1,48 @@
+{
+  "documentInfo" : {
+    "documentType" : "https://xbrl.org/2021/xbrl-csv",
+    "namespaces" : {
+      "s2md" : "http://eiopa.europa.eu/xbrl/s2md/",
+      "s2c_dim" : "http://eiopa.europa.eu/xbrl/s2c/dict/dim",
+      "s2md_met" : "http://eiopa.europa.eu/xbrl/s2md/dict/met"
+    }
+  },
+  "tableTemplates" : {
+    "SPV.03.02.20.02" : {
+      "columns" : {
+        "C0010" : {
+          "s2md:documentation" : {
+            "CellCode" : "{SPV.03.02.20.02, C0010}",
+            "Label" : "Arrangement",
+            "Key" : "s2c_dim:RS",
+            "Values" : "String"
+          }
+        },
+        "C0020" : {
+          "dimensions" : {
+            "concept" : "s2md_met:si2209",
+            "s2c_dim:RS" : "$C0010"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{SPV.03.02.20.02, C0020}",
+            "Label" : "SPV.03.02.20.02 - Description of the debt or other financing mechanism issued for arrangement",
+            "Values" : "String"
+          }
+        },
+        "C0030" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi2208",
+            "s2c_dim:RS" : "$C0010"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{SPV.03.02.20.02, C0030}",
+            "Label" : "SPV.03.02.20.02 - Amount of the debt or other financing mechanism issued for arrangement",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetaryOpenTable"
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,362 @@
+{
+  "documentInfo" : {
+    "documentType" : "https://xbrl.org/2021/xbrl-csv",
+    "namespaces" : {
+      "s2md" : "http://eiopa.europa.eu/xbrl/s2md/",
+      "s2c_AM" : "http://eiopa.europa.eu/xbrl/s2c/dict/dom/AM",
+      "s2c_AP" : "http://eiopa.europa.eu/xbrl/s2c/dict/dom/AP",
+      "s2c_CU" : "http://eiopa.europa.eu/xbrl/s2c/dict/dom/CU",
+      "s2c_LB" : "http://eiopa.europa.eu/xbrl/s2c/dict/dom/LB",
+      "s2c_dim" : "http://eiopa.europa.eu/xbrl/s2c/dict/dim",
+      "s2md_met" : "http://eiopa.europa.eu/xbrl/s2md/dict/met"
+    }
+  },
+  "tableTemplates" : {
+    "S.02.02.01.01" : {
+      "columns" : {
+        "C0020_R0110" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi363",
+            "s2c_dim:BL" : "s2c_LB:x91",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.02.02.01.01, C0020, R0110}",
+            "Label" : "S.02.02.01.01 - Total value of all currencies|Technical provisions (excluding index-linked and unit-linked contracts)|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0020_R0120" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi363",
+            "s2c_dim:BL" : "s2c_LB:x119",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.02.02.01.01, C0020, R0120}",
+            "Label" : "S.02.02.01.01 - Total value of all currencies|Technical provisions - index-linked and unit-linked contracts|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0020_R0130" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi376",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.02.02.01.01, C0020, R0130}",
+            "Label" : "S.02.02.01.01 - Total value of all currencies|Deposits from reinsurers and insurance, intermediaries and reinsurance payables|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0020_R0140" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi360",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.02.02.01.01, C0020, R0140}",
+            "Label" : "S.02.02.01.01 - Total value of all currencies|Derivatives|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0020_R0150" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi356",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.02.02.01.01, C0020, R0150}",
+            "Label" : "S.02.02.01.01 - Total value of all currencies|Financial liabilities|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0020_R0160" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi355",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.02.02.01.01, C0020, R0160}",
+            "Label" : "S.02.02.01.01 - Total value of all currencies|Contingent liabilities|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0020_R0170" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi1853",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.02.02.01.01, C0020, R0170}",
+            "Label" : "S.02.02.01.01 - Total value of all currencies|Any other liabilities|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0020_R0200" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi346",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.02.02.01.01, C0020, R0200}",
+            "Label" : "S.02.02.01.01 - Total value of all currencies|Total liabilities|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0030_R0110" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi363",
+            "s2c_dim:BL" : "s2c_LB:x91",
+            "s2c_dim:RC" : "s2c_CU:x3",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.02.02.01.01, C0030, R0110}",
+            "Label" : "S.02.02.01.01 - Value of the solvency II reporting currency|Technical provisions (excluding index-linked and unit-linked contracts)|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0030_R0120" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi363",
+            "s2c_dim:BL" : "s2c_LB:x119",
+            "s2c_dim:RC" : "s2c_CU:x3",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.02.02.01.01, C0030, R0120}",
+            "Label" : "S.02.02.01.01 - Value of the solvency II reporting currency|Technical provisions - index-linked and unit-linked contracts|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0030_R0130" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi376",
+            "s2c_dim:RC" : "s2c_CU:x3",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.02.02.01.01, C0030, R0130}",
+            "Label" : "S.02.02.01.01 - Value of the solvency II reporting currency|Deposits from reinsurers and insurance, intermediaries and reinsurance payables|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0030_R0140" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi360",
+            "s2c_dim:RC" : "s2c_CU:x3",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.02.02.01.01, C0030, R0140}",
+            "Label" : "S.02.02.01.01 - Value of the solvency II reporting currency|Derivatives|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0030_R0150" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi356",
+            "s2c_dim:RC" : "s2c_CU:x3",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.02.02.01.01, C0030, R0150}",
+            "Label" : "S.02.02.01.01 - Value of the solvency II reporting currency|Financial liabilities|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0030_R0160" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi355",
+            "s2c_dim:RC" : "s2c_CU:x3",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.02.02.01.01, C0030, R0160}",
+            "Label" : "S.02.02.01.01 - Value of the solvency II reporting currency|Contingent liabilities|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0030_R0170" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi1853",
+            "s2c_dim:RC" : "s2c_CU:x3",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.02.02.01.01, C0030, R0170}",
+            "Label" : "S.02.02.01.01 - Value of the solvency II reporting currency|Any other liabilities|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0030_R0200" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi346",
+            "s2c_dim:RC" : "s2c_CU:x3",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.02.02.01.01, C0030, R0200}",
+            "Label" : "S.02.02.01.01 - Value of the solvency II reporting currency|Total liabilities|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0040_R0110" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi363",
+            "s2c_dim:BL" : "s2c_LB:x91",
+            "s2c_dim:MT" : "s2c_AP:x22",
+            "s2c_dim:RC" : "s2c_CU:x4",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.02.02.01.01, C0040, R0110}",
+            "Label" : "S.02.02.01.01 - Value of remaining other currencies|Technical provisions (excluding index-linked and unit-linked contracts)|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0040_R0120" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi363",
+            "s2c_dim:BL" : "s2c_LB:x119",
+            "s2c_dim:MT" : "s2c_AP:x22",
+            "s2c_dim:RC" : "s2c_CU:x4",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.02.02.01.01, C0040, R0120}",
+            "Label" : "S.02.02.01.01 - Value of remaining other currencies|Technical provisions - index-linked and unit-linked contracts|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0040_R0130" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi376",
+            "s2c_dim:MT" : "s2c_AP:x22",
+            "s2c_dim:RC" : "s2c_CU:x4",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.02.02.01.01, C0040, R0130}",
+            "Label" : "S.02.02.01.01 - Value of remaining other currencies|Deposits from reinsurers and insurance, intermediaries and reinsurance payables|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0040_R0140" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi360",
+            "s2c_dim:MT" : "s2c_AP:x22",
+            "s2c_dim:RC" : "s2c_CU:x4",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.02.02.01.01, C0040, R0140}",
+            "Label" : "S.02.02.01.01 - Value of remaining other currencies|Derivatives|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0040_R0150" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi356",
+            "s2c_dim:MT" : "s2c_AP:x22",
+            "s2c_dim:RC" : "s2c_CU:x4",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.02.02.01.01, C0040, R0150}",
+            "Label" : "S.02.02.01.01 - Value of remaining other currencies|Financial liabilities|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0040_R0160" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi355",
+            "s2c_dim:MT" : "s2c_AP:x22",
+            "s2c_dim:RC" : "s2c_CU:x4",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.02.02.01.01, C0040, R0160}",
+            "Label" : "S.02.02.01.01 - Value of remaining other currencies|Contingent liabilities|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0040_R0170" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi1853",
+            "s2c_dim:MT" : "s2c_AP:x22",
+            "s2c_dim:RC" : "s2c_CU:x4",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.02.02.01.01, C0040, R0170}",
+            "Label" : "S.02.02.01.01 - Value of remaining other currencies|Any other liabilities|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0040_R0200" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi346",
+            "s2c_dim:MT" : "s2c_AP:x22",
+            "s2c_dim:RC" : "s2c_CU:x4",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.02.02.01.01, C0040, R0200}",
+            "Label" : "S.02.02.01.01 - Value of remaining other currencies|Total liabilities|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        }
+      }
+    }
+  }
+}

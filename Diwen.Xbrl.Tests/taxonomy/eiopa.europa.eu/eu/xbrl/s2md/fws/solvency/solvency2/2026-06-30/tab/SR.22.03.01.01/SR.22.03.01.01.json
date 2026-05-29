@@ -1,0 +1,291 @@
+{
+  "documentInfo" : {
+    "documentType" : "https://xbrl.org/2021/xbrl-csv",
+    "namespaces" : {
+      "s2md" : "http://eiopa.europa.eu/xbrl/s2md/",
+      "s2c_AM" : "http://eiopa.europa.eu/xbrl/s2c/dict/dom/AM",
+      "s2c_LB" : "http://eiopa.europa.eu/xbrl/s2c/dict/dom/LB",
+      "s2c_PU" : "http://eiopa.europa.eu/xbrl/s2c/dict/dom/PU",
+      "s2c_VM" : "http://eiopa.europa.eu/xbrl/s2c/dict/dom/VM",
+      "s2c_dim" : "http://eiopa.europa.eu/xbrl/s2c/dict/dim",
+      "s2md_met" : "http://eiopa.europa.eu/xbrl/s2md/dict/met"
+    }
+  },
+  "tableTemplates" : {
+    "SR.22.03.01.01" : {
+      "columns" : {
+        "C0010_R0010" : {
+          "dimensions" : {
+            "concept" : "s2md_met:pi2241",
+            "s2c_dim:MP" : "$Z0010",
+            "s2c_dim:PO" : "s2c_PU:x53",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{SR.22.03.01.01, C0010, R0010}",
+            "Label" : "SR.22.03.01.01 - Information on:|Annual effective rate applied to the CF of the obligations|Z Axis:",
+            "Values" : "Percent"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "decimalsPercentage"
+        },
+        "C0010_R0020" : {
+          "dimensions" : {
+            "concept" : "s2md_met:pi2242",
+            "s2c_dim:MP" : "$Z0010",
+            "s2c_dim:PO" : "s2c_PU:x53",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{SR.22.03.01.01, C0010, R0020}",
+            "Label" : "SR.22.03.01.01 - Information on:|Annual effective rate of the best estimate|Z Axis:",
+            "Values" : "Percent"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "decimalsPercentage"
+        },
+        "C0010_R0030" : {
+          "dimensions" : {
+            "concept" : "s2md_met:pi2243",
+            "s2c_dim:MP" : "$Z0010",
+            "s2c_dim:PO" : "s2c_PU:x53",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{SR.22.03.01.01, C0010, R0030}",
+            "Label" : "SR.22.03.01.01 - Information on:|Probability of default used to de-risk assets cash flows|Z Axis:",
+            "Values" : "Percent"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "decimalsPercentage"
+        },
+        "C0010_R0040" : {
+          "dimensions" : {
+            "concept" : "s2md_met:pi2244",
+            "s2c_dim:MP" : "$Z0010",
+            "s2c_dim:PO" : "s2c_PU:x53",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{SR.22.03.01.01, C0010, R0040}",
+            "Label" : "SR.22.03.01.01 - Information on:|Portion of the fundamental spread not reflected when de-risking assets cash flows|Z Axis:",
+            "Values" : "Percent"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "decimalsPercentage"
+        },
+        "C0010_R0050" : {
+          "dimensions" : {
+            "concept" : "s2md_met:pi2245",
+            "s2c_dim:MP" : "$Z0010",
+            "s2c_dim:PO" : "s2c_PU:x53",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{SR.22.03.01.01, C0010, R0050}",
+            "Label" : "SR.22.03.01.01 - Information on:|Increase of fundamental spread for sub investment grade assets|Z Axis:",
+            "Values" : "Percent"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "decimalsPercentage"
+        },
+        "C0010_R0060" : {
+          "dimensions" : {
+            "concept" : "s2md_met:pi2246",
+            "s2c_dim:MP" : "$Z0010",
+            "s2c_dim:PO" : "s2c_PU:x53",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{SR.22.03.01.01, C0010, R0060}",
+            "Label" : "SR.22.03.01.01 - Information on:|Matching adjustment to the risk free rate|Z Axis:",
+            "Values" : "Percent"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "decimalsPercentage"
+        },
+        "C0010_R0070" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi2223",
+            "s2c_dim:MP" : "$Z0010",
+            "s2c_dim:PO" : "s2c_PU:x53",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{SR.22.03.01.01, C0010, R0070}",
+            "Label" : "SR.22.03.01.01 - Information on:|Mortality risk stress for the purpose of matching adjustment|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0010_R0080" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi201",
+            "s2c_dim:MP" : "$Z0010",
+            "s2c_dim:PO" : "s2c_PU:x53",
+            "s2c_dim:TA" : "s2c_AM:x120",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{SR.22.03.01.01, C0010, R0080}",
+            "Label" : "SR.22.03.01.01 - Information on:|Market value of assets of the portfolio|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0010_R0090" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi2247",
+            "s2c_dim:MP" : "$Z0010",
+            "s2c_dim:PO" : "s2c_PU:x53",
+            "s2c_dim:TA" : "s2c_AM:x120",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{SR.22.03.01.01, C0010, R0090}",
+            "Label" : "SR.22.03.01.01 - Information on:|Market value of assets linked to inflation|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0010_R0100" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi363",
+            "s2c_dim:MP" : "$Z0010",
+            "s2c_dim:PO" : "s2c_PU:x53",
+            "s2c_dim:RZ" : "s2c_LB:x166",
+            "s2c_dim:VG" : "s2c_AM:x80",
+            "s2c_dim:VL" : "s2c_VM:x5"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{SR.22.03.01.01, C0010, R0100}",
+            "Label" : "SR.22.03.01.01 - Information on:|Best estimate linked to inflation|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0010_R0110" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi2248",
+            "s2c_dim:MP" : "$Z0010",
+            "s2c_dim:PO" : "s2c_PU:x53",
+            "s2c_dim:TA" : "s2c_AM:x120",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{SR.22.03.01.01, C0010, R0110}",
+            "Label" : "SR.22.03.01.01 - Information on:|Market value assets where third party can change the cash flows|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0010_R0120" : {
+          "dimensions" : {
+            "concept" : "s2md_met:pi2249",
+            "s2c_dim:MP" : "$Z0010",
+            "s2c_dim:PO" : "s2c_PU:x53",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{SR.22.03.01.01, C0010, R0120}",
+            "Label" : "SR.22.03.01.01 - Information on:|Return on assets - portfolio assets|Z Axis:",
+            "Values" : "Percent"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "decimalsPercentage"
+        },
+        "C0010_R0130" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi2250",
+            "s2c_dim:MP" : "$Z0010",
+            "s2c_dim:PO" : "s2c_PU:x53",
+            "s2c_dim:TA" : "s2c_AM:x120",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{SR.22.03.01.01, C0010, R0130}",
+            "Label" : "SR.22.03.01.01 - Information on:|Market value of surrended contracts|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0010_R0140" : {
+          "dimensions" : {
+            "concept" : "s2md_met:ii2251",
+            "s2c_dim:MP" : "$Z0010",
+            "s2c_dim:PO" : "s2c_PU:x53",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{SR.22.03.01.01, C0010, R0140}",
+            "Label" : "SR.22.03.01.01 - Information on:|Number of surrender options exercised|Z Axis:",
+            "Values" : "Integer"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsInteger"
+        },
+        "C0010_R0150" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi2252",
+            "s2c_dim:MP" : "$Z0010",
+            "s2c_dim:PO" : "s2c_PU:x53",
+            "s2c_dim:TA" : "s2c_AM:x120",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{SR.22.03.01.01, C0010, R0150}",
+            "Label" : "SR.22.03.01.01 - Information on:|Market value of assets covering surrendered contracts|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0010_R0160" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi2250",
+            "s2c_dim:MP" : "$Z0010",
+            "s2c_dim:PO" : "s2c_PU:x53",
+            "s2c_dim:TA" : "s2c_AM:x86",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{SR.22.03.01.01, C0010, R0160}",
+            "Label" : "SR.22.03.01.01 - Information on:|Amount paid to policyholders|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0010_R0170" : {
+          "dimensions" : {
+            "concept" : "s2md_met:ri2254",
+            "s2c_dim:MP" : "$Z0010",
+            "s2c_dim:PO" : "s2c_PU:x53",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{SR.22.03.01.01, C0010, R0170}",
+            "Label" : "SR.22.03.01.01 - Information on:|Duration|Z Axis:",
+            "Values" : "Decimal"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "decimalsDecimal"
+        },
+        "Z0010" : {
+          "s2md:documentation" : {
+            "CellCode" : "{SR.22.03.01.01, Z0010}",
+            "Label" : "Matching portfolio",
+            "Key" : "s2c_dim:MP",
+            "Values" : "String"
+          }
+        }
+      }
+    }
+  }
+}

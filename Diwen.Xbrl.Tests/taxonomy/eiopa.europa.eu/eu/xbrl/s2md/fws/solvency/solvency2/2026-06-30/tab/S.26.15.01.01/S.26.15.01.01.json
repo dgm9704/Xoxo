@@ -1,0 +1,46 @@
+{
+  "documentInfo" : {
+    "documentType" : "https://xbrl.org/2021/xbrl-csv",
+    "namespaces" : {
+      "s2md" : "http://eiopa.europa.eu/xbrl/s2md/",
+      "s2c_RT" : "http://eiopa.europa.eu/xbrl/s2c/dict/dom/RT",
+      "s2c_TI" : "http://eiopa.europa.eu/xbrl/s2c/dict/dom/TI",
+      "s2c_dim" : "http://eiopa.europa.eu/xbrl/s2c/dict/dim",
+      "s2md_met" : "http://eiopa.europa.eu/xbrl/s2md/dict/met"
+    }
+  },
+  "tableTemplates" : {
+    "S.26.15.01.01" : {
+      "columns" : {
+        "C0010_R0010" : {
+          "dimensions" : {
+            "concept" : "s2md_met:ei2581",
+            "s2c_dim:RH" : "s2c_TI:x2"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.15.01.01, C0010, R0010}",
+            "Label" : "S.26.15.01.01 - Classification|Is Basel L1 classification used?|Z Axis:",
+            "Values" : {
+              "s2c_RT:x296" : "Basel Level 1 classification for operational risk",
+              "s2c_RT:x304" : "No use of basel 1 operational level risk classifications"
+            }
+          }
+        },
+        "C0010_R0020" : {
+          "dimensions" : {
+            "concept" : "s2md_met:ei2582",
+            "s2c_dim:RH" : "s2c_TI:x2"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.15.01.01, C0010, R0020}",
+            "Label" : "S.26.15.01.01 - Classification|Is Basel L1 and L2 classification used?|Z Axis:",
+            "Values" : {
+              "s2c_RT:x298" : "Basel Level 1 and Level 2 classification for operational combined",
+              "s2c_RT:x305" : "No use of basel 1 and 2 operational level risk classifications"
+            }
+          }
+        }
+      }
+    }
+  }
+}

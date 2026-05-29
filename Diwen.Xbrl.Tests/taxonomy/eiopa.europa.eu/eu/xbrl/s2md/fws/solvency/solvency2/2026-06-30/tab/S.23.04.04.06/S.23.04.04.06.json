@@ -1,0 +1,111 @@
+{
+  "documentInfo" : {
+    "documentType" : "https://xbrl.org/2021/xbrl-csv",
+    "namespaces" : {
+      "s2md" : "http://eiopa.europa.eu/xbrl/s2md/",
+      "s2c_CS" : "http://eiopa.europa.eu/xbrl/s2c/dict/dom/CS",
+      "s2c_dim" : "http://eiopa.europa.eu/xbrl/s2c/dict/dim",
+      "s2md_met" : "http://eiopa.europa.eu/xbrl/s2md/dict/met"
+    }
+  },
+  "tableTemplates" : {
+    "S.23.04.04.06" : {
+      "columns" : {
+        "C0585" : {
+          "s2md:documentation" : {
+            "CellCode" : "{S.23.04.04.06, C0585}",
+            "Label" : "Line identification",
+            "Key" : "s2c_dim:YL",
+            "Values" : "String"
+          }
+        },
+        "C0590" : {
+          "dimensions" : {
+            "concept" : "s2md_met:si1345",
+            "s2c_dim:CM" : "s2c_CS:x1",
+            "s2c_dim:YL" : "$C0585"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.23.04.04.06, C0590}",
+            "Label" : "S.23.04.04.06 - Description of ancillary own funds|Z Axis:",
+            "Values" : "String"
+          }
+        },
+        "C0600" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi2005",
+            "s2c_dim:CM" : "s2c_CS:x1",
+            "s2c_dim:YL" : "$C0585"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.23.04.04.06, C0600}",
+            "Label" : "S.23.04.04.06 - Amount|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetaryOpenTable"
+        },
+        "C0610" : {
+          "dimensions" : {
+            "concept" : "s2md_met:si1378",
+            "s2c_dim:CM" : "s2c_CS:x1",
+            "s2c_dim:YL" : "$C0585"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.23.04.04.06, C0610}",
+            "Label" : "S.23.04.04.06 - Counterpart|Z Axis:",
+            "Values" : "String"
+          }
+        },
+        "C0620" : {
+          "dimensions" : {
+            "concept" : "s2md_met:di1048",
+            "s2c_dim:CM" : "s2c_CS:x1",
+            "s2c_dim:YL" : "$C0585"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.23.04.04.06, C0620}",
+            "Label" : "S.23.04.04.06 - Issue date|Z Axis:",
+            "Values" : "Date"
+          }
+        },
+        "C0630" : {
+          "dimensions" : {
+            "concept" : "s2md_met:di1031",
+            "s2c_dim:CM" : "s2c_CS:x1",
+            "s2c_dim:YL" : "$C0585"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.23.04.04.06, C0630}",
+            "Label" : "S.23.04.04.06 - Date of authorisation|Z Axis:",
+            "Values" : "Date"
+          }
+        },
+        "C0640" : {
+          "dimensions" : {
+            "concept" : "s2md_met:si1385",
+            "s2c_dim:CM" : "s2c_CS:x1",
+            "s2c_dim:YL" : "$C0585"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.23.04.04.06, C0640}",
+            "Label" : "S.23.04.04.06 - Name of supervisory authority having given authorisation|Z Axis:",
+            "Values" : "String"
+          }
+        },
+        "C0650" : {
+          "dimensions" : {
+            "concept" : "s2md_met:si1381",
+            "s2c_dim:CM" : "s2c_CS:x1",
+            "s2c_dim:YL" : "$C0585"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.23.04.04.06, C0650}",
+            "Label" : "S.23.04.04.06 - Name of entity concerned|Z Axis:",
+            "Values" : "String"
+          }
+        }
+      }
+    }
+  }
+}

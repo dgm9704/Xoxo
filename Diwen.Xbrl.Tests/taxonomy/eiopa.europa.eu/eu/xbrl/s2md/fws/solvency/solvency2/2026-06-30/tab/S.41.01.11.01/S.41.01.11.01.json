@@ -1,0 +1,39 @@
+{
+  "documentInfo" : {
+    "documentType" : "https://xbrl.org/2021/xbrl-csv",
+    "namespaces" : {
+      "s2md" : "http://eiopa.europa.eu/xbrl/s2md/",
+      "s2md_met" : "http://eiopa.europa.eu/xbrl/s2md/dict/met"
+    }
+  },
+  "tableTemplates" : {
+    "S.41.01.11.01" : {
+      "columns" : {
+        "C0010_R0010" : {
+          "dimensions" : {
+            "concept" : "s2md_met:pi542"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.41.01.11.01, C0010, R0010}",
+            "Label" : "S.41.01.11.01 - Percentage|Lapse/surrender rate contracts",
+            "Values" : "Percent"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "decimalsPercentage"
+        },
+        "C0010_R0020" : {
+          "dimensions" : {
+            "concept" : "s2md_met:pi543"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.41.01.11.01, C0010, R0020}",
+            "Label" : "S.41.01.11.01 - Percentage|Lapse/surrender rate volume",
+            "Values" : "Percent"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "decimalsPercentage"
+        }
+      }
+    }
+  }
+}

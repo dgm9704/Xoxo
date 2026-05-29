@@ -1,0 +1,135 @@
+{
+  "documentInfo" : {
+    "documentType" : "https://xbrl.org/2021/xbrl-csv",
+    "namespaces" : {
+      "s2md" : "http://eiopa.europa.eu/xbrl/s2md/",
+      "s2c_AM" : "http://eiopa.europa.eu/xbrl/s2c/dict/dom/AM",
+      "s2c_RT" : "http://eiopa.europa.eu/xbrl/s2c/dict/dom/RT",
+      "s2c_VM" : "http://eiopa.europa.eu/xbrl/s2c/dict/dom/VM",
+      "s2c_dim" : "http://eiopa.europa.eu/xbrl/s2c/dict/dim",
+      "s2md_met" : "http://eiopa.europa.eu/xbrl/s2md/dict/met"
+    }
+  },
+  "tableTemplates" : {
+    "SR.27.01.01.25" : {
+      "columns" : {
+        "C1420_R4420" : {
+          "dimensions" : {
+            "concept" : "s2md_met:ii642",
+            "s2c_dim:NF" : "$Z0030",
+            "s2c_dim:PO" : "$Z0020"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{SR.27.01.01.25, C1420, R4420}",
+            "Label" : "SR.27.01.01.25 - Number of insured people|Total Pandemic all countries|Z Axis:",
+            "Values" : "Integer"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsInteger"
+        },
+        "C1430_R4420" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi648",
+            "s2c_dim:NF" : "$Z0030",
+            "s2c_dim:PO" : "$Z0020",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{SR.27.01.01.25, C1430, R4420}",
+            "Label" : "SR.27.01.01.25 - Total pandemic exposure|Total Pandemic all countries|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C1510_R4420" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi149",
+            "s2c_dim:EA" : "s2c_VM:x20",
+            "s2c_dim:NF" : "$Z0030",
+            "s2c_dim:PO" : "$Z0020",
+            "s2c_dim:RT" : "s2c_RT:x58",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{SR.27.01.01.25, C1510, R4420}",
+            "Label" : "SR.27.01.01.25 - Catastrophe Risk Charge before risk mitigation|Total Pandemic all countries|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C1520_R4420" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi689",
+            "s2c_dim:EA" : "s2c_VM:x20",
+            "s2c_dim:NF" : "$Z0030",
+            "s2c_dim:PO" : "$Z0020",
+            "s2c_dim:RT" : "s2c_RT:x58",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{SR.27.01.01.25, C1520, R4420}",
+            "Label" : "SR.27.01.01.25 - Estimated Risk Mitigation|Total Pandemic all countries|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C1530_R4420" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi688",
+            "s2c_dim:EA" : "s2c_VM:x20",
+            "s2c_dim:NF" : "$Z0030",
+            "s2c_dim:PO" : "$Z0020",
+            "s2c_dim:RT" : "s2c_RT:x58",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{SR.27.01.01.25, C1530, R4420}",
+            "Label" : "SR.27.01.01.25 - Estimated Reinstatement Premiums|Total Pandemic all countries|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C1540_R4420" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi685",
+            "s2c_dim:EA" : "s2c_VM:x20",
+            "s2c_dim:NF" : "$Z0030",
+            "s2c_dim:PO" : "$Z0020",
+            "s2c_dim:RT" : "s2c_RT:x58",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{SR.27.01.01.25, C1540, R4420}",
+            "Label" : "SR.27.01.01.25 - Catastrophe Risk Charge after risk mitigation|Total Pandemic all countries|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "Z0020" : {
+          "s2md:documentation" : {
+            "CellCode" : "{SR.27.01.01.25, Z0020}",
+            "Label" : "Ring-fenced fund or remaining part",
+            "Key" : "s2c_dim:PO",
+            "Values" : {
+              "x40" : "Material Ring Fenced Funds",
+              "x54" : "Remaining part [other than MAPs and material RFFs]"
+            }
+          }
+        },
+        "Z0030" : {
+          "s2md:documentation" : {
+            "CellCode" : "{SR.27.01.01.25, Z0030}",
+            "Label" : "Fund Number",
+            "Key" : "s2c_dim:NF",
+            "Values" : "String"
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,37 @@
+{
+  "documentInfo" : {
+    "documentType" : "https://xbrl.org/2021/xbrl-csv",
+    "namespaces" : {
+      "s2md" : "http://eiopa.europa.eu/xbrl/s2md/",
+      "s2c_dim" : "http://eiopa.europa.eu/xbrl/s2c/dict/dim",
+      "s2md_met" : "http://eiopa.europa.eu/xbrl/s2md/dict/met"
+    }
+  },
+  "tableTemplates" : {
+    "SPV.02.02.20.03" : {
+      "columns" : {
+        "C0010" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi2200",
+            "s2c_dim:DB" : "$C0030"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{SPV.02.02.20.03, C0010}",
+            "Label" : "SPV.02.02.20.03 - Accounting value",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetaryOpenTable"
+        },
+        "C0030" : {
+          "s2md:documentation" : {
+            "CellCode" : "{SPV.02.02.20.03, C0030}",
+            "Label" : "Off-balance sheet obligation",
+            "Key" : "s2c_dim:DB",
+            "Values" : "String"
+          }
+        }
+      }
+    }
+  }
+}

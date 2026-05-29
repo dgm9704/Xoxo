@@ -1,0 +1,47 @@
+{
+  "documentInfo" : {
+    "documentType" : "https://xbrl.org/2021/xbrl-csv",
+    "namespaces" : {
+      "s2md" : "http://eiopa.europa.eu/xbrl/s2md/",
+      "s2c_AM" : "http://eiopa.europa.eu/xbrl/s2c/dict/dom/AM",
+      "s2c_DI" : "http://eiopa.europa.eu/xbrl/s2c/dict/dom/DI",
+      "s2c_LB" : "http://eiopa.europa.eu/xbrl/s2c/dict/dom/LB",
+      "s2c_dim" : "http://eiopa.europa.eu/xbrl/s2c/dict/dim",
+      "s2md_met" : "http://eiopa.europa.eu/xbrl/s2md/dict/met"
+    }
+  },
+  "tableTemplates" : {
+    "E.04.01.16.03" : {
+      "columns" : {
+        "EC0060_ER0050" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi343",
+            "s2c_dim:BL" : "s2c_LB:x230",
+            "s2c_dim:DI" : "s2c_DI:x5"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{E.04.01.16.03, EC0060, ER0050}",
+            "Label" : "E.04.01.16.03 - Investment revenues|Total not attributed to policyholder",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "EC0070_ER0050" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi326",
+            "s2c_dim:BL" : "s2c_LB:x230",
+            "s2c_dim:DI" : "s2c_DI:x5"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{E.04.01.16.03, EC0070, ER0050}",
+            "Label" : "E.04.01.16.03 - Investment expenses incl. interest charges on subordinated and financial liabilities|Total not attributed to policyholder",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        }
+      }
+    }
+  }
+}

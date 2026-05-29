@@ -1,0 +1,107 @@
+{
+  "documentInfo" : {
+    "documentType" : "https://xbrl.org/2021/xbrl-csv",
+    "namespaces" : {
+      "s2md" : "http://eiopa.europa.eu/xbrl/s2md/",
+      "s2c_AM" : "http://eiopa.europa.eu/xbrl/s2c/dict/dom/AM",
+      "s2c_CS" : "http://eiopa.europa.eu/xbrl/s2c/dict/dom/CS",
+      "s2c_RT" : "http://eiopa.europa.eu/xbrl/s2c/dict/dom/RT",
+      "s2c_SE" : "http://eiopa.europa.eu/xbrl/s2c/dict/dom/SE",
+      "s2c_VM" : "http://eiopa.europa.eu/xbrl/s2c/dict/dom/VM",
+      "s2c_dim" : "http://eiopa.europa.eu/xbrl/s2c/dict/dim",
+      "s2md_met" : "http://eiopa.europa.eu/xbrl/s2md/dict/met"
+    }
+  },
+  "tableTemplates" : {
+    "S.26.04.04.08" : {
+      "columns" : {
+        "C0270_R1600" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi686",
+            "s2c_dim:AO" : "$Z0010",
+            "s2c_dim:CM" : "s2c_CS:x1",
+            "s2c_dim:DV" : "s2c_RT:x29",
+            "s2c_dim:EA" : "s2c_VM:x23",
+            "s2c_dim:RT" : "s2c_RT:x65",
+            "s2c_dim:SO" : "s2c_SE:x44",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.04.04.08, C0270, R1600}",
+            "Label" : "S.26.04.04.08 - Net solvency capital requirement|Diversification within health underwriting risk module|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0270_R1700" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi686",
+            "s2c_dim:AO" : "$Z0010",
+            "s2c_dim:CM" : "s2c_CS:x1",
+            "s2c_dim:EA" : "s2c_VM:x23",
+            "s2c_dim:RT" : "s2c_RT:x65",
+            "s2c_dim:SO" : "s2c_SE:x44",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.04.04.08, C0270, R1700}",
+            "Label" : "S.26.04.04.08 - Net solvency capital requirement|Total health underwriting risk|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0280_R1600" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi686",
+            "s2c_dim:AO" : "$Z0010",
+            "s2c_dim:CM" : "s2c_CS:x1",
+            "s2c_dim:DV" : "s2c_RT:x29",
+            "s2c_dim:EA" : "s2c_VM:x20",
+            "s2c_dim:RT" : "s2c_RT:x65",
+            "s2c_dim:SO" : "s2c_SE:x44",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.04.04.08, C0280, R1600}",
+            "Label" : "S.26.04.04.08 - Gross solvency capital requirement|Diversification within health underwriting risk module|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0280_R1700" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi686",
+            "s2c_dim:AO" : "$Z0010",
+            "s2c_dim:CM" : "s2c_CS:x1",
+            "s2c_dim:EA" : "s2c_VM:x20",
+            "s2c_dim:RT" : "s2c_RT:x65",
+            "s2c_dim:SO" : "s2c_SE:x44",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.04.04.08, C0280, R1700}",
+            "Label" : "S.26.04.04.08 - Gross solvency capital requirement|Total health underwriting risk|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "Z0010" : {
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.04.04.08, Z0010}",
+            "Label" : "Article 112",
+            "Key" : "s2c_dim:AO",
+            "Values" : {
+              "x0" : "No",
+              "x1" : "Yes",
+              "x2" : "Yes - biennial reporting"
+            }
+          }
+        }
+      }
+    }
+  }
+}

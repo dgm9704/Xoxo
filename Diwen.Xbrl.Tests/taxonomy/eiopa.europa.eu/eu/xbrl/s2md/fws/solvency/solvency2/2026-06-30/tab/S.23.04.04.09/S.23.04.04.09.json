@@ -1,0 +1,34 @@
+{
+  "documentInfo" : {
+    "documentType" : "https://xbrl.org/2021/xbrl-csv",
+    "namespaces" : {
+      "s2md" : "http://eiopa.europa.eu/xbrl/s2md/",
+      "s2c_AM" : "http://eiopa.europa.eu/xbrl/s2c/dict/dom/AM",
+      "s2c_CS" : "http://eiopa.europa.eu/xbrl/s2c/dict/dom/CS",
+      "s2c_SE" : "http://eiopa.europa.eu/xbrl/s2c/dict/dom/SE",
+      "s2c_dim" : "http://eiopa.europa.eu/xbrl/s2c/dict/dim",
+      "s2md_met" : "http://eiopa.europa.eu/xbrl/s2md/dict/met"
+    }
+  },
+  "tableTemplates" : {
+    "S.23.04.04.09" : {
+      "columns" : {
+        "C0970_R0010" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi3050",
+            "s2c_dim:CM" : "s2c_CS:x1",
+            "s2c_dim:SO" : "s2c_SE:x44",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.23.04.04.09, C0970, R0010}",
+            "Label" : "S.23.04.04.09 - Adjustment for restricted own fund items in respect of ring-fenced funds|Adjustment for restricted own fund items in respect of ring fenced funds|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        }
+      }
+    }
+  }
+}

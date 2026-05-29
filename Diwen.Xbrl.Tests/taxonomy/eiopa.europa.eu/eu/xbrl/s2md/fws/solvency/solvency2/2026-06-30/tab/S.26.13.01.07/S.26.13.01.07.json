@@ -1,0 +1,981 @@
+{
+  "documentInfo" : {
+    "documentType" : "https://xbrl.org/2021/xbrl-csv",
+    "namespaces" : {
+      "s2md" : "http://eiopa.europa.eu/xbrl/s2md/",
+      "s2c_AM" : "http://eiopa.europa.eu/xbrl/s2c/dict/dom/AM",
+      "s2c_AP" : "http://eiopa.europa.eu/xbrl/s2c/dict/dom/AP",
+      "s2c_DI" : "http://eiopa.europa.eu/xbrl/s2c/dict/dom/DI",
+      "s2c_LB" : "http://eiopa.europa.eu/xbrl/s2c/dict/dom/LB",
+      "s2c_PI" : "http://eiopa.europa.eu/xbrl/s2c/dict/dom/PI",
+      "s2c_RT" : "http://eiopa.europa.eu/xbrl/s2c/dict/dom/RT",
+      "s2c_TI" : "http://eiopa.europa.eu/xbrl/s2c/dict/dom/TI",
+      "s2c_VM" : "http://eiopa.europa.eu/xbrl/s2c/dict/dom/VM",
+      "s2c_dim" : "http://eiopa.europa.eu/xbrl/s2c/dict/dim",
+      "s2md_met" : "http://eiopa.europa.eu/xbrl/s2md/dict/met"
+    }
+  },
+  "tableTemplates" : {
+    "S.26.13.01.07" : {
+      "columns" : {
+        "C0110_R0610" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi2700",
+            "s2c_dim:BL" : "$Z0010",
+            "s2c_dim:DI" : "s2c_DI:x5",
+            "s2c_dim:DV" : "s2c_RT:x11",
+            "s2c_dim:IZ" : "s2c_RT:x1",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RT" : "$Z0020",
+            "s2c_dim:TB" : "s2c_LB:x28",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.13.01.07, C0110, R0610}",
+            "Label" : "S.26.13.01.07 - SII Line of Business|Gross Written Premium|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0110_R0620" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi2700",
+            "s2c_dim:BL" : "$Z0010",
+            "s2c_dim:DI" : "s2c_DI:x5",
+            "s2c_dim:DV" : "s2c_RT:x11",
+            "s2c_dim:IZ" : "s2c_RT:x18",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RT" : "$Z0020",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.13.01.07, C0110, R0620}",
+            "Label" : "S.26.13.01.07 - SII Line of Business|Gross Earned Premium|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0110_R0630" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi2700",
+            "s2c_dim:BL" : "$Z0010",
+            "s2c_dim:DI" : "s2c_DI:x5",
+            "s2c_dim:DV" : "s2c_RT:x11",
+            "s2c_dim:IZ" : "s2c_RT:x319",
+            "s2c_dim:PY" : "s2c_TI:x2",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RT" : "$Z0020",
+            "s2c_dim:TA" : "s2c_AM:x29",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.13.01.07, C0110, R0630}",
+            "Label" : "S.26.13.01.07 - SII Line of Business|Gross written premium planned in the 12 months post the reporting Reference Date|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0110_R0640" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi2700",
+            "s2c_dim:BL" : "$Z0010",
+            "s2c_dim:DI" : "s2c_DI:x5",
+            "s2c_dim:DV" : "s2c_RT:x11",
+            "s2c_dim:IZ" : "s2c_RT:x5",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RT" : "$Z0020",
+            "s2c_dim:TA" : "s2c_AM:x29",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.13.01.07, C0110, R0640}",
+            "Label" : "S.26.13.01.07 - SII Line of Business|Gross written unearned premium at the Reference Date (only if premium provision allocated to premium risk)|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0110_R0650" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi2920",
+            "s2c_dim:BL" : "$Z0010",
+            "s2c_dim:DV" : "s2c_RT:x11",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RT" : "$Z0020",
+            "s2c_dim:VG" : "s2c_AM:x80",
+            "s2c_dim:VL" : "s2c_VM:x5"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.13.01.07, C0110, R0650}",
+            "Label" : "S.26.13.01.07 - SII Line of Business|Premium Provision - discounted (only if premium provision allocated to premium risk)|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0110_R0660" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi92",
+            "s2c_dim:BL" : "$Z0010",
+            "s2c_dim:DV" : "s2c_RT:x11",
+            "s2c_dim:EA" : "s2c_VM:x24",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RT" : "$Z0020",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.13.01.07, C0110, R0660}",
+            "Label" : "S.26.13.01.07 - SII Line of Business|Solvency Capital Requirement|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0110_R0670" : {
+          "dimensions" : {
+            "s2c_dim:BL" : "$Z0010",
+            "s2c_dim:DV" : "s2c_RT:x11",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RT" : "$Z0020",
+            "s2c_dim:TA" : "s2c_AM:x12"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.13.01.07, C0110, R0670}",
+            "Label" : "S.26.13.01.07 - SII Line of Business|Simulated (output) mean|Z Axis:",
+            "Values" : ""
+          }
+        },
+        "C0110_R0680" : {
+          "dimensions" : {
+            "s2c_dim:BL" : "$Z0010",
+            "s2c_dim:DV" : "s2c_RT:x11",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RT" : "$Z0020",
+            "s2c_dim:TA" : "s2c_AM:x138"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.13.01.07, C0110, R0680}",
+            "Label" : "S.26.13.01.07 - SII Line of Business|Simulated (output) standard deviation|Z Axis:",
+            "Values" : ""
+          }
+        },
+        "C0110_R0690" : {
+          "dimensions" : {
+            "s2c_dim:BL" : "$Z0010",
+            "s2c_dim:DV" : "s2c_RT:x11",
+            "s2c_dim:PT" : "s2c_PI:x38",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RT" : "$Z0020"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.13.01.07, C0110, R0690}",
+            "Label" : "S.26.13.01.07 - SII Line of Business|0,001|Z Axis:",
+            "Values" : ""
+          }
+        },
+        "C0110_R0700" : {
+          "dimensions" : {
+            "s2c_dim:BL" : "$Z0010",
+            "s2c_dim:DV" : "s2c_RT:x11",
+            "s2c_dim:PT" : "s2c_PI:x19",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RT" : "$Z0020"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.13.01.07, C0110, R0700}",
+            "Label" : "S.26.13.01.07 - SII Line of Business|0,005|Z Axis:",
+            "Values" : ""
+          }
+        },
+        "C0110_R0710" : {
+          "dimensions" : {
+            "s2c_dim:BL" : "$Z0010",
+            "s2c_dim:DV" : "s2c_RT:x11",
+            "s2c_dim:PT" : "s2c_PI:x18",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RT" : "$Z0020"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.13.01.07, C0110, R0710}",
+            "Label" : "S.26.13.01.07 - SII Line of Business|0,01|Z Axis:",
+            "Values" : ""
+          }
+        },
+        "C0110_R0720" : {
+          "dimensions" : {
+            "s2c_dim:BL" : "$Z0010",
+            "s2c_dim:DV" : "s2c_RT:x11",
+            "s2c_dim:PT" : "s2c_PI:x35",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RT" : "$Z0020"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.13.01.07, C0110, R0720}",
+            "Label" : "S.26.13.01.07 - SII Line of Business|0,05|Z Axis:",
+            "Values" : ""
+          }
+        },
+        "C0110_R0730" : {
+          "dimensions" : {
+            "s2c_dim:BL" : "$Z0010",
+            "s2c_dim:DV" : "s2c_RT:x11",
+            "s2c_dim:PT" : "s2c_PI:x16",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RT" : "$Z0020"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.13.01.07, C0110, R0730}",
+            "Label" : "S.26.13.01.07 - SII Line of Business|0,1|Z Axis:",
+            "Values" : ""
+          }
+        },
+        "C0110_R0740" : {
+          "dimensions" : {
+            "s2c_dim:BL" : "$Z0010",
+            "s2c_dim:DV" : "s2c_RT:x11",
+            "s2c_dim:PT" : "s2c_PI:x52",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RT" : "$Z0020"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.13.01.07, C0110, R0740}",
+            "Label" : "S.26.13.01.07 - SII Line of Business|0,2|Z Axis:",
+            "Values" : ""
+          }
+        },
+        "C0110_R0750" : {
+          "dimensions" : {
+            "s2c_dim:BL" : "$Z0010",
+            "s2c_dim:DV" : "s2c_RT:x11",
+            "s2c_dim:PT" : "s2c_PI:x15",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RT" : "$Z0020"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.13.01.07, C0110, R0750}",
+            "Label" : "S.26.13.01.07 - SII Line of Business|0,25|Z Axis:",
+            "Values" : ""
+          }
+        },
+        "C0110_R0760" : {
+          "dimensions" : {
+            "s2c_dim:BL" : "$Z0010",
+            "s2c_dim:DV" : "s2c_RT:x11",
+            "s2c_dim:PT" : "s2c_PI:x17",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RT" : "$Z0020"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.13.01.07, C0110, R0760}",
+            "Label" : "S.26.13.01.07 - SII Line of Business|0,3|Z Axis:",
+            "Values" : ""
+          }
+        },
+        "C0110_R0770" : {
+          "dimensions" : {
+            "s2c_dim:BL" : "$Z0010",
+            "s2c_dim:DV" : "s2c_RT:x11",
+            "s2c_dim:PT" : "s2c_PI:x49",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RT" : "$Z0020"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.13.01.07, C0110, R0770}",
+            "Label" : "S.26.13.01.07 - SII Line of Business|0,4|Z Axis:",
+            "Values" : ""
+          }
+        },
+        "C0110_R0780" : {
+          "dimensions" : {
+            "s2c_dim:BL" : "$Z0010",
+            "s2c_dim:DV" : "s2c_RT:x11",
+            "s2c_dim:PT" : "s2c_PI:x32",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RT" : "$Z0020"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.13.01.07, C0110, R0780}",
+            "Label" : "S.26.13.01.07 - SII Line of Business|0,5|Z Axis:",
+            "Values" : ""
+          }
+        },
+        "C0110_R0790" : {
+          "dimensions" : {
+            "s2c_dim:BL" : "$Z0010",
+            "s2c_dim:DV" : "s2c_RT:x11",
+            "s2c_dim:PT" : "s2c_PI:x45",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RT" : "$Z0020"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.13.01.07, C0110, R0790}",
+            "Label" : "S.26.13.01.07 - SII Line of Business|0,6|Z Axis:",
+            "Values" : ""
+          }
+        },
+        "C0110_R0800" : {
+          "dimensions" : {
+            "s2c_dim:BL" : "$Z0010",
+            "s2c_dim:DV" : "s2c_RT:x11",
+            "s2c_dim:PT" : "s2c_PI:x47",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RT" : "$Z0020"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.13.01.07, C0110, R0800}",
+            "Label" : "S.26.13.01.07 - SII Line of Business|0,7|Z Axis:",
+            "Values" : ""
+          }
+        },
+        "C0110_R0810" : {
+          "dimensions" : {
+            "s2c_dim:BL" : "$Z0010",
+            "s2c_dim:DV" : "s2c_RT:x11",
+            "s2c_dim:PT" : "s2c_PI:x31",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RT" : "$Z0020"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.13.01.07, C0110, R0810}",
+            "Label" : "S.26.13.01.07 - SII Line of Business|0,75|Z Axis:",
+            "Values" : ""
+          }
+        },
+        "C0110_R0820" : {
+          "dimensions" : {
+            "s2c_dim:BL" : "$Z0010",
+            "s2c_dim:DV" : "s2c_RT:x11",
+            "s2c_dim:PT" : "s2c_PI:x30",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RT" : "$Z0020"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.13.01.07, C0110, R0820}",
+            "Label" : "S.26.13.01.07 - SII Line of Business|0,8|Z Axis:",
+            "Values" : ""
+          }
+        },
+        "C0110_R0830" : {
+          "dimensions" : {
+            "s2c_dim:BL" : "$Z0010",
+            "s2c_dim:DV" : "s2c_RT:x11",
+            "s2c_dim:PT" : "s2c_PI:x28",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RT" : "$Z0020"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.13.01.07, C0110, R0830}",
+            "Label" : "S.26.13.01.07 - SII Line of Business|0,9|Z Axis:",
+            "Values" : ""
+          }
+        },
+        "C0110_R0840" : {
+          "dimensions" : {
+            "s2c_dim:BL" : "$Z0010",
+            "s2c_dim:DV" : "s2c_RT:x11",
+            "s2c_dim:PT" : "s2c_PI:x39",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RT" : "$Z0020"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.13.01.07, C0110, R0840}",
+            "Label" : "S.26.13.01.07 - SII Line of Business|0,975|Z Axis:",
+            "Values" : ""
+          }
+        },
+        "C0110_R0850" : {
+          "dimensions" : {
+            "s2c_dim:BL" : "$Z0010",
+            "s2c_dim:DV" : "s2c_RT:x11",
+            "s2c_dim:PT" : "s2c_PI:x40",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RT" : "$Z0020"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.13.01.07, C0110, R0850}",
+            "Label" : "S.26.13.01.07 - SII Line of Business|0,98|Z Axis:",
+            "Values" : ""
+          }
+        },
+        "C0110_R0860" : {
+          "dimensions" : {
+            "s2c_dim:BL" : "$Z0010",
+            "s2c_dim:DV" : "s2c_RT:x11",
+            "s2c_dim:PT" : "s2c_PI:x41",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RT" : "$Z0020"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.13.01.07, C0110, R0860}",
+            "Label" : "S.26.13.01.07 - SII Line of Business|0,985|Z Axis:",
+            "Values" : ""
+          }
+        },
+        "C0110_R0870" : {
+          "dimensions" : {
+            "s2c_dim:BL" : "$Z0010",
+            "s2c_dim:DV" : "s2c_RT:x11",
+            "s2c_dim:PT" : "s2c_PI:x42",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RT" : "$Z0020"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.13.01.07, C0110, R0870}",
+            "Label" : "S.26.13.01.07 - SII Line of Business|0,99|Z Axis:",
+            "Values" : ""
+          }
+        },
+        "C0110_R0880" : {
+          "dimensions" : {
+            "s2c_dim:BL" : "$Z0010",
+            "s2c_dim:DV" : "s2c_RT:x11",
+            "s2c_dim:PT" : "s2c_PI:x24",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RT" : "$Z0020"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.13.01.07, C0110, R0880}",
+            "Label" : "S.26.13.01.07 - SII Line of Business|0,995|Z Axis:",
+            "Values" : ""
+          }
+        },
+        "C0110_R0890" : {
+          "dimensions" : {
+            "s2c_dim:BL" : "$Z0010",
+            "s2c_dim:DV" : "s2c_RT:x11",
+            "s2c_dim:PT" : "s2c_PI:x43",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RT" : "$Z0020"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.13.01.07, C0110, R0890}",
+            "Label" : "S.26.13.01.07 - SII Line of Business|0,997|Z Axis:",
+            "Values" : ""
+          }
+        },
+        "C0110_R0900" : {
+          "dimensions" : {
+            "s2c_dim:BL" : "$Z0010",
+            "s2c_dim:DV" : "s2c_RT:x11",
+            "s2c_dim:PT" : "s2c_PI:x20",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RT" : "$Z0020"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.13.01.07, C0110, R0900}",
+            "Label" : "S.26.13.01.07 - SII Line of Business|0,999|Z Axis:",
+            "Values" : ""
+          }
+        },
+        "C0110_R0910" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi2704",
+            "s2c_dim:BL" : "$Z0010",
+            "s2c_dim:DI" : "s2c_DI:x5",
+            "s2c_dim:DV" : "s2c_RT:x11",
+            "s2c_dim:IZ" : "s2c_RT:x1",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RT" : "$Z0020",
+            "s2c_dim:TB" : "s2c_LB:x28",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.13.01.07, C0110, R0910}",
+            "Label" : "S.26.13.01.07 - SII Line of Business|Net Written Premium|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0110_R0920" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi2704",
+            "s2c_dim:BL" : "$Z0010",
+            "s2c_dim:DI" : "s2c_DI:x5",
+            "s2c_dim:DV" : "s2c_RT:x11",
+            "s2c_dim:IZ" : "s2c_RT:x18",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RT" : "$Z0020",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.13.01.07, C0110, R0920}",
+            "Label" : "S.26.13.01.07 - SII Line of Business|Net Earned Premium|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0110_R0930" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi2704",
+            "s2c_dim:BL" : "$Z0010",
+            "s2c_dim:DI" : "s2c_DI:x5",
+            "s2c_dim:DV" : "s2c_RT:x11",
+            "s2c_dim:IZ" : "s2c_RT:x319",
+            "s2c_dim:PY" : "s2c_TI:x2",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RT" : "$Z0020",
+            "s2c_dim:TA" : "s2c_AM:x29",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.13.01.07, C0110, R0930}",
+            "Label" : "S.26.13.01.07 - SII Line of Business|Net written premium planned in the 12 months post the reporting Reference Date|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0110_R0940" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi2704",
+            "s2c_dim:BL" : "$Z0010",
+            "s2c_dim:DI" : "s2c_DI:x5",
+            "s2c_dim:DV" : "s2c_RT:x11",
+            "s2c_dim:IZ" : "s2c_RT:x5",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RT" : "$Z0020",
+            "s2c_dim:TA" : "s2c_AM:x29",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.13.01.07, C0110, R0940}",
+            "Label" : "S.26.13.01.07 - SII Line of Business|Net written unearned premium at the Reference Date (only if premium provision allocated to premium risk)|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0110_R0950" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi2910",
+            "s2c_dim:BL" : "$Z0010",
+            "s2c_dim:DV" : "s2c_RT:x11",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RT" : "$Z0020",
+            "s2c_dim:VG" : "s2c_AM:x80",
+            "s2c_dim:VL" : "s2c_VM:x5"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.13.01.07, C0110, R0950}",
+            "Label" : "S.26.13.01.07 - SII Line of Business|Premium Provision - discounted (only if premium provision allocated to premium risk)|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0110_R0960" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi2630",
+            "s2c_dim:BL" : "$Z0010",
+            "s2c_dim:DV" : "s2c_RT:x11",
+            "s2c_dim:EA" : "s2c_VM:x24",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RT" : "$Z0020",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.13.01.07, C0110, R0960}",
+            "Label" : "S.26.13.01.07 - SII Line of Business|Solvency Capital Requirement|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0110_R0970" : {
+          "dimensions" : {
+            "s2c_dim:BL" : "$Z0010",
+            "s2c_dim:DV" : "s2c_RT:x11",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RT" : "$Z0020",
+            "s2c_dim:TA" : "s2c_AM:x12"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.13.01.07, C0110, R0970}",
+            "Label" : "S.26.13.01.07 - SII Line of Business|Simulated (output) mean|Z Axis:",
+            "Values" : ""
+          }
+        },
+        "C0110_R0980" : {
+          "dimensions" : {
+            "s2c_dim:BL" : "$Z0010",
+            "s2c_dim:DV" : "s2c_RT:x11",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RT" : "$Z0020",
+            "s2c_dim:TA" : "s2c_AM:x138"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.13.01.07, C0110, R0980}",
+            "Label" : "S.26.13.01.07 - SII Line of Business|Simulated (output) standard deviation|Z Axis:",
+            "Values" : ""
+          }
+        },
+        "C0110_R0990" : {
+          "dimensions" : {
+            "s2c_dim:BL" : "$Z0010",
+            "s2c_dim:DV" : "s2c_RT:x11",
+            "s2c_dim:PT" : "s2c_PI:x38",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RT" : "$Z0020"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.13.01.07, C0110, R0990}",
+            "Label" : "S.26.13.01.07 - SII Line of Business|0,001|Z Axis:",
+            "Values" : ""
+          }
+        },
+        "C0110_R1000" : {
+          "dimensions" : {
+            "s2c_dim:BL" : "$Z0010",
+            "s2c_dim:DV" : "s2c_RT:x11",
+            "s2c_dim:PT" : "s2c_PI:x19",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RT" : "$Z0020"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.13.01.07, C0110, R1000}",
+            "Label" : "S.26.13.01.07 - SII Line of Business|0,005|Z Axis:",
+            "Values" : ""
+          }
+        },
+        "C0110_R1010" : {
+          "dimensions" : {
+            "s2c_dim:BL" : "$Z0010",
+            "s2c_dim:DV" : "s2c_RT:x11",
+            "s2c_dim:PT" : "s2c_PI:x18",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RT" : "$Z0020"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.13.01.07, C0110, R1010}",
+            "Label" : "S.26.13.01.07 - SII Line of Business|0,01|Z Axis:",
+            "Values" : ""
+          }
+        },
+        "C0110_R1020" : {
+          "dimensions" : {
+            "s2c_dim:BL" : "$Z0010",
+            "s2c_dim:DV" : "s2c_RT:x11",
+            "s2c_dim:PT" : "s2c_PI:x35",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RT" : "$Z0020"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.13.01.07, C0110, R1020}",
+            "Label" : "S.26.13.01.07 - SII Line of Business|0,05|Z Axis:",
+            "Values" : ""
+          }
+        },
+        "C0110_R1030" : {
+          "dimensions" : {
+            "s2c_dim:BL" : "$Z0010",
+            "s2c_dim:DV" : "s2c_RT:x11",
+            "s2c_dim:PT" : "s2c_PI:x16",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RT" : "$Z0020"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.13.01.07, C0110, R1030}",
+            "Label" : "S.26.13.01.07 - SII Line of Business|0,1|Z Axis:",
+            "Values" : ""
+          }
+        },
+        "C0110_R1040" : {
+          "dimensions" : {
+            "s2c_dim:BL" : "$Z0010",
+            "s2c_dim:DV" : "s2c_RT:x11",
+            "s2c_dim:PT" : "s2c_PI:x52",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RT" : "$Z0020"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.13.01.07, C0110, R1040}",
+            "Label" : "S.26.13.01.07 - SII Line of Business|0,2|Z Axis:",
+            "Values" : ""
+          }
+        },
+        "C0110_R1050" : {
+          "dimensions" : {
+            "s2c_dim:BL" : "$Z0010",
+            "s2c_dim:DV" : "s2c_RT:x11",
+            "s2c_dim:PT" : "s2c_PI:x15",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RT" : "$Z0020"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.13.01.07, C0110, R1050}",
+            "Label" : "S.26.13.01.07 - SII Line of Business|0,25|Z Axis:",
+            "Values" : ""
+          }
+        },
+        "C0110_R1060" : {
+          "dimensions" : {
+            "s2c_dim:BL" : "$Z0010",
+            "s2c_dim:DV" : "s2c_RT:x11",
+            "s2c_dim:PT" : "s2c_PI:x17",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RT" : "$Z0020"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.13.01.07, C0110, R1060}",
+            "Label" : "S.26.13.01.07 - SII Line of Business|0,3|Z Axis:",
+            "Values" : ""
+          }
+        },
+        "C0110_R1070" : {
+          "dimensions" : {
+            "s2c_dim:BL" : "$Z0010",
+            "s2c_dim:DV" : "s2c_RT:x11",
+            "s2c_dim:PT" : "s2c_PI:x49",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RT" : "$Z0020"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.13.01.07, C0110, R1070}",
+            "Label" : "S.26.13.01.07 - SII Line of Business|0,4|Z Axis:",
+            "Values" : ""
+          }
+        },
+        "C0110_R1080" : {
+          "dimensions" : {
+            "s2c_dim:BL" : "$Z0010",
+            "s2c_dim:DV" : "s2c_RT:x11",
+            "s2c_dim:PT" : "s2c_PI:x32",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RT" : "$Z0020"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.13.01.07, C0110, R1080}",
+            "Label" : "S.26.13.01.07 - SII Line of Business|0,5|Z Axis:",
+            "Values" : ""
+          }
+        },
+        "C0110_R1090" : {
+          "dimensions" : {
+            "s2c_dim:BL" : "$Z0010",
+            "s2c_dim:DV" : "s2c_RT:x11",
+            "s2c_dim:PT" : "s2c_PI:x45",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RT" : "$Z0020"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.13.01.07, C0110, R1090}",
+            "Label" : "S.26.13.01.07 - SII Line of Business|0,6|Z Axis:",
+            "Values" : ""
+          }
+        },
+        "C0110_R1100" : {
+          "dimensions" : {
+            "s2c_dim:BL" : "$Z0010",
+            "s2c_dim:DV" : "s2c_RT:x11",
+            "s2c_dim:PT" : "s2c_PI:x47",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RT" : "$Z0020"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.13.01.07, C0110, R1100}",
+            "Label" : "S.26.13.01.07 - SII Line of Business|0,7|Z Axis:",
+            "Values" : ""
+          }
+        },
+        "C0110_R1110" : {
+          "dimensions" : {
+            "s2c_dim:BL" : "$Z0010",
+            "s2c_dim:DV" : "s2c_RT:x11",
+            "s2c_dim:PT" : "s2c_PI:x31",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RT" : "$Z0020"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.13.01.07, C0110, R1110}",
+            "Label" : "S.26.13.01.07 - SII Line of Business|0,75|Z Axis:",
+            "Values" : ""
+          }
+        },
+        "C0110_R1120" : {
+          "dimensions" : {
+            "s2c_dim:BL" : "$Z0010",
+            "s2c_dim:DV" : "s2c_RT:x11",
+            "s2c_dim:PT" : "s2c_PI:x30",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RT" : "$Z0020"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.13.01.07, C0110, R1120}",
+            "Label" : "S.26.13.01.07 - SII Line of Business|0,8|Z Axis:",
+            "Values" : ""
+          }
+        },
+        "C0110_R1130" : {
+          "dimensions" : {
+            "s2c_dim:BL" : "$Z0010",
+            "s2c_dim:DV" : "s2c_RT:x11",
+            "s2c_dim:PT" : "s2c_PI:x28",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RT" : "$Z0020"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.13.01.07, C0110, R1130}",
+            "Label" : "S.26.13.01.07 - SII Line of Business|0,9|Z Axis:",
+            "Values" : ""
+          }
+        },
+        "C0110_R1140" : {
+          "dimensions" : {
+            "s2c_dim:BL" : "$Z0010",
+            "s2c_dim:DV" : "s2c_RT:x11",
+            "s2c_dim:PT" : "s2c_PI:x39",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RT" : "$Z0020"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.13.01.07, C0110, R1140}",
+            "Label" : "S.26.13.01.07 - SII Line of Business|0,975|Z Axis:",
+            "Values" : ""
+          }
+        },
+        "C0110_R1150" : {
+          "dimensions" : {
+            "s2c_dim:BL" : "$Z0010",
+            "s2c_dim:DV" : "s2c_RT:x11",
+            "s2c_dim:PT" : "s2c_PI:x40",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RT" : "$Z0020"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.13.01.07, C0110, R1150}",
+            "Label" : "S.26.13.01.07 - SII Line of Business|0,98|Z Axis:",
+            "Values" : ""
+          }
+        },
+        "C0110_R1160" : {
+          "dimensions" : {
+            "s2c_dim:BL" : "$Z0010",
+            "s2c_dim:DV" : "s2c_RT:x11",
+            "s2c_dim:PT" : "s2c_PI:x41",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RT" : "$Z0020"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.13.01.07, C0110, R1160}",
+            "Label" : "S.26.13.01.07 - SII Line of Business|0,985|Z Axis:",
+            "Values" : ""
+          }
+        },
+        "C0110_R1170" : {
+          "dimensions" : {
+            "s2c_dim:BL" : "$Z0010",
+            "s2c_dim:DV" : "s2c_RT:x11",
+            "s2c_dim:PT" : "s2c_PI:x42",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RT" : "$Z0020"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.13.01.07, C0110, R1170}",
+            "Label" : "S.26.13.01.07 - SII Line of Business|0,99|Z Axis:",
+            "Values" : ""
+          }
+        },
+        "C0110_R1180" : {
+          "dimensions" : {
+            "s2c_dim:BL" : "$Z0010",
+            "s2c_dim:DV" : "s2c_RT:x11",
+            "s2c_dim:PT" : "s2c_PI:x24",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RT" : "$Z0020"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.13.01.07, C0110, R1180}",
+            "Label" : "S.26.13.01.07 - SII Line of Business|0,995|Z Axis:",
+            "Values" : ""
+          }
+        },
+        "C0110_R1190" : {
+          "dimensions" : {
+            "s2c_dim:BL" : "$Z0010",
+            "s2c_dim:DV" : "s2c_RT:x11",
+            "s2c_dim:PT" : "s2c_PI:x43",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RT" : "$Z0020"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.13.01.07, C0110, R1190}",
+            "Label" : "S.26.13.01.07 - SII Line of Business|0,997|Z Axis:",
+            "Values" : ""
+          }
+        },
+        "C0110_R1200" : {
+          "dimensions" : {
+            "s2c_dim:BL" : "$Z0010",
+            "s2c_dim:DV" : "s2c_RT:x11",
+            "s2c_dim:PT" : "s2c_PI:x20",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RT" : "$Z0020"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.13.01.07, C0110, R1200}",
+            "Label" : "S.26.13.01.07 - SII Line of Business|0,999|Z Axis:",
+            "Values" : ""
+          }
+        },
+        "Z0010" : {
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.13.01.07, Z0010}",
+            "Label" : "Line of business",
+            "Key" : "s2c_dim:BL",
+            "Values" : {
+              "s2c_LB:x0" : "Total/NA",
+              "s2c_LB:x138" : "Motor vehicle liability insurance [direct business]",
+              "s2c_LB:x139" : "Other motor insurance [direct business]",
+              "s2c_LB:x140" : "Marine, aviation and transport insurance [direct business]",
+              "s2c_LB:x141" : "Fire and other damage to property insurance [direct business]",
+              "s2c_LB:x142" : "General liability insurance [direct business]",
+              "s2c_LB:x143" : "Credit and suretyship insurance [direct business]",
+              "s2c_LB:x144" : "Legal expenses insurance [direct business]",
+              "s2c_LB:x145" : "Assistance [direct business]",
+              "s2c_LB:x146" : "Miscellaneous financial loss [direct business]",
+              "s2c_LB:x151" : "Motor vehicle liability insurance [accepted proportional reinsurance]",
+              "s2c_LB:x152" : "Other motor insurance [accepted proportional reinsurance]",
+              "s2c_LB:x153" : "Marine, aviation and transport insurance [accepted proportional reinsurance]",
+              "s2c_LB:x154" : "Fire and other damage to property insurance [accepted proportional reinsurance]",
+              "s2c_LB:x155" : "General liability insurance [accepted proportional reinsurance]",
+              "s2c_LB:x156" : "Credit and suretyship insurance [accepted proportional reinsurance]",
+              "s2c_LB:x157" : "Legal expenses insurance [accepted proportional reinsurance]",
+              "s2c_LB:x158" : "Assistance [accepted proportional reinsurance]",
+              "s2c_LB:x159" : "Miscellaneous financial loss [accepted proportional reinsurance]",
+              "s2c_LB:x14" : "Casualty [accepted non-proportional reinsurance]",
+              "s2c_LB:x67" : "Marine, aviation, transport [accepted non-proportional reinsurance]",
+              "s2c_LB:x106" : "Property [accepted non-proportional reinsurance]",
+              "s2c_LB:x135" : "Medical expense insurance [direct business]",
+              "s2c_LB:x136" : "Income protection insurance [direct business]",
+              "s2c_LB:x137" : "Workers' compensation insurance [direct business]",
+              "s2c_LB:x148" : "Medical expense insurance [accepted proportional reinsurance]",
+              "s2c_LB:x149" : "Income protection insurance [accepted proportional reinsurance]",
+              "s2c_LB:x150" : "Workers' compensation insurance [accepted proportional reinsurance]",
+              "s2c_LB:x42" : "Health [accepted non-proportional reinsurance]"
+            }
+          }
+        },
+        "Z0020" : {
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.13.01.07, Z0020}",
+            "Label" : "Risk type",
+            "Key" : "s2c_dim:RT",
+            "Values" : {
+              "s2c_RT:x309" : "Non-life and NSLT health premium risk aggregated jointly with implicit catastrophe risk",
+              "s2c_RT:x247" : "Non-life and NSLT health premium risk",
+              "s2c_RT:x310" : "Non-life underwriting premium risk with implicit catastrophe risk",
+              "s2c_RT:x107" : "Non-life underwriting premium risk",
+              "s2c_RT:x346" : "NSLT health underwriting premium risk with implicit catastrophe risk",
+              "s2c_RT:x347" : "NSLT health underwriting premium risk"
+            }
+          }
+        }
+      }
+    }
+  }
+}

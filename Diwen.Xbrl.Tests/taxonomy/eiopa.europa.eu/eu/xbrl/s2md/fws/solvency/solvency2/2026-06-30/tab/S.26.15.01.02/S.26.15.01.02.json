@@ -1,0 +1,353 @@
+{
+  "documentInfo" : {
+    "documentType" : "https://xbrl.org/2021/xbrl-csv",
+    "namespaces" : {
+      "s2md" : "http://eiopa.europa.eu/xbrl/s2md/",
+      "s2c_AP" : "http://eiopa.europa.eu/xbrl/s2c/dict/dom/AP",
+      "s2c_RT" : "http://eiopa.europa.eu/xbrl/s2c/dict/dom/RT",
+      "s2c_TI" : "http://eiopa.europa.eu/xbrl/s2c/dict/dom/TI",
+      "s2c_dim" : "http://eiopa.europa.eu/xbrl/s2c/dict/dim",
+      "s2md_met" : "http://eiopa.europa.eu/xbrl/s2md/dict/met"
+    }
+  },
+  "tableTemplates" : {
+    "S.26.15.01.02" : {
+      "columns" : {
+        "C0020" : {
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.15.01.02, C0020}",
+            "Label" : "Scenario name",
+            "Key" : "s2c_dim:OJ",
+            "Values" : "String"
+          }
+        },
+        "C0030" : {
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.15.01.02, C0030}",
+            "Label" : "Unique ID",
+            "Key" : "s2c_dim:OL",
+            "Values" : "String"
+          }
+        },
+        "C0040" : {
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.15.01.02, C0040}",
+            "Label" : "Unique ID of parent level",
+            "Key" : "s2c_dim:PZ",
+            "Values" : "String"
+          }
+        },
+        "C0050" : {
+          "dimensions" : {
+            "concept" : "s2md_met:ei2579",
+            "s2c_dim:OJ" : "$C0020",
+            "s2c_dim:OL" : "$C0030",
+            "s2c_dim:PZ" : "$C0040",
+            "s2c_dim:RH" : "s2c_TI:x2"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.15.01.02, C0050}",
+            "Label" : "S.26.15.01.02 - Basel Level 1 classification mapping|Z Axis:",
+            "Values" : {
+              "s2c_RT:x264" : "Internal fraud",
+              "s2c_RT:x267" : "External fraud",
+              "s2c_RT:x270" : "Employment practices and workspace safety",
+              "s2c_RT:x275" : "Damage to physical assets",
+              "s2c_RT:x278" : "Business disruption and system failures",
+              "s2c_RT:x281" : "Clients, products and business practices",
+              "s2c_RT:x288" : "Execution, delivery and process management"
+            }
+          }
+        },
+        "C0060" : {
+          "dimensions" : {
+            "concept" : "s2md_met:ei2580",
+            "s2c_dim:OJ" : "$C0020",
+            "s2c_dim:OL" : "$C0030",
+            "s2c_dim:PZ" : "$C0040",
+            "s2c_dim:RH" : "s2c_TI:x2"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.15.01.02, C0060}",
+            "Label" : "S.26.15.01.02 - Basel Level 2 classification mapping|Z Axis:",
+            "Values" : {
+              "s2c_RT:x265" : "Unauthorized activity",
+              "s2c_RT:x301" : "Internal fraud - Theft and fraud",
+              "s2c_RT:x266" : "Other Internal fraud",
+              "s2c_RT:x302" : "External fraud - Theft and fraud",
+              "s2c_RT:x268" : "Systems security",
+              "s2c_RT:x269" : "Other External fraud",
+              "s2c_RT:x271" : "Employee relations",
+              "s2c_RT:x272" : "Safe environment",
+              "s2c_RT:x273" : "Diversity and discrimination",
+              "s2c_RT:x274" : "Other Employment practices and workspace safety",
+              "s2c_RT:x276" : "Disasters and other events",
+              "s2c_RT:x277" : "Other Damage to physical assets",
+              "s2c_RT:x279" : "Systems",
+              "s2c_RT:x280" : "Other Business disruption and system failures",
+              "s2c_RT:x282" : "Suitability, disclosure and fiduciary",
+              "s2c_RT:x283" : "Improper business or market practices",
+              "s2c_RT:x284" : "Product flaws",
+              "s2c_RT:x285" : "Selection, sponsorship and exposure",
+              "s2c_RT:x286" : "Advisory activities",
+              "s2c_RT:x287" : "Other Clients, products and business practices",
+              "s2c_RT:x289" : "Transaction capture, execution and maintenance",
+              "s2c_RT:x290" : "Monitoring and reporting",
+              "s2c_RT:x291" : "Customer intake and documentation",
+              "s2c_RT:x292" : "Customer / client account management",
+              "s2c_RT:x293" : "Trade counterparties",
+              "s2c_RT:x294" : "Vendors and suppliers",
+              "s2c_RT:x295" : "Other Execution, delivery and process management"
+            }
+          }
+        },
+        "C0070" : {
+          "dimensions" : {
+            "concept" : "s2md_met:ei2583",
+            "s2c_dim:OJ" : "$C0020",
+            "s2c_dim:OL" : "$C0030",
+            "s2c_dim:PZ" : "$C0040",
+            "s2c_dim:RH" : "s2c_TI:x2"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.15.01.02, C0070}",
+            "Label" : "S.26.15.01.02 - Probability distribution|Z Axis:",
+            "Values" : {
+              "s2c_AP:x85" : "Poisson-lognormal",
+              "s2c_AP:x86" : "Lognormal",
+              "s2c_AP:x87" : "Poisson-Pareto",
+              "s2c_AP:x88" : "Empirical",
+              "s2c_AP:x89" : "Pareto",
+              "s2c_AP:x90" : "Other type of probability distribution",
+              "s2c_AP:x105" : "Obtained by aggregation of lower levels"
+            }
+          }
+        },
+        "C0080" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi2677",
+            "s2c_dim:OJ" : "$C0020",
+            "s2c_dim:OL" : "$C0030",
+            "s2c_dim:PZ" : "$C0040",
+            "s2c_dim:RH" : "s2c_TI:x2"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.15.01.02, C0080}",
+            "Label" : "S.26.15.01.02 - Solvency Capital Requirement|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetaryOpenTable"
+        },
+        "C0090" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi2612",
+            "s2c_dim:OJ" : "$C0020",
+            "s2c_dim:OL" : "$C0030",
+            "s2c_dim:PZ" : "$C0040",
+            "s2c_dim:RH" : "s2c_TI:x2"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.15.01.02, C0090}",
+            "Label" : "S.26.15.01.02 - 0,005|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetaryOpenTable"
+        },
+        "C0100" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi2613",
+            "s2c_dim:OJ" : "$C0020",
+            "s2c_dim:OL" : "$C0030",
+            "s2c_dim:PZ" : "$C0040",
+            "s2c_dim:RH" : "s2c_TI:x2"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.15.01.02, C0100}",
+            "Label" : "S.26.15.01.02 - 0,025|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetaryOpenTable"
+        },
+        "C0110" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi2614",
+            "s2c_dim:OJ" : "$C0020",
+            "s2c_dim:OL" : "$C0030",
+            "s2c_dim:PZ" : "$C0040",
+            "s2c_dim:RH" : "s2c_TI:x2"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.15.01.02, C0110}",
+            "Label" : "S.26.15.01.02 - 0,05|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetaryOpenTable"
+        },
+        "C0120" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi2615",
+            "s2c_dim:OJ" : "$C0020",
+            "s2c_dim:OL" : "$C0030",
+            "s2c_dim:PZ" : "$C0040",
+            "s2c_dim:RH" : "s2c_TI:x2"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.15.01.02, C0120}",
+            "Label" : "S.26.15.01.02 - 0,25|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetaryOpenTable"
+        },
+        "C0130" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi2616",
+            "s2c_dim:OJ" : "$C0020",
+            "s2c_dim:OL" : "$C0030",
+            "s2c_dim:PZ" : "$C0040",
+            "s2c_dim:RH" : "s2c_TI:x2"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.15.01.02, C0130}",
+            "Label" : "S.26.15.01.02 - 0,5|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetaryOpenTable"
+        },
+        "C0140" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi2617",
+            "s2c_dim:OJ" : "$C0020",
+            "s2c_dim:OL" : "$C0030",
+            "s2c_dim:PZ" : "$C0040",
+            "s2c_dim:RH" : "s2c_TI:x2"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.15.01.02, C0140}",
+            "Label" : "S.26.15.01.02 - 0,75|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetaryOpenTable"
+        },
+        "C0150" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi2618",
+            "s2c_dim:OJ" : "$C0020",
+            "s2c_dim:OL" : "$C0030",
+            "s2c_dim:PZ" : "$C0040",
+            "s2c_dim:RH" : "s2c_TI:x2"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.15.01.02, C0150}",
+            "Label" : "S.26.15.01.02 - 0,9|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetaryOpenTable"
+        },
+        "C0160" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi2619",
+            "s2c_dim:OJ" : "$C0020",
+            "s2c_dim:OL" : "$C0030",
+            "s2c_dim:PZ" : "$C0040",
+            "s2c_dim:RH" : "s2c_TI:x2"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.15.01.02, C0160}",
+            "Label" : "S.26.15.01.02 - 0,95|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetaryOpenTable"
+        },
+        "C0170" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi2620",
+            "s2c_dim:OJ" : "$C0020",
+            "s2c_dim:OL" : "$C0030",
+            "s2c_dim:PZ" : "$C0040",
+            "s2c_dim:RH" : "s2c_TI:x2"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.15.01.02, C0170}",
+            "Label" : "S.26.15.01.02 - 0,975|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetaryOpenTable"
+        },
+        "C0180" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi2621",
+            "s2c_dim:OJ" : "$C0020",
+            "s2c_dim:OL" : "$C0030",
+            "s2c_dim:PZ" : "$C0040",
+            "s2c_dim:RH" : "s2c_TI:x2"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.15.01.02, C0180}",
+            "Label" : "S.26.15.01.02 - 0,99|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetaryOpenTable"
+        },
+        "C0190" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi2622",
+            "s2c_dim:OJ" : "$C0020",
+            "s2c_dim:OL" : "$C0030",
+            "s2c_dim:PZ" : "$C0040",
+            "s2c_dim:RH" : "s2c_TI:x2"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.15.01.02, C0190}",
+            "Label" : "S.26.15.01.02 - 0,995|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetaryOpenTable"
+        },
+        "C0200" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi2623",
+            "s2c_dim:OJ" : "$C0020",
+            "s2c_dim:OL" : "$C0030",
+            "s2c_dim:PZ" : "$C0040",
+            "s2c_dim:RH" : "s2c_TI:x2"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.15.01.02, C0200}",
+            "Label" : "S.26.15.01.02 - 0,997|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetaryOpenTable"
+        },
+        "C0210" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi2624",
+            "s2c_dim:OJ" : "$C0020",
+            "s2c_dim:OL" : "$C0030",
+            "s2c_dim:PZ" : "$C0040",
+            "s2c_dim:RH" : "s2c_TI:x2"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.15.01.02, C0210}",
+            "Label" : "S.26.15.01.02 - 0,999|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetaryOpenTable"
+        }
+      }
+    }
+  }
+}

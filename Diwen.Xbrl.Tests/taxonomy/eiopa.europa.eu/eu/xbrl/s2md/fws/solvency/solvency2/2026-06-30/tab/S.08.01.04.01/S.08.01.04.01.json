@@ -1,0 +1,395 @@
+{
+  "documentInfo" : {
+    "documentType" : "https://xbrl.org/2021/xbrl-csv",
+    "namespaces" : {
+      "s2md" : "http://eiopa.europa.eu/xbrl/s2md/",
+      "s2c_LB" : "http://eiopa.europa.eu/xbrl/s2c/dict/dom/LB",
+      "s2c_MC" : "http://eiopa.europa.eu/xbrl/s2c/dict/dom/MC",
+      "s2c_PU" : "http://eiopa.europa.eu/xbrl/s2c/dict/dom/PU",
+      "s2c_VM" : "http://eiopa.europa.eu/xbrl/s2c/dict/dom/VM",
+      "s2c_dim" : "http://eiopa.europa.eu/xbrl/s2c/dict/dim",
+      "s2md_met" : "http://eiopa.europa.eu/xbrl/s2md/dict/met"
+    }
+  },
+  "tableTemplates" : {
+    "S.08.01.04.01" : {
+      "columns" : {
+        "C0010" : {
+          "dimensions" : {
+            "concept" : "s2md_met:si1376",
+            "s2c_dim:CE" : "$C0020",
+            "s2c_dim:IW" : "$C0090",
+            "s2c_dim:NF" : "$C0070",
+            "s2c_dim:SU" : "s2c_MC:x169",
+            "s2c_dim:UI" : "$C0040",
+            "s2c_dim:XB" : "$C0440"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.08.01.04.01, C0010}",
+            "Label" : "S.08.01.04.01 - Legal name of the undertaking|Z Axis:",
+            "Values" : "String"
+          }
+        },
+        "C0020" : {
+          "s2md:documentation" : {
+            "CellCode" : "{S.08.01.04.01, C0020}",
+            "Label" : "Identification code and type of code of the undertaking",
+            "Key" : "s2c_dim:CE",
+            "Values" : "String"
+          }
+        },
+        "C0040" : {
+          "s2md:documentation" : {
+            "CellCode" : "{S.08.01.04.01, C0040}",
+            "Label" : "Derivative ID Code and Type of code",
+            "Key" : "s2c_dim:UI",
+            "Values" : "String"
+          }
+        },
+        "C0041" : {
+          "dimensions" : {
+            "concept" : "s2md_met:si2812",
+            "s2c_dim:CE" : "$C0020",
+            "s2c_dim:IW" : "$C0090",
+            "s2c_dim:NF" : "$C0070",
+            "s2c_dim:SU" : "s2c_MC:x169",
+            "s2c_dim:UI" : "$C0040",
+            "s2c_dim:XB" : "$C0440"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.08.01.04.01, C0041}",
+            "Label" : "S.08.01.04.01 - Unique Transactions Identifier|Z Axis:",
+            "Values" : "String"
+          }
+        },
+        "C0060" : {
+          "dimensions" : {
+            "concept" : "s2md_met:ei2426",
+            "s2c_dim:CE" : "$C0020",
+            "s2c_dim:IW" : "$C0090",
+            "s2c_dim:NF" : "$C0070",
+            "s2c_dim:SU" : "s2c_MC:x169",
+            "s2c_dim:UI" : "$C0040",
+            "s2c_dim:XB" : "$C0440"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.08.01.04.01, C0060}",
+            "Label" : "S.08.01.04.01 - Portfolio|Z Axis:",
+            "Values" : {
+              "s2c_PU:x10" : "Life [split applicable]",
+              "s2c_PU:x13" : "Non-life [split applicable]",
+              "s2c_PU:x96" : "Ring Fenced Funds",
+              "s2c_PU:x57" : "Other internal funds",
+              "s2c_PU:x49" : "Shareholders' funds",
+              "s2c_PU:x3" : "General [no split]"
+            }
+          }
+        },
+        "C0070" : {
+          "s2md:documentation" : {
+            "CellCode" : "{S.08.01.04.01, C0070}",
+            "Label" : "Fund number",
+            "Key" : "s2c_dim:NF",
+            "Values" : "String"
+          }
+        },
+        "C0080" : {
+          "dimensions" : {
+            "concept" : "s2md_met:ei1070",
+            "s2c_dim:CE" : "$C0020",
+            "s2c_dim:IW" : "$C0090",
+            "s2c_dim:NF" : "$C0070",
+            "s2c_dim:SU" : "s2c_MC:x169",
+            "s2c_dim:UI" : "$C0040",
+            "s2c_dim:XB" : "$C0440"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.08.01.04.01, C0080}",
+            "Label" : "S.08.01.04.01 - Derivatives held in index-linked and unit-linked contracts|Z Axis:",
+            "Values" : {
+              "s2c_LB:x119" : "Unit-linked or index-linked",
+              "s2c_LB:x91" : "Neither unit-linked nor index-linked"
+            }
+          }
+        },
+        "C0090" : {
+          "s2md:documentation" : {
+            "CellCode" : "{S.08.01.04.01, C0090}",
+            "Label" : "Instrument underlying the derivative (code and type of code)",
+            "Key" : "s2c_dim:IW",
+            "Values" : "String"
+          }
+        },
+        "C0110" : {
+          "dimensions" : {
+            "concept" : "s2md_met:ei1811",
+            "s2c_dim:CE" : "$C0020",
+            "s2c_dim:IW" : "$C0090",
+            "s2c_dim:NF" : "$C0070",
+            "s2c_dim:SU" : "s2c_MC:x169",
+            "s2c_dim:UI" : "$C0040",
+            "s2c_dim:XB" : "$C0440"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.08.01.04.01, C0110}",
+            "Label" : "S.08.01.04.01 - Use of derivative|Z Axis:",
+            "Values" : {
+              "s2c_PU:x12" : "Micro hedge [MI]",
+              "s2c_PU:x11" : "Macro hedge [MA]",
+              "s2c_PU:x58" : "Matching assets and liabilities cash-flows used in the context of matching adjustment portfolios",
+              "s2c_PU:x59" : "Efficient portfolio management, other than \"Matching assets and liabilities cash-flows used in the context of matching adjustment portfolios\""
+            }
+          }
+        },
+        "C0131" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi2822",
+            "s2c_dim:CE" : "$C0020",
+            "s2c_dim:IW" : "$C0090",
+            "s2c_dim:NF" : "$C0070",
+            "s2c_dim:SU" : "s2c_MC:x169",
+            "s2c_dim:UI" : "$C0040",
+            "s2c_dim:XB" : "$C0440"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.08.01.04.01, C0131}",
+            "Label" : "S.08.01.04.01 - Notional amount of the derivative|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetaryOpenTable"
+        },
+        "C0140" : {
+          "dimensions" : {
+            "concept" : "s2md_met:ei1851",
+            "s2c_dim:CE" : "$C0020",
+            "s2c_dim:IW" : "$C0090",
+            "s2c_dim:NF" : "$C0070",
+            "s2c_dim:SU" : "s2c_MC:x169",
+            "s2c_dim:UI" : "$C0040",
+            "s2c_dim:XB" : "$C0440"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.08.01.04.01, C0140}",
+            "Label" : "S.08.01.04.01 - Buyer / Seller|Z Axis:",
+            "Values" : {
+              "s2c_MC:x163" : "L [open]",
+              "s2c_MC:x131" : "S [open]",
+              "s2c_MC:x59" : "FX-FL [open]",
+              "s2c_MC:x61" : "FX-FX [open]",
+              "s2c_MC:x56" : "FL-FX [open]",
+              "s2c_MC:x54" : "FL-FL [open]"
+            }
+          }
+        },
+        "C0150" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi1812",
+            "s2c_dim:CE" : "$C0020",
+            "s2c_dim:IW" : "$C0090",
+            "s2c_dim:NF" : "$C0070",
+            "s2c_dim:SU" : "s2c_MC:x169",
+            "s2c_dim:UI" : "$C0040",
+            "s2c_dim:XB" : "$C0440"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.08.01.04.01, C0150}",
+            "Label" : "S.08.01.04.01 - Premium paid to date|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetaryOpenTable"
+        },
+        "C0160" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi1813",
+            "s2c_dim:CE" : "$C0020",
+            "s2c_dim:IW" : "$C0090",
+            "s2c_dim:NF" : "$C0070",
+            "s2c_dim:SU" : "s2c_MC:x169",
+            "s2c_dim:UI" : "$C0040",
+            "s2c_dim:XB" : "$C0440"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.08.01.04.01, C0160}",
+            "Label" : "S.08.01.04.01 - Premium received to date|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetaryOpenTable"
+        },
+        "C0170" : {
+          "dimensions" : {
+            "concept" : "s2md_met:ri2821",
+            "s2c_dim:CE" : "$C0020",
+            "s2c_dim:IW" : "$C0090",
+            "s2c_dim:NF" : "$C0070",
+            "s2c_dim:SU" : "s2c_MC:x169",
+            "s2c_dim:UI" : "$C0040",
+            "s2c_dim:XB" : "$C0440"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.08.01.04.01, C0170}",
+            "Label" : "S.08.01.04.01 - Number of contracts|Z Axis:",
+            "Values" : "Decimal"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "decimalsDecimal"
+        },
+        "C0180" : {
+          "dimensions" : {
+            "concept" : "s2md_met:ri2964",
+            "s2c_dim:CE" : "$C0020",
+            "s2c_dim:IW" : "$C0090",
+            "s2c_dim:NF" : "$C0070",
+            "s2c_dim:SU" : "s2c_MC:x169",
+            "s2c_dim:UI" : "$C0040",
+            "s2c_dim:XB" : "$C0440"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.08.01.04.01, C0180}",
+            "Label" : "S.08.01.04.01 - Contract size|Z Axis:",
+            "Values" : "Decimal"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "decimalsDecimal"
+        },
+        "C0190" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi1101",
+            "s2c_dim:CE" : "$C0020",
+            "s2c_dim:IW" : "$C0090",
+            "s2c_dim:NF" : "$C0070",
+            "s2c_dim:SU" : "s2c_MC:x169",
+            "s2c_dim:UI" : "$C0040",
+            "s2c_dim:XB" : "$C0440"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.08.01.04.01, C0190}",
+            "Label" : "S.08.01.04.01 - Maximum loss under unwinding event|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetaryOpenTable"
+        },
+        "C0200" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi1115",
+            "s2c_dim:CE" : "$C0020",
+            "s2c_dim:IW" : "$C0090",
+            "s2c_dim:NF" : "$C0070",
+            "s2c_dim:SU" : "s2c_MC:x169",
+            "s2c_dim:UI" : "$C0040",
+            "s2c_dim:XB" : "$C0440"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.08.01.04.01, C0200}",
+            "Label" : "S.08.01.04.01 - Swap outflow amount|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetaryOpenTable"
+        },
+        "C0210" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi1096",
+            "s2c_dim:CE" : "$C0020",
+            "s2c_dim:IW" : "$C0090",
+            "s2c_dim:NF" : "$C0070",
+            "s2c_dim:SU" : "s2c_MC:x169",
+            "s2c_dim:UI" : "$C0040",
+            "s2c_dim:XB" : "$C0440"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.08.01.04.01, C0210}",
+            "Label" : "S.08.01.04.01 - Swap inflow amount|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetaryOpenTable"
+        },
+        "C0220" : {
+          "dimensions" : {
+            "concept" : "s2md_met:di1047",
+            "s2c_dim:CE" : "$C0020",
+            "s2c_dim:IW" : "$C0090",
+            "s2c_dim:NF" : "$C0070",
+            "s2c_dim:SU" : "s2c_MC:x169",
+            "s2c_dim:UI" : "$C0040",
+            "s2c_dim:XB" : "$C0440"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.08.01.04.01, C0220}",
+            "Label" : "S.08.01.04.01 - Initial date|Z Axis:",
+            "Values" : "Date"
+          }
+        },
+        "C0230" : {
+          "dimensions" : {
+            "concept" : "s2md_met:ri2266",
+            "s2c_dim:CE" : "$C0020",
+            "s2c_dim:IW" : "$C0090",
+            "s2c_dim:NF" : "$C0070",
+            "s2c_dim:SU" : "s2c_MC:x169",
+            "s2c_dim:UI" : "$C0040",
+            "s2c_dim:XB" : "$C0440"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.08.01.04.01, C0230}",
+            "Label" : "S.08.01.04.01 - Duration|Z Axis:",
+            "Values" : "Decimal"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "decimalsDecimal"
+        },
+        "C0240" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi1127",
+            "s2c_dim:CE" : "$C0020",
+            "s2c_dim:IW" : "$C0090",
+            "s2c_dim:NF" : "$C0070",
+            "s2c_dim:SU" : "s2c_MC:x169",
+            "s2c_dim:UI" : "$C0040",
+            "s2c_dim:XB" : "$C0440"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.08.01.04.01, C0240}",
+            "Label" : "S.08.01.04.01 - Solvency II value|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetaryOpenTable"
+        },
+        "C0250" : {
+          "dimensions" : {
+            "concept" : "s2md_met:ei2294",
+            "s2c_dim:CE" : "$C0020",
+            "s2c_dim:IW" : "$C0090",
+            "s2c_dim:NF" : "$C0070",
+            "s2c_dim:SU" : "s2c_MC:x169",
+            "s2c_dim:UI" : "$C0040",
+            "s2c_dim:XB" : "$C0440"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.08.01.04.01, C0250}",
+            "Label" : "S.08.01.04.01 - Valuation method|Z Axis:",
+            "Values" : {
+              "s2c_VM:x43" : "Quoted market price in active markets for the same assets or liabilities",
+              "s2c_VM:x42" : "Quoted market price in active markets for similar assets or liabilities",
+              "s2c_VM:x3" : "Alternative valuation methods",
+              "s2c_VM:x88" : "Market valuation according to article 9(4) of Delegated Regulation 2015/35"
+            }
+          }
+        },
+        "C0440" : {
+          "s2md:documentation" : {
+            "CellCode" : "{S.08.01.04.01, C0440}",
+            "Label" : "Line identification",
+            "Key" : "s2c_dim:XB",
+            "Values" : "String"
+          }
+        }
+      }
+    }
+  }
+}

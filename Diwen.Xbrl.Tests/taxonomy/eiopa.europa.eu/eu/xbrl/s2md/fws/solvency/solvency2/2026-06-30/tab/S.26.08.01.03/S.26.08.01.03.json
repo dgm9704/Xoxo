@@ -1,0 +1,33 @@
+{
+  "documentInfo" : {
+    "documentType" : "https://xbrl.org/2021/xbrl-csv",
+    "namespaces" : {
+      "s2md" : "http://eiopa.europa.eu/xbrl/s2md/",
+      "s2c_RT" : "http://eiopa.europa.eu/xbrl/s2c/dict/dom/RT",
+      "s2c_TI" : "http://eiopa.europa.eu/xbrl/s2c/dict/dom/TI",
+      "s2c_VM" : "http://eiopa.europa.eu/xbrl/s2c/dict/dom/VM",
+      "s2c_dim" : "http://eiopa.europa.eu/xbrl/s2c/dict/dim",
+      "s2md_met" : "http://eiopa.europa.eu/xbrl/s2md/dict/met"
+    }
+  },
+  "tableTemplates" : {
+    "S.26.08.01.03" : {
+      "columns" : {
+        "C0080_R0510" : {
+          "dimensions" : {
+            "concept" : "s2md_met:si1362",
+            "s2c_dim:DV" : "s2c_RT:x11",
+            "s2c_dim:EA" : "s2c_VM:x24",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RT" : "s2c_RT:x243"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.08.01.03, C0080, R0510}",
+            "Label" : "S.26.08.01.03 - Risk description|Memorandum item: Residual risk description|Z Axis:",
+            "Values" : "String"
+          }
+        }
+      }
+    }
+  }
+}

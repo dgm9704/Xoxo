@@ -1,0 +1,122 @@
+{
+  "documentInfo" : {
+    "documentType" : "https://xbrl.org/2021/xbrl-csv",
+    "namespaces" : {
+      "s2md" : "http://eiopa.europa.eu/xbrl/s2md/",
+      "s2c_AM" : "http://eiopa.europa.eu/xbrl/s2c/dict/dom/AM",
+      "s2c_AP" : "http://eiopa.europa.eu/xbrl/s2c/dict/dom/AP",
+      "s2c_VM" : "http://eiopa.europa.eu/xbrl/s2c/dict/dom/VM",
+      "s2c_dim" : "http://eiopa.europa.eu/xbrl/s2c/dict/dim",
+      "s2md_met" : "http://eiopa.europa.eu/xbrl/s2md/dict/met"
+    }
+  },
+  "tableTemplates" : {
+    "S.26.16.01.03" : {
+      "columns" : {
+        "C0220_R0010" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi2922",
+            "s2c_dim:VG" : "s2c_AM:x80",
+            "s2c_dim:VM" : "s2c_VM:x109"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.16.01.03, C0220, R0010}",
+            "Label" : "S.26.16.01.03 - Own Funds w/o change (amount)|Total minor",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0230_R0010" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi2922",
+            "s2c_dim:VG" : "s2c_AM:x80",
+            "s2c_dim:VM" : "s2c_VM:x110"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.16.01.03, C0230, R0010}",
+            "Label" : "S.26.16.01.03 - Own Funds with change (amount)|Total minor",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0240_R0010" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi2923",
+            "s2c_dim:AG" : "s2c_VM:x25",
+            "s2c_dim:VG" : "s2c_AM:x80",
+            "s2c_dim:VM" : "s2c_VM:x110"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.16.01.03, C0240, R0010}",
+            "Label" : "S.26.16.01.03 - SCR sum for minor changes increasing SCR|Total minor",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0250_R0010" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi2923",
+            "s2c_dim:AG" : "s2c_VM:x17",
+            "s2c_dim:VG" : "s2c_AM:x80",
+            "s2c_dim:VM" : "s2c_VM:x110"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.16.01.03, C0250, R0010}",
+            "Label" : "S.26.16.01.03 - SCR sum for minor changes decreasing SCR|Total minor",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0290_R0010" : {
+          "dimensions" : {
+            "concept" : "s2md_met:ii2607"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.16.01.03, C0290, R0010}",
+            "Label" : "S.26.16.01.03 - Number of minor changes implemented during the reporting period|Total minor",
+            "Values" : "Integer"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsInteger"
+        },
+        "C0300_R0010" : {
+          "dimensions" : {
+            "concept" : "s2md_met:si2608"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.16.01.03, C0300, R0010}",
+            "Label" : "S.26.16.01.03 - Threshold for accumulation|Total minor",
+            "Values" : "String"
+          }
+        },
+        "C0310_R0010" : {
+          "dimensions" : {
+            "concept" : "s2md_met:ei2597"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.16.01.03, C0310, R0010}",
+            "Label" : "S.26.16.01.03 - Reset|Total minor",
+            "Values" : {
+              "s2c_AP:x98" : "Internal model minor changes reset occurred in the reporting period",
+              "s2c_AP:x99" : "Internal model minor changes reset did not occur in the reporting period"
+            }
+          }
+        },
+        "C0320_R0010" : {
+          "dimensions" : {
+            "concept" : "s2md_met:si2609"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.16.01.03, C0320, R0010}",
+            "Label" : "S.26.16.01.03 - Reason for reset|Total minor",
+            "Values" : "String"
+          }
+        }
+      }
+    }
+  }
+}

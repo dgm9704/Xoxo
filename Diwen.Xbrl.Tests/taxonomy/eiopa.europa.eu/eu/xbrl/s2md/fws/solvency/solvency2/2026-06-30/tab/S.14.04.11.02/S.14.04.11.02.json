@@ -1,0 +1,155 @@
+{
+  "documentInfo" : {
+    "documentType" : "https://xbrl.org/2021/xbrl-csv",
+    "namespaces" : {
+      "s2md" : "http://eiopa.europa.eu/xbrl/s2md/",
+      "s2c_PC" : "http://eiopa.europa.eu/xbrl/s2c/dict/dom/PC",
+      "s2c_dim" : "http://eiopa.europa.eu/xbrl/s2c/dict/dim",
+      "s2md_met" : "http://eiopa.europa.eu/xbrl/s2md/dict/met"
+    }
+  },
+  "tableTemplates" : {
+    "S.14.04.11.02" : {
+      "columns" : {
+        "C0015" : {
+          "s2md:documentation" : {
+            "CellCode" : "{S.14.04.11.02, C0015}",
+            "Label" : "Identification code and type of code of the undertaking",
+            "Key" : "s2c_dim:CE",
+            "Values" : "String"
+          }
+        },
+        "C0070" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi1136",
+            "s2c_dim:CE" : "$C0015",
+            "s2c_dim:EF" : "$C0230",
+            "s2c_dim:ES" : "$C0240"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.14.04.11.02, C0070}",
+            "Label" : "S.14.04.11.02 - Total amount of claims paid (year to date)",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetaryOpenTable"
+        },
+        "C0074" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi2645",
+            "s2c_dim:CE" : "$C0015",
+            "s2c_dim:EF" : "$C0230",
+            "s2c_dim:ES" : "$C0240"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.14.04.11.02, C0074}",
+            "Label" : "S.14.04.11.02 - Administrative expenses",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetaryOpenTable"
+        },
+        "C0180" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi2838",
+            "s2c_dim:CE" : "$C0015",
+            "s2c_dim:EF" : "$C0230",
+            "s2c_dim:ES" : "$C0240"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.14.04.11.02, C0180}",
+            "Label" : "S.14.04.11.02 - Best Estimate",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetaryOpenTable"
+        },
+        "C0200" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi1125",
+            "s2c_dim:CE" : "$C0015",
+            "s2c_dim:EF" : "$C0230",
+            "s2c_dim:ES" : "$C0240"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.14.04.11.02, C0200}",
+            "Label" : "S.14.04.11.02 - Total amount of surrenders",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetaryOpenTable"
+        },
+        "C0230" : {
+          "s2md:documentation" : {
+            "CellCode" : "{S.14.04.11.02, C0230}",
+            "Label" : "Line identification",
+            "Key" : "s2c_dim:EF",
+            "Values" : "String"
+          }
+        },
+        "C0240" : {
+          "s2md:documentation" : {
+            "CellCode" : "{S.14.04.11.02, C0240}",
+            "Label" : "Line identification (internal portfolio ID)",
+            "Key" : "s2c_dim:ES",
+            "Values" : "String"
+          }
+        },
+        "C0270" : {
+          "dimensions" : {
+            "concept" : "s2md_met:ei2565",
+            "s2c_dim:CE" : "$C0015",
+            "s2c_dim:EF" : "$C0230",
+            "s2c_dim:ES" : "$C0240"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.14.04.11.02, C0270}",
+            "Label" : "S.14.04.11.02 - Exit conditions at reporting date",
+            "Values" : {
+              "s2c_PC:x19" : "Surrender value equal to the best estimate/local statutory reserves and notice required lower than one week",
+              "s2c_PC:x21" : "Surrender value equal to the best estimate/local statutory reserves and notice required higher than one week but lower than 3 months",
+              "s2c_PC:x22" : "Surrender value equal to the best estimate/local statutory reserves and notice required higher than 3 months",
+              "s2c_PC:x23" : "Surrender value between 100% (exclusively) and 80% of the best estimate/local statutory reserves and notice required lower than one week",
+              "s2c_PC:x24" : "Surrender value between 100% (exclusively) and 80% of the best estimate/local statutory reserves and notice required higher than one week but lower than 3 months",
+              "s2c_PC:x25" : "Surrender value between 100% (exclusively) and 80% of the best estimate/local statutory reserves and notice required higher than 3 months",
+              "s2c_PC:x26" : "Surrender value lower than 80% of the best estimate/local statutory reserves and notice required lower than one week",
+              "s2c_PC:x27" : "Surrender value lower than 80% of the best estimate/local statutory reserves and notice required higher than one week but lower than 3 months",
+              "s2c_PC:x28" : "Surrender value lower than 80% of the best estimate/local statutory reserves and notice required higher than 3 months",
+              "s2c_PC:x29" : "Other product exit conditions"
+            }
+          }
+        },
+        "C0290" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi2837",
+            "s2c_dim:CE" : "$C0015",
+            "s2c_dim:EF" : "$C0230",
+            "s2c_dim:ES" : "$C0240"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.14.04.11.02, C0290}",
+            "Label" : "S.14.04.11.02 - Cash in-flows - Premiums - gross (year to date)",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetaryOpenTable"
+        },
+        "C0300" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi2839",
+            "s2c_dim:CE" : "$C0015",
+            "s2c_dim:EF" : "$C0230",
+            "s2c_dim:ES" : "$C0240"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.14.04.11.02, C0300}",
+            "Label" : "S.14.04.11.02 - Net Reinsurance flows of the period (year to date)",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetaryOpenTable"
+        }
+      }
+    }
+  }
+}

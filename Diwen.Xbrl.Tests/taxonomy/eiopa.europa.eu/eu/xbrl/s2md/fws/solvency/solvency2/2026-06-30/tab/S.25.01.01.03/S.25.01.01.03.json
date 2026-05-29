@@ -1,0 +1,44 @@
+{
+  "documentInfo" : {
+    "documentType" : "https://xbrl.org/2021/xbrl-csv",
+    "namespaces" : {
+      "s2md" : "http://eiopa.europa.eu/xbrl/s2md/",
+      "s2c_AP" : "http://eiopa.europa.eu/xbrl/s2c/dict/dom/AP",
+      "s2c_dim" : "http://eiopa.europa.eu/xbrl/s2c/dict/dim",
+      "s2md_met" : "http://eiopa.europa.eu/xbrl/s2md/dict/met"
+    }
+  },
+  "tableTemplates" : {
+    "S.25.01.01.03" : {
+      "columns" : {
+        "C0109_R0590" : {
+          "dimensions" : {
+            "concept" : "s2md_met:ei2524",
+            "s2c_dim:AO" : "$Z0010"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.25.01.01.03, C0109, R0590}",
+            "Label" : "S.25.01.01.03 - Yes/No|Approach based on average tax rate|Z Axis:",
+            "Values" : {
+              "s2c_AP:x55" : "Approach based on average tax rate",
+              "s2c_AP:x56" : "Approach not based on average tax rate",
+              "s2c_AP:x77" : "Approach based on average tax rate is not applicable as LAC DT is not used"
+            }
+          }
+        },
+        "Z0010" : {
+          "s2md:documentation" : {
+            "CellCode" : "{S.25.01.01.03, Z0010}",
+            "Label" : "Article 112",
+            "Key" : "s2c_dim:AO",
+            "Values" : {
+              "x0" : "No",
+              "x1" : "Yes",
+              "x2" : "Yes - biennial reporting"
+            }
+          }
+        }
+      }
+    }
+  }
+}

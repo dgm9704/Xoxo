@@ -1,0 +1,263 @@
+{
+  "documentInfo" : {
+    "documentType" : "https://xbrl.org/2021/xbrl-csv",
+    "namespaces" : {
+      "s2md" : "http://eiopa.europa.eu/xbrl/s2md/",
+      "s2c_LB" : "http://eiopa.europa.eu/xbrl/s2c/dict/dom/LB",
+      "s2c_MC" : "http://eiopa.europa.eu/xbrl/s2c/dict/dom/MC",
+      "s2c_PU" : "http://eiopa.europa.eu/xbrl/s2c/dict/dom/PU",
+      "s2c_TB" : "http://eiopa.europa.eu/xbrl/s2c/dict/dom/TB",
+      "s2c_dim" : "http://eiopa.europa.eu/xbrl/s2c/dict/dim",
+      "s2md_met" : "http://eiopa.europa.eu/xbrl/s2md/dict/met"
+    }
+  },
+  "tableTemplates" : {
+    "S.10.01.04.01" : {
+      "columns" : {
+        "C0010" : {
+          "dimensions" : {
+            "concept" : "s2md_met:si1376",
+            "s2c_dim:CE" : "$C0020",
+            "s2c_dim:NF" : "$C0050",
+            "s2c_dim:XF" : "$C0180"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.10.01.04.01, C0010}",
+            "Label" : "S.10.01.04.01 - Legal name of the undertaking",
+            "Values" : "String"
+          }
+        },
+        "C0020" : {
+          "s2md:documentation" : {
+            "CellCode" : "{S.10.01.04.01, C0020}",
+            "Label" : "Identification code and type of code of the undertaking",
+            "Key" : "s2c_dim:CE",
+            "Values" : "String"
+          }
+        },
+        "C0040" : {
+          "dimensions" : {
+            "concept" : "s2md_met:ei2426",
+            "s2c_dim:CE" : "$C0020",
+            "s2c_dim:NF" : "$C0050",
+            "s2c_dim:XF" : "$C0180"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.10.01.04.01, C0040}",
+            "Label" : "S.10.01.04.01 - Portfolio",
+            "Values" : {
+              "s2c_PU:x10" : "Life [split applicable]",
+              "s2c_PU:x13" : "Non-life [split applicable]",
+              "s2c_PU:x96" : "Ring Fenced Funds",
+              "s2c_PU:x57" : "Other internal funds",
+              "s2c_PU:x49" : "Shareholders' funds",
+              "s2c_PU:x3" : "General [no split]"
+            }
+          }
+        },
+        "C0050" : {
+          "s2md:documentation" : {
+            "CellCode" : "{S.10.01.04.01, C0050}",
+            "Label" : "Fund number",
+            "Key" : "s2c_dim:NF",
+            "Values" : "String"
+          }
+        },
+        "C0060" : {
+          "dimensions" : {
+            "concept" : "s2md_met:ei1817",
+            "s2c_dim:CE" : "$C0020",
+            "s2c_dim:NF" : "$C0050",
+            "s2c_dim:XF" : "$C0180"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.10.01.04.01, C0060}",
+            "Label" : "S.10.01.04.01 - Asset category",
+            "Values" : {
+              "s2c_MC:x175" : "Government Bonds",
+              "s2c_MC:x176" : "Corporate Bonds",
+              "s2c_MC:x39" : "Equity instruments",
+              "s2c_MC:x177" : "Collective investments undertakings",
+              "s2c_MC:x136" : "Structured notes",
+              "s2c_MC:x18" : "Collateralised securities",
+              "s2c_MC:x186" : "Cash and deposits",
+              "s2c_MC:x81" : "Mortgages and loans",
+              "s2c_MC:x115" : "Properties",
+              "s2c_MC:x179" : "Other investments",
+              "s2c_MC:x34" : "Futures",
+              "s2c_MC:x201" : "Call Options",
+              "s2c_MC:x202" : "Put Options",
+              "s2c_MC:x150" : "Swaps",
+              "s2c_MC:x33" : "Forwards",
+              "s2c_MC:x25" : "Credit derivatives"
+            }
+          }
+        },
+        "C0070" : {
+          "dimensions" : {
+            "concept" : "s2md_met:si1378",
+            "s2c_dim:CE" : "$C0020",
+            "s2c_dim:NF" : "$C0050",
+            "s2c_dim:XF" : "$C0180"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.10.01.04.01, C0070}",
+            "Label" : "S.10.01.04.01 - Counterparty Name",
+            "Values" : "String"
+          }
+        },
+        "C0080" : {
+          "dimensions" : {
+            "concept" : "s2md_met:si1558",
+            "s2c_dim:CE" : "$C0020",
+            "s2c_dim:NF" : "$C0050",
+            "s2c_dim:XF" : "$C0180"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.10.01.04.01, C0080}",
+            "Label" : "S.10.01.04.01 - Counterparty code and type of code",
+            "Values" : "String"
+          }
+        },
+        "C0100" : {
+          "dimensions" : {
+            "concept" : "s2md_met:ei1818",
+            "s2c_dim:CE" : "$C0020",
+            "s2c_dim:NF" : "$C0050",
+            "s2c_dim:XF" : "$C0180"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.10.01.04.01, C0100}",
+            "Label" : "S.10.01.04.01 - Counterparty asset category",
+            "Values" : {
+              "s2c_MC:x175" : "Government Bonds",
+              "s2c_MC:x176" : "Corporate Bonds",
+              "s2c_MC:x39" : "Equity instruments",
+              "s2c_MC:x177" : "Collective investments undertakings",
+              "s2c_MC:x136" : "Structured notes",
+              "s2c_MC:x18" : "Collateralised securities",
+              "s2c_MC:x186" : "Cash and deposits",
+              "s2c_MC:x81" : "Mortgages and loans",
+              "s2c_MC:x115" : "Properties",
+              "s2c_MC:x179" : "Other investments",
+              "s2c_MC:x240" : "No collateral"
+            }
+          }
+        },
+        "C0110" : {
+          "dimensions" : {
+            "concept" : "s2md_met:ei1070",
+            "s2c_dim:CE" : "$C0020",
+            "s2c_dim:NF" : "$C0050",
+            "s2c_dim:XF" : "$C0180"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.10.01.04.01, C0110}",
+            "Label" : "S.10.01.04.01 - Assets held in unit-linked and index-linked contracts",
+            "Values" : {
+              "s2c_LB:x119" : "Unit-linked or index-linked",
+              "s2c_LB:x91" : "Neither unit-linked nor index-linked"
+            }
+          }
+        },
+        "C0120" : {
+          "dimensions" : {
+            "concept" : "s2md_met:ei1396",
+            "s2c_dim:CE" : "$C0020",
+            "s2c_dim:NF" : "$C0050",
+            "s2c_dim:XF" : "$C0180"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.10.01.04.01, C0120}",
+            "Label" : "S.10.01.04.01 - Position in the Contract",
+            "Values" : {
+              "s2c_TB:x4" : "Buyer [repo]",
+              "s2c_TB:x37" : "Seller [repo]",
+              "s2c_TB:x16" : "Lender [securities lending]",
+              "s2c_TB:x3" : "Borrower [securities lending]"
+            }
+          }
+        },
+        "C0130" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi1109",
+            "s2c_dim:CE" : "$C0020",
+            "s2c_dim:NF" : "$C0050",
+            "s2c_dim:XF" : "$C0180"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.10.01.04.01, C0130}",
+            "Label" : "S.10.01.04.01 - Near leg amount",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetaryOpenTable"
+        },
+        "C0140" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi1993",
+            "s2c_dim:CE" : "$C0020",
+            "s2c_dim:NF" : "$C0050",
+            "s2c_dim:XF" : "$C0180"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.10.01.04.01, C0140}",
+            "Label" : "S.10.01.04.01 - Far leg amount",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetaryOpenTable"
+        },
+        "C0150" : {
+          "dimensions" : {
+            "concept" : "s2md_met:di1045",
+            "s2c_dim:CE" : "$C0020",
+            "s2c_dim:NF" : "$C0050",
+            "s2c_dim:XF" : "$C0180"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.10.01.04.01, C0150}",
+            "Label" : "S.10.01.04.01 - Start date",
+            "Values" : "Date"
+          }
+        },
+        "C0160" : {
+          "dimensions" : {
+            "concept" : "s2md_met:di1037",
+            "s2c_dim:CE" : "$C0020",
+            "s2c_dim:NF" : "$C0050",
+            "s2c_dim:XF" : "$C0180"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.10.01.04.01, C0160}",
+            "Label" : "S.10.01.04.01 - Maturity date",
+            "Values" : "Date"
+          }
+        },
+        "C0170" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi1159",
+            "s2c_dim:CE" : "$C0020",
+            "s2c_dim:NF" : "$C0050",
+            "s2c_dim:XF" : "$C0180"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.10.01.04.01, C0170}",
+            "Label" : "S.10.01.04.01 - Solvency II Value",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetaryOpenTable"
+        },
+        "C0180" : {
+          "s2md:documentation" : {
+            "CellCode" : "{S.10.01.04.01, C0180}",
+            "Label" : "Line identification",
+            "Key" : "s2c_dim:XF",
+            "Values" : "String"
+          }
+        }
+      }
+    }
+  }
+}

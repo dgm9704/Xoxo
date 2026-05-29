@@ -1,0 +1,81 @@
+{
+  "documentInfo" : {
+    "documentType" : "https://xbrl.org/2021/xbrl-csv",
+    "namespaces" : {
+      "s2md" : "http://eiopa.europa.eu/xbrl/s2md/",
+      "s2c_AM" : "http://eiopa.europa.eu/xbrl/s2c/dict/dom/AM",
+      "s2c_AP" : "http://eiopa.europa.eu/xbrl/s2c/dict/dom/AP",
+      "s2c_PI" : "http://eiopa.europa.eu/xbrl/s2c/dict/dom/PI",
+      "s2c_RT" : "http://eiopa.europa.eu/xbrl/s2c/dict/dom/RT",
+      "s2c_TI" : "http://eiopa.europa.eu/xbrl/s2c/dict/dom/TI",
+      "s2c_VM" : "http://eiopa.europa.eu/xbrl/s2c/dict/dom/VM",
+      "s2c_dim" : "http://eiopa.europa.eu/xbrl/s2c/dict/dim",
+      "s2md_met" : "http://eiopa.europa.eu/xbrl/s2md/dict/met"
+    }
+  },
+  "tableTemplates" : {
+    "S.26.11.01.04" : {
+      "columns" : {
+        "C0110_R0190" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi92",
+            "s2c_dim:DV" : "s2c_RT:x11",
+            "s2c_dim:EA" : "s2c_VM:x23",
+            "s2c_dim:PT" : "s2c_PI:x24",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RT" : "s2c_RT:x250",
+            "s2c_dim:SP" : "s2c_AP:x84",
+            "s2c_dim:VG" : "s2c_AM:x80",
+            "s2c_dim:VR" : "s2c_VM:x103"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.11.01.04, C0110, R0190}",
+            "Label" : "S.26.11.01.04 - mVaR 99.50%|Total undiversified credit risk|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0110_R0200" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi92",
+            "s2c_dim:DV" : "s2c_RT:x29",
+            "s2c_dim:EA" : "s2c_VM:x23",
+            "s2c_dim:PT" : "s2c_PI:x24",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RT" : "s2c_RT:x250",
+            "s2c_dim:SP" : "s2c_AP:x84",
+            "s2c_dim:VG" : "s2c_AM:x80",
+            "s2c_dim:VR" : "s2c_VM:x103"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.11.01.04, C0110, R0200}",
+            "Label" : "S.26.11.01.04 - mVaR 99.50%|Diversification: credit risk|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0110_R0210" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi92",
+            "s2c_dim:EA" : "s2c_VM:x23",
+            "s2c_dim:PT" : "s2c_PI:x24",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RT" : "s2c_RT:x250",
+            "s2c_dim:SP" : "s2c_AP:x84",
+            "s2c_dim:VG" : "s2c_AM:x80",
+            "s2c_dim:VR" : "s2c_VM:x103"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.11.01.04, C0110, R0210}",
+            "Label" : "S.26.11.01.04 - mVaR 99.50%|Diversified risk: credit risk|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        }
+      }
+    }
+  }
+}

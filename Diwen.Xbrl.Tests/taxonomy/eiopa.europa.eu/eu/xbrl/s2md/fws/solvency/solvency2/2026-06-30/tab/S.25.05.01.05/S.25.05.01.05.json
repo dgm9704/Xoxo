@@ -1,0 +1,87 @@
+{
+  "documentInfo" : {
+    "documentType" : "https://xbrl.org/2021/xbrl-csv",
+    "namespaces" : {
+      "s2md" : "http://eiopa.europa.eu/xbrl/s2md/",
+      "s2c_AM" : "http://eiopa.europa.eu/xbrl/s2c/dict/dom/AM",
+      "s2c_VM" : "http://eiopa.europa.eu/xbrl/s2c/dict/dom/VM",
+      "s2c_dim" : "http://eiopa.europa.eu/xbrl/s2c/dict/dim",
+      "s2md_met" : "http://eiopa.europa.eu/xbrl/s2md/dict/met"
+    }
+  },
+  "tableTemplates" : {
+    "S.25.05.01.05" : {
+      "columns" : {
+        "C0130_R0640" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi2954",
+            "s2c_dim:EA" : "s2c_VM:x28",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.25.05.01.05, C0130, R0640}",
+            "Label" : "S.25.05.01.05 - LAC DT|Amount/estimate of LAC DT|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0130_R0650" : {
+          "dimensions" : {
+            "s2c_dim:EA" : "s2c_VM:x91",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.25.05.01.05, C0130, R0650}",
+            "Label" : "S.25.05.01.05 - LAC DT|Amount/estimate of LAC DT justified by reversion of deferred tax liabilities|Z Axis:",
+            "Values" : ""
+          }
+        },
+        "C0130_R0660" : {
+          "dimensions" : {
+            "s2c_dim:EA" : "s2c_VM:x92",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.25.05.01.05, C0130, R0660}",
+            "Label" : "S.25.05.01.05 - LAC DT|Amount/estimate of LAC DT justified by reference to probable future taxable economic profit|Z Axis:",
+            "Values" : ""
+          }
+        },
+        "C0130_R0670" : {
+          "dimensions" : {
+            "s2c_dim:EA" : "s2c_VM:x93",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.25.05.01.05, C0130, R0670}",
+            "Label" : "S.25.05.01.05 - LAC DT|Amount/estimate of LAC DT justified by carry back, current year|Z Axis:",
+            "Values" : ""
+          }
+        },
+        "C0130_R0680" : {
+          "dimensions" : {
+            "s2c_dim:EA" : "s2c_VM:x94",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.25.05.01.05, C0130, R0680}",
+            "Label" : "S.25.05.01.05 - LAC DT|Amount/estimate of LAC DT justified by carry back, future years|Z Axis:",
+            "Values" : ""
+          }
+        },
+        "C0130_R0690" : {
+          "dimensions" : {
+            "s2c_dim:TA" : "s2c_AM:x54",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.25.05.01.05, C0130, R0690}",
+            "Label" : "S.25.05.01.05 - LAC DT|Amount/estimate of Maximum LAC DT|Z Axis:",
+            "Values" : ""
+          }
+        }
+      }
+    }
+  }
+}

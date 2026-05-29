@@ -1,0 +1,285 @@
+{
+  "documentInfo" : {
+    "documentType" : "https://xbrl.org/2021/xbrl-csv",
+    "namespaces" : {
+      "s2md" : "http://eiopa.europa.eu/xbrl/s2md/",
+      "s2c_CG" : "http://eiopa.europa.eu/xbrl/s2c/dict/dom/CG",
+      "s2c_LB" : "http://eiopa.europa.eu/xbrl/s2c/dict/dom/LB",
+      "s2c_MC" : "http://eiopa.europa.eu/xbrl/s2c/dict/dom/MC",
+      "s2c_PC" : "http://eiopa.europa.eu/xbrl/s2c/dict/dom/PC",
+      "s2c_dim" : "http://eiopa.europa.eu/xbrl/s2c/dict/dim",
+      "s2md_met" : "http://eiopa.europa.eu/xbrl/s2md/dict/met"
+    }
+  },
+  "tableTemplates" : {
+    "S.07.01.01.01" : {
+      "columns" : {
+        "C0040" : {
+          "s2md:documentation" : {
+            "CellCode" : "{S.07.01.01.01, C0040}",
+            "Label" : "Asset ID Code and Type of code",
+            "Key" : "s2c_dim:UI",
+            "Values" : "String"
+          }
+        },
+        "C0060" : {
+          "dimensions" : {
+            "concept" : "s2md_met:ei1818",
+            "s2c_dim:SU" : "s2c_MC:x137",
+            "s2c_dim:UI" : "$C0040",
+            "s2c_dim:XR" : "$C0200"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.07.01.01.01, C0060}",
+            "Label" : "S.07.01.01.01 - Collateral type|Z Axis:",
+            "Values" : {
+              "s2c_MC:x175" : "Government Bonds",
+              "s2c_MC:x176" : "Corporate Bonds",
+              "s2c_MC:x39" : "Equity instruments",
+              "s2c_MC:x177" : "Collective investments undertakings",
+              "s2c_MC:x136" : "Structured notes",
+              "s2c_MC:x18" : "Collateralised securities",
+              "s2c_MC:x186" : "Cash and deposits",
+              "s2c_MC:x81" : "Mortgages and loans",
+              "s2c_MC:x115" : "Properties",
+              "s2c_MC:x179" : "Other investments",
+              "s2c_MC:x240" : "No collateral"
+            }
+          }
+        },
+        "C0070" : {
+          "dimensions" : {
+            "concept" : "s2md_met:ei2438",
+            "s2c_dim:SU" : "s2c_MC:x137",
+            "s2c_dim:UI" : "$C0040",
+            "s2c_dim:XR" : "$C0200"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.07.01.01.01, C0070}",
+            "Label" : "S.07.01.01.01 - Type of structured product|Z Axis:",
+            "Values" : {
+              "s2c_LB:x18" : "CLN [credit linked notes and deposits]",
+              "s2c_LB:x22" : "CMS [constant maturity swaps]",
+              "s2c_LB:x8" : "ABS [asset backed securities]",
+              "s2c_LB:x68" : "MBS [mortgage backed securities]",
+              "s2c_LB:x20" : "CMBS [commercial mortgage backed securities]",
+              "s2c_LB:x15" : "CDO [collateralised debt obligations]",
+              "s2c_LB:x19" : "CLO [collateralised loan obligations]",
+              "s2c_LB:x21" : "CMO [collateralised mortgage obligations]",
+              "s2c_LB:x56" : "IRLN [Interest rate-linked notes and deposits]",
+              "s2c_LB:x30" : "ELN [Equity-linked and Equity Index Linked notes and deposits]",
+              "s2c_LB:x33" : "FXCLN [FX and commodity-linked notes and deposits]",
+              "s2c_LB:x47" : "HLN [Hybrid linked notes and deposits - includes Real Estate and equity securities]",
+              "s2c_LB:x71" : "MLN [Market-linked notes and deposits]",
+              "s2c_LB:x51" : "ILN [Insurance-linked Notes and deposits, including Catastrophe and Weather Risk as well as Mortality Risk]",
+              "s2c_LB:x202" : "Structured products other than CLN, CMS, ABS, MBS, CMBS, CDO, CLO, CMO, IRLN, ELN, FXCLN, HLN, MLN and ILN"
+            }
+          }
+        },
+        "C0080" : {
+          "dimensions" : {
+            "concept" : "s2md_met:ei1008",
+            "s2c_dim:SU" : "s2c_MC:x137",
+            "s2c_dim:UI" : "$C0040",
+            "s2c_dim:XR" : "$C0200"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.07.01.01.01, C0080}",
+            "Label" : "S.07.01.01.01 - Capital protection|Z Axis:",
+            "Values" : {
+              "s2c_CG:x7" : "Full capital protection",
+              "s2c_CG:x21" : "Partial capital protection",
+              "s2c_CG:x14" : "No capital protection"
+            }
+          }
+        },
+        "C0090" : {
+          "dimensions" : {
+            "concept" : "s2md_met:ei1281",
+            "s2c_dim:SU" : "s2c_MC:x137",
+            "s2c_dim:UI" : "$C0040",
+            "s2c_dim:XR" : "$C0200"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.07.01.01.01, C0090}",
+            "Label" : "S.07.01.01.01 - Underlying security/index/portfolio|Z Axis:",
+            "Values" : {
+              "s2c_PC:x5" : "Equity and Funds [EF]",
+              "s2c_PC:x4" : "Currency [CU]",
+              "s2c_PC:x7" : "Interest rate and yields [IR]",
+              "s2c_PC:x3" : "Commodities [Co]",
+              "s2c_PC:x6" : "Index [In]",
+              "s2c_PC:x8" : "Multi [M]",
+              "s2c_PC:x9" : "Other [O]"
+            }
+          }
+        },
+        "C0100" : {
+          "dimensions" : {
+            "concept" : "s2md_met:ei1280",
+            "s2c_dim:SU" : "s2c_MC:x137",
+            "s2c_dim:UI" : "$C0040",
+            "s2c_dim:XR" : "$C0200"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.07.01.01.01, C0100}",
+            "Label" : "S.07.01.01.01 - Callable or Putable|Z Axis:",
+            "Values" : {
+              "s2c_PC:x0" : "Total/NA",
+              "s2c_PC:x13" : "Call by the buyer",
+              "s2c_PC:x14" : "Call by the seller",
+              "s2c_PC:x15" : "Put by the buyer",
+              "s2c_PC:x16" : "Put by the seller",
+              "s2c_PC:x17" : "Any combination of the previous options"
+            }
+          }
+        },
+        "C0110" : {
+          "dimensions" : {
+            "concept" : "s2md_met:ei1822",
+            "s2c_dim:SU" : "s2c_MC:x137",
+            "s2c_dim:UI" : "$C0040",
+            "s2c_dim:XR" : "$C0200"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.07.01.01.01, C0110}",
+            "Label" : "S.07.01.01.01 - Synthetic structured product|Z Axis:",
+            "Values" : {
+              "s2c_MC:x203" : "Structured product without any transfer of asset",
+              "s2c_MC:x204" : "Structured product with transfer of asset"
+            }
+          }
+        },
+        "C0120" : {
+          "dimensions" : {
+            "concept" : "s2md_met:ei1282",
+            "s2c_dim:SU" : "s2c_MC:x137",
+            "s2c_dim:UI" : "$C0040",
+            "s2c_dim:XR" : "$C0200"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.07.01.01.01, C0120}",
+            "Label" : "S.07.01.01.01 - Prepayment structured product|Z Axis:",
+            "Values" : {
+              "s2c_PC:x11" : "Prepayments possible",
+              "s2c_PC:x10" : "Prepayments not possible"
+            }
+          }
+        },
+        "C0130" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi596",
+            "s2c_dim:SU" : "s2c_MC:x137",
+            "s2c_dim:UI" : "$C0040",
+            "s2c_dim:XR" : "$C0200"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.07.01.01.01, C0130}",
+            "Label" : "S.07.01.01.01 - Collateral value|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetaryOpenTable"
+        },
+        "C0140" : {
+          "dimensions" : {
+            "concept" : "s2md_met:ei2293",
+            "s2c_dim:SU" : "s2c_MC:x137",
+            "s2c_dim:UI" : "$C0040",
+            "s2c_dim:XR" : "$C0200"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.07.01.01.01, C0140}",
+            "Label" : "S.07.01.01.01 - Collateral portfolio|Z Axis:",
+            "Values" : {
+              "s2c_CG:x26" : "Collateralisation performed on a portfolio basis",
+              "s2c_CG:x27" : "Collateralisation performed on a single contract basis",
+              "s2c_CG:x31" : "No collateral"
+            }
+          }
+        },
+        "C0150" : {
+          "dimensions" : {
+            "concept" : "s2md_met:pi1296",
+            "s2c_dim:SU" : "s2c_MC:x137",
+            "s2c_dim:UI" : "$C0040",
+            "s2c_dim:XR" : "$C0200"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.07.01.01.01, C0150}",
+            "Label" : "S.07.01.01.01 - Fixed Annual Return|Z Axis:",
+            "Values" : "Percent"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "decimalsPercentage"
+        },
+        "C0160" : {
+          "dimensions" : {
+            "concept" : "s2md_met:si1393",
+            "s2c_dim:SU" : "s2c_MC:x137",
+            "s2c_dim:UI" : "$C0040",
+            "s2c_dim:XR" : "$C0200"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.07.01.01.01, C0160}",
+            "Label" : "S.07.01.01.01 - Variable Annual Return|Z Axis:",
+            "Values" : "String"
+          }
+        },
+        "C0170" : {
+          "dimensions" : {
+            "concept" : "s2md_met:pi1297",
+            "s2c_dim:SU" : "s2c_MC:x137",
+            "s2c_dim:UI" : "$C0040",
+            "s2c_dim:XR" : "$C0200"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.07.01.01.01, C0170}",
+            "Label" : "S.07.01.01.01 - Loss given default|Z Axis:",
+            "Values" : "Percent"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "decimalsPercentage"
+        },
+        "C0180" : {
+          "dimensions" : {
+            "concept" : "s2md_met:pi1293",
+            "s2c_dim:SU" : "s2c_MC:x137",
+            "s2c_dim:UI" : "$C0040",
+            "s2c_dim:XR" : "$C0200"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.07.01.01.01, C0180}",
+            "Label" : "S.07.01.01.01 - Attachment point|Z Axis:",
+            "Values" : "Percent"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "decimalsPercentage"
+        },
+        "C0190" : {
+          "dimensions" : {
+            "concept" : "s2md_met:pi1295",
+            "s2c_dim:SU" : "s2c_MC:x137",
+            "s2c_dim:UI" : "$C0040",
+            "s2c_dim:XR" : "$C0200"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.07.01.01.01, C0190}",
+            "Label" : "S.07.01.01.01 - Detachment point|Z Axis:",
+            "Values" : "Percent"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "decimalsPercentage"
+        },
+        "C0200" : {
+          "s2md:documentation" : {
+            "CellCode" : "{S.07.01.01.01, C0200}",
+            "Label" : "Line identification",
+            "Key" : "s2c_dim:XR",
+            "Values" : "String"
+          }
+        }
+      }
+    }
+  }
+}

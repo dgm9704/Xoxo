@@ -1,0 +1,152 @@
+{
+  "documentInfo" : {
+    "documentType" : "https://xbrl.org/2021/xbrl-csv",
+    "namespaces" : {
+      "s2md" : "http://eiopa.europa.eu/xbrl/s2md/",
+      "s2c_LB" : "http://eiopa.europa.eu/xbrl/s2c/dict/dom/LB",
+      "s2c_MC" : "http://eiopa.europa.eu/xbrl/s2c/dict/dom/MC",
+      "s2c_PU" : "http://eiopa.europa.eu/xbrl/s2c/dict/dom/PU",
+      "s2c_dim" : "http://eiopa.europa.eu/xbrl/s2c/dict/dim",
+      "s2md_met" : "http://eiopa.europa.eu/xbrl/s2md/dict/met"
+    }
+  },
+  "tableTemplates" : {
+    "S.09.01.01.01" : {
+      "columns" : {
+        "C0001" : {
+          "s2md:documentation" : {
+            "CellCode" : "{S.09.01.01.01, C0001}",
+            "Label" : "Line identification",
+            "Key" : "s2c_dim:XD",
+            "Values" : "String"
+          }
+        },
+        "C0040" : {
+          "dimensions" : {
+            "concept" : "s2md_met:ei1817",
+            "s2c_dim:XD" : "$C0001"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.09.01.01.01, C0040}",
+            "Label" : "S.09.01.01.01 - Asset category",
+            "Values" : {
+              "s2c_MC:x175" : "Government Bonds",
+              "s2c_MC:x176" : "Corporate Bonds",
+              "s2c_MC:x39" : "Equity instruments",
+              "s2c_MC:x177" : "Collective investments undertakings",
+              "s2c_MC:x136" : "Structured notes",
+              "s2c_MC:x18" : "Collateralised securities",
+              "s2c_MC:x186" : "Cash and deposits",
+              "s2c_MC:x81" : "Mortgages and loans",
+              "s2c_MC:x115" : "Properties",
+              "s2c_MC:x179" : "Other investments",
+              "s2c_MC:x34" : "Futures",
+              "s2c_MC:x201" : "Call Options",
+              "s2c_MC:x202" : "Put Options",
+              "s2c_MC:x150" : "Swaps",
+              "s2c_MC:x33" : "Forwards",
+              "s2c_MC:x25" : "Credit derivatives"
+            }
+          }
+        },
+        "C0050" : {
+          "dimensions" : {
+            "concept" : "s2md_met:ei2426",
+            "s2c_dim:XD" : "$C0001"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.09.01.01.01, C0050}",
+            "Label" : "S.09.01.01.01 - Portfolio",
+            "Values" : {
+              "s2c_PU:x10" : "Life [split applicable]",
+              "s2c_PU:x13" : "Non-life [split applicable]",
+              "s2c_PU:x96" : "Ring Fenced Funds",
+              "s2c_PU:x57" : "Other internal funds",
+              "s2c_PU:x49" : "Shareholders' funds",
+              "s2c_PU:x3" : "General [no split]"
+            }
+          }
+        },
+        "C0060" : {
+          "dimensions" : {
+            "concept" : "s2md_met:ei1070",
+            "s2c_dim:XD" : "$C0001"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.09.01.01.01, C0060}",
+            "Label" : "S.09.01.01.01 - Asset held in unit-linked and index-linked contracts",
+            "Values" : {
+              "s2c_LB:x119" : "Unit-linked or index-linked",
+              "s2c_LB:x91" : "Neither unit-linked nor index-linked"
+            }
+          }
+        },
+        "C0070" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi1118",
+            "s2c_dim:XD" : "$C0001"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.09.01.01.01, C0070}",
+            "Label" : "S.09.01.01.01 - Dividends",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetaryOpenTable"
+        },
+        "C0080" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi1119",
+            "s2c_dim:XD" : "$C0001"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.09.01.01.01, C0080}",
+            "Label" : "S.09.01.01.01 - Interest",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetaryOpenTable"
+        },
+        "C0090" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi1120",
+            "s2c_dim:XD" : "$C0001"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.09.01.01.01, C0090}",
+            "Label" : "S.09.01.01.01 - Rent",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetaryOpenTable"
+        },
+        "C0100" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi1991",
+            "s2c_dim:XD" : "$C0001"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.09.01.01.01, C0100}",
+            "Label" : "S.09.01.01.01 - Net gains and losses",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetaryOpenTable"
+        },
+        "C0110" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi1992",
+            "s2c_dim:XD" : "$C0001"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.09.01.01.01, C0110}",
+            "Label" : "S.09.01.01.01 - Unrealised gains and losses",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetaryOpenTable"
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,54 @@
+{
+  "documentInfo" : {
+    "documentType" : "https://xbrl.org/2021/xbrl-csv",
+    "namespaces" : {
+      "s2md" : "http://eiopa.europa.eu/xbrl/s2md/",
+      "s2c_AM" : "http://eiopa.europa.eu/xbrl/s2c/dict/dom/AM",
+      "s2c_DI" : "http://eiopa.europa.eu/xbrl/s2c/dict/dom/DI",
+      "s2c_GA" : "http://eiopa.europa.eu/xbrl/s2c/dict/dom/GA",
+      "s2c_LB" : "http://eiopa.europa.eu/xbrl/s2c/dict/dom/LB",
+      "s2c_RT" : "http://eiopa.europa.eu/xbrl/s2c/dict/dom/RT",
+      "s2c_dim" : "http://eiopa.europa.eu/xbrl/s2c/dict/dim",
+      "s2md_met" : "http://eiopa.europa.eu/xbrl/s2md/dict/met"
+    }
+  },
+  "tableTemplates" : {
+    "S.04.05.21.03" : {
+      "columns" : {
+        "C0030_R1020" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi503",
+            "s2c_dim:BL" : "s2c_LB:x65",
+            "s2c_dim:DI" : "s2c_DI:x5",
+            "s2c_dim:EE" : "s2c_GA:x24",
+            "s2c_dim:IZ" : "s2c_RT:x1",
+            "s2c_dim:VG" : "s2c_AM:x84"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.04.05.21.03, C0030, R1020}",
+            "Label" : "S.04.05.21.03 - Home country|Gross Written Premium|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0030_R1040" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi281",
+            "s2c_dim:BL" : "s2c_LB:x65",
+            "s2c_dim:DI" : "s2c_DI:x5",
+            "s2c_dim:EE" : "s2c_GA:x24",
+            "s2c_dim:VG" : "s2c_AM:x84"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.04.05.21.03, C0030, R1040}",
+            "Label" : "S.04.05.21.03 - Home country|Gross claims incurred|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        }
+      }
+    }
+  }
+}

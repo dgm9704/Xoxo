@@ -1,0 +1,232 @@
+{
+  "documentInfo" : {
+    "documentType" : "https://xbrl.org/2021/xbrl-csv",
+    "namespaces" : {
+      "s2md" : "http://eiopa.europa.eu/xbrl/s2md/",
+      "s2c_LB" : "http://eiopa.europa.eu/xbrl/s2c/dict/dom/LB",
+      "s2c_PC" : "http://eiopa.europa.eu/xbrl/s2c/dict/dom/PC",
+      "s2c_SE" : "http://eiopa.europa.eu/xbrl/s2c/dict/dom/SE",
+      "s2c_dim" : "http://eiopa.europa.eu/xbrl/s2c/dict/dim",
+      "s2md_met" : "http://eiopa.europa.eu/xbrl/s2md/dict/met"
+    }
+  },
+  "tableTemplates" : {
+    "S.14.03.01.01" : {
+      "columns" : {
+        "C0009" : {
+          "s2md:documentation" : {
+            "CellCode" : "{S.14.03.01.01, C0009}",
+            "Label" : "Line identification",
+            "Key" : "s2c_dim:NJ",
+            "Values" : "String"
+          }
+        },
+        "C0010" : {
+          "dimensions" : {
+            "concept" : "s2md_met:si2833",
+            "s2c_dim:NJ" : "$C0009"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.14.03.01.01, C0010}",
+            "Label" : "S.14.03.01.01 - Product Group Code",
+            "Values" : "String"
+          }
+        },
+        "C0020" : {
+          "dimensions" : {
+            "concept" : "s2md_met:ei2711",
+            "s2c_dim:NJ" : "$C0009"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.14.03.01.01, C0020}",
+            "Label" : "S.14.03.01.01 - Target market",
+            "Values" : {
+              "s2c_SE:x13" : "Corporate",
+              "s2c_SE:x195" : "Individual customers",
+              "s2c_SE:x196" : "Corporate or individual customer"
+            }
+          }
+        },
+        "C0030" : {
+          "dimensions" : {
+            "concept" : "s2md_met:si2595",
+            "s2c_dim:NJ" : "$C0009"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.14.03.01.01, C0030}",
+            "Label" : "S.14.03.01.01 - Product Identification",
+            "Values" : "String"
+          }
+        },
+        "C0040" : {
+          "dimensions" : {
+            "concept" : "s2md_met:ei2712",
+            "s2c_dim:NJ" : "$C0009"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.14.03.01.01, C0040}",
+            "Label" : "S.14.03.01.01 - Cyber coverage in the Product Identification",
+            "Values" : {
+              "s2c_PC:x31" : "Cyber standalone coverage",
+              "s2c_PC:x32" : "Cyber as add-on coverage (main risk being covered)",
+              "s2c_PC:x33" : "Cyber as add-on coverage (not as main risk being covered)"
+            }
+          }
+        },
+        "C0050" : {
+          "dimensions" : {
+            "concept" : "s2md_met:ei2557",
+            "s2c_dim:NJ" : "$C0009"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.14.03.01.01, C0050}",
+            "Label" : "S.14.03.01.01 - Line(s) of business",
+            "Values" : {
+              "s2c_LB:x135" : "Medical expense insurance [direct business]",
+              "s2c_LB:x136" : "Income protection insurance [direct business]",
+              "s2c_LB:x137" : "Workers' compensation insurance [direct business]",
+              "s2c_LB:x138" : "Motor vehicle liability insurance [direct business]",
+              "s2c_LB:x139" : "Other motor insurance [direct business]",
+              "s2c_LB:x140" : "Marine, aviation and transport insurance [direct business]",
+              "s2c_LB:x141" : "Fire and other damage to property insurance [direct business]",
+              "s2c_LB:x142" : "General liability insurance [direct business]",
+              "s2c_LB:x143" : "Credit and suretyship insurance [direct business]",
+              "s2c_LB:x144" : "Legal expenses insurance [direct business]",
+              "s2c_LB:x145" : "Assistance [direct business]",
+              "s2c_LB:x146" : "Miscellaneous financial loss [direct business]",
+              "s2c_LB:x148" : "Medical expense insurance [accepted proportional reinsurance]",
+              "s2c_LB:x149" : "Income protection insurance [accepted proportional reinsurance]",
+              "s2c_LB:x150" : "Workers' compensation insurance [accepted proportional reinsurance]",
+              "s2c_LB:x151" : "Motor vehicle liability insurance [accepted proportional reinsurance]",
+              "s2c_LB:x152" : "Other motor insurance [accepted proportional reinsurance]",
+              "s2c_LB:x153" : "Marine, aviation and transport insurance [accepted proportional reinsurance]",
+              "s2c_LB:x154" : "Fire and other damage to property insurance [accepted proportional reinsurance]",
+              "s2c_LB:x155" : "General liability insurance [accepted proportional reinsurance]",
+              "s2c_LB:x156" : "Credit and suretyship insurance [accepted proportional reinsurance]",
+              "s2c_LB:x157" : "Legal expenses insurance [accepted proportional reinsurance]",
+              "s2c_LB:x158" : "Assistance [accepted proportional reinsurance]",
+              "s2c_LB:x159" : "Miscellaneous financial loss [accepted proportional reinsurance]",
+              "s2c_LB:x42" : "Health [accepted non-proportional reinsurance]",
+              "s2c_LB:x14" : "Casualty [accepted non-proportional reinsurance]",
+              "s2c_LB:x67" : "Marine, aviation, transport [accepted non-proportional reinsurance]",
+              "s2c_LB:x106" : "Property [accepted non-proportional reinsurance]"
+            }
+          }
+        },
+        "C0060" : {
+          "dimensions" : {
+            "concept" : "s2md_met:si2558",
+            "s2c_dim:NJ" : "$C0009"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.14.03.01.01, C0060}",
+            "Label" : "S.14.03.01.01 - Description of Risk(s) included in the coverage",
+            "Values" : "String"
+          }
+        },
+        "C0070" : {
+          "dimensions" : {
+            "concept" : "s2md_met:si2650",
+            "s2c_dim:NJ" : "$C0009"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.14.03.01.01, C0070}",
+            "Label" : "S.14.03.01.01 - Other risk detailed description",
+            "Values" : "String"
+          }
+        },
+        "C0080" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi1160",
+            "s2c_dim:NJ" : "$C0009"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.14.03.01.01, C0080}",
+            "Label" : "S.14.03.01.01 - Sum(s) insured",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetaryOpenTable"
+        },
+        "C0090" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi2834",
+            "s2c_dim:NJ" : "$C0009"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.14.03.01.01, C0090}",
+            "Label" : "S.14.03.01.01 - Premium(s) earned (gross)",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetaryOpenTable"
+        },
+        "C0100" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi2835",
+            "s2c_dim:NJ" : "$C0009"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.14.03.01.01, C0100}",
+            "Label" : "S.14.03.01.01 - Sum(s) reinsured",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetaryOpenTable"
+        },
+        "C0110" : {
+          "dimensions" : {
+            "concept" : "s2md_met:ii2972",
+            "s2c_dim:NJ" : "$C0009"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.14.03.01.01, C0110}",
+            "Label" : "S.14.03.01.01 - Number of Claims settled with Payment",
+            "Values" : "Integer"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsInteger"
+        },
+        "C0120" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi1136",
+            "s2c_dim:NJ" : "$C0009"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.14.03.01.01, C0120}",
+            "Label" : "S.14.03.01.01 - Amount of Claims Paid",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetaryOpenTable"
+        },
+        "C0130" : {
+          "dimensions" : {
+            "concept" : "s2md_met:ii2973",
+            "s2c_dim:NJ" : "$C0009"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.14.03.01.01, C0130}",
+            "Label" : "S.14.03.01.01 - Numbers of Claims settled without payment",
+            "Values" : "Integer"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsInteger"
+        },
+        "C0140" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi1924",
+            "s2c_dim:NJ" : "$C0009"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.14.03.01.01, C0140}",
+            "Label" : "S.14.03.01.01 - Technical Provisions",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetaryOpenTable"
+        }
+      }
+    }
+  }
+}

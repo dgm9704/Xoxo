@@ -1,0 +1,126 @@
+{
+  "documentInfo" : {
+    "documentType" : "https://xbrl.org/2021/xbrl-csv",
+    "namespaces" : {
+      "s2md" : "http://eiopa.europa.eu/xbrl/s2md/",
+      "s2c_AM" : "http://eiopa.europa.eu/xbrl/s2c/dict/dom/AM",
+      "s2c_CS" : "http://eiopa.europa.eu/xbrl/s2c/dict/dom/CS",
+      "s2c_SE" : "http://eiopa.europa.eu/xbrl/s2c/dict/dom/SE",
+      "s2c_dim" : "http://eiopa.europa.eu/xbrl/s2c/dict/dim",
+      "s2md_met" : "http://eiopa.europa.eu/xbrl/s2md/dict/met"
+    }
+  },
+  "tableTemplates" : {
+    "S.34.01.04.01" : {
+      "columns" : {
+        "C0010" : {
+          "dimensions" : {
+            "concept" : "s2md_met:si1376",
+            "s2c_dim:CE" : "$C0020",
+            "s2c_dim:SO" : "s2c_SE:x21"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.34.01.04.01, C0010}",
+            "Label" : "S.34.01.04.01 - Legal name of the undertaking|Z Axis:",
+            "Values" : "String"
+          }
+        },
+        "C0020" : {
+          "s2md:documentation" : {
+            "CellCode" : "{S.34.01.04.01, C0020}",
+            "Label" : "Identification code and type of code of the undertaking",
+            "Key" : "s2c_dim:CE",
+            "Values" : "String"
+          }
+        },
+        "C0040" : {
+          "dimensions" : {
+            "concept" : "s2md_met:ei1019",
+            "s2c_dim:CE" : "$C0020",
+            "s2c_dim:SO" : "s2c_SE:x21"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.34.01.04.01, C0040}",
+            "Label" : "S.34.01.04.01 - Aggregated or not|Z Axis:",
+            "Values" : {
+              "s2c_CS:x6" : "Aggregated",
+              "s2c_CS:x29" : "Not aggregated"
+            }
+          }
+        },
+        "C0050" : {
+          "dimensions" : {
+            "concept" : "s2md_met:ei1001",
+            "s2c_dim:CE" : "$C0020",
+            "s2c_dim:SO" : "s2c_SE:x21"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.34.01.04.01, C0050}",
+            "Label" : "S.34.01.04.01 - Type of capital requirement|Z Axis:",
+            "Values" : {
+              "s2c_AM:x79" : "Sectoral",
+              "s2c_AM:x60" : "Notional",
+              "s2c_AM:x56" : "No capital requirement"
+            }
+          }
+        },
+        "C0060" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi1240",
+            "s2c_dim:CE" : "$C0020",
+            "s2c_dim:SO" : "s2c_SE:x21"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.34.01.04.01, C0060}",
+            "Label" : "S.34.01.04.01 - Notional SCR or Sectoral capital requirement|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetaryOpenTable"
+        },
+        "C0070" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi1241",
+            "s2c_dim:CE" : "$C0020",
+            "s2c_dim:SO" : "s2c_SE:x21"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.34.01.04.01, C0070}",
+            "Label" : "S.34.01.04.01 - Notional MCR or Sectoral minimum capital requirement|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetaryOpenTable"
+        },
+        "C0080" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi1226",
+            "s2c_dim:CE" : "$C0020",
+            "s2c_dim:SO" : "s2c_SE:x21"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.34.01.04.01, C0080}",
+            "Label" : "S.34.01.04.01 - Notional or Sectoral Eligible Own Funds|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetaryOpenTable"
+        },
+        "C0085" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi2862",
+            "s2c_dim:CE" : "$C0020",
+            "s2c_dim:SO" : "s2c_SE:x21"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.34.01.04.01, C0085}",
+            "Label" : "S.34.01.04.01 - Contribution of solo (notional) SCR to the group SCR|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetaryOpenTable"
+        }
+      }
+    }
+  }
+}

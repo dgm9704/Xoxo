@@ -1,0 +1,57 @@
+{
+  "documentInfo" : {
+    "documentType" : "https://xbrl.org/2021/xbrl-csv",
+    "namespaces" : {
+      "s2md" : "http://eiopa.europa.eu/xbrl/s2md/",
+      "s2c_dim" : "http://eiopa.europa.eu/xbrl/s2c/dict/dim",
+      "s2md_met" : "http://eiopa.europa.eu/xbrl/s2md/dict/met"
+    }
+  },
+  "tableTemplates" : {
+    "S.26.16.01.01" : {
+      "columns" : {
+        "C0020" : {
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.16.01.01, C0020}",
+            "Label" : "Change ID",
+            "Key" : "s2c_dim:FJ",
+            "Values" : "String"
+          }
+        },
+        "C0030" : {
+          "dimensions" : {
+            "concept" : "s2md_met:di2598",
+            "s2c_dim:FJ" : "$C0020"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.16.01.01, C0030}",
+            "Label" : "S.26.16.01.01 - Date of approval",
+            "Values" : "Date"
+          }
+        },
+        "C0040" : {
+          "dimensions" : {
+            "concept" : "s2md_met:di2903",
+            "s2c_dim:FJ" : "$C0020"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.16.01.01, C0040}",
+            "Label" : "S.26.16.01.01 - Date of submission",
+            "Values" : "Date"
+          }
+        },
+        "C0050" : {
+          "dimensions" : {
+            "concept" : "s2md_met:si2600",
+            "s2c_dim:FJ" : "$C0020"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.16.01.01, C0050}",
+            "Label" : "S.26.16.01.01 - Description of change to the policy",
+            "Values" : "String"
+          }
+        }
+      }
+    }
+  }
+}

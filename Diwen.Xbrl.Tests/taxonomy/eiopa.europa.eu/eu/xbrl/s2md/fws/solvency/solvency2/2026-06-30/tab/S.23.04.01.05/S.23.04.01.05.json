@@ -1,0 +1,48 @@
+{
+  "documentInfo" : {
+    "documentType" : "https://xbrl.org/2021/xbrl-csv",
+    "namespaces" : {
+      "s2md" : "http://eiopa.europa.eu/xbrl/s2md/",
+      "s2c_dim" : "http://eiopa.europa.eu/xbrl/s2c/dict/dim",
+      "s2md_met" : "http://eiopa.europa.eu/xbrl/s2md/dict/met"
+    }
+  },
+  "tableTemplates" : {
+    "S.23.04.01.05" : {
+      "columns" : {
+        "C0565" : {
+          "s2md:documentation" : {
+            "CellCode" : "{S.23.04.01.05, C0565}",
+            "Label" : "Line identification",
+            "Key" : "s2c_dim:YK",
+            "Values" : "String"
+          }
+        },
+        "C0570" : {
+          "dimensions" : {
+            "concept" : "s2md_met:si554",
+            "s2c_dim:YK" : "$C0565"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.23.04.01.05, C0570}",
+            "Label" : "S.23.04.01.05 - Description of item",
+            "Values" : "String"
+          }
+        },
+        "C0580" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi1156",
+            "s2c_dim:YK" : "$C0565"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.23.04.01.05, C0580}",
+            "Label" : "S.23.04.01.05 - Total",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetaryOpenTable"
+        }
+      }
+    }
+  }
+}

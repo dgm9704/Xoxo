@@ -1,0 +1,81 @@
+{
+  "documentInfo" : {
+    "documentType" : "https://xbrl.org/2021/xbrl-csv",
+    "namespaces" : {
+      "s2md" : "http://eiopa.europa.eu/xbrl/s2md/",
+      "s2c_dim" : "http://eiopa.europa.eu/xbrl/s2c/dict/dim",
+      "s2md_met" : "http://eiopa.europa.eu/xbrl/s2md/dict/met"
+    }
+  },
+  "tableTemplates" : {
+    "S.23.04.01.06" : {
+      "columns" : {
+        "C0585" : {
+          "s2md:documentation" : {
+            "CellCode" : "{S.23.04.01.06, C0585}",
+            "Label" : "Line identification",
+            "Key" : "s2c_dim:YL",
+            "Values" : "String"
+          }
+        },
+        "C0590" : {
+          "dimensions" : {
+            "concept" : "s2md_met:si1345",
+            "s2c_dim:YL" : "$C0585"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.23.04.01.06, C0590}",
+            "Label" : "S.23.04.01.06 - Description of ancillary own funds",
+            "Values" : "String"
+          }
+        },
+        "C0600" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi2005",
+            "s2c_dim:YL" : "$C0585"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.23.04.01.06, C0600}",
+            "Label" : "S.23.04.01.06 - Amount",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetaryOpenTable"
+        },
+        "C0610" : {
+          "dimensions" : {
+            "concept" : "s2md_met:si1378",
+            "s2c_dim:YL" : "$C0585"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.23.04.01.06, C0610}",
+            "Label" : "S.23.04.01.06 - Counterpart",
+            "Values" : "String"
+          }
+        },
+        "C0620" : {
+          "dimensions" : {
+            "concept" : "s2md_met:di1048",
+            "s2c_dim:YL" : "$C0585"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.23.04.01.06, C0620}",
+            "Label" : "S.23.04.01.06 - Issue date",
+            "Values" : "Date"
+          }
+        },
+        "C0630" : {
+          "dimensions" : {
+            "concept" : "s2md_met:di1031",
+            "s2c_dim:YL" : "$C0585"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.23.04.01.06, C0630}",
+            "Label" : "S.23.04.01.06 - Date of authorisation",
+            "Values" : "Date"
+          }
+        }
+      }
+    }
+  }
+}

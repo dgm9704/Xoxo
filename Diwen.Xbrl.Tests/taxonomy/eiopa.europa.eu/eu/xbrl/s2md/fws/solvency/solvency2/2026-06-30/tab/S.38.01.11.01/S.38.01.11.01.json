@@ -1,0 +1,74 @@
+{
+  "documentInfo" : {
+    "documentType" : "https://xbrl.org/2021/xbrl-csv",
+    "namespaces" : {
+      "s2md" : "http://eiopa.europa.eu/xbrl/s2md/",
+      "s2c_AM" : "http://eiopa.europa.eu/xbrl/s2c/dict/dom/AM",
+      "s2c_LB" : "http://eiopa.europa.eu/xbrl/s2c/dict/dom/LB",
+      "s2c_dim" : "http://eiopa.europa.eu/xbrl/s2c/dict/dim",
+      "s2md_met" : "http://eiopa.europa.eu/xbrl/s2md/dict/met"
+    }
+  },
+  "tableTemplates" : {
+    "S.38.01.11.01" : {
+      "columns" : {
+        "C0010_R0100" : {
+          "dimensions" : {
+            "concept" : "s2md_met:ri2894",
+            "s2c_dim:BL" : "s2c_LB:x176"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.38.01.11.01, C0010, R0100}",
+            "Label" : "S.38.01.11.01 - Modified duration|Technical provisions, Life excluding unit-linked",
+            "Values" : "Decimal"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "decimalsDecimal"
+        },
+        "C0010_R0200" : {
+          "dimensions" : {
+            "concept" : "s2md_met:ri2894",
+            "s2c_dim:BL" : "s2c_LB:x79"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.38.01.11.01, C0010, R0200}",
+            "Label" : "S.38.01.11.01 - Modified duration|Technical provisions, Non-Life",
+            "Values" : "Decimal"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "decimalsDecimal"
+        },
+        "C0020_R0100" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi363",
+            "s2c_dim:BL" : "s2c_LB:x176",
+            "s2c_dim:TA" : "s2c_AM:x142",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.38.01.11.01, C0020, R0100}",
+            "Label" : "S.38.01.11.01 - Technical provision volume|Technical provisions, Life excluding unit-linked",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0020_R0200" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi363",
+            "s2c_dim:BL" : "s2c_LB:x79",
+            "s2c_dim:TA" : "s2c_AM:x142",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.38.01.11.01, C0020, R0200}",
+            "Label" : "S.38.01.11.01 - Technical provision volume|Technical provisions, Non-Life",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        }
+      }
+    }
+  }
+}

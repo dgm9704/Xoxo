@@ -1,0 +1,347 @@
+{
+  "documentInfo" : {
+    "documentType" : "https://xbrl.org/2021/xbrl-csv",
+    "namespaces" : {
+      "s2md" : "http://eiopa.europa.eu/xbrl/s2md/",
+      "s2c_CN" : "http://eiopa.europa.eu/xbrl/s2c/dict/dom/CN",
+      "s2c_PU" : "http://eiopa.europa.eu/xbrl/s2c/dict/dom/PU",
+      "s2c_dim" : "http://eiopa.europa.eu/xbrl/s2c/dict/dim",
+      "s2md_met" : "http://eiopa.europa.eu/xbrl/s2md/dict/met"
+    }
+  },
+  "tableTemplates" : {
+    "SR.01.01.01.01" : {
+      "columns" : {
+        "C0010_R0790" : {
+          "dimensions" : {
+            "concept" : "s2md_met:ei2212",
+            "s2c_dim:FN" : "$Z0020",
+            "s2c_dim:PO" : "$Z0010"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{SR.01.01.01.01, C0010, R0790}",
+            "Label" : "SR.01.01.01.01 - Reporting status|SR.02.01.01 - Balance sheet|Z Axis:",
+            "Values" : {
+              "s2c_CN:x1" : "Reported",
+              "s2c_CN:x15" : "Not reported as no RFF or MAP",
+              "s2c_CN:x16" : "Not reported as refers to MAP fund",
+              "s2c_CN:x2" : "Not reported other reason"
+            }
+          }
+        },
+        "C0010_R0800" : {
+          "dimensions" : {
+            "concept" : "s2md_met:ei2342",
+            "s2c_dim:FN" : "$Z0020",
+            "s2c_dim:PO" : "$Z0010"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{SR.01.01.01.01, C0010, R0800}",
+            "Label" : "SR.01.01.01.01 - Reporting status|SR.12.01.01 - Life and Health SLT Technical Provisions|Z Axis:",
+            "Values" : {
+              "s2c_CN:x1" : "Reported",
+              "s2c_CN:x64" : "Not reported as no RFF/MAP or no life and health SLT business",
+              "s2c_CN:x2" : "Not reported other reason"
+            }
+          }
+        },
+        "C0010_R0810" : {
+          "dimensions" : {
+            "concept" : "s2md_met:ei3099",
+            "s2c_dim:FN" : "$Z0020",
+            "s2c_dim:PO" : "$Z0010"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{SR.01.01.01.01, C0010, R0810}",
+            "Label" : "SR.01.01.01.01 - Reporting status|SR.17.01.01 - Non-Life Technical Provisions|Z Axis:",
+            "Values" : {
+              "s2c_CN:x1" : "Reported",
+              "s2c_CN:x65" : "Not reported as no RFF/MAP or no non-life business",
+              "s2c_CN:x2" : "Not reported other reason"
+            }
+          }
+        },
+        "C0010_R0820" : {
+          "dimensions" : {
+            "concept" : "s2md_met:ei2214",
+            "s2c_dim:FN" : "$Z0020",
+            "s2c_dim:PO" : "$Z0010"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{SR.01.01.01.01, C0010, R0820}",
+            "Label" : "SR.01.01.01.01 - Reporting status|SR.22.02.01 - Projection of future cash flows (Best Estimate - Matching portfolios)|Z Axis:",
+            "Values" : {
+              "s2c_CN:x1" : "Reported",
+              "s2c_CN:x37" : "Not reported as no MA is applied",
+              "s2c_CN:x38" : "Not reported as refers to RFF or remaining part",
+              "s2c_CN:x2" : "Not reported other reason"
+            }
+          }
+        },
+        "C0010_R0830" : {
+          "dimensions" : {
+            "concept" : "s2md_met:ei2215",
+            "s2c_dim:FN" : "$Z0020",
+            "s2c_dim:PO" : "$Z0010"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{SR.01.01.01.01, C0010, R0830}",
+            "Label" : "SR.01.01.01.01 - Reporting status|SR.22.03.01 - Information on the matching adjustment calculation|Z Axis:",
+            "Values" : {
+              "s2c_CN:x1" : "Reported",
+              "s2c_CN:x37" : "Not reported as no MA is applied",
+              "s2c_CN:x38" : "Not reported as refers to RFF or remaining part",
+              "s2c_CN:x2" : "Not reported other reason"
+            }
+          }
+        },
+        "C0010_R0840" : {
+          "dimensions" : {
+            "concept" : "s2md_met:ei2434",
+            "s2c_dim:FN" : "$Z0020",
+            "s2c_dim:PO" : "$Z0010"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{SR.01.01.01.01, C0010, R0840}",
+            "Label" : "SR.01.01.01.01 - Reporting status|SR.25.01.01 - Solvency Capital Requirement - for undertakings on Standard Formula|Z Axis:",
+            "Values" : {
+              "s2c_CN:x59" : "Reported as standard formula is used",
+              "s2c_CN:x12" : "Not reported o/a use partial internal model",
+              "s2c_CN:x11" : "Not reported o/a use full internal model",
+              "s2c_CN:x60" : "Reported due to article 112 request",
+              "s2c_CN:x100" : "Reported in accordance with the biennial reporting requirement set out in Article 112",
+              "s2c_CN:x2" : "Not reported other reason"
+            }
+          }
+        },
+        "C0010_R0855" : {
+          "dimensions" : {
+            "concept" : "s2md_met:ei2773",
+            "s2c_dim:FN" : "$Z0020",
+            "s2c_dim:PO" : "$Z0010"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{SR.01.01.01.01, C0010, R0855}",
+            "Label" : "SR.01.01.01.01 - Reporting status|SR.25.05.01 - Solvency Capital Requirement - for undertakings using an internal model (partial or full)|Z Axis:",
+            "Values" : {
+              "s2c_CN:x80" : "Reported due to use of partial internal model",
+              "s2c_CN:x81" : "Reported due to use of full internal model",
+              "s2c_CN:x10" : "Not reported o/a full use of Standard Formula",
+              "s2c_CN:x2" : "Not reported other reason"
+            }
+          }
+        },
+        "C0010_R0870" : {
+          "dimensions" : {
+            "concept" : "s2md_met:ei3057",
+            "s2c_dim:FN" : "$Z0020",
+            "s2c_dim:PO" : "$Z0010"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{SR.01.01.01.01, C0010, R0870}",
+            "Label" : "SR.01.01.01.01 - Reporting status|SR.26.01.01 - Solvency Capital Requirement - Market risk|Z Axis:",
+            "Values" : {
+              "s2c_CN:x1" : "Reported",
+              "s2c_CN:x13" : "Not reported as risk not existent",
+              "s2c_CN:x12" : "Not reported o/a use partial internal model",
+              "s2c_CN:x11" : "Not reported o/a use full internal model",
+              "s2c_CN:x102" : "Not reported as no RFF",
+              "s2c_CN:x60" : "Reported due to article 112 request",
+              "s2c_CN:x71" : "Partially reported due to use of partial internal model",
+              "s2c_CN:x100" : "Reported in accordance with the biennial reporting requirement set out in Article 112",
+              "s2c_CN:x2" : "Not reported other reason"
+            }
+          }
+        },
+        "C0010_R0880" : {
+          "dimensions" : {
+            "concept" : "s2md_met:ei3058",
+            "s2c_dim:FN" : "$Z0020",
+            "s2c_dim:PO" : "$Z0010"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{SR.01.01.01.01, C0010, R0880}",
+            "Label" : "SR.01.01.01.01 - Reporting status|SR.26.02.01 - Solvency Capital Requirement - Counterparty default risk|Z Axis:",
+            "Values" : {
+              "s2c_CN:x1" : "Reported",
+              "s2c_CN:x13" : "Not reported as risk not existent",
+              "s2c_CN:x12" : "Not reported o/a use partial internal model",
+              "s2c_CN:x11" : "Not reported o/a use full internal model",
+              "s2c_CN:x102" : "Not reported as no RFF",
+              "s2c_CN:x60" : "Reported due to article 112 request",
+              "s2c_CN:x71" : "Partially reported due to use of partial internal model",
+              "s2c_CN:x100" : "Reported in accordance with the biennial reporting requirement set out in Article 112",
+              "s2c_CN:x2" : "Not reported other reason"
+            }
+          }
+        },
+        "C0010_R0890" : {
+          "dimensions" : {
+            "concept" : "s2md_met:ei3059",
+            "s2c_dim:FN" : "$Z0020",
+            "s2c_dim:PO" : "$Z0010"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{SR.01.01.01.01, C0010, R0890}",
+            "Label" : "SR.01.01.01.01 - Reporting status|SR.26.03.01 - Solvency Capital Requirement - Life underwriting risk|Z Axis:",
+            "Values" : {
+              "s2c_CN:x1" : "Reported",
+              "s2c_CN:x13" : "Not reported as risk not existent",
+              "s2c_CN:x12" : "Not reported o/a use partial internal model",
+              "s2c_CN:x11" : "Not reported o/a use full internal model",
+              "s2c_CN:x102" : "Not reported as no RFF",
+              "s2c_CN:x60" : "Reported due to article 112 request",
+              "s2c_CN:x71" : "Partially reported due to use of partial internal model",
+              "s2c_CN:x100" : "Reported in accordance with the biennial reporting requirement set out in Article 112",
+              "s2c_CN:x2" : "Not reported other reason"
+            }
+          }
+        },
+        "C0010_R0900" : {
+          "dimensions" : {
+            "concept" : "s2md_met:ei3060",
+            "s2c_dim:FN" : "$Z0020",
+            "s2c_dim:PO" : "$Z0010"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{SR.01.01.01.01, C0010, R0900}",
+            "Label" : "SR.01.01.01.01 - Reporting status|SR.26.04.01 - Solvency Capital Requirement - Health underwriting risk|Z Axis:",
+            "Values" : {
+              "s2c_CN:x1" : "Reported",
+              "s2c_CN:x13" : "Not reported as risk not existent",
+              "s2c_CN:x12" : "Not reported o/a use partial internal model",
+              "s2c_CN:x11" : "Not reported o/a use full internal model",
+              "s2c_CN:x102" : "Not reported as no RFF",
+              "s2c_CN:x60" : "Reported due to article 112 request",
+              "s2c_CN:x71" : "Partially reported due to use of partial internal model",
+              "s2c_CN:x100" : "Reported in accordance with the biennial reporting requirement set out in Article 112",
+              "s2c_CN:x2" : "Not reported other reason"
+            }
+          }
+        },
+        "C0010_R0910" : {
+          "dimensions" : {
+            "concept" : "s2md_met:ei3061",
+            "s2c_dim:FN" : "$Z0020",
+            "s2c_dim:PO" : "$Z0010"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{SR.01.01.01.01, C0010, R0910}",
+            "Label" : "SR.01.01.01.01 - Reporting status|SR.26.05.01 - Solvency Capital Requirement - Non-Life underwriting risk|Z Axis:",
+            "Values" : {
+              "s2c_CN:x1" : "Reported",
+              "s2c_CN:x13" : "Not reported as risk not existent",
+              "s2c_CN:x12" : "Not reported o/a use partial internal model",
+              "s2c_CN:x11" : "Not reported o/a use full internal model",
+              "s2c_CN:x102" : "Not reported as no RFF",
+              "s2c_CN:x60" : "Reported due to article 112 request",
+              "s2c_CN:x71" : "Partially reported due to use of partial internal model",
+              "s2c_CN:x100" : "Reported in accordance with the biennial reporting requirement set out in Article 112",
+              "s2c_CN:x2" : "Not reported other reason"
+            }
+          }
+        },
+        "C0010_R0920" : {
+          "dimensions" : {
+            "concept" : "s2md_met:ei3095",
+            "s2c_dim:FN" : "$Z0020",
+            "s2c_dim:PO" : "$Z0010"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{SR.01.01.01.01, C0010, R0920}",
+            "Label" : "SR.01.01.01.01 - Reporting status|SR.26.06.01 - Solvency Capital Requirement - Operational risk|Z Axis:",
+            "Values" : {
+              "s2c_CN:x1" : "Reported",
+              "s2c_CN:x12" : "Not reported o/a use partial internal model",
+              "s2c_CN:x11" : "Not reported o/a use full internal model",
+              "s2c_CN:x102" : "Not reported as no RFF",
+              "s2c_CN:x60" : "Reported due to article 112 request",
+              "s2c_CN:x71" : "Partially reported due to use of partial internal model",
+              "s2c_CN:x100" : "Reported in accordance with the biennial reporting requirement set out in Article 112",
+              "s2c_CN:x2" : "Not reported other reason"
+            }
+          }
+        },
+        "C0010_R0930" : {
+          "dimensions" : {
+            "concept" : "s2md_met:ei3062",
+            "s2c_dim:FN" : "$Z0020",
+            "s2c_dim:PO" : "$Z0010"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{SR.01.01.01.01, C0010, R0930}",
+            "Label" : "SR.01.01.01.01 - Reporting status|SR.26.07.01 - Solvency Capital Requirement - Simplifications|Z Axis:",
+            "Values" : {
+              "s2c_CN:x1" : "Reported",
+              "s2c_CN:x42" : "Not reported as no simplified calculations used",
+              "s2c_CN:x12" : "Not reported o/a use partial internal model",
+              "s2c_CN:x11" : "Not reported o/a use full internal model",
+              "s2c_CN:x102" : "Not reported as no RFF",
+              "s2c_CN:x60" : "Reported due to article 112 request",
+              "s2c_CN:x71" : "Partially reported due to use of partial internal model",
+              "s2c_CN:x100" : "Reported in accordance with the biennial reporting requirement set out in Article 112",
+              "s2c_CN:x2" : "Not reported other reason"
+            }
+          }
+        },
+        "C0010_R0935" : {
+          "dimensions" : {
+            "concept" : "s2md_met:ei2941",
+            "s2c_dim:FN" : "$Z0020",
+            "s2c_dim:PO" : "$Z0010"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{SR.01.01.01.01, C0010, R0935}",
+            "Label" : "SR.01.01.01.01 - Reporting status|SR.26.08.01 - Solvency Capital Requirement - for undertakings using an internal model|Z Axis:",
+            "Values" : {
+              "s2c_CN:x80" : "Reported due to use of partial internal model",
+              "s2c_CN:x81" : "Reported due to use of full internal model",
+              "s2c_CN:x10" : "Not reported o/a full use of Standard Formula",
+              "s2c_CN:x71" : "Partially reported due to use of partial internal model",
+              "s2c_CN:x2" : "Not reported other reason"
+            }
+          }
+        },
+        "C0010_R0940" : {
+          "dimensions" : {
+            "concept" : "s2md_met:ei3063",
+            "s2c_dim:FN" : "$Z0020",
+            "s2c_dim:PO" : "$Z0010"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{SR.01.01.01.01, C0010, R0940}",
+            "Label" : "SR.01.01.01.01 - Reporting status|SR.27.01.01 - Solvency Capital Requirement - Non-life and Health catastrophe risk|Z Axis:",
+            "Values" : {
+              "s2c_CN:x1" : "Reported",
+              "s2c_CN:x13" : "Not reported as risk not existent",
+              "s2c_CN:x12" : "Not reported o/a use partial internal model",
+              "s2c_CN:x11" : "Not reported o/a use full internal model",
+              "s2c_CN:x102" : "Not reported as no RFF",
+              "s2c_CN:x71" : "Partially reported due to use of partial internal model",
+              "s2c_CN:x2" : "Not reported other reason"
+            }
+          }
+        },
+        "Z0010" : {
+          "s2md:documentation" : {
+            "CellCode" : "{SR.01.01.01.01, Z0010}",
+            "Label" : "Ring-fenced fund/matching portfolio/remaining part",
+            "Key" : "s2c_dim:PO",
+            "Values" : {
+              "s2c_PU:x60" : "Material Ring Fenced Fund or Matching Adjustment Portfolio",
+              "s2c_PU:x54" : "Remaining part [other than MAPs and material RFFs]"
+            }
+          }
+        },
+        "Z0020" : {
+          "s2md:documentation" : {
+            "CellCode" : "{SR.01.01.01.01, Z0020}",
+            "Label" : "Fund/Portfolio Number",
+            "Key" : "s2c_dim:FN",
+            "Values" : "String"
+          }
+        }
+      }
+    }
+  }
+}

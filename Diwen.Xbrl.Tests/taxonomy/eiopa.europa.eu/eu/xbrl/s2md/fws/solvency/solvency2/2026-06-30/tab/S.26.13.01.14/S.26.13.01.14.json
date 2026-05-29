@@ -1,0 +1,43 @@
+{
+  "documentInfo" : {
+    "documentType" : "https://xbrl.org/2021/xbrl-csv",
+    "namespaces" : {
+      "s2md" : "http://eiopa.europa.eu/xbrl/s2md/",
+      "s2c_RT" : "http://eiopa.europa.eu/xbrl/s2c/dict/dom/RT",
+      "s2c_TI" : "http://eiopa.europa.eu/xbrl/s2c/dict/dom/TI",
+      "s2c_dim" : "http://eiopa.europa.eu/xbrl/s2c/dict/dim",
+      "s2md_met" : "http://eiopa.europa.eu/xbrl/s2md/dict/met"
+    }
+  },
+  "tableTemplates" : {
+    "S.26.13.01.14" : {
+      "columns" : {
+        "C0440_R2030" : {
+          "dimensions" : {
+            "concept" : "s2md_met:ei2578",
+            "s2c_dim:RH" : "s2c_TI:x2"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.13.01.14, C0440, R2030}",
+            "Label" : "S.26.13.01.14 - Significant other perils data|Significant other perils|Z Axis:",
+            "Values" : {
+              "s2c_RT:x126" : "Other non-life catastrophe risk",
+              "s2c_RT:x257" : "No indication of other significant catastrophe risk in a portfolio"
+            }
+          }
+        },
+        "C0440_R2040" : {
+          "dimensions" : {
+            "concept" : "s2md_met:si2627",
+            "s2c_dim:RH" : "s2c_TI:x2"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.13.01.14, C0440, R2040}",
+            "Label" : "S.26.13.01.14 - Significant other perils data|Description of other perils|Z Axis:",
+            "Values" : "String"
+          }
+        }
+      }
+    }
+  }
+}

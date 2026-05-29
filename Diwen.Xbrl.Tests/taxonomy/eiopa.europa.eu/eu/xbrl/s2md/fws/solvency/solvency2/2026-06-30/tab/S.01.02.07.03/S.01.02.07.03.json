@@ -1,0 +1,66 @@
+{
+  "documentInfo" : {
+    "documentType" : "https://xbrl.org/2021/xbrl-csv",
+    "namespaces" : {
+      "s2md" : "http://eiopa.europa.eu/xbrl/s2md/",
+      "s2c_GA" : "http://eiopa.europa.eu/xbrl/s2c/dict/dom/GA",
+      "s2c_dim" : "http://eiopa.europa.eu/xbrl/s2c/dict/dim",
+      "s2md_met" : "http://eiopa.europa.eu/xbrl/s2md/dict/met"
+    }
+  },
+  "tableTemplates" : {
+    "S.01.02.07.03" : {
+      "columns" : {
+        "C0030" : {
+          "dimensions" : {
+            "concept" : "s2md_met:si2131",
+            "s2c_dim:LG" : "$C0040"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.01.02.07.03, C0030}",
+            "Label" : "S.01.02.07.03 - Name of the branch",
+            "Values" : "String"
+          }
+        },
+        "C0040" : {
+          "s2md:documentation" : {
+            "CellCode" : "{S.01.02.07.03, C0040}",
+            "Label" : "Country of the branch",
+            "Key" : "s2c_dim:LG",
+            "Values" : {
+              "s2c_GA:AT" : "AUSTRIA",
+              "s2c_GA:BE" : "BELGIUM",
+              "s2c_GA:BG" : "BULGARIA",
+              "s2c_GA:CY" : "CYPRUS",
+              "s2c_GA:CZ" : "CZECHIA",
+              "s2c_GA:DK" : "DENMARK",
+              "s2c_GA:EE" : "ESTONIA",
+              "s2c_GA:FI" : "FINLAND",
+              "s2c_GA:FR" : "FRANCE",
+              "s2c_GA:DE" : "GERMANY",
+              "s2c_GA:GR" : "GREECE",
+              "s2c_GA:HR" : "CROATIA",
+              "s2c_GA:HU" : "HUNGARY",
+              "s2c_GA:IE" : "IRELAND",
+              "s2c_GA:IT" : "ITALY",
+              "s2c_GA:LV" : "LATVIA",
+              "s2c_GA:LT" : "LITHUANIA",
+              "s2c_GA:LU" : "LUXEMBOURG",
+              "s2c_GA:MT" : "MALTA",
+              "s2c_GA:NL" : "NETHERLANDS",
+              "s2c_GA:PL" : "POLAND",
+              "s2c_GA:PT" : "PORTUGAL",
+              "s2c_GA:RO" : "ROMANIA",
+              "s2c_GA:SK" : "SLOVAKIA",
+              "s2c_GA:SI" : "SLOVENIA",
+              "s2c_GA:ES" : "SPAIN",
+              "s2c_GA:SE" : "SWEDEN",
+              "s2c_GA:GB" : "UNITED KINGDOM",
+              "s2c_GA:GI" : "UNITED KINGDOM (GIBRALTAR)"
+            }
+          }
+        }
+      }
+    }
+  }
+}

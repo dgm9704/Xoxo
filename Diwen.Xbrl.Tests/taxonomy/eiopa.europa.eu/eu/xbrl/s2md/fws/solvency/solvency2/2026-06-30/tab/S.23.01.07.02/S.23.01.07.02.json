@@ -1,0 +1,124 @@
+{
+  "documentInfo" : {
+    "documentType" : "https://xbrl.org/2021/xbrl-csv",
+    "namespaces" : {
+      "s2md" : "http://eiopa.europa.eu/xbrl/s2md/",
+      "s2c_AM" : "http://eiopa.europa.eu/xbrl/s2c/dict/dom/AM",
+      "s2c_LB" : "http://eiopa.europa.eu/xbrl/s2c/dict/dom/LB",
+      "s2c_dim" : "http://eiopa.europa.eu/xbrl/s2c/dict/dim",
+      "s2md_met" : "http://eiopa.europa.eu/xbrl/s2md/dict/met"
+    }
+  },
+  "tableTemplates" : {
+    "S.23.01.07.02" : {
+      "columns" : {
+        "C0060_R0700" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi294",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.23.01.07.02, C0060, R0700}",
+            "Label" : "S.23.01.07.02 - Value|Excess of assets over liabilities|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0060_R0720" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi340",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.23.01.07.02, C0060, R0720}",
+            "Label" : "S.23.01.07.02 - Value|Foreseeable dividends, distributions and charges|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0060_R0730" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi458",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.23.01.07.02, C0060, R0730}",
+            "Label" : "S.23.01.07.02 - Value|Other basic own fund items|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0060_R0740" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi3050",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.23.01.07.02, C0060, R0740}",
+            "Label" : "S.23.01.07.02 - Value|Adjustment for restricted own fund items in respect of ring fenced funds|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0060_R0760" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi482",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.23.01.07.02, C0060, R0760}",
+            "Label" : "S.23.01.07.02 - Value|Reconciliation reserve|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0060_R0770" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi308",
+            "s2c_dim:BL" : "s2c_LB:x65",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.23.01.07.02, C0060, R0770}",
+            "Label" : "S.23.01.07.02 - Value|Expected profits included in future premiums (EPIFP) - Life business|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0060_R0780" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi308",
+            "s2c_dim:BL" : "s2c_LB:x79",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.23.01.07.02, C0060, R0780}",
+            "Label" : "S.23.01.07.02 - Value|Expected profits included in future premiums (EPIFP) - Non-life business|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0060_R0790" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi308",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.23.01.07.02, C0060, R0790}",
+            "Label" : "S.23.01.07.02 - Value|Total Expected profits included in future premiums (EPIFP)|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        }
+      }
+    }
+  }
+}

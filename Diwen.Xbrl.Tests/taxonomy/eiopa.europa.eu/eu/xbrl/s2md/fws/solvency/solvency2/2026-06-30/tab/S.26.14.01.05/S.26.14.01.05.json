@@ -1,0 +1,1442 @@
+{
+  "documentInfo" : {
+    "documentType" : "https://xbrl.org/2021/xbrl-csv",
+    "namespaces" : {
+      "s2md" : "http://eiopa.europa.eu/xbrl/s2md/",
+      "s2c_AM" : "http://eiopa.europa.eu/xbrl/s2c/dict/dom/AM",
+      "s2c_AP" : "http://eiopa.europa.eu/xbrl/s2c/dict/dom/AP",
+      "s2c_DI" : "http://eiopa.europa.eu/xbrl/s2c/dict/dom/DI",
+      "s2c_PI" : "http://eiopa.europa.eu/xbrl/s2c/dict/dom/PI",
+      "s2c_RT" : "http://eiopa.europa.eu/xbrl/s2c/dict/dom/RT",
+      "s2c_TI" : "http://eiopa.europa.eu/xbrl/s2c/dict/dom/TI",
+      "s2c_VM" : "http://eiopa.europa.eu/xbrl/s2c/dict/dom/VM",
+      "s2c_dim" : "http://eiopa.europa.eu/xbrl/s2c/dict/dim",
+      "s2md_met" : "http://eiopa.europa.eu/xbrl/s2md/dict/met"
+    }
+  },
+  "tableTemplates" : {
+    "S.26.14.01.05" : {
+      "columns" : {
+        "C0010_R0600" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi2705",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RL" : "s2c_RT:x263",
+            "s2c_dim:RP" : "s2c_RT:x65",
+            "s2c_dim:RT" : "$Z0010",
+            "s2c_dim:VG" : "s2c_AM:x80",
+            "s2c_dim:VL" : "s2c_VM:x9"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.14.01.05, C0010, R0600}",
+            "Label" : "S.26.14.01.05 - Net Best Estimate liability + Technical provisions calculated as a whole|Catastrophe risk|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0050_R0600" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi505",
+            "s2c_dim:DI" : "s2c_DI:x5",
+            "s2c_dim:IZ" : "s2c_RT:x1",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RL" : "s2c_RT:x263",
+            "s2c_dim:RP" : "s2c_RT:x65",
+            "s2c_dim:RT" : "$Z0010",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.14.01.05, C0050, R0600}",
+            "Label" : "S.26.14.01.05 - Net Written Premiums|Catastrophe risk|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0060_R0600" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi518",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RL" : "s2c_RT:x263",
+            "s2c_dim:RP" : "s2c_RT:x65",
+            "s2c_dim:RT" : "$Z0010",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.14.01.05, C0060, R0600}",
+            "Label" : "S.26.14.01.05 - Sum insured|Catastrophe risk|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0070_R0580" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi92",
+            "s2c_dim:DV" : "s2c_RT:x11",
+            "s2c_dim:EA" : "s2c_VM:x24",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RL" : "s2c_RT:x260",
+            "s2c_dim:RP" : "s2c_RT:x65",
+            "s2c_dim:RT" : "$Z0010",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.14.01.05, C0070, R0580}",
+            "Label" : "S.26.14.01.05 - Solvency Capital Requirements|Trend risk|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0070_R0590" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi92",
+            "s2c_dim:DV" : "s2c_RT:x11",
+            "s2c_dim:EA" : "s2c_VM:x24",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RL" : "s2c_RT:x261",
+            "s2c_dim:RP" : "s2c_RT:x65",
+            "s2c_dim:RT" : "$Z0010",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.14.01.05, C0070, R0590}",
+            "Label" : "S.26.14.01.05 - Solvency Capital Requirements|Level risk|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0070_R0600" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi92",
+            "s2c_dim:DV" : "s2c_RT:x11",
+            "s2c_dim:EA" : "s2c_VM:x24",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RL" : "s2c_RT:x263",
+            "s2c_dim:RP" : "s2c_RT:x65",
+            "s2c_dim:RT" : "$Z0010",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.14.01.05, C0070, R0600}",
+            "Label" : "S.26.14.01.05 - Solvency Capital Requirements|Catastrophe risk|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0080_R0580" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi2702",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RL" : "s2c_RT:x260",
+            "s2c_dim:RP" : "s2c_RT:x65",
+            "s2c_dim:RT" : "$Z0010",
+            "s2c_dim:TA" : "s2c_AM:x12",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.14.01.05, C0080, R0580}",
+            "Label" : "S.26.14.01.05 - Mean|Trend risk|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0080_R0590" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi2702",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RL" : "s2c_RT:x261",
+            "s2c_dim:RP" : "s2c_RT:x65",
+            "s2c_dim:RT" : "$Z0010",
+            "s2c_dim:TA" : "s2c_AM:x12",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.14.01.05, C0080, R0590}",
+            "Label" : "S.26.14.01.05 - Mean|Level risk|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0080_R0600" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi2702",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RL" : "s2c_RT:x263",
+            "s2c_dim:RP" : "s2c_RT:x65",
+            "s2c_dim:RT" : "$Z0010",
+            "s2c_dim:TA" : "s2c_AM:x12",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.14.01.05, C0080, R0600}",
+            "Label" : "S.26.14.01.05 - Mean|Catastrophe risk|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0090_R0580" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi2702",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RL" : "s2c_RT:x260",
+            "s2c_dim:RP" : "s2c_RT:x65",
+            "s2c_dim:RT" : "$Z0010",
+            "s2c_dim:TA" : "s2c_AM:x138",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.14.01.05, C0090, R0580}",
+            "Label" : "S.26.14.01.05 - Standard deviation|Trend risk|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0090_R0590" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi2702",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RL" : "s2c_RT:x261",
+            "s2c_dim:RP" : "s2c_RT:x65",
+            "s2c_dim:RT" : "$Z0010",
+            "s2c_dim:TA" : "s2c_AM:x138",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.14.01.05, C0090, R0590}",
+            "Label" : "S.26.14.01.05 - Standard deviation|Level risk|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0090_R0600" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi2702",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RL" : "s2c_RT:x263",
+            "s2c_dim:RP" : "s2c_RT:x65",
+            "s2c_dim:RT" : "$Z0010",
+            "s2c_dim:TA" : "s2c_AM:x138",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.14.01.05, C0090, R0600}",
+            "Label" : "S.26.14.01.05 - Standard deviation|Catastrophe risk|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0100_R0580" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi2701",
+            "s2c_dim:PT" : "s2c_PI:x38",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RL" : "s2c_RT:x260",
+            "s2c_dim:RP" : "s2c_RT:x65",
+            "s2c_dim:RT" : "$Z0010",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.14.01.05, C0100, R0580}",
+            "Label" : "S.26.14.01.05 - 0,001|Trend risk|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0100_R0590" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi2701",
+            "s2c_dim:PT" : "s2c_PI:x38",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RL" : "s2c_RT:x261",
+            "s2c_dim:RP" : "s2c_RT:x65",
+            "s2c_dim:RT" : "$Z0010",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.14.01.05, C0100, R0590}",
+            "Label" : "S.26.14.01.05 - 0,001|Level risk|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0100_R0600" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi2701",
+            "s2c_dim:PT" : "s2c_PI:x38",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RL" : "s2c_RT:x263",
+            "s2c_dim:RP" : "s2c_RT:x65",
+            "s2c_dim:RT" : "$Z0010",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.14.01.05, C0100, R0600}",
+            "Label" : "S.26.14.01.05 - 0,001|Catastrophe risk|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0110_R0580" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi2701",
+            "s2c_dim:PT" : "s2c_PI:x19",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RL" : "s2c_RT:x260",
+            "s2c_dim:RP" : "s2c_RT:x65",
+            "s2c_dim:RT" : "$Z0010",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.14.01.05, C0110, R0580}",
+            "Label" : "S.26.14.01.05 - 0,005|Trend risk|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0110_R0590" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi2701",
+            "s2c_dim:PT" : "s2c_PI:x19",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RL" : "s2c_RT:x261",
+            "s2c_dim:RP" : "s2c_RT:x65",
+            "s2c_dim:RT" : "$Z0010",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.14.01.05, C0110, R0590}",
+            "Label" : "S.26.14.01.05 - 0,005|Level risk|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0110_R0600" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi2701",
+            "s2c_dim:PT" : "s2c_PI:x19",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RL" : "s2c_RT:x263",
+            "s2c_dim:RP" : "s2c_RT:x65",
+            "s2c_dim:RT" : "$Z0010",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.14.01.05, C0110, R0600}",
+            "Label" : "S.26.14.01.05 - 0,005|Catastrophe risk|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0120_R0580" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi2701",
+            "s2c_dim:PT" : "s2c_PI:x18",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RL" : "s2c_RT:x260",
+            "s2c_dim:RP" : "s2c_RT:x65",
+            "s2c_dim:RT" : "$Z0010",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.14.01.05, C0120, R0580}",
+            "Label" : "S.26.14.01.05 - 0,01|Trend risk|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0120_R0590" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi2701",
+            "s2c_dim:PT" : "s2c_PI:x18",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RL" : "s2c_RT:x261",
+            "s2c_dim:RP" : "s2c_RT:x65",
+            "s2c_dim:RT" : "$Z0010",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.14.01.05, C0120, R0590}",
+            "Label" : "S.26.14.01.05 - 0,01|Level risk|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0120_R0600" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi2701",
+            "s2c_dim:PT" : "s2c_PI:x18",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RL" : "s2c_RT:x263",
+            "s2c_dim:RP" : "s2c_RT:x65",
+            "s2c_dim:RT" : "$Z0010",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.14.01.05, C0120, R0600}",
+            "Label" : "S.26.14.01.05 - 0,01|Catastrophe risk|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0130_R0580" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi2701",
+            "s2c_dim:PT" : "s2c_PI:x35",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RL" : "s2c_RT:x260",
+            "s2c_dim:RP" : "s2c_RT:x65",
+            "s2c_dim:RT" : "$Z0010",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.14.01.05, C0130, R0580}",
+            "Label" : "S.26.14.01.05 - 0,05|Trend risk|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0130_R0590" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi2701",
+            "s2c_dim:PT" : "s2c_PI:x35",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RL" : "s2c_RT:x261",
+            "s2c_dim:RP" : "s2c_RT:x65",
+            "s2c_dim:RT" : "$Z0010",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.14.01.05, C0130, R0590}",
+            "Label" : "S.26.14.01.05 - 0,05|Level risk|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0130_R0600" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi2701",
+            "s2c_dim:PT" : "s2c_PI:x35",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RL" : "s2c_RT:x263",
+            "s2c_dim:RP" : "s2c_RT:x65",
+            "s2c_dim:RT" : "$Z0010",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.14.01.05, C0130, R0600}",
+            "Label" : "S.26.14.01.05 - 0,05|Catastrophe risk|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0140_R0580" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi2701",
+            "s2c_dim:PT" : "s2c_PI:x16",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RL" : "s2c_RT:x260",
+            "s2c_dim:RP" : "s2c_RT:x65",
+            "s2c_dim:RT" : "$Z0010",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.14.01.05, C0140, R0580}",
+            "Label" : "S.26.14.01.05 - 0,1|Trend risk|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0140_R0590" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi2701",
+            "s2c_dim:PT" : "s2c_PI:x16",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RL" : "s2c_RT:x261",
+            "s2c_dim:RP" : "s2c_RT:x65",
+            "s2c_dim:RT" : "$Z0010",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.14.01.05, C0140, R0590}",
+            "Label" : "S.26.14.01.05 - 0,1|Level risk|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0140_R0600" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi2701",
+            "s2c_dim:PT" : "s2c_PI:x16",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RL" : "s2c_RT:x263",
+            "s2c_dim:RP" : "s2c_RT:x65",
+            "s2c_dim:RT" : "$Z0010",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.14.01.05, C0140, R0600}",
+            "Label" : "S.26.14.01.05 - 0,1|Catastrophe risk|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0150_R0580" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi2701",
+            "s2c_dim:PT" : "s2c_PI:x52",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RL" : "s2c_RT:x260",
+            "s2c_dim:RP" : "s2c_RT:x65",
+            "s2c_dim:RT" : "$Z0010",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.14.01.05, C0150, R0580}",
+            "Label" : "S.26.14.01.05 - 0,2|Trend risk|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0150_R0590" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi2701",
+            "s2c_dim:PT" : "s2c_PI:x52",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RL" : "s2c_RT:x261",
+            "s2c_dim:RP" : "s2c_RT:x65",
+            "s2c_dim:RT" : "$Z0010",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.14.01.05, C0150, R0590}",
+            "Label" : "S.26.14.01.05 - 0,2|Level risk|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0150_R0600" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi2701",
+            "s2c_dim:PT" : "s2c_PI:x52",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RL" : "s2c_RT:x263",
+            "s2c_dim:RP" : "s2c_RT:x65",
+            "s2c_dim:RT" : "$Z0010",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.14.01.05, C0150, R0600}",
+            "Label" : "S.26.14.01.05 - 0,2|Catastrophe risk|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0160_R0580" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi2701",
+            "s2c_dim:PT" : "s2c_PI:x15",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RL" : "s2c_RT:x260",
+            "s2c_dim:RP" : "s2c_RT:x65",
+            "s2c_dim:RT" : "$Z0010",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.14.01.05, C0160, R0580}",
+            "Label" : "S.26.14.01.05 - 0,25|Trend risk|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0160_R0590" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi2701",
+            "s2c_dim:PT" : "s2c_PI:x15",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RL" : "s2c_RT:x261",
+            "s2c_dim:RP" : "s2c_RT:x65",
+            "s2c_dim:RT" : "$Z0010",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.14.01.05, C0160, R0590}",
+            "Label" : "S.26.14.01.05 - 0,25|Level risk|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0160_R0600" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi2701",
+            "s2c_dim:PT" : "s2c_PI:x15",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RL" : "s2c_RT:x263",
+            "s2c_dim:RP" : "s2c_RT:x65",
+            "s2c_dim:RT" : "$Z0010",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.14.01.05, C0160, R0600}",
+            "Label" : "S.26.14.01.05 - 0,25|Catastrophe risk|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0170_R0580" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi2701",
+            "s2c_dim:PT" : "s2c_PI:x17",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RL" : "s2c_RT:x260",
+            "s2c_dim:RP" : "s2c_RT:x65",
+            "s2c_dim:RT" : "$Z0010",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.14.01.05, C0170, R0580}",
+            "Label" : "S.26.14.01.05 - 0,3|Trend risk|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0170_R0590" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi2701",
+            "s2c_dim:PT" : "s2c_PI:x17",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RL" : "s2c_RT:x261",
+            "s2c_dim:RP" : "s2c_RT:x65",
+            "s2c_dim:RT" : "$Z0010",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.14.01.05, C0170, R0590}",
+            "Label" : "S.26.14.01.05 - 0,3|Level risk|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0170_R0600" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi2701",
+            "s2c_dim:PT" : "s2c_PI:x17",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RL" : "s2c_RT:x263",
+            "s2c_dim:RP" : "s2c_RT:x65",
+            "s2c_dim:RT" : "$Z0010",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.14.01.05, C0170, R0600}",
+            "Label" : "S.26.14.01.05 - 0,3|Catastrophe risk|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0180_R0580" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi2701",
+            "s2c_dim:PT" : "s2c_PI:x49",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RL" : "s2c_RT:x260",
+            "s2c_dim:RP" : "s2c_RT:x65",
+            "s2c_dim:RT" : "$Z0010",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.14.01.05, C0180, R0580}",
+            "Label" : "S.26.14.01.05 - 0,4|Trend risk|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0180_R0590" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi2701",
+            "s2c_dim:PT" : "s2c_PI:x49",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RL" : "s2c_RT:x261",
+            "s2c_dim:RP" : "s2c_RT:x65",
+            "s2c_dim:RT" : "$Z0010",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.14.01.05, C0180, R0590}",
+            "Label" : "S.26.14.01.05 - 0,4|Level risk|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0180_R0600" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi2701",
+            "s2c_dim:PT" : "s2c_PI:x49",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RL" : "s2c_RT:x263",
+            "s2c_dim:RP" : "s2c_RT:x65",
+            "s2c_dim:RT" : "$Z0010",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.14.01.05, C0180, R0600}",
+            "Label" : "S.26.14.01.05 - 0,4|Catastrophe risk|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0190_R0580" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi2701",
+            "s2c_dim:PT" : "s2c_PI:x32",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RL" : "s2c_RT:x260",
+            "s2c_dim:RP" : "s2c_RT:x65",
+            "s2c_dim:RT" : "$Z0010",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.14.01.05, C0190, R0580}",
+            "Label" : "S.26.14.01.05 - 0,5|Trend risk|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0190_R0590" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi2701",
+            "s2c_dim:PT" : "s2c_PI:x32",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RL" : "s2c_RT:x261",
+            "s2c_dim:RP" : "s2c_RT:x65",
+            "s2c_dim:RT" : "$Z0010",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.14.01.05, C0190, R0590}",
+            "Label" : "S.26.14.01.05 - 0,5|Level risk|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0190_R0600" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi2701",
+            "s2c_dim:PT" : "s2c_PI:x32",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RL" : "s2c_RT:x263",
+            "s2c_dim:RP" : "s2c_RT:x65",
+            "s2c_dim:RT" : "$Z0010",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.14.01.05, C0190, R0600}",
+            "Label" : "S.26.14.01.05 - 0,5|Catastrophe risk|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0200_R0580" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi2701",
+            "s2c_dim:PT" : "s2c_PI:x45",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RL" : "s2c_RT:x260",
+            "s2c_dim:RP" : "s2c_RT:x65",
+            "s2c_dim:RT" : "$Z0010",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.14.01.05, C0200, R0580}",
+            "Label" : "S.26.14.01.05 - 0,6|Trend risk|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0200_R0590" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi2701",
+            "s2c_dim:PT" : "s2c_PI:x45",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RL" : "s2c_RT:x261",
+            "s2c_dim:RP" : "s2c_RT:x65",
+            "s2c_dim:RT" : "$Z0010",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.14.01.05, C0200, R0590}",
+            "Label" : "S.26.14.01.05 - 0,6|Level risk|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0200_R0600" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi2701",
+            "s2c_dim:PT" : "s2c_PI:x45",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RL" : "s2c_RT:x263",
+            "s2c_dim:RP" : "s2c_RT:x65",
+            "s2c_dim:RT" : "$Z0010",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.14.01.05, C0200, R0600}",
+            "Label" : "S.26.14.01.05 - 0,6|Catastrophe risk|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0210_R0580" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi2701",
+            "s2c_dim:PT" : "s2c_PI:x47",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RL" : "s2c_RT:x260",
+            "s2c_dim:RP" : "s2c_RT:x65",
+            "s2c_dim:RT" : "$Z0010",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.14.01.05, C0210, R0580}",
+            "Label" : "S.26.14.01.05 - 0,7|Trend risk|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0210_R0590" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi2701",
+            "s2c_dim:PT" : "s2c_PI:x47",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RL" : "s2c_RT:x261",
+            "s2c_dim:RP" : "s2c_RT:x65",
+            "s2c_dim:RT" : "$Z0010",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.14.01.05, C0210, R0590}",
+            "Label" : "S.26.14.01.05 - 0,7|Level risk|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0210_R0600" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi2701",
+            "s2c_dim:PT" : "s2c_PI:x47",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RL" : "s2c_RT:x263",
+            "s2c_dim:RP" : "s2c_RT:x65",
+            "s2c_dim:RT" : "$Z0010",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.14.01.05, C0210, R0600}",
+            "Label" : "S.26.14.01.05 - 0,7|Catastrophe risk|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0220_R0580" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi2701",
+            "s2c_dim:PT" : "s2c_PI:x31",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RL" : "s2c_RT:x260",
+            "s2c_dim:RP" : "s2c_RT:x65",
+            "s2c_dim:RT" : "$Z0010",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.14.01.05, C0220, R0580}",
+            "Label" : "S.26.14.01.05 - 0,75|Trend risk|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0220_R0590" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi2701",
+            "s2c_dim:PT" : "s2c_PI:x31",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RL" : "s2c_RT:x261",
+            "s2c_dim:RP" : "s2c_RT:x65",
+            "s2c_dim:RT" : "$Z0010",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.14.01.05, C0220, R0590}",
+            "Label" : "S.26.14.01.05 - 0,75|Level risk|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0220_R0600" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi2701",
+            "s2c_dim:PT" : "s2c_PI:x31",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RL" : "s2c_RT:x263",
+            "s2c_dim:RP" : "s2c_RT:x65",
+            "s2c_dim:RT" : "$Z0010",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.14.01.05, C0220, R0600}",
+            "Label" : "S.26.14.01.05 - 0,75|Catastrophe risk|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0230_R0580" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi2701",
+            "s2c_dim:PT" : "s2c_PI:x30",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RL" : "s2c_RT:x260",
+            "s2c_dim:RP" : "s2c_RT:x65",
+            "s2c_dim:RT" : "$Z0010",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.14.01.05, C0230, R0580}",
+            "Label" : "S.26.14.01.05 - 0,8|Trend risk|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0230_R0590" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi2701",
+            "s2c_dim:PT" : "s2c_PI:x30",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RL" : "s2c_RT:x261",
+            "s2c_dim:RP" : "s2c_RT:x65",
+            "s2c_dim:RT" : "$Z0010",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.14.01.05, C0230, R0590}",
+            "Label" : "S.26.14.01.05 - 0,8|Level risk|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0230_R0600" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi2701",
+            "s2c_dim:PT" : "s2c_PI:x30",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RL" : "s2c_RT:x263",
+            "s2c_dim:RP" : "s2c_RT:x65",
+            "s2c_dim:RT" : "$Z0010",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.14.01.05, C0230, R0600}",
+            "Label" : "S.26.14.01.05 - 0,8|Catastrophe risk|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0240_R0580" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi2701",
+            "s2c_dim:PT" : "s2c_PI:x28",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RL" : "s2c_RT:x260",
+            "s2c_dim:RP" : "s2c_RT:x65",
+            "s2c_dim:RT" : "$Z0010",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.14.01.05, C0240, R0580}",
+            "Label" : "S.26.14.01.05 - 0,9|Trend risk|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0240_R0590" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi2701",
+            "s2c_dim:PT" : "s2c_PI:x28",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RL" : "s2c_RT:x261",
+            "s2c_dim:RP" : "s2c_RT:x65",
+            "s2c_dim:RT" : "$Z0010",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.14.01.05, C0240, R0590}",
+            "Label" : "S.26.14.01.05 - 0,9|Level risk|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0240_R0600" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi2701",
+            "s2c_dim:PT" : "s2c_PI:x28",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RL" : "s2c_RT:x263",
+            "s2c_dim:RP" : "s2c_RT:x65",
+            "s2c_dim:RT" : "$Z0010",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.14.01.05, C0240, R0600}",
+            "Label" : "S.26.14.01.05 - 0,9|Catastrophe risk|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0250_R0580" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi2701",
+            "s2c_dim:PT" : "s2c_PI:x39",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RL" : "s2c_RT:x260",
+            "s2c_dim:RP" : "s2c_RT:x65",
+            "s2c_dim:RT" : "$Z0010",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.14.01.05, C0250, R0580}",
+            "Label" : "S.26.14.01.05 - 0,975|Trend risk|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0250_R0590" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi2701",
+            "s2c_dim:PT" : "s2c_PI:x39",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RL" : "s2c_RT:x261",
+            "s2c_dim:RP" : "s2c_RT:x65",
+            "s2c_dim:RT" : "$Z0010",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.14.01.05, C0250, R0590}",
+            "Label" : "S.26.14.01.05 - 0,975|Level risk|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0250_R0600" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi2701",
+            "s2c_dim:PT" : "s2c_PI:x39",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RL" : "s2c_RT:x263",
+            "s2c_dim:RP" : "s2c_RT:x65",
+            "s2c_dim:RT" : "$Z0010",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.14.01.05, C0250, R0600}",
+            "Label" : "S.26.14.01.05 - 0,975|Catastrophe risk|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0260_R0580" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi2701",
+            "s2c_dim:PT" : "s2c_PI:x40",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RL" : "s2c_RT:x260",
+            "s2c_dim:RP" : "s2c_RT:x65",
+            "s2c_dim:RT" : "$Z0010",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.14.01.05, C0260, R0580}",
+            "Label" : "S.26.14.01.05 - 0,98|Trend risk|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0260_R0590" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi2701",
+            "s2c_dim:PT" : "s2c_PI:x40",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RL" : "s2c_RT:x261",
+            "s2c_dim:RP" : "s2c_RT:x65",
+            "s2c_dim:RT" : "$Z0010",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.14.01.05, C0260, R0590}",
+            "Label" : "S.26.14.01.05 - 0,98|Level risk|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0260_R0600" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi2701",
+            "s2c_dim:PT" : "s2c_PI:x40",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RL" : "s2c_RT:x263",
+            "s2c_dim:RP" : "s2c_RT:x65",
+            "s2c_dim:RT" : "$Z0010",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.14.01.05, C0260, R0600}",
+            "Label" : "S.26.14.01.05 - 0,98|Catastrophe risk|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0270_R0580" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi2701",
+            "s2c_dim:PT" : "s2c_PI:x41",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RL" : "s2c_RT:x260",
+            "s2c_dim:RP" : "s2c_RT:x65",
+            "s2c_dim:RT" : "$Z0010",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.14.01.05, C0270, R0580}",
+            "Label" : "S.26.14.01.05 - 0,985|Trend risk|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0270_R0590" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi2701",
+            "s2c_dim:PT" : "s2c_PI:x41",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RL" : "s2c_RT:x261",
+            "s2c_dim:RP" : "s2c_RT:x65",
+            "s2c_dim:RT" : "$Z0010",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.14.01.05, C0270, R0590}",
+            "Label" : "S.26.14.01.05 - 0,985|Level risk|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0270_R0600" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi2701",
+            "s2c_dim:PT" : "s2c_PI:x41",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RL" : "s2c_RT:x263",
+            "s2c_dim:RP" : "s2c_RT:x65",
+            "s2c_dim:RT" : "$Z0010",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.14.01.05, C0270, R0600}",
+            "Label" : "S.26.14.01.05 - 0,985|Catastrophe risk|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0280_R0580" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi2701",
+            "s2c_dim:PT" : "s2c_PI:x42",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RL" : "s2c_RT:x260",
+            "s2c_dim:RP" : "s2c_RT:x65",
+            "s2c_dim:RT" : "$Z0010",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.14.01.05, C0280, R0580}",
+            "Label" : "S.26.14.01.05 - 0,99|Trend risk|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0280_R0590" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi2701",
+            "s2c_dim:PT" : "s2c_PI:x42",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RL" : "s2c_RT:x261",
+            "s2c_dim:RP" : "s2c_RT:x65",
+            "s2c_dim:RT" : "$Z0010",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.14.01.05, C0280, R0590}",
+            "Label" : "S.26.14.01.05 - 0,99|Level risk|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0280_R0600" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi2701",
+            "s2c_dim:PT" : "s2c_PI:x42",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RL" : "s2c_RT:x263",
+            "s2c_dim:RP" : "s2c_RT:x65",
+            "s2c_dim:RT" : "$Z0010",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.14.01.05, C0280, R0600}",
+            "Label" : "S.26.14.01.05 - 0,99|Catastrophe risk|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0290_R0580" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi2701",
+            "s2c_dim:PT" : "s2c_PI:x24",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RL" : "s2c_RT:x260",
+            "s2c_dim:RP" : "s2c_RT:x65",
+            "s2c_dim:RT" : "$Z0010",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.14.01.05, C0290, R0580}",
+            "Label" : "S.26.14.01.05 - 0,995|Trend risk|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0290_R0590" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi2701",
+            "s2c_dim:PT" : "s2c_PI:x24",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RL" : "s2c_RT:x261",
+            "s2c_dim:RP" : "s2c_RT:x65",
+            "s2c_dim:RT" : "$Z0010",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.14.01.05, C0290, R0590}",
+            "Label" : "S.26.14.01.05 - 0,995|Level risk|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0290_R0600" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi2701",
+            "s2c_dim:PT" : "s2c_PI:x24",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RL" : "s2c_RT:x263",
+            "s2c_dim:RP" : "s2c_RT:x65",
+            "s2c_dim:RT" : "$Z0010",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.14.01.05, C0290, R0600}",
+            "Label" : "S.26.14.01.05 - 0,995|Catastrophe risk|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0300_R0580" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi2701",
+            "s2c_dim:PT" : "s2c_PI:x43",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RL" : "s2c_RT:x260",
+            "s2c_dim:RP" : "s2c_RT:x65",
+            "s2c_dim:RT" : "$Z0010",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.14.01.05, C0300, R0580}",
+            "Label" : "S.26.14.01.05 - 0,997|Trend risk|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0300_R0590" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi2701",
+            "s2c_dim:PT" : "s2c_PI:x43",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RL" : "s2c_RT:x261",
+            "s2c_dim:RP" : "s2c_RT:x65",
+            "s2c_dim:RT" : "$Z0010",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.14.01.05, C0300, R0590}",
+            "Label" : "S.26.14.01.05 - 0,997|Level risk|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0300_R0600" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi2701",
+            "s2c_dim:PT" : "s2c_PI:x43",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RL" : "s2c_RT:x263",
+            "s2c_dim:RP" : "s2c_RT:x65",
+            "s2c_dim:RT" : "$Z0010",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.14.01.05, C0300, R0600}",
+            "Label" : "S.26.14.01.05 - 0,997|Catastrophe risk|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0310_R0580" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi2701",
+            "s2c_dim:PT" : "s2c_PI:x20",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RL" : "s2c_RT:x260",
+            "s2c_dim:RP" : "s2c_RT:x65",
+            "s2c_dim:RT" : "$Z0010",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.14.01.05, C0310, R0580}",
+            "Label" : "S.26.14.01.05 - 0,999|Trend risk|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0310_R0590" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi2701",
+            "s2c_dim:PT" : "s2c_PI:x20",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RL" : "s2c_RT:x261",
+            "s2c_dim:RP" : "s2c_RT:x65",
+            "s2c_dim:RT" : "$Z0010",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.14.01.05, C0310, R0590}",
+            "Label" : "S.26.14.01.05 - 0,999|Level risk|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0310_R0600" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi2701",
+            "s2c_dim:PT" : "s2c_PI:x20",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RL" : "s2c_RT:x263",
+            "s2c_dim:RP" : "s2c_RT:x65",
+            "s2c_dim:RT" : "$Z0010",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.14.01.05, C0310, R0600}",
+            "Label" : "S.26.14.01.05 - 0,999|Catastrophe risk|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "Z0010" : {
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.14.01.05, Z0010}",
+            "Label" : "Risk type",
+            "Key" : "s2c_dim:RT",
+            "Values" : {
+              "s2c_RT:x318" : "SLT health and NSLT health underwriting risk",
+              "s2c_RT:x139" : "SLT health underwriting risk",
+              "s2c_RT:x120" : "NSLT health underwriting risk"
+            }
+          }
+        }
+      }
+    }
+  }
+}

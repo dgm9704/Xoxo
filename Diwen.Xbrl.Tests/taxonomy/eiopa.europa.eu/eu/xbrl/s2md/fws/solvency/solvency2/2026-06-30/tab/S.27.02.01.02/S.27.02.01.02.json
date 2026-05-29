@@ -1,0 +1,77 @@
+{
+  "documentInfo" : {
+    "documentType" : "https://xbrl.org/2021/xbrl-csv",
+    "namespaces" : {
+      "s2md" : "http://eiopa.europa.eu/xbrl/s2md/",
+      "s2c_RT" : "http://eiopa.europa.eu/xbrl/s2c/dict/dom/RT",
+      "s2c_dim" : "http://eiopa.europa.eu/xbrl/s2c/dict/dim",
+      "s2md_met" : "http://eiopa.europa.eu/xbrl/s2md/dict/met"
+    }
+  },
+  "tableTemplates" : {
+    "S.27.02.01.02" : {
+      "columns" : {
+        "C0001" : {
+          "s2md:documentation" : {
+            "CellCode" : "{S.27.02.01.02, C0001}",
+            "Label" : "Line identification",
+            "Key" : "s2c_dim:NV",
+            "Values" : "String"
+          }
+        },
+        "C0010" : {
+          "s2md:documentation" : {
+            "CellCode" : "{S.27.02.01.02, C0010}",
+            "Label" : "Peril",
+            "Key" : "s2c_dim:RT",
+            "Values" : {
+              "s2c_RT:x350" : "Wildfire",
+              "s2c_RT:x36" : "Flood",
+              "s2c_RT:x30" : "Earthquake",
+              "s2c_RT:x150" : "Windstorm",
+              "s2c_RT:x40" : "Hail"
+            }
+          }
+        },
+        "C0020" : {
+          "s2md:documentation" : {
+            "CellCode" : "{S.27.02.01.02, C0020}",
+            "Label" : "Year",
+            "Key" : "s2c_dim:NH",
+            "Values" : "Integer"
+          }
+        },
+        "C0080" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi3021",
+            "s2c_dim:NH" : "$C0020",
+            "s2c_dim:NV" : "$C0001",
+            "s2c_dim:RT" : "$C0010"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.27.02.01.02, C0080}",
+            "Label" : "S.27.02.01.02 - Non proportional reinsurer’s share - loss",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetaryOpenTable"
+        },
+        "C0090" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi3020",
+            "s2c_dim:NH" : "$C0020",
+            "s2c_dim:NV" : "$C0001",
+            "s2c_dim:RT" : "$C0010"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.27.02.01.02, C0090}",
+            "Label" : "S.27.02.01.02 - Proportional reinsurer’s share - loss",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetaryOpenTable"
+        }
+      }
+    }
+  }
+}

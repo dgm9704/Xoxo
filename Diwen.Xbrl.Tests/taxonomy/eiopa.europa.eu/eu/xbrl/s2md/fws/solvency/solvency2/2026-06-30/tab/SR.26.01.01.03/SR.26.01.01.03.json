@@ -1,0 +1,125 @@
+{
+  "documentInfo" : {
+    "documentType" : "https://xbrl.org/2021/xbrl-csv",
+    "namespaces" : {
+      "s2md" : "http://eiopa.europa.eu/xbrl/s2md/",
+      "s2c_AP" : "http://eiopa.europa.eu/xbrl/s2c/dict/dom/AP",
+      "s2c_dim" : "http://eiopa.europa.eu/xbrl/s2c/dict/dim",
+      "s2md_met" : "http://eiopa.europa.eu/xbrl/s2md/dict/met"
+    }
+  },
+  "tableTemplates" : {
+    "SR.26.01.01.03" : {
+      "columns" : {
+        "C0010_R0012" : {
+          "dimensions" : {
+            "concept" : "s2md_met:si2525",
+            "s2c_dim:AO" : "$Z0010",
+            "s2c_dim:NF" : "$Z0030",
+            "s2c_dim:PO" : "$Z0020"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{SR.26.01.01.03, C0010, R0012}",
+            "Label" : "SR.26.01.01.03 - Simplifications used|Simplifications spread risk - bonds and loans|Z Axis:",
+            "Values" : "String"
+          }
+        },
+        "C0010_R0014" : {
+          "dimensions" : {
+            "concept" : "s2md_met:ei2526",
+            "s2c_dim:AO" : "$Z0010",
+            "s2c_dim:NF" : "$Z0030",
+            "s2c_dim:PO" : "$Z0020"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{SR.26.01.01.03, C0010, R0014}",
+            "Label" : "SR.26.01.01.03 - Simplifications used|Simplifications market concentration risk - simplifications used|Z Axis:",
+            "Values" : {
+              "s2c_AP:x57" : "Simplifications based on article 105a",
+              "s2c_AP:x34" : "Simplifications not used"
+            }
+          }
+        },
+        "C0010_R0020" : {
+          "dimensions" : {
+            "concept" : "s2md_met:ei2391",
+            "s2c_dim:AO" : "$Z0010",
+            "s2c_dim:NF" : "$Z0030",
+            "s2c_dim:PO" : "$Z0020"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{SR.26.01.01.03, C0010, R0020}",
+            "Label" : "SR.26.01.01.03 - Simplifications used|Captives simplifications - interest rate risk|Z Axis:",
+            "Values" : {
+              "s2c_AP:x33" : "Simplifications used",
+              "s2c_AP:x34" : "Simplifications not used"
+            }
+          }
+        },
+        "C0010_R0030" : {
+          "dimensions" : {
+            "concept" : "s2md_met:ei2392",
+            "s2c_dim:AO" : "$Z0010",
+            "s2c_dim:NF" : "$Z0030",
+            "s2c_dim:PO" : "$Z0020"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{SR.26.01.01.03, C0010, R0030}",
+            "Label" : "SR.26.01.01.03 - Simplifications used|Captives simplifications - spread risk on bonds and loans|Z Axis:",
+            "Values" : {
+              "s2c_AP:x33" : "Simplifications used",
+              "s2c_AP:x34" : "Simplifications not used"
+            }
+          }
+        },
+        "C0010_R0040" : {
+          "dimensions" : {
+            "concept" : "s2md_met:ei2393",
+            "s2c_dim:AO" : "$Z0010",
+            "s2c_dim:NF" : "$Z0030",
+            "s2c_dim:PO" : "$Z0020"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{SR.26.01.01.03, C0010, R0040}",
+            "Label" : "SR.26.01.01.03 - Simplifications used|Captives simplifications - market concentration risk|Z Axis:",
+            "Values" : {
+              "s2c_AP:x33" : "Simplifications used",
+              "s2c_AP:x34" : "Simplifications not used"
+            }
+          }
+        },
+        "Z0010" : {
+          "s2md:documentation" : {
+            "CellCode" : "{SR.26.01.01.03, Z0010}",
+            "Label" : "Article 112",
+            "Key" : "s2c_dim:AO",
+            "Values" : {
+              "x0" : "No",
+              "x1" : "Yes",
+              "x2" : "Yes - biennial reporting"
+            }
+          }
+        },
+        "Z0020" : {
+          "s2md:documentation" : {
+            "CellCode" : "{SR.26.01.01.03, Z0020}",
+            "Label" : "Ring-fenced fund or remaining part",
+            "Key" : "s2c_dim:PO",
+            "Values" : {
+              "x40" : "Material Ring Fenced Funds",
+              "x54" : "Remaining part [other than MAPs and material RFFs]"
+            }
+          }
+        },
+        "Z0030" : {
+          "s2md:documentation" : {
+            "CellCode" : "{SR.26.01.01.03, Z0030}",
+            "Label" : "Fund Number",
+            "Key" : "s2c_dim:NF",
+            "Values" : "String"
+          }
+        }
+      }
+    }
+  }
+}

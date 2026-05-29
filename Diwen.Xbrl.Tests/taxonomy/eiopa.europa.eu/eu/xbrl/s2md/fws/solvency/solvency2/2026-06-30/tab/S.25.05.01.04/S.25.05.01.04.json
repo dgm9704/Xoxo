@@ -1,0 +1,129 @@
+{
+  "documentInfo" : {
+    "documentType" : "https://xbrl.org/2021/xbrl-csv",
+    "namespaces" : {
+      "s2md" : "http://eiopa.europa.eu/xbrl/s2md/",
+      "s2c_AM" : "http://eiopa.europa.eu/xbrl/s2c/dict/dom/AM",
+      "s2c_dim" : "http://eiopa.europa.eu/xbrl/s2c/dict/dim",
+      "s2md_met" : "http://eiopa.europa.eu/xbrl/s2md/dict/met"
+    }
+  },
+  "tableTemplates" : {
+    "S.25.05.01.04" : {
+      "columns" : {
+        "C0110_R0600" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi222",
+            "s2c_dim:TA" : "s2c_AM:x3",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.25.05.01.04, C0110, R0600}",
+            "Label" : "S.25.05.01.04 - Before the shock|DTA|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0110_R0610" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi2552",
+            "s2c_dim:TA" : "s2c_AM:x3",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.25.05.01.04, C0110, R0610}",
+            "Label" : "S.25.05.01.04 - Before the shock|DTA carry forward|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0110_R0620" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi2553",
+            "s2c_dim:TA" : "s2c_AM:x3",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.25.05.01.04, C0110, R0620}",
+            "Label" : "S.25.05.01.04 - Before the shock|DTA due to deductible temporary differences|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0110_R0630" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi359",
+            "s2c_dim:TA" : "s2c_AM:x3",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.25.05.01.04, C0110, R0630}",
+            "Label" : "S.25.05.01.04 - Before the shock|DTL|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0120_R0600" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi222",
+            "s2c_dim:TA" : "s2c_AM:x2",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.25.05.01.04, C0120, R0600}",
+            "Label" : "S.25.05.01.04 - After the shock|DTA|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0120_R0610" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi2552",
+            "s2c_dim:TA" : "s2c_AM:x2",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.25.05.01.04, C0120, R0610}",
+            "Label" : "S.25.05.01.04 - After the shock|DTA carry forward|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0120_R0620" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi2553",
+            "s2c_dim:TA" : "s2c_AM:x2",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.25.05.01.04, C0120, R0620}",
+            "Label" : "S.25.05.01.04 - After the shock|DTA due to deductible temporary differences|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0120_R0630" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi359",
+            "s2c_dim:TA" : "s2c_AM:x2",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.25.05.01.04, C0120, R0630}",
+            "Label" : "S.25.05.01.04 - After the shock|DTL|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        }
+      }
+    }
+  }
+}

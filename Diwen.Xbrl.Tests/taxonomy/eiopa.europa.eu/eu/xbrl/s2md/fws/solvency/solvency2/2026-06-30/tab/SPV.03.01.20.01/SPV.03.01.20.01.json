@@ -1,0 +1,44 @@
+{
+  "documentInfo" : {
+    "documentType" : "https://xbrl.org/2021/xbrl-csv",
+    "namespaces" : {
+      "s2md" : "http://eiopa.europa.eu/xbrl/s2md/",
+      "s2c_AM" : "http://eiopa.europa.eu/xbrl/s2c/dict/dom/AM",
+      "s2c_dim" : "http://eiopa.europa.eu/xbrl/s2c/dict/dim",
+      "s2md_met" : "http://eiopa.europa.eu/xbrl/s2md/dict/met"
+    }
+  },
+  "tableTemplates" : {
+    "SPV.03.01.20.01" : {
+      "columns" : {
+        "C0070_R0010" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi2201",
+            "s2c_dim:TA" : "s2c_AM:x132",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{SPV.03.01.20.01, C0070, R0010}",
+            "Label" : "SPV.03.01.20.01 - Aggregate maximum risk exposure per arrangement|Total|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0080_R0010" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi201",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{SPV.03.01.20.01, C0080, R0010}",
+            "Label" : "SPV.03.01.20.01 - Assets held for separable risk|Total|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        }
+      }
+    }
+  }
+}

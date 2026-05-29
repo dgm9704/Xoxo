@@ -1,0 +1,48 @@
+{
+  "documentInfo" : {
+    "documentType" : "https://xbrl.org/2021/xbrl-csv",
+    "namespaces" : {
+      "s2md" : "http://eiopa.europa.eu/xbrl/s2md/",
+      "s2c_PU" : "http://eiopa.europa.eu/xbrl/s2c/dict/dom/PU",
+      "s2c_dim" : "http://eiopa.europa.eu/xbrl/s2c/dict/dim",
+      "s2md_met" : "http://eiopa.europa.eu/xbrl/s2md/dict/met"
+    }
+  },
+  "tableTemplates" : {
+    "S.01.03.04.02" : {
+      "columns" : {
+        "C0100" : {
+          "s2md:documentation" : {
+            "CellCode" : "{S.01.03.04.02, C0100}",
+            "Label" : "Number of RFF / MAP with sub RFF / MAP",
+            "Key" : "s2c_dim:FN",
+            "Values" : "String"
+          }
+        },
+        "C0110" : {
+          "s2md:documentation" : {
+            "CellCode" : "{S.01.03.04.02, C0110}",
+            "Label" : "Number of sub RFF/MAP",
+            "Key" : "s2c_dim:SN",
+            "Values" : "String"
+          }
+        },
+        "C0120" : {
+          "dimensions" : {
+            "concept" : "s2md_met:ei2427",
+            "s2c_dim:FN" : "$C0100",
+            "s2c_dim:SN" : "$C0110"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.01.03.04.02, C0120}",
+            "Label" : "S.01.03.04.02 - Sub RFF/MAP",
+            "Values" : {
+              "s2c_PU:x96" : "Ring Fenced Funds",
+              "s2c_PU:x53" : "Matching Adjustment Portfolios"
+            }
+          }
+        }
+      }
+    }
+  }
+}

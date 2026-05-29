@@ -1,0 +1,106 @@
+{
+  "documentInfo" : {
+    "documentType" : "https://xbrl.org/2021/xbrl-csv",
+    "namespaces" : {
+      "s2md" : "http://eiopa.europa.eu/xbrl/s2md/",
+      "s2c_AM" : "http://eiopa.europa.eu/xbrl/s2c/dict/dom/AM",
+      "s2c_RT" : "http://eiopa.europa.eu/xbrl/s2c/dict/dom/RT",
+      "s2c_VM" : "http://eiopa.europa.eu/xbrl/s2c/dict/dom/VM",
+      "s2c_dim" : "http://eiopa.europa.eu/xbrl/s2c/dict/dim",
+      "s2md_met" : "http://eiopa.europa.eu/xbrl/s2md/dict/met"
+    }
+  },
+  "tableTemplates" : {
+    "SR.27.01.01.13" : {
+      "columns" : {
+        "C0850_R2600" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi149",
+            "s2c_dim:EA" : "s2c_VM:x20",
+            "s2c_dim:NF" : "$Z0020",
+            "s2c_dim:PO" : "$Z0030",
+            "s2c_dim:RT" : "s2c_RT:x35",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{SR.27.01.01.13, C0850, R2600}",
+            "Label" : "SR.27.01.01.13 - Catastrophe Risk Charge Fire before risk mitigation|Fire|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0860_R2600" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi689",
+            "s2c_dim:EA" : "s2c_VM:x20",
+            "s2c_dim:NF" : "$Z0020",
+            "s2c_dim:PO" : "$Z0030",
+            "s2c_dim:RT" : "s2c_RT:x35",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{SR.27.01.01.13, C0860, R2600}",
+            "Label" : "SR.27.01.01.13 - Estimated Risk Mitigation|Fire|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0870_R2600" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi688",
+            "s2c_dim:EA" : "s2c_VM:x20",
+            "s2c_dim:NF" : "$Z0020",
+            "s2c_dim:PO" : "$Z0030",
+            "s2c_dim:RT" : "s2c_RT:x35",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{SR.27.01.01.13, C0870, R2600}",
+            "Label" : "SR.27.01.01.13 - Estimated Reinstatement Premiums|Fire|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0880_R2600" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi685",
+            "s2c_dim:EA" : "s2c_VM:x20",
+            "s2c_dim:NF" : "$Z0020",
+            "s2c_dim:PO" : "$Z0030",
+            "s2c_dim:RT" : "s2c_RT:x35",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{SR.27.01.01.13, C0880, R2600}",
+            "Label" : "SR.27.01.01.13 - Catastrophe Risk Charge Fire after risk mitigation|Fire|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "Z0020" : {
+          "s2md:documentation" : {
+            "CellCode" : "{SR.27.01.01.13, Z0020}",
+            "Label" : "Fund Number",
+            "Key" : "s2c_dim:NF",
+            "Values" : "String"
+          }
+        },
+        "Z0030" : {
+          "s2md:documentation" : {
+            "CellCode" : "{SR.27.01.01.13, Z0030}",
+            "Label" : "Ring-fenced fund or remaining part",
+            "Key" : "s2c_dim:PO",
+            "Values" : {
+              "x40" : "Material Ring Fenced Funds",
+              "x54" : "Remaining part [other than MAPs and material RFFs]"
+            }
+          }
+        }
+      }
+    }
+  }
+}

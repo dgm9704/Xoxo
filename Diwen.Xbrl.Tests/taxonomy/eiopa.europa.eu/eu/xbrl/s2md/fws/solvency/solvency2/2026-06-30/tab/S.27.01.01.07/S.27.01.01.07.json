@@ -1,0 +1,95 @@
+{
+  "documentInfo" : {
+    "documentType" : "https://xbrl.org/2021/xbrl-csv",
+    "namespaces" : {
+      "s2md" : "http://eiopa.europa.eu/xbrl/s2md/",
+      "s2c_AM" : "http://eiopa.europa.eu/xbrl/s2c/dict/dom/AM",
+      "s2c_RT" : "http://eiopa.europa.eu/xbrl/s2c/dict/dom/RT",
+      "s2c_VM" : "http://eiopa.europa.eu/xbrl/s2c/dict/dom/VM",
+      "s2c_dim" : "http://eiopa.europa.eu/xbrl/s2c/dict/dim",
+      "s2md_met" : "http://eiopa.europa.eu/xbrl/s2md/dict/met"
+    }
+  },
+  "tableTemplates" : {
+    "S.27.01.01.07" : {
+      "columns" : {
+        "C0470_R2000" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi660",
+            "s2c_dim:IZ" : "s2c_RT:x15",
+            "s2c_dim:RT" : "s2c_RT:x12",
+            "s2c_dim:TA" : "s2c_AM:x29",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.27.01.01.07, C0470, R2000}",
+            "Label" : "S.27.01.01.07 - Estimation of the premiums to be earned|Non-proportional property reinsurance|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0480_R2000" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi149",
+            "s2c_dim:EA" : "s2c_VM:x20",
+            "s2c_dim:RT" : "s2c_RT:x12",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.27.01.01.07, C0480, R2000}",
+            "Label" : "S.27.01.01.07 - Catastrophe Risk Charge before risk mitigation|Non-proportional property reinsurance|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0490_R2000" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi689",
+            "s2c_dim:EA" : "s2c_VM:x20",
+            "s2c_dim:RT" : "s2c_RT:x12",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.27.01.01.07, C0490, R2000}",
+            "Label" : "S.27.01.01.07 - Estimated Risk Mitigation|Non-proportional property reinsurance|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0500_R2000" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi688",
+            "s2c_dim:EA" : "s2c_VM:x20",
+            "s2c_dim:RT" : "s2c_RT:x12",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.27.01.01.07, C0500, R2000}",
+            "Label" : "S.27.01.01.07 - Estimated Reinstatement Premiums|Non-proportional property reinsurance|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0510_R2000" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi685",
+            "s2c_dim:EA" : "s2c_VM:x20",
+            "s2c_dim:RT" : "s2c_RT:x12",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.27.01.01.07, C0510, R2000}",
+            "Label" : "S.27.01.01.07 - Catastrophe Risk Charge after risk mitigation|Non-proportional property reinsurance|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,127 @@
+{
+  "documentInfo" : {
+    "documentType" : "https://xbrl.org/2021/xbrl-csv",
+    "namespaces" : {
+      "s2md" : "http://eiopa.europa.eu/xbrl/s2md/",
+      "s2c_AP" : "http://eiopa.europa.eu/xbrl/s2c/dict/dom/AP",
+      "s2c_CS" : "http://eiopa.europa.eu/xbrl/s2c/dict/dom/CS",
+      "s2c_SE" : "http://eiopa.europa.eu/xbrl/s2c/dict/dom/SE",
+      "s2c_dim" : "http://eiopa.europa.eu/xbrl/s2c/dict/dim",
+      "s2md_met" : "http://eiopa.europa.eu/xbrl/s2md/dict/met"
+    }
+  },
+  "tableTemplates" : {
+    "S.26.05.04.05" : {
+      "columns" : {
+        "C0010_R0010" : {
+          "dimensions" : {
+            "concept" : "s2md_met:ei2407",
+            "s2c_dim:AO" : "$Z0010",
+            "s2c_dim:CM" : "s2c_CS:x1",
+            "s2c_dim:SO" : "s2c_SE:x44"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.05.04.05, C0010, R0010}",
+            "Label" : "S.26.05.04.05 - Simplifications used|Captives simplifications - premium and reserve risk|Z Axis:",
+            "Values" : {
+              "s2c_AP:x33" : "Simplifications used",
+              "s2c_AP:x34" : "Simplifications not used"
+            }
+          }
+        },
+        "C0010_R0011" : {
+          "dimensions" : {
+            "concept" : "s2md_met:ei2531",
+            "s2c_dim:AO" : "$Z0010",
+            "s2c_dim:CM" : "s2c_CS:x1",
+            "s2c_dim:SO" : "s2c_SE:x44"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.05.04.05, C0010, R0011}",
+            "Label" : "S.26.05.04.05 - Simplifications used|Simplifications used - non-life lapse risk|Z Axis:",
+            "Values" : {
+              "s2c_AP:x59" : "Simplifications based on article 90a",
+              "s2c_AP:x34" : "Simplifications not used"
+            }
+          }
+        },
+        "C0010_R0020" : {
+          "dimensions" : {
+            "concept" : "s2md_met:ei3044",
+            "s2c_dim:AO" : "$Z0010",
+            "s2c_dim:CM" : "s2c_CS:x1",
+            "s2c_dim:SO" : "s2c_SE:x44"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.05.04.05, C0010, R0020}",
+            "Label" : "S.26.05.04.05 - Simplifications used|Volume based simplification - non-life underwriting risk|Z Axis:",
+            "Values" : {
+              "s2c_AP:x33" : "Simplifications used",
+              "s2c_AP:x34" : "Simplifications not used"
+            }
+          }
+        },
+        "C0010_R0021" : {
+          "dimensions" : {
+            "concept" : "s2md_met:ei3043",
+            "s2c_dim:AO" : "$Z0010",
+            "s2c_dim:CM" : "s2c_CS:x1",
+            "s2c_dim:SO" : "s2c_SE:x44"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.05.04.05, C0010, R0021}",
+            "Label" : "S.26.05.04.05 - Simplifications used|Volume based simplification - non-life premium and reserve risk|Z Axis:",
+            "Values" : {
+              "s2c_AP:x33" : "Simplifications used",
+              "s2c_AP:x34" : "Simplifications not used"
+            }
+          }
+        },
+        "C0010_R0022" : {
+          "dimensions" : {
+            "concept" : "s2md_met:ei3042",
+            "s2c_dim:AO" : "$Z0010",
+            "s2c_dim:CM" : "s2c_CS:x1",
+            "s2c_dim:SO" : "s2c_SE:x44"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.05.04.05, C0010, R0022}",
+            "Label" : "S.26.05.04.05 - Simplifications used|Volume based simplification - non-life catastrophe risk|Z Axis:",
+            "Values" : {
+              "s2c_AP:x33" : "Simplifications used",
+              "s2c_AP:x34" : "Simplifications not used"
+            }
+          }
+        },
+        "C0010_R0023" : {
+          "dimensions" : {
+            "concept" : "s2md_met:ei3100",
+            "s2c_dim:AO" : "$Z0010",
+            "s2c_dim:CM" : "s2c_CS:x1",
+            "s2c_dim:SO" : "s2c_SE:x44"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.05.04.05, C0010, R0023}",
+            "Label" : "S.26.05.04.05 - Simplifications used|Volume based simplification - non-life lapse risk|Z Axis:",
+            "Values" : {
+              "s2c_AP:x33" : "Simplifications used",
+              "s2c_AP:x34" : "Simplifications not used"
+            }
+          }
+        },
+        "Z0010" : {
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.05.04.05, Z0010}",
+            "Label" : "Article 112",
+            "Key" : "s2c_dim:AO",
+            "Values" : {
+              "x0" : "No",
+              "x1" : "Yes",
+              "x2" : "Yes - biennial reporting"
+            }
+          }
+        }
+      }
+    }
+  }
+}

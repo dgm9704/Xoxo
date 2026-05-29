@@ -1,0 +1,369 @@
+{
+  "documentInfo" : {
+    "documentType" : "https://xbrl.org/2021/xbrl-csv",
+    "namespaces" : {
+      "s2md" : "http://eiopa.europa.eu/xbrl/s2md/",
+      "s2c_AP" : "http://eiopa.europa.eu/xbrl/s2c/dict/dom/AP",
+      "s2c_RT" : "http://eiopa.europa.eu/xbrl/s2c/dict/dom/RT",
+      "s2c_dim" : "http://eiopa.europa.eu/xbrl/s2c/dict/dim",
+      "s2md_met" : "http://eiopa.europa.eu/xbrl/s2md/dict/met"
+    }
+  },
+  "tableTemplates" : {
+    "S.26.16.01.02" : {
+      "columns" : {
+        "C0010" : {
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.16.01.02, C0010}",
+            "Label" : "Type of change",
+            "Key" : "s2c_dim:EV",
+            "Values" : "String"
+          }
+        },
+        "C0020" : {
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.16.01.02, C0020}",
+            "Label" : "Change ID",
+            "Key" : "s2c_dim:ED",
+            "Values" : "String"
+          }
+        },
+        "C0030" : {
+          "dimensions" : {
+            "concept" : "s2md_met:di2599",
+            "s2c_dim:ED" : "$C0020",
+            "s2c_dim:EV" : "$C0010"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.16.01.02, C0030}",
+            "Label" : "S.26.16.01.02 - Date of approval",
+            "Values" : "Date"
+          }
+        },
+        "C0040" : {
+          "dimensions" : {
+            "concept" : "s2md_met:di2904",
+            "s2c_dim:ED" : "$C0020",
+            "s2c_dim:EV" : "$C0010"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.16.01.02, C0040}",
+            "Label" : "S.26.16.01.02 - Date of submission",
+            "Values" : "Date"
+          }
+        },
+        "C0050" : {
+          "dimensions" : {
+            "concept" : "s2md_met:si2817",
+            "s2c_dim:ED" : "$C0020",
+            "s2c_dim:EV" : "$C0010"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.16.01.02, C0050}",
+            "Label" : "S.26.16.01.02 - Description of change to the policy",
+            "Values" : "String"
+          }
+        },
+        "C0060" : {
+          "dimensions" : {
+            "concept" : "s2md_met:ei2594",
+            "s2c_dim:ED" : "$C0020",
+            "s2c_dim:EV" : "$C0010"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.16.01.02, C0060}",
+            "Label" : "S.26.16.01.02 - Change resulting from",
+            "Values" : {
+              "s2c_AP:x91" : "Change in Internal model due to risk profile",
+              "s2c_AP:x92" : "Change in Internal model due to input data and assumptions",
+              "s2c_AP:x93" : "Change in Internal model due to methodology",
+              "s2c_AP:x94" : "Change in Internal model due to other purpose than risk profile, input data and assumptions or methodology"
+            }
+          }
+        },
+        "C0070" : {
+          "dimensions" : {
+            "concept" : "s2md_met:si2603",
+            "s2c_dim:ED" : "$C0020",
+            "s2c_dim:EV" : "$C0010"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.16.01.02, C0070}",
+            "Label" : "S.26.16.01.02 - Other categorization and explanation",
+            "Values" : "String"
+          }
+        },
+        "C0080" : {
+          "dimensions" : {
+            "concept" : "s2md_met:ei2584",
+            "s2c_dim:ED" : "$C0020",
+            "s2c_dim:EV" : "$C0010"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.16.01.02, C0080}",
+            "Label" : "S.26.16.01.02 - Market risk impact",
+            "Values" : {
+              "s2c_RT:x299" : "Model change impacted on risk charge or diversification benefit",
+              "s2c_RT:x300" : "Model change did not impact on risk charge or diversification benefit"
+            }
+          }
+        },
+        "C0090" : {
+          "dimensions" : {
+            "concept" : "s2md_met:ei2585",
+            "s2c_dim:ED" : "$C0020",
+            "s2c_dim:EV" : "$C0010"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.16.01.02, C0090}",
+            "Label" : "S.26.16.01.02 - CREDIT FinInstr risk impact",
+            "Values" : {
+              "s2c_RT:x299" : "Model change impacted on risk charge or diversification benefit",
+              "s2c_RT:x300" : "Model change did not impact on risk charge or diversification benefit"
+            }
+          }
+        },
+        "C0100" : {
+          "dimensions" : {
+            "concept" : "s2md_met:ei2586",
+            "s2c_dim:ED" : "$C0020",
+            "s2c_dim:EV" : "$C0010"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.16.01.02, C0100}",
+            "Label" : "S.26.16.01.02 - CREDIT NonFinInstr impact",
+            "Values" : {
+              "s2c_RT:x299" : "Model change impacted on risk charge or diversification benefit",
+              "s2c_RT:x300" : "Model change did not impact on risk charge or diversification benefit"
+            }
+          }
+        },
+        "C0110" : {
+          "dimensions" : {
+            "concept" : "s2md_met:ei2587",
+            "s2c_dim:ED" : "$C0020",
+            "s2c_dim:EV" : "$C0010"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.16.01.02, C0110}",
+            "Label" : "S.26.16.01.02 - Non-Life & Health NSLT risk impact",
+            "Values" : {
+              "s2c_RT:x299" : "Model change impacted on risk charge or diversification benefit",
+              "s2c_RT:x300" : "Model change did not impact on risk charge or diversification benefit"
+            }
+          }
+        },
+        "C0120" : {
+          "dimensions" : {
+            "concept" : "s2md_met:ei2588",
+            "s2c_dim:ED" : "$C0020",
+            "s2c_dim:EV" : "$C0010"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.16.01.02, C0120}",
+            "Label" : "S.26.16.01.02 - Life & Health risk impact",
+            "Values" : {
+              "s2c_RT:x299" : "Model change impacted on risk charge or diversification benefit",
+              "s2c_RT:x300" : "Model change did not impact on risk charge or diversification benefit"
+            }
+          }
+        },
+        "C0130" : {
+          "dimensions" : {
+            "concept" : "s2md_met:ei2589",
+            "s2c_dim:ED" : "$C0020",
+            "s2c_dim:EV" : "$C0010"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.16.01.02, C0130}",
+            "Label" : "S.26.16.01.02 - Operational risk impact",
+            "Values" : {
+              "s2c_RT:x299" : "Model change impacted on risk charge or diversification benefit",
+              "s2c_RT:x300" : "Model change did not impact on risk charge or diversification benefit"
+            }
+          }
+        },
+        "C0140" : {
+          "dimensions" : {
+            "concept" : "s2md_met:ei2590",
+            "s2c_dim:ED" : "$C0020",
+            "s2c_dim:EV" : "$C0010"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.16.01.02, C0140}",
+            "Label" : "S.26.16.01.02 - Pension risk impact",
+            "Values" : {
+              "s2c_RT:x299" : "Model change impacted on risk charge or diversification benefit",
+              "s2c_RT:x300" : "Model change did not impact on risk charge or diversification benefit"
+            }
+          }
+        },
+        "C0150" : {
+          "dimensions" : {
+            "concept" : "s2md_met:ei2592",
+            "s2c_dim:ED" : "$C0020",
+            "s2c_dim:EV" : "$C0010"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.16.01.02, C0150}",
+            "Label" : "S.26.16.01.02 - Dependency structure and correlation impact",
+            "Values" : {
+              "s2c_RT:x299" : "Model change impacted on risk charge or diversification benefit",
+              "s2c_RT:x300" : "Model change did not impact on risk charge or diversification benefit"
+            }
+          }
+        },
+        "C0160" : {
+          "dimensions" : {
+            "concept" : "s2md_met:si2602",
+            "s2c_dim:ED" : "$C0020",
+            "s2c_dim:EV" : "$C0010"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.16.01.02, C0160}",
+            "Label" : "S.26.16.01.02 - Other (free text)",
+            "Values" : "String"
+          }
+        },
+        "C0170" : {
+          "dimensions" : {
+            "concept" : "s2md_met:ei2596",
+            "s2c_dim:ED" : "$C0020",
+            "s2c_dim:EV" : "$C0010"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.16.01.02, C0170}",
+            "Label" : "S.26.16.01.02 - Change qualification",
+            "Values" : {
+              "s2c_AP:x95" : "Internal model qualitative change classification",
+              "s2c_AP:x96" : "Internal model quantitative change classification",
+              "s2c_AP:x97" : "Internal model change due to combination of quantitative and qualitative classification"
+            }
+          }
+        },
+        "C0180" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi2678",
+            "s2c_dim:ED" : "$C0020",
+            "s2c_dim:EV" : "$C0010"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.16.01.02, C0180}",
+            "Label" : "S.26.16.01.02 - Total SCR value before change (amount)",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetaryOpenTable"
+        },
+        "C0190" : {
+          "dimensions" : {
+            "concept" : "s2md_met:di2604",
+            "s2c_dim:ED" : "$C0020",
+            "s2c_dim:EV" : "$C0010"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.16.01.02, C0190}",
+            "Label" : "S.26.16.01.02 - Reference date of SCR impact",
+            "Values" : "Date"
+          }
+        },
+        "C0200" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi2679",
+            "s2c_dim:ED" : "$C0020",
+            "s2c_dim:EV" : "$C0010"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.16.01.02, C0200}",
+            "Label" : "S.26.16.01.02 - Total SCR value after change (amount)",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetaryOpenTable"
+        },
+        "C0210" : {
+          "dimensions" : {
+            "concept" : "s2md_met:pi2680",
+            "s2c_dim:ED" : "$C0020",
+            "s2c_dim:EV" : "$C0010"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.16.01.02, C0210}",
+            "Label" : "S.26.16.01.02 - Total SCR change %",
+            "Values" : "Percent"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "decimalsPercentage"
+        },
+        "C0220" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi2905",
+            "s2c_dim:ED" : "$C0020",
+            "s2c_dim:EV" : "$C0010"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.16.01.02, C0220}",
+            "Label" : "S.26.16.01.02 - Own Funds w/o change (amount)",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetaryOpenTable"
+        },
+        "C0230" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi2906",
+            "s2c_dim:ED" : "$C0020",
+            "s2c_dim:EV" : "$C0010"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.16.01.02, C0230}",
+            "Label" : "S.26.16.01.02 - Own Funds with change (amount)",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetaryOpenTable"
+        },
+        "C0260" : {
+          "dimensions" : {
+            "concept" : "s2md_met:si2605",
+            "s2c_dim:ED" : "$C0020",
+            "s2c_dim:EV" : "$C0010"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.16.01.02, C0260}",
+            "Label" : "S.26.16.01.02 - Other trigger",
+            "Values" : "String"
+          }
+        },
+        "C0270" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi2681",
+            "s2c_dim:ED" : "$C0020",
+            "s2c_dim:EV" : "$C0010"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.16.01.02, C0270}",
+            "Label" : "S.26.16.01.02 - Other trigger impact (amount)",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetaryOpenTable"
+        },
+        "C0280" : {
+          "dimensions" : {
+            "concept" : "s2md_met:pi2606",
+            "s2c_dim:ED" : "$C0020",
+            "s2c_dim:EV" : "$C0010"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.16.01.02, C0280}",
+            "Label" : "S.26.16.01.02 - Other trigger impact %",
+            "Values" : "Percent"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "decimalsPercentage"
+        }
+      }
+    }
+  }
+}

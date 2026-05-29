@@ -1,0 +1,112 @@
+{
+  "documentInfo" : {
+    "documentType" : "https://xbrl.org/2021/xbrl-csv",
+    "namespaces" : {
+      "s2md" : "http://eiopa.europa.eu/xbrl/s2md/",
+      "s2c_AM" : "http://eiopa.europa.eu/xbrl/s2c/dict/dom/AM",
+      "s2c_LB" : "http://eiopa.europa.eu/xbrl/s2c/dict/dom/LB",
+      "s2c_TI" : "http://eiopa.europa.eu/xbrl/s2c/dict/dom/TI",
+      "s2c_dim" : "http://eiopa.europa.eu/xbrl/s2c/dict/dim",
+      "s2md_met" : "http://eiopa.europa.eu/xbrl/s2md/dict/met"
+    }
+  },
+  "tableTemplates" : {
+    "S.16.01.01.01" : {
+      "columns" : {
+        "C0010_R0010" : {
+          "dimensions" : {
+            "concept" : "s2md_met:pi544",
+            "s2c_dim:AX" : "$Z0020",
+            "s2c_dim:BL" : "s2c_LB:x9",
+            "s2c_dim:RB" : "$Z0010",
+            "s2c_dim:RM" : "s2c_TI:x41",
+            "s2c_dim:TA" : "s2c_AM:x12",
+            "s2c_dim:TB" : "s2c_LB:x28",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.16.01.01.01, C0010, R0010}",
+            "Label" : "S.16.01.01.01 - Information on year N|The average interest rate|Z Axis:",
+            "Values" : "Percent"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "decimalsPercentage"
+        },
+        "C0010_R0020" : {
+          "dimensions" : {
+            "concept" : "s2md_met:ri1910",
+            "s2c_dim:AX" : "$Z0020",
+            "s2c_dim:BL" : "s2c_LB:x9",
+            "s2c_dim:RB" : "$Z0010",
+            "s2c_dim:RM" : "s2c_TI:x41",
+            "s2c_dim:TA" : "s2c_AM:x12",
+            "s2c_dim:TB" : "s2c_LB:x28",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.16.01.01.01, C0010, R0020}",
+            "Label" : "S.16.01.01.01 - Information on year N|The average duration of the obligations|Z Axis:",
+            "Values" : "Decimal"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "decimalsDecimal"
+        },
+        "C0010_R0030" : {
+          "dimensions" : {
+            "concept" : "s2md_met:ri2269",
+            "s2c_dim:AX" : "$Z0020",
+            "s2c_dim:BL" : "s2c_LB:x9",
+            "s2c_dim:RB" : "$Z0010",
+            "s2c_dim:RM" : "s2c_TI:x41",
+            "s2c_dim:TA" : "s2c_AM:x12",
+            "s2c_dim:TB" : "s2c_LB:x28",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.16.01.01.01, C0010, R0030}",
+            "Label" : "S.16.01.01.01 - Information on year N|The weighted average age of the beneficiaries|Z Axis:",
+            "Values" : "Decimal"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "decimalsDecimal"
+        },
+        "Z0010" : {
+          "s2md:documentation" : {
+            "CellCode" : "{S.16.01.01.01, Z0010}",
+            "Label" : "The related non-life line of business",
+            "Key" : "s2c_dim:RB",
+            "Values" : {
+              "s2c_LB:x69" : "Medical expense insurance [direct business and accepted proportional reinsurance]",
+              "s2c_LB:x52" : "Income protection insurance [direct business and accepted proportional reinsurance]",
+              "s2c_LB:x132" : "Workers' compensation insurance [direct business and accepted proportional reinsurance]",
+              "s2c_LB:x73" : "Motor vehicle liability insurance [direct business and accepted proportional reinsurance]",
+              "s2c_LB:x101" : "Other motor insurance [direct business and accepted proportional reinsurance]",
+              "s2c_LB:x66" : "Marine, aviation and transport insurance [direct business and accepted proportional reinsurance]",
+              "s2c_LB:x31" : "Fire and other damage to property insurance [direct business and accepted proportional reinsurance]",
+              "s2c_LB:x34" : "General liability insurance [direct business and accepted proportional reinsurance]",
+              "s2c_LB:x27" : "Credit and suretyship insurance [direct business and accepted proportional reinsurance]",
+              "s2c_LB:x59" : "Legal expenses insurance [direct business and accepted proportional reinsurance]",
+              "s2c_LB:x12" : "Assistance [direct business and accepted proportional reinsurance]",
+              "s2c_LB:x70" : "Miscellaneous financial loss [direct business and accepted proportional reinsurance]",
+              "s2c_LB:x42" : "Health [accepted non-proportional reinsurance]",
+              "s2c_LB:x14" : "Casualty [accepted non-proportional reinsurance]",
+              "s2c_LB:x106" : "Property [accepted non-proportional reinsurance]",
+              "s2c_LB:x67" : "Marine, aviation, transport [accepted non-proportional reinsurance]"
+            }
+          }
+        },
+        "Z0020" : {
+          "s2md:documentation" : {
+            "CellCode" : "{S.16.01.01.01, Z0020}",
+            "Label" : "Accident year / Underwriting year",
+            "Key" : "s2c_dim:AX",
+            "Values" : {
+              "s2c_AM:x4" : "Accident year [AY]",
+              "s2c_AM:x88" : "Underwriting year [UWY]"
+            }
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,814 @@
+{
+  "documentInfo" : {
+    "documentType" : "https://xbrl.org/2021/xbrl-csv",
+    "namespaces" : {
+      "s2md" : "http://eiopa.europa.eu/xbrl/s2md/",
+      "s2c_AM" : "http://eiopa.europa.eu/xbrl/s2c/dict/dom/AM",
+      "s2c_CS" : "http://eiopa.europa.eu/xbrl/s2c/dict/dom/CS",
+      "s2c_RT" : "http://eiopa.europa.eu/xbrl/s2c/dict/dom/RT",
+      "s2c_TF" : "http://eiopa.europa.eu/xbrl/s2c/dict/dom/TF",
+      "s2c_VM" : "http://eiopa.europa.eu/xbrl/s2c/dict/dom/VM",
+      "s2c_dim" : "http://eiopa.europa.eu/xbrl/s2c/dict/dim",
+      "s2md_met" : "http://eiopa.europa.eu/xbrl/s2md/dict/met"
+    }
+  },
+  "tableTemplates" : {
+    "S.26.07.04.04" : {
+      "columns" : {
+        "C0120_R0100" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi1922",
+            "s2c_dim:AO" : "$Z0010",
+            "s2c_dim:CM" : "s2c_CS:x1",
+            "s2c_dim:RT" : "s2c_RT:x80",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.07.04.04, C0120, R0100}",
+            "Label" : "S.26.07.04.04 - Capital at risk|Mortality risk|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0120_R0120" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi1922",
+            "s2c_dim:AO" : "$Z0010",
+            "s2c_dim:CM" : "s2c_CS:x1",
+            "s2c_dim:RT" : "s2c_RT:x75",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.07.04.04, C0120, R0120}",
+            "Label" : "S.26.07.04.04 - Capital at risk|Disability-morbidity risk|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0120_R0160" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi1922",
+            "s2c_dim:AO" : "$Z0010",
+            "s2c_dim:CM" : "s2c_CS:x1",
+            "s2c_dim:RT" : "s2c_RT:x74",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.07.04.04, C0120, R0160}",
+            "Label" : "S.26.07.04.04 - Capital at risk|Life catastrophe risk|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0120_R0200" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi1922",
+            "s2c_dim:AO" : "$Z0010",
+            "s2c_dim:CM" : "s2c_CS:x1",
+            "s2c_dim:RT" : "s2c_RT:x57",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.07.04.04, C0120, R0200}",
+            "Label" : "S.26.07.04.04 - Capital at risk|Health mortality risk|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0120_R0230" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi1922",
+            "s2c_dim:AO" : "$Z0010",
+            "s2c_dim:CM" : "s2c_CS:x1",
+            "s2c_dim:RT" : "s2c_RT:x155",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.07.04.04, C0120, R0230}",
+            "Label" : "S.26.07.04.04 - Capital at risk|Health disability-morbidity risk (income protection)|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0130_R0120" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi1922",
+            "s2c_dim:AO" : "$Z0010",
+            "s2c_dim:CM" : "s2c_CS:x1",
+            "s2c_dim:RT" : "s2c_RT:x75",
+            "s2c_dim:TK" : "s2c_TF:x2",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.07.04.04, C0130, R0120}",
+            "Label" : "S.26.07.04.04 - Capital at risk t+1|Disability-morbidity risk|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0130_R0230" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi1922",
+            "s2c_dim:AO" : "$Z0010",
+            "s2c_dim:CM" : "s2c_CS:x1",
+            "s2c_dim:RT" : "s2c_RT:x155",
+            "s2c_dim:TK" : "s2c_TF:x2",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.07.04.04, C0130, R0230}",
+            "Label" : "S.26.07.04.04 - Capital at risk t+1|Health disability-morbidity risk (income protection)|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0140_R0130" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi2423",
+            "s2c_dim:AO" : "$Z0010",
+            "s2c_dim:CM" : "s2c_CS:x1",
+            "s2c_dim:RT" : "s2c_RT:x83",
+            "s2c_dim:TA" : "s2c_AM:x86",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.07.04.04, C0140, R0130}",
+            "Label" : "S.26.07.04.04 - Surrender strain|Lapse risk (up)|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0140_R0140" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi2423",
+            "s2c_dim:AO" : "$Z0010",
+            "s2c_dim:CM" : "s2c_CS:x1",
+            "s2c_dim:RT" : "s2c_RT:x82",
+            "s2c_dim:TA" : "s2c_AM:x86",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.07.04.04, C0140, R0140}",
+            "Label" : "S.26.07.04.04 - Surrender strain|Lapse risk (down)|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0140_R0240" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi2423",
+            "s2c_dim:AO" : "$Z0010",
+            "s2c_dim:CM" : "s2c_CS:x1",
+            "s2c_dim:RT" : "s2c_RT:x138",
+            "s2c_dim:TA" : "s2c_AM:x86",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.07.04.04, C0140, R0240}",
+            "Label" : "S.26.07.04.04 - Surrender strain|Lapse risk (up)|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0140_R0250" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi2423",
+            "s2c_dim:AO" : "$Z0010",
+            "s2c_dim:CM" : "s2c_CS:x1",
+            "s2c_dim:RT" : "s2c_RT:x137",
+            "s2c_dim:TA" : "s2c_AM:x86",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.07.04.04, C0140, R0250}",
+            "Label" : "S.26.07.04.04 - Surrender strain|Lapse risk (down)|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0150_R0110" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi658",
+            "s2c_dim:AO" : "$Z0010",
+            "s2c_dim:CM" : "s2c_CS:x1",
+            "s2c_dim:RT" : "s2c_RT:x78",
+            "s2c_dim:VG" : "s2c_AM:x80",
+            "s2c_dim:VL" : "s2c_VM:x5"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.07.04.04, C0150, R0110}",
+            "Label" : "S.26.07.04.04 - Best Estimate|Longevity risk|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0150_R0120" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi658",
+            "s2c_dim:AO" : "$Z0010",
+            "s2c_dim:CM" : "s2c_CS:x1",
+            "s2c_dim:RT" : "s2c_RT:x75",
+            "s2c_dim:VG" : "s2c_AM:x80",
+            "s2c_dim:VL" : "s2c_VM:x5"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.07.04.04, C0150, R0120}",
+            "Label" : "S.26.07.04.04 - Best Estimate|Disability-morbidity risk|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0150_R0210" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi658",
+            "s2c_dim:AO" : "$Z0010",
+            "s2c_dim:CM" : "s2c_CS:x1",
+            "s2c_dim:RT" : "s2c_RT:x50",
+            "s2c_dim:VG" : "s2c_AM:x80",
+            "s2c_dim:VL" : "s2c_VM:x5"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.07.04.04, C0150, R0210}",
+            "Label" : "S.26.07.04.04 - Best Estimate|Health longevity risk|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0150_R0230" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi658",
+            "s2c_dim:AO" : "$Z0010",
+            "s2c_dim:CM" : "s2c_CS:x1",
+            "s2c_dim:RT" : "s2c_RT:x155",
+            "s2c_dim:VG" : "s2c_AM:x80",
+            "s2c_dim:VL" : "s2c_VM:x5"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.07.04.04, C0150, R0230}",
+            "Label" : "S.26.07.04.04 - Best Estimate|Health disability-morbidity risk (income protection)|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0160_R0100" : {
+          "dimensions" : {
+            "concept" : "s2md_met:pi1897",
+            "s2c_dim:AO" : "$Z0010",
+            "s2c_dim:CM" : "s2c_CS:x1",
+            "s2c_dim:RT" : "s2c_RT:x80",
+            "s2c_dim:TA" : "s2c_AM:x12",
+            "s2c_dim:TK" : "s2c_TF:x2"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.07.04.04, C0160, R0100}",
+            "Label" : "S.26.07.04.04 - Average rate t+1|Mortality risk|Z Axis:",
+            "Values" : "Percent"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "decimalsPercentage"
+        },
+        "C0160_R0110" : {
+          "dimensions" : {
+            "concept" : "s2md_met:pi1897",
+            "s2c_dim:AO" : "$Z0010",
+            "s2c_dim:CM" : "s2c_CS:x1",
+            "s2c_dim:RT" : "s2c_RT:x78",
+            "s2c_dim:TA" : "s2c_AM:x12",
+            "s2c_dim:TK" : "s2c_TF:x2"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.07.04.04, C0160, R0110}",
+            "Label" : "S.26.07.04.04 - Average rate t+1|Longevity risk|Z Axis:",
+            "Values" : "Percent"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "decimalsPercentage"
+        },
+        "C0160_R0120" : {
+          "dimensions" : {
+            "concept" : "s2md_met:pi1897",
+            "s2c_dim:AO" : "$Z0010",
+            "s2c_dim:CM" : "s2c_CS:x1",
+            "s2c_dim:RT" : "s2c_RT:x75",
+            "s2c_dim:TA" : "s2c_AM:x12",
+            "s2c_dim:TK" : "s2c_TF:x2"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.07.04.04, C0160, R0120}",
+            "Label" : "S.26.07.04.04 - Average rate t+1|Disability-morbidity risk|Z Axis:",
+            "Values" : "Percent"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "decimalsPercentage"
+        },
+        "C0160_R0130" : {
+          "dimensions" : {
+            "concept" : "s2md_met:pi1897",
+            "s2c_dim:AO" : "$Z0010",
+            "s2c_dim:CM" : "s2c_CS:x1",
+            "s2c_dim:RT" : "s2c_RT:x83",
+            "s2c_dim:TA" : "s2c_AM:x12",
+            "s2c_dim:TK" : "s2c_TF:x2"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.07.04.04, C0160, R0130}",
+            "Label" : "S.26.07.04.04 - Average rate t+1|Lapse risk (up)|Z Axis:",
+            "Values" : "Percent"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "decimalsPercentage"
+        },
+        "C0160_R0140" : {
+          "dimensions" : {
+            "concept" : "s2md_met:pi1897",
+            "s2c_dim:AO" : "$Z0010",
+            "s2c_dim:CM" : "s2c_CS:x1",
+            "s2c_dim:RT" : "s2c_RT:x82",
+            "s2c_dim:TA" : "s2c_AM:x12",
+            "s2c_dim:TK" : "s2c_TF:x2"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.07.04.04, C0160, R0140}",
+            "Label" : "S.26.07.04.04 - Average rate t+1|Lapse risk (down)|Z Axis:",
+            "Values" : "Percent"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "decimalsPercentage"
+        },
+        "C0160_R0200" : {
+          "dimensions" : {
+            "concept" : "s2md_met:pi1897",
+            "s2c_dim:AO" : "$Z0010",
+            "s2c_dim:CM" : "s2c_CS:x1",
+            "s2c_dim:RT" : "s2c_RT:x57",
+            "s2c_dim:TA" : "s2c_AM:x12",
+            "s2c_dim:TK" : "s2c_TF:x2"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.07.04.04, C0160, R0200}",
+            "Label" : "S.26.07.04.04 - Average rate t+1|Health mortality risk|Z Axis:",
+            "Values" : "Percent"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "decimalsPercentage"
+        },
+        "C0160_R0210" : {
+          "dimensions" : {
+            "concept" : "s2md_met:pi1897",
+            "s2c_dim:AO" : "$Z0010",
+            "s2c_dim:CM" : "s2c_CS:x1",
+            "s2c_dim:RT" : "s2c_RT:x50",
+            "s2c_dim:TA" : "s2c_AM:x12",
+            "s2c_dim:TK" : "s2c_TF:x2"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.07.04.04, C0160, R0210}",
+            "Label" : "S.26.07.04.04 - Average rate t+1|Health longevity risk|Z Axis:",
+            "Values" : "Percent"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "decimalsPercentage"
+        },
+        "C0160_R0230" : {
+          "dimensions" : {
+            "concept" : "s2md_met:pi1897",
+            "s2c_dim:AO" : "$Z0010",
+            "s2c_dim:CM" : "s2c_CS:x1",
+            "s2c_dim:RT" : "s2c_RT:x155",
+            "s2c_dim:TA" : "s2c_AM:x12",
+            "s2c_dim:TK" : "s2c_TF:x2"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.07.04.04, C0160, R0230}",
+            "Label" : "S.26.07.04.04 - Average rate t+1|Health disability-morbidity risk (income protection)|Z Axis:",
+            "Values" : "Percent"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "decimalsPercentage"
+        },
+        "C0160_R0240" : {
+          "dimensions" : {
+            "concept" : "s2md_met:pi1897",
+            "s2c_dim:AO" : "$Z0010",
+            "s2c_dim:CM" : "s2c_CS:x1",
+            "s2c_dim:RT" : "s2c_RT:x138",
+            "s2c_dim:TA" : "s2c_AM:x12",
+            "s2c_dim:TK" : "s2c_TF:x2"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.07.04.04, C0160, R0240}",
+            "Label" : "S.26.07.04.04 - Average rate t+1|Lapse risk (up)|Z Axis:",
+            "Values" : "Percent"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "decimalsPercentage"
+        },
+        "C0160_R0250" : {
+          "dimensions" : {
+            "concept" : "s2md_met:pi1897",
+            "s2c_dim:AO" : "$Z0010",
+            "s2c_dim:CM" : "s2c_CS:x1",
+            "s2c_dim:RT" : "s2c_RT:x137",
+            "s2c_dim:TA" : "s2c_AM:x12",
+            "s2c_dim:TK" : "s2c_TF:x2"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.07.04.04, C0160, R0250}",
+            "Label" : "S.26.07.04.04 - Average rate t+1|Lapse risk (down)|Z Axis:",
+            "Values" : "Percent"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "decimalsPercentage"
+        },
+        "C0170_R0120" : {
+          "dimensions" : {
+            "concept" : "s2md_met:pi1897",
+            "s2c_dim:AO" : "$Z0010",
+            "s2c_dim:CM" : "s2c_CS:x1",
+            "s2c_dim:RT" : "s2c_RT:x75",
+            "s2c_dim:TA" : "s2c_AM:x12",
+            "s2c_dim:TK" : "s2c_TF:x3"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.07.04.04, C0170, R0120}",
+            "Label" : "S.26.07.04.04 - Average rate t+2|Disability-morbidity risk|Z Axis:",
+            "Values" : "Percent"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "decimalsPercentage"
+        },
+        "C0170_R0230" : {
+          "dimensions" : {
+            "concept" : "s2md_met:pi1897",
+            "s2c_dim:AO" : "$Z0010",
+            "s2c_dim:CM" : "s2c_CS:x1",
+            "s2c_dim:RT" : "s2c_RT:x155",
+            "s2c_dim:TA" : "s2c_AM:x12",
+            "s2c_dim:TK" : "s2c_TF:x3"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.07.04.04, C0170, R0230}",
+            "Label" : "S.26.07.04.04 - Average rate t+2|Health disability-morbidity risk (income protection)|Z Axis:",
+            "Values" : "Percent"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "decimalsPercentage"
+        },
+        "C0180_R0100" : {
+          "dimensions" : {
+            "concept" : "s2md_met:ri2074",
+            "s2c_dim:AO" : "$Z0010",
+            "s2c_dim:CM" : "s2c_CS:x1",
+            "s2c_dim:RT" : "s2c_RT:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.07.04.04, C0180, R0100}",
+            "Label" : "S.26.07.04.04 - Modified duration|Mortality risk|Z Axis:",
+            "Values" : "Decimal"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "decimalsDecimal"
+        },
+        "C0180_R0110" : {
+          "dimensions" : {
+            "concept" : "s2md_met:ri2074",
+            "s2c_dim:AO" : "$Z0010",
+            "s2c_dim:CM" : "s2c_CS:x1",
+            "s2c_dim:RT" : "s2c_RT:x78"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.07.04.04, C0180, R0110}",
+            "Label" : "S.26.07.04.04 - Modified duration|Longevity risk|Z Axis:",
+            "Values" : "Decimal"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "decimalsDecimal"
+        },
+        "C0180_R0120" : {
+          "dimensions" : {
+            "concept" : "s2md_met:ri2074",
+            "s2c_dim:AO" : "$Z0010",
+            "s2c_dim:CM" : "s2c_CS:x1",
+            "s2c_dim:RT" : "s2c_RT:x75"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.07.04.04, C0180, R0120}",
+            "Label" : "S.26.07.04.04 - Modified duration|Disability-morbidity risk|Z Axis:",
+            "Values" : "Decimal"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "decimalsDecimal"
+        },
+        "C0180_R0150" : {
+          "dimensions" : {
+            "concept" : "s2md_met:ri2074",
+            "s2c_dim:AO" : "$Z0010",
+            "s2c_dim:CM" : "s2c_CS:x1",
+            "s2c_dim:RT" : "s2c_RT:x76"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.07.04.04, C0180, R0150}",
+            "Label" : "S.26.07.04.04 - Modified duration|Life expense risk|Z Axis:",
+            "Values" : "Decimal"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "decimalsDecimal"
+        },
+        "C0180_R0200" : {
+          "dimensions" : {
+            "concept" : "s2md_met:ri2074",
+            "s2c_dim:AO" : "$Z0010",
+            "s2c_dim:CM" : "s2c_CS:x1",
+            "s2c_dim:RT" : "s2c_RT:x57"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.07.04.04, C0180, R0200}",
+            "Label" : "S.26.07.04.04 - Modified duration|Health mortality risk|Z Axis:",
+            "Values" : "Decimal"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "decimalsDecimal"
+        },
+        "C0180_R0210" : {
+          "dimensions" : {
+            "concept" : "s2md_met:ri2074",
+            "s2c_dim:AO" : "$Z0010",
+            "s2c_dim:CM" : "s2c_CS:x1",
+            "s2c_dim:RT" : "s2c_RT:x50"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.07.04.04, C0180, R0210}",
+            "Label" : "S.26.07.04.04 - Modified duration|Health longevity risk|Z Axis:",
+            "Values" : "Decimal"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "decimalsDecimal"
+        },
+        "C0180_R0220" : {
+          "dimensions" : {
+            "concept" : "s2md_met:ri2074",
+            "s2c_dim:AO" : "$Z0010",
+            "s2c_dim:CM" : "s2c_CS:x1",
+            "s2c_dim:RT" : "s2c_RT:x154"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.07.04.04, C0180, R0220}",
+            "Label" : "S.26.07.04.04 - Modified duration|Health disability-morbidity risk (medical expense)|Z Axis:",
+            "Values" : "Decimal"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "decimalsDecimal"
+        },
+        "C0180_R0230" : {
+          "dimensions" : {
+            "concept" : "s2md_met:ri2074",
+            "s2c_dim:AO" : "$Z0010",
+            "s2c_dim:CM" : "s2c_CS:x1",
+            "s2c_dim:RT" : "s2c_RT:x155"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.07.04.04, C0180, R0230}",
+            "Label" : "S.26.07.04.04 - Modified duration|Health disability-morbidity risk (income protection)|Z Axis:",
+            "Values" : "Decimal"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "decimalsDecimal"
+        },
+        "C0180_R0260" : {
+          "dimensions" : {
+            "concept" : "s2md_met:ri2074",
+            "s2c_dim:AO" : "$Z0010",
+            "s2c_dim:CM" : "s2c_CS:x1",
+            "s2c_dim:RT" : "s2c_RT:x49"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.07.04.04, C0180, R0260}",
+            "Label" : "S.26.07.04.04 - Modified duration|Health expense risk|Z Axis:",
+            "Values" : "Decimal"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "decimalsDecimal"
+        },
+        "C0190_R0130" : {
+          "dimensions" : {
+            "concept" : "s2md_met:ri1898",
+            "s2c_dim:AO" : "$Z0010",
+            "s2c_dim:CM" : "s2c_CS:x1",
+            "s2c_dim:RT" : "s2c_RT:x83",
+            "s2c_dim:TA" : "s2c_AM:x10"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.07.04.04, C0190, R0130}",
+            "Label" : "S.26.07.04.04 - Average run off period|Lapse risk (up)|Z Axis:",
+            "Values" : "Decimal"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "decimalsDecimal"
+        },
+        "C0190_R0140" : {
+          "dimensions" : {
+            "concept" : "s2md_met:ri1898",
+            "s2c_dim:AO" : "$Z0010",
+            "s2c_dim:CM" : "s2c_CS:x1",
+            "s2c_dim:RT" : "s2c_RT:x82",
+            "s2c_dim:TA" : "s2c_AM:x10"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.07.04.04, C0190, R0140}",
+            "Label" : "S.26.07.04.04 - Average run off period|Lapse risk (down)|Z Axis:",
+            "Values" : "Decimal"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "decimalsDecimal"
+        },
+        "C0190_R0240" : {
+          "dimensions" : {
+            "concept" : "s2md_met:ri1898",
+            "s2c_dim:AO" : "$Z0010",
+            "s2c_dim:CM" : "s2c_CS:x1",
+            "s2c_dim:RT" : "s2c_RT:x138",
+            "s2c_dim:TA" : "s2c_AM:x10"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.07.04.04, C0190, R0240}",
+            "Label" : "S.26.07.04.04 - Average run off period|Lapse risk (up)|Z Axis:",
+            "Values" : "Decimal"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "decimalsDecimal"
+        },
+        "C0190_R0250" : {
+          "dimensions" : {
+            "concept" : "s2md_met:ri1898",
+            "s2c_dim:AO" : "$Z0010",
+            "s2c_dim:CM" : "s2c_CS:x1",
+            "s2c_dim:RT" : "s2c_RT:x137",
+            "s2c_dim:TA" : "s2c_AM:x10"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.07.04.04, C0190, R0250}",
+            "Label" : "S.26.07.04.04 - Average run off period|Lapse risk (down)|Z Axis:",
+            "Values" : "Decimal"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "decimalsDecimal"
+        },
+        "C0200_R0120" : {
+          "dimensions" : {
+            "concept" : "s2md_met:pi1923",
+            "s2c_dim:AO" : "$Z0010",
+            "s2c_dim:CM" : "s2c_CS:x1",
+            "s2c_dim:RT" : "s2c_RT:x75",
+            "s2c_dim:TK" : "s2c_TF:x2"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.07.04.04, C0200, R0120}",
+            "Label" : "S.26.07.04.04 - Termination rate|Disability-morbidity risk|Z Axis:",
+            "Values" : "Percent"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "decimalsPercentage"
+        },
+        "C0200_R0230" : {
+          "dimensions" : {
+            "concept" : "s2md_met:pi1923",
+            "s2c_dim:AO" : "$Z0010",
+            "s2c_dim:CM" : "s2c_CS:x1",
+            "s2c_dim:RT" : "s2c_RT:x155",
+            "s2c_dim:TK" : "s2c_TF:x2"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.07.04.04, C0200, R0230}",
+            "Label" : "S.26.07.04.04 - Termination rate|Health disability-morbidity risk (income protection)|Z Axis:",
+            "Values" : "Percent"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "decimalsPercentage"
+        },
+        "C0210_R0150" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi2075",
+            "s2c_dim:AO" : "$Z0010",
+            "s2c_dim:CM" : "s2c_CS:x1",
+            "s2c_dim:RT" : "s2c_RT:x76",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.07.04.04, C0210, R0150}",
+            "Label" : "S.26.07.04.04 - Payments|Life expense risk|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0210_R0220" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi2075",
+            "s2c_dim:AO" : "$Z0010",
+            "s2c_dim:CM" : "s2c_CS:x1",
+            "s2c_dim:RT" : "s2c_RT:x154",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.07.04.04, C0210, R0220}",
+            "Label" : "S.26.07.04.04 - Payments|Health disability-morbidity risk (medical expense)|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0210_R0260" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi2075",
+            "s2c_dim:AO" : "$Z0010",
+            "s2c_dim:CM" : "s2c_CS:x1",
+            "s2c_dim:RT" : "s2c_RT:x49",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.07.04.04, C0210, R0260}",
+            "Label" : "S.26.07.04.04 - Payments|Health expense risk|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0220_R0150" : {
+          "dimensions" : {
+            "concept" : "s2md_met:pi2424",
+            "s2c_dim:AO" : "$Z0010",
+            "s2c_dim:CM" : "s2c_CS:x1",
+            "s2c_dim:RT" : "s2c_RT:x76",
+            "s2c_dim:TA" : "s2c_AM:x12"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.07.04.04, C0220, R0150}",
+            "Label" : "S.26.07.04.04 - Average inflation rate|Life expense risk|Z Axis:",
+            "Values" : "Percent"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "decimalsPercentage"
+        },
+        "C0220_R0220" : {
+          "dimensions" : {
+            "concept" : "s2md_met:pi2424",
+            "s2c_dim:AO" : "$Z0010",
+            "s2c_dim:CM" : "s2c_CS:x1",
+            "s2c_dim:RT" : "s2c_RT:x154",
+            "s2c_dim:TA" : "s2c_AM:x12"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.07.04.04, C0220, R0220}",
+            "Label" : "S.26.07.04.04 - Average inflation rate|Health disability-morbidity risk (medical expense)|Z Axis:",
+            "Values" : "Percent"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "decimalsPercentage"
+        },
+        "C0220_R0260" : {
+          "dimensions" : {
+            "concept" : "s2md_met:pi2424",
+            "s2c_dim:AO" : "$Z0010",
+            "s2c_dim:CM" : "s2c_CS:x1",
+            "s2c_dim:RT" : "s2c_RT:x49",
+            "s2c_dim:TA" : "s2c_AM:x12"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.07.04.04, C0220, R0260}",
+            "Label" : "S.26.07.04.04 - Average inflation rate|Health expense risk|Z Axis:",
+            "Values" : "Percent"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "decimalsPercentage"
+        },
+        "Z0010" : {
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.07.04.04, Z0010}",
+            "Label" : "Article 112",
+            "Key" : "s2c_dim:AO",
+            "Values" : {
+              "x0" : "No",
+              "x1" : "Yes",
+              "x2" : "Yes - biennial reporting"
+            }
+          }
+        }
+      }
+    }
+  }
+}

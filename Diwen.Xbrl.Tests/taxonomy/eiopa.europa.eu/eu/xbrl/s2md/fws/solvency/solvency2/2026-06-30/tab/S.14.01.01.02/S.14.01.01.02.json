@@ -1,0 +1,111 @@
+{
+  "documentInfo" : {
+    "documentType" : "https://xbrl.org/2021/xbrl-csv",
+    "namespaces" : {
+      "s2md" : "http://eiopa.europa.eu/xbrl/s2md/",
+      "s2c_LB" : "http://eiopa.europa.eu/xbrl/s2c/dict/dom/LB",
+      "s2c_dim" : "http://eiopa.europa.eu/xbrl/s2c/dict/dim",
+      "s2md_met" : "http://eiopa.europa.eu/xbrl/s2md/dict/met"
+    }
+  },
+  "tableTemplates" : {
+    "S.14.01.01.02" : {
+      "columns" : {
+        "C0090" : {
+          "s2md:documentation" : {
+            "CellCode" : "{S.14.01.01.02, C0090}",
+            "Label" : "Product ID code",
+            "Key" : "s2c_dim:IP",
+            "Values" : "String"
+          }
+        },
+        "C0101" : {
+          "dimensions" : {
+            "concept" : "s2md_met:ei2561",
+            "s2c_dim:IP" : "$C0090"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.14.01.01.02, C0101}",
+            "Label" : "S.14.01.01.02 - Product classification",
+            "Values" : {
+              "s2c_LB:x198" : "Single life",
+              "s2c_LB:x199" : "Joint life",
+              "s2c_LB:x200" : "Collective",
+              "s2c_LB:x201" : "Other",
+              "s2c_LB:x9" : "Annuities stemming from non-life insurance contracts"
+            }
+          }
+        },
+        "C0102" : {
+          "dimensions" : {
+            "concept" : "s2md_met:ei3053",
+            "s2c_dim:IP" : "$C0090"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.14.01.01.02, C0102}",
+            "Label" : "S.14.01.01.02 - Pension entitlements",
+            "Values" : {
+              "s2c_LB:x249" : "Occupational defined contribution pension entitlement",
+              "s2c_LB:x248" : "Occupational defined benefit pension entitlement",
+              "s2c_LB:x250" : "Occupational hybrid pension entitlement",
+              "s2c_LB:x251" : "Personal defined benefit pension entitlement",
+              "s2c_LB:x252" : "Personal defined contribution pension entitlement",
+              "s2c_LB:x253" : "Personal hybrid pension entitlement",
+              "s2c_LB:x0" : "Total/NA"
+            }
+          }
+        },
+        "C0110" : {
+          "dimensions" : {
+            "concept" : "s2md_met:si1366",
+            "s2c_dim:IP" : "$C0090"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.14.01.01.02, C0110}",
+            "Label" : "S.14.01.01.02 - Type of product",
+            "Values" : "String"
+          }
+        },
+        "C0120" : {
+          "dimensions" : {
+            "concept" : "s2md_met:si1389",
+            "s2c_dim:IP" : "$C0090"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.14.01.01.02, C0120}",
+            "Label" : "S.14.01.01.02 - Product denomination",
+            "Values" : "String"
+          }
+        },
+        "C0130" : {
+          "dimensions" : {
+            "concept" : "s2md_met:ei1072",
+            "s2c_dim:IP" : "$C0090"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.14.01.01.02, C0130}",
+            "Label" : "S.14.01.01.02 - Product still commercialised?",
+            "Values" : {
+              "s2c_LB:x23" : "Still commercialised",
+              "s2c_LB:x89" : "In run-off"
+            }
+          }
+        },
+        "C0141" : {
+          "dimensions" : {
+            "concept" : "s2md_met:ei2563",
+            "s2c_dim:IP" : "$C0090"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.14.01.01.02, C0141}",
+            "Label" : "S.14.01.01.02 - Profit sharing",
+            "Values" : {
+              "s2c_LB:x53" : "Insurance with profit participation",
+              "s2c_LB:x230" : "Insurance without profit participation"
+            }
+          }
+        }
+      }
+    }
+  }
+}

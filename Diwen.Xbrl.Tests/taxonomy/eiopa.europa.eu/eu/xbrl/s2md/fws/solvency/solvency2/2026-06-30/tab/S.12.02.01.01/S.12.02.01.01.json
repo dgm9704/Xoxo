@@ -1,0 +1,445 @@
+{
+  "documentInfo" : {
+    "documentType" : "https://xbrl.org/2021/xbrl-csv",
+    "namespaces" : {
+      "s2md" : "http://eiopa.europa.eu/xbrl/s2md/",
+      "s2c_AM" : "http://eiopa.europa.eu/xbrl/s2c/dict/dom/AM",
+      "s2c_AP" : "http://eiopa.europa.eu/xbrl/s2c/dict/dom/AP",
+      "s2c_GA" : "http://eiopa.europa.eu/xbrl/s2c/dict/dom/GA",
+      "s2c_LB" : "http://eiopa.europa.eu/xbrl/s2c/dict/dom/LB",
+      "s2c_VM" : "http://eiopa.europa.eu/xbrl/s2c/dict/dom/VM",
+      "s2c_dim" : "http://eiopa.europa.eu/xbrl/s2c/dict/dim",
+      "s2md_met" : "http://eiopa.europa.eu/xbrl/s2md/dict/met"
+    }
+  },
+  "tableTemplates" : {
+    "S.12.02.01.01" : {
+      "columns" : {
+        "C0020_R0010" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi363",
+            "s2c_dim:BL" : "s2c_LB:x53",
+            "s2c_dim:EE" : "s2c_GA:x24",
+            "s2c_dim:TB" : "s2c_LB:x28",
+            "s2c_dim:VG" : "s2c_AM:x80",
+            "s2c_dim:VL" : "s2c_VM:x9"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.12.02.01.01, C0020, R0010}",
+            "Label" : "S.12.02.01.01 - Insurance with profit participation|Home country",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0020_R0020" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi363",
+            "s2c_dim:BL" : "s2c_LB:x53",
+            "s2c_dim:EE" : "s2c_GA:x15",
+            "s2c_dim:MT" : "s2c_AP:x22",
+            "s2c_dim:TB" : "s2c_LB:x28",
+            "s2c_dim:VG" : "s2c_AM:x80",
+            "s2c_dim:VL" : "s2c_VM:x9"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.12.02.01.01, C0020, R0020}",
+            "Label" : "S.12.02.01.01 - Insurance with profit participation|EEA countries outside the materiality threshold - not reported by country",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0020_R0030" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi363",
+            "s2c_dim:BL" : "s2c_LB:x53",
+            "s2c_dim:EE" : "s2c_GA:x42",
+            "s2c_dim:MT" : "s2c_AP:x22",
+            "s2c_dim:TB" : "s2c_LB:x28",
+            "s2c_dim:VG" : "s2c_AM:x80",
+            "s2c_dim:VL" : "s2c_VM:x9"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.12.02.01.01, C0020, R0030}",
+            "Label" : "S.12.02.01.01 - Insurance with profit participation|Non-EEA countries outside the materiality threshold - not reported by country",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0030_R0010" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi363",
+            "s2c_dim:BL" : "s2c_LB:x119",
+            "s2c_dim:EE" : "s2c_GA:x24",
+            "s2c_dim:TB" : "s2c_LB:x28",
+            "s2c_dim:VG" : "s2c_AM:x80",
+            "s2c_dim:VL" : "s2c_VM:x9"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.12.02.01.01, C0030, R0010}",
+            "Label" : "S.12.02.01.01 - Index-linked and unit-linked insurance|Home country",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0030_R0020" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi363",
+            "s2c_dim:BL" : "s2c_LB:x119",
+            "s2c_dim:EE" : "s2c_GA:x15",
+            "s2c_dim:MT" : "s2c_AP:x22",
+            "s2c_dim:TB" : "s2c_LB:x28",
+            "s2c_dim:VG" : "s2c_AM:x80",
+            "s2c_dim:VL" : "s2c_VM:x9"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.12.02.01.01, C0030, R0020}",
+            "Label" : "S.12.02.01.01 - Index-linked and unit-linked insurance|EEA countries outside the materiality threshold - not reported by country",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0030_R0030" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi363",
+            "s2c_dim:BL" : "s2c_LB:x119",
+            "s2c_dim:EE" : "s2c_GA:x42",
+            "s2c_dim:MT" : "s2c_AP:x22",
+            "s2c_dim:TB" : "s2c_LB:x28",
+            "s2c_dim:VG" : "s2c_AM:x80",
+            "s2c_dim:VL" : "s2c_VM:x9"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.12.02.01.01, C0030, R0030}",
+            "Label" : "S.12.02.01.01 - Index-linked and unit-linked insurance|Non-EEA countries outside the materiality threshold - not reported by country",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0060_R0010" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi363",
+            "s2c_dim:BL" : "s2c_LB:x93",
+            "s2c_dim:EE" : "s2c_GA:x24",
+            "s2c_dim:TB" : "s2c_LB:x28",
+            "s2c_dim:VG" : "s2c_AM:x80",
+            "s2c_dim:VL" : "s2c_VM:x9"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.12.02.01.01, C0060, R0010}",
+            "Label" : "S.12.02.01.01 - Other life insurance|Home country",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0060_R0020" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi363",
+            "s2c_dim:BL" : "s2c_LB:x93",
+            "s2c_dim:EE" : "s2c_GA:x15",
+            "s2c_dim:MT" : "s2c_AP:x22",
+            "s2c_dim:TB" : "s2c_LB:x28",
+            "s2c_dim:VG" : "s2c_AM:x80",
+            "s2c_dim:VL" : "s2c_VM:x9"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.12.02.01.01, C0060, R0020}",
+            "Label" : "S.12.02.01.01 - Other life insurance|EEA countries outside the materiality threshold - not reported by country",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0060_R0030" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi363",
+            "s2c_dim:BL" : "s2c_LB:x93",
+            "s2c_dim:EE" : "s2c_GA:x42",
+            "s2c_dim:MT" : "s2c_AP:x22",
+            "s2c_dim:TB" : "s2c_LB:x28",
+            "s2c_dim:VG" : "s2c_AM:x80",
+            "s2c_dim:VL" : "s2c_VM:x9"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.12.02.01.01, C0060, R0030}",
+            "Label" : "S.12.02.01.01 - Other life insurance|Non-EEA countries outside the materiality threshold - not reported by country",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0090_R0010" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi363",
+            "s2c_dim:BL" : "s2c_LB:x11",
+            "s2c_dim:EE" : "s2c_GA:x24",
+            "s2c_dim:TB" : "s2c_LB:x28",
+            "s2c_dim:VG" : "s2c_AM:x80",
+            "s2c_dim:VL" : "s2c_VM:x9"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.12.02.01.01, C0090, R0010}",
+            "Label" : "S.12.02.01.01 - Annuities stemming from non-life insurance contracts and relating to insurance obligation other than health insurance obligations|Home country",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0090_R0020" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi363",
+            "s2c_dim:BL" : "s2c_LB:x11",
+            "s2c_dim:EE" : "s2c_GA:x15",
+            "s2c_dim:MT" : "s2c_AP:x22",
+            "s2c_dim:TB" : "s2c_LB:x28",
+            "s2c_dim:VG" : "s2c_AM:x80",
+            "s2c_dim:VL" : "s2c_VM:x9"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.12.02.01.01, C0090, R0020}",
+            "Label" : "S.12.02.01.01 - Annuities stemming from non-life insurance contracts and relating to insurance obligation other than health insurance obligations|EEA countries outside the materiality threshold - not reported by country",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0090_R0030" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi363",
+            "s2c_dim:BL" : "s2c_LB:x11",
+            "s2c_dim:EE" : "s2c_GA:x42",
+            "s2c_dim:MT" : "s2c_AP:x22",
+            "s2c_dim:TB" : "s2c_LB:x28",
+            "s2c_dim:VG" : "s2c_AM:x80",
+            "s2c_dim:VL" : "s2c_VM:x9"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.12.02.01.01, C0090, R0030}",
+            "Label" : "S.12.02.01.01 - Annuities stemming from non-life insurance contracts and relating to insurance obligation other than health insurance obligations|Non-EEA countries outside the materiality threshold - not reported by country",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0100_R0010" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi363",
+            "s2c_dim:BL" : "s2c_LB:x172",
+            "s2c_dim:EE" : "s2c_GA:x24",
+            "s2c_dim:TB" : "s2c_LB:x109",
+            "s2c_dim:VG" : "s2c_AM:x80",
+            "s2c_dim:VL" : "s2c_VM:x9"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.12.02.01.01, C0100, R0010}",
+            "Label" : "S.12.02.01.01 - Accepted reinsurance|Home country",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0100_R0020" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi363",
+            "s2c_dim:BL" : "s2c_LB:x172",
+            "s2c_dim:EE" : "s2c_GA:x15",
+            "s2c_dim:MT" : "s2c_AP:x22",
+            "s2c_dim:TB" : "s2c_LB:x109",
+            "s2c_dim:VG" : "s2c_AM:x80",
+            "s2c_dim:VL" : "s2c_VM:x9"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.12.02.01.01, C0100, R0020}",
+            "Label" : "S.12.02.01.01 - Accepted reinsurance|EEA countries outside the materiality threshold - not reported by country",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0100_R0030" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi363",
+            "s2c_dim:BL" : "s2c_LB:x172",
+            "s2c_dim:EE" : "s2c_GA:x42",
+            "s2c_dim:MT" : "s2c_AP:x22",
+            "s2c_dim:TB" : "s2c_LB:x109",
+            "s2c_dim:VG" : "s2c_AM:x80",
+            "s2c_dim:VL" : "s2c_VM:x9"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.12.02.01.01, C0100, R0030}",
+            "Label" : "S.12.02.01.01 - Accepted reinsurance|Non-EEA countries outside the materiality threshold - not reported by country",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0160_R0010" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi363",
+            "s2c_dim:BL" : "s2c_LB:x45",
+            "s2c_dim:EE" : "s2c_GA:x24",
+            "s2c_dim:TB" : "s2c_LB:x28",
+            "s2c_dim:VG" : "s2c_AM:x80",
+            "s2c_dim:VL" : "s2c_VM:x9"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.12.02.01.01, C0160, R0010}",
+            "Label" : "S.12.02.01.01 - Health insurance (direct business)|Home country",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0160_R0020" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi363",
+            "s2c_dim:BL" : "s2c_LB:x45",
+            "s2c_dim:EE" : "s2c_GA:x15",
+            "s2c_dim:MT" : "s2c_AP:x22",
+            "s2c_dim:TB" : "s2c_LB:x28",
+            "s2c_dim:VG" : "s2c_AM:x80",
+            "s2c_dim:VL" : "s2c_VM:x9"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.12.02.01.01, C0160, R0020}",
+            "Label" : "S.12.02.01.01 - Health insurance (direct business)|EEA countries outside the materiality threshold - not reported by country",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0160_R0030" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi363",
+            "s2c_dim:BL" : "s2c_LB:x45",
+            "s2c_dim:EE" : "s2c_GA:x42",
+            "s2c_dim:MT" : "s2c_AP:x22",
+            "s2c_dim:TB" : "s2c_LB:x28",
+            "s2c_dim:VG" : "s2c_AM:x80",
+            "s2c_dim:VL" : "s2c_VM:x9"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.12.02.01.01, C0160, R0030}",
+            "Label" : "S.12.02.01.01 - Health insurance (direct business)|Non-EEA countries outside the materiality threshold - not reported by country",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0190_R0010" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi363",
+            "s2c_dim:BL" : "s2c_LB:x10",
+            "s2c_dim:EE" : "s2c_GA:x24",
+            "s2c_dim:TB" : "s2c_LB:x28",
+            "s2c_dim:VG" : "s2c_AM:x80",
+            "s2c_dim:VL" : "s2c_VM:x9"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.12.02.01.01, C0190, R0010}",
+            "Label" : "S.12.02.01.01 - Annuities stemming from non-life insurance contracts and relating to health insurance obligations|Home country",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0190_R0020" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi363",
+            "s2c_dim:BL" : "s2c_LB:x10",
+            "s2c_dim:EE" : "s2c_GA:x15",
+            "s2c_dim:MT" : "s2c_AP:x22",
+            "s2c_dim:TB" : "s2c_LB:x28",
+            "s2c_dim:VG" : "s2c_AM:x80",
+            "s2c_dim:VL" : "s2c_VM:x9"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.12.02.01.01, C0190, R0020}",
+            "Label" : "S.12.02.01.01 - Annuities stemming from non-life insurance contracts and relating to health insurance obligations|EEA countries outside the materiality threshold - not reported by country",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0190_R0030" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi363",
+            "s2c_dim:BL" : "s2c_LB:x10",
+            "s2c_dim:EE" : "s2c_GA:x42",
+            "s2c_dim:MT" : "s2c_AP:x22",
+            "s2c_dim:TB" : "s2c_LB:x28",
+            "s2c_dim:VG" : "s2c_AM:x80",
+            "s2c_dim:VL" : "s2c_VM:x9"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.12.02.01.01, C0190, R0030}",
+            "Label" : "S.12.02.01.01 - Annuities stemming from non-life insurance contracts and relating to health insurance obligations|Non-EEA countries outside the materiality threshold - not reported by country",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0200_R0010" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi363",
+            "s2c_dim:BL" : "s2c_LB:x46",
+            "s2c_dim:EE" : "s2c_GA:x24",
+            "s2c_dim:TB" : "s2c_LB:x109",
+            "s2c_dim:VG" : "s2c_AM:x80",
+            "s2c_dim:VL" : "s2c_VM:x9"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.12.02.01.01, C0200, R0010}",
+            "Label" : "S.12.02.01.01 - Health reinsurance (reinsurance accepted)|Home country",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0200_R0020" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi363",
+            "s2c_dim:BL" : "s2c_LB:x46",
+            "s2c_dim:EE" : "s2c_GA:x15",
+            "s2c_dim:MT" : "s2c_AP:x22",
+            "s2c_dim:TB" : "s2c_LB:x109",
+            "s2c_dim:VG" : "s2c_AM:x80",
+            "s2c_dim:VL" : "s2c_VM:x9"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.12.02.01.01, C0200, R0020}",
+            "Label" : "S.12.02.01.01 - Health reinsurance (reinsurance accepted)|EEA countries outside the materiality threshold - not reported by country",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0200_R0030" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi363",
+            "s2c_dim:BL" : "s2c_LB:x46",
+            "s2c_dim:EE" : "s2c_GA:x42",
+            "s2c_dim:MT" : "s2c_AP:x22",
+            "s2c_dim:TB" : "s2c_LB:x109",
+            "s2c_dim:VG" : "s2c_AM:x80",
+            "s2c_dim:VL" : "s2c_VM:x9"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.12.02.01.01, C0200, R0030}",
+            "Label" : "S.12.02.01.01 - Health reinsurance (reinsurance accepted)|Non-EEA countries outside the materiality threshold - not reported by country",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        }
+      }
+    }
+  }
+}

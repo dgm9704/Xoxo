@@ -1,0 +1,115 @@
+{
+  "documentInfo" : {
+    "documentType" : "https://xbrl.org/2021/xbrl-csv",
+    "namespaces" : {
+      "s2md" : "http://eiopa.europa.eu/xbrl/s2md/",
+      "s2c_dim" : "http://eiopa.europa.eu/xbrl/s2c/dict/dim",
+      "s2md_met" : "http://eiopa.europa.eu/xbrl/s2md/dict/met"
+    }
+  },
+  "tableTemplates" : {
+    "S.14.05.11.02" : {
+      "columns" : {
+        "C0015" : {
+          "s2md:documentation" : {
+            "CellCode" : "{S.14.05.11.02, C0015}",
+            "Label" : "Identification code and type of code of the undertaking",
+            "Key" : "s2c_dim:CE",
+            "Values" : "String"
+          }
+        },
+        "C0070" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi1136",
+            "s2c_dim:CE" : "$C0015",
+            "s2c_dim:EW" : "$C0230",
+            "s2c_dim:YQ" : "$C0240"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.14.05.11.02, C0070}",
+            "Label" : "S.14.05.11.02 - Total amount of claims paid (year to date)",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetaryOpenTable"
+        },
+        "C0180" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi2838",
+            "s2c_dim:CE" : "$C0015",
+            "s2c_dim:EW" : "$C0230",
+            "s2c_dim:YQ" : "$C0240"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.14.05.11.02, C0180}",
+            "Label" : "S.14.05.11.02 - Best Estimate",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetaryOpenTable"
+        },
+        "C0230" : {
+          "s2md:documentation" : {
+            "CellCode" : "{S.14.05.11.02, C0230}",
+            "Label" : "Line identification",
+            "Key" : "s2c_dim:EW",
+            "Values" : "String"
+          }
+        },
+        "C0240" : {
+          "s2md:documentation" : {
+            "CellCode" : "{S.14.05.11.02, C0240}",
+            "Label" : "Line identification (internal portfolio ID)",
+            "Key" : "s2c_dim:YQ",
+            "Values" : "String"
+          }
+        },
+        "C0290" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi2837",
+            "s2c_dim:CE" : "$C0015",
+            "s2c_dim:EW" : "$C0230",
+            "s2c_dim:YQ" : "$C0240"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.14.05.11.02, C0290}",
+            "Label" : "S.14.05.11.02 - Cash in-flows - Premiums - gross (year to date)",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetaryOpenTable"
+        },
+        "C0300" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi2839",
+            "s2c_dim:CE" : "$C0015",
+            "s2c_dim:EW" : "$C0230",
+            "s2c_dim:YQ" : "$C0240"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.14.05.11.02, C0300}",
+            "Label" : "S.14.05.11.02 - Net Reinsurance flows of the period (year to date)",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetaryOpenTable"
+        },
+        "C0310" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi2836",
+            "s2c_dim:CE" : "$C0015",
+            "s2c_dim:EW" : "$C0230",
+            "s2c_dim:YQ" : "$C0240"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.14.05.11.02, C0310}",
+            "Label" : "S.14.05.11.02 - Unearned premium returned upon termination (year to date)",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetaryOpenTable"
+        }
+      }
+    }
+  }
+}

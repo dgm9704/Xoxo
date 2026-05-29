@@ -1,0 +1,125 @@
+{
+  "documentInfo" : {
+    "documentType" : "https://xbrl.org/2021/xbrl-csv",
+    "namespaces" : {
+      "s2md" : "http://eiopa.europa.eu/xbrl/s2md/",
+      "s2c_AP" : "http://eiopa.europa.eu/xbrl/s2c/dict/dom/AP",
+      "s2c_dim" : "http://eiopa.europa.eu/xbrl/s2c/dict/dim",
+      "s2md_met" : "http://eiopa.europa.eu/xbrl/s2md/dict/met"
+    }
+  },
+  "tableTemplates" : {
+    "SPV.03.01.20.02" : {
+      "columns" : {
+        "C0010" : {
+          "s2md:documentation" : {
+            "CellCode" : "{SPV.03.01.20.02, C0010}",
+            "Label" : "Arrangement",
+            "Key" : "s2c_dim:RS",
+            "Values" : "String"
+          }
+        },
+        "C0020" : {
+          "dimensions" : {
+            "concept" : "s2md_met:di2202",
+            "s2c_dim:RS" : "$C0010"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{SPV.03.01.20.02, C0020}",
+            "Label" : "SPV.03.01.20.02 - Date of issuance",
+            "Values" : "Date"
+          }
+        },
+        "C0030" : {
+          "dimensions" : {
+            "concept" : "s2md_met:ei2203",
+            "s2c_dim:RS" : "$C0010"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{SPV.03.01.20.02, C0030}",
+            "Label" : "SPV.03.01.20.02 - Issues / uses commenced prior to implementation of Directive 2009/138/EC",
+            "Values" : {
+              "s2c_AP:x31" : "Prior to 31 December 2015",
+              "s2c_AP:x32" : "After 31 December 2015"
+            }
+          }
+        },
+        "C0040" : {
+          "dimensions" : {
+            "concept" : "s2md_met:si2204",
+            "s2c_dim:RS" : "$C0010"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{SPV.03.01.20.02, C0040}",
+            "Label" : "SPV.03.01.20.02 - Name of cedant",
+            "Values" : "String"
+          }
+        },
+        "C0050" : {
+          "dimensions" : {
+            "concept" : "s2md_met:si2205",
+            "s2c_dim:RS" : "$C0010"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{SPV.03.01.20.02, C0050}",
+            "Label" : "SPV.03.01.20.02 - Cedant code and type of code",
+            "Values" : "String"
+          }
+        },
+        "C0070" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi2206",
+            "s2c_dim:RS" : "$C0010"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{SPV.03.01.20.02, C0070}",
+            "Label" : "SPV.03.01.20.02 - Aggregate maximum risk exposure per arrangement",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetaryOpenTable"
+        },
+        "C0080" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi1131",
+            "s2c_dim:RS" : "$C0010"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{SPV.03.01.20.02, C0080}",
+            "Label" : "SPV.03.01.20.02 - Assets held for separable risk",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetaryOpenTable"
+        },
+        "C0090" : {
+          "dimensions" : {
+            "concept" : "s2md_met:ei2181",
+            "s2c_dim:RS" : "$C0010"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{SPV.03.01.20.02, C0090}",
+            "Label" : "SPV.03.01.20.02 - Compliance with the fully funded requirement for the arrangement throughout the reporting period",
+            "Values" : {
+              "s2c_AP:x29" : "Compliance with fully-funded",
+              "s2c_AP:x30" : "Non-compliance with fully-funded"
+            }
+          }
+        },
+        "C0100" : {
+          "dimensions" : {
+            "concept" : "s2md_met:ri2441",
+            "s2c_dim:RS" : "$C0010"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{SPV.03.01.20.02, C0100}",
+            "Label" : "SPV.03.01.20.02 - Duration",
+            "Values" : "Decimal"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "decimalsDecimal"
+        }
+      }
+    }
+  }
+}

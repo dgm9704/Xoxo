@@ -1,0 +1,39 @@
+{
+  "documentInfo" : {
+    "documentType" : "https://xbrl.org/2021/xbrl-csv",
+    "namespaces" : {
+      "s2md" : "http://eiopa.europa.eu/xbrl/s2md/",
+      "s2c_AP" : "http://eiopa.europa.eu/xbrl/s2c/dict/dom/AP",
+      "s2md_met" : "http://eiopa.europa.eu/xbrl/s2md/dict/met"
+    }
+  },
+  "tableTemplates" : {
+    "S.27.01.04.27" : {
+      "columns" : {
+        "C0001_R0001" : {
+          "dimensions" : {
+            "concept" : "s2md_met:ei2535"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.27.01.04.27, C0001, R0001}",
+            "Label" : "S.27.01.04.27 - Simplifications used|Simplifications used - fire risk",
+            "Values" : {
+              "s2c_AP:x60" : "Simplifications based on article 90c",
+              "s2c_AP:x34" : "Simplifications not used"
+            }
+          }
+        },
+        "C0001_R0002" : {
+          "dimensions" : {
+            "concept" : "s2md_met:si2536"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.27.01.04.27, C0001, R0002}",
+            "Label" : "S.27.01.04.27 - Simplifications used|Simplifications used - natural catastrophe risk",
+            "Values" : "String"
+          }
+        }
+      }
+    }
+  }
+}

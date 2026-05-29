@@ -1,0 +1,286 @@
+{
+  "documentInfo" : {
+    "documentType" : "https://xbrl.org/2021/xbrl-csv",
+    "namespaces" : {
+      "s2md" : "http://eiopa.europa.eu/xbrl/s2md/",
+      "s2c_AM" : "http://eiopa.europa.eu/xbrl/s2c/dict/dom/AM",
+      "s2c_CS" : "http://eiopa.europa.eu/xbrl/s2c/dict/dom/CS",
+      "s2c_EL" : "http://eiopa.europa.eu/xbrl/s2c/dict/dom/EL",
+      "s2c_SE" : "http://eiopa.europa.eu/xbrl/s2c/dict/dom/SE",
+      "s2c_dim" : "http://eiopa.europa.eu/xbrl/s2c/dict/dim",
+      "s2md_met" : "http://eiopa.europa.eu/xbrl/s2md/dict/met"
+    }
+  },
+  "tableTemplates" : {
+    "S.23.01.13.01" : {
+      "columns" : {
+        "C0010_R0140" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi485",
+            "s2c_dim:CM" : "s2c_CS:x1",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.23.01.13.01, C0010, R0140}",
+            "Label" : "S.23.01.13.01 - Total|Subordinated liabilities|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0010_R0290" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi490",
+            "s2c_dim:CM" : "s2c_CS:x1",
+            "s2c_dim:SO" : "s2c_SE:x126",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.23.01.13.01, C0010, R0290}",
+            "Label" : "S.23.01.13.01 - Total|Total basic own funds after deductions|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0010_R0570" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi420",
+            "s2c_dim:SO" : "s2c_SE:x44",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.23.01.13.01, C0010, R0570}",
+            "Label" : "S.23.01.13.01 - Total|Total eligible own funds to meet the minimum consolidated group SCR|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0010_R0660" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi2004",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.23.01.13.01, C0010, R0660}",
+            "Label" : "S.23.01.13.01 - Total|Total eligible own funds to meet the group SCR (including own funds from other financial sector and from the undertakings included via D&A )|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0020_R0290" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi490",
+            "s2c_dim:CM" : "s2c_CS:x1",
+            "s2c_dim:SO" : "s2c_SE:x126",
+            "s2c_dim:TX" : "s2c_EL:x8",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.23.01.13.01, C0020, R0290}",
+            "Label" : "S.23.01.13.01 - Tier 1 - unrestricted|Total basic own funds after deductions|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0020_R0570" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi420",
+            "s2c_dim:SO" : "s2c_SE:x44",
+            "s2c_dim:TX" : "s2c_EL:x8",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.23.01.13.01, C0020, R0570}",
+            "Label" : "S.23.01.13.01 - Tier 1 - unrestricted|Total eligible own funds to meet the minimum consolidated group SCR|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0020_R0660" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi2004",
+            "s2c_dim:TX" : "s2c_EL:x8",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.23.01.13.01, C0020, R0660}",
+            "Label" : "S.23.01.13.01 - Tier 1 - unrestricted|Total eligible own funds to meet the group SCR (including own funds from other financial sector and from the undertakings included via D&A )|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0030_R0140" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi485",
+            "s2c_dim:CM" : "s2c_CS:x1",
+            "s2c_dim:TX" : "s2c_EL:x1",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.23.01.13.01, C0030, R0140}",
+            "Label" : "S.23.01.13.01 - Tier 1 - restricted|Subordinated liabilities|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0030_R0290" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi490",
+            "s2c_dim:CM" : "s2c_CS:x1",
+            "s2c_dim:SO" : "s2c_SE:x126",
+            "s2c_dim:TX" : "s2c_EL:x1",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.23.01.13.01, C0030, R0290}",
+            "Label" : "S.23.01.13.01 - Tier 1 - restricted|Total basic own funds after deductions|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0030_R0570" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi420",
+            "s2c_dim:SO" : "s2c_SE:x44",
+            "s2c_dim:TX" : "s2c_EL:x1",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.23.01.13.01, C0030, R0570}",
+            "Label" : "S.23.01.13.01 - Tier 1 - restricted|Total eligible own funds to meet the minimum consolidated group SCR|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0030_R0660" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi2004",
+            "s2c_dim:TX" : "s2c_EL:x1",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.23.01.13.01, C0030, R0660}",
+            "Label" : "S.23.01.13.01 - Tier 1 - restricted|Total eligible own funds to meet the group SCR (including own funds from other financial sector and from the undertakings included via D&A )|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0040_R0140" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi485",
+            "s2c_dim:CM" : "s2c_CS:x1",
+            "s2c_dim:TX" : "s2c_EL:x28",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.23.01.13.01, C0040, R0140}",
+            "Label" : "S.23.01.13.01 - Tier 2|Subordinated liabilities|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0040_R0290" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi490",
+            "s2c_dim:CM" : "s2c_CS:x1",
+            "s2c_dim:SO" : "s2c_SE:x126",
+            "s2c_dim:TX" : "s2c_EL:x28",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.23.01.13.01, C0040, R0290}",
+            "Label" : "S.23.01.13.01 - Tier 2|Total basic own funds after deductions|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0040_R0570" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi420",
+            "s2c_dim:SO" : "s2c_SE:x44",
+            "s2c_dim:TX" : "s2c_EL:x28",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.23.01.13.01, C0040, R0570}",
+            "Label" : "S.23.01.13.01 - Tier 2|Total eligible own funds to meet the minimum consolidated group SCR|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0040_R0660" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi2004",
+            "s2c_dim:TX" : "s2c_EL:x28",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.23.01.13.01, C0040, R0660}",
+            "Label" : "S.23.01.13.01 - Tier 2|Total eligible own funds to meet the group SCR (including own funds from other financial sector and from the undertakings included via D&A )|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0050_R0140" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi485",
+            "s2c_dim:CM" : "s2c_CS:x1",
+            "s2c_dim:TX" : "s2c_EL:x30",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.23.01.13.01, C0050, R0140}",
+            "Label" : "S.23.01.13.01 - Tier 3|Subordinated liabilities|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0050_R0290" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi490",
+            "s2c_dim:CM" : "s2c_CS:x1",
+            "s2c_dim:SO" : "s2c_SE:x126",
+            "s2c_dim:TX" : "s2c_EL:x30",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.23.01.13.01, C0050, R0290}",
+            "Label" : "S.23.01.13.01 - Tier 3|Total basic own funds after deductions|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0050_R0660" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi2004",
+            "s2c_dim:TX" : "s2c_EL:x30",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.23.01.13.01, C0050, R0660}",
+            "Label" : "S.23.01.13.01 - Tier 3|Total eligible own funds to meet the group SCR (including own funds from other financial sector and from the undertakings included via D&A )|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        }
+      }
+    }
+  }
+}

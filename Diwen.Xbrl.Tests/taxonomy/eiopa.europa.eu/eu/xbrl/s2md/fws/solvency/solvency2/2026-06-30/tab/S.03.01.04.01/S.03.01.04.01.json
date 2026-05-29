@@ -1,0 +1,271 @@
+{
+  "documentInfo" : {
+    "documentType" : "https://xbrl.org/2021/xbrl-csv",
+    "namespaces" : {
+      "s2md" : "http://eiopa.europa.eu/xbrl/s2md/",
+      "s2c_AM" : "http://eiopa.europa.eu/xbrl/s2c/dict/dom/AM",
+      "s2c_LB" : "http://eiopa.europa.eu/xbrl/s2c/dict/dom/LB",
+      "s2c_dim" : "http://eiopa.europa.eu/xbrl/s2c/dict/dim",
+      "s2md_met" : "http://eiopa.europa.eu/xbrl/s2md/dict/met"
+    }
+  },
+  "tableTemplates" : {
+    "S.03.01.04.01" : {
+      "columns" : {
+        "C0010_R0010" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi2840",
+            "s2c_dim:TA" : "s2c_AM:x54",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.03.01.04.01, C0010, R0010}",
+            "Label" : "S.03.01.04.01 - Maximum value|Guarantees provided by the group including letters of credit",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0010_R0030" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi2842",
+            "s2c_dim:TA" : "s2c_AM:x54",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.03.01.04.01, C0010, R0030}",
+            "Label" : "S.03.01.04.01 - Maximum value|Guarantees received by the group including letters of credit",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0010_R0310" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi598",
+            "s2c_dim:TA" : "s2c_AM:x54",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.03.01.04.01, C0010, R0310}",
+            "Label" : "S.03.01.04.01 - Maximum value|Contingent liabilities not in Solvency II Balance Sheet",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0010_R0330" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi2409",
+            "s2c_dim:TA" : "s2c_AM:x54",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.03.01.04.01, C0010, R0330}",
+            "Label" : "S.03.01.04.01 - Maximum value|Contingent liabilities in Solvency II Balance Sheet",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0010_R0400" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi1627",
+            "s2c_dim:TA" : "s2c_AM:x54",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.03.01.04.01, C0010, R0400}",
+            "Label" : "S.03.01.04.01 - Maximum value|Total Contingent liabilities",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0020_R0010" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi2840",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.03.01.04.01, C0020, R0010}",
+            "Label" : "S.03.01.04.01 - Value of guarantee / collateral / contingent liabilities|Guarantees provided by the group including letters of credit",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0020_R0030" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi2842",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.03.01.04.01, C0020, R0030}",
+            "Label" : "S.03.01.04.01 - Value of guarantee / collateral / contingent liabilities|Guarantees received by the group including letters of credit",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0020_R0100" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi605",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.03.01.04.01, C0020, R0100}",
+            "Label" : "S.03.01.04.01 - Value of guarantee / collateral / contingent liabilities|Collateral held for loans made or bonds purchased",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0020_R0110" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi604",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.03.01.04.01, C0020, R0110}",
+            "Label" : "S.03.01.04.01 - Value of guarantee / collateral / contingent liabilities|Collateral held for derivatives",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0020_R0120" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi607",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.03.01.04.01, C0020, R0120}",
+            "Label" : "S.03.01.04.01 - Value of guarantee / collateral / contingent liabilities|Assets pledged by reinsurers for ceded technical provisions",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0020_R0130" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi606",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.03.01.04.01, C0020, R0130}",
+            "Label" : "S.03.01.04.01 - Value of guarantee / collateral / contingent liabilities|Other collateral held",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0020_R0200" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi1969",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.03.01.04.01, C0020, R0200}",
+            "Label" : "S.03.01.04.01 - Value of guarantee / collateral / contingent liabilities|Total collateral held",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0020_R0210" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi608",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.03.01.04.01, C0020, R0210}",
+            "Label" : "S.03.01.04.01 - Value of guarantee / collateral / contingent liabilities|Collateral pledged for loans received or bonds issued",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0020_R0220" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi609",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.03.01.04.01, C0020, R0220}",
+            "Label" : "S.03.01.04.01 - Value of guarantee / collateral / contingent liabilities|Collateral pledged for derivatives",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0020_R0230" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi611",
+            "s2c_dim:TB" : "s2c_LB:x109",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.03.01.04.01, C0020, R0230}",
+            "Label" : "S.03.01.04.01 - Value of guarantee / collateral / contingent liabilities|Assets pledged to cedants for technical provisions (reinsurance accepted)",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0020_R0240" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi610",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.03.01.04.01, C0020, R0240}",
+            "Label" : "S.03.01.04.01 - Value of guarantee / collateral / contingent liabilities|Other collateral pledged",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0020_R0300" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi597",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.03.01.04.01, C0020, R0300}",
+            "Label" : "S.03.01.04.01 - Value of guarantee / collateral / contingent liabilities|Total collateral pledged",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0020_R0310" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi598",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.03.01.04.01, C0020, R0310}",
+            "Label" : "S.03.01.04.01 - Value of guarantee / collateral / contingent liabilities|Contingent liabilities not in Solvency II Balance Sheet",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0020_R0330" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi2409",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.03.01.04.01, C0020, R0330}",
+            "Label" : "S.03.01.04.01 - Value of guarantee / collateral / contingent liabilities|Contingent liabilities in Solvency II Balance Sheet",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        }
+      }
+    }
+  }
+}

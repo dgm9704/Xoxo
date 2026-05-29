@@ -1,0 +1,139 @@
+{
+  "documentInfo" : {
+    "documentType" : "https://xbrl.org/2021/xbrl-csv",
+    "namespaces" : {
+      "s2md" : "http://eiopa.europa.eu/xbrl/s2md/",
+      "s2c_AM" : "http://eiopa.europa.eu/xbrl/s2c/dict/dom/AM",
+      "s2c_DI" : "http://eiopa.europa.eu/xbrl/s2c/dict/dom/DI",
+      "s2c_LB" : "http://eiopa.europa.eu/xbrl/s2c/dict/dom/LB",
+      "s2c_RT" : "http://eiopa.europa.eu/xbrl/s2c/dict/dom/RT",
+      "s2c_dim" : "http://eiopa.europa.eu/xbrl/s2c/dict/dim",
+      "s2md_met" : "http://eiopa.europa.eu/xbrl/s2md/dict/met"
+    }
+  },
+  "tableTemplates" : {
+    "S.04.05.01.01" : {
+      "columns" : {
+        "C0010_R0020" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi503",
+            "s2c_dim:BL" : "$Z0010",
+            "s2c_dim:DI" : "s2c_DI:x5",
+            "s2c_dim:IZ" : "s2c_RT:x1",
+            "s2c_dim:UE" : "$Z0020",
+            "s2c_dim:VG" : "s2c_AM:x84"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.04.05.01.01, C0010, R0020}",
+            "Label" : "S.04.05.01.01 - Total of business written by the underwriting entity|Premiums written (gross)|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0010_R0030" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi503",
+            "s2c_dim:BL" : "$Z0010",
+            "s2c_dim:DI" : "s2c_DI:x5",
+            "s2c_dim:IZ" : "s2c_RT:x18",
+            "s2c_dim:UE" : "$Z0020",
+            "s2c_dim:VG" : "s2c_AM:x84"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.04.05.01.01, C0010, R0030}",
+            "Label" : "S.04.05.01.01 - Total of business written by the underwriting entity|Premiums earned (gross)|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0010_R0040" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi281",
+            "s2c_dim:BL" : "$Z0010",
+            "s2c_dim:DI" : "s2c_DI:x5",
+            "s2c_dim:UE" : "$Z0020",
+            "s2c_dim:VG" : "s2c_AM:x84"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.04.05.01.01, C0010, R0040}",
+            "Label" : "S.04.05.01.01 - Total of business written by the underwriting entity|Claims incurred (gross)|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0010_R0050" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi309",
+            "s2c_dim:BL" : "$Z0010",
+            "s2c_dim:DI" : "s2c_DI:x5",
+            "s2c_dim:UE" : "$Z0020",
+            "s2c_dim:VG" : "s2c_AM:x84"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.04.05.01.01, C0010, R0050}",
+            "Label" : "S.04.05.01.01 - Total of business written by the underwriting entity|Expenses incurred (gross)|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "Z0010" : {
+          "s2md:documentation" : {
+            "CellCode" : "{S.04.05.01.01, Z0010}",
+            "Label" : "Line of business",
+            "Key" : "s2c_dim:BL",
+            "Values" : {
+              "s2c_LB:x135" : "Medical expense insurance [direct business]",
+              "s2c_LB:x136" : "Income protection insurance [direct business]",
+              "s2c_LB:x137" : "Workers' compensation insurance [direct business]",
+              "s2c_LB:x138" : "Motor vehicle liability insurance [direct business]",
+              "s2c_LB:x139" : "Other motor insurance [direct business]",
+              "s2c_LB:x140" : "Marine, aviation and transport insurance [direct business]",
+              "s2c_LB:x141" : "Fire and other damage to property insurance [direct business]",
+              "s2c_LB:x142" : "General liability insurance [direct business]",
+              "s2c_LB:x143" : "Credit and suretyship insurance [direct business]",
+              "s2c_LB:x144" : "Legal expenses insurance [direct business]",
+              "s2c_LB:x145" : "Assistance [direct business]",
+              "s2c_LB:x146" : "Miscellaneous financial loss [direct business]",
+              "s2c_LB:x148" : "Medical expense insurance [accepted proportional reinsurance]",
+              "s2c_LB:x149" : "Income protection insurance [accepted proportional reinsurance]",
+              "s2c_LB:x150" : "Workers' compensation insurance [accepted proportional reinsurance]",
+              "s2c_LB:x151" : "Motor vehicle liability insurance [accepted proportional reinsurance]",
+              "s2c_LB:x152" : "Other motor insurance [accepted proportional reinsurance]",
+              "s2c_LB:x153" : "Marine, aviation and transport insurance [accepted proportional reinsurance]",
+              "s2c_LB:x154" : "Fire and other damage to property insurance [accepted proportional reinsurance]",
+              "s2c_LB:x155" : "General liability insurance [accepted proportional reinsurance]",
+              "s2c_LB:x156" : "Credit and suretyship insurance [accepted proportional reinsurance]",
+              "s2c_LB:x157" : "Legal expenses insurance [accepted proportional reinsurance]",
+              "s2c_LB:x158" : "Assistance [accepted proportional reinsurance]",
+              "s2c_LB:x159" : "Miscellaneous financial loss [accepted proportional reinsurance]",
+              "s2c_LB:x42" : "Health [accepted non-proportional reinsurance]",
+              "s2c_LB:x14" : "Casualty [accepted non-proportional reinsurance]",
+              "s2c_LB:x67" : "Marine, aviation, transport [accepted non-proportional reinsurance]",
+              "s2c_LB:x106" : "Property [accepted non-proportional reinsurance]",
+              "s2c_LB:x45" : "Health SLT",
+              "s2c_LB:x53" : "Insurance with profit participation",
+              "s2c_LB:x119" : "Unit-linked or index-linked",
+              "s2c_LB:x93" : "Other life",
+              "s2c_LB:x10" : "Annuities stemming from non-life insurance contracts and relating to health insurance obligations",
+              "s2c_LB:x11" : "Annuities stemming from non-life insurance contracts and relating to insurance obligations other than health insurance obligations",
+              "s2c_LB:x160" : "Health reinsurance",
+              "s2c_LB:x161" : "Life reinsurance"
+            }
+          }
+        },
+        "Z0020" : {
+          "s2md:documentation" : {
+            "CellCode" : "{S.04.05.01.01, Z0020}",
+            "Label" : "Underwriting entity code",
+            "Key" : "s2c_dim:UE",
+            "Values" : "String"
+          }
+        }
+      }
+    }
+  }
+}

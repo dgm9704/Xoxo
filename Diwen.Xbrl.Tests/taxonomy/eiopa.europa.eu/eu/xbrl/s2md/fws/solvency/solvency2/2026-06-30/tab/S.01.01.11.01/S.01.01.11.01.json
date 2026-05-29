@@ -1,0 +1,113 @@
+{
+  "documentInfo" : {
+    "documentType" : "https://xbrl.org/2021/xbrl-csv",
+    "namespaces" : {
+      "s2md" : "http://eiopa.europa.eu/xbrl/s2md/",
+      "s2c_CN" : "http://eiopa.europa.eu/xbrl/s2c/dict/dom/CN",
+      "s2md_met" : "http://eiopa.europa.eu/xbrl/s2md/dict/met"
+    }
+  },
+  "tableTemplates" : {
+    "S.01.01.11.01" : {
+      "columns" : {
+        "C0010_R0010" : {
+          "dimensions" : {
+            "concept" : "s2md_met:ei1633"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.01.01.11.01, C0010, R0010}",
+            "Label" : "S.01.01.11.01 - Reporting status|S.01.02.11 - Basic Information",
+            "Values" : {
+              "s2c_CN:x1" : "Reported"
+            }
+          }
+        },
+        "C0010_R0253" : {
+          "dimensions" : {
+            "concept" : "s2md_met:ei2970"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.01.01.11.01, C0010, R0253}",
+            "Label" : "S.01.01.11.01 - Reporting status|S.14.04.11 - Liquidity risk for life business",
+            "Values" : {
+              "s2c_CN:x1" : "Reported",
+              "s2c_CN:x4" : "Not reported o/a no life and health SLT business",
+              "s2c_CN:x57" : "Not reported in Q1 and Q3",
+              "s2c_CN:x2" : "Not reported other reason"
+            }
+          }
+        },
+        "C0010_R0254" : {
+          "dimensions" : {
+            "concept" : "s2md_met:ei2971"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.01.01.11.01, C0010, R0254}",
+            "Label" : "S.01.01.11.01 - Reporting status|S.14.05.11 - Liquidity risk for non-life business",
+            "Values" : {
+              "s2c_CN:x1" : "Reported",
+              "s2c_CN:x6" : "Not reported o/a no non-life business",
+              "s2c_CN:x57" : "Not reported in Q1 and Q3",
+              "s2c_CN:x2" : "Not reported other reason"
+            }
+          }
+        },
+        "C0010_R0490" : {
+          "dimensions" : {
+            "concept" : "s2md_met:ei2171"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.01.01.11.01, C0010, R0490}",
+            "Label" : "S.01.01.11.01 - Reporting status|S.25.04.11 - Solvency Capital Requirement",
+            "Values" : {
+              "s2c_CN:x1" : "Reported",
+              "s2c_CN:x2" : "Not reported other reason"
+            }
+          }
+        },
+        "C0010_R0950" : {
+          "dimensions" : {
+            "concept" : "s2md_met:ei2976"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.01.01.11.01, C0010, R0950}",
+            "Label" : "S.01.01.11.01 - Reporting status|S.38.01.11 - Duration of technical provisions",
+            "Values" : {
+              "s2c_CN:x1" : "Reported",
+              "s2c_CN:x57" : "Not reported in Q1 and Q3",
+              "s2c_CN:x2" : "Not reported other reason"
+            }
+          }
+        },
+        "C0010_R0960" : {
+          "dimensions" : {
+            "concept" : "s2md_met:ei2174"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.01.01.11.01, C0010, R0960}",
+            "Label" : "S.01.01.11.01 - Reporting status|S.39.01.11 - Profit and Loss",
+            "Values" : {
+              "s2c_CN:x1" : "Reported",
+              "s2c_CN:x57" : "Not reported in Q1 and Q3",
+              "s2c_CN:x2" : "Not reported other reason"
+            }
+          }
+        },
+        "C0010_R0980" : {
+          "dimensions" : {
+            "concept" : "s2md_met:ei2513"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.01.01.11.01, C0010, R0980}",
+            "Label" : "S.01.01.11.01 - Reporting status|S.41.01.11 - Lapses",
+            "Values" : {
+              "s2c_CN:x1" : "Reported",
+              "s2c_CN:x17" : "Not reported as method 2 is used exclusively",
+              "s2c_CN:x2" : "Not reported other reason"
+            }
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,321 @@
+{
+  "documentInfo" : {
+    "documentType" : "https://xbrl.org/2021/xbrl-csv",
+    "namespaces" : {
+      "s2md" : "http://eiopa.europa.eu/xbrl/s2md/",
+      "s2c_AM" : "http://eiopa.europa.eu/xbrl/s2c/dict/dom/AM",
+      "s2c_CS" : "http://eiopa.europa.eu/xbrl/s2c/dict/dom/CS",
+      "s2c_RT" : "http://eiopa.europa.eu/xbrl/s2c/dict/dom/RT",
+      "s2c_SE" : "http://eiopa.europa.eu/xbrl/s2c/dict/dom/SE",
+      "s2c_VM" : "http://eiopa.europa.eu/xbrl/s2c/dict/dom/VM",
+      "s2c_dim" : "http://eiopa.europa.eu/xbrl/s2c/dict/dim",
+      "s2md_met" : "http://eiopa.europa.eu/xbrl/s2md/dict/met"
+    }
+  },
+  "tableTemplates" : {
+    "S.27.01.04.16" : {
+      "columns" : {
+        "C0990_R2900" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi648",
+            "s2c_dim:CM" : "s2c_CS:x1",
+            "s2c_dim:RT" : "s2c_RT:x22",
+            "s2c_dim:SO" : "s2c_SE:x44",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.27.01.04.16, C0990, R2900}",
+            "Label" : "S.27.01.04.16 - Exposure (individual or group)|Largest exposure 1|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0990_R2910" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi648",
+            "s2c_dim:CM" : "s2c_CS:x1",
+            "s2c_dim:RT" : "s2c_RT:x23",
+            "s2c_dim:SO" : "s2c_SE:x44",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.27.01.04.16, C0990, R2910}",
+            "Label" : "S.27.01.04.16 - Exposure (individual or group)|Largest exposure 2|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0990_R2920" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi648",
+            "s2c_dim:CM" : "s2c_CS:x1",
+            "s2c_dim:RT" : "s2c_RT:x153",
+            "s2c_dim:SO" : "s2c_SE:x44",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.27.01.04.16, C0990, R2920}",
+            "Label" : "S.27.01.04.16 - Exposure (individual or group)|Total|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C1000_R2900" : {
+          "dimensions" : {
+            "concept" : "s2md_met:pi699",
+            "s2c_dim:CM" : "s2c_CS:x1",
+            "s2c_dim:RT" : "s2c_RT:x22",
+            "s2c_dim:SO" : "s2c_SE:x44",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.27.01.04.16, C1000, R2900}",
+            "Label" : "S.27.01.04.16 - Proportion of damage caused by scenario|Largest exposure 1|Z Axis:",
+            "Values" : "Percent"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "decimalsPercentage"
+        },
+        "C1000_R2910" : {
+          "dimensions" : {
+            "concept" : "s2md_met:pi699",
+            "s2c_dim:CM" : "s2c_CS:x1",
+            "s2c_dim:RT" : "s2c_RT:x23",
+            "s2c_dim:SO" : "s2c_SE:x44",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.27.01.04.16, C1000, R2910}",
+            "Label" : "S.27.01.04.16 - Proportion of damage caused by scenario|Largest exposure 2|Z Axis:",
+            "Values" : "Percent"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "decimalsPercentage"
+        },
+        "C1000_R2920" : {
+          "dimensions" : {
+            "concept" : "s2md_met:pi699",
+            "s2c_dim:CM" : "s2c_CS:x1",
+            "s2c_dim:RT" : "s2c_RT:x153",
+            "s2c_dim:SO" : "s2c_SE:x44",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.27.01.04.16, C1000, R2920}",
+            "Label" : "S.27.01.04.16 - Proportion of damage caused by scenario|Total|Z Axis:",
+            "Values" : "Percent"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "decimalsPercentage"
+        },
+        "C1010_R2900" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi149",
+            "s2c_dim:CM" : "s2c_CS:x1",
+            "s2c_dim:EA" : "s2c_VM:x20",
+            "s2c_dim:RT" : "s2c_RT:x22",
+            "s2c_dim:SO" : "s2c_SE:x44",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.27.01.04.16, C1010, R2900}",
+            "Label" : "S.27.01.04.16 - Catastrophe Risk Charge Credit and Suretyship before risk mitigation - Large Credit Default|Largest exposure 1|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C1010_R2910" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi149",
+            "s2c_dim:CM" : "s2c_CS:x1",
+            "s2c_dim:EA" : "s2c_VM:x20",
+            "s2c_dim:RT" : "s2c_RT:x23",
+            "s2c_dim:SO" : "s2c_SE:x44",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.27.01.04.16, C1010, R2910}",
+            "Label" : "S.27.01.04.16 - Catastrophe Risk Charge Credit and Suretyship before risk mitigation - Large Credit Default|Largest exposure 2|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C1010_R2920" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi149",
+            "s2c_dim:CM" : "s2c_CS:x1",
+            "s2c_dim:EA" : "s2c_VM:x20",
+            "s2c_dim:RT" : "s2c_RT:x153",
+            "s2c_dim:SO" : "s2c_SE:x44",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.27.01.04.16, C1010, R2920}",
+            "Label" : "S.27.01.04.16 - Catastrophe Risk Charge Credit and Suretyship before risk mitigation - Large Credit Default|Total|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C1020_R2900" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi689",
+            "s2c_dim:CM" : "s2c_CS:x1",
+            "s2c_dim:EA" : "s2c_VM:x20",
+            "s2c_dim:RT" : "s2c_RT:x22",
+            "s2c_dim:SO" : "s2c_SE:x44",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.27.01.04.16, C1020, R2900}",
+            "Label" : "S.27.01.04.16 - Estimated Risk Mitigation|Largest exposure 1|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C1020_R2910" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi689",
+            "s2c_dim:CM" : "s2c_CS:x1",
+            "s2c_dim:EA" : "s2c_VM:x20",
+            "s2c_dim:RT" : "s2c_RT:x23",
+            "s2c_dim:SO" : "s2c_SE:x44",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.27.01.04.16, C1020, R2910}",
+            "Label" : "S.27.01.04.16 - Estimated Risk Mitigation|Largest exposure 2|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C1020_R2920" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi689",
+            "s2c_dim:CM" : "s2c_CS:x1",
+            "s2c_dim:EA" : "s2c_VM:x20",
+            "s2c_dim:RT" : "s2c_RT:x153",
+            "s2c_dim:SO" : "s2c_SE:x44",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.27.01.04.16, C1020, R2920}",
+            "Label" : "S.27.01.04.16 - Estimated Risk Mitigation|Total|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C1030_R2900" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi688",
+            "s2c_dim:CM" : "s2c_CS:x1",
+            "s2c_dim:EA" : "s2c_VM:x20",
+            "s2c_dim:RT" : "s2c_RT:x22",
+            "s2c_dim:SO" : "s2c_SE:x44",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.27.01.04.16, C1030, R2900}",
+            "Label" : "S.27.01.04.16 - Estimated Reinstatement Premiums|Largest exposure 1|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C1030_R2910" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi688",
+            "s2c_dim:CM" : "s2c_CS:x1",
+            "s2c_dim:EA" : "s2c_VM:x20",
+            "s2c_dim:RT" : "s2c_RT:x23",
+            "s2c_dim:SO" : "s2c_SE:x44",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.27.01.04.16, C1030, R2910}",
+            "Label" : "S.27.01.04.16 - Estimated Reinstatement Premiums|Largest exposure 2|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C1030_R2920" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi688",
+            "s2c_dim:CM" : "s2c_CS:x1",
+            "s2c_dim:EA" : "s2c_VM:x20",
+            "s2c_dim:RT" : "s2c_RT:x153",
+            "s2c_dim:SO" : "s2c_SE:x44",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.27.01.04.16, C1030, R2920}",
+            "Label" : "S.27.01.04.16 - Estimated Reinstatement Premiums|Total|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C1040_R2900" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi685",
+            "s2c_dim:CM" : "s2c_CS:x1",
+            "s2c_dim:EA" : "s2c_VM:x20",
+            "s2c_dim:RT" : "s2c_RT:x22",
+            "s2c_dim:SO" : "s2c_SE:x44",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.27.01.04.16, C1040, R2900}",
+            "Label" : "S.27.01.04.16 - Catastrophe Risk Charge Credit and Suretyship after risk mitigation - Large Credit Default|Largest exposure 1|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C1040_R2910" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi685",
+            "s2c_dim:CM" : "s2c_CS:x1",
+            "s2c_dim:EA" : "s2c_VM:x20",
+            "s2c_dim:RT" : "s2c_RT:x23",
+            "s2c_dim:SO" : "s2c_SE:x44",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.27.01.04.16, C1040, R2910}",
+            "Label" : "S.27.01.04.16 - Catastrophe Risk Charge Credit and Suretyship after risk mitigation - Large Credit Default|Largest exposure 2|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C1040_R2920" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi685",
+            "s2c_dim:CM" : "s2c_CS:x1",
+            "s2c_dim:EA" : "s2c_VM:x20",
+            "s2c_dim:RT" : "s2c_RT:x153",
+            "s2c_dim:SO" : "s2c_SE:x44",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.27.01.04.16, C1040, R2920}",
+            "Label" : "S.27.01.04.16 - Catastrophe Risk Charge Credit and Suretyship after risk mitigation - Large Credit Default|Total|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        }
+      }
+    }
+  }
+}

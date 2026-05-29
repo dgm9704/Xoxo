@@ -1,0 +1,93 @@
+{
+  "documentInfo" : {
+    "documentType" : "https://xbrl.org/2021/xbrl-csv",
+    "namespaces" : {
+      "s2md" : "http://eiopa.europa.eu/xbrl/s2md/",
+      "s2c_AM" : "http://eiopa.europa.eu/xbrl/s2c/dict/dom/AM",
+      "s2c_dim" : "http://eiopa.europa.eu/xbrl/s2c/dict/dim",
+      "s2md_met" : "http://eiopa.europa.eu/xbrl/s2md/dict/met"
+    }
+  },
+  "tableTemplates" : {
+    "S.24.01.01.06" : {
+      "columns" : {
+        "C0300" : {
+          "dimensions" : {
+            "concept" : "s2md_met:si2475",
+            "s2c_dim:UI" : "$C0310",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.24.01.01.06, C0300}",
+            "Label" : "S.24.01.01.06 - Name of related undertaking|Z Axis:",
+            "Values" : "String"
+          }
+        },
+        "C0310" : {
+          "s2md:documentation" : {
+            "CellCode" : "{S.24.01.01.06, C0310}",
+            "Label" : "Asset ID Code and Type of code",
+            "Key" : "s2c_dim:UI",
+            "Values" : "String"
+          }
+        },
+        "C0330" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi2321",
+            "s2c_dim:UI" : "$C0310",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.24.01.01.06, C0330}",
+            "Label" : "S.24.01.01.06 - Total|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetaryOpenTable"
+        },
+        "C0340" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi2322",
+            "s2c_dim:UI" : "$C0310",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.24.01.01.06, C0340}",
+            "Label" : "S.24.01.01.06 - Type 1 Equity|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetaryOpenTable"
+        },
+        "C0350" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi2323",
+            "s2c_dim:UI" : "$C0310",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.24.01.01.06, C0350}",
+            "Label" : "S.24.01.01.06 - Type 2 Equity|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetaryOpenTable"
+        },
+        "C0360" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi2324",
+            "s2c_dim:UI" : "$C0310",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.24.01.01.06, C0360}",
+            "Label" : "S.24.01.01.06 - Subordinated liabilities|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetaryOpenTable"
+        }
+      }
+    }
+  }
+}

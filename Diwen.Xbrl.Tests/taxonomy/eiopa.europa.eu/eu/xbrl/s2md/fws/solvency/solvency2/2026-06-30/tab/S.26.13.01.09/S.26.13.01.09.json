@@ -1,0 +1,1961 @@
+{
+  "documentInfo" : {
+    "documentType" : "https://xbrl.org/2021/xbrl-csv",
+    "namespaces" : {
+      "s2md" : "http://eiopa.europa.eu/xbrl/s2md/",
+      "s2c_AM" : "http://eiopa.europa.eu/xbrl/s2c/dict/dom/AM",
+      "s2c_AP" : "http://eiopa.europa.eu/xbrl/s2c/dict/dom/AP",
+      "s2c_PI" : "http://eiopa.europa.eu/xbrl/s2c/dict/dom/PI",
+      "s2c_RT" : "http://eiopa.europa.eu/xbrl/s2c/dict/dom/RT",
+      "s2c_TI" : "http://eiopa.europa.eu/xbrl/s2c/dict/dom/TI",
+      "s2c_VM" : "http://eiopa.europa.eu/xbrl/s2c/dict/dom/VM",
+      "s2c_dim" : "http://eiopa.europa.eu/xbrl/s2c/dict/dim",
+      "s2md_met" : "http://eiopa.europa.eu/xbrl/s2md/dict/met"
+    }
+  },
+  "tableTemplates" : {
+    "S.26.13.01.09" : {
+      "columns" : {
+        "C0130_R1210" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi92",
+            "s2c_dim:DV" : "s2c_RT:x11",
+            "s2c_dim:EA" : "s2c_VM:x24",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RT" : "$Z0020",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.13.01.09, C0130, R1210}",
+            "Label" : "S.26.13.01.09 - Total undiversified|Solvency Capital Requirement|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0130_R1220" : {
+          "dimensions" : {
+            "s2c_dim:DV" : "s2c_RT:x11",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RT" : "$Z0020",
+            "s2c_dim:TA" : "s2c_AM:x12"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.13.01.09, C0130, R1220}",
+            "Label" : "S.26.13.01.09 - Total undiversified|Simulated (output) mean|Z Axis:",
+            "Values" : ""
+          }
+        },
+        "C0130_R1230" : {
+          "dimensions" : {
+            "s2c_dim:DV" : "s2c_RT:x11",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RT" : "$Z0020",
+            "s2c_dim:TA" : "s2c_AM:x138"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.13.01.09, C0130, R1230}",
+            "Label" : "S.26.13.01.09 - Total undiversified|Simulated (output) standard deviation|Z Axis:",
+            "Values" : ""
+          }
+        },
+        "C0130_R1240" : {
+          "dimensions" : {
+            "s2c_dim:DV" : "s2c_RT:x11",
+            "s2c_dim:PT" : "s2c_PI:x38",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RT" : "$Z0020"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.13.01.09, C0130, R1240}",
+            "Label" : "S.26.13.01.09 - Total undiversified|0,001|Z Axis:",
+            "Values" : ""
+          }
+        },
+        "C0130_R1250" : {
+          "dimensions" : {
+            "s2c_dim:DV" : "s2c_RT:x11",
+            "s2c_dim:PT" : "s2c_PI:x19",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RT" : "$Z0020"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.13.01.09, C0130, R1250}",
+            "Label" : "S.26.13.01.09 - Total undiversified|0,005|Z Axis:",
+            "Values" : ""
+          }
+        },
+        "C0130_R1260" : {
+          "dimensions" : {
+            "s2c_dim:DV" : "s2c_RT:x11",
+            "s2c_dim:PT" : "s2c_PI:x18",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RT" : "$Z0020"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.13.01.09, C0130, R1260}",
+            "Label" : "S.26.13.01.09 - Total undiversified|0,01|Z Axis:",
+            "Values" : ""
+          }
+        },
+        "C0130_R1270" : {
+          "dimensions" : {
+            "s2c_dim:DV" : "s2c_RT:x11",
+            "s2c_dim:PT" : "s2c_PI:x35",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RT" : "$Z0020"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.13.01.09, C0130, R1270}",
+            "Label" : "S.26.13.01.09 - Total undiversified|0,05|Z Axis:",
+            "Values" : ""
+          }
+        },
+        "C0130_R1280" : {
+          "dimensions" : {
+            "s2c_dim:DV" : "s2c_RT:x11",
+            "s2c_dim:PT" : "s2c_PI:x16",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RT" : "$Z0020"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.13.01.09, C0130, R1280}",
+            "Label" : "S.26.13.01.09 - Total undiversified|0,1|Z Axis:",
+            "Values" : ""
+          }
+        },
+        "C0130_R1290" : {
+          "dimensions" : {
+            "s2c_dim:DV" : "s2c_RT:x11",
+            "s2c_dim:PT" : "s2c_PI:x52",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RT" : "$Z0020"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.13.01.09, C0130, R1290}",
+            "Label" : "S.26.13.01.09 - Total undiversified|0,2|Z Axis:",
+            "Values" : ""
+          }
+        },
+        "C0130_R1300" : {
+          "dimensions" : {
+            "s2c_dim:DV" : "s2c_RT:x11",
+            "s2c_dim:PT" : "s2c_PI:x15",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RT" : "$Z0020"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.13.01.09, C0130, R1300}",
+            "Label" : "S.26.13.01.09 - Total undiversified|0,25|Z Axis:",
+            "Values" : ""
+          }
+        },
+        "C0130_R1310" : {
+          "dimensions" : {
+            "s2c_dim:DV" : "s2c_RT:x11",
+            "s2c_dim:PT" : "s2c_PI:x17",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RT" : "$Z0020"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.13.01.09, C0130, R1310}",
+            "Label" : "S.26.13.01.09 - Total undiversified|0,3|Z Axis:",
+            "Values" : ""
+          }
+        },
+        "C0130_R1320" : {
+          "dimensions" : {
+            "s2c_dim:DV" : "s2c_RT:x11",
+            "s2c_dim:PT" : "s2c_PI:x49",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RT" : "$Z0020"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.13.01.09, C0130, R1320}",
+            "Label" : "S.26.13.01.09 - Total undiversified|0,4|Z Axis:",
+            "Values" : ""
+          }
+        },
+        "C0130_R1330" : {
+          "dimensions" : {
+            "s2c_dim:DV" : "s2c_RT:x11",
+            "s2c_dim:PT" : "s2c_PI:x32",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RT" : "$Z0020"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.13.01.09, C0130, R1330}",
+            "Label" : "S.26.13.01.09 - Total undiversified|0,5|Z Axis:",
+            "Values" : ""
+          }
+        },
+        "C0130_R1340" : {
+          "dimensions" : {
+            "s2c_dim:DV" : "s2c_RT:x11",
+            "s2c_dim:PT" : "s2c_PI:x45",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RT" : "$Z0020"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.13.01.09, C0130, R1340}",
+            "Label" : "S.26.13.01.09 - Total undiversified|0,6|Z Axis:",
+            "Values" : ""
+          }
+        },
+        "C0130_R1350" : {
+          "dimensions" : {
+            "s2c_dim:DV" : "s2c_RT:x11",
+            "s2c_dim:PT" : "s2c_PI:x47",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RT" : "$Z0020"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.13.01.09, C0130, R1350}",
+            "Label" : "S.26.13.01.09 - Total undiversified|0,7|Z Axis:",
+            "Values" : ""
+          }
+        },
+        "C0130_R1360" : {
+          "dimensions" : {
+            "s2c_dim:DV" : "s2c_RT:x11",
+            "s2c_dim:PT" : "s2c_PI:x31",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RT" : "$Z0020"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.13.01.09, C0130, R1360}",
+            "Label" : "S.26.13.01.09 - Total undiversified|0,75|Z Axis:",
+            "Values" : ""
+          }
+        },
+        "C0130_R1370" : {
+          "dimensions" : {
+            "s2c_dim:DV" : "s2c_RT:x11",
+            "s2c_dim:PT" : "s2c_PI:x30",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RT" : "$Z0020"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.13.01.09, C0130, R1370}",
+            "Label" : "S.26.13.01.09 - Total undiversified|0,8|Z Axis:",
+            "Values" : ""
+          }
+        },
+        "C0130_R1380" : {
+          "dimensions" : {
+            "s2c_dim:DV" : "s2c_RT:x11",
+            "s2c_dim:PT" : "s2c_PI:x28",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RT" : "$Z0020"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.13.01.09, C0130, R1380}",
+            "Label" : "S.26.13.01.09 - Total undiversified|0,9|Z Axis:",
+            "Values" : ""
+          }
+        },
+        "C0130_R1390" : {
+          "dimensions" : {
+            "s2c_dim:DV" : "s2c_RT:x11",
+            "s2c_dim:PT" : "s2c_PI:x39",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RT" : "$Z0020"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.13.01.09, C0130, R1390}",
+            "Label" : "S.26.13.01.09 - Total undiversified|0,975|Z Axis:",
+            "Values" : ""
+          }
+        },
+        "C0130_R1400" : {
+          "dimensions" : {
+            "s2c_dim:DV" : "s2c_RT:x11",
+            "s2c_dim:PT" : "s2c_PI:x40",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RT" : "$Z0020"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.13.01.09, C0130, R1400}",
+            "Label" : "S.26.13.01.09 - Total undiversified|0,98|Z Axis:",
+            "Values" : ""
+          }
+        },
+        "C0130_R1410" : {
+          "dimensions" : {
+            "s2c_dim:DV" : "s2c_RT:x11",
+            "s2c_dim:PT" : "s2c_PI:x41",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RT" : "$Z0020"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.13.01.09, C0130, R1410}",
+            "Label" : "S.26.13.01.09 - Total undiversified|0,985|Z Axis:",
+            "Values" : ""
+          }
+        },
+        "C0130_R1420" : {
+          "dimensions" : {
+            "s2c_dim:DV" : "s2c_RT:x11",
+            "s2c_dim:PT" : "s2c_PI:x42",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RT" : "$Z0020"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.13.01.09, C0130, R1420}",
+            "Label" : "S.26.13.01.09 - Total undiversified|0,99|Z Axis:",
+            "Values" : ""
+          }
+        },
+        "C0130_R1430" : {
+          "dimensions" : {
+            "s2c_dim:DV" : "s2c_RT:x11",
+            "s2c_dim:PT" : "s2c_PI:x24",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RT" : "$Z0020"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.13.01.09, C0130, R1430}",
+            "Label" : "S.26.13.01.09 - Total undiversified|0,995|Z Axis:",
+            "Values" : ""
+          }
+        },
+        "C0130_R1440" : {
+          "dimensions" : {
+            "s2c_dim:DV" : "s2c_RT:x11",
+            "s2c_dim:PT" : "s2c_PI:x43",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RT" : "$Z0020"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.13.01.09, C0130, R1440}",
+            "Label" : "S.26.13.01.09 - Total undiversified|0,997|Z Axis:",
+            "Values" : ""
+          }
+        },
+        "C0130_R1450" : {
+          "dimensions" : {
+            "s2c_dim:DV" : "s2c_RT:x11",
+            "s2c_dim:PT" : "s2c_PI:x20",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RT" : "$Z0020"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.13.01.09, C0130, R1450}",
+            "Label" : "S.26.13.01.09 - Total undiversified|0,999|Z Axis:",
+            "Values" : ""
+          }
+        },
+        "C0130_R1460" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi2630",
+            "s2c_dim:DV" : "s2c_RT:x11",
+            "s2c_dim:EA" : "s2c_VM:x24",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RT" : "$Z0020",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.13.01.09, C0130, R1460}",
+            "Label" : "S.26.13.01.09 - Total undiversified|Solvency Capital Requirement|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0130_R1470" : {
+          "dimensions" : {
+            "s2c_dim:DV" : "s2c_RT:x11",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RT" : "$Z0020",
+            "s2c_dim:TA" : "s2c_AM:x12"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.13.01.09, C0130, R1470}",
+            "Label" : "S.26.13.01.09 - Total undiversified|Simulated (output) mean|Z Axis:",
+            "Values" : ""
+          }
+        },
+        "C0130_R1480" : {
+          "dimensions" : {
+            "s2c_dim:DV" : "s2c_RT:x11",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RT" : "$Z0020",
+            "s2c_dim:TA" : "s2c_AM:x138"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.13.01.09, C0130, R1480}",
+            "Label" : "S.26.13.01.09 - Total undiversified|Simulated (output) standard deviation|Z Axis:",
+            "Values" : ""
+          }
+        },
+        "C0130_R1490" : {
+          "dimensions" : {
+            "s2c_dim:DV" : "s2c_RT:x11",
+            "s2c_dim:PT" : "s2c_PI:x38",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RT" : "$Z0020"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.13.01.09, C0130, R1490}",
+            "Label" : "S.26.13.01.09 - Total undiversified|0,001|Z Axis:",
+            "Values" : ""
+          }
+        },
+        "C0130_R1500" : {
+          "dimensions" : {
+            "s2c_dim:DV" : "s2c_RT:x11",
+            "s2c_dim:PT" : "s2c_PI:x19",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RT" : "$Z0020"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.13.01.09, C0130, R1500}",
+            "Label" : "S.26.13.01.09 - Total undiversified|0,005|Z Axis:",
+            "Values" : ""
+          }
+        },
+        "C0130_R1510" : {
+          "dimensions" : {
+            "s2c_dim:DV" : "s2c_RT:x11",
+            "s2c_dim:PT" : "s2c_PI:x18",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RT" : "$Z0020"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.13.01.09, C0130, R1510}",
+            "Label" : "S.26.13.01.09 - Total undiversified|0,01|Z Axis:",
+            "Values" : ""
+          }
+        },
+        "C0130_R1520" : {
+          "dimensions" : {
+            "s2c_dim:DV" : "s2c_RT:x11",
+            "s2c_dim:PT" : "s2c_PI:x35",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RT" : "$Z0020"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.13.01.09, C0130, R1520}",
+            "Label" : "S.26.13.01.09 - Total undiversified|0,05|Z Axis:",
+            "Values" : ""
+          }
+        },
+        "C0130_R1530" : {
+          "dimensions" : {
+            "s2c_dim:DV" : "s2c_RT:x11",
+            "s2c_dim:PT" : "s2c_PI:x16",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RT" : "$Z0020"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.13.01.09, C0130, R1530}",
+            "Label" : "S.26.13.01.09 - Total undiversified|0,1|Z Axis:",
+            "Values" : ""
+          }
+        },
+        "C0130_R1540" : {
+          "dimensions" : {
+            "s2c_dim:DV" : "s2c_RT:x11",
+            "s2c_dim:PT" : "s2c_PI:x52",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RT" : "$Z0020"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.13.01.09, C0130, R1540}",
+            "Label" : "S.26.13.01.09 - Total undiversified|0,2|Z Axis:",
+            "Values" : ""
+          }
+        },
+        "C0130_R1550" : {
+          "dimensions" : {
+            "s2c_dim:DV" : "s2c_RT:x11",
+            "s2c_dim:PT" : "s2c_PI:x15",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RT" : "$Z0020"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.13.01.09, C0130, R1550}",
+            "Label" : "S.26.13.01.09 - Total undiversified|0,25|Z Axis:",
+            "Values" : ""
+          }
+        },
+        "C0130_R1560" : {
+          "dimensions" : {
+            "s2c_dim:DV" : "s2c_RT:x11",
+            "s2c_dim:PT" : "s2c_PI:x17",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RT" : "$Z0020"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.13.01.09, C0130, R1560}",
+            "Label" : "S.26.13.01.09 - Total undiversified|0,3|Z Axis:",
+            "Values" : ""
+          }
+        },
+        "C0130_R1570" : {
+          "dimensions" : {
+            "s2c_dim:DV" : "s2c_RT:x11",
+            "s2c_dim:PT" : "s2c_PI:x49",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RT" : "$Z0020"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.13.01.09, C0130, R1570}",
+            "Label" : "S.26.13.01.09 - Total undiversified|0,4|Z Axis:",
+            "Values" : ""
+          }
+        },
+        "C0130_R1580" : {
+          "dimensions" : {
+            "s2c_dim:DV" : "s2c_RT:x11",
+            "s2c_dim:PT" : "s2c_PI:x32",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RT" : "$Z0020"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.13.01.09, C0130, R1580}",
+            "Label" : "S.26.13.01.09 - Total undiversified|0,5|Z Axis:",
+            "Values" : ""
+          }
+        },
+        "C0130_R1590" : {
+          "dimensions" : {
+            "s2c_dim:DV" : "s2c_RT:x11",
+            "s2c_dim:PT" : "s2c_PI:x45",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RT" : "$Z0020"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.13.01.09, C0130, R1590}",
+            "Label" : "S.26.13.01.09 - Total undiversified|0,6|Z Axis:",
+            "Values" : ""
+          }
+        },
+        "C0130_R1600" : {
+          "dimensions" : {
+            "s2c_dim:DV" : "s2c_RT:x11",
+            "s2c_dim:PT" : "s2c_PI:x47",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RT" : "$Z0020"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.13.01.09, C0130, R1600}",
+            "Label" : "S.26.13.01.09 - Total undiversified|0,7|Z Axis:",
+            "Values" : ""
+          }
+        },
+        "C0130_R1610" : {
+          "dimensions" : {
+            "s2c_dim:DV" : "s2c_RT:x11",
+            "s2c_dim:PT" : "s2c_PI:x31",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RT" : "$Z0020"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.13.01.09, C0130, R1610}",
+            "Label" : "S.26.13.01.09 - Total undiversified|0,75|Z Axis:",
+            "Values" : ""
+          }
+        },
+        "C0130_R1620" : {
+          "dimensions" : {
+            "s2c_dim:DV" : "s2c_RT:x11",
+            "s2c_dim:PT" : "s2c_PI:x30",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RT" : "$Z0020"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.13.01.09, C0130, R1620}",
+            "Label" : "S.26.13.01.09 - Total undiversified|0,8|Z Axis:",
+            "Values" : ""
+          }
+        },
+        "C0130_R1630" : {
+          "dimensions" : {
+            "s2c_dim:DV" : "s2c_RT:x11",
+            "s2c_dim:PT" : "s2c_PI:x28",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RT" : "$Z0020"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.13.01.09, C0130, R1630}",
+            "Label" : "S.26.13.01.09 - Total undiversified|0,9|Z Axis:",
+            "Values" : ""
+          }
+        },
+        "C0130_R1640" : {
+          "dimensions" : {
+            "s2c_dim:DV" : "s2c_RT:x11",
+            "s2c_dim:PT" : "s2c_PI:x39",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RT" : "$Z0020"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.13.01.09, C0130, R1640}",
+            "Label" : "S.26.13.01.09 - Total undiversified|0,975|Z Axis:",
+            "Values" : ""
+          }
+        },
+        "C0130_R1650" : {
+          "dimensions" : {
+            "s2c_dim:DV" : "s2c_RT:x11",
+            "s2c_dim:PT" : "s2c_PI:x40",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RT" : "$Z0020"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.13.01.09, C0130, R1650}",
+            "Label" : "S.26.13.01.09 - Total undiversified|0,98|Z Axis:",
+            "Values" : ""
+          }
+        },
+        "C0130_R1660" : {
+          "dimensions" : {
+            "s2c_dim:DV" : "s2c_RT:x11",
+            "s2c_dim:PT" : "s2c_PI:x41",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RT" : "$Z0020"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.13.01.09, C0130, R1660}",
+            "Label" : "S.26.13.01.09 - Total undiversified|0,985|Z Axis:",
+            "Values" : ""
+          }
+        },
+        "C0130_R1670" : {
+          "dimensions" : {
+            "s2c_dim:DV" : "s2c_RT:x11",
+            "s2c_dim:PT" : "s2c_PI:x42",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RT" : "$Z0020"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.13.01.09, C0130, R1670}",
+            "Label" : "S.26.13.01.09 - Total undiversified|0,99|Z Axis:",
+            "Values" : ""
+          }
+        },
+        "C0130_R1680" : {
+          "dimensions" : {
+            "s2c_dim:DV" : "s2c_RT:x11",
+            "s2c_dim:PT" : "s2c_PI:x24",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RT" : "$Z0020"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.13.01.09, C0130, R1680}",
+            "Label" : "S.26.13.01.09 - Total undiversified|0,995|Z Axis:",
+            "Values" : ""
+          }
+        },
+        "C0130_R1690" : {
+          "dimensions" : {
+            "s2c_dim:DV" : "s2c_RT:x11",
+            "s2c_dim:PT" : "s2c_PI:x43",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RT" : "$Z0020"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.13.01.09, C0130, R1690}",
+            "Label" : "S.26.13.01.09 - Total undiversified|0,997|Z Axis:",
+            "Values" : ""
+          }
+        },
+        "C0130_R1700" : {
+          "dimensions" : {
+            "s2c_dim:DV" : "s2c_RT:x11",
+            "s2c_dim:PT" : "s2c_PI:x20",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RT" : "$Z0020"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.13.01.09, C0130, R1700}",
+            "Label" : "S.26.13.01.09 - Total undiversified|0,999|Z Axis:",
+            "Values" : ""
+          }
+        },
+        "C0140_R1210" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi92",
+            "s2c_dim:DV" : "s2c_RT:x29",
+            "s2c_dim:EA" : "s2c_VM:x24",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RT" : "$Z0020",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.13.01.09, C0140, R1210}",
+            "Label" : "S.26.13.01.09 - Diversification|Solvency Capital Requirement|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0140_R1220" : {
+          "dimensions" : {
+            "s2c_dim:DV" : "s2c_RT:x29",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RT" : "$Z0020",
+            "s2c_dim:TA" : "s2c_AM:x12"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.13.01.09, C0140, R1220}",
+            "Label" : "S.26.13.01.09 - Diversification|Simulated (output) mean|Z Axis:",
+            "Values" : ""
+          }
+        },
+        "C0140_R1230" : {
+          "dimensions" : {
+            "s2c_dim:DV" : "s2c_RT:x29",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RT" : "$Z0020",
+            "s2c_dim:TA" : "s2c_AM:x138"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.13.01.09, C0140, R1230}",
+            "Label" : "S.26.13.01.09 - Diversification|Simulated (output) standard deviation|Z Axis:",
+            "Values" : ""
+          }
+        },
+        "C0140_R1240" : {
+          "dimensions" : {
+            "s2c_dim:DV" : "s2c_RT:x29",
+            "s2c_dim:PT" : "s2c_PI:x38",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RT" : "$Z0020"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.13.01.09, C0140, R1240}",
+            "Label" : "S.26.13.01.09 - Diversification|0,001|Z Axis:",
+            "Values" : ""
+          }
+        },
+        "C0140_R1250" : {
+          "dimensions" : {
+            "s2c_dim:DV" : "s2c_RT:x29",
+            "s2c_dim:PT" : "s2c_PI:x19",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RT" : "$Z0020"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.13.01.09, C0140, R1250}",
+            "Label" : "S.26.13.01.09 - Diversification|0,005|Z Axis:",
+            "Values" : ""
+          }
+        },
+        "C0140_R1260" : {
+          "dimensions" : {
+            "s2c_dim:DV" : "s2c_RT:x29",
+            "s2c_dim:PT" : "s2c_PI:x18",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RT" : "$Z0020"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.13.01.09, C0140, R1260}",
+            "Label" : "S.26.13.01.09 - Diversification|0,01|Z Axis:",
+            "Values" : ""
+          }
+        },
+        "C0140_R1270" : {
+          "dimensions" : {
+            "s2c_dim:DV" : "s2c_RT:x29",
+            "s2c_dim:PT" : "s2c_PI:x35",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RT" : "$Z0020"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.13.01.09, C0140, R1270}",
+            "Label" : "S.26.13.01.09 - Diversification|0,05|Z Axis:",
+            "Values" : ""
+          }
+        },
+        "C0140_R1280" : {
+          "dimensions" : {
+            "s2c_dim:DV" : "s2c_RT:x29",
+            "s2c_dim:PT" : "s2c_PI:x16",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RT" : "$Z0020"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.13.01.09, C0140, R1280}",
+            "Label" : "S.26.13.01.09 - Diversification|0,1|Z Axis:",
+            "Values" : ""
+          }
+        },
+        "C0140_R1290" : {
+          "dimensions" : {
+            "s2c_dim:DV" : "s2c_RT:x29",
+            "s2c_dim:PT" : "s2c_PI:x52",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RT" : "$Z0020"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.13.01.09, C0140, R1290}",
+            "Label" : "S.26.13.01.09 - Diversification|0,2|Z Axis:",
+            "Values" : ""
+          }
+        },
+        "C0140_R1300" : {
+          "dimensions" : {
+            "s2c_dim:DV" : "s2c_RT:x29",
+            "s2c_dim:PT" : "s2c_PI:x15",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RT" : "$Z0020"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.13.01.09, C0140, R1300}",
+            "Label" : "S.26.13.01.09 - Diversification|0,25|Z Axis:",
+            "Values" : ""
+          }
+        },
+        "C0140_R1310" : {
+          "dimensions" : {
+            "s2c_dim:DV" : "s2c_RT:x29",
+            "s2c_dim:PT" : "s2c_PI:x17",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RT" : "$Z0020"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.13.01.09, C0140, R1310}",
+            "Label" : "S.26.13.01.09 - Diversification|0,3|Z Axis:",
+            "Values" : ""
+          }
+        },
+        "C0140_R1320" : {
+          "dimensions" : {
+            "s2c_dim:DV" : "s2c_RT:x29",
+            "s2c_dim:PT" : "s2c_PI:x49",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RT" : "$Z0020"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.13.01.09, C0140, R1320}",
+            "Label" : "S.26.13.01.09 - Diversification|0,4|Z Axis:",
+            "Values" : ""
+          }
+        },
+        "C0140_R1330" : {
+          "dimensions" : {
+            "s2c_dim:DV" : "s2c_RT:x29",
+            "s2c_dim:PT" : "s2c_PI:x32",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RT" : "$Z0020"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.13.01.09, C0140, R1330}",
+            "Label" : "S.26.13.01.09 - Diversification|0,5|Z Axis:",
+            "Values" : ""
+          }
+        },
+        "C0140_R1340" : {
+          "dimensions" : {
+            "s2c_dim:DV" : "s2c_RT:x29",
+            "s2c_dim:PT" : "s2c_PI:x45",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RT" : "$Z0020"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.13.01.09, C0140, R1340}",
+            "Label" : "S.26.13.01.09 - Diversification|0,6|Z Axis:",
+            "Values" : ""
+          }
+        },
+        "C0140_R1350" : {
+          "dimensions" : {
+            "s2c_dim:DV" : "s2c_RT:x29",
+            "s2c_dim:PT" : "s2c_PI:x47",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RT" : "$Z0020"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.13.01.09, C0140, R1350}",
+            "Label" : "S.26.13.01.09 - Diversification|0,7|Z Axis:",
+            "Values" : ""
+          }
+        },
+        "C0140_R1360" : {
+          "dimensions" : {
+            "s2c_dim:DV" : "s2c_RT:x29",
+            "s2c_dim:PT" : "s2c_PI:x31",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RT" : "$Z0020"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.13.01.09, C0140, R1360}",
+            "Label" : "S.26.13.01.09 - Diversification|0,75|Z Axis:",
+            "Values" : ""
+          }
+        },
+        "C0140_R1370" : {
+          "dimensions" : {
+            "s2c_dim:DV" : "s2c_RT:x29",
+            "s2c_dim:PT" : "s2c_PI:x30",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RT" : "$Z0020"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.13.01.09, C0140, R1370}",
+            "Label" : "S.26.13.01.09 - Diversification|0,8|Z Axis:",
+            "Values" : ""
+          }
+        },
+        "C0140_R1380" : {
+          "dimensions" : {
+            "s2c_dim:DV" : "s2c_RT:x29",
+            "s2c_dim:PT" : "s2c_PI:x28",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RT" : "$Z0020"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.13.01.09, C0140, R1380}",
+            "Label" : "S.26.13.01.09 - Diversification|0,9|Z Axis:",
+            "Values" : ""
+          }
+        },
+        "C0140_R1390" : {
+          "dimensions" : {
+            "s2c_dim:DV" : "s2c_RT:x29",
+            "s2c_dim:PT" : "s2c_PI:x39",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RT" : "$Z0020"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.13.01.09, C0140, R1390}",
+            "Label" : "S.26.13.01.09 - Diversification|0,975|Z Axis:",
+            "Values" : ""
+          }
+        },
+        "C0140_R1400" : {
+          "dimensions" : {
+            "s2c_dim:DV" : "s2c_RT:x29",
+            "s2c_dim:PT" : "s2c_PI:x40",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RT" : "$Z0020"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.13.01.09, C0140, R1400}",
+            "Label" : "S.26.13.01.09 - Diversification|0,98|Z Axis:",
+            "Values" : ""
+          }
+        },
+        "C0140_R1410" : {
+          "dimensions" : {
+            "s2c_dim:DV" : "s2c_RT:x29",
+            "s2c_dim:PT" : "s2c_PI:x41",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RT" : "$Z0020"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.13.01.09, C0140, R1410}",
+            "Label" : "S.26.13.01.09 - Diversification|0,985|Z Axis:",
+            "Values" : ""
+          }
+        },
+        "C0140_R1420" : {
+          "dimensions" : {
+            "s2c_dim:DV" : "s2c_RT:x29",
+            "s2c_dim:PT" : "s2c_PI:x42",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RT" : "$Z0020"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.13.01.09, C0140, R1420}",
+            "Label" : "S.26.13.01.09 - Diversification|0,99|Z Axis:",
+            "Values" : ""
+          }
+        },
+        "C0140_R1430" : {
+          "dimensions" : {
+            "s2c_dim:DV" : "s2c_RT:x29",
+            "s2c_dim:PT" : "s2c_PI:x24",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RT" : "$Z0020"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.13.01.09, C0140, R1430}",
+            "Label" : "S.26.13.01.09 - Diversification|0,995|Z Axis:",
+            "Values" : ""
+          }
+        },
+        "C0140_R1440" : {
+          "dimensions" : {
+            "s2c_dim:DV" : "s2c_RT:x29",
+            "s2c_dim:PT" : "s2c_PI:x43",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RT" : "$Z0020"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.13.01.09, C0140, R1440}",
+            "Label" : "S.26.13.01.09 - Diversification|0,997|Z Axis:",
+            "Values" : ""
+          }
+        },
+        "C0140_R1450" : {
+          "dimensions" : {
+            "s2c_dim:DV" : "s2c_RT:x29",
+            "s2c_dim:PT" : "s2c_PI:x20",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RT" : "$Z0020"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.13.01.09, C0140, R1450}",
+            "Label" : "S.26.13.01.09 - Diversification|0,999|Z Axis:",
+            "Values" : ""
+          }
+        },
+        "C0140_R1460" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi2630",
+            "s2c_dim:DV" : "s2c_RT:x29",
+            "s2c_dim:EA" : "s2c_VM:x24",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RT" : "$Z0020",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.13.01.09, C0140, R1460}",
+            "Label" : "S.26.13.01.09 - Diversification|Solvency Capital Requirement|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0140_R1470" : {
+          "dimensions" : {
+            "s2c_dim:DV" : "s2c_RT:x29",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RT" : "$Z0020",
+            "s2c_dim:TA" : "s2c_AM:x12"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.13.01.09, C0140, R1470}",
+            "Label" : "S.26.13.01.09 - Diversification|Simulated (output) mean|Z Axis:",
+            "Values" : ""
+          }
+        },
+        "C0140_R1480" : {
+          "dimensions" : {
+            "s2c_dim:DV" : "s2c_RT:x29",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RT" : "$Z0020",
+            "s2c_dim:TA" : "s2c_AM:x138"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.13.01.09, C0140, R1480}",
+            "Label" : "S.26.13.01.09 - Diversification|Simulated (output) standard deviation|Z Axis:",
+            "Values" : ""
+          }
+        },
+        "C0140_R1490" : {
+          "dimensions" : {
+            "s2c_dim:DV" : "s2c_RT:x29",
+            "s2c_dim:PT" : "s2c_PI:x38",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RT" : "$Z0020"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.13.01.09, C0140, R1490}",
+            "Label" : "S.26.13.01.09 - Diversification|0,001|Z Axis:",
+            "Values" : ""
+          }
+        },
+        "C0140_R1500" : {
+          "dimensions" : {
+            "s2c_dim:DV" : "s2c_RT:x29",
+            "s2c_dim:PT" : "s2c_PI:x19",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RT" : "$Z0020"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.13.01.09, C0140, R1500}",
+            "Label" : "S.26.13.01.09 - Diversification|0,005|Z Axis:",
+            "Values" : ""
+          }
+        },
+        "C0140_R1510" : {
+          "dimensions" : {
+            "s2c_dim:DV" : "s2c_RT:x29",
+            "s2c_dim:PT" : "s2c_PI:x18",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RT" : "$Z0020"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.13.01.09, C0140, R1510}",
+            "Label" : "S.26.13.01.09 - Diversification|0,01|Z Axis:",
+            "Values" : ""
+          }
+        },
+        "C0140_R1520" : {
+          "dimensions" : {
+            "s2c_dim:DV" : "s2c_RT:x29",
+            "s2c_dim:PT" : "s2c_PI:x35",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RT" : "$Z0020"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.13.01.09, C0140, R1520}",
+            "Label" : "S.26.13.01.09 - Diversification|0,05|Z Axis:",
+            "Values" : ""
+          }
+        },
+        "C0140_R1530" : {
+          "dimensions" : {
+            "s2c_dim:DV" : "s2c_RT:x29",
+            "s2c_dim:PT" : "s2c_PI:x16",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RT" : "$Z0020"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.13.01.09, C0140, R1530}",
+            "Label" : "S.26.13.01.09 - Diversification|0,1|Z Axis:",
+            "Values" : ""
+          }
+        },
+        "C0140_R1540" : {
+          "dimensions" : {
+            "s2c_dim:DV" : "s2c_RT:x29",
+            "s2c_dim:PT" : "s2c_PI:x52",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RT" : "$Z0020"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.13.01.09, C0140, R1540}",
+            "Label" : "S.26.13.01.09 - Diversification|0,2|Z Axis:",
+            "Values" : ""
+          }
+        },
+        "C0140_R1550" : {
+          "dimensions" : {
+            "s2c_dim:DV" : "s2c_RT:x29",
+            "s2c_dim:PT" : "s2c_PI:x15",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RT" : "$Z0020"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.13.01.09, C0140, R1550}",
+            "Label" : "S.26.13.01.09 - Diversification|0,25|Z Axis:",
+            "Values" : ""
+          }
+        },
+        "C0140_R1560" : {
+          "dimensions" : {
+            "s2c_dim:DV" : "s2c_RT:x29",
+            "s2c_dim:PT" : "s2c_PI:x17",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RT" : "$Z0020"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.13.01.09, C0140, R1560}",
+            "Label" : "S.26.13.01.09 - Diversification|0,3|Z Axis:",
+            "Values" : ""
+          }
+        },
+        "C0140_R1570" : {
+          "dimensions" : {
+            "s2c_dim:DV" : "s2c_RT:x29",
+            "s2c_dim:PT" : "s2c_PI:x49",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RT" : "$Z0020"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.13.01.09, C0140, R1570}",
+            "Label" : "S.26.13.01.09 - Diversification|0,4|Z Axis:",
+            "Values" : ""
+          }
+        },
+        "C0140_R1580" : {
+          "dimensions" : {
+            "s2c_dim:DV" : "s2c_RT:x29",
+            "s2c_dim:PT" : "s2c_PI:x32",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RT" : "$Z0020"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.13.01.09, C0140, R1580}",
+            "Label" : "S.26.13.01.09 - Diversification|0,5|Z Axis:",
+            "Values" : ""
+          }
+        },
+        "C0140_R1590" : {
+          "dimensions" : {
+            "s2c_dim:DV" : "s2c_RT:x29",
+            "s2c_dim:PT" : "s2c_PI:x45",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RT" : "$Z0020"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.13.01.09, C0140, R1590}",
+            "Label" : "S.26.13.01.09 - Diversification|0,6|Z Axis:",
+            "Values" : ""
+          }
+        },
+        "C0140_R1600" : {
+          "dimensions" : {
+            "s2c_dim:DV" : "s2c_RT:x29",
+            "s2c_dim:PT" : "s2c_PI:x47",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RT" : "$Z0020"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.13.01.09, C0140, R1600}",
+            "Label" : "S.26.13.01.09 - Diversification|0,7|Z Axis:",
+            "Values" : ""
+          }
+        },
+        "C0140_R1610" : {
+          "dimensions" : {
+            "s2c_dim:DV" : "s2c_RT:x29",
+            "s2c_dim:PT" : "s2c_PI:x31",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RT" : "$Z0020"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.13.01.09, C0140, R1610}",
+            "Label" : "S.26.13.01.09 - Diversification|0,75|Z Axis:",
+            "Values" : ""
+          }
+        },
+        "C0140_R1620" : {
+          "dimensions" : {
+            "s2c_dim:DV" : "s2c_RT:x29",
+            "s2c_dim:PT" : "s2c_PI:x30",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RT" : "$Z0020"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.13.01.09, C0140, R1620}",
+            "Label" : "S.26.13.01.09 - Diversification|0,8|Z Axis:",
+            "Values" : ""
+          }
+        },
+        "C0140_R1630" : {
+          "dimensions" : {
+            "s2c_dim:DV" : "s2c_RT:x29",
+            "s2c_dim:PT" : "s2c_PI:x28",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RT" : "$Z0020"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.13.01.09, C0140, R1630}",
+            "Label" : "S.26.13.01.09 - Diversification|0,9|Z Axis:",
+            "Values" : ""
+          }
+        },
+        "C0140_R1640" : {
+          "dimensions" : {
+            "s2c_dim:DV" : "s2c_RT:x29",
+            "s2c_dim:PT" : "s2c_PI:x39",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RT" : "$Z0020"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.13.01.09, C0140, R1640}",
+            "Label" : "S.26.13.01.09 - Diversification|0,975|Z Axis:",
+            "Values" : ""
+          }
+        },
+        "C0140_R1650" : {
+          "dimensions" : {
+            "s2c_dim:DV" : "s2c_RT:x29",
+            "s2c_dim:PT" : "s2c_PI:x40",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RT" : "$Z0020"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.13.01.09, C0140, R1650}",
+            "Label" : "S.26.13.01.09 - Diversification|0,98|Z Axis:",
+            "Values" : ""
+          }
+        },
+        "C0140_R1660" : {
+          "dimensions" : {
+            "s2c_dim:DV" : "s2c_RT:x29",
+            "s2c_dim:PT" : "s2c_PI:x41",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RT" : "$Z0020"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.13.01.09, C0140, R1660}",
+            "Label" : "S.26.13.01.09 - Diversification|0,985|Z Axis:",
+            "Values" : ""
+          }
+        },
+        "C0140_R1670" : {
+          "dimensions" : {
+            "s2c_dim:DV" : "s2c_RT:x29",
+            "s2c_dim:PT" : "s2c_PI:x42",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RT" : "$Z0020"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.13.01.09, C0140, R1670}",
+            "Label" : "S.26.13.01.09 - Diversification|0,99|Z Axis:",
+            "Values" : ""
+          }
+        },
+        "C0140_R1680" : {
+          "dimensions" : {
+            "s2c_dim:DV" : "s2c_RT:x29",
+            "s2c_dim:PT" : "s2c_PI:x24",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RT" : "$Z0020"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.13.01.09, C0140, R1680}",
+            "Label" : "S.26.13.01.09 - Diversification|0,995|Z Axis:",
+            "Values" : ""
+          }
+        },
+        "C0140_R1690" : {
+          "dimensions" : {
+            "s2c_dim:DV" : "s2c_RT:x29",
+            "s2c_dim:PT" : "s2c_PI:x43",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RT" : "$Z0020"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.13.01.09, C0140, R1690}",
+            "Label" : "S.26.13.01.09 - Diversification|0,997|Z Axis:",
+            "Values" : ""
+          }
+        },
+        "C0140_R1700" : {
+          "dimensions" : {
+            "s2c_dim:DV" : "s2c_RT:x29",
+            "s2c_dim:PT" : "s2c_PI:x20",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RT" : "$Z0020"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.13.01.09, C0140, R1700}",
+            "Label" : "S.26.13.01.09 - Diversification|0,999|Z Axis:",
+            "Values" : ""
+          }
+        },
+        "C0150_R1210" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi92",
+            "s2c_dim:EA" : "s2c_VM:x24",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RT" : "$Z0020",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.13.01.09, C0150, R1210}",
+            "Label" : "S.26.13.01.09 - Diversified|Solvency Capital Requirement|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0150_R1220" : {
+          "dimensions" : {
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RT" : "$Z0020",
+            "s2c_dim:TA" : "s2c_AM:x12"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.13.01.09, C0150, R1220}",
+            "Label" : "S.26.13.01.09 - Diversified|Simulated (output) mean|Z Axis:",
+            "Values" : ""
+          }
+        },
+        "C0150_R1230" : {
+          "dimensions" : {
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RT" : "$Z0020",
+            "s2c_dim:TA" : "s2c_AM:x138"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.13.01.09, C0150, R1230}",
+            "Label" : "S.26.13.01.09 - Diversified|Simulated (output) standard deviation|Z Axis:",
+            "Values" : ""
+          }
+        },
+        "C0150_R1240" : {
+          "dimensions" : {
+            "s2c_dim:PT" : "s2c_PI:x38",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RT" : "$Z0020"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.13.01.09, C0150, R1240}",
+            "Label" : "S.26.13.01.09 - Diversified|0,001|Z Axis:",
+            "Values" : ""
+          }
+        },
+        "C0150_R1250" : {
+          "dimensions" : {
+            "s2c_dim:PT" : "s2c_PI:x19",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RT" : "$Z0020"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.13.01.09, C0150, R1250}",
+            "Label" : "S.26.13.01.09 - Diversified|0,005|Z Axis:",
+            "Values" : ""
+          }
+        },
+        "C0150_R1260" : {
+          "dimensions" : {
+            "s2c_dim:PT" : "s2c_PI:x18",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RT" : "$Z0020"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.13.01.09, C0150, R1260}",
+            "Label" : "S.26.13.01.09 - Diversified|0,01|Z Axis:",
+            "Values" : ""
+          }
+        },
+        "C0150_R1270" : {
+          "dimensions" : {
+            "s2c_dim:PT" : "s2c_PI:x35",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RT" : "$Z0020"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.13.01.09, C0150, R1270}",
+            "Label" : "S.26.13.01.09 - Diversified|0,05|Z Axis:",
+            "Values" : ""
+          }
+        },
+        "C0150_R1280" : {
+          "dimensions" : {
+            "s2c_dim:PT" : "s2c_PI:x16",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RT" : "$Z0020"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.13.01.09, C0150, R1280}",
+            "Label" : "S.26.13.01.09 - Diversified|0,1|Z Axis:",
+            "Values" : ""
+          }
+        },
+        "C0150_R1290" : {
+          "dimensions" : {
+            "s2c_dim:PT" : "s2c_PI:x52",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RT" : "$Z0020"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.13.01.09, C0150, R1290}",
+            "Label" : "S.26.13.01.09 - Diversified|0,2|Z Axis:",
+            "Values" : ""
+          }
+        },
+        "C0150_R1300" : {
+          "dimensions" : {
+            "s2c_dim:PT" : "s2c_PI:x15",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RT" : "$Z0020"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.13.01.09, C0150, R1300}",
+            "Label" : "S.26.13.01.09 - Diversified|0,25|Z Axis:",
+            "Values" : ""
+          }
+        },
+        "C0150_R1310" : {
+          "dimensions" : {
+            "s2c_dim:PT" : "s2c_PI:x17",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RT" : "$Z0020"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.13.01.09, C0150, R1310}",
+            "Label" : "S.26.13.01.09 - Diversified|0,3|Z Axis:",
+            "Values" : ""
+          }
+        },
+        "C0150_R1320" : {
+          "dimensions" : {
+            "s2c_dim:PT" : "s2c_PI:x49",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RT" : "$Z0020"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.13.01.09, C0150, R1320}",
+            "Label" : "S.26.13.01.09 - Diversified|0,4|Z Axis:",
+            "Values" : ""
+          }
+        },
+        "C0150_R1330" : {
+          "dimensions" : {
+            "s2c_dim:PT" : "s2c_PI:x32",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RT" : "$Z0020"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.13.01.09, C0150, R1330}",
+            "Label" : "S.26.13.01.09 - Diversified|0,5|Z Axis:",
+            "Values" : ""
+          }
+        },
+        "C0150_R1340" : {
+          "dimensions" : {
+            "s2c_dim:PT" : "s2c_PI:x45",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RT" : "$Z0020"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.13.01.09, C0150, R1340}",
+            "Label" : "S.26.13.01.09 - Diversified|0,6|Z Axis:",
+            "Values" : ""
+          }
+        },
+        "C0150_R1350" : {
+          "dimensions" : {
+            "s2c_dim:PT" : "s2c_PI:x47",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RT" : "$Z0020"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.13.01.09, C0150, R1350}",
+            "Label" : "S.26.13.01.09 - Diversified|0,7|Z Axis:",
+            "Values" : ""
+          }
+        },
+        "C0150_R1360" : {
+          "dimensions" : {
+            "s2c_dim:PT" : "s2c_PI:x31",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RT" : "$Z0020"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.13.01.09, C0150, R1360}",
+            "Label" : "S.26.13.01.09 - Diversified|0,75|Z Axis:",
+            "Values" : ""
+          }
+        },
+        "C0150_R1370" : {
+          "dimensions" : {
+            "s2c_dim:PT" : "s2c_PI:x30",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RT" : "$Z0020"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.13.01.09, C0150, R1370}",
+            "Label" : "S.26.13.01.09 - Diversified|0,8|Z Axis:",
+            "Values" : ""
+          }
+        },
+        "C0150_R1380" : {
+          "dimensions" : {
+            "s2c_dim:PT" : "s2c_PI:x28",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RT" : "$Z0020"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.13.01.09, C0150, R1380}",
+            "Label" : "S.26.13.01.09 - Diversified|0,9|Z Axis:",
+            "Values" : ""
+          }
+        },
+        "C0150_R1390" : {
+          "dimensions" : {
+            "s2c_dim:PT" : "s2c_PI:x39",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RT" : "$Z0020"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.13.01.09, C0150, R1390}",
+            "Label" : "S.26.13.01.09 - Diversified|0,975|Z Axis:",
+            "Values" : ""
+          }
+        },
+        "C0150_R1400" : {
+          "dimensions" : {
+            "s2c_dim:PT" : "s2c_PI:x40",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RT" : "$Z0020"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.13.01.09, C0150, R1400}",
+            "Label" : "S.26.13.01.09 - Diversified|0,98|Z Axis:",
+            "Values" : ""
+          }
+        },
+        "C0150_R1410" : {
+          "dimensions" : {
+            "s2c_dim:PT" : "s2c_PI:x41",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RT" : "$Z0020"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.13.01.09, C0150, R1410}",
+            "Label" : "S.26.13.01.09 - Diversified|0,985|Z Axis:",
+            "Values" : ""
+          }
+        },
+        "C0150_R1420" : {
+          "dimensions" : {
+            "s2c_dim:PT" : "s2c_PI:x42",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RT" : "$Z0020"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.13.01.09, C0150, R1420}",
+            "Label" : "S.26.13.01.09 - Diversified|0,99|Z Axis:",
+            "Values" : ""
+          }
+        },
+        "C0150_R1430" : {
+          "dimensions" : {
+            "s2c_dim:PT" : "s2c_PI:x24",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RT" : "$Z0020"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.13.01.09, C0150, R1430}",
+            "Label" : "S.26.13.01.09 - Diversified|0,995|Z Axis:",
+            "Values" : ""
+          }
+        },
+        "C0150_R1440" : {
+          "dimensions" : {
+            "s2c_dim:PT" : "s2c_PI:x43",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RT" : "$Z0020"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.13.01.09, C0150, R1440}",
+            "Label" : "S.26.13.01.09 - Diversified|0,997|Z Axis:",
+            "Values" : ""
+          }
+        },
+        "C0150_R1450" : {
+          "dimensions" : {
+            "s2c_dim:PT" : "s2c_PI:x20",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RT" : "$Z0020"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.13.01.09, C0150, R1450}",
+            "Label" : "S.26.13.01.09 - Diversified|0,999|Z Axis:",
+            "Values" : ""
+          }
+        },
+        "C0150_R1460" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi2630",
+            "s2c_dim:EA" : "s2c_VM:x24",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RT" : "$Z0020",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.13.01.09, C0150, R1460}",
+            "Label" : "S.26.13.01.09 - Diversified|Solvency Capital Requirement|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0150_R1470" : {
+          "dimensions" : {
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RT" : "$Z0020",
+            "s2c_dim:TA" : "s2c_AM:x12"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.13.01.09, C0150, R1470}",
+            "Label" : "S.26.13.01.09 - Diversified|Simulated (output) mean|Z Axis:",
+            "Values" : ""
+          }
+        },
+        "C0150_R1480" : {
+          "dimensions" : {
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RT" : "$Z0020",
+            "s2c_dim:TA" : "s2c_AM:x138"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.13.01.09, C0150, R1480}",
+            "Label" : "S.26.13.01.09 - Diversified|Simulated (output) standard deviation|Z Axis:",
+            "Values" : ""
+          }
+        },
+        "C0150_R1490" : {
+          "dimensions" : {
+            "s2c_dim:PT" : "s2c_PI:x38",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RT" : "$Z0020"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.13.01.09, C0150, R1490}",
+            "Label" : "S.26.13.01.09 - Diversified|0,001|Z Axis:",
+            "Values" : ""
+          }
+        },
+        "C0150_R1500" : {
+          "dimensions" : {
+            "s2c_dim:PT" : "s2c_PI:x19",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RT" : "$Z0020"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.13.01.09, C0150, R1500}",
+            "Label" : "S.26.13.01.09 - Diversified|0,005|Z Axis:",
+            "Values" : ""
+          }
+        },
+        "C0150_R1510" : {
+          "dimensions" : {
+            "s2c_dim:PT" : "s2c_PI:x18",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RT" : "$Z0020"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.13.01.09, C0150, R1510}",
+            "Label" : "S.26.13.01.09 - Diversified|0,01|Z Axis:",
+            "Values" : ""
+          }
+        },
+        "C0150_R1520" : {
+          "dimensions" : {
+            "s2c_dim:PT" : "s2c_PI:x35",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RT" : "$Z0020"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.13.01.09, C0150, R1520}",
+            "Label" : "S.26.13.01.09 - Diversified|0,05|Z Axis:",
+            "Values" : ""
+          }
+        },
+        "C0150_R1530" : {
+          "dimensions" : {
+            "s2c_dim:PT" : "s2c_PI:x16",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RT" : "$Z0020"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.13.01.09, C0150, R1530}",
+            "Label" : "S.26.13.01.09 - Diversified|0,1|Z Axis:",
+            "Values" : ""
+          }
+        },
+        "C0150_R1540" : {
+          "dimensions" : {
+            "s2c_dim:PT" : "s2c_PI:x52",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RT" : "$Z0020"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.13.01.09, C0150, R1540}",
+            "Label" : "S.26.13.01.09 - Diversified|0,2|Z Axis:",
+            "Values" : ""
+          }
+        },
+        "C0150_R1550" : {
+          "dimensions" : {
+            "s2c_dim:PT" : "s2c_PI:x15",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RT" : "$Z0020"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.13.01.09, C0150, R1550}",
+            "Label" : "S.26.13.01.09 - Diversified|0,25|Z Axis:",
+            "Values" : ""
+          }
+        },
+        "C0150_R1560" : {
+          "dimensions" : {
+            "s2c_dim:PT" : "s2c_PI:x17",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RT" : "$Z0020"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.13.01.09, C0150, R1560}",
+            "Label" : "S.26.13.01.09 - Diversified|0,3|Z Axis:",
+            "Values" : ""
+          }
+        },
+        "C0150_R1570" : {
+          "dimensions" : {
+            "s2c_dim:PT" : "s2c_PI:x49",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RT" : "$Z0020"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.13.01.09, C0150, R1570}",
+            "Label" : "S.26.13.01.09 - Diversified|0,4|Z Axis:",
+            "Values" : ""
+          }
+        },
+        "C0150_R1580" : {
+          "dimensions" : {
+            "s2c_dim:PT" : "s2c_PI:x32",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RT" : "$Z0020"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.13.01.09, C0150, R1580}",
+            "Label" : "S.26.13.01.09 - Diversified|0,5|Z Axis:",
+            "Values" : ""
+          }
+        },
+        "C0150_R1590" : {
+          "dimensions" : {
+            "s2c_dim:PT" : "s2c_PI:x45",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RT" : "$Z0020"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.13.01.09, C0150, R1590}",
+            "Label" : "S.26.13.01.09 - Diversified|0,6|Z Axis:",
+            "Values" : ""
+          }
+        },
+        "C0150_R1600" : {
+          "dimensions" : {
+            "s2c_dim:PT" : "s2c_PI:x47",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RT" : "$Z0020"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.13.01.09, C0150, R1600}",
+            "Label" : "S.26.13.01.09 - Diversified|0,7|Z Axis:",
+            "Values" : ""
+          }
+        },
+        "C0150_R1610" : {
+          "dimensions" : {
+            "s2c_dim:PT" : "s2c_PI:x31",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RT" : "$Z0020"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.13.01.09, C0150, R1610}",
+            "Label" : "S.26.13.01.09 - Diversified|0,75|Z Axis:",
+            "Values" : ""
+          }
+        },
+        "C0150_R1620" : {
+          "dimensions" : {
+            "s2c_dim:PT" : "s2c_PI:x30",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RT" : "$Z0020"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.13.01.09, C0150, R1620}",
+            "Label" : "S.26.13.01.09 - Diversified|0,8|Z Axis:",
+            "Values" : ""
+          }
+        },
+        "C0150_R1630" : {
+          "dimensions" : {
+            "s2c_dim:PT" : "s2c_PI:x28",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RT" : "$Z0020"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.13.01.09, C0150, R1630}",
+            "Label" : "S.26.13.01.09 - Diversified|0,9|Z Axis:",
+            "Values" : ""
+          }
+        },
+        "C0150_R1640" : {
+          "dimensions" : {
+            "s2c_dim:PT" : "s2c_PI:x39",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RT" : "$Z0020"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.13.01.09, C0150, R1640}",
+            "Label" : "S.26.13.01.09 - Diversified|0,975|Z Axis:",
+            "Values" : ""
+          }
+        },
+        "C0150_R1650" : {
+          "dimensions" : {
+            "s2c_dim:PT" : "s2c_PI:x40",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RT" : "$Z0020"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.13.01.09, C0150, R1650}",
+            "Label" : "S.26.13.01.09 - Diversified|0,98|Z Axis:",
+            "Values" : ""
+          }
+        },
+        "C0150_R1660" : {
+          "dimensions" : {
+            "s2c_dim:PT" : "s2c_PI:x41",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RT" : "$Z0020"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.13.01.09, C0150, R1660}",
+            "Label" : "S.26.13.01.09 - Diversified|0,985|Z Axis:",
+            "Values" : ""
+          }
+        },
+        "C0150_R1670" : {
+          "dimensions" : {
+            "s2c_dim:PT" : "s2c_PI:x42",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RT" : "$Z0020"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.13.01.09, C0150, R1670}",
+            "Label" : "S.26.13.01.09 - Diversified|0,99|Z Axis:",
+            "Values" : ""
+          }
+        },
+        "C0150_R1680" : {
+          "dimensions" : {
+            "s2c_dim:PT" : "s2c_PI:x24",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RT" : "$Z0020"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.13.01.09, C0150, R1680}",
+            "Label" : "S.26.13.01.09 - Diversified|0,995|Z Axis:",
+            "Values" : ""
+          }
+        },
+        "C0150_R1690" : {
+          "dimensions" : {
+            "s2c_dim:PT" : "s2c_PI:x43",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RT" : "$Z0020"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.13.01.09, C0150, R1690}",
+            "Label" : "S.26.13.01.09 - Diversified|0,997|Z Axis:",
+            "Values" : ""
+          }
+        },
+        "C0150_R1700" : {
+          "dimensions" : {
+            "s2c_dim:PT" : "s2c_PI:x20",
+            "s2c_dim:RH" : "s2c_TI:x2",
+            "s2c_dim:RT" : "$Z0020"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.13.01.09, C0150, R1700}",
+            "Label" : "S.26.13.01.09 - Diversified|0,999|Z Axis:",
+            "Values" : ""
+          }
+        },
+        "Z0020" : {
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.13.01.09, Z0020}",
+            "Label" : "Risk type",
+            "Key" : "s2c_dim:RT",
+            "Values" : {
+              "s2c_RT:x311" : "Non-life and NSLT health premium risk and reserve risk aggregated jointly with implicit catastrophe risk",
+              "s2c_RT:x246" : "Non-life and NSLT health premium and reserve risk",
+              "s2c_RT:x312" : "Non-life underwriting premium risk and reserve risk with implicit catastrophe risk",
+              "s2c_RT:x313" : "Non-life underwriting premium risk and reserve risk",
+              "s2c_RT:x314" : "NSLT health underwriting premium risk and reserve risk aggregated separately with implicit catastrophe risk",
+              "s2c_RT:x315" : "NSLT health underwriting premium risk and reserve risk"
+            }
+          }
+        }
+      }
+    }
+  }
+}

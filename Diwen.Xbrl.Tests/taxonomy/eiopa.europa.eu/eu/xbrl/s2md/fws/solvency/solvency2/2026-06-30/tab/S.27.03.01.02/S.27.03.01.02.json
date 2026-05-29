@@ -1,0 +1,83 @@
+{
+  "documentInfo" : {
+    "documentType" : "https://xbrl.org/2021/xbrl-csv",
+    "namespaces" : {
+      "s2md" : "http://eiopa.europa.eu/xbrl/s2md/",
+      "s2c_RT" : "http://eiopa.europa.eu/xbrl/s2c/dict/dom/RT",
+      "s2c_dim" : "http://eiopa.europa.eu/xbrl/s2c/dict/dim",
+      "s2md_met" : "http://eiopa.europa.eu/xbrl/s2md/dict/met"
+    }
+  },
+  "tableTemplates" : {
+    "S.27.03.01.02" : {
+      "columns" : {
+        "C0010" : {
+          "s2md:documentation" : {
+            "CellCode" : "{S.27.03.01.02, C0010}",
+            "Label" : "Peril",
+            "Key" : "s2c_dim:RT",
+            "Values" : {
+              "s2c_RT:x350" : "Wildfire",
+              "s2c_RT:x36" : "Flood",
+              "s2c_RT:x30" : "Earthquake",
+              "s2c_RT:x150" : "Windstorm",
+              "s2c_RT:x40" : "Hail"
+            }
+          }
+        },
+        "C0170" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi3024",
+            "s2c_dim:RT" : "$C0010"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.27.03.01.02, C0170}",
+            "Label" : "S.27.03.01.02 - Gross written premium for direct business - all asset type",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0180" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi3025",
+            "s2c_dim:RT" : "$C0010"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.27.03.01.02, C0180}",
+            "Label" : "S.27.03.01.02 - Gross earned premiums for direct business - all asset type",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0190" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi3026",
+            "s2c_dim:RT" : "$C0010"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.27.03.01.02, C0190}",
+            "Label" : "S.27.03.01.02 - Gross expenses incurred for direct business - all asset type",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0200" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi3027",
+            "s2c_dim:RT" : "$C0010"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.27.03.01.02, C0200}",
+            "Label" : "S.27.03.01.02 - Gross premiums written - reinsurers' share",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        }
+      }
+    }
+  }
+}

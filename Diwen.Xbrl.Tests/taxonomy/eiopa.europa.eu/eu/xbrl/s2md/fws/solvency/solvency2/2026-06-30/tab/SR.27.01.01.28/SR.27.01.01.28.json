@@ -1,0 +1,49 @@
+{
+  "documentInfo" : {
+    "documentType" : "https://xbrl.org/2021/xbrl-csv",
+    "namespaces" : {
+      "s2md" : "http://eiopa.europa.eu/xbrl/s2md/",
+      "s2c_dim" : "http://eiopa.europa.eu/xbrl/s2c/dict/dim",
+      "s2md_met" : "http://eiopa.europa.eu/xbrl/s2md/dict/met"
+    }
+  },
+  "tableTemplates" : {
+    "SR.27.01.01.28" : {
+      "columns" : {
+        "C0781_R2421" : {
+          "dimensions" : {
+            "concept" : "s2md_met:ii3056",
+            "s2c_dim:NF" : "$Z0030",
+            "s2c_dim:PO" : "$Z0020"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{SR.27.01.01.28, C0781, R2421}",
+            "Label" : "SR.27.01.01.28 - Number|Number of vessels below the threshold of EUR 337 500|Z Axis:",
+            "Values" : "Integer"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsInteger"
+        },
+        "Z0020" : {
+          "s2md:documentation" : {
+            "CellCode" : "{SR.27.01.01.28, Z0020}",
+            "Label" : "Ring-fenced fund or remaining part",
+            "Key" : "s2c_dim:PO",
+            "Values" : {
+              "x40" : "Material Ring Fenced Funds",
+              "x54" : "Remaining part [other than MAPs and material RFFs]"
+            }
+          }
+        },
+        "Z0030" : {
+          "s2md:documentation" : {
+            "CellCode" : "{SR.27.01.01.28, Z0030}",
+            "Label" : "Fund Number",
+            "Key" : "s2c_dim:NF",
+            "Values" : "String"
+          }
+        }
+      }
+    }
+  }
+}

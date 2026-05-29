@@ -1,0 +1,96 @@
+{
+  "documentInfo" : {
+    "documentType" : "https://xbrl.org/2021/xbrl-csv",
+    "namespaces" : {
+      "s2md" : "http://eiopa.europa.eu/xbrl/s2md/",
+      "s2c_AP" : "http://eiopa.europa.eu/xbrl/s2c/dict/dom/AP",
+      "s2c_TI" : "http://eiopa.europa.eu/xbrl/s2c/dict/dom/TI",
+      "s2c_dim" : "http://eiopa.europa.eu/xbrl/s2c/dict/dim",
+      "s2md_met" : "http://eiopa.europa.eu/xbrl/s2md/dict/met"
+    }
+  },
+  "tableTemplates" : {
+    "S.26.13.01.01" : {
+      "columns" : {
+        "C0010_R0010" : {
+          "dimensions" : {
+            "concept" : "s2md_met:ei2574",
+            "s2c_dim:RH" : "s2c_TI:x2"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.13.01.01, C0010, R0010}",
+            "Label" : "S.26.13.01.01 - Risk model data|Is SCR risk measure for Premium risk centered?|Z Axis:",
+            "Values" : {
+              "s2c_AP:x81" : "Including a deviation from the expected result",
+              "s2c_AP:x82" : "Including a deviation from zero (non-centered risk)",
+              "s2c_AP:x83" : "Other approach than deviation from the expected results or zero (non-centered risk)"
+            }
+          }
+        },
+        "C0010_R0020" : {
+          "dimensions" : {
+            "concept" : "s2md_met:si2631",
+            "s2c_dim:RH" : "s2c_TI:x2"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.13.01.01, C0010, R0020}",
+            "Label" : "S.26.13.01.01 - Risk model data|Short description of SCR risk measure used for Premium risk|Z Axis:",
+            "Values" : "String"
+          }
+        },
+        "C0010_R0030" : {
+          "dimensions" : {
+            "concept" : "s2md_met:ei2575",
+            "s2c_dim:RH" : "s2c_TI:x2"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.13.01.01, C0010, R0030}",
+            "Label" : "S.26.13.01.01 - Risk model data|Is SCR risk measure for Reserve risk centered?|Z Axis:",
+            "Values" : {
+              "s2c_AP:x81" : "Including a deviation from the expected result",
+              "s2c_AP:x82" : "Including a deviation from zero (non-centered risk)",
+              "s2c_AP:x83" : "Other approach than deviation from the expected results or zero (non-centered risk)"
+            }
+          }
+        },
+        "C0010_R0040" : {
+          "dimensions" : {
+            "concept" : "s2md_met:si2632",
+            "s2c_dim:RH" : "s2c_TI:x2"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.13.01.01, C0010, R0040}",
+            "Label" : "S.26.13.01.01 - Risk model data|Short description of SCR risk measure used for Reserve risk|Z Axis:",
+            "Values" : "String"
+          }
+        },
+        "C0010_R0050" : {
+          "dimensions" : {
+            "concept" : "s2md_met:ei2576",
+            "s2c_dim:RH" : "s2c_TI:x2"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.13.01.01, C0010, R0050}",
+            "Label" : "S.26.13.01.01 - Risk model data|Is SCR risk measure for Catastrophe risk centered?|Z Axis:",
+            "Values" : {
+              "s2c_AP:x81" : "Including a deviation from the expected result",
+              "s2c_AP:x82" : "Including a deviation from zero (non-centered risk)",
+              "s2c_AP:x83" : "Other approach than deviation from the expected results or zero (non-centered risk)"
+            }
+          }
+        },
+        "C0010_R0060" : {
+          "dimensions" : {
+            "concept" : "s2md_met:si2633",
+            "s2c_dim:RH" : "s2c_TI:x2"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.13.01.01, C0010, R0060}",
+            "Label" : "S.26.13.01.01 - Risk model data|Short description of SCR risk measure used for Catastrophe risk|Z Axis:",
+            "Values" : "String"
+          }
+        }
+      }
+    }
+  }
+}

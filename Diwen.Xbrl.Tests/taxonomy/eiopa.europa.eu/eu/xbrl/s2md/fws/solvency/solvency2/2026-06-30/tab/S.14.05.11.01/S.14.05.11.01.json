@@ -1,0 +1,35 @@
+{
+  "documentInfo" : {
+    "documentType" : "https://xbrl.org/2021/xbrl-csv",
+    "namespaces" : {
+      "s2md" : "http://eiopa.europa.eu/xbrl/s2md/",
+      "s2c_dim" : "http://eiopa.europa.eu/xbrl/s2c/dict/dim",
+      "s2md_met" : "http://eiopa.europa.eu/xbrl/s2md/dict/met"
+    }
+  },
+  "tableTemplates" : {
+    "S.14.05.11.01" : {
+      "columns" : {
+        "C0080" : {
+          "dimensions" : {
+            "concept" : "s2md_met:si1350",
+            "s2c_dim:YQ" : "$C0240"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.14.05.11.01, C0080}",
+            "Label" : "S.14.05.11.01 - Country",
+            "Values" : "String"
+          }
+        },
+        "C0240" : {
+          "s2md:documentation" : {
+            "CellCode" : "{S.14.05.11.01, C0240}",
+            "Label" : "Line identification",
+            "Key" : "s2c_dim:YQ",
+            "Values" : "String"
+          }
+        }
+      }
+    }
+  }
+}

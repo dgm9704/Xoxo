@@ -1,0 +1,79 @@
+{
+  "documentInfo" : {
+    "documentType" : "https://xbrl.org/2021/xbrl-csv",
+    "namespaces" : {
+      "s2md" : "http://eiopa.europa.eu/xbrl/s2md/",
+      "s2c_AP" : "http://eiopa.europa.eu/xbrl/s2c/dict/dom/AP",
+      "s2c_PC" : "http://eiopa.europa.eu/xbrl/s2c/dict/dom/PC",
+      "s2c_TI" : "http://eiopa.europa.eu/xbrl/s2c/dict/dom/TI",
+      "s2c_VM" : "http://eiopa.europa.eu/xbrl/s2c/dict/dom/VM",
+      "s2c_dim" : "http://eiopa.europa.eu/xbrl/s2c/dict/dim",
+      "s2md_met" : "http://eiopa.europa.eu/xbrl/s2md/dict/met"
+    }
+  },
+  "tableTemplates" : {
+    "S.26.09.01.01" : {
+      "columns" : {
+        "C0010_R0010" : {
+          "dimensions" : {
+            "concept" : "s2md_met:ei2572",
+            "s2c_dim:RH" : "s2c_TI:x2"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.09.01.01, C0010, R0010}",
+            "Label" : "S.26.09.01.01 - Memorandum item|Type of VA used|Z Axis:",
+            "Values" : {
+              "s2c_AP:x0" : "Total/NA",
+              "s2c_AP:x8" : "No use of volatility adjustment",
+              "s2c_AP:x79" : "Use of Constant volatility adjustment",
+              "s2c_AP:x80" : "Use of Dynamic volatility adjustment"
+            }
+          }
+        },
+        "C0010_R0020" : {
+          "dimensions" : {
+            "concept" : "s2md_met:ei2714",
+            "s2c_dim:RH" : "s2c_TI:x2"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.09.01.01, C0010, R0020}",
+            "Label" : "S.26.09.01.01 - Memorandum item|Type of shock model for market risk|Z Axis:",
+            "Values" : {
+              "s2c_VM:x105" : "Instantaneous shock model",
+              "s2c_VM:x106" : "Projection model"
+            }
+          }
+        },
+        "C0010_R0030" : {
+          "dimensions" : {
+            "concept" : "s2md_met:ei2715",
+            "s2c_dim:RH" : "s2c_TI:x2"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.09.01.01, C0010, R0030}",
+            "Label" : "S.26.09.01.01 - Memorandum item|Type of shock model for credit risk|Z Axis:",
+            "Values" : {
+              "s2c_VM:x105" : "Instantaneous shock model",
+              "s2c_VM:x106" : "Projection model"
+            }
+          }
+        },
+        "C0010_R0040" : {
+          "dimensions" : {
+            "concept" : "s2md_met:ei2713",
+            "s2c_dim:RH" : "s2c_TI:x2"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.26.09.01.01, C0010, R0040}",
+            "Label" : "S.26.09.01.01 - Memorandum item|Coverage of non-financial instruments|Z Axis:",
+            "Values" : {
+              "s2c_PC:x34" : "No",
+              "s2c_PC:x35" : "Fully",
+              "s2c_PC:x36" : "Partial"
+            }
+          }
+        }
+      }
+    }
+  }
+}

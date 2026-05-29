@@ -1,0 +1,280 @@
+{
+  "documentInfo" : {
+    "documentType" : "https://xbrl.org/2021/xbrl-csv",
+    "namespaces" : {
+      "s2md" : "http://eiopa.europa.eu/xbrl/s2md/",
+      "s2c_AM" : "http://eiopa.europa.eu/xbrl/s2c/dict/dom/AM",
+      "s2c_AP" : "http://eiopa.europa.eu/xbrl/s2c/dict/dom/AP",
+      "s2c_PU" : "http://eiopa.europa.eu/xbrl/s2c/dict/dom/PU",
+      "s2c_RT" : "http://eiopa.europa.eu/xbrl/s2c/dict/dom/RT",
+      "s2c_VM" : "http://eiopa.europa.eu/xbrl/s2c/dict/dom/VM",
+      "s2c_dim" : "http://eiopa.europa.eu/xbrl/s2c/dict/dim",
+      "s2md_met" : "http://eiopa.europa.eu/xbrl/s2md/dict/met"
+    }
+  },
+  "tableTemplates" : {
+    "S.25.05.01.02" : {
+      "columns" : {
+        "C0100_R0060" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi2953",
+            "s2c_dim:DV" : "s2c_RT:x353",
+            "s2c_dim:EA" : "s2c_VM:x24",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.25.05.01.02, C0100, R0060}",
+            "Label" : "S.25.05.01.02 - Value|Diversification between components (Level 1)|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0100_R0110" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi2953",
+            "s2c_dim:DV" : "s2c_RT:x352",
+            "s2c_dim:EA" : "s2c_VM:x24",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.25.05.01.02, C0100, R0110}",
+            "Label" : "S.25.05.01.02 - Value|Sum of components including only within component (Level 2) diversification|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0100_R0120" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi1940",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.25.05.01.02, C0100, R0120}",
+            "Label" : "S.25.05.01.02 - Value|Adjustment due to RFF nSCR aggregation|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0100_R0160" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi2954",
+            "s2c_dim:EA" : "s2c_VM:x14",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.25.05.01.02, C0100, R0160}",
+            "Label" : "S.25.05.01.02 - Value|Capital requirement for business operated in accordance with Art. 4 of Directive 2003/41/EC|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0100_R0200" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi2954",
+            "s2c_dim:EA" : "s2c_VM:x48",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.25.05.01.02, C0100, R0200}",
+            "Label" : "S.25.05.01.02 - Value|Solvency capital requirement, excluding capital add-ons|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0100_R0210" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi2954",
+            "s2c_dim:EA" : "s2c_VM:x13",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.25.05.01.02, C0100, R0210}",
+            "Label" : "S.25.05.01.02 - Value|Capital add-ons already set|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0100_R0211" : {
+          "dimensions" : {
+            "s2c_dim:EA" : "s2c_VM:x97",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.25.05.01.02, C0100, R0211}",
+            "Label" : "S.25.05.01.02 - Value|of which, capital add-ons already set - Article 37 (1) Type a|Z Axis:",
+            "Values" : ""
+          }
+        },
+        "C0100_R0212" : {
+          "dimensions" : {
+            "s2c_dim:EA" : "s2c_VM:x98",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.25.05.01.02, C0100, R0212}",
+            "Label" : "S.25.05.01.02 - Value|of which, capital add-ons already set - Article 37 (1) Type b|Z Axis:",
+            "Values" : ""
+          }
+        },
+        "C0100_R0213" : {
+          "dimensions" : {
+            "s2c_dim:EA" : "s2c_VM:x99",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.25.05.01.02, C0100, R0213}",
+            "Label" : "S.25.05.01.02 - Value|of which, capital add-ons already set - Article 37 (1) Type c|Z Axis:",
+            "Values" : ""
+          }
+        },
+        "C0100_R0214" : {
+          "dimensions" : {
+            "s2c_dim:EA" : "s2c_VM:x100",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.25.05.01.02, C0100, R0214}",
+            "Label" : "S.25.05.01.02 - Value|of which, capital add-ons already set - Article 37 (1) Type d|Z Axis:",
+            "Values" : ""
+          }
+        },
+        "C0100_R0220" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi2954",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.25.05.01.02, C0100, R0220}",
+            "Label" : "S.25.05.01.02 - Value|Solvency capital requirement|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0100_R0300" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi2954",
+            "s2c_dim:EA" : "s2c_VM:x32",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.25.05.01.02, C0100, R0300}",
+            "Label" : "S.25.05.01.02 - Value|Amount/estimate of the overall loss-absorbing capacity of technical provisions|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0100_R0310" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi2954",
+            "s2c_dim:EA" : "s2c_VM:x28",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.25.05.01.02, C0100, R0310}",
+            "Label" : "S.25.05.01.02 - Value|Amount/estimate of the loss absorbing capacity for deferred taxes|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0100_R0400" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi2348",
+            "s2c_dim:EA" : "s2c_VM:x24",
+            "s2c_dim:RT" : "s2c_RT:x33",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.25.05.01.02, C0100, R0400}",
+            "Label" : "S.25.05.01.02 - Value|Capital requirement for duration-based equity risk sub-module|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0100_R0410" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi2955",
+            "s2c_dim:EA" : "s2c_VM:x24",
+            "s2c_dim:PO" : "s2c_PU:x54",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.25.05.01.02, C0100, R0410}",
+            "Label" : "S.25.05.01.02 - Value|Total amount of Notional Solvency Capital Requirements for remaining part|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0100_R0420" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi2955",
+            "s2c_dim:EA" : "s2c_VM:x24",
+            "s2c_dim:PO" : "s2c_PU:x40",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.25.05.01.02, C0100, R0420}",
+            "Label" : "S.25.05.01.02 - Value|Total amount of Notional Solvency Capital Requirements for ring-fenced funds|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0100_R0440" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi2956",
+            "s2c_dim:EA" : "s2c_VM:x24",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.25.05.01.02, C0100, R0440}",
+            "Label" : "S.25.05.01.02 - Value|Diversification effects due to RFF nSCR aggregation for article 304|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        },
+        "C0100_R0450" : {
+          "dimensions" : {
+            "concept" : "s2md_met:ei1896",
+            "s2c_dim:VG" : "s2c_AM:x80"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.25.05.01.02, C0100, R0450}",
+            "Label" : "S.25.05.01.02 - Value|Method used to calculate the adjustment due to RFF nSCR aggregation|Z Axis:",
+            "Values" : {
+              "s2c_AP:x35" : "Full recalculation",
+              "s2c_AP:x36" : "Simplification at risk sub-module level",
+              "s2c_AP:x37" : "Simplification at risk module level",
+              "s2c_AP:x38" : "No adjustment"
+            }
+          }
+        },
+        "C0100_R0460" : {
+          "dimensions" : {
+            "concept" : "s2md_met:mi2957",
+            "s2c_dim:VG" : "s2c_AM:x80",
+            "s2c_dim:VL" : "s2c_VM:x5"
+          },
+          "s2md:documentation" : {
+            "CellCode" : "{S.25.05.01.02, C0100, R0460}",
+            "Label" : "S.25.05.01.02 - Value|Net future discretionary benefits|Z Axis:",
+            "Values" : "Monetary"
+          },
+          "unit" : "$baseCurrency",
+          "decimals" : "$decimalsMonetary"
+        }
+      }
+    }
+  }
+}

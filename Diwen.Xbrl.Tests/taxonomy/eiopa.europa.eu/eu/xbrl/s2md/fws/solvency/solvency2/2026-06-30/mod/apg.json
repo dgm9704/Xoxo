@@ -1,0 +1,115 @@
+{
+  "documentInfo" : {
+    "documentType" : "https://xbrl.org/2021/xbrl-csv",
+    "taxonomy" : [ "http://eiopa.europa.eu/eu/xbrl/s2md/fws/solvency/solvency2/2026-06-30/mod/apg.xsd" ],
+    "extends" : [ "http://eiopa.europa.eu/eu/xbrl/s2md/ext/2020/FilingIndicators.json", "http://eiopa.europa.eu/eu/xbrl/s2md/ext/2020/FootNotes.json", "../tab/s.02.01.02.01/s.02.01.02.01.json", "../tab/s.05.01.02.01/s.05.01.02.01.json", "../tab/s.05.01.02.02/s.05.01.02.02.json", "../tab/s.05.02.04.01/s.05.02.04.01.json", "../tab/s.05.02.04.02/s.05.02.04.02.json", "../tab/s.05.02.04.03/s.05.02.04.03.json", "../tab/s.05.02.04.04/s.05.02.04.04.json", "../tab/s.05.02.04.05/s.05.02.04.05.json", "../tab/s.05.02.04.06/s.05.02.04.06.json", "../tab/s.22.01.22.01/s.22.01.22.01.json", "../tab/s.23.01.22.01/s.23.01.22.01.json", "../tab/s.23.01.22.02/s.23.01.22.02.json", "../tab/s.25.01.22.01/s.25.01.22.01.json", "../tab/s.25.01.22.02/s.25.01.22.02.json", "../tab/s.25.01.22.03/s.25.01.22.03.json", "../tab/s.25.05.22.01/s.25.05.22.01.json", "../tab/s.25.05.22.02/s.25.05.22.02.json", "../tab/s.32.01.22.01/s.32.01.22.01.json" ],
+    "namespaces" : {
+      "lei" : "http://standards.iso.org/iso/17442",
+      "iso4217" : "http://www.xbrl.org/2003/iso4217"
+    },
+    "final" : {
+      "namespaces" : true,
+      "dimensions" : true,
+      "tableTemplates" : true,
+      "tables" : true
+    }
+  },
+  "tables" : {
+    "S.02.01.02.01" : {
+      "template" : "S.02.01.02.01",
+      "url" : "S.02.01.02.01.csv",
+      "optional" : true
+    },
+    "S.05.01.02.01" : {
+      "template" : "S.05.01.02.01",
+      "url" : "S.05.01.02.01.csv",
+      "optional" : true
+    },
+    "S.05.01.02.02" : {
+      "template" : "S.05.01.02.02",
+      "url" : "S.05.01.02.02.csv",
+      "optional" : true
+    },
+    "S.05.02.04.01" : {
+      "template" : "S.05.02.04.01",
+      "url" : "S.05.02.04.01.csv",
+      "optional" : true
+    },
+    "S.05.02.04.02" : {
+      "template" : "S.05.02.04.02",
+      "url" : "S.05.02.04.02.csv",
+      "optional" : true
+    },
+    "S.05.02.04.03" : {
+      "template" : "S.05.02.04.03",
+      "url" : "S.05.02.04.03.csv",
+      "optional" : true
+    },
+    "S.05.02.04.04" : {
+      "template" : "S.05.02.04.04",
+      "url" : "S.05.02.04.04.csv",
+      "optional" : true
+    },
+    "S.05.02.04.05" : {
+      "template" : "S.05.02.04.05",
+      "url" : "S.05.02.04.05.csv",
+      "optional" : true
+    },
+    "S.05.02.04.06" : {
+      "template" : "S.05.02.04.06",
+      "url" : "S.05.02.04.06.csv",
+      "optional" : true
+    },
+    "S.22.01.22.01" : {
+      "template" : "S.22.01.22.01",
+      "url" : "S.22.01.22.01.csv",
+      "optional" : true
+    },
+    "S.23.01.22.01" : {
+      "template" : "S.23.01.22.01",
+      "url" : "S.23.01.22.01.csv",
+      "optional" : true
+    },
+    "S.23.01.22.02" : {
+      "template" : "S.23.01.22.02",
+      "url" : "S.23.01.22.02.csv",
+      "optional" : true
+    },
+    "S.25.01.22.01" : {
+      "template" : "S.25.01.22.01",
+      "url" : "S.25.01.22.01.csv",
+      "optional" : true
+    },
+    "S.25.01.22.02" : {
+      "template" : "S.25.01.22.02",
+      "url" : "S.25.01.22.02.csv",
+      "optional" : true
+    },
+    "S.25.01.22.03" : {
+      "template" : "S.25.01.22.03",
+      "url" : "S.25.01.22.03.csv",
+      "optional" : true
+    },
+    "S.25.05.22.01" : {
+      "template" : "S.25.05.22.01",
+      "url" : "S.25.05.22.01.csv",
+      "optional" : true
+    },
+    "S.25.05.22.02" : {
+      "template" : "S.25.05.22.02",
+      "url" : "S.25.05.22.02.csv",
+      "optional" : true
+    },
+    "S.32.01.22.01" : {
+      "template" : "S.32.01.22.01",
+      "url" : "S.32.01.22.01.csv",
+      "optional" : true
+    }
+  },
+  "parameterURL" : "report_params.csv",
+  "dimensions" : {
+    "period" : "$refPeriod@end",
+    "unit" : "$baseCurrency",
+    "entity" : "$entityID"
+  }
+}
