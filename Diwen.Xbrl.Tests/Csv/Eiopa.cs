@@ -10,15 +10,16 @@ namespace Diwen.Xbrl.Tests.Csv
     {
         [Theory]
         [InlineData("data/eiopa/2.10/spv_2026-06-30_instance.xbrl", @"eiopa/2.10")]
-        public async Task XmlToCsv(string xmlReportPath, string outputFolderPath)
+        public async Task XmlToPlainCsv(string xmlReportPath, string outputFolderPath)
         {
             var xml = Diwen.Xbrl.Xml.Report.FromFile(xmlReportPath);
             var xmlSchemaRef = xml.SchemaReference;
             var csvSchemaPath = Path.Combine("taxonomy", Path.ChangeExtension(xmlSchemaRef.Value.Replace("http://", string.Empty), ".json"));
             var moduleDefinition = ModuleDefinition.FromFile(csvSchemaPath);
-            var csv = xml.ToXbrlCsv(moduleDefinition);
+            var csv = xml.ToXbrlCsvPlain(moduleDefinition);
             var csvReportName = Path.ChangeExtension(Path.GetFileName(xmlReportPath), "zip");
             var csvReportPath = Path.Combine(outputFolderPath, csvReportName);
+            Directory.CreateDirectory(Path.GetDirectoryName(csvReportPath));
             csv.Export(csvReportPath, moduleDefinition);
         }
     }

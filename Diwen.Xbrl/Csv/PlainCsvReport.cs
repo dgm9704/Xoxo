@@ -283,7 +283,6 @@ namespace Diwen.Xbrl.Csv
             string packagePath,
             ModuleDefinition moduleDefinition)
         {
-
             var filingInfo = moduleDefinition.FilingInfo;
             var tableDefinitions = moduleDefinition.TableDefinitions;
             var report = new PlainCsvReport();
@@ -636,38 +635,45 @@ namespace Diwen.Xbrl.Csv
                 var value = fact.Value;
                 // Typed members are all open
 
-                var openDimensions =
-                    fact.Context.Scenario.TypedMembers.ToDictionary(
-                        m => $"{xmlReport.Namespaces.LookupPrefix(m.Dimension.Namespace)}:{m.Dimension.Name}",
-                        m => m.Value);
+                var openDimensions = new Dictionary<string, string>();
+                var factExplicitMembers = new Dictionary<string, string>();
+                var factTypedMembers = new HashSet<string>();
 
-                var factExplicitMembers =
-                    fact.Context.Scenario.ExplicitMembers.ToDictionary(
-                        m => $"{xmlReport.Namespaces.LookupPrefix(m.Dimension.Namespace)}:{m.Dimension.Name}",
-                        m => $"{xmlReport.Namespaces.LookupPrefix(m.Value.Namespace)}:{m.Value.Name}");
+                if (fact.Context.Scenario != null)
+                {
+                    openDimensions =
+                        fact.Context.Scenario.TypedMembers.ToDictionary(
+                            m => $"{xmlReport.Namespaces.LookupPrefix(m.Dimension.Namespace)}:{m.Dimension.Name}",
+                            m => m.Value);
 
-                var factTypedMembers =
-                    fact.Context.Scenario.TypedMembers.Select(m =>
-                            $"{xmlReport.Namespaces.LookupPrefix(m.Dimension.Namespace)}:{m.Dimension.Name}")
-                        .ToHashSet();
+                    factExplicitMembers =
+                        fact.Context.Scenario.ExplicitMembers.ToDictionary(
+                            m => $"{xmlReport.Namespaces.LookupPrefix(m.Dimension.Namespace)}:{m.Dimension.Name}",
+                            m => $"{xmlReport.Namespaces.LookupPrefix(m.Value.Namespace)}:{m.Value.Name}");
+
+                    factTypedMembers =
+                        fact.Context.Scenario.TypedMembers.Select(m =>
+                                $"{xmlReport.Namespaces.LookupPrefix(m.Dimension.Namespace)}:{m.Dimension.Name}")
+                            .ToHashSet();
+                }
 
                 var datapoints = GetTableDatapoints(fact, reportedTables, tablesOpendimensions, factExplicitMembers,
                     factTypedMembers);
 
                 foreach (var table in datapoints)
-                    foreach (var datapoint in table.Value)
-                    {
-                        foreach (var dim in tablesOpendimensions[table.Key])
-                            if (!openDimensions.ContainsKey(dim))
-                            {
-                                var dimcode = dim.Split(':').Last();
-                                // Some explicit members might be open, depending on the table
-                                openDimensions[dim] = fact.Context.Scenario.ExplicitMembers
-                                    .First(m => m.Dimension.Name == dimcode).MemberCode;
-                            }
+                foreach (var datapoint in table.Value)
+                {
+                    foreach (var dim in tablesOpendimensions[table.Key])
+                        if (!openDimensions.ContainsKey(dim))
+                        {
+                            var dimcode = dim.Split(':').Last();
+                            // Some explicit members might be open, depending on the table
+                            openDimensions[dim] = fact.Context.Scenario.ExplicitMembers
+                                .First(m => m.Dimension.Name == dimcode).MemberCode;
+                        }
 
-                        report.AddData(table.Key, datapoint, fact.Value, openDimensions);
-                    }
+                    report.AddData(table.Key, datapoint, fact.Value, openDimensions);
+                }
             }
 
             return report;

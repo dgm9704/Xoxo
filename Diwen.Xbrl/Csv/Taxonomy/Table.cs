@@ -21,6 +21,7 @@
 
 namespace Diwen.Xbrl.Csv.Taxonomy
 {
+    using System.Linq;
     using System.Text.Json.Serialization;
     using System.Text.RegularExpressions;
 
@@ -55,8 +56,11 @@ namespace Diwen.Xbrl.Csv.Taxonomy
                 filingIndicator ??=
                     EsaDocumentation != null && EsaDocumentation.ContainsKey("FilingIndicator")
                     ? EsaDocumentation["FilingIndicator"].ToString()
-                    //: string.Join('.', Template.Split('-').Take(2)); 
-                    : string.Join('.', letterVariantExpression.Replace(Template, string.Empty).Split('-'));
+                    : Template.IndexOf('-') != -1
+                        // EBA
+                        ? string.Join('.', letterVariantExpression.Replace(Template, string.Empty).Split('-'))
+                        // EIOPA
+                        : string.Join('.', Template.Split('.').Take(3)); 
 
                 return filingIndicator;
             }
